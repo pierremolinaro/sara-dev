@@ -24,6 +24,7 @@ class C_saraMachine {
   public : C_saraMachine (void) ;
   public : C_string mMachineName ;
   public : uint16 mInputVariablesCount ;
+  public : uint16 mInputAndInternalVariablesCount ;
   public : TC_unique_dyn_array <C_string> mNamesArray ;
   public : C_bdd mInitialStatesBDD ;
   public : C_bdd mTerminalStatesBDD ;
