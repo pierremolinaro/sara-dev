@@ -340,8 +340,7 @@ compute (C_lexique & inLexique,
       transitionsBDD.printBDD (transitionBDDbitNames) ;
     }
   }
-//--- Check consistency of each state
-/*  TC_unique_dyn_array <C_bdd> stateExpression (mStatesMap.getCount () COMMA_HERE) ;
+//--- Check transitions of each state
   currentDefinition = mStateDefinitionList.getFirstItem () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
@@ -349,36 +348,25 @@ compute (C_lexique & inLexique,
     if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
       printf ("For state %s :\n", outStateNameArray (stateIndex COMMA_HERE).getStringPtr ()) ;
     }
-  //--- Compute BDD for state input expression
-    const C_bdd stateInputBDD = currentDefinition->mExpression ()->computeBDD () ;
-    stateExpression (stateIndex COMMA_HERE) = stateInputBDD ;
-    C_bdd completudeTest = stateInputBDD ;
-    if (stateInputBDD.isTrue ()) {
-      currentDefinition->mEndOfExpression.signalSemanticError (inLexique, "state expression is always true") ;
-    }else if (stateInputBDD.isFalse ()) {
-      currentDefinition->mEndOfExpression.signalSemanticError (inLexique, "state expression is always false") ;
-    }
-    if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
-      const uint64 n = stateInputBDD.getBDDvaluesCount ((uint16) mInputVariableMap.getCount ()) ;
-      const uint32 nodes = stateInputBDD.getBDDnodesCount () ;
-      printf ("  %llu action%s for staying in current state (%lu node%s);\n",
-	          n, (n > 1) ? "s" : "",
-			  nodes, (nodes > 1) ? "s" : "") ;
-      if (inDisplayBDDvalues) {
-        stateInputBDD.printBDD (outInputNamesArray) ;
-      }
-    }
-  //--- Loop on every transition
-    const sint32 transitionsCount = currentDefinition->mTransitionsList.getCount () ;
-    TC_unique_dyn_array <C_bdd> actionBDDarray (transitionsCount COMMA_HERE) ;
-    TC_unique_dyn_array <GGS_location> locationArray (transitionsCount COMMA_HERE) ;
+  //--- Check that action does not intersect with state input expression
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
-    sint32 index = 0 ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
     //--- Compute action BDD
-      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD () ;
-      completudeTest |= actionBDD ;
+      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (0) ;
+    //--- Check action does not intersect with state input expression
+      if (! (stateInputExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
+        C_string errorMessage ;
+        errorMessage << "this action intersects with current state input configuration" ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+      }
+    //--- Goto next transition
+      currentTransition = currentTransition->getNextItem () ;
+    }
+  //--- Goto next state
+    currentDefinition = currentDefinition->getNextItem () ;
+  }
+/*      completudeTest |= actionBDD ;
       if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
 		    const uint64 n = actionBDD.getBDDvaluesCount ((uint16) mInputVariableMap.getCount ()) ;
 	      const uint32 nodes = actionBDD.getBDDnodesCount () ;
