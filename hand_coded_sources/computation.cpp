@@ -184,6 +184,22 @@ compute (C_lexique & inLexique,
                                          outInitialStatesBDD,
                                          outAccessibleStatesBDD,
                                          outAccessibilityRelationBDD) ;
+//--- 
+  const sint32 input_plus_output_count = inputVariablesCount + outputVariablesCount ;
+  TC_unique_dyn_array <C_string> inputOutputVariableNameArray (input_plus_output_count COMMA_HERE) ;
+  for (sint32 i=0 ; i<inputVariablesCount ; i++) {
+    inputOutputVariableNameArray (i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
+  }
+  for (sint32 i=0 ; i<outputVariablesCount ; i++) {
+    inputOutputVariableNameArray (inputVariablesCount+ i COMMA_HERE) = outOutputNamesArray (i COMMA_HERE) ;
+  }
+//--- 
+  
+  TC_unique_dyn_array <C_string> transitionsVariableNameArray (input_plus_output_count + input_plus_output_count COMMA_HERE) ;
+  for (sint32 i=0 ; i<input_plus_output_count ; i++) {
+    transitionsVariableNameArray (i COMMA_HERE) = inputOutputVariableNameArray (i COMMA_HERE) ;
+    transitionsVariableNameArray (input_plus_output_count + i COMMA_HERE) = inputOutputVariableNameArray (i COMMA_HERE) ;
+  }
 //--- Print message
   const uint16 statesBDDbitsCount = (uint16) (outInputNamesArray.getCount () + outOutputNamesArray.getCount ()) ;
   printf ("  %ld input variable%s, %ld output variable%s;\n",
@@ -196,16 +212,25 @@ compute (C_lexique & inLexique,
   printf ("  %llu initial state%s (%lu node%s);\n",
           n, (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    outInitialStatesBDD.printBDD (inputOutputVariableNameArray) ;
+  }
   n = outAccessibleStatesBDD.getBDDvaluesCount (statesBDDbitsCount) ;
   nodes = outAccessibleStatesBDD.getBDDnodesCount () ;
   printf ("  %llu accessible state%s (%lu node%s);\n",
           n, (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    outAccessibleStatesBDD.printBDD (inputOutputVariableNameArray) ;
+  }
   n = outAccessibilityRelationBDD.getBDDvaluesCount (statesBDDbitsCount + statesBDDbitsCount) ;
   nodes = outAccessibilityRelationBDD.getBDDnodesCount () ;
   printf ("  %llu transition%s (%lu node%s).\n",
           n, (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    outAccessibilityRelationBDD.printBDD (transitionsVariableNameArray) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -720,7 +745,8 @@ computeFromExpression (C_lexique & inLexique,
 //--- Compute not composition
   outInitialStatesBDD = ~ initialStatesBDD ;
   outAccessibleStatesBDD = ~ accessibleStatesBDD ;
-  outAccessibilityRelationBDD = ~ accessibilityRelationBDD ;
+  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
+  outAccessibilityRelationBDD = (~ accessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 

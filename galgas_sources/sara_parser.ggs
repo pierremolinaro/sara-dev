@@ -276,31 +276,31 @@ end rule ;
 rule <definition_expression>
   ?!@M_inputOutputVarMap inputVariableMap  ?!@M_inputOutputVarMap inputAndOutputVariableMap  !@AC_machineDefinition outDefinition
 :
-  <definition_expression_term> !?inputVariableMap !? inputAndOutputVariableMap ?outDefinition ;
+  <definition_expression_term> !?inputVariableMap !?inputAndOutputVariableMap ?outDefinition ;
   repeat
   while
     $|$ ;
     @AC_machineDefinition leftOperand := outDefinition ;
     @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?inputVariableMap !? inputAndOutputVariableMap ?rightOperand ;
+    <definition_expression_term> !?inputVariableMap !?inputAndOutputVariableMap ?rightOperand ;
     outDefinition := [@C_orComposition new !leftOperand !rightOperand] ;
   while
     $^$ ;
     @AC_machineDefinition leftOperand := outDefinition ;
     @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?inputVariableMap !? inputAndOutputVariableMap ?rightOperand ;
+    <definition_expression_term> !?inputVariableMap !?inputAndOutputVariableMap ?rightOperand ;
     outDefinition := [@C_xorComposition new !leftOperand !rightOperand] ;
   while
     $->$ ;
     @AC_machineDefinition leftOperand := outDefinition ;
     @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?inputVariableMap !? inputAndOutputVariableMap ?rightOperand ;
+    <definition_expression_term> !?inputVariableMap !?inputAndOutputVariableMap ?rightOperand ;
     outDefinition := [@C_impliesComposition new !leftOperand !rightOperand] ;
   while
     $=$ ;
     @AC_machineDefinition leftOperand := outDefinition ;
     @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?inputVariableMap !? inputAndOutputVariableMap ?rightOperand ;
+    <definition_expression_term> !?inputVariableMap !?inputAndOutputVariableMap ?rightOperand ;
     outDefinition := [@C_equalComposition new !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
