@@ -1,0 +1,3 @@
+exemple1 (a, b -> r) := r = (a & b) ;
+
+exemple2 (a, b -> r, s) := (r = (a & b)) & (s = (a | b)) ;
