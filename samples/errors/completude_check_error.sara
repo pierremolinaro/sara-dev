@@ -1,0 +1,10 @@
+exemple1 := input1, input2 -> output auto {
+  state state1, state2  ;
+  first state1 ;
+  state1 : input1 out output:0 {
+    ! input1 goto state2 ;
+  }
+  state2 : ! input1 out output:1 {
+    input1 & input2 goto state1 ;
+  }
+} ;

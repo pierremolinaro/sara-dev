@@ -1,0 +1,33 @@
+exemple1 := eav1, eav2 -> r1, r2 auto {
+  state etat_repos, etat_petite_vitesse, etat_grande_vitesse  ;
+  first etat_repos ;
+  etat_repos : ! eav1 out r1:0, r2:0 {
+    eav1 & !eav2 goto etat_petite_vitesse ;
+    eav1 &  eav2 goto etat_grande_vitesse ;
+  }
+  etat_petite_vitesse : eav1 & !eav2 out r2:0, r1:1 {
+    !eav1 goto etat_repos ;
+    eav1 & eav2 goto etat_grande_vitesse ;
+  }
+  etat_grande_vitesse : eav1 & eav2 out r1:1, r2:1 {
+    eav1 & !eav2 goto etat_petite_vitesse ;
+    !eav1 goto etat_repos ;
+  }
+} ;
+
+exemple2 := eav1, eav2, arefix -> r1, r2 auto {
+  state etat_petite_vitesse, etat_grande_vitesse, etat_repos ;
+  first etat_repos ;
+  etat_repos : ! eav1 out r1:0, r2:0 {
+   eav1 & !eav2 goto etat_petite_vitesse ;
+    eav1 &  eav2 goto etat_grande_vitesse ;
+  }
+  etat_petite_vitesse : eav1 & !eav2 out r2:0, r1:1 {
+   !eav1 goto etat_repos ;
+    eav1 & eav2 goto etat_grande_vitesse ;
+  }
+  etat_grande_vitesse : eav1 & eav2 out r1:1, r2:1 {
+    eav1 & !eav2 goto etat_petite_vitesse ;
+    !eav1 goto etat_repos ;
+  }
+} ;
