@@ -589,7 +589,8 @@ computeFromExpression (C_lexique & inLexique,
 //--- Compute or composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
-  outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
+  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD | rightAccessibilityRelationBDD) | (outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount)) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -631,7 +632,8 @@ computeFromExpression (C_lexique & inLexique,
 //--- Compute xor composition
   outInitialStatesBDD = leftInitialStatesBDD != rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD != rightAccessibleStatesBDD ;
-  outAccessibilityRelationBDD = leftAccessibilityRelationBDD != rightAccessibilityRelationBDD ;
+  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD != rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -673,7 +675,8 @@ computeFromExpression (C_lexique & inLexique,
 //--- Compute implies composition
   outInitialStatesBDD = leftInitialStatesBDD.implies (rightInitialStatesBDD) ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD.implies (rightAccessibleStatesBDD) ;
-  outAccessibilityRelationBDD = leftAccessibilityRelationBDD.implies (rightAccessibilityRelationBDD) ;
+  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD.implies (rightAccessibilityRelationBDD)) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -715,7 +718,8 @@ computeFromExpression (C_lexique & inLexique,
 //--- Compute implies composition
   outInitialStatesBDD = leftInitialStatesBDD == rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD == rightAccessibleStatesBDD ;
-  outAccessibilityRelationBDD = leftAccessibilityRelationBDD == rightAccessibilityRelationBDD ;
+  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD == rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
