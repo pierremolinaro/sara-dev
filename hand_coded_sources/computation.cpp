@@ -205,7 +205,7 @@ compute (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_automatonDefinition::
+void cPtr_C_explicitAutomatonDefinition::
 computeFromExpression (C_lexique & inLexique,
                        const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
@@ -369,9 +369,9 @@ computeFromExpression (C_lexique & inLexique,
       }
     //--- Check that action is compatible input configuration of target state
       const C_bdd x = actionBDD & stateExpressionBDD (currentTransition->mTargetStateIndex.getValue () COMMA_HERE) ;
-      if (! x.isEqualToBDD (actionBDD)) {
+      if (x.isFalse ()) {
         C_string errorMessage ;
-        errorMessage << "this action is not compatible with input configuration of target state" ;
+        errorMessage << "this transition is not compatible with configuration of target state" ;
         currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
       }
     //--- Goto next transition
@@ -628,18 +628,25 @@ computeFromExpression (C_lexique & inLexique,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
+  const uint16 previousVariableCount = (uint16) mPreviousVariableCount.getValue () ;
+  const uint16 totalVariableCount = (uint16) mTotalVariableCount.getValue () ;
 //--- Compute operand
   C_bdd initialStatesBDD ;
   C_bdd accessibleStatesBDD ;
   C_bdd accessibilityRelationBDD ;
   mOperand ()->computeFromExpression (inLexique,
-                                      inVariablesCount,
+                                      totalVariableCount,
                                       initialStatesBDD,
                                       accessibleStatesBDD,
                                       accessibilityRelationBDD) ;
-  outInitialStatesBDD = initialStatesBDD ;
-  outAccessibleStatesBDD = accessibleStatesBDD ;
-  outAccessibilityRelationBDD = accessibilityRelationBDD ;
+  outInitialStatesBDD = initialStatesBDD.existsOnBitsAfterNumber (previousVariableCount) ;
+  outAccessibleStatesBDD = accessibleStatesBDD.existsOnBitsAfterNumber (previousVariableCount) ;
+//--- Compute accessibilty relation (NOT OPTIMIZED)
+  outAccessibilityRelationBDD = accessibilityRelationBDD.existsOnBitsAfterNumber (totalVariableCount + previousVariableCount) ;
+  for (uint16 i=previousVariableCount ; i<totalVariableCount ; i++) {
+    outAccessibilityRelationBDD = outAccessibilityRelationBDD.existsOnBitNumber (i) ;
+  }
+  outAccessibilityRelationBDD.rollDownVariables (totalVariableCount + previousVariableCount, previousVariableCount) ; 
 }
 
 //---------------------------------------------------------------------------*

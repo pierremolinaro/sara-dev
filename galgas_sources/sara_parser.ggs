@@ -36,7 +36,7 @@ list @L_initialStatesDefinitionList
 
 abstract class @AC_machineDefinition  include header ; end class ;
 
-class @C_automatonDefinition extends @AC_machineDefinition
+class @C_explicitAutomatonDefinition extends @AC_machineDefinition
   @M_stateMap mStatesMap ;
   @L_initialStatesDefinitionList mInitialStatesDefinitionList ;
   @L_stateDefinition mStateDefinitionList ;
@@ -48,8 +48,9 @@ class @C_variableDefinition extends @AC_machineDefinition
 end class ;
 
 class @C_existsDefinition extends @AC_machineDefinition
+  @uint mPreviousVariableCount ;
+  @uint mTotalVariableCount ;
   @AC_machineDefinition mOperand ;
-  @luint mInputOutputVariableIndex ;
 end class ;
 
 class @C_andComposition extends @AC_machineDefinition
@@ -336,16 +337,22 @@ rule <definition_expression_factor>
     <definition_expression> !? variablesMap ?outDefinition ;
     $)$ ;
   or
+    @M_variablesMap extendedVariablesMap := variablesMap ;
+    @uint previousVariableCount := [extendedVariablesMap length] ;
     $?$ ;
-    @lstring variableName ;
-    $identifier$ ? variableName ;
-    @luint varIndex ;
-    insert variablesMap.insertKey variableName () -> varIndex ;
+    repeat
+      @lstring variableName ;
+      $identifier$ ? variableName ;
+      insert extendedVariablesMap.insertKey variableName () ;
+    while
+      $,$ ;
+    end repeat ;
+    @uint actualVariableCount := [extendedVariablesMap length] ;
     $($ ;
     @AC_machineDefinition def ;
-    <definition_expression> !?variablesMap ?def ;
+    <definition_expression> !?extendedVariablesMap ?def ;
     $)$ ;
-    outDefinition := [@C_existsDefinition new !def !varIndex] ;
+    outDefinition := [@C_existsDefinition new !previousVariableCount !actualVariableCount !def] ;
   or
     $!$ ;
     @AC_machineDefinition def ;
@@ -432,7 +439,7 @@ rule <explicit_automaton>
   end foreach ;
 #--- End of input source
   $}$ ;
-  outDefinition := [@C_automatonDefinition new !statesMap !initialStatesDefinitionList !stateDefinitionList !here] ;
+  outDefinition := [@C_explicitAutomatonDefinition new !statesMap !initialStatesDefinitionList !stateDefinitionList !here] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
