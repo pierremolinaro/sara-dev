@@ -27,8 +27,8 @@ class C_saraMachine {
   public : TC_unique_dyn_array <C_string> mNamesArray ;
   public : C_bdd mInitialStatesBDD ;
   public : C_bdd mTerminalStatesBDD ;
-  public : C_bdd mAccessibleStatesBDD ;
   public : C_bdd mTransitionRelationBDD ;
+  public : C_bdd mAccessibleStatesBDD ;
 } ;
 
 //---------------------------------------------------------------------------*

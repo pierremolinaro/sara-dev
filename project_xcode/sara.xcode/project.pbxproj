@@ -2831,6 +2831,7 @@
 		CFA7AB90058DAD29009AC1FE = {
 			buildSettings = {
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = 1;
 			};
 			isa = PBXBuildStyle;
 			name = Deployment;

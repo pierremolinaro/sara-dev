@@ -153,13 +153,31 @@ compute (C_lexique & inLexique,
                                          machine.mTerminalStatesBDD,
                                          machine.mAccessibleStatesBDD,
                                          machine.mTransitionRelationBDD) ;
+//--- Compute accessible states
+  uint16 * substitutionArray = new uint16 [variablesCount + variablesCount] ;
+  for (uint16 i=0 ; i<variablesCount ; i++) {
+    substitutionArray [i] = (uint16) (variablesCount + i) ;
+    substitutionArray [variablesCount + i] = i ;
+  }
+  C_bdd newlyAccessibleStates ;
+  do{
+    machine.mAccessibleStatesBDD = newlyAccessibleStates ;
+    newlyAccessibleStates |= machine.mInitialStatesBDD ;
+    const C_bdd x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+  }while (! machine.mAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- 
+  machine.mTransitionRelationBDD &= machine.mAccessibleStatesBDD ;
+  machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
+
 //---   
   TC_unique_dyn_array <C_string> transitionsVariableNameArray (variablesCount + variablesCount COMMA_HERE) ;
   for (sint32 i=0 ; i<variablesCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
-//--- Print message
+//--- Print messages
   const uint16 inputVariablesCount = (uint16) mInputVariableCount.getValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
   const sint32 outputVariablesCount = variablesCount - inputVariablesCount ;
@@ -273,9 +291,6 @@ compute (C_lexique & /* inLexique */,
   for (uint16 i=0 ; i<variableCount ; i++) {
     substitutionVector [i] = i ;
     substitutionVector [i+variableCount] = (uint16) (i+variableCount+variableCount) ;
-  }
-  for (uint16 i=0 ; i<outputVariablesCount ; i++) {
-    substitutionVector [i + machine.mInputVariablesCount] = (uint16) (i + variableCount) ;
   }
   const C_bdd translatedTransitions = machine.mTransitionRelationBDD.substitution (substitutionVector, (uint16) (variableCount+variableCount)) ;
   delete [] substitutionVector ; substitutionVector = NULL ;
@@ -537,6 +552,7 @@ computeFromExpression (C_lexique & inLexique,
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
   }while (! outAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
   delete [] substitutionArray ; substitutionArray = NULL ;
+
 //--- At least, check that every state is accessible
   for (sint32 i=0 ; i<stateExpressionBDD.getCount () ; i++) {
     const C_bdd intersection = stateExpressionBDD (i COMMA_HERE) & outAccessibleStatesBDD ;
@@ -637,7 +653,7 @@ computeFromExpression (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_modalComposition::
+void cPtr_C_strongModalComposition::
 computeFromExpression (C_lexique & inLexique,
                        const TC_grow_array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
@@ -673,7 +689,87 @@ computeFromExpression (C_lexique & inLexique,
   const C_bdd intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
   if (! intersection.isFalse ()) {
     C_string errorMessage ;
-    errorMessage << "operands transitions intersects, modal composition is not valid" ;
+    errorMessage << "operands transitions intersects, strong modal composition is not valid" ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+  }
+//--- Compute modal composition
+  outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
+  outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
+  outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
+  outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
+  C_bdd::markAndSweepUnusedNodes () ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_weakModalComposition::
+computeFromExpression (C_lexique & inLexique,
+                       const TC_grow_array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 inVariablesCount,
+                       C_bdd & outInitialStatesBDD,
+                       C_bdd & outTerminalStatesBDD,
+                       C_bdd & outAccessibleStatesBDD,
+                       C_bdd & outAccessibilityRelationBDD) const {
+//--- Compute left operand
+  C_bdd leftInitialStatesBDD ;
+  C_bdd leftTerminalStatesBDD ;
+  C_bdd leftAccessibleStatesBDD ;
+  C_bdd leftAccessibilityRelationBDD ;
+  mLeftOperand ()->computeFromExpression (inLexique,
+                                          inSaraSystemArray,
+                                          inVariablesCount,
+                                          leftInitialStatesBDD,
+                                          leftTerminalStatesBDD,
+                                          leftAccessibleStatesBDD,
+                                          leftAccessibilityRelationBDD) ;
+//--- Compute right operand
+  C_bdd rightInitialStatesBDD ;
+  C_bdd rightTerminalStatesBDD ;
+  C_bdd rightAccessibleStatesBDD ;
+  C_bdd rightAccessibilityRelationBDD ;
+  mRightOperand ()->computeFromExpression (inLexique,
+                                           inSaraSystemArray,
+                                           inVariablesCount,
+                                           rightInitialStatesBDD,
+                                           rightTerminalStatesBDD,
+                                           rightAccessibleStatesBDD,
+                                           rightAccessibilityRelationBDD) ;
+//--- compute intersection
+  const C_bdd intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
+//--- Compute in left operand accessible states from intersection
+  C_bdd leftAccessiblesStates ;
+  uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
+  for (uint16 i=0 ; i<inVariablesCount ; i++) {
+    substitutionArray [i] = (uint16) (inVariablesCount + i) ;
+    substitutionArray [inVariablesCount + i] = i ;
+  }
+  C_bdd newlyAccessibleStates ;
+  do{
+    leftAccessiblesStates = newlyAccessibleStates ;
+    newlyAccessibleStates |= intersection ;
+    const C_bdd x = (newlyAccessibleStates & leftAccessibilityRelationBDD).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
+  }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+//--- Check that only states in intersection are accessible
+  if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+    C_string errorMessage ;
+    errorMessage << "left operand does not respect weak modam composition" ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+  }
+//--- Compute in right operand accessible states from intersection
+  C_bdd rightAccessiblesStates ;
+  newlyAccessibleStates = ~ C_bdd () ;
+  do{
+    rightAccessiblesStates = newlyAccessibleStates ;
+    newlyAccessibleStates |= intersection ;
+    const C_bdd x = (newlyAccessibleStates & rightAccessibilityRelationBDD).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
+  }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- Check that only states in intersection are accessible
+  if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+    C_string errorMessage ;
+    errorMessage << "right operand does not respect weak modam composition" ;
     mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
   }
 //--- Compute modal composition
@@ -889,7 +985,15 @@ computeFromExpression (C_lexique & inLexique,
   for (uint16 i=previousVariableCount ; i<totalVariableCount ; i++) {
     outAccessibilityRelationBDD = outAccessibilityRelationBDD.existsOnBitNumber (i) ;
   }
-  outAccessibilityRelationBDD = outAccessibilityRelationBDD.rollDownVariables ((uint16) (totalVariableCount + previousVariableCount), previousVariableCount) ; 
+  uint16 * substitutionVector = new uint16 [totalVariableCount + previousVariableCount] ;
+  for (uint16 i=0 ; i<totalVariableCount ; i++) {
+    substitutionVector [i] = i ;
+  }
+  for (uint16 i=totalVariableCount ; i<((uint16) (totalVariableCount + previousVariableCount)) ; i++) {
+    substitutionVector [i] = (uint16) (previousVariableCount + i - totalVariableCount) ;
+  }
+  outAccessibilityRelationBDD = outAccessibilityRelationBDD.substitution (substitutionVector, (uint16) (totalVariableCount + previousVariableCount)) ;
+  delete [] substitutionVector ;
 }
 
 //---------------------------------------------------------------------------*
