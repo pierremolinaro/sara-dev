@@ -1,10 +1,12 @@
-exemple1 := input -> output : auto {
-  state state1, state2  ;
-  first state1 ;
-  state1 : false -> !output {
-    ! input goto state2 ;
+exemple1 (input -> output) :=
+  auto {
+    state state1, state2  ;
+    first state1 ;
+    state1 : false -> !output {
+      ! input goto state2 ;
+    }
+    state2 : true -> !output {
+      ! input goto state1 ;
+    }
   }
-  state2 : true -> !output {
-    ! input goto state1 ;
-  }
-} ;
+;

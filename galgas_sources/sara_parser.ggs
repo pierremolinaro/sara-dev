@@ -4,7 +4,7 @@ style identifier -> "Identifiers" ;
 style keyWords -> "Key words" ;
 style delimitors -> "Delimitors" ;
 style integer_csts -> "Integer constants" ;
-# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "goto", "timer", "true", "false" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "|", "(", ")", ":=" ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_inputOutputVarMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
+# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "goto", "timer", "true", "false" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "|", "(", ")", ":=", "||" ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_inputOutputVarMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
 
 #---------------------------------------------------------------------------*  abstract class @AC_expression    include header ;  end class ;    class @C_andExpression extends @AC_expression
     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_orExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_notExpression extends @AC_expression     @AC_expression mExpression ;  end class ;      class @C_VariableExpression extends @AC_expression     @luint mInputVarIndex ;  end class ;
@@ -31,22 +31,45 @@ style integer_csts -> "Integer constants" ;
 
 #---------------------------------------------------------------------------*
 
-  abstract class @AC_component    include header ;  end class ;
+list @L_initialStatesDefinitionList
+  @luint mInitialStateIndex ;  @location mInitialStateLocation ;end list ;
 
-  list @L_initialStatesDefinitionList
-    @luint mInitialStateIndex ;    @location mInitialStateLocation ;  end list ;
-    class @C_automatonComponent extends @AC_component
-    @M_inputOutputVarMap mInputVariableMap ;    @M_inputOutputVarMap mOutputVariableMap ;    @M_stateMap mStatesMap ;
-    @L_initialStatesDefinitionList mInitialStatesDefinitionList ;
-    @L_stateDefinition mStateDefinitionList ;
-    @location mEndOfDefinition ;
-  end class ;
+#---------------------------------------------------------------------------*
+
+abstract class @AC_machineDefinition  include header ; end class ;
+
+class @C_automatonDefinition extends @AC_machineDefinition
+  @M_stateMap mStatesMap ;
+  @L_initialStatesDefinitionList mInitialStatesDefinitionList ;
+  @L_stateDefinition mStateDefinitionList ;
+  @location mEndOfDefinition ;
+end class ;
+
+class @C_parallelComposition extends @AC_machineDefinition
+  @AC_machineDefinition mLeftOperand ;
+  @AC_machineDefinition mRightOperand ;
+end class ;
+
+#---------------------------------------------------------------------------*
+
+abstract class @AC_component  include header ;end class ;
+ class @C_automatonComponent extends @AC_component
+  @M_inputOutputVarMap mInputVariableMap ;  @M_inputOutputVarMap mOutputVariableMap ;
+  @AC_machineDefinition mDefinition ;end class ;
 
 #---------------------------------------------------------------------------*
 
   map @M_componentMap    insert insertKey error message "the '" . * . "' component has been already declared" ;    insert defineState error message "the '" . * . "' component has been already defined" ;    key @lstring ;
     @AC_component mComponent ;  end map ;
 end semantics ;#---------------------------------------------------------------------------*#                                                                           *#   S Y N T A X                                                             *#                                                                           *#---------------------------------------------------------------------------*syntax sara_parser :import lexique sara_scanner ;import semantics sara_semantics ;rule <start_symbol> ;
+
+rule <explicit_automaton>
+  ?!@M_inputOutputVarMap inputVariableMap  ?!@M_inputOutputVarMap outputVariableMap  !@AC_machineDefinition outDefinition
+;
+
+rule <definition_expression>
+  ?!@M_inputOutputVarMap inputVariableMap  ?!@M_inputOutputVarMap outputVariableMap  !@AC_machineDefinition outDefinition
+;
 
 rule <component>
   ?!@M_componentMap ioComponentsMap;
@@ -82,7 +105,7 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
 #--- Component name
   @lstring componentName ;
   $identifier$ ? componentName ;
-  $:=$ ;
+  $($ ;
 #--- Parse input variables
   repeat    @lstring inputVarName ;    $identifier$ ? inputVarName ;
     insert inputVariableMap.insertKey inputVarName () ;
@@ -96,78 +119,11 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
   while
     $,$ ;
   end repeat ;
-  $:$ ;
-  $auto$ ;
-  ${$ ;
-#--- States declaration
-  $state$ ;
-  repeat    @lstring stateName ;    $identifier$ ? stateName ;
-    insert statesMap.insertKey stateName () ;
-  while
-    $,$ ;
-  end repeat ;
-  $;$ ;
-#--- Initial state
-  @L_initialStatesDefinitionList initialStatesDefinitionList [empty] ;
-  $first$ ;
-  repeat
-    @lstring initialState ;    $identifier$ ? initialState ;
-    @luint initialStateIndex ;
-    search statesMap.searchKey initialState () -> initialStateIndex ;
-    initialStatesDefinitionList += !initialStateIndex !here ;
-  while
-    $,$ ;
-  end repeat ;
-  $;$ ;
-#--- Parse state definitions
-  @M_stateMap stateDefinitionMap [empty] ;
-  repeat
-  #--- Current state
-    @lstring stateName ;    $identifier$ ? stateName ;
-    @luint stateIndex ;
-    search statesMap.searchKey stateName () -> stateIndex ;
-    insert stateDefinitionMap.defineState stateName () ;
-    $:$ ;
-  #--- State input expression
-    @AC_expression stateInputExpression ;
-    <input_expression> !? inputVariableMap ?stateInputExpression ;
-    @location endOfStateInputExpression := here ;
-  #--- State output expression
-    $->$ ;
-    @AC_expression stateOutputExpression ;
-    <input_expression> !?outputVariableMap ? stateOutputExpression ;
-    @location endOfStateOutputExpression := here ;
-    ${$ ;
-  #--- Parse state transition
-    @L_transitionDefinition transitionsList [empty] ;
-    repeat
-    while
-      @AC_expression transitionInputExpression ;
-      <input_expression> !? inputVariableMap ?transitionInputExpression ;
-      @location endOfExpression := here ;
-      $goto$ ;
-      @lstring targetStateName ;      $identifier$ ? targetStateName ;
-      @luint targetStateIndex ;
-      search statesMap.searchKey targetStateName () -> targetStateIndex ;
-      transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex ;
-      $;$ ;
-    end repeat ;
-    $}$ ;
-    stateDefinitionList += !stateIndex !stateInputExpression !endOfStateInputExpression
-                           !stateOutputExpression !endOfStateOutputExpression
-                           !transitionsList ;
-  while
-  end repeat ;
-#--- Check all states are defined
-  foreach map statesMap ??@lstring kStateName () :
-    if not [stateDefinitionMap hasKey ! kStateName] then
-      error here : "'" . [kStateName value] . "' state is not described" ;
-    end if ;
-  end foreach ;
-#--- End of input source
-  $}$ ;
-#--- Insert into component map
-  @AC_component component := [@C_automatonComponent new !inputVariableMap !outputVariableMap !statesMap !initialStatesDefinitionList !stateDefinitionList !here] ;
+  $)$ ;
+  $:=$ ;
+#--- Machine definition
+  @AC_machineDefinition definition ;  <definition_expression> !?inputVariableMap !?outputVariableMap ?definition ;#--- Insert into component map
+  @AC_component component := [@C_automatonComponent new !inputVariableMap !outputVariableMap !definition] ;
   insert ioComponentsMap.insertKey componentName (!component) ;
   $;$ ;
 end rule ;
@@ -260,6 +216,106 @@ rule <input_primary>
   outExpression := [@C_trueExpression new] ;
 end rule ;
 
+#---------------------------------------------------------------------------*
+#         EXPLICIT AUTOMATON                                                *
+#---------------------------------------------------------------------------*
+
+rule <definition_expression>
+  ?!@M_inputOutputVarMap inputVariableMap  ?!@M_inputOutputVarMap outputVariableMap  !@AC_machineDefinition outDefinition
+:
+  <explicit_automaton> !?inputVariableMap !?outputVariableMap ?outDefinition ;
+  repeat
+  while
+    $||$ ;
+    @AC_machineDefinition leftOperand := outDefinition ;
+    @AC_machineDefinition rightOperand ;
+    <explicit_automaton> !?inputVariableMap !?outputVariableMap ?rightOperand ;
+    outDefinition := [@C_parallelComposition new !leftOperand !rightOperand] ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#         EXPLICIT AUTOMATON                                                *
+#---------------------------------------------------------------------------*
+
+rule <explicit_automaton>
+  ?!@M_inputOutputVarMap inputVariableMap  ?!@M_inputOutputVarMap outputVariableMap  !@AC_machineDefinition outDefinition
+:
+  @M_stateMap statesMap [empty] ;
+  @L_stateDefinition stateDefinitionList [empty] ;
+  @L_initialStatesDefinitionList initialStatesDefinitionList [empty] ;
+  $auto$ ;
+  ${$ ;
+#--- States declaration
+  $state$ ;
+  repeat    @lstring stateName ;    $identifier$ ? stateName ;
+    insert statesMap.insertKey stateName () ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+#--- Initial state
+  $first$ ;
+  repeat
+    @lstring initialState ;    $identifier$ ? initialState ;
+    @luint initialStateIndex ;
+    search statesMap.searchKey initialState () -> initialStateIndex ;
+    initialStatesDefinitionList += !initialStateIndex !here ;
+  while
+    $,$ ;
+  end repeat ;
+  $;$ ;
+#--- Parse state definitions
+  @M_stateMap stateDefinitionMap [empty] ;
+  repeat
+  #--- Current state
+    @lstring stateName ;    $identifier$ ? stateName ;
+    @luint stateIndex ;
+    search statesMap.searchKey stateName () -> stateIndex ;
+    insert stateDefinitionMap.defineState stateName () ;
+    $:$ ;
+  #--- State input expression
+    @AC_expression stateInputExpression ;
+    <input_expression> !? inputVariableMap ?stateInputExpression ;
+    @location endOfStateInputExpression := here ;
+  #--- State output expression
+    $->$ ;
+    @AC_expression stateOutputExpression ;
+    <input_expression> !?outputVariableMap ? stateOutputExpression ;
+    @location endOfStateOutputExpression := here ;
+    ${$ ;
+  #--- Parse state transition
+    @L_transitionDefinition transitionsList [empty] ;
+    repeat
+    while
+      @AC_expression transitionInputExpression ;
+      <input_expression> !? inputVariableMap ?transitionInputExpression ;
+      @location endOfExpression := here ;
+      $goto$ ;
+      @lstring targetStateName ;      $identifier$ ? targetStateName ;
+      @luint targetStateIndex ;
+      search statesMap.searchKey targetStateName () -> targetStateIndex ;
+      transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex ;
+      $;$ ;
+    end repeat ;
+    $}$ ;
+    stateDefinitionList += !stateIndex !stateInputExpression !endOfStateInputExpression
+                           !stateOutputExpression !endOfStateOutputExpression
+                           !transitionsList ;
+  while
+  end repeat ;
+#--- Check all states are defined
+  foreach map statesMap ??@lstring kStateName () :
+    if not [stateDefinitionMap hasKey ! kStateName] then
+      error here : "'" . [kStateName value] . "' state is not described" ;
+    end if ;
+  end foreach ;
+#--- End of input source
+  $}$ ;
+  outDefinition := [@C_automatonDefinition new !statesMap !initialStatesDefinitionList !stateDefinitionList !here] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 
 end syntax ;#---------------------------------------------------------------------------*#                                                                           *#   C O M M A N D    L I N E    O P T I O N S                               *#                                                                           *#---------------------------------------------------------------------------*
 option sara_cli_options :
