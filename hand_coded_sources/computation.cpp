@@ -769,7 +769,21 @@ computeFromExpression (C_lexique & inLexique,
 //--- Check that only states in intersection are accessible
   if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
     C_string errorMessage ;
-    errorMessage << "right operand does not respect weak modam composition" ;
+    errorMessage << "right operand does not respect weak modal composition" ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+  }
+//--- Check initial states are compatible
+  const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD).isEqualToBDD (intersection & rightInitialStatesBDD) ;
+  if (! initialStatesAreCompatible) {
+    C_string errorMessage ;
+    errorMessage << "initial states are not compatible with weak modal composition" ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+  }
+//--- Check terminal states are compatible
+  const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD).isEqualToBDD (intersection & rightTerminalStatesBDD) ;
+  if (! terminalStatesAreCompatible) {
+    C_string errorMessage ;
+    errorMessage << "terminal states are not compatible with weak modal composition" ;
     mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
   }
 //--- Compute modal composition
