@@ -241,6 +241,28 @@ compute (C_lexique & inLexique,
       initialStatesBDD.printBDD (initialStatesBitNames) ;
     }
   }
+//--- Check initial states are disjoined
+  currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
+  while (currentInitialState != NULL) {
+    macroValidPointer (currentInitialState) ;
+    GGS_L_initialStatesDefinitionList::element_type * testedInitialState = currentInitialState->getNextItem () ;
+    while (testedInitialState != NULL) {
+      macroValidPointer (testedInitialState) ;
+      const C_bdd intersection = stateExpressionBDD (currentInitialState->mInitialStateIndex.getValue () COMMA_HERE)
+        & stateExpressionBDD (testedInitialState->mInitialStateIndex.getValue () COMMA_HERE) ;
+      if (! intersection.isFalse ()) {
+        C_string errorMessage ;
+        errorMessage << "initial state '"
+                     << outStateNameArray (testedInitialState->mInitialStateIndex.getValue () COMMA_HERE)
+                     << "' intersects previous initial state '"
+                     << outStateNameArray (currentInitialState->mInitialStateIndex.getValue () COMMA_HERE)
+                     << "'" ;
+        testedInitialState->mInitialStateLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+      }
+      testedInitialState = testedInitialState->getNextItem () ;
+    }
+    currentInitialState = currentInitialState->getNextItem () ;
+  }
 //----------------------------------------------------------------------- Transitions BDD
 //    A transition is a 4-uple (e, s, e', s')
 //    BDD slots assignments
