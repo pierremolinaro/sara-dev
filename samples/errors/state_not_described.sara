@@ -1,0 +1,10 @@
+exemple1 := input -> output auto {
+  state state1, state2, state_not_described  ;
+  first state1 ;
+  state1 : input out output:0 {
+    ! input goto state_not_defined ;
+  }
+  state2 : ! input out output:1 {
+    input goto state1 ;
+  }
+} ;
