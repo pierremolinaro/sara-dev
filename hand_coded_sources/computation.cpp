@@ -199,6 +199,14 @@ compute (C_lexique & inLexique,
     macroValidPointer (currentDefinition) ;
   //--- Enter input configuration
     stateInputExpressionBDD (index COMMA_HERE) = currentDefinition->mStateInputExpression ()->computeBDD (0) ;
+  //--- Check input configuration is not empty
+    if (stateInputExpressionBDD (index COMMA_HERE).isFalse ()) {
+      C_string errorMessage ;
+      errorMessage << "input configuration for state '"
+                   << outStateNameArray (currentDefinition->mStateIndex.getValue () COMMA_HERE)
+                   << "' is empty" ;
+      currentDefinition->mEndOfStateInputExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    }
   //--- Enter output configuration
     stateOutputExpressionBDD (index COMMA_HERE) = currentDefinition->mStateOutputExpression ()->computeBDD (inputVariablesCount) ;
   //--- Enter output configuration
