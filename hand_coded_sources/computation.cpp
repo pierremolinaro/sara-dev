@@ -23,38 +23,38 @@
 
 //---------------------------------------------------------------------------*
 
-C_bdd cPtr_C_VariableExpression::computeBDD (void) const {
-  return C_bdd ((uint16) mInputVarIndex.getValue (), true) ;
+C_bdd cPtr_C_VariableExpression::computeBDD (const uint16 inBDDslotOffset) const {
+  return C_bdd ((uint16) (mInputVarIndex.getValue () + inBDDslotOffset), true) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_bdd cPtr_C_trueExpression::computeBDD (void) const {
+C_bdd cPtr_C_trueExpression::computeBDD (const uint16 /* inBDDslotOffset */) const {
   return ~ C_bdd () ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_bdd cPtr_C_falseExpression::computeBDD (void) const {
+C_bdd cPtr_C_falseExpression::computeBDD (const uint16 /* inBDDslotOffset */) const {
   return C_bdd () ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_bdd cPtr_C_notExpression::computeBDD (void) const {
-  return ~ mExpression ()->computeBDD () ;
+C_bdd cPtr_C_notExpression::computeBDD (const uint16 inBDDslotOffset) const {
+  return ~ mExpression ()->computeBDD (inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_bdd cPtr_C_andExpression::computeBDD (void) const {
-  return mLeftExpression ()->computeBDD () & mRightExpression ()->computeBDD () ;
+C_bdd cPtr_C_andExpression::computeBDD (const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inBDDslotOffset) & mRightExpression ()->computeBDD (inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_bdd cPtr_C_orExpression::computeBDD (void) const {
-  return mLeftExpression ()->computeBDD () | mRightExpression ()->computeBDD () ;
+C_bdd cPtr_C_orExpression::computeBDD (const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inBDDslotOffset) | mRightExpression ()->computeBDD (inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -64,7 +64,6 @@ class C_saraSystem {
   public : TC_unique_dyn_array <C_string> mStateNameArray ;
   public : TC_unique_dyn_array <C_string> mInputNamesArray ;
   public : TC_unique_dyn_array <C_string> mOutputNamesArray ;
-  public : uint32 mInitialStateIndex ;
   public : C_bdd mOutputApplication ;
   public : C_bdd mNextStateFunction ;
 } ;
@@ -87,7 +86,6 @@ void swap (C_saraSystem & ioOperand1,
   swap (ioOperand1.mStateNameArray, ioOperand2.mStateNameArray) ;
   swap (ioOperand1.mInputNamesArray, ioOperand2.mInputNamesArray) ;
   swap (ioOperand1.mOutputNamesArray, ioOperand2.mOutputNamesArray) ;
-  swap (ioOperand1.mInitialStateIndex, ioOperand2.mInitialStateIndex) ;
   swap (ioOperand1.mOutputApplication, ioOperand2.mOutputApplication) ;
   swap (ioOperand1.mNextStateFunction, ioOperand2.mNextStateFunction) ;
 }
@@ -114,7 +112,6 @@ performComputations (C_lexique & inLexique,
                                                       system.mStateNameArray,
                                                       system.mInputNamesArray,
                                                       system.mOutputNamesArray,
-                                                      system.mInitialStateIndex,
                                                       system.mOutputApplication,
                                                       system.mNextStateFunction) ;
       saraSystemArray.appendByExchange (system COMMA_HERE) ;
@@ -133,7 +130,6 @@ compute (C_lexique & inLexique,
          TC_unique_dyn_array <C_string> & outStateNameArray,
          TC_unique_dyn_array <C_string> & outInputNamesArray,
          TC_unique_dyn_array <C_string> & outOutputNamesArray,
-         uint32 & outInitialStateIndex,
          C_bdd & outOutputApplication,
          C_bdd & outNextStateFunction) const {
 //--- Compute transitions count
@@ -160,7 +156,7 @@ compute (C_lexique & inLexique,
   { TC_unique_dyn_array <C_string> inputVariableNameArray (inputVariablesCount COMMA_HERE) ;
     swap (inputVariableNameArray, outInputNamesArray) ;
   }
-  GGS_M_inputVarMap::element_type * currentInputVar = mInputVariableMap.getFirstItem () ;
+  GGS_M_inputOutputVarMap::element_type * currentInputVar = mInputVariableMap.getFirstItem () ;
   index = 0 ;
   while (currentInputVar != NULL) {
     outInputNamesArray (index COMMA_HERE) = currentInputVar->mKey ;
@@ -172,7 +168,7 @@ compute (C_lexique & inLexique,
   { TC_unique_dyn_array <C_string> outputVariableNameArray (outputVariablesCount COMMA_HERE) ;
     swap (outputVariableNameArray, outOutputNamesArray) ;
   }
-  GGS_M_outputVarMap::element_type * currentOutputVar = mOutputVariableMap.getFirstItem () ;
+  GGS_M_inputOutputVarMap::element_type * currentOutputVar = mOutputVariableMap.getFirstItem () ;
   index = 0 ;
   while (currentOutputVar != NULL) {
     outOutputNamesArray (index COMMA_HERE) = currentOutputVar->mKey ;
@@ -187,8 +183,127 @@ compute (C_lexique & inLexique,
           (transitionsCount > 1) ? "s" : "",
           mInputVariableMap.getCount (),
           (mInputVariableMap.getCount () > 1) ? "s" : "") ;
+//----------------------------------------------------------------------- States BDD array
+//    BDD slots assignments
+//    Each automaton has n inputs, p outputs
+//    Slots 0 .. n-1 are assigned to inputs
+//    Slots n .. n+p-1 are assigned to outputs
+//---- For each state defined in source file, we compute the BDD built from
+//     state input configuration and state output configuration
+  TC_unique_dyn_array <C_bdd> stateInputExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
+  TC_unique_dyn_array <C_bdd> stateOutputExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
+  TC_unique_dyn_array <C_bdd> stateExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
+  index = 0 ;
+  currentDefinition = mStateDefinitionList.getFirstItem () ;
+  while (currentDefinition != NULL) {
+    macroValidPointer (currentDefinition) ;
+  //--- Enter input configuration
+    stateInputExpressionBDD (index COMMA_HERE) = currentDefinition->mStateInputExpression ()->computeBDD (0) ;
+  //--- Enter output configuration
+    stateOutputExpressionBDD (index COMMA_HERE) = currentDefinition->mStateOutputExpression ()->computeBDD (inputVariablesCount) ;
+  //--- Enter output configuration
+    stateExpressionBDD (index COMMA_HERE) = stateInputExpressionBDD (index COMMA_HERE) & stateOutputExpressionBDD (index COMMA_HERE) ;
+  //--- Go to next state definition  
+    currentDefinition = currentDefinition->getNextItem () ;
+    index ++ ;
+  }
+//----------------------------------------------------------------------- Initial states BDD
+//    BDD slots assignments
+//    Each automaton has n inputs, p outputs
+//    Slots 0 .. n-1 are assigned to inputs
+//    Slots n .. n+p-1 are assigned to outputs
+//--- Define initial states BDD bits names
+  const uint16 initialStatesBDDbitCount = outputVariablesCount + inputVariablesCount ;
+  TC_unique_dyn_array <C_string> initialStatesBitNames (initialStatesBDDbitCount COMMA_HERE) ;
+  for (uint16 i=0 ; i<inputVariablesCount ; i++) {
+    initialStatesBitNames (i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
+  }
+  for (uint16 i=inputVariablesCount ; i<initialStatesBDDbitCount ; i++) {
+    initialStatesBitNames (i COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
+  }
+//--- Compute BDD initial states
+  C_bdd initialStatesBDD ;
+  GGS_L_initialStatesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
+  while (currentInitialState != NULL) {
+    macroValidPointer (currentInitialState) ;
+    initialStatesBDD |= stateExpressionBDD (currentInitialState->mInitialStateIndex.getValue () COMMA_HERE) ;
+    currentInitialState = currentInitialState->getNextItem () ;
+  }
+//--- Display initial states BDD
+  if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
+    const uint64 n = initialStatesBDD.getBDDvaluesCount (initialStatesBDDbitCount) ;
+    const uint32 nodes = initialStatesBDD.getBDDnodesCount () ;
+    printf ("  %llu initial state%s (%lu node%s);\n",
+            n, (n > 1) ? "s" : "",
+	    		  nodes, (nodes > 1) ? "s" : "") ;
+    if (inDisplayBDDvalues) {
+      printf ("Initial states BDD :\n") ;
+      initialStatesBDD.printBDD (initialStatesBitNames) ;
+    }
+  }
+//----------------------------------------------------------------------- Transitions BDD
+//    A transition is a 4-uple (e, s, e', s')
+//    BDD slots assignments
+//    Each automaton has n inputs, p outputs
+//    Slots 0 .. n-1 are assigned to e inputs
+//    Slots n .. n+p-1 are assigned to s outputs
+//    Slots n+p .. 2n+p-1 are assigned to e inputs
+//    Slots 2n+p .. 2n+2p-1 are assigned to s outputs
+//---- For each state defined in source file, we compute the BDD built from
+//     state input configuration and state output configuration
+  C_bdd transitionsBDD ;
+  currentDefinition = mStateDefinitionList.getFirstItem () ;
+  index = 0 ;
+  while (currentDefinition != NULL) {
+    macroValidPointer (currentDefinition) ;
+  //--- Accumulate transitions targets for each transition
+    C_bdd transitionsTargetBDD ;
+    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
+    while (currentTransition != NULL) {
+      macroValidPointer (currentTransition) ;
+      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (initialStatesBDDbitCount) ;
+      const uint32 targetStateIndex = currentTransition->mTargetStateIndex.getValue () ;
+      const C_bdd targetStateBDD = stateOutputExpressionBDD (targetStateIndex COMMA_HERE).translate (initialStatesBDDbitCount, initialStatesBDDbitCount) ;
+      transitionsTargetBDD |= actionBDD & targetStateBDD ;
+      currentTransition = currentTransition->getNextItem () ;
+    }
+  //--- Combine with state BDD
+    transitionsTargetBDD &= stateExpressionBDD (index COMMA_HERE) ;
+  //--- Accumulate into transitions BDD
+    transitionsBDD |= transitionsTargetBDD ;
+  //--- Go to next state definition
+    currentDefinition = currentDefinition->getNextItem () ;
+    index ++ ;
+  }
+//--- Define transitionBDD bits names
+  const uint16 transitionsBDDbitCount = initialStatesBDDbitCount + initialStatesBDDbitCount ;
+  TC_unique_dyn_array <C_string> transitionBDDbitNames (transitionsBDDbitCount COMMA_HERE) ;
+  for (uint16 i=0 ; i<inputVariablesCount ; i++) {
+    transitionBDDbitNames (i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
+  }
+  for (uint16 i=inputVariablesCount ; i<initialStatesBDDbitCount ; i++) {
+    transitionBDDbitNames (i COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
+  }
+  for (uint16 i=0 ; i<inputVariablesCount ; i++) {
+    transitionBDDbitNames (i+initialStatesBDDbitCount COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
+  }
+  for (uint16 i=inputVariablesCount ; i<initialStatesBDDbitCount ; i++) {
+    transitionBDDbitNames (i+initialStatesBDDbitCount COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
+  }
+//--- Display transitions BDD
+  if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
+    const uint64 n = transitionsBDD.getBDDvaluesCount (transitionsBDDbitCount) ;
+    const uint32 nodes = transitionsBDD.getBDDnodesCount () ;
+    printf ("  %llu transition%s (%lu node%s);\n",
+            n, (n > 1) ? "s" : "",
+	    		  nodes, (nodes > 1) ? "s" : "") ;
+    if (inDisplayBDDvalues) {
+      printf ("Transitions BDD :\n") ;
+      transitionsBDD.printBDD (transitionBDDbitNames) ;
+    }
+  }
 //--- Check consistency of each state
-  TC_unique_dyn_array <C_bdd> stateExpression (mStatesMap.getCount () COMMA_HERE) ;
+/*  TC_unique_dyn_array <C_bdd> stateExpression (mStatesMap.getCount () COMMA_HERE) ;
   currentDefinition = mStateDefinitionList.getFirstItem () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
@@ -207,7 +322,7 @@ compute (C_lexique & inLexique,
     }
     if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
       const uint64 n = stateInputBDD.getBDDvaluesCount ((uint16) mInputVariableMap.getCount ()) ;
-	  const uint32 nodes = stateInputBDD.getBDDnodesCount () ;
+      const uint32 nodes = stateInputBDD.getBDDnodesCount () ;
       printf ("  %llu action%s for staying in current state (%lu node%s);\n",
 	          n, (n > 1) ? "s" : "",
 			  nodes, (nodes > 1) ? "s" : "") ;
@@ -227,8 +342,8 @@ compute (C_lexique & inLexique,
       const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD () ;
       completudeTest |= actionBDD ;
       if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
-		const uint64 n = actionBDD.getBDDvaluesCount ((uint16) mInputVariableMap.getCount ()) ;
-	    const uint32 nodes = actionBDD.getBDDnodesCount () ;
+		    const uint64 n = actionBDD.getBDDvaluesCount ((uint16) mInputVariableMap.getCount ()) ;
+	      const uint32 nodes = actionBDD.getBDDnodesCount () ;
         printf ("  Transition %ld : %llu action%s (%lu node%s);\n",
 		        index, n, (n > 1) ? "s" : "",
 			    nodes, (nodes > 1) ? "s" : "") ;
@@ -282,19 +397,14 @@ compute (C_lexique & inLexique,
   while (temp > 0) {
     bitCountForStateBDD ++ ;
     temp >>= 1 ;
-  }
+  }*/
   // printf ("states need %ld bits.\n", bitCountForStateBDD) ;
-//--- Initial state BDD
-  outInitialStateIndex = mInitialStateIndex.getValue () ;
-  const C_bdd initialStateBDD = C_bdd::varCompareConst (0, bitCountForStateBDD, C_bdd::kEqual, outInitialStateIndex) ;
-  TC_unique_dyn_array <C_string> stateBitNames (bitCountForStateBDD COMMA_HERE) ;
-  for (uint16 i=0 ; i<bitCountForStateBDD ; i++) {
-    stateBitNames (i COMMA_HERE) << "Bit" << i ;
-  }
+
+
 //  printf ("Initial state BDD :\bitCountForStateBDD") ;
 //  initialStateBDD.printBDD (stateBitNames) ;
 //--- Build accessibility relation
-  C_bdd accessibilityRelation ;
+/*  C_bdd accessibilityRelation ;
   currentDefinition = mStateDefinitionList.getFirstItem () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
@@ -313,11 +423,11 @@ compute (C_lexique & inLexique,
   for (uint16 i=0 ; i<bitCountForStateBDD ; i++) {
     accessibilityRelationBitNames (i COMMA_HERE) << "Source" << i ;
     accessibilityRelationBitNames (bitCountForStateBDD+i COMMA_HERE) << "Target" << i ;
-  }
+  }*/
 //  printf ("Accessibility relation BDD :\bitCountForStateBDD") ;
 //  accessibilityRelation.printBDD (accessibilityRelationBitNames) ;
 //--- Check accessibility
-  uint16 * substitutionArray = new uint16 [bitCountForStateBDD + bitCountForStateBDD] ;
+/*  uint16 * substitutionArray = new uint16 [bitCountForStateBDD + bitCountForStateBDD] ;
   for (uint16 i=0 ; i<bitCountForStateBDD ; i++) {
     substitutionArray [i] = (uint16) (bitCountForStateBDD + i) ;
     substitutionArray [bitCountForStateBDD + i] = i ;
@@ -424,7 +534,7 @@ compute (C_lexique & inLexique,
       stateNextStateFunctionBitNames (bitCountForStateBDD + i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
     }
     outNextStateFunction.printBDD (stateNextStateFunctionBitNames) ;
-  }
+  }*/
 }
 
 //---------------------------------------------------------------------------*

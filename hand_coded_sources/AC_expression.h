@@ -20,26 +20,12 @@
 
 //---------------------------------------------------------------------------*
 
-#define macro_AC_component \
-  public : virtual void compute (C_lexique & inLexique, \
-                                 const bool inDisplayBDDvaluesCount, \
-                                 const bool inDisplayBDDvalues, \
-                                 TC_unique_dyn_array <C_string> & outStateNameArray, \
-                                 TC_unique_dyn_array <C_string> & outInputNamesArray, \
-                                 TC_unique_dyn_array <C_string> & outOutputNamesArray, \
-                                 C_bdd & outOutputApplication, \
-                                 C_bdd & outNextStateFunction) const = 0 ;
+#define macro_AC_expression \
+  public : virtual C_bdd computeBDD (const uint16 inBDDslotOffset) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
-#define macroInheritFrom_AC_component \
-  public : virtual void compute (C_lexique & inLexique, \
-                                 const bool inDisplayBDDvaluesCount, \
-                                 const bool inDisplayBDDvalues, \
-                                 TC_unique_dyn_array <C_string> & outStateNameArray, \
-                                 TC_unique_dyn_array <C_string> & outInputNamesArray, \
-                                 TC_unique_dyn_array <C_string> & outOutputNamesArray, \
-                                 C_bdd & outOutputApplication, \
-                                 C_bdd & outNextStateFunction) const ;
+#define macroInheritFrom_AC_expression \
+  public : virtual C_bdd computeBDD (const uint16 inBDDslotOffset) const ;
 
 //---------------------------------------------------------------------------*
