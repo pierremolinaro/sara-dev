@@ -324,10 +324,8 @@
 				CFA7ADAB058DB565009AC1FE,
 				CFA7ADB6058DB574009AC1FE,
 				CFA7ADBD058DB57E009AC1FE,
-				CFA7ADBF058DB598009AC1FE,
 				CFA7ADC0058DB59F009AC1FE,
 				CFA7ADD7058DB5DF009AC1FE,
-				CFA7ADDE058DBBE2009AC1FE,
 				CFA7ADE4058DBBF1009AC1FE,
 				CFA48FBC0591D67100D787ED,
 				CFA48FBF0591D67100D787ED,
@@ -478,7 +476,6 @@
 				CF2A8836058CCF38003EF2F4,
 				CF2A8837058CCF39003EF2F4,
 				CF2A8838058CCF3A003EF2F4,
-				CF2A8839058CCF3A003EF2F4,
 				CF2A883A058CCF3B003EF2F4,
 				CF2A883B058CCF3C003EF2F4,
 				CF2A883E058CCF3F003EF2F4,
@@ -497,7 +494,6 @@
 				CF2A8858058CCF58003EF2F4,
 				CF2A885A058CCF5A003EF2F4,
 				CF2A885B058CCF5B003EF2F4,
-				CF3B8A7F058CD05B00D682D2,
 				CF3B8A81058CD05D00D682D2,
 				CF31E10E0598DF9F00814123,
 				CF31E1100598DF9F00814123,
@@ -818,12 +814,6 @@
 		};
 		CF2A8838058CCF3A003EF2F4 = {
 			fileRef = CFF538E6057A55E500854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF2A8839058CCF3A003EF2F4 = {
-			fileRef = CFF5385C057A552C00854C83;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -1272,12 +1262,6 @@
 			settings = {
 			};
 		};
-		CF3B8A7F058CD05B00D682D2 = {
-			fileRef = CFF53854057A552B00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF3B8A80058CD05C00D682D2 = {
 			fileRef = CF3FF0B705877B62000D2F8C;
 			isa = PBXBuildFile;
@@ -1702,10 +1686,8 @@
 				CF7A147F058D00C4007126C1,
 				CF7A1480058D00C5007126C1,
 				CF7A1481058D00C6007126C1,
-				CF7A1482058D00C7007126C1,
 				CF7A1484058D00C9007126C1,
 				CF7A1486058D00FD007126C1,
-				CF7A1488058D00FF007126C1,
 				CF7A148A058D0106007126C1,
 				CF7A148B058D0107007126C1,
 				CF7A148E058D010A007126C1,
@@ -1938,12 +1920,6 @@
 			settings = {
 			};
 		};
-		CF7A1482058D00C7007126C1 = {
-			fileRef = CFF5385C057A552C00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CF7A1484058D00C9007126C1 = {
 			fileRef = CFF5384B057A54EE00854C83;
 			isa = PBXBuildFile;
@@ -1958,12 +1934,6 @@
 		};
 		CF7A1487058D00FE007126C1 = {
 			fileRef = CF3FF0B705877B62000D2F8C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CF7A1488058D00FF007126C1 = {
-			fileRef = CFF53854057A552B00854C83;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -2876,12 +2846,6 @@
 			settings = {
 			};
 		};
-		CFA7ADBF058DB598009AC1FE = {
-			fileRef = CFF53854057A552B00854C83;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		CFA7ADC0058DB59F009AC1FE = {
 			fileRef = CFF53849057A54EE00854C83;
 			isa = PBXBuildFile;
@@ -2896,12 +2860,6 @@
 		};
 		CFA7ADD8058DB5E0009AC1FE = {
 			fileRef = CF86361B0586289600B23462;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		CFA7ADDE058DBBE2009AC1FE = {
-			fileRef = CFF5385C057A552C00854C83;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -3196,23 +3154,12 @@
 		};
 		CFF53851057A54FB00854C83 = {
 			children = (
-				CFF53854057A552B00854C83,
 				CFF53856057A552C00854C83,
 				CFF53858057A552C00854C83,
 				CFF5385A057A552C00854C83,
-				CFF5385C057A552C00854C83,
 			);
 			isa = PBXGroup;
 			name = Streams;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CFF53854057A552B00854C83 = {
-			fileEncoding = 5;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = AC_input_stream.cpp;
-			path = streams/AC_input_stream.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
@@ -3240,15 +3187,6 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = C_indirect_out.cpp;
 			path = streams/C_indirect_out.cpp;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		CFF5385C057A552C00854C83 = {
-			fileEncoding = 5;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = C_string_input_stream.cpp;
-			path = streams/C_string_input_stream.cpp;
 			refType = 4;
 			sourceTree = "<group>";
 		};
