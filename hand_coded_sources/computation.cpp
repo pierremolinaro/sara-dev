@@ -4,7 +4,7 @@
 //                                                                           *
 //  Copyright (C) 2004 Pierre Molinaro.                                      *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et CybernŽtique de Nantes*
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
 //  This program is free software; you can redistribute it and/or modify it  *
@@ -107,8 +107,21 @@ performComputations (C_lexique & inLexique,
   //--- Options
     const bool displayBDDvaluesCount = inLexique.getBoolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount", true) ;
     const bool displayBDDvalues = inLexique.getBoolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues", true) ;
-//    C_bdd::setHashMapSize (23) ;
-//    C_bdd::setITEcacheSize (23) ;
+  //--- Initial cache and map sizes
+    printf ("Initial size of BDD ˆunique table: %lu; initial size of ITE ˆcache: %lu; initial size of AND ˆcache: %lu.\n",
+            C_bdd::getHashMapEntriesCount (), C_bdd::getITEcacheEntriesCount (), C_bdd::getANDcacheEntriesCount ()) ;
+    switch (C_bdd::getComputingMode ()) {
+    case C_bdd::ITE_COMPUTED_FROM_AND :
+      printf ("ITE is computed from AND.\n\n") ;
+      break ;
+    case C_bdd::AND_COMPUTED_FROM_ITE :
+      printf ("AND is computed from ITE.\n\n") ;
+      break ;
+    case C_bdd::ITE_and_AND_ARE_INDEPENDANT :
+      printf ("AND and ITE are computed independantly.\n\n") ;
+      break ;
+    }  
+    fflush (stdout) ;
   //--- Loop for each component
     GGS_L_jobList::element_type * currentComponent = inComponentMap.getFirstItem () ;
     while (currentComponent != NULL) {
@@ -118,6 +131,7 @@ performComputations (C_lexique & inLexique,
                                                 saraSystemArray,
                                                 displayBDDvaluesCount,
                                                 displayBDDvalues) ;
+      fflush (stdout) ;
       currentComponent = currentComponent->getNextItem () ;
     }
   }
@@ -334,6 +348,97 @@ compute (C_lexique & /* inLexique */,
     }
     incompleteStatesAndInput.printBDD (transitionsVariableNameArray, (uint16) (variableCount+machine.mInputVariablesCount), 3) ;
   }
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeDisplayBDDstats::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_bdd::printBDDpackageOperationsSummary (stdout) ;
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeResizeMap::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_timer duree ;
+  C_bdd::setHashMapSize ((uint16) mNewSize.getValue ()) ;
+  duree.stopTimer () ;
+  printf ("map %lu: BDD ˆunique table resized to %lu (done in ",
+          mNewSize.getValue (), C_bdd::getHashMapEntriesCount ()) ;
+  duree.printTimer (stdout) ;
+  printf (").\n\n") ; 
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeResize_AND_cache::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_timer duree ;
+  C_bdd::setANDcacheSize (mNewSize.getValue ()) ;
+  duree.stopTimer () ;
+  printf ("and_cache %lu: AND ˆcache resized to %lu (done in ",
+          mNewSize.getValue (), C_bdd::getANDcacheEntriesCount ()) ;
+  duree.printTimer (stdout) ;
+  printf (").\n\n") ;  
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeResize_ITE_cache::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_timer duree ;
+  C_bdd::setITEcacheSize (mNewSize.getValue ()) ;
+  duree.stopTimer () ;
+  printf ("ite_cache %lu: ITE ˆcache resized to %lu (done in ",
+          mNewSize.getValue (), C_bdd::getITEcacheEntriesCount ()) ;
+  duree.printTimer (stdout) ;
+  printf (").\n\n") ;  
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeUse_AND::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_bdd::setComputingMode (C_bdd::ITE_COMPUTED_FROM_AND) ;
+  printf ("use_and: ITE ˆis now computed from AND.\n\n") ;
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeUse_ITE::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_bdd::setComputingMode (C_bdd::AND_COMPUTED_FROM_ITE) ;
+  printf ("use_ite: AND ˆis now computed from ITE.\n\n") ;
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_typeUse_AND_ITE::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+  C_bdd::setComputingMode (C_bdd::ITE_and_AND_ARE_INDEPENDANT) ;
+  printf ("use_and_ite: AND ˆand ITE are now computed independantly.\n\n") ;
 }
 
 //---------------------------------------------------------------------------*
