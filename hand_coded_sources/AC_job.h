@@ -20,24 +20,18 @@
 
 //---------------------------------------------------------------------------*
 
-#define macro_AC_component \
+#define macro_AC_job \
   public : virtual void compute (C_lexique & inLexique, \
+                                 TC_grow_array <C_saraMachine> & ioSaraSystemArray, \
                                  const bool inDisplayBDDvaluesCount, \
-                                 const bool inDisplayBDDvalues, \
-                                 TC_unique_dyn_array <C_string> & outNamesArray, \
-                                 C_bdd & outInitialStatesBDD, \
-                                 C_bdd & outAccessibleStatesBDD, \
-                                 C_bdd & outAccessibilityRelationBDD) const = 0 ;
+                                 const bool inDisplayBDDvalues) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
-#define macroInheritFrom_AC_component \
+#define macroInheritFrom_AC_job \
   public : virtual void compute (C_lexique & inLexique, \
+                                 TC_grow_array <C_saraMachine> & ioSaraSystemArray, \
                                  const bool inDisplayBDDvaluesCount, \
-                                 const bool inDisplayBDDvalues, \
-                                 TC_unique_dyn_array <C_string> & outNamesArray, \
-                                 C_bdd & outInitialStatesBDD, \
-                                 C_bdd & outAccessibleStatesBDD, \
-                                 C_bdd & outAccessibilityRelationBDD) const ;
+                                 const bool inDisplayBDDvalues) const ;
 
 //---------------------------------------------------------------------------*

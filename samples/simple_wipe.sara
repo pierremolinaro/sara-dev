@@ -1,0 +1,22 @@
+$modeArret (eav1, eav2, arefix)(r1, r2) := !eav1 & !eav2 & arefix & !r1 & !r2 ;
+
+$modeAttenteArefix (eav1, eav2, arefix)(r1, r2) := !eav1 & !eav2 & !arefix & r1 & !r2 ;
+
+$modePetiteVitesse (eav1, eav2, arefix)(r1, r2) := !eav1 & eav2 & r1 & !r2 ;
+
+$modeGrandeVitesse (eav1, eav2, arefix)(r1, r2) := eav1 & eav2 & r1 & r2 ;
+
+$modeDefautCommodo (eav1, eav2, arefix)(r1, r2) := eav1 & !eav2 & !r1 & !r2;
+
+$tousLesModes (eav1, eav2, arefix)(r1, r2) := 
+  $modeArret (eav1, eav2, arefix)(r1, r2) * 
+  $modeAttenteArefix (eav1, eav2, arefix)(r1, r2) *
+  $modePetiteVitesse (eav1, eav2, arefix)(r1, r2) *
+  $modeGrandeVitesse (eav1, eav2, arefix)(r1, r2) *
+ $modeDefautCommodo (eav1, eav2, arefix)(r1, r2)
+;
+
+$tousLesModesAvecSaturation (eav1, eav2, arefix)(r1, r2) := 
+  @ $tousLesModes (eav1, eav2, arefix)(r1, r2) ; 
+
+check $tousLesModesAvecSaturation ;

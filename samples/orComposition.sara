@@ -1,4 +1,4 @@
-exemple (a, b -> r, s) :=
+$exemple (a, b)(r, s) :=
   auto {
     state s1, s2 ; first s1 ;
     s1 : a & b & r {

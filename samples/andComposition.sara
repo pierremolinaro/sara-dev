@@ -1,6 +1,6 @@
-exemple (a, b -> r, s) :=
+$exemple (a, b)(r, s) :=
   auto {
-    state s1, s2 ; first s1 ;
+    state s1, s2 ; first s1 ; last s2 ;
     s1 : a & b & r {
       ! (a & b) goto s2 ;
     }
@@ -10,7 +10,7 @@ exemple (a, b -> r, s) :=
   }
   &
   auto {
-    state s1, s2 ; first s1 ;
+    state s1, s2 ; first s1 ; last s2 ;
     s1 : (a | b) & s {
       ! (a | b) goto s2 ;
     }

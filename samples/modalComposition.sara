@@ -1,4 +1,4 @@
-exemple (eav1, eav2 -> r1, r2) :=
+$exemple (eav1, eav2)(r1, r2) :=
   auto {
     state etat_repos  ;
     first etat_repos ;
