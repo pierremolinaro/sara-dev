@@ -36,7 +36,7 @@ class C_saraMachine {
 #define macro_AC_machineDefinition \
   public : virtual void computeFromExpression (C_lexique & inLexique, \
                                                const TC_grow_array <C_saraMachine> & inSaraSystemArray, \
-                                               const sint32 inVariablesCount, \
+                                               const uint16 inVariablesCount, \
                                                C_bdd & outInitialStatesBDD, \
                                                C_bdd & outTerminalStatesBDD, \
                                                C_bdd & outAccessibleStatesBDD, \
@@ -47,7 +47,7 @@ class C_saraMachine {
 #define macroInheritFrom_AC_machineDefinition \
   public : virtual void computeFromExpression (C_lexique & inLexique, \
                                                const TC_grow_array <C_saraMachine> & inSaraSystemArray, \
-                                               const sint32 inVariablesCount, \
+                                               const uint16 inVariablesCount, \
                                                C_bdd & outInitialStatesBDD, \
                                                C_bdd & outTerminalStatesBDD, \
                                                C_bdd & outAccessibleStatesBDD, \
