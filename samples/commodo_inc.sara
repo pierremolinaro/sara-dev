@@ -1,59 +1,59 @@
 $commodoIncremental (ah, ab)()(ea1, ea2) := auto {
   state repos, repos_pv, pv, pv_gv, gv, gv_pv, pv_repos, defaut ;
   first repos, repos_pv, pv_repos, defaut ;
-  repos : !ah & !ab & !ea1 & !ea2 {
-    ah & !ab goto repos_pv ;
-    !ah & ab goto pv_repos ;
+  repos : ~ah & ~ab & ~ea1 & ~ea2 {
+    ah & ~ab goto repos_pv ;
+    ~ah & ab goto pv_repos ;
     ah & ab goto defaut ;
   }
-  repos_pv : ah & !ab & ea1 & !ea2 {
-    !ah & !ab goto pv ;
-    !ah & ab goto pv_repos ;
+  repos_pv : ah & ~ab & ea1 & ~ea2 {
+    ~ah & ~ab goto pv ;
+    ~ah & ab goto pv_repos ;
     ah & ab goto defaut ;
   }
-  pv : !ah & !ab & ea1 & !ea2 {
-    ah & !ab goto pv_gv ;
-    !ah & ab goto pv_repos ;
+  pv : ~ah & ~ab & ea1 & ~ea2 {
+    ah & ~ab goto pv_gv ;
+    ~ah & ab goto pv_repos ;
     ah & ab goto defaut ;
   }
-  pv_gv : ah & !ab & ea1 & ea2 {
-    !ah & !ab goto gv ;
-    !ah & ab goto gv_pv ;
+  pv_gv : ah & ~ab & ea1 & ea2 {
+    ~ah & ~ab goto gv ;
+    ~ah & ab goto gv_pv ;
     ah & ab goto defaut ;
   }
-  gv : !ab & !ah & ea1 & ea2 {
-    ah & !ab goto pv_gv ;
-    !ah & ab goto gv_pv ;
+  gv : ~ab & ~ah & ea1 & ea2 {
+    ah & ~ab goto pv_gv ;
+    ~ah & ab goto gv_pv ;
     ah & ab goto defaut ;
   }
-  gv_pv : !ah & ab & ea1 & !ea2 {
-    !ah & !ab goto pv ;
-    ah & !ab goto pv_gv ;
+  gv_pv : ~ah & ab & ea1 & ~ea2 {
+    ~ah & ~ab goto pv ;
+    ah & ~ab goto pv_gv ;
     ah & ab goto defaut ;
   }
-  pv_repos : !ah & ab & !ea1 & !ea2 {
-    !ah & !ab goto repos ;
-    ah & !ab goto repos_pv ;
+  pv_repos : ~ah & ab & ~ea1 & ~ea2 {
+    ~ah & ~ab goto repos ;
+    ah & ~ab goto repos_pv ;
     ah & ab goto defaut ;
   }
-  defaut : ah & ab & !ea1 & !ea2 {
-    !ah & !ab goto repos ;
-    ah & !ab goto repos_pv ;
-    !ah & ab goto pv_repos ;
+  defaut : ah & ab & ~ea1 & ~ea2 {
+    ~ah & ~ab goto repos ;
+    ah & ~ab goto repos_pv ;
+    ~ah & ab goto pv_repos ;
   }
 } ;
 
 check $commodoIncremental ;
 
-$modeArret (eav1, eav2, arefix)()(r1, r2) := !eav1 & !eav2 & arefix & !r1 & !r2 ;
+$modeArret (eav1, eav2, arefix)()(r1, r2) := ~eav1 & ~eav2 & arefix & ~r1 & ~r2 ;
 
-$modeAttenteArefix (eav1, eav2, arefix)()(r1, r2) := !eav1 & !eav2 & !arefix & r1 & !r2 ;
+$modeAttenteArefix (eav1, eav2, arefix)()(r1, r2) := ~eav1 & ~eav2 & ~arefix & r1 & ~r2 ;
 
-$modePetiteVitesse (eav1, eav2, arefix)()(r1, r2) := !eav1 & eav2 & r1 & !r2 ;
+$modePetiteVitesse (eav1, eav2, arefix)()(r1, r2) := ~eav1 & eav2 & r1 & ~r2 ;
 
 $modeGrandeVitesse (eav1, eav2, arefix)()(r1, r2) := eav1 & eav2 & r1 & r2 ;
 
-$modeDefautCommodo (eav1, eav2, arefix)()(r1, r2) := eav1 & !eav2 & !r1 & !r2;
+$modeDefautCommodo (eav1, eav2, arefix)()(r1, r2) := eav1 & ~eav2 & ~r1 & ~r2;
 
 $tousLesModes (eav1, eav2, arefix)()(r1, r2) := 
   $modeArret (eav1, eav2, arefix)()(r1, r2)

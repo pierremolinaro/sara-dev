@@ -2,17 +2,17 @@ $exemple1 (eav1, eav2)()(r1, r2) :=
   auto {
     state etat_repos, etat_petite_vitesse, etat_grande_vitesse  ;
     first etat_repos ;
-    etat_repos : ! eav1 & !r1 & !r2 {
-      eav1 & !eav2 goto etat_petite_vitesse ;
+    etat_repos : ~ eav1 & ~r1 & ~r2 {
+      eav1 & ~eav2 goto etat_petite_vitesse ;
       eav1 &  eav2 goto etat_grande_vitesse ;
     }
-    etat_petite_vitesse : eav1 & !eav2 & !r2 & r1 {
-      !eav1 goto etat_repos ;
+    etat_petite_vitesse : eav1 & ~eav2 & ~r2 & r1 {
+      ~eav1 goto etat_repos ;
       eav1 & eav2 goto etat_grande_vitesse ;
     }
     etat_grande_vitesse : eav1 & eav2 & r1 & r2 {
-       eav1 & !eav2 goto etat_petite_vitesse ;
-      !eav1 goto etat_repos ;
+       eav1 & ~eav2 goto etat_petite_vitesse ;
+      ~eav1 goto etat_repos ;
     }
   }
 ;

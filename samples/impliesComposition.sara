@@ -1,10 +1,10 @@
-$exemple (a, b)(r, s) :=
+$exemple (a, b)()(r, s) :=
   auto {
     state s1, s2 ; first s1 ;
     s1 : a & b & r {
-      ! (a & b) goto s2 ;
+      ~ (a & b) goto s2 ;
     }
-    s2 : ! (a & b) & ! r {
+    s2 : ~ (a & b) & ~ r {
       a & b goto s1 ;
     }
   }
@@ -12,9 +12,9 @@ $exemple (a, b)(r, s) :=
   auto {
     state s1, s2 ; first s1 ;
     s1 : (a | b) & s {
-      ! (a | b) goto s2 ;
+      ~ (a | b) goto s2 ;
     }
-    s2 : (! (a | b)) & ! s {
+    s2 : (~ (a | b)) & ~ s {
       a | b goto s1 ;
     }
   }

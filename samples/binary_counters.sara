@@ -3,17 +3,17 @@ $oneBitDownCounter (c)()(s) :=
     state zero_zero, zero_one, one_zero, one_one ;
     first zero_zero, one_zero ;
     last zero_zero, zero_one, one_zero, one_one ;
-    zero_zero : (!c) & !s {
+    zero_zero : (~c) & ~s {
       c goto one_one ;
     } 
-    zero_one : (!c) & s {
+    zero_one : (~c) & s {
       c goto one_zero ;
     } 
     one_one : c & s {
-      !c goto zero_one ;
+      ~c goto zero_one ;
     } 
-    one_zero : c & !s {
-      !c goto zero_zero ;
+    one_zero : c & ~s {
+      ~c goto zero_zero ;
     }
   }
 ;
@@ -43,8 +43,8 @@ scenario $fourBitDownCounter (c)()(s3, s2, s1, s0) {
 
 $oneBitDownCounterWithReset (c, r)()(s) :=
   modalcomp {
-    m1 : (!r) & $oneBitDownCounter (c)()(s) ;
-    m2 : r & ! s ;
+    m1 : (~r) & $oneBitDownCounter (c)()(s) ;
+    m2 : r & ~ s ;
     exclude m2 to m2 ;
     exclude m1 to m1 ;
   }
