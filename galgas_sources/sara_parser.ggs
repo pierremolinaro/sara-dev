@@ -36,7 +36,10 @@ message decimalNumberTooLarge : "decimal number too large" ;message internalEr
   class @C_falseExpression extends @AC_expression   end class ;
 
 #---------------------------------------------------------------------------*
-  list @L_transitionDefinition    @AC_expression mActionExpression ;    @location mEndOfExpression ;    @luint mTargetStateIndex ;  end list ;  list @L_stateDefinition    @luint mStateIndex ;    @AC_expression mStateExpression ;    @location mEndOfStateExpression ;    @L_transitionDefinition mTransitionsList ;  end list ;#---------------------------------------------------------------------------*
+
+list @L_transitionDefinition  @AC_expression mActionExpression ;  @location mEndOfExpression ;  @luint mTargetStateIndex ;end list ;list @L_stateDefinition  @luint mStateIndex ;  @AC_expression mStateExpression ;  @location mEndOfStateExpression ;  @L_transitionDefinition mTransitionsList ;end list ;
+
+#---------------------------------------------------------------------------*
 
 list @L_statesDefinitionList  @luint mStateIndex ;  @location mStateLocation ;end list ;
 

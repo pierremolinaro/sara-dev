@@ -347,11 +347,12 @@ computeFromExpression (C_lexique & inLexique,
 //--- Build state array names
   TC_unique_dyn_array <C_string> stateNameArray (mStatesMap.getCount () COMMA_HERE) ;
   GGS_M_stateMap::element_type * currentState = mStatesMap.getFirstItem () ;
-  sint32 index = 0 ;
-  while (currentState != NULL) {
-    stateNameArray (index COMMA_HERE) = currentState->mKey ;
-    index ++ ;
-    currentState = currentState->getNextItem () ;
+  { sint32 index = 0 ;
+    while (currentState != NULL) {
+      stateNameArray (index COMMA_HERE) = currentState->mKey ;
+      index ++ ;
+      currentState = currentState->getNextItem () ;
+    }
   }
 //----------------------------------------------------------------------- States BDD array
 //    BDD slots assignments
@@ -361,23 +362,23 @@ computeFromExpression (C_lexique & inLexique,
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
   TC_unique_dyn_array <C_bdd> stateExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
-  index = 0 ;
   GGS_L_stateDefinition::element_type * currentDefinition = mStateDefinitionList.getFirstItem () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
+  //--- Get state index
+    const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
   //--- Enter state configuration
-    stateExpressionBDD (index COMMA_HERE) = currentDefinition->mStateExpression ()->computeBDD (0) ;
+    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition->mStateExpression ()->computeBDD (0) ;
   //--- Check state configuration is not empty
-    if (stateExpressionBDD (index COMMA_HERE).isFalse ()) {
+    if (stateExpressionBDD (stateIndex COMMA_HERE).isFalse ()) {
       C_string errorMessage ;
       errorMessage << "input configuration for state '"
-                   << stateNameArray ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
+                   << stateNameArray (stateIndex COMMA_HERE)
                    << "' is empty" ;
       currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
     }
   //--- Go to next state definition  
     currentDefinition = currentDefinition->getNextItem () ;
-    index ++ ;
   }
 //----------------------------------------------------------------------- Check that states are disjoined
   currentDefinition = mStateDefinitionList.getFirstItem () ;
@@ -410,6 +411,7 @@ computeFromExpression (C_lexique & inLexique,
   GGS_L_statesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
+    // printf ("INIT : %ld\n", currentInitialState->mStateIndex.getValue ()) ;
     outInitialStatesBDD |= stateExpressionBDD ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE) ;
     currentInitialState = currentInitialState->getNextItem () ;
   }
@@ -459,9 +461,10 @@ computeFromExpression (C_lexique & inLexique,
 //     state input configuration and state output configuration
   C_bdd transitionsBDD ;
   currentDefinition = mStateDefinitionList.getFirstItem () ;
-  index = 0 ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
+  //--- Get current state index
+    const sint32 currentStateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
   //--- Accumulate transitions targets for each transition
     C_bdd transitionsTargetBDD ;
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
@@ -474,12 +477,11 @@ computeFromExpression (C_lexique & inLexique,
       currentTransition = currentTransition->getNextItem () ;
     }
   //--- Combine with state BDD
-    transitionsTargetBDD &= stateExpressionBDD (index COMMA_HERE) ;
+    transitionsTargetBDD &= stateExpressionBDD (currentStateIndex COMMA_HERE) ;
   //--- Accumulate into transitions BDD
     transitionsBDD |= transitionsTargetBDD ;
   //--- Go to next state definition
     currentDefinition = currentDefinition->getNextItem () ;
-    index ++ ;
   }
 //--- Check transitions of each state
   currentDefinition = mStateDefinitionList.getFirstItem () ;
