@@ -1,0 +1,37 @@
+$bascule_rs (r, s)(q, qb) := (q = ! (qb & s)) & (qb = ! (r & q)) ;
+check $bascule_rs ;
+
+$bascule_rs_modifiee (r, s)(q, qb) :=
+  auto {
+    state zero, un, deux, trois_un, trois_deux ;
+    first zero, un, deux, trois_un ;
+    last zero, un, deux, trois_un, trois_deux ;
+    zero : !r & !s & q & qb {
+     !r &  s goto un ;
+      r & !s goto deux ;
+      r &  s goto trois_un ;
+    }
+    un : !r & s & !q & qb {
+     !r & !s goto zero ;
+      r & !s goto deux ;
+      r &  s goto trois_un ;
+    }
+    deux : r & !s & q & !qb {
+     !r & !s goto zero ;
+     !r &  s goto un ;
+      r &  s goto trois_deux ;
+    }
+    trois_un : r & s & q & !qb {
+     !r & !s goto zero ;
+     !r &  s goto un ;
+      r & !s goto deux ;
+    }
+    trois_deux : r & s & !q & qb {
+     !r & !s goto zero ;
+     !r &  s goto un ;
+      r & !s goto deux ;
+    }
+  }
+;
+
+check $bascule_rs_modifiee ;

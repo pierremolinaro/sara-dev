@@ -2,7 +2,7 @@
 style machineNameStyle -> "Machine names" ;style delimitors -> "Delimitors" ;style integer_csts -> "Integer constants" ; # -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "last", "goto", "timer", "all", "none", "check" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
 
 # -------------------------- Delimitors -------------------------------
-list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "%" ;rule list delimitorsList ;
+list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "%", "**" ;rule list delimitorsList ;
 
 # -------------------------- Machine name -----------------------------
 
@@ -36,19 +36,35 @@ message decimalNumberTooLarge : "decimal number too large" ;message internalEr
 list @L_statesDefinitionList  @luint mStateIndex ;  @location mStateLocation ;end list ;#---------------------------------------------------------------------------*
 abstract class @AC_machineDefinition  include header ; end class ;
 list @L_translationVector  @luint mTargetSlot ;end list ;  class @C_importMachine extends @AC_machineDefinition  @uint mIndexOfImportedMachine ;  @L_translationVector mTranslationVector ;end class ;
+
 class @C_explicitAutomatonDefinition extends @AC_machineDefinition  @M_stateMap mStatesMap ;  @L_statesDefinitionList mInitialStatesDefinitionList ;  @L_statesDefinitionList mTerminalStatesDefinitionList ;  @L_stateDefinition mStateDefinitionList ;  @location mEndOfDefinition ;end class ;
+
 class @C_variableDefinition extends @AC_machineDefinition  @luint mInputOutputVariableIndex ;end class ;
+
 class @C_existsDefinition extends @AC_machineDefinition  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;end class ;
+
 class @C_andComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+
 class @C_orComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+
 class @C_equalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+
 class @C_xorComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+
 class @C_impliesComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
-class @C_modalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
+
+class @C_strongModalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
+
+class @C_weakModalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
+
 class @C_notComposition extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+
 class @C_fullSaturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+
 class @C_saturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+
 #---------------------------------------------------------------------------*
+
 abstract class @AC_job  include header ;end class ; class @C_machineCheck extends @AC_job  @luint mMachineIndex ;end class ;
 class @C_machineComponent extends @AC_job  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;end class ;
 #---------------------------------------------------------------------------*
@@ -73,7 +89,7 @@ rule <io_primary>   ?!@M_variablesMap unused ioVarMap  !@AC_expression outExpr
 rule <io_primary>   ?!@M_variablesMap unused ioVarMap  !@AC_expression outExpression:  $all$ ;  outExpression := [@C_trueExpression new] ;end rule ;
 #---------------------------------------------------------------------------*#         DEFINITION EXPRESSION                                             *#---------------------------------------------------------------------------*
 rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_term> !?ioMachinesMap !?variablesMap ?outDefinition ;  repeat  while    $|$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_orComposition new !leftOperand !rightOperand] ;  while    $^$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_xorComposition new !leftOperand !rightOperand] ;  while    $->$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_impliesComposition new !leftOperand !rightOperand] ;  while    $=$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_equalComposition new !leftOperand !rightOperand] ;  end repeat ;end rule ;#---------------------------------------------------------------------------*
-rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_factor> !?ioMachinesMap !? variablesMap ?outDefinition ;  repeat  while    $*$ ;    @location errorLocation := here ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_modalComposition new !leftOperand !errorLocation !rightOperand] ;  while    $&$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_andComposition new !leftOperand !rightOperand] ;  end repeat ;end rule ;#---------------------------------------------------------------------------*
+rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_factor> !?ioMachinesMap !? variablesMap ?outDefinition ;  repeat  while    $*$ ;    @location errorLocation := here ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_strongModalComposition new !leftOperand !errorLocation !rightOperand] ;  while    $**$ ;    @location errorLocation := here ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_weakModalComposition new !leftOperand !errorLocation !rightOperand] ;  while    $&$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_andComposition new !leftOperand !rightOperand] ;  end repeat ;end rule ;#---------------------------------------------------------------------------*
 rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  select    <explicit_automaton> !?variablesMap ?outDefinition ;  or    $($ ;    <definition_expression> !?ioMachinesMap !? variablesMap ?outDefinition ;    $)$ ;  or    @M_variablesMap extendedVariablesMap := variablesMap ;    @uint previousVariableCount := [extendedVariablesMap length] ;    $?$ ;    repeat      @lstring variableName ;      $identifier$ ? variableName ;      insert extendedVariablesMap.insertKey variableName () ;    while      $,$ ;    end repeat ;    @uint actualVariableCount := [extendedVariablesMap length] ;    $($ ;    @AC_machineDefinition def ;    <definition_expression> !?ioMachinesMap !?extendedVariablesMap ?def ;    $)$ ;    outDefinition := [@C_existsDefinition new !previousVariableCount !actualVariableCount !def] ;  or    $!$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_notComposition new !def] ;  or    $@$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_fullSaturationOperation new !def] ;  or    $%$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_saturationOperation new !def] ;  or    @lstring variableName ;    $identifier$ ? variableName ;    @luint varIndex ;    search variablesMap.searchKey variableName () -> varIndex ;    outDefinition := [@C_variableDefinition new ! varIndex] ;  end select ;end rule ;
 
 #---------------------------------------------------------------------------*
