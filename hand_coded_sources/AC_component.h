@@ -24,8 +24,7 @@
   public : virtual void compute (C_lexique & inLexique, \
                                  const bool inDisplayBDDvaluesCount, \
                                  const bool inDisplayBDDvalues, \
-                                 TC_unique_dyn_array <C_string> & outInputNamesArray, \
-                                 TC_unique_dyn_array <C_string> & outOutputNamesArray, \
+                                 TC_unique_dyn_array <C_string> & outNamesArray, \
                                  C_bdd & outInitialStatesBDD, \
                                  C_bdd & outAccessibleStatesBDD, \
                                  C_bdd & outAccessibilityRelationBDD) const = 0 ;
@@ -36,8 +35,7 @@
   public : virtual void compute (C_lexique & inLexique, \
                                  const bool inDisplayBDDvaluesCount, \
                                  const bool inDisplayBDDvalues, \
-                                 TC_unique_dyn_array <C_string> & outInputNamesArray, \
-                                 TC_unique_dyn_array <C_string> & outOutputNamesArray, \
+                                 TC_unique_dyn_array <C_string> & outNamesArray, \
                                  C_bdd & outInitialStatesBDD, \
                                  C_bdd & outAccessibleStatesBDD, \
                                  C_bdd & outAccessibilityRelationBDD) const ;

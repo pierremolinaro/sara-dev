@@ -22,10 +22,7 @@
 
 #define macro_AC_machineDefinition \
   public : virtual void computeFromExpression (C_lexique & inLexique, \
-                                               const bool inDisplayBDDvaluesCount, \
-                                               const bool inDisplayBDDvalues, \
-                                               const TC_unique_dyn_array <C_string> & inInputNamesArray, \
-                                               const TC_unique_dyn_array <C_string> & inOutputNamesArray, \
+                                               const sint32 inVariablesCount, \
                                                C_bdd & outInitialStatesBDD, \
                                                C_bdd & outAccessibleStatesBDD, \
                                                C_bdd & outAccessibilityRelationBDD) const = 0 ;
@@ -34,10 +31,7 @@
 
 #define macroInheritFrom_AC_machineDefinition \
   public : virtual void computeFromExpression (C_lexique & inLexique, \
-                                               const bool inDisplayBDDvaluesCount, \
-                                               const bool inDisplayBDDvalues, \
-                                               const TC_unique_dyn_array <C_string> & inInputNamesArray, \
-                                               const TC_unique_dyn_array <C_string> & inOutputNamesArray, \
+                                               const sint32 inVariablesCount, \
                                                C_bdd & outInitialStatesBDD, \
                                                C_bdd & outAccessibleStatesBDD, \
                                                C_bdd & outAccessibilityRelationBDD) const ;
