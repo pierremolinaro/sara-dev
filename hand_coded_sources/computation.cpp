@@ -89,6 +89,7 @@ void swap (C_saraMachine & ioOperand1,
            C_saraMachine & ioOperand2) {
   swap (ioOperand1.mNamesArray, ioOperand2.mNamesArray) ;
   swap (ioOperand1.mInputVariablesCount, ioOperand2.mInputVariablesCount) ;
+  swap (ioOperand1.mInputAndInternalVariablesCount, ioOperand2.mInputAndInternalVariablesCount) ;
   swap (ioOperand1.mMachineName, ioOperand2.mMachineName) ;
   swap (ioOperand1.mInitialStatesBDD, ioOperand2.mInitialStatesBDD) ;
   swap (ioOperand1.mTerminalStatesBDD, ioOperand2.mTerminalStatesBDD) ;
@@ -133,8 +134,11 @@ compute (C_lexique & inLexique,
   C_saraMachine machine ;
   machine.mMachineName = mMachineName ;
 //--- Build input variables array names
+  const uint16 inputVariablesCount = (uint16) mInputVariableCount.getValue () ;
+  machine.mInputVariablesCount = inputVariablesCount ;
   const uint16 variablesCount = (uint16) mVariablesMap.getCount () ;
-  machine.mInputVariablesCount = variablesCount ;
+  const uint16 inputAndInternalVariablesCount = (uint16) mInputAndInternalVariableCount.getValue () ;
+  machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
   { TC_unique_dyn_array <C_string> variableNamesArray (variablesCount COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
@@ -178,14 +182,12 @@ compute (C_lexique & inLexique,
     transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const uint16 inputVariablesCount = (uint16) mInputVariableCount.getValue () ;
-  machine.mInputVariablesCount = inputVariablesCount ;
-  const sint32 outputVariablesCount = variablesCount - inputVariablesCount ;
-  printf ("  %hu input variable%s, %ld output variable%s;\n",
-          inputVariablesCount,
-          (inputVariablesCount > 1) ? "s" : "",
-          outputVariablesCount,
-          (outputVariablesCount > 1) ? "s" : "") ;
+  const sint32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
+  const sint32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
+  printf ("  %hu input variable%s, %ld internal variable%s, %ld output variable%s;\n",
+          inputVariablesCount, (inputVariablesCount > 1) ? "s" : "",
+          internalVariablesCount, (internalVariablesCount > 1) ? "s" : "",
+          outputVariablesCount, (outputVariablesCount > 1) ? "s" : "") ;
   uint64 n = machine.mInitialStatesBDD.getBDDvaluesCount (variablesCount) ;
   uint32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   printf ("  %llu initial state%s (%lu node%s);\n",
@@ -384,11 +386,12 @@ computeFromExpression (C_lexique & inLexique,
     GGS_L_stateDefinition::element_type * testedState = currentDefinition->getNextItem () ;
     while (testedState != NULL) {
       macroValidPointer (testedState) ;
-      if (! (stateExpressionBDD ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE) & stateExpressionBDD ((sint32) testedState->mStateIndex.getValue () COMMA_HERE)).isFalse ()) {
+      if (! (stateExpressionBDD ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
+           & stateExpressionBDD ((sint32) testedState->mStateIndex.getValue () COMMA_HERE)).isFalse ()) {
         C_string errorMessage ;
         errorMessage << "expression for state '"
                    << stateNameArray ((sint32) testedState->mStateIndex.getValue () COMMA_HERE)
-                   << " intersects expression for state '"
+                   << "' intersects expression for state '"
                    << stateNameArray ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
                    << "'" ;
         testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
@@ -1008,6 +1011,26 @@ computeFromExpression (C_lexique & inLexique,
   }
   outAccessibilityRelationBDD = outAccessibilityRelationBDD.substitution (substitutionVector, (uint16) (totalVariableCount + previousVariableCount)) ;
   delete [] substitutionVector ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_suppressTerminalStatesOperation::
+computeFromExpression (C_lexique & inLexique,
+                       const TC_grow_array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 inVariablesCount,
+                       C_bdd & outInitialStatesBDD,
+                       C_bdd & outTerminalStatesBDD,
+                       C_bdd & outAccessibleStatesBDD,
+                       C_bdd & outAccessibilityRelationBDD) const {
+  mOperand ()->computeFromExpression (inLexique,
+                                      inSaraSystemArray,
+                                      inVariablesCount,
+                                      outInitialStatesBDD,
+                                      outTerminalStatesBDD,
+                                      outAccessibleStatesBDD,
+                                      outAccessibilityRelationBDD) ;
+  outTerminalStatesBDD = C_bdd () ;
 }
 
 //---------------------------------------------------------------------------*
