@@ -1,4 +1,4 @@
-$oneBitDownCounter (c)()(s) :=
+$oneBitCounter (c)()(s) :=
   auto {
     state zero_zero, zero_one, one_zero, one_one ;
     first zero_zero, one_zero ;
@@ -18,11 +18,11 @@ $oneBitDownCounter (c)()(s) :=
   }
 ;
 
-check $oneBitDownCounter ;
+check $oneBitCounter ;
 
 $twoBitDownCounter (c)()(s1, s0) :=
-  $oneBitDownCounter (c)()(s0) &
-  $oneBitDownCounter (s0)()(s1)
+  $oneBitCounter (c)()(s0) &
+  $oneBitCounter (s0)()(s1)
 ;
 
 check $twoBitDownCounter ;
@@ -41,20 +41,18 @@ scenario $fourBitDownCounter (c)()(s3, s2, s1, s0) {
 
 #------------ DOWN COUNTERS WITH ASYNCHRONOUS RESET -----------
 
-$oneBitDownCounterWithReset (c, r)()(s) :=
+$oneBitCounterWithReset (c, r)()(s) :=
   modalcomp {
-    m1 : (~r) & $oneBitDownCounter (c)()(s) ;
+    m1 : (~r) & $oneBitCounter (c)()(s) ;
     m2 : r & ~ s ;
-    exclude m2 to m2 ;
-    exclude m1 to m1 ;
   }
 ;
 
-check $oneBitDownCounterWithReset ;
+check $oneBitCounterWithReset ;
 
 $twoBitDownCounterWithReset (c, r)()(s1, s0) :=
-  $oneBitDownCounterWithReset (c, r)()(s0) &
-  $oneBitDownCounterWithReset (s0, r)()(s1)
+  $oneBitCounterWithReset (c, r)()(s0) &
+  $oneBitCounterWithReset (s0, r)()(s1)
 ;
 
 check $twoBitDownCounterWithReset ;

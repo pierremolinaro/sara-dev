@@ -385,6 +385,24 @@ compute (C_lexique & /* inLexique */,
     }
     incompleteStatesAndInput.printBDD (transitionsVariableNameArray, (uint16) (variableCount+machine.mInputVariablesCount), 3) ;
   }
+//--- Check all states are stable
+// Set of instable states [e:is] : ?is' (trans [e:is] to [e:is'] & is != is')
+  const C_bdd equalInputConstraint = C_bdd::varCompareVar (0, machine.mInputVariablesCount, C_bdd::kEqual, variableCount) ;
+  const C_bdd nonEqualOutputConstraint = C_bdd::varCompareVar (machine.mInputVariablesCount,
+                                                               (uint16) (variableCount - machine.mInputVariablesCount),
+                                                               C_bdd::kNonEqual,
+                                                               (uint16) (variableCount + machine.mInputVariablesCount)) ;
+  const C_bdd nonStableTransitions = machine.mTransitionRelationBDD & equalInputConstraint & nonEqualOutputConstraint ;
+  const C_bdd notStableStates = nonStableTransitions.existsOnBitsAfterNumber (variableCount) ;
+  if (notStableStates.isFalse ()) {
+    printf ("  All states are stable;\n") ;
+  }else{
+    const uint64 n = notStableStates.getBDDvaluesCount (variableCount) ;
+    printf ("  ") ;
+    printfUINT64 (n) ;
+    printf (" instable state%s:\n", (n > 1) ? "s" : "") ;
+    notStableStates.printBDD (machine.mNamesArray, variableCount, 3) ;
+  }
 }
 
 //----------------------------------------------------------------------------*
@@ -683,7 +701,7 @@ computeFromExpression (C_lexique & inLexique,
 //    Slots 2n+p .. 2n+2p-1 are assigned to s outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  C_bdd transitionsBDD ;
+  outAccessibilityRelationBDD = C_bdd () ;
   currentDefinition = mStateDefinitionList.getFirstItem () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
@@ -703,7 +721,7 @@ computeFromExpression (C_lexique & inLexique,
   //--- Combine with state BDD
     transitionsTargetBDD &= stateExpressionBDD (currentStateIndex COMMA_HERE) ;
   //--- Accumulate into transitions BDD
-    transitionsBDD |= transitionsTargetBDD ;
+    outAccessibilityRelationBDD |= transitionsTargetBDD ;
   //--- Go to next state definition
     currentDefinition = currentDefinition->getNextItem () ;
   }
@@ -754,20 +772,6 @@ computeFromExpression (C_lexique & inLexique,
     currentDefinition = currentDefinition->getNextItem () ;
   }
 //----------------------------------------------------------------------- Compute accessible states
-//--- First, compute transitions set. We add to inter state transitions intra state transitions
-  outAccessibilityRelationBDD = transitionsBDD ;
-  for (sint32 i=0 ; i<stateExpressionBDD.getCount () ; i++) {
-    const C_bdd stateExpression = stateExpressionBDD (i COMMA_HERE) ;
-    const C_bdd translatedStateExpression = stateExpression.translate (inVariablesCount, inVariablesCount) ;
-    const C_bdd allStateToStateTransitions = stateExpression & translatedStateExpression ;
-  //--- Restrict transitions to target == source
-    C_bdd constraint = ~ C_bdd () ;
-    for (sint32 i=0 ; i<inVariablesCount ; i++) {
-      constraint &= C_bdd ((uint16) i, false) == C_bdd ((uint16) (inVariablesCount + i), false) ;
-    }
-    outAccessibilityRelationBDD |= allStateToStateTransitions & constraint ;
-  }
-//--- Now, compute accessible states from initial states
   uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
   for (uint16 i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] = (uint16) (inVariablesCount + i) ;
@@ -792,6 +796,13 @@ computeFromExpression (C_lexique & inLexique,
                    << "' is not accessible" ;
       mEndOfDefinition.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
     }
+  }
+//--- Add stable transitions. We add them now because they do not change accessible states computation
+  for (sint32 i=0 ; i<stateExpressionBDD.getCount () ; i++) {
+    const C_bdd stateExpression = stateExpressionBDD (i COMMA_HERE) ;
+    const C_bdd translatedStateExpression = stateExpression.translate (inVariablesCount, inVariablesCount) ;
+    const C_bdd allStateToStateTransitions = stateExpression & translatedStateExpression ;
+    outAccessibilityRelationBDD |= allStateToStateTransitions ;
   }
 }
 
@@ -1434,19 +1445,21 @@ computeFromExpression (C_lexique & inLexique,
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
   for (sint32 sourceMode=0 ; sourceMode < modeCount ; sourceMode++) {
     for (sint32 targetMode=0 ; targetMode < modeCount ; targetMode++) {
-    //--- Is theses transitions accepted ?
-      bool isAccepted = true ;
-      GGS_L_exclusionListForModes::element_type * currentExclusion = mExclusionList.getFirstItem () ;
-      while ((currentExclusion != NULL) && isAccepted) {
-        isAccepted = (sourceMode != (sint32) currentExclusion->mExcludedSourceMode.getValue ()) || (targetMode != (sint32) currentExclusion->mExcludedTargetMode.getValue ()) ;
-        currentExclusion = currentExclusion->getNextItem () ;
-      }
-    //--- If accepted, add transition
-      if (isAccepted) {
-      //--- translate initial state BDD by inVariablesCount slots
-        const C_bdd translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
-      //--- Add transitions from terminal states to initial states
-        outAccessibilityRelationBDD |= terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+      if (sourceMode != targetMode) {
+      //--- Is theses transitions accepted ?
+        bool isAccepted = true ;
+        GGS_L_exclusionListForModes::element_type * currentExclusion = mExclusionList.getFirstItem () ;
+        while ((currentExclusion != NULL) && isAccepted) {
+          isAccepted = (sourceMode != (sint32) currentExclusion->mExcludedSourceMode.getValue ()) || (targetMode != (sint32) currentExclusion->mExcludedTargetMode.getValue ()) ;
+          currentExclusion = currentExclusion->getNextItem () ;
+        }
+      //--- If accepted, add transition
+        if (isAccepted) {
+        //--- translate initial state BDD by inVariablesCount slots
+          const C_bdd translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
+        //--- Add transitions from terminal states to initial states
+          outAccessibilityRelationBDD |= terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+        }
       }
     }
   }

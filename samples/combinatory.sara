@@ -1,6 +1,23 @@
 $exemple0 (a)()(r) := ~ r ;
 
-$exemple1 (a, b)()(r) := r = (a & b) ;
+$porteET (a, b)()(r) := r = (a & b) ;
+
+check $porteET ;
+
+$ANDgateWithAuto (a, b)()(r) :=
+  auto {
+   state zero, one ;
+   first zero, one ;
+   last  zero, one ;
+   zero : (~r) & ~(a & b) {
+     a & b goto one ;
+   }
+   one : r & a & b {
+     ~(a & b) goto zero ;
+   }
+} ;
+
+check $ANDgateWithAuto ;
 
 $exemple2 (a, b)()(s) := s = (a | b) ;
 
@@ -13,3 +30,11 @@ $exemple5 (a)()(r) := (r = a) & (r = ~a) ;
 $exemple6 (a, b)()(r, s) := $exemple3 (a, b)()(r, s) ;
 
 $exemple7 (a, b)()(r, s) := $exemple3 (b, a)()(s, r) ;
+
+$exemple (e1, e2, e3)()(s) := ? x ((x = (e1 | e2)) & ((x & e3) = s)) ;
+
+check $exemple ;
+
+$instable (e)()(s) := (e & s) = ~s ;
+
+check $instable ;
