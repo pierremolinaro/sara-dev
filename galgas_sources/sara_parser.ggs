@@ -4,7 +4,7 @@ style identifier -> "Identifiers" ;
 style keyWords -> "Key words" ;
 style delimitors -> "Delimitors" ;
 style integer_csts -> "Integer constants" ;
-# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "goto", "timer", "all", "none" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=" ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_variablesMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
+# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "goto", "timer", "all", "none" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@" ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_variablesMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
 
 #---------------------------------------------------------------------------*  abstract class @AC_expression    include header ;  end class ;    class @C_andExpression extends @AC_expression
     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_orExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_xorExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_impliesExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_equalExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_notExpression extends @AC_expression     @AC_expression mExpression ;  end class ;      class @C_VariableExpression extends @AC_expression     @luint mInputVarIndex ;  end class ;
@@ -78,8 +78,17 @@ class @C_impliesComposition extends @AC_machineDefinition
   @AC_machineDefinition mRightOperand ;
 end class ;
 
+class @C_modalComposition extends @AC_machineDefinition
+  @AC_machineDefinition mLeftOperand ;
+  @location mErrorLocation ;
+  @AC_machineDefinition mRightOperand ;
+end class ;
 
 class @C_notComposition extends @AC_machineDefinition
+  @AC_machineDefinition mOperand ;
+end class ;
+
+class @C_saturationOperation extends @AC_machineDefinition
   @AC_machineDefinition mOperand ;
 end class ;
 
@@ -317,6 +326,13 @@ rule <definition_expression_term>
   <definition_expression_factor> !? variablesMap ?outDefinition ;
   repeat
   while
+    $*$ ;
+    @location errorLocation := here ;
+    @AC_machineDefinition leftOperand := outDefinition ;
+    @AC_machineDefinition rightOperand ;
+    <definition_expression_factor> !? variablesMap ?rightOperand ;
+    outDefinition := [@C_modalComposition new !leftOperand !errorLocation !rightOperand] ;
+  while
     $&$ ;
     @AC_machineDefinition leftOperand := outDefinition ;
     @AC_machineDefinition rightOperand ;
@@ -358,6 +374,11 @@ rule <definition_expression_factor>
     @AC_machineDefinition def ;
     <definition_expression_factor> !? variablesMap ?def ;
     outDefinition := [@C_notComposition new !def] ;
+  or
+    $@$ ;
+    @AC_machineDefinition def ;
+    <definition_expression_factor> !? variablesMap ?def ;
+    outDefinition := [@C_saturationOperation new !def] ;
   or
     @lstring variableName ;
     $identifier$ ? variableName ;

@@ -1,0 +1,22 @@
+exemple (eav1, eav2 -> r1, r2) :=
+  auto {
+    state etat_repos  ;
+    first etat_repos ;
+    etat_repos : ! eav1 & !r1 & !r2 {
+    }
+  }
+  *
+  auto {
+    state etat_petite_vitesse  ;
+    first etat_petite_vitesse ;
+    etat_petite_vitesse : eav1 & !eav2 & !r2 & r1 {
+    }
+  }
+  *
+  auto {
+    state etat_grande_vitesse  ;
+    first etat_grande_vitesse ;
+    etat_grande_vitesse : eav1 & eav2 & r1 & r2 {
+    }
+  }
+;
