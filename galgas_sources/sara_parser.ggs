@@ -34,7 +34,7 @@ style integer_csts -> "Integer constants" ;
   abstract class @AC_component    include header ;  end class ;
 
   list @L_initialStatesDefinitionList
-    @luint mInitialStateIndex ;  end list ;
+    @luint mInitialStateIndex ;    @location mInitialStateLocation ;  end list ;
     class @C_automatonComponent extends @AC_component
     @M_inputOutputVarMap mInputVariableMap ;    @M_inputOutputVarMap mOutputVariableMap ;    @M_stateMap mStatesMap ;
     @L_initialStatesDefinitionList mInitialStatesDefinitionList ;
@@ -114,7 +114,7 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
     @lstring initialState ;    $identifier$ ? initialState ;
     @luint initialStateIndex ;
     search statesMap.searchKey initialState () -> initialStateIndex ;
-    initialStatesDefinitionList += !initialStateIndex ;
+    initialStatesDefinitionList += !initialStateIndex !here ;
   while
     $,$ ;
   end repeat ;
