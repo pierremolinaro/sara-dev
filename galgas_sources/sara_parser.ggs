@@ -7,7 +7,7 @@ style machineNameStyle -> "Machine names" ;style delimitors -> "Delimitors" ;s
  "nolast", "modalcomp", "exclude", "to" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
 
 # -------------------------- Delimitors -------------------------------
-list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "%", "**" ;rule list delimitorsList ;
+list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "**" ;rule list delimitorsList ;
 
 # -------------------------- Machine name -----------------------------
 
@@ -91,8 +91,6 @@ class @C_notComposition extends @AC_machineDefinition  @AC_machineDefinition mO
 
 class @C_fullSaturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
 
-class @C_saturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
-
 class @C_suppressTerminalStatesOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
 
 #---------------------------------------------------------------------------*
@@ -158,7 +156,7 @@ rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variab
 
 #---------------------------------------------------------------------------*
 
-rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  select    <explicit_automaton> !?variablesMap ?outDefinition ;  or    $($ ;    <definition_expression> !?ioMachinesMap !? variablesMap ?outDefinition ;    $)$ ;  or    @M_variablesMap extendedVariablesMap := variablesMap ;    @uint previousVariableCount := [extendedVariablesMap length] ;    $?$ ;    repeat      @lstring variableName ;      $identifier$ ? variableName ;      insert extendedVariablesMap.insertKey variableName () ;    while      $,$ ;    end repeat ;    @uint actualVariableCount := [extendedVariablesMap length] ;    $($ ;    @AC_machineDefinition def ;    <definition_expression> !?ioMachinesMap !?extendedVariablesMap ?def ;    $)$ ;    outDefinition := [@C_existsDefinition new !previousVariableCount !actualVariableCount !def] ;  or    $!$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_notComposition new !def] ;  or    $@$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_fullSaturationOperation new !def] ;  or    $%$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_saturationOperation new !def] ;  or    $nolast$ ;
+rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  select    <explicit_automaton> !?variablesMap ?outDefinition ;  or    $($ ;    <definition_expression> !?ioMachinesMap !? variablesMap ?outDefinition ;    $)$ ;  or    @M_variablesMap extendedVariablesMap := variablesMap ;    @uint previousVariableCount := [extendedVariablesMap length] ;    $?$ ;    repeat      @lstring variableName ;      $identifier$ ? variableName ;      insert extendedVariablesMap.insertKey variableName () ;    while      $,$ ;    end repeat ;    @uint actualVariableCount := [extendedVariablesMap length] ;    $($ ;    @AC_machineDefinition def ;    <definition_expression> !?ioMachinesMap !?extendedVariablesMap ?def ;    $)$ ;    outDefinition := [@C_existsDefinition new !previousVariableCount !actualVariableCount !def] ;  or    $!$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_notComposition new !def] ;  or    $@$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_fullSaturationOperation new !def] ;  or    $nolast$ ;
     $($ ;    @AC_machineDefinition def ;    <definition_expression> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_suppressTerminalStatesOperation new !def] ;
     $)$ ;
   or

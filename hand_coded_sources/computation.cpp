@@ -240,6 +240,8 @@ compute (C_lexique & inLexique,
   }
 //--- Enter result in machines array
   ioSaraSystemArray.appendByExchange (machine COMMA_HERE) ;
+//--- Mark and sweep unused BDD nodes
+  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -569,7 +571,6 @@ computeFromExpression (C_lexique & inLexique,
       mEndOfDefinition.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
     }
   }
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -611,7 +612,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD & rightTerminalStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = leftAccessibilityRelationBDD & rightAccessibilityRelationBDD ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -653,7 +653,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = (leftAccessibilityRelationBDD | rightAccessibilityRelationBDD) | (outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount)) ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -702,7 +701,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -796,7 +794,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -838,7 +835,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD != rightTerminalStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD != rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = (leftAccessibilityRelationBDD != rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -880,7 +876,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD.implies (rightTerminalStatesBDD) ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD.implies (rightAccessibleStatesBDD) ;
   outAccessibilityRelationBDD = (leftAccessibilityRelationBDD.implies (rightAccessibilityRelationBDD)) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -922,7 +917,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = leftTerminalStatesBDD == rightTerminalStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD == rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = (leftAccessibilityRelationBDD == rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -952,7 +946,6 @@ computeFromExpression (C_lexique & inLexique,
   outTerminalStatesBDD = ~ terminalStatesBDD ;
   outAccessibleStatesBDD = ~ accessibleStatesBDD ;
   outAccessibilityRelationBDD = (~ accessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1058,33 +1051,6 @@ computeFromExpression (C_lexique & inLexique,
   const C_bdd translatedInitialStates = outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 //--- Add transitions from terminal states to initial states
   outAccessibilityRelationBDD |= outTerminalStatesBDD & translatedInitialStates ;
-  C_bdd::markAndSweepUnusedNodes () ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_saturationOperation::
-computeFromExpression (C_lexique & inLexique,
-                       const TC_grow_array <C_saraMachine> & inSaraSystemArray,
-                       const uint16 inVariablesCount,
-                       C_bdd & outInitialStatesBDD,
-                       C_bdd & outTerminalStatesBDD,
-                       C_bdd & outAccessibleStatesBDD,
-                       C_bdd & outAccessibilityRelationBDD) const {
-//--- Compute operand
-  C_bdd accessibilityRelationBDD ;
-  mOperand ()->computeFromExpression (inLexique,
-                                      inSaraSystemArray,
-                                      inVariablesCount,
-                                      outInitialStatesBDD,
-                                      outTerminalStatesBDD,
-                                      outAccessibleStatesBDD,
-                                      accessibilityRelationBDD) ;
-//--- translate initial state BDD by inVariablesCount slots
-  const C_bdd translatedInitialStates = outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
-//--- Add transitions from terminal states to initial states
-  outAccessibilityRelationBDD |= outTerminalStatesBDD & translatedInitialStates ;
-  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1126,7 +1092,6 @@ computeFromExpression (C_lexique & /* inLexique */,
   outAccessibilityRelationBDD = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD
     .substitution (transitionsSubstitutionArray, (uint16) (importedMachineVariableCount + importedMachineVariableCount)) ;
 //---
-  C_bdd::markAndSweepUnusedNodes () ;
   delete [] statesSubstitutionArray ;
   delete [] transitionsSubstitutionArray ;
 }
