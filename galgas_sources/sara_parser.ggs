@@ -334,7 +334,11 @@ rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_vari
       @luint targetModeIndex ;
       search modeMap.searchKey targetModeName (...) -> targetModeIndex ;
       $;$ ;
-      exclusionList += !sourceModeIndex !targetModeIndex ;
+      if [sourceModeIndex value] == [targetModeIndex value] then
+        warning targetModeIndex : "unuseful exclude: 'modalcomp' operator never adds transitions from terminal states to initial states of the same mode" ;
+      else
+        exclusionList += !sourceModeIndex !targetModeIndex ;
+      end if ;
     end repeat ;
     $}$ ;
     outDefinition := [@C_modalCompositionComponent new !modeMap !exclusionList] ;  or    @lstring variableName ;    $identifier$ ? variableName ;    @luint varIndex ;    search variablesMap.searchKey variableName () -> varIndex ;    outDefinition := [@C_variableDefinition new ! varIndex] ;  end select ;end rule ;
