@@ -250,12 +250,12 @@ compute (C_lexique & inLexique,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Define initial states BDD bits names
-  const uint16 initialStatesBDDbitCount = outputVariablesCount + inputVariablesCount ;
-  TC_unique_dyn_array <C_string> initialStatesBitNames (initialStatesBDDbitCount COMMA_HERE) ;
+  const uint16 n_plus_p_bitsCount = outputVariablesCount + inputVariablesCount ;
+  TC_unique_dyn_array <C_string> initialStatesBitNames (n_plus_p_bitsCount COMMA_HERE) ;
   for (uint16 i=0 ; i<inputVariablesCount ; i++) {
     initialStatesBitNames (i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
   }
-  for (uint16 i=inputVariablesCount ; i<initialStatesBDDbitCount ; i++) {
+  for (uint16 i=inputVariablesCount ; i<n_plus_p_bitsCount ; i++) {
     initialStatesBitNames (i COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
   }
 //--- Compute BDD initial states
@@ -268,7 +268,7 @@ compute (C_lexique & inLexique,
   }
 //--- Display initial states BDD
   if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
-    const uint64 n = initialStatesBDD.getBDDvaluesCount (initialStatesBDDbitCount) ;
+    const uint64 n = initialStatesBDD.getBDDvaluesCount (n_plus_p_bitsCount) ;
     const uint32 nodes = initialStatesBDD.getBDDnodesCount () ;
     printf ("  %llu initial state%s (%lu node%s);\n",
             n, (n > 1) ? "s" : "",
@@ -320,9 +320,9 @@ compute (C_lexique & inLexique,
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
-      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (initialStatesBDDbitCount) ;
+      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (n_plus_p_bitsCount) ;
       const uint32 targetStateIndex = currentTransition->mTargetStateIndex.getValue () ;
-      const C_bdd targetStateBDD = stateOutputExpressionBDD (targetStateIndex COMMA_HERE).translate (initialStatesBDDbitCount, initialStatesBDDbitCount) ;
+      const C_bdd targetStateBDD = stateOutputExpressionBDD (targetStateIndex COMMA_HERE).translate (n_plus_p_bitsCount, n_plus_p_bitsCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
       currentTransition = currentTransition->getNextItem () ;
     }
@@ -335,19 +335,19 @@ compute (C_lexique & inLexique,
     index ++ ;
   }
 //--- Define transitionBDD bits names
-  const uint16 transitionsBDDbitCount = initialStatesBDDbitCount + initialStatesBDDbitCount ;
+  const uint16 transitionsBDDbitCount = n_plus_p_bitsCount + n_plus_p_bitsCount ;
   TC_unique_dyn_array <C_string> transitionBDDbitNames (transitionsBDDbitCount COMMA_HERE) ;
   for (uint16 i=0 ; i<inputVariablesCount ; i++) {
     transitionBDDbitNames (i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
   }
-  for (uint16 i=inputVariablesCount ; i<initialStatesBDDbitCount ; i++) {
+  for (uint16 i=inputVariablesCount ; i<n_plus_p_bitsCount ; i++) {
     transitionBDDbitNames (i COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
   }
   for (uint16 i=0 ; i<inputVariablesCount ; i++) {
-    transitionBDDbitNames (i+initialStatesBDDbitCount COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
+    transitionBDDbitNames (i+n_plus_p_bitsCount COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
   }
-  for (uint16 i=inputVariablesCount ; i<initialStatesBDDbitCount ; i++) {
-    transitionBDDbitNames (i+initialStatesBDDbitCount COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
+  for (uint16 i=inputVariablesCount ; i<n_plus_p_bitsCount ; i++) {
+    transitionBDDbitNames (i+n_plus_p_bitsCount COMMA_HERE) = outOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
   }
 //--- Display transitions BDD
   if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
@@ -409,6 +409,40 @@ compute (C_lexique & inLexique,
     }
   //--- Goto next state
     currentDefinition = currentDefinition->getNextItem () ;
+  }
+//----------------------------------------------------------------------- Compute accessible states
+//--- First, compute transitions set. We add to inter state transitions intra state transitions
+  C_bdd accessibilityRelation = transitionsBDD ;
+  for (sint32 i=0 ; i<stateExpressionBDD.getCount () ; i++) {
+    const C_bdd stateExpression = stateExpressionBDD (i COMMA_HERE) ;
+    const C_bdd translatedStateExpression = stateExpression.translate (n_plus_p_bitsCount, n_plus_p_bitsCount) ;
+    accessibilityRelation |= stateExpression & translatedStateExpression ;
+  }
+//--- Now, compute accessible states from initial states
+  uint16 * substitutionArray = new uint16 [n_plus_p_bitsCount + n_plus_p_bitsCount] ;
+  for (uint16 i=0 ; i<n_plus_p_bitsCount ; i++) {
+    substitutionArray [i] = (uint16) (n_plus_p_bitsCount + i) ;
+    substitutionArray [n_plus_p_bitsCount + i] = i ;
+  }
+  C_bdd accessibleStates ;
+  C_bdd newlyAccessibleStates ;
+  do{
+    accessibleStates = newlyAccessibleStates ;
+    newlyAccessibleStates |= initialStatesBDD ;
+    const C_bdd x = (newlyAccessibleStates & accessibilityRelation).substitution (substitutionArray, (uint16) (n_plus_p_bitsCount + n_plus_p_bitsCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (n_plus_p_bitsCount) ;
+  }while (! accessibleStates.isEqualToBDD (newlyAccessibleStates)) ;
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- At least, check that every state is accessible
+  for (sint32 i=0 ; i<stateExpressionBDD.getCount () ; i++) {
+    const C_bdd intersection = stateExpressionBDD (i COMMA_HERE) & accessibleStates ;
+    if (! stateExpressionBDD (i COMMA_HERE).isEqualToBDD (intersection)) {
+      C_string errorMessage ;
+      errorMessage << "state '"
+                   << outStateNameArray (i COMMA_HERE)
+                   << "' is not accessible" ;
+      mEndOfDefinition.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    }
   }
 /*      completudeTest |= actionBDD ;
       if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
