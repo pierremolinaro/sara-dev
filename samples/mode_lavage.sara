@@ -1,0 +1,18 @@
+$mode_lavage(eav1, eav2, arefix, lav)(r1, r2) :=
+  auto {
+    state etat_lavage, etat_balayage ;
+    first etat_lavage, etat_balayage ;
+    etat_lavage : ! eav1 & !eav2 & lav & r1 & !r2 {
+      !eav1 & !eav2 & !arefix & !lav & r1 & !r2 goto etat_balayage ;
+    }
+    etat_balayage : !eav1 & !eav2 & !arefix & !lav & r1 & !r2 
+{ 
+}
+ }
+;
+$modeAttenteArefix (eav1, eav2, arefix, lav)(r1, r2) := !eav1 & !eav2 & !arefix & !lav & r1 & !r2 ;
+
+$tousLesModes (eav1, eav2, arefix, lav)(r1, r2) := 
+	$mode_lavage(eav1, eav2, arefix, lav)(r1, r2) **
+	$modeAttenteArefix (eav1, eav2, arefix, lav)(r1, r2)
+;

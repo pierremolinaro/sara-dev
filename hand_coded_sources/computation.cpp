@@ -758,7 +758,7 @@ computeFromExpression (C_lexique & inLexique,
   }
 //--- Compute in right operand accessible states from intersection
   C_bdd rightAccessiblesStates ;
-  newlyAccessibleStates = ~ C_bdd () ;
+  newlyAccessibleStates = C_bdd () ;
   do{
     rightAccessiblesStates = newlyAccessibleStates ;
     newlyAccessibleStates |= intersection ;
