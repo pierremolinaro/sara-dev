@@ -382,7 +382,7 @@
 				DEPLOYMENT_LOCATION = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/cliGalgasPrefix.pch;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
@@ -453,6 +453,8 @@
 				CF0846C806637E9E009D1770,
 				CF0846C906637E9E009D1770,
 				CF0846CA06637E9E009D1770,
+				CF64C40C07B3C83B00DC23F2,
+				CF64C40D07B3C83B00DC23F2,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1568,6 +1570,46 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
+		CF64C40A07B3C83B00DC23F2 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = AC_expression.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF64C40B07B3C83B00DC23F2 = {
+			fileEncoding = 5;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = AC_machineDefinition.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		CF64C40C07B3C83B00DC23F2 = {
+			fileRef = CF64C40A07B3C83B00DC23F2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF64C40D07B3C83B00DC23F2 = {
+			fileRef = CF64C40B07B3C83B00DC23F2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF64C40E07B3C83B00DC23F2 = {
+			fileRef = CF64C40A07B3C83B00DC23F2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		CF64C40F07B3C83B00DC23F2 = {
+			fileRef = CF64C40B07B3C83B00DC23F2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		CF6702F605C072FF0065267C = {
 			fileEncoding = 5;
 			isa = PBXFileReference;
@@ -1631,6 +1673,8 @@
 				CF0846CE06637E9E009D1770,
 				CF0846CF06637E9E009D1770,
 				CF0846D006637E9E009D1770,
+				CF64C40E07B3C83B00DC23F2,
+				CF64C40F07B3C83B00DC23F2,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3057,6 +3101,8 @@
 		};
 		CFF53737057A4E9400854C83 = {
 			children = (
+				CF64C40A07B3C83B00DC23F2,
+				CF64C40B07B3C83B00DC23F2,
 				CF907D6A06119D7700A366ED,
 			);
 			isa = PBXGroup;

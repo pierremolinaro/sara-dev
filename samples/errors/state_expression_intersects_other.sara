@@ -1,8 +1,10 @@
-exemple1 := input -> output : auto {
-  state state1, state2  ;
-  first state1 ;
-  state1 : input -> output {
+exemple1 (input -> output) :=
+  auto {
+    state state1, state2  ;
+    first state1 ;
+    state1 : input -> output {
+    }
+    state2 : input -> true {
+    }
   }
-  state2 : input -> true {
-  }
-} ;
+;
