@@ -349,6 +349,7 @@ compute (C_lexique & inLexique,
       printf ("For state %s :\n", outStateNameArray (stateIndex COMMA_HERE).getStringPtr ()) ;
     }
   //--- Check that action does not intersect with state input expression
+    sint32 transitionIndex = 0 ;
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
@@ -360,8 +361,23 @@ compute (C_lexique & inLexique,
         errorMessage << "this action intersects with current state input configuration" ;
         currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
       }
+    //--- Check action does not intersect with other actions
+      GGS_L_transitionDefinition::element_type * testedTransition = currentTransition->getNextItem () ;
+      while (testedTransition != NULL) {
+        macroValidPointer (testedTransition) ;
+      //--- Compute action BDD
+        const C_bdd testedActionBDD = testedTransition->mActionExpression ()->computeBDD (0) ;
+      //--- Check action does not intersect with state input expression
+        if (! (testedActionBDD & actionBDD).isFalse ()) {
+          C_string errorMessage ;
+          errorMessage << "this action intersects with #" << transitionIndex << " previous action" ;
+          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        }
+        testedTransition = testedTransition->getNextItem () ;
+      }
     //--- Goto next transition
       currentTransition = currentTransition->getNextItem () ;
+      transitionIndex ++ ;
     }
   //--- Goto next state
     currentDefinition = currentDefinition->getNextItem () ;
