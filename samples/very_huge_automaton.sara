@@ -5,7 +5,7 @@ exemple1 (eee1, eee2, eee3, eee4, eee5, eee6, eee7, eee8, eee9, eee10,
   auto {
     state state1, state2, state3, state4, state5, state6, state7, state8, state9, state10, state11 ;
     first state1, state3, state6 ;
-    state1 : !e1 & !e2 & !e3 & !e4 & !e5 & e10 -> s1 & !s2 & !s3  {
+    state1 : !e1 & !e2 & !e3 & !e4 & !e5 & e10 & s1 & !s2 & !s3  {
       !e1 & !e2 & !e3 & !e4 & e5 & e8 & !e10 goto state2 ;
       !e1 & !e2 & !e3 & e4 & !e5 & e6 & e10 goto state3 ;
       !e1 & !e2 & !e3 & e4 & e5 & e7 goto state4;
@@ -13,65 +13,65 @@ exemple1 (eee1, eee2, eee3, eee4, eee5, eee6, eee7, eee8, eee9, eee10,
       !e1 & !e2 & e3 & e4 & !e5 & !e7 & e10 goto state7 ;
       !e1 & e2 & e3 & !e4 & !e7 & !e8 & !e10  goto state9 ;
     }                                                                                                     
-    state2 : !e1 & !e2 & !e3 & !e4 & e5 & e8 & !e10 -> !s1 & !s2 & s3{
+    state2 : !e1 & !e2 & !e3 & !e4 & e5 & e8 & !e10 & !s1 & !s2 & s3{
       !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 goto state5 ;
       !e1 & !e2 & !e3 & !e4 & !e5 & e10 goto state1;
     }
-    state3 :  !e1 & !e2 & !e3 & e4 & !e5 & e6 & e10 -> s1 & !s2 & s4 {
+    state3 :  !e1 & !e2 & !e3 & e4 & !e5 & e6 & e10 & s1 & !s2 & s4 {
       !e1 & !e2 & !e3 & !e4 & e5 & e8 & !e10 goto state2 ;
       !e1 & !e2 & e3 & e4 & !e5 & !e7 & e10 goto state7 ;
       !e1 & !e2 & e3 & !e4 & e5 & !e7 & !e9 goto state6 ;
     }
-    state4 : !e1 & !e2 & !e3 & e4 & e5 & e7 -> s1 & !s2  {
+    state4 : !e1 & !e2 & !e3 & e4 & e5 & e7 & s1 & !s2  {
       !e1 & !e2 & !e3 & !e4 & !e5 & e10 goto state1 ;
       !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 goto state5 ;
       !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 goto state8 ;
     }
-    state5 : !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 -> s1 & s2 & s3 {
+    state5 : !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 & s1 & s2 & s3 {
       !e1 & !e2 & !e3 & !e4 & !e5 & e10 & !e10 goto state1 ;
       !e1 & !e2 & e3 & !e4 & e5 & !e7 & !e9 goto state6 ;
       !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 goto state8 ;
       !e1 & !e2 & !e3 & e4 & e5 & e7 goto state4 ;
     }
-    state6 :  !e1 & !e2 & e3 & !e4 & e5 & !e7 & !e9 -> s4 & !s2 {
+    state6 :  !e1 & !e2 & e3 & !e4 & e5 & !e7 & !e9 & s4 & !s2 {
       !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 goto state5 ;
       !e1 & !e2 & !e3 & e4 & !e5 & e6 & e10 goto state3 ;
       !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 goto state8 ;
     }
-    state7 :  !e1 & !e2 & e3 & e4 & !e5 & !e7 & e10 -> s2 & !s3 & s4 {
+    state7 :  !e1 & !e2 & e3 & e4 & !e5 & !e7 & e10 & s2 & !s3 & s4 {
       !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 goto state8 ;
       !e1 & e2 & e3 & e4 & e5 & e6 & e7 & e8 & e9 & e10 goto state10 ;
       !e1 & !e2 & !e3 & e4 & !e5 & e6 & e10 goto state3 ;
     }
-    state8 :  !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 -> s1 & s4 {
+    state8 :  !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 & s1 & s4 {
       !e1 & e2 & e3 & !e4 & !e7 & !e8 & !e10 goto state9 ;
       !e1 & !e2 & e3 & !e4 & e5 & !e7 & !e9 goto state6 ;
       !e1 & !e2 & !e3 & !e4 & !e5 & e10 goto state1 ;
       e5 & e6 & !e8 & e9 & e10 goto state11 ;
       !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 goto state5 ;
     }
-    state9 :  !e1 & e2 & e3 & !e4 & !e7 & !e8 & !e10 -> !s1 & !s2 & !s4 {
+    state9 :  !e1 & e2 & e3 & !e4 & !e7 & !e8 & !e10 & !s1 & !s2 & !s4 {
       !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 goto state8 ;
       !e1 & e2 & e3 & e4 & e5 & e6 & e7 & e8 & e9 & e10 goto state10 ;
       !e1 & !e2 & e3 & e4 & !e5 & !e7 & e10 goto state7 ;
       !e1 & !e2 & e3 & !e4 & !e5 & !e8 & !e9 & !e10 goto state5 ;
       e5 & e6 & !e8 & e9 & e10 goto state11 ;
     }
-    state10 :  !e1 & e2 & e3 & e4 & e5 & e6 & e7 & e8 & e9 & e10 -> s1 & s2 & s3 & s4{
+    state10 :  !e1 & e2 & e3 & e4 & e5 & e6 & e7 & e8 & e9 & e10 & s1 & s2 & s3 & s4{
       !e1 & !e2 & e3 & e4 & !e5 & !e7 & e10 goto state7 ;
       !e1 & e2 & e3 & !e4 & !e7 & !e8 & !e10  goto state9 ;
     }
-    state11 :  e5 & e6 & !e8 & e9 & e10 -> !s1 & !s2 {
+    state11 :  e5 & e6 & !e8 & e9 & e10 & !s1 & !s2 {
       !e1 & e2 & e3 & !e4 & !e7 & !e8 & !e10 goto state9 ;
       !e1 & e2 & !e3 & !e4 & !e5 & e7 & e8 & e9 & e10 goto state8 ;
       !e1 & e2 & e3 & e4 & e5 & e6 & e7 & e8 & e9 & e10 goto state10 ;
     }
   }
-  ||
+  &
   auto {
     state statee1, statee2, statee3, statee4, statee5, statee6, statee7, statee8, statee9, statee10, statee11 ;
     first statee1, statee3, statee6 ;
-    statee1 : !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 -> ss1 & !ss2 & !ss3  {
+    statee1 : !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 & ss1 & !ss2 & !ss3  {
       !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 goto statee2 ;
       !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 goto statee3 ;
       !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 goto statee4;
@@ -79,65 +79,65 @@ exemple1 (eee1, eee2, eee3, eee4, eee5, eee6, eee7, eee8, eee9, eee10,
       !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
       !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10  goto statee9 ;
     }                                                                                                     
-    statee2 : !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 -> !ss1 & !ss2 & ss3{
+    statee2 : !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 & !ss1 & !ss2 & ss3{
       !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
       !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 goto statee1;
     }
-    statee3 :  !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 -> ss1 & !ss2 & ss4 {
+    statee3 :  !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 & ss1 & !ss2 & ss4 {
       !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 goto statee2 ;
       !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
       !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 goto statee6 ;
     }
-    statee4 : !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 -> ss1 & !ss2  {
+    statee4 : !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 & ss1 & !ss2  {
       !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 goto statee1 ;
       !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
       !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
     }
-    statee5 : !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 -> ss1 & ss2 & ss3 {
+    statee5 : !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 & ss1 & ss2 & ss3 {
       !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 & !ee10 goto statee1 ;
       !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 goto statee6 ;
       !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
       !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 goto statee4 ;
     }
-    statee6 :  !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 -> ss4 & !ss2 {
+    statee6 :  !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 & ss4 & !ss2 {
       !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
       !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 goto statee3 ;
       !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
     }
-    statee7 :  !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 -> ss2 & !ss3 & ss4 {
+    statee7 :  !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 & ss2 & !ss3 & ss4 {
       !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
       !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 goto statee10 ;
       !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 goto statee3 ;
     }
-    statee8 :  !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 -> ss1 & ss4 {
+    statee8 :  !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 & ss1 & ss4 {
       !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 goto statee9 ;
       !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 goto statee6 ;
       !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 goto statee1 ;
       ee5 & ee6 & !ee8 & ee9 & ee10 goto statee11 ;
       !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
     }
-    statee9 :  !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 -> !ss1 & !ss2 & !ss4 {
+    statee9 :  !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 & !ss1 & !ss2 & !ss4 {
       !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
       !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 goto statee10 ;
       !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
       !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
       ee5 & ee6 & !ee8 & ee9 & ee10 goto statee11 ;
     }
-    statee10 :  !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 -> ss1 & ss2 & ss3 & ss4{
+    statee10 :  !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 & ss1 & ss2 & ss3 & ss4{
       !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
       !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10  goto statee9 ;
     }
-    statee11 :  ee5 & ee6 & !ee8 & ee9 & ee10 -> !ss1 & !ss2 {
+    statee11 :  ee5 & ee6 & !ee8 & ee9 & ee10 & !ss1 & !ss2 {
       !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 goto statee9 ;
       !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
       !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 goto statee10 ;
     }
   }
-  ||
+  &
   auto {
     state state1, state2, state3, state4, state5, state6, state7, state8, state9, state10, state11 ;
     first state1, state3, state6 ;
-    state1 : !eee1 & !eee2 & !eee3 & !eee4 & !eee5 & eee10 -> sss1 & !sss2 & !sss3  {
+    state1 : !eee1 & !eee2 & !eee3 & !eee4 & !eee5 & eee10 & sss1 & !sss2 & !sss3  {
       !eee1 & !eee2 & !eee3 & !eee4 & eee5 & eee8 & !eee10 goto state2 ;
       !eee1 & !eee2 & !eee3 & eee4 & !eee5 & eee6 & eee10 goto state3 ;
       !eee1 & !eee2 & !eee3 & eee4 & eee5 & eee7 goto state4;
@@ -145,55 +145,55 @@ exemple1 (eee1, eee2, eee3, eee4, eee5, eee6, eee7, eee8, eee9, eee10,
       !eee1 & !eee2 & eee3 & eee4 & !eee5 & !eee7 & eee10 goto state7 ;
       !eee1 & eee2 & eee3 & !eee4 & !eee7 & !eee8 & !eee10  goto state9 ;
     }                                                                                                     
-    state2 : !eee1 & !eee2 & !eee3 & !eee4 & eee5 & eee8 & !eee10 -> !sss1 & !sss2 & sss3{
+    state2 : !eee1 & !eee2 & !eee3 & !eee4 & eee5 & eee8 & !eee10 & !sss1 & !sss2 & sss3{
       !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 goto state5 ;
       !eee1 & !eee2 & !eee3 & !eee4 & !eee5 & eee10 goto state1;
     }
-    state3 :  !eee1 & !eee2 & !eee3 & eee4 & !eee5 & eee6 & eee10 -> sss1 & !sss2 & sss4 {
+    state3 :  !eee1 & !eee2 & !eee3 & eee4 & !eee5 & eee6 & eee10 & sss1 & !sss2 & sss4 {
       !eee1 & !eee2 & !eee3 & !eee4 & eee5 & eee8 & !eee10 goto state2 ;
       !eee1 & !eee2 & eee3 & eee4 & !eee5 & !eee7 & eee10 goto state7 ;
       !eee1 & !eee2 & eee3 & !eee4 & eee5 & !eee7 & !eee9 goto state6 ;
     }
-    state4 : !eee1 & !eee2 & !eee3 & eee4 & eee5 & eee7 -> sss1 & !sss2  {
+    state4 : !eee1 & !eee2 & !eee3 & eee4 & eee5 & eee7 & sss1 & !sss2  {
       !eee1 & !eee2 & !eee3 & !eee4 & !eee5 & eee10 goto state1 ;
       !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 goto state5 ;
       !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
     }
-    state5 : !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 -> sss1 & sss2 & sss3 {
+    state5 : !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 & sss1 & sss2 & sss3 {
       !eee1 & !eee2 & !eee3 & !eee4 & !eee5 & eee10 & !eee10 goto state1 ;
       !eee1 & !eee2 & eee3 & !eee4 & eee5 & !eee7 & !eee9 goto state6 ;
       !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
       !eee1 & !eee2 & !eee3 & eee4 & eee5 & eee7 goto state4 ;
     }
-    state6 :  !eee1 & !eee2 & eee3 & !eee4 & eee5 & !eee7 & !eee9 -> sss4 & !sss2 {
+    state6 :  !eee1 & !eee2 & eee3 & !eee4 & eee5 & !eee7 & !eee9 & sss4 & !sss2 {
       !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 goto state5 ;
       !eee1 & !eee2 & !eee3 & eee4 & !eee5 & eee6 & eee10 goto state3 ;
       !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
     }
-    state7 :  !eee1 & !eee2 & eee3 & eee4 & !eee5 & !eee7 & eee10 -> sss2 & !sss3 & sss4 {
+    state7 :  !eee1 & !eee2 & eee3 & eee4 & !eee5 & !eee7 & eee10 & sss2 & !sss3 & sss4 {
       !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
       !eee1 & eee2 & eee3 & eee4 & eee5 & eee6 & eee7 & eee8 & eee9 & eee10 goto state10 ;
       !eee1 & !eee2 & !eee3 & eee4 & !eee5 & eee6 & eee10 goto state3 ;
     }
-    state8 :  !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 -> sss1 & sss4 {
+    state8 :  !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 & sss1 & sss4 {
       !eee1 & eee2 & eee3 & !eee4 & !eee7 & !eee8 & !eee10 goto state9 ;
       !eee1 & !eee2 & eee3 & !eee4 & eee5 & !eee7 & !eee9 goto state6 ;
       !eee1 & !eee2 & !eee3 & !eee4 & !eee5 & eee10 goto state1 ;
       eee5 & eee6 & !eee8 & eee9 & eee10 goto state11 ;
       !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 goto state5 ;
     }
-    state9 :  !eee1 & eee2 & eee3 & !eee4 & !eee7 & !eee8 & !eee10 -> !sss1 & !sss2 & !sss4 {
+    state9 :  !eee1 & eee2 & eee3 & !eee4 & !eee7 & !eee8 & !eee10 & !sss1 & !sss2 & !sss4 {
       !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
       !eee1 & eee2 & eee3 & eee4 & eee5 & eee6 & eee7 & eee8 & eee9 & eee10 goto state10 ;
       !eee1 & !eee2 & eee3 & eee4 & !eee5 & !eee7 & eee10 goto state7 ;
       !eee1 & !eee2 & eee3 & !eee4 & !eee5 & !eee8 & !eee9 & !eee10 goto state5 ;
       eee5 & eee6 & !eee8 & eee9 & eee10 goto state11 ;
     }
-    state10 :  !eee1 & eee2 & eee3 & eee4 & eee5 & eee6 & eee7 & eee8 & eee9 & eee10 -> sss1 & sss2 & sss3 & sss4{
+    state10 :  !eee1 & eee2 & eee3 & eee4 & eee5 & eee6 & eee7 & eee8 & eee9 & eee10 & sss1 & sss2 & sss3 & sss4{
       !eee1 & !eee2 & eee3 & eee4 & !eee5 & !eee7 & eee10 goto state7 ;
       !eee1 & eee2 & eee3 & !eee4 & !eee7 & !eee8 & !eee10  goto state9 ;
     }
-    state11 :  eee5 & eee6 & !eee8 & eee9 & eee10 -> !sss1 & !sss2 {
+    state11 :  eee5 & eee6 & !eee8 & eee9 & eee10 & !sss1 & !sss2 {
       !eee1 & eee2 & eee3 & !eee4 & !eee7 & !eee8 & !eee10 goto state9 ;
       !eee1 & eee2 & !eee3 & !eee4 & !eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
       !eee1 & eee2 & eee3 & eee4 & eee5 & eee6 & eee7 & eee8 & eee9 & eee10 goto state10 ;
