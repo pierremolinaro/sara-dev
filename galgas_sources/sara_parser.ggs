@@ -1,614 +1,88 @@
-#---------------------------------------------------------------------------*#                                                                           *#   L E X I Q U E                                                           *#                                                                           *#---------------------------------------------------------------------------*
-lexique sara_scanner :header "galgas/lexical_actions.h" ;@lstring identifierString ;@luint ulongValue ;
+#---------------------------------------------------------------------------*#                                                                           *#   L E X I Q U E                                                           *#                                                                           *#---------------------------------------------------------------------------*lexique sara_scanner :header "galgas/lexical_actions.h" ;@lstring identifierString ;@luint ulongValue ;style identifier -> "Identifiers" ;style keyWords -> "Key words" ;
+style machineNameStyle -> "Machine names" ;style delimitors -> "Delimitors" ;style integer_csts -> "Integer constants" ; # -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "last", "goto", "timer", "all", "none", "check" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
 
-style identifier -> "Identifiers" ;
-style keyWords -> "Key words" ;
-style delimitors -> "Delimitors" ;
-style integer_csts -> "Integer constants" ;
-# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ; 
+# -------------------------- Delimitors -------------------------------
+list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "%" ;rule list delimitorsList ;
 
-list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "last", "goto", "timer", "all", "none", "check" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "%", "$" -> $dollar$ ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_variablesMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
+# -------------------------- Machine name -----------------------------
 
+$machineIdf$ ! identifierString error message "a machine name ($...)" style machineNameStyle ;
+
+message incorrectMachineNameBeginning : "incorrect machine name beginning" ;
+
+rule '$' :
+  select
+  when 'a'->'z' | 'A'->'Z' | '_' :
+    repeat
+      enterCharacterIntoString (identifierString, *) ;
+    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end repeat ;
+  default
+    error incorrectMachineNameBeginning ;
+  end select ;
+  send $machineIdf$ ; 
+end rule ;
+
+#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;
+message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;
+
+#------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_variablesMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
 #---------------------------------------------------------------------------*  abstract class @AC_expression    include header ;  end class ;
-
-  class @C_andExpression extends @AC_expression
-    @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_orExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_xorExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_impliesExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_equalExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_notExpression extends @AC_expression     @AC_expression mExpression ;  end class ;      class @C_VariableExpression extends @AC_expression     @luint mInputVarIndex ;  end class ;
-
+  class @C_andExpression extends @AC_expression    @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_orExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_xorExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_impliesExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_equalExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_notExpression extends @AC_expression     @AC_expression mExpression ;  end class ;      class @C_VariableExpression extends @AC_expression     @luint mInputVarIndex ;  end class ;
   class @C_trueExpression extends @AC_expression   end class ;
-
   class @C_falseExpression extends @AC_expression   end class ;
-
 #---------------------------------------------------------------------------*
-
-  list @L_transitionDefinition
-    @AC_expression mActionExpression ;
-    @location mEndOfExpression ;
-    @luint mTargetStateIndex ;
-  end list ;
-  list @L_stateDefinition
-    @luint mStateIndex ;
-    @AC_expression mStateExpression ;
-    @location mEndOfStateExpression ;
-    @L_transitionDefinition mTransitionsList ;
-  end list ;
-
-#---------------------------------------------------------------------------*
-
-list @L_statesDefinitionList
-  @luint mStateIndex ;  @location mStateLocation ;end list ;
-
-#---------------------------------------------------------------------------*
-
+  list @L_transitionDefinition    @AC_expression mActionExpression ;    @location mEndOfExpression ;    @luint mTargetStateIndex ;  end list ;  list @L_stateDefinition    @luint mStateIndex ;    @AC_expression mStateExpression ;    @location mEndOfStateExpression ;    @L_transitionDefinition mTransitionsList ;  end list ;#---------------------------------------------------------------------------*
+list @L_statesDefinitionList  @luint mStateIndex ;  @location mStateLocation ;end list ;#---------------------------------------------------------------------------*
 abstract class @AC_machineDefinition  include header ; end class ;
-
-list @L_translationVector
-  @luint mTargetSlot ;
-end list ;
-  class @C_importMachine extends @AC_machineDefinition
-  @uint mIndexOfImportedMachine ;
-  @L_translationVector mTranslationVector ;end class ;
-
-class @C_explicitAutomatonDefinition extends @AC_machineDefinition
-  @M_stateMap mStatesMap ;
-  @L_statesDefinitionList mInitialStatesDefinitionList ;
-  @L_statesDefinitionList mTerminalStatesDefinitionList ;
-  @L_stateDefinition mStateDefinitionList ;
-  @location mEndOfDefinition ;
-end class ;
-
-class @C_variableDefinition extends @AC_machineDefinition
-  @luint mInputOutputVariableIndex ;
-end class ;
-
-class @C_existsDefinition extends @AC_machineDefinition
-  @uint mPreviousVariableCount ;
-  @uint mTotalVariableCount ;
-  @AC_machineDefinition mOperand ;
-end class ;
-
-class @C_andComposition extends @AC_machineDefinition
-  @AC_machineDefinition mLeftOperand ;
-  @AC_machineDefinition mRightOperand ;
-end class ;
-
-class @C_orComposition extends @AC_machineDefinition
-  @AC_machineDefinition mLeftOperand ;
-  @AC_machineDefinition mRightOperand ;
-end class ;
-
-class @C_equalComposition extends @AC_machineDefinition
-  @AC_machineDefinition mLeftOperand ;
-  @AC_machineDefinition mRightOperand ;
-end class ;
-
-class @C_xorComposition extends @AC_machineDefinition
-  @AC_machineDefinition mLeftOperand ;
-  @AC_machineDefinition mRightOperand ;
-end class ;
-
-class @C_impliesComposition extends @AC_machineDefinition
-  @AC_machineDefinition mLeftOperand ;
-  @AC_machineDefinition mRightOperand ;
-end class ;
-
-class @C_modalComposition extends @AC_machineDefinition
-  @AC_machineDefinition mLeftOperand ;
-  @location mErrorLocation ;
-  @AC_machineDefinition mRightOperand ;
-end class ;
-
-class @C_notComposition extends @AC_machineDefinition
-  @AC_machineDefinition mOperand ;
-end class ;
-
-class @C_fullSaturationOperation extends @AC_machineDefinition
-  @AC_machineDefinition mOperand ;
-end class ;
-
-class @C_saturationOperation extends @AC_machineDefinition
-  @AC_machineDefinition mOperand ;
-end class ;
+list @L_translationVector  @luint mTargetSlot ;end list ;  class @C_importMachine extends @AC_machineDefinition  @uint mIndexOfImportedMachine ;  @L_translationVector mTranslationVector ;end class ;
+class @C_explicitAutomatonDefinition extends @AC_machineDefinition  @M_stateMap mStatesMap ;  @L_statesDefinitionList mInitialStatesDefinitionList ;  @L_statesDefinitionList mTerminalStatesDefinitionList ;  @L_stateDefinition mStateDefinitionList ;  @location mEndOfDefinition ;end class ;
+class @C_variableDefinition extends @AC_machineDefinition  @luint mInputOutputVariableIndex ;end class ;
+class @C_existsDefinition extends @AC_machineDefinition  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;end class ;
+class @C_andComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+class @C_orComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+class @C_equalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+class @C_xorComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+class @C_impliesComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+class @C_modalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
+class @C_notComposition extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+class @C_fullSaturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+class @C_saturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+#---------------------------------------------------------------------------*
+abstract class @AC_job  include header ;end class ; class @C_machineCheck extends @AC_job  @luint mMachineIndex ;end class ;
+class @C_machineComponent extends @AC_job  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;end class ;
+#---------------------------------------------------------------------------*
+list @L_jobList  @AC_job mComponent ;end list ;#---------------------------------------------------------------------------*
+map @M_machinesMap  insert insertKey error message "the '" . * . "' machine has been already declared" ;  search searchKey error message "the '" . * . "' machine is not defined" ;  key @lstring ;  @uint mInputVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;end map ;#---------------------------------------------------------------------------*end semantics ;#---------------------------------------------------------------------------*#                                                                           *#   S Y N T A X                                                             *#                                                                           *#---------------------------------------------------------------------------*syntax sara_parser :import lexique sara_scanner ;import semantics sara_semantics ;rule <start_symbol> ;rule <explicit_automaton>  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList;rule <io_expression>  ?!@M_variablesMap ioVarMap  !@AC_expression outExpression;rule <io_and_expression>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression;rule <io_primary>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression;action performComputations  ?!@L_jobList ioJobList;#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [empty] ;  @M_machinesMap machinesMap [empty] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !? componentsMap ;end rule ; #---------------------------------------------------------------------------*
+rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [empty] ;  @M_stateMap statesMap [empty] ;  @L_stateDefinition stateDefinitionList [empty] ;#--- Machine name  $check$ ;  @lstring machineName ;  $machineIdf$ ? machineName ;  $;$ ;#--- Insert machine into machine map  @luint machineIndex ;  search ioMachinesMap.searchKey machineName (...) -> machineIndex ;#--- Insert into component map  @AC_job job := [@C_machineCheck new !machineIndex] ; ioJobList += !job ;end rule ;
+#---------------------------------------------------------------------------*
+rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [empty] ;  @M_stateMap statesMap [empty] ;  @L_stateDefinition stateDefinitionList [empty] ;#--- Machine name  @lstring machineName ;  $machineIdf$ ? machineName ;  $($ ;#--- Parse input variables  repeat    @lstring inputVarName ;    $identifier$ ? inputVarName ;    insert variablesMap.insertKey inputVarName () ;  while    $,$ ;  end repeat ;  @uint inputVariablesCount := [variablesMap length] ;#--- Parse output variables  $)$ ;  $($ ;  repeat    @lstring outputVarName ;    $identifier$ ? outputVarName ;    insert variablesMap.insertKey outputVarName () ;  while    $,$ ;  end repeat ;  $)$ ;  $:=$ ;#--- Machine definition  @AC_machineDefinition definition ;  <definition_expression> !?ioMachinesMap !?variablesMap ?definition ;#--- Insert machine into machine map  @luint machineIndex ;  insert ioMachinesMap.insertKey machineName (!inputVariablesCount !variablesMap !definition) -> machineIndex ;#--- Insert into component map  @AC_job machine := [@C_machineComponent new !machineName !machineIndex !inputVariablesCount !variablesMap !definition] ; ioJobList += !machine ;  $;$ ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_expression>  ?!@M_variablesMap ioVarMap  !@AC_expression outExpression:  <io_and_expression> !?ioVarMap ? outExpression ;  repeat  while    $|$ ;    @AC_expression rightExpression ;    <io_and_expression>  !? ioVarMap ? rightExpression ;    outExpression := [@C_orExpression new ! outExpression ! rightExpression] ;  while    $^$ ;    @AC_expression rightExpression ;    <io_and_expression>  !? ioVarMap ? rightExpression ;    outExpression := [@C_xorExpression new ! outExpression ! rightExpression] ;  while    $->$ ;    @AC_expression rightExpression ;    <io_and_expression> !? ioVarMap ? rightExpression ;    outExpression := [@C_impliesExpression new ! outExpression ! rightExpression] ;  while    $=$ ;    @AC_expression rightExpression ;    <io_and_expression> !? ioVarMap ? rightExpression ;    outExpression := [@C_equalExpression new ! outExpression ! rightExpression] ;  end repeat ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_and_expression>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression:  <io_primary>  !? ioVarMap ? outExpression ;  repeat  while    $&$ ;    @AC_expression rightExpression ;    <io_primary> !? ioVarMap ? rightExpression ;    outExpression := [@C_andExpression new ! outExpression !rightExpression] ;  end repeat ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_primary>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression:  $($ ;  <io_expression> !? ioVarMap ? outExpression ;  $)$ ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_primary>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression:  @lstring inputVarName ;  $identifier$ ? inputVarName ;  @luint inputVarIndex ;  search ioVarMap.searchKey inputVarName () -> inputVarIndex ;  outExpression := [@C_VariableExpression new !inputVarIndex] ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_primary>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression:  $!$ ;  @AC_expression expression ;  <io_primary>  !?ioVarMap ? expression ;  outExpression := [@C_notExpression new ! expression] ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_primary>   ?!@M_variablesMap unused ioVarMap  !@AC_expression outExpression:  $none$ ;  outExpression := [@C_falseExpression new] ;end rule ;
+#---------------------------------------------------------------------------*
+rule <io_primary>   ?!@M_variablesMap unused ioVarMap  !@AC_expression outExpression:  $all$ ;  outExpression := [@C_trueExpression new] ;end rule ;
+#---------------------------------------------------------------------------*#         DEFINITION EXPRESSION                                             *#---------------------------------------------------------------------------*
+rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_term> !?ioMachinesMap !?variablesMap ?outDefinition ;  repeat  while    $|$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_orComposition new !leftOperand !rightOperand] ;  while    $^$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_xorComposition new !leftOperand !rightOperand] ;  while    $->$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_impliesComposition new !leftOperand !rightOperand] ;  while    $=$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;    outDefinition := [@C_equalComposition new !leftOperand !rightOperand] ;  end repeat ;end rule ;#---------------------------------------------------------------------------*
+rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_factor> !?ioMachinesMap !? variablesMap ?outDefinition ;  repeat  while    $*$ ;    @location errorLocation := here ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_modalComposition new !leftOperand !errorLocation !rightOperand] ;  while    $&$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_andComposition new !leftOperand !rightOperand] ;  end repeat ;end rule ;#---------------------------------------------------------------------------*
+rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  select    <explicit_automaton> !?variablesMap ?outDefinition ;  or    $($ ;    <definition_expression> !?ioMachinesMap !? variablesMap ?outDefinition ;    $)$ ;  or    @M_variablesMap extendedVariablesMap := variablesMap ;    @uint previousVariableCount := [extendedVariablesMap length] ;    $?$ ;    repeat      @lstring variableName ;      $identifier$ ? variableName ;      insert extendedVariablesMap.insertKey variableName () ;    while      $,$ ;    end repeat ;    @uint actualVariableCount := [extendedVariablesMap length] ;    $($ ;    @AC_machineDefinition def ;    <definition_expression> !?ioMachinesMap !?extendedVariablesMap ?def ;    $)$ ;    outDefinition := [@C_existsDefinition new !previousVariableCount !actualVariableCount !def] ;  or    $!$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_notComposition new !def] ;  or    $@$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_fullSaturationOperation new !def] ;  or    $%$ ;    @AC_machineDefinition def ;    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;    outDefinition := [@C_saturationOperation new !def] ;  or    @lstring variableName ;    $identifier$ ? variableName ;    @luint varIndex ;    search variablesMap.searchKey variableName () -> varIndex ;    outDefinition := [@C_variableDefinition new ! varIndex] ;  end select ;end rule ;
 
 #---------------------------------------------------------------------------*
-
-abstract class @AC_job  include header ;end class ;
- class @C_machineCheck extends @AC_job
-  @luint mMachineIndex ;end class ;
-
-class @C_machineComponent extends @AC_job
-  @lstring mMachineName ;
-  @luint mMachineIndex ;  @uint mInputVariableCount ;  @M_variablesMap mVariablesMap ;
-  @AC_machineDefinition mDefinition ;end class ;
-
-#---------------------------------------------------------------------------*
-
-list @L_jobList  @AC_job mComponent ;end list ;
-
-#---------------------------------------------------------------------------*
-
-map @M_machinesMap  insert insertKey error message "the '" . * . "' machine has been already declared" ;  search searchKey error message "the '" . * . "' machine is not defined" ;  key @lstring ;
-  @uint mInputVariableCount ;  @M_variablesMap mVariablesMap ;
-  @AC_machineDefinition mDefinition ;end map ;
-
-#---------------------------------------------------------------------------*
-end semantics ;#---------------------------------------------------------------------------*#                                                                           *#   S Y N T A X                                                             *#                                                                           *#---------------------------------------------------------------------------*syntax sara_parser :import lexique sara_scanner ;import semantics sara_semantics ;rule <start_symbol> ;
-
-rule <explicit_automaton>
-  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition
-;
-
-rule <definition_expression>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition
-;
-
-rule <definition_expression_term>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition
-;
-
-rule <definition_expression_factor>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition
-;
-
-rule <component>
-  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList;
-
-rule <io_expression>
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-;
-
-rule <io_and_expression> 
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-;
-
-rule <io_primary> 
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-;
-
-action performComputations  ?!@L_jobList ioJobList;
-
-#---------------------------------------------------------------------------*
-rule <start_symbol>:
-  @L_jobList componentsMap [empty] ;
-  @M_machinesMap machinesMap [empty] ;  repeat
-    <component> !?machinesMap !?componentsMap ;
-  while
-  end repeat ;
-  action performComputations !? componentsMap ;end rule ;
- #---------------------------------------------------------------------------*
-
-rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList
-:  @M_variablesMap variablesMap [empty] ;  @M_stateMap statesMap [empty] ;
-  @L_stateDefinition stateDefinitionList [empty] ;
-#--- Machine name
-  $check$ ;
-  $dollar$ ;
-  @lstring machineName ;
-  $identifier$ ? machineName ;
-  $;$ ;
-#--- Insert machine into machine map
-  @luint machineIndex ;
-  search ioMachinesMap.searchKey machineName (...) -> machineIndex ;
-#--- Insert into component map
-  @AC_job job := [@C_machineCheck new !machineIndex] ;
- ioJobList += !job ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList
-:  @M_variablesMap variablesMap [empty] ;  @M_stateMap statesMap [empty] ;
-  @L_stateDefinition stateDefinitionList [empty] ;
-#--- Machine name
-  $dollar$ ;
-  @lstring machineName ;
-  $identifier$ ? machineName ;
-  $($ ;
-#--- Parse input variables
-  repeat    @lstring inputVarName ;    $identifier$ ? inputVarName ;
-    insert variablesMap.insertKey inputVarName () ;
-  while
-    $,$ ;
-  end repeat ;
-  @uint inputVariablesCount := [variablesMap length] ;
-#--- Parse output variables
-  $)$ ;
-  $($ ;
-  repeat    @lstring outputVarName ;    $identifier$ ? outputVarName ;
-    insert variablesMap.insertKey outputVarName () ;
-  while
-    $,$ ;
-  end repeat ;
-  $)$ ;
-  $:=$ ;
-#--- Machine definition
-  @AC_machineDefinition definition ;  <definition_expression> !?ioMachinesMap !?variablesMap ?definition ;#--- Insert machine into machine map
-  @luint machineIndex ;
-  insert ioMachinesMap.insertKey machineName (!inputVariablesCount !variablesMap !definition) -> machineIndex ;
-#--- Insert into component map
-  @AC_job machine := [@C_machineComponent new !machineName !machineIndex !inputVariablesCount !variablesMap !definition] ;
- ioJobList += !machine ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_expression>
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-:
-  <io_and_expression> !?ioVarMap ? outExpression ;
-  repeat
-  while
-    $|$ ;
-    @AC_expression rightExpression ;
-    <io_and_expression>  !? ioVarMap ? rightExpression ;
-    outExpression := [@C_orExpression new ! outExpression ! rightExpression] ;
-  while
-    $^$ ;
-    @AC_expression rightExpression ;
-    <io_and_expression>  !? ioVarMap ? rightExpression ;
-    outExpression := [@C_xorExpression new ! outExpression ! rightExpression] ;
-  while
-    $->$ ;
-    @AC_expression rightExpression ;
-    <io_and_expression> !? ioVarMap ? rightExpression ;
-    outExpression := [@C_impliesExpression new ! outExpression ! rightExpression] ;
-  while
-    $=$ ;
-    @AC_expression rightExpression ;
-    <io_and_expression> !? ioVarMap ? rightExpression ;
-    outExpression := [@C_equalExpression new ! outExpression ! rightExpression] ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_and_expression> 
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-:
-  <io_primary>  !? ioVarMap ? outExpression ;
-  repeat
-  while
-    $&$ ;
-    @AC_expression rightExpression ;
-    <io_primary> !? ioVarMap ? rightExpression ;
-    outExpression := [@C_andExpression new ! outExpression !rightExpression] ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_primary> 
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-:
-  $($ ;
-  <io_expression> !? ioVarMap ? outExpression ;
-  $)$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_primary> 
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-:
-  @lstring inputVarName ;
-  $identifier$ ? inputVarName ;
-  @luint inputVarIndex ;
-  search ioVarMap.searchKey inputVarName () -> inputVarIndex ;
-  outExpression := [@C_VariableExpression new !inputVarIndex] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_primary> 
-  ?!@M_variablesMap ioVarMap
-  !@AC_expression outExpression
-:
-  $!$ ;
-  @AC_expression expression ;
-  <io_primary>  !?ioVarMap ? expression ;
-  outExpression := [@C_notExpression new ! expression] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_primary> 
-  ?!@M_variablesMap unused ioVarMap
-  !@AC_expression outExpression
-:
-  $none$ ;
-  outExpression := [@C_falseExpression new] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <io_primary> 
-  ?!@M_variablesMap unused ioVarMap
-  !@AC_expression outExpression
-:
-  $all$ ;
-  outExpression := [@C_trueExpression new] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#         DEFINITION EXPRESSION                                             *
-#---------------------------------------------------------------------------*
-
-rule <definition_expression>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition
-:
-  <definition_expression_term> !?ioMachinesMap !?variablesMap ?outDefinition ;
-  repeat
-  while
-    $|$ ;
-    @AC_machineDefinition leftOperand := outDefinition ;
-    @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;
-    outDefinition := [@C_orComposition new !leftOperand !rightOperand] ;
-  while
-    $^$ ;
-    @AC_machineDefinition leftOperand := outDefinition ;
-    @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;
-    outDefinition := [@C_xorComposition new !leftOperand !rightOperand] ;
-  while
-    $->$ ;
-    @AC_machineDefinition leftOperand := outDefinition ;
-    @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;
-    outDefinition := [@C_impliesComposition new !leftOperand !rightOperand] ;
-  while
-    $=$ ;
-    @AC_machineDefinition leftOperand := outDefinition ;
-    @AC_machineDefinition rightOperand ;
-    <definition_expression_term> !?ioMachinesMap !?variablesMap ?rightOperand ;
-    outDefinition := [@C_equalComposition new !leftOperand !rightOperand] ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <definition_expression_term>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition
-:
-  <definition_expression_factor> !?ioMachinesMap !? variablesMap ?outDefinition ;
-  repeat
-  while
-    $*$ ;
-    @location errorLocation := here ;
-    @AC_machineDefinition leftOperand := outDefinition ;
-    @AC_machineDefinition rightOperand ;
-    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;
-    outDefinition := [@C_modalComposition new !leftOperand !errorLocation !rightOperand] ;
-  while
-    $&$ ;
-    @AC_machineDefinition leftOperand := outDefinition ;
-    @AC_machineDefinition rightOperand ;
-    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?rightOperand ;
-    outDefinition := [@C_andComposition new !leftOperand !rightOperand] ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <definition_expression_factor>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition
-:
-  select
-    <explicit_automaton> !?variablesMap ?outDefinition ;
-  or
-    $($ ;
-    <definition_expression> !?ioMachinesMap !? variablesMap ?outDefinition ;
-    $)$ ;
-  or
-    @M_variablesMap extendedVariablesMap := variablesMap ;
-    @uint previousVariableCount := [extendedVariablesMap length] ;
-    $?$ ;
-    repeat
-      @lstring variableName ;
-      $identifier$ ? variableName ;
-      insert extendedVariablesMap.insertKey variableName () ;
-    while
-      $,$ ;
-    end repeat ;
-    @uint actualVariableCount := [extendedVariablesMap length] ;
-    $($ ;
-    @AC_machineDefinition def ;
-    <definition_expression> !?ioMachinesMap !?extendedVariablesMap ?def ;
-    $)$ ;
-    outDefinition := [@C_existsDefinition new !previousVariableCount !actualVariableCount !def] ;
-  or
-    $!$ ;
-    @AC_machineDefinition def ;
-    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;
-    outDefinition := [@C_notComposition new !def] ;
-  or
-    $@$ ;
-    @AC_machineDefinition def ;
-    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;
-    outDefinition := [@C_fullSaturationOperation new !def] ;
-  or
-    $%$ ;
-    @AC_machineDefinition def ;
-    <definition_expression_factor> !?ioMachinesMap !? variablesMap ?def ;
-    outDefinition := [@C_saturationOperation new !def] ;
-  or
-    @lstring variableName ;
-    $identifier$ ? variableName ;
-    @luint varIndex ;
-    search variablesMap.searchKey variableName () -> varIndex ;
-    outDefinition := [@C_variableDefinition new ! varIndex] ;
-  end select ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <definition_expression_factor>
-  ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap ioVarMap  !@AC_machineDefinition outDefinition
-:
-  $dollar$ ;
-  @lstring machineIdentifier ;
-  $identifier$ ? machineIdentifier ;
-  @uint machineInputVariableCount ;  @M_variablesMap machineVariablesMap ;
-  @luint indexOfImportedMachine ;
-  search ioMachinesMap.searchKey machineIdentifier (?machineInputVariableCount ?machineVariablesMap ?*) -> indexOfImportedMachine ;
-  @L_translationVector translationVector [empty] ;
-  $($ ;
-  repeat
-    @lstring inputVar ;
-    $identifier$ ? inputVar ;
-    @luint inputVarIndex ;
-    search ioVarMap.searchKey inputVar () -> inputVarIndex ;
-    translationVector += !inputVarIndex ;
-  while
-    $,$ ;
-  end repeat ;
-  $)$ ;
-  @uint inputVariablesCount := [translationVector length] ;
-  if inputVariablesCount != machineInputVariableCount then
-    error here : "The '$" . [machineIdentifier value] . "' machine defines " . [machineInputVariableCount string]
-    . " input variable(s), but this operand defines " . [inputVariablesCount string] . " input variable(s)" ;
-  end if ;
-  $($ ;
-  repeat
-    @lstring outputVar ;
-    $identifier$ ? outputVar ;
-    @luint outputVarIndex ;
-    search ioVarMap.searchKey outputVar () -> outputVarIndex ;
-    translationVector += !outputVarIndex ;
-  while
-    $,$ ;
-  end repeat ;
-  $)$ ;
-  @uint allVariablesCount := [translationVector length] ;
-  @uint machineAllVariablesCount := [machineVariablesMap length] ;
-  if allVariablesCount != machineAllVariablesCount then
-    error here : "The '$" . [machineIdentifier value] . "' machine defines " . [machineAllVariablesCount string]
-    . " variables, but this operand defines " . [allVariablesCount string] . " variables" ;
-  end if ;
-  outDefinition := [@C_importMachine new ![indexOfImportedMachine value] !translationVector] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#         EXPLICIT AUTOMATON                                                *
-#---------------------------------------------------------------------------*
-
-rule <explicit_automaton>
-  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition
-:
-  @M_stateMap statesMap [empty] ;
-  @L_stateDefinition stateDefinitionList [empty] ;
-  $auto$ ;
-  ${$ ;
-#--- States declaration
-  $state$ ;
-  repeat    @lstring stateName ;    $identifier$ ? stateName ;
-    insert statesMap.insertKey stateName () ;
-  while
-    $,$ ;
-  end repeat ;
-  $;$ ;
-#--- Initial states
-  @L_statesDefinitionList initialStatesDefinitionList [empty] ;
-  $first$ ;
-  repeat
-    @lstring initialState ;    $identifier$ ? initialState ;
-    @luint initialStateIndex ;
-    search statesMap.searchKey initialState () -> initialStateIndex ;
-    initialStatesDefinitionList += !initialStateIndex !here ;
-  while
-    $,$ ;
-  end repeat ;
-  $;$ ;
-#--- terminal states
-  @L_statesDefinitionList terminalStatesDefinitionList [empty] ;
-  select
-  or
-    $last$ ;
-    repeat
-      @lstring terminalState ;      $identifier$ ? terminalState ;
-      @luint terminalStateIndex ;
-      search statesMap.searchKey terminalState () -> terminalStateIndex ;
-      terminalStatesDefinitionList += ! terminalStateIndex !here ;
-    while
-      $,$ ;
-    end repeat ;
-    $;$ ;
-  end select ;
-#--- Parse state definitions
-  @M_stateMap stateDefinitionMap [empty] ;
-  repeat
-  #--- Current state
-    @lstring stateName ;    $identifier$ ? stateName ;
-    @luint stateIndex ;
-    search statesMap.searchKey stateName () -> stateIndex ;
-    insert stateDefinitionMap.defineState stateName () ;
-    $:$ ;
-  #--- State input expression
-    @AC_expression stateExpression ;
-    <io_expression> !?variablesMap ?stateExpression ;
-    @location endOfStateExpression := here ;
-    ${$ ;
-  #--- Parse state transition
-    @L_transitionDefinition transitionsList [empty] ;
-    repeat
-    while
-      @AC_expression transitionInputExpression ;
-      <io_expression>  !?variablesMap ?transitionInputExpression ;
-      @location endOfExpression := here ;
-      $goto$ ;
-      @lstring targetStateName ;      $identifier$ ? targetStateName ;
-      @luint targetStateIndex ;
-      search statesMap.searchKey targetStateName () -> targetStateIndex ;
-      transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex ;
-      $;$ ;
-    end repeat ;
-    $}$ ;
-    stateDefinitionList += !stateIndex !stateExpression !endOfStateExpression
-                           !transitionsList ;
-  while
-  end repeat ;
-#--- Check all states are defined
-  foreach map statesMap ??@lstring kStateName () :
-    if not [stateDefinitionMap hasKey ! kStateName] then
-      error here : "'" . [kStateName value] . "' state is not described" ;
-    end if ;
-  end foreach ;
-#--- End of input source
-  $}$ ;
-  outDefinition := [@C_explicitAutomatonDefinition new !statesMap !initialStatesDefinitionList !terminalStatesDefinitionList !stateDefinitionList !here] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-end syntax ;#---------------------------------------------------------------------------*#                                                                           *#   C O M M A N D    L I N E    O P T I O N S                               *#                                                                           *#---------------------------------------------------------------------------*
-option sara_cli_options :
-  @bool displayBDDvaluesCount : 'c', "display-bdd-values-count" -> "displays values count for every BDD" ;
-  @bool displayBDDvalues : 'v', "display-bdd-values" -> "displays values for every BDD" ;
-end option ;
-
+rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap ioVarMap  !@AC_machineDefinition outDefinition:
+  @lstring machineIdentifier ;  $machineIdf$ ? machineIdentifier ;  @uint machineInputVariableCount ;  @M_variablesMap machineVariablesMap ;  @luint indexOfImportedMachine ;  search ioMachinesMap.searchKey machineIdentifier (?machineInputVariableCount ?machineVariablesMap ?*) -> indexOfImportedMachine ;  @L_translationVector translationVector [empty] ;  $($ ;  repeat    @lstring inputVar ;    $identifier$ ? inputVar ;    @luint inputVarIndex ;    search ioVarMap.searchKey inputVar () -> inputVarIndex ;    translationVector += !inputVarIndex ;  while    $,$ ;  end repeat ;  $)$ ;  @uint inputVariablesCount := [translationVector length] ;  if inputVariablesCount != machineInputVariableCount then    error here : "The '$" . [machineIdentifier value] . "' machine defines " . [machineInputVariableCount string]    . " input variable(s), but this operand defines " . [inputVariablesCount string] . " input variable(s)" ;  end if ;  $($ ;  repeat    @lstring outputVar ;    $identifier$ ? outputVar ;    @luint outputVarIndex ;    search ioVarMap.searchKey outputVar () -> outputVarIndex ;    translationVector += !outputVarIndex ;  while    $,$ ;  end repeat ;  $)$ ;  @uint allVariablesCount := [translationVector length] ;  @uint machineAllVariablesCount := [machineVariablesMap length] ;  if allVariablesCount != machineAllVariablesCount then    error here : "The '$" . [machineIdentifier value] . "' machine defines " . [machineAllVariablesCount string]    . " variables, but this operand defines " . [allVariablesCount string] . " variables" ;  end if ;  outDefinition := [@C_importMachine new ![indexOfImportedMachine value] !translationVector] ;end rule ;
+#---------------------------------------------------------------------------*#         EXPLICIT AUTOMATON                                                *#---------------------------------------------------------------------------*
+rule <explicit_automaton>  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  @M_stateMap statesMap [empty] ;  @L_stateDefinition stateDefinitionList [empty] ;  $auto$ ;  ${$ ;#--- States declaration  $state$ ;  repeat    @lstring stateName ;    $identifier$ ? stateName ;    insert statesMap.insertKey stateName () ;  while    $,$ ;  end repeat ;  $;$ ;#--- Initial states  @L_statesDefinitionList initialStatesDefinitionList [empty] ;  $first$ ;  repeat    @lstring initialState ;    $identifier$ ? initialState ;    @luint initialStateIndex ;    search statesMap.searchKey initialState () -> initialStateIndex ;    initialStatesDefinitionList += !initialStateIndex !here ;  while    $,$ ;  end repeat ;  $;$ ;#--- terminal states  @L_statesDefinitionList terminalStatesDefinitionList [empty] ;  select  or    $last$ ;    repeat      @lstring terminalState ;      $identifier$ ? terminalState ;      @luint terminalStateIndex ;      search statesMap.searchKey terminalState () -> terminalStateIndex ;      terminalStatesDefinitionList += ! terminalStateIndex !here ;    while      $,$ ;    end repeat ;    $;$ ;  end select ;#--- Parse state definitions  @M_stateMap stateDefinitionMap [empty] ;  repeat  #--- Current state    @lstring stateName ;    $identifier$ ? stateName ;    @luint stateIndex ;    search statesMap.searchKey stateName () -> stateIndex ;    insert stateDefinitionMap.defineState stateName () ;    $:$ ;  #--- State input expression    @AC_expression stateExpression ;    <io_expression> !?variablesMap ?stateExpression ;    @location endOfStateExpression := here ;    ${$ ;  #--- Parse state transition    @L_transitionDefinition transitionsList [empty] ;    repeat    while      @AC_expression transitionInputExpression ;      <io_expression>  !?variablesMap ?transitionInputExpression ;      @location endOfExpression := here ;      $goto$ ;      @lstring targetStateName ;      $identifier$ ? targetStateName ;      @luint targetStateIndex ;      search statesMap.searchKey targetStateName () -> targetStateIndex ;      transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex ;      $;$ ;    end repeat ;    $}$ ;    stateDefinitionList += !stateIndex !stateExpression !endOfStateExpression                           !transitionsList ;  while  end repeat ;#--- Check all states are defined  foreach map statesMap ??@lstring kStateName () :    if not [stateDefinitionMap hasKey ! kStateName] then      error here : "'" . [kStateName value] . "' state is not described" ;    end if ;  end foreach ;#--- End of input source  $}$ ;  outDefinition := [@C_explicitAutomatonDefinition new !statesMap !initialStatesDefinitionList !terminalStatesDefinitionList !stateDefinitionList !here] ;end rule ;#---------------------------------------------------------------------------*
+end syntax ;#---------------------------------------------------------------------------*#                                                                           *#   C O M M A N D    L I N E    O P T I O N S                               *#                                                                           *#---------------------------------------------------------------------------*option sara_cli_options :  @bool displayBDDvaluesCount : 'c', "display-bdd-values-count" -> "displays values count for every BDD" ;  @bool displayBDDvalues : 'v', "display-bdd-values" -> "displays values for every BDD" ;end option ;
 #---------------------------------------------------------------------------*#                                                                           *#   G R A M M A R                                                           *#                                                                           *#---------------------------------------------------------------------------*grammar sara_grammar "LL1" :  import lexique sara_scanner ;  import option sara_cli_options ;  import syntax sara_parser ;  start <start_symbol> ;end grammar ;
-
 #---------------------------------------------------------------------------*#                                                                           *#   C O C O A                                                               *#                                                                           *#---------------------------------------------------------------------------*
-
 cocoa cocoa_sara :
-
-program "sara" ;
-
-import grammar sara_grammar ;
-
-end cocoa ;
-#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 0.0.4" . "sara" :  import grammar sara_grammar ;#--- max error and warning count  error 100 ;  warning 100 ;end program ;#--------------------------------------------------------------------------------*
+program "sara" ;import grammar sara_grammar ;end cocoa ;#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 0.0.4" . "sara" :  import grammar sara_grammar ;#--- max error and warning count  error 100 ;  warning 100 ;end program ;#--------------------------------------------------------------------------------*
