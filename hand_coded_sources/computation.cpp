@@ -375,6 +375,13 @@ compute (C_lexique & inLexique,
         }
         testedTransition = testedTransition->getNextItem () ;
       }
+    //--- Check that action is compatible input configuration of target state
+      const C_bdd x = actionBDD & stateInputExpressionBDD (currentTransition->mTargetStateIndex.getValue () COMMA_HERE) ;
+      if (! x.isEqualToBDD (actionBDD)) {
+        C_string errorMessage ;
+        errorMessage << "this action is not compatible with input configuration of target state" ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+      }
     //--- Goto next transition
       currentTransition = currentTransition->getNextItem () ;
       transitionIndex ++ ;
