@@ -4,38 +4,41 @@ style identifier -> "Identifiers" ;
 style keyWords -> "Key words" ;
 style delimitors -> "Delimitors" ;
 style integer_csts -> "Integer constants" ;
-# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "goto", "out", "timer", "true", "false" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "|", "(", ")", ":=" ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_inputVarMap    insert insertKey error message "the '" . * . "' input variable has been already declared" ;    search searchKey error message "the '" . * . "' input variable is not declared" ;    key @lstring ;  end map ;  map @M_outputVarMap    insert insertKey error message "the '" . * . "' output variable has been already declared" ;    insert insertForDefinition error message "the '" . * . "' output variable is already defined for current state" ;    search searchKey error message "the '" . * . "' output variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
+# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "goto", "timer", "true", "false" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;#--- Delimitors  list delimitorsList error message "the '" . * . "' delimitor" style delimitors :    ",", ";", ":", "{", "}", "->", "&", "!", "|", "(", ")", ":=" ;  rule list delimitorsList ;#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;# ------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :  map @M_inputOutputVarMap    insert insertKey error message "the '" . * . "' variable has been already declared" ;    search searchKey error message "the '" . * . "' variable is not declared" ;    key @lstring ;  end map ;  map @M_stateMap    insert insertKey error message "the '" . * . "' state has been already declared" ;    insert defineState error message "the '" . * . "' state has been already defined" ;    search searchKey error message "the '" . * . "' state is not declared" ;    key @lstring ;  end map ;
 
-#---------------------------------------------------------------------------*  abstract class @AC_inputExpression    include header ;  end class ;    class @C_andExpression extends @AC_inputExpression
-    @AC_inputExpression mLeftExpression ;    @AC_inputExpression mRightExpression ;  end class ;    class @C_orExpression extends @AC_inputExpression     @AC_inputExpression mLeftExpression ;    @AC_inputExpression mRightExpression ;  end class ;    class @C_notExpression extends @AC_inputExpression     @AC_inputExpression mExpression ;  end class ;      class @C_VariableExpression extends @AC_inputExpression     @luint mInputVarIndex ;  end class ;
+#---------------------------------------------------------------------------*  abstract class @AC_expression    include header ;  end class ;    class @C_andExpression extends @AC_expression
+    @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_orExpression extends @AC_expression     @AC_expression mLeftExpression ;    @AC_expression mRightExpression ;  end class ;    class @C_notExpression extends @AC_expression     @AC_expression mExpression ;  end class ;      class @C_VariableExpression extends @AC_expression     @luint mInputVarIndex ;  end class ;
 
-  class @C_trueExpression extends @AC_inputExpression   end class ;
+  class @C_trueExpression extends @AC_expression   end class ;
 
-  class @C_falseExpression extends @AC_inputExpression   end class ;
+  class @C_falseExpression extends @AC_expression   end class ;
 
 #---------------------------------------------------------------------------*
 
   list @L_transitionDefinition
-    @AC_inputExpression mActionExpression ;
+    @AC_expression mActionExpression ;
     @location mEndOfExpression ;
     @luint mTargetStateIndex ;
   end list ;
-  list @L_outputValues
-    @luint mOutputVariableIndex ;
-    @luint mOutputValue ;
-  end list ;
   list @L_stateDefinition
     @luint mStateIndex ;
-    @AC_inputExpression mExpression ;
-    @location mEndOfExpression ;
+    @AC_expression mStateInputExpression ;
+    @location mEndOfStateInputExpression ;
+    @AC_expression mStateOutputExpression ;
+    @location mEndOfStateOutputExpression ;
     @L_transitionDefinition mTransitionsList ;
-    @L_outputValues mOutputValues ;
   end list ;
 
 #---------------------------------------------------------------------------*
 
-  abstract class @AC_component    include header ;  end class ;    class @C_automatonComponent extends @AC_component
-    @M_inputVarMap mInputVariableMap ;    @M_outputVarMap mOutputVariableMap ;    @M_stateMap mStatesMap ;    @luint mInitialStateIndex ;    @L_stateDefinition mStateDefinitionList ;
+  abstract class @AC_component    include header ;  end class ;
+
+  list @L_initialStatesDefinitionList
+    @luint mInitialStateIndex ;  end list ;
+    class @C_automatonComponent extends @AC_component
+    @M_inputOutputVarMap mInputVariableMap ;    @M_inputOutputVarMap mOutputVariableMap ;    @M_stateMap mStatesMap ;
+    @L_initialStatesDefinitionList mInitialStatesDefinitionList ;
+    @L_stateDefinition mStateDefinitionList ;
     @location mEndOfDefinition ;
   end class ;
 
@@ -49,18 +52,18 @@ rule <component>
   ?!@M_componentMap ioComponentsMap;
 
 rule <input_expression>
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 ;
 
 rule <input_and_expression> 
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 ;
 
 rule <input_primary> 
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 ;
 
 action performComputations  ?!@M_componentMap ioComponentsMap;
@@ -74,7 +77,7 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
   end repeat ;
   action performComputations !? componentsMap ;end rule ;
  #---------------------------------------------------------------------------*
-rule <component>  ?!@M_componentMap ioComponentsMap:  @M_inputVarMap inputVariableMap [empty] ;  @M_outputVarMap outputVariableMap [empty] ;  @M_stateMap statesMap [empty] ;
+rule <component>  ?!@M_componentMap ioComponentsMap:  @M_inputOutputVarMap inputVariableMap [empty] ;  @M_inputOutputVarMap outputVariableMap [empty] ;  @M_stateMap statesMap [empty] ;
   @L_stateDefinition stateDefinitionList [empty] ;
 #--- Component name
   @lstring componentName ;
@@ -93,6 +96,7 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
   while
     $,$ ;
   end repeat ;
+  $:$ ;
   $auto$ ;
   ${$ ;
 #--- States declaration
@@ -104,11 +108,17 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
   end repeat ;
   $;$ ;
 #--- Initial state
+  @L_initialStatesDefinitionList initialStatesDefinitionList [empty] ;
   $first$ ;
-  @lstring initialState ;  $identifier$ ? initialState ;
+  repeat
+    @lstring initialState ;    $identifier$ ? initialState ;
+    @luint initialStateIndex ;
+    search statesMap.searchKey initialState () -> initialStateIndex ;
+    initialStatesDefinitionList += !initialStateIndex ;
+  while
+    $,$ ;
+  end repeat ;
   $;$ ;
-  @luint initialStateIndex ;
-  search statesMap.searchKey initialState () -> initialStateIndex ;
 #--- Parse state definitions
   @M_stateMap stateDefinitionMap [empty] ;
   repeat
@@ -118,51 +128,34 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
     search statesMap.searchKey stateName () -> stateIndex ;
     insert stateDefinitionMap.defineState stateName () ;
     $:$ ;
-  #--- state expression
-    @AC_inputExpression expression ;
-    <input_expression> !? inputVariableMap ?expression ;
-    @location endExpression := here ;
-  #--- out value
-    $out$ ;
-    @M_outputVarMap outVarDefinition [empty] ;
-    @L_outputValues outputValuesList [empty] ;
-    repeat
-      @lstring outputVarName ;      $identifier$ ? outputVarName ;
-      @luint outputVarIndex ;
-      search outputVariableMap.searchKey outputVarName () -> outputVarIndex ;
-      insert outVarDefinition.insertForDefinition outputVarName () ;
-      $:$ ;
-      @luint outputValue ;
-      $literal_integer$ ? outputValue ;
-      if [outputValue value] > 1 then
-        error outputValue : "Value must be <= 1" ;
-      end if ;
-      outputValuesList += ! outputVarIndex ! outputValue ;
-    while
-      $,$ ;
-    end repeat ;
-    foreach map outputVariableMap ??@lstring kVarName () :
-      if not [outVarDefinition hasKey ! kVarName] then
-        error here : "'" . [kVarName value] . "' output variable is not defined for current state" ;
-      end if ;
-    end foreach ;
+  #--- State input expression
+    @AC_expression stateInputExpression ;
+    <input_expression> !? inputVariableMap ?stateInputExpression ;
+    @location endOfStateInputExpression := here ;
+  #--- State output expression
+    $->$ ;
+    @AC_expression stateOutputExpression ;
+    <input_expression> !?outputVariableMap ? stateOutputExpression ;
+    @location endOfStateOutputExpression := here ;
     ${$ ;
   #--- Parse state transition
     @L_transitionDefinition transitionsList [empty] ;
     repeat
     while
-      @AC_inputExpression expression ;
-      <input_expression> !? inputVariableMap ?expression ;
+      @AC_expression transitionInputExpression ;
+      <input_expression> !? inputVariableMap ?transitionInputExpression ;
       @location endOfExpression := here ;
       $goto$ ;
       @lstring targetStateName ;      $identifier$ ? targetStateName ;
       @luint targetStateIndex ;
       search statesMap.searchKey targetStateName () -> targetStateIndex ;
-      transitionsList += !expression !endOfExpression !targetStateIndex ;
+      transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex ;
       $;$ ;
     end repeat ;
     $}$ ;
-    stateDefinitionList += !stateIndex !expression !endExpression !transitionsList ! outputValuesList ;
+    stateDefinitionList += !stateIndex !stateInputExpression !endOfStateInputExpression
+                           !stateOutputExpression !endOfStateOutputExpression
+                           !transitionsList ;
   while
   end repeat ;
 #--- Check all states are defined
@@ -174,7 +167,7 @@ action performComputations  ?!@M_componentMap ioComponentsMap;
 #--- End of input source
   $}$ ;
 #--- Insert into component map
-  @AC_component component := [@C_automatonComponent new !inputVariableMap !outputVariableMap !statesMap !initialStateIndex !stateDefinitionList !here] ;
+  @AC_component component := [@C_automatonComponent new !inputVariableMap !outputVariableMap !statesMap !initialStatesDefinitionList !stateDefinitionList !here] ;
   insert ioComponentsMap.insertKey componentName (!component) ;
   $;$ ;
 end rule ;
@@ -182,14 +175,14 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_expression>
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 :
   <input_and_expression> !? ioInputVarMap ? outExpression ;
   repeat
   while
     $|$ ;
-    @AC_inputExpression rightExpression ;
+    @AC_expression rightExpression ;
     <input_and_expression> !? ioInputVarMap ? rightExpression ;
     outExpression := [@C_orExpression new ! outExpression ! rightExpression] ;
   end repeat ;
@@ -198,14 +191,14 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_and_expression> 
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 :
   <input_primary> !? ioInputVarMap ? outExpression ;
   repeat
   while
     $&$ ;
-    @AC_inputExpression rightExpression ;
+    @AC_expression rightExpression ;
     <input_primary> !? ioInputVarMap ? rightExpression ;
     outExpression := [@C_andExpression new ! outExpression !rightExpression] ;
   end repeat ;
@@ -214,8 +207,8 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_primary> 
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 :
   $($ ;
   <input_expression> !? ioInputVarMap ? outExpression ;
@@ -225,8 +218,8 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_primary> 
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 :
   @lstring inputVarName ;
   $identifier$ ? inputVarName ;
@@ -238,11 +231,11 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_primary> 
-  ?!@M_inputVarMap ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap ioInputVarMap
+  !@AC_expression outExpression
 :
   $!$ ;
-  @AC_inputExpression expression ;
+  @AC_expression expression ;
   <input_primary>  !?ioInputVarMap ? expression ;
   outExpression := [@C_notExpression new ! expression] ;
 end rule ;
@@ -250,8 +243,8 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_primary> 
-  ?!@M_inputVarMap unused ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap unused ioInputVarMap
+  !@AC_expression outExpression
 :
   $false$ ;
   outExpression := [@C_falseExpression new] ;
@@ -260,8 +253,8 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_primary> 
-  ?!@M_inputVarMap unused ioInputVarMap
-  !@AC_inputExpression outExpression
+  ?!@M_inputOutputVarMap unused ioInputVarMap
+  !@AC_expression outExpression
 :
   $true$ ;
   outExpression := [@C_trueExpression new] ;
@@ -285,4 +278,4 @@ program "sara" ;
 import grammar sara_grammar ;
 
 end cocoa ;
-#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 0.0.1" . "sara" :  import grammar sara_grammar ;#--- max error and warning count  error 100 ;  warning 100 ;end program ;#--------------------------------------------------------------------------------*
+#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 0.0.4" . "sara" :  import grammar sara_grammar ;#--- max error and warning count  error 100 ;  warning 100 ;end program ;#--------------------------------------------------------------------------------*
