@@ -394,6 +394,7 @@ compute (C_lexique & /* inLexique */,
          TC_grow_array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
+  printf ("------------------ bdd: print BDD package statitistics.\n") ;
   C_bdd::printBDDpackageOperationsSummary (stdout) ;
 }
 
@@ -407,7 +408,7 @@ compute (C_lexique & /* inLexique */,
   C_timer duree ;
   C_bdd::setHashMapSize ((uint16) mNewSize.getValue ()) ;
   duree.stopTimer () ;
-  printf ("map %lu: BDD unique table resized to %lu (done in ",
+  printf ("------------------ map %lu: BDD unique table resized to %lu (done in ",
           mNewSize.getValue (), C_bdd::getHashMapEntriesCount ()) ;
   duree.printTimer (stdout) ;
   printf (").\n\n") ; 
@@ -423,7 +424,7 @@ compute (C_lexique & /* inLexique */,
   C_timer duree ;
   C_bdd::setANDcacheSize ((sint32) mNewSize.getValue ()) ;
   duree.stopTimer () ;
-  printf ("and_cache %lu: AND cache resized to %lu (done in ",
+  printf ("------------------ and_cache %lu: AND cache resized to %lu (done in ",
           mNewSize.getValue (), C_bdd::getANDcacheEntriesCount ()) ;
   duree.printTimer (stdout) ;
   printf (").\n\n") ;  
@@ -439,7 +440,7 @@ compute (C_lexique & /* inLexique */,
   C_timer duree ;
   C_bdd::setITEcacheSize ((sint32) mNewSize.getValue ()) ;
   duree.stopTimer () ;
-  printf ("ite_cache %lu: ITE cache resized to %lu (done in ",
+  printf ("------------------ ite_cache %lu: ITE cache resized to %lu (done in ",
           mNewSize.getValue (), C_bdd::getITEcacheEntriesCount ()) ;
   duree.printTimer (stdout) ;
   printf (").\n\n") ;  
@@ -453,7 +454,7 @@ compute (C_lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   C_bdd::setComputingMode (C_bdd::ITE_COMPUTED_FROM_AND) ;
-  printf ("use_and: ITE is now computed from AND.\n\n") ;
+  printf ("------------------ use_and: ITE is now computed from AND.\n\n") ;
 }
 
 //----------------------------------------------------------------------------*
@@ -464,7 +465,7 @@ compute (C_lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   C_bdd::setComputingMode (C_bdd::AND_COMPUTED_FROM_ITE) ;
-  printf ("use_ite: AND is now computed from ITE.\n\n") ;
+  printf ("------------------ use_ite: AND is now computed from ITE.\n\n") ;
 }
 
 //----------------------------------------------------------------------------*
@@ -475,7 +476,86 @@ compute (C_lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   C_bdd::setComputingMode (C_bdd::ITE_and_AND_ARE_INDEPENDANT) ;
-  printf ("use_and_ite: AND and ITE are now computed independantly.\n\n") ;
+  printf ("------------------ use_and_ite: AND and ITE are now computed independantly.\n\n") ;
+}
+
+//----------------------------------------------------------------------------*
+
+void cPtr_C_scenarioComponent::
+compute (C_lexique & /* inLexique */,
+         TC_grow_array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+ printf ("------------------ Scenarios for '%s' machine\n", ioSaraSystemArray ( (sint32) mMachineIndex.getValue () COMMA_HERE).mMachineName.getStringPtr ()) ;
+//--- Initial state BDD
+  const C_bdd initialStateBDD = ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mInitialStatesBDD ;
+//--- transitions BDD
+  const C_bdd transitionsBDD = ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mTransitionRelationBDD ;
+//--- variables count
+  const uint16 variableCount = (uint16) ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray.getCount () ;
+//--- Loop throuhgt all scenarios
+  GGS_L_scenarioList::element_type * scenario = mScenarioList.getFirstItem () ;
+  while (scenario != NULL) {
+    macroValidPointer (scenario) ;
+  //--- Print scenario title
+    printf ("Scenario '%s':\n", scenario->mScenarioTitle.getStringPtr ()) ;
+  //--- Build initial configuration
+    GGS_L_inputScenario::element_type * currentInput = scenario->mInputScenario.getFirstItem () ;
+    macroValidPointer (currentInput) ;
+    uint64 initialConfiguration = 0 ;
+    uint16 shift = 0 ;
+    GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.getFirstItem () ;
+    while (v != NULL) {
+      macroValidPointer (v) ;
+      initialConfiguration += ((uint64) v->mInputValue.getValue ()) << shift ;
+      shift ++ ;
+      v = v->getNextItem () ;
+    }
+    const C_bdd initialInputConfigurationBDD = C_bdd::varCompareConst (0, shift, C_bdd::kEqual, initialConfiguration) ;
+    C_bdd currentState = initialInputConfigurationBDD & initialStateBDD ;
+  //--- Build substitution vector
+    uint16 * substitutionVector = new uint16 [variableCount + variableCount] ;
+    for (uint16 i=0 ; i<variableCount ; i++) {
+      substitutionVector [i] = (uint16) (i + variableCount) ;
+      substitutionVector [i + variableCount] = i ;
+    }
+  //--- Display initial configuration
+    currentState.printBDD (ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray, 3) ;
+    uint64 valuesCount = currentState.getBDDvaluesCount (shift) ;
+  //--- Loop throught input sequence
+    currentInput = currentInput->getNextItem () ;
+    while ((currentInput != NULL) && (valuesCount == 1ULL)) {
+      macroValidPointer (currentInput) ;
+    //--- Parse new input configuration
+      uint64 inputConfiguration = 0 ;
+      shift = 0 ;
+      GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.getFirstItem () ;
+      while (v != NULL) {
+        macroValidPointer (v) ;
+        inputConfiguration += ((uint64) v->mInputValue.getValue ()) << shift ;
+        shift ++ ;
+        v = v->getNextItem () ;
+      }
+      const C_bdd inputConfigurationBDD = C_bdd::varCompareConst (variableCount, shift, C_bdd::kEqual, inputConfiguration) ;
+      const C_bdd newState = currentState & transitionsBDD & inputConfigurationBDD ;
+      currentState = newState.substitution (substitutionVector, (uint16) (variableCount + variableCount)) ;
+      currentState = currentState.existsOnBitsAfterNumber (variableCount) ;
+    //--- Display current configuration
+      currentState.printBDDwithoutHeader (ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray, variableCount, 3) ;
+      valuesCount = currentState.getBDDvaluesCount (shift) ;
+    //--- Goto next input
+      currentInput = currentInput->getNextItem () ;
+    }
+    delete [] substitutionVector ; substitutionVector = NULL ;
+    if (valuesCount == 0ULL) {
+      printf ("*** ERROR: dead state.\n") ;
+    }else if (valuesCount > 1ULL) {
+      printf ("*** ERROR: ambiguous transition (") ;
+      printfUINT64 (valuesCount) ;
+      printf (" states).\n") ;
+    }
+    scenario = scenario->getNextItem () ;
+  }
 }
 
 //---------------------------------------------------------------------------*
