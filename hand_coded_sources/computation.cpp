@@ -223,6 +223,27 @@ compute (C_lexique & inLexique,
     currentDefinition = currentDefinition->getNextItem () ;
     index ++ ;
   }
+//----------------------------------------------------------------------- Check that states are disjoined
+  currentDefinition = mStateDefinitionList.getFirstItem () ;
+  while (currentDefinition != NULL) {
+    macroValidPointer (currentDefinition) ;
+    GGS_L_stateDefinition::element_type * testedState = currentDefinition->getNextItem () ;
+    while (testedState != NULL) {
+      macroValidPointer (testedState) ;
+      if (! (stateExpressionBDD (currentDefinition->mStateIndex.getValue () COMMA_HERE) & stateExpressionBDD (testedState->mStateIndex.getValue () COMMA_HERE)).isFalse ()) {
+        C_string errorMessage ;
+        errorMessage << "expression for state '"
+                   << outStateNameArray (testedState->mStateIndex.getValue () COMMA_HERE)
+                   << " intersects expression for state '"
+                   << outStateNameArray (currentDefinition->mStateIndex.getValue () COMMA_HERE)
+                   << "'" ;
+        testedState->mEndOfStateOutputExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+      }
+      testedState = testedState->getNextItem () ;
+    }
+  //--- Go to next state definition  
+    currentDefinition = currentDefinition->getNextItem () ;
+  }
 //----------------------------------------------------------------------- Initial states BDD
 //    BDD slots assignments
 //    Each automaton has n inputs, p outputs
