@@ -1,17 +1,17 @@
 $diviseur_par_deux (e)()(s) := auto {
   state zero_zero, zero_un, un_zero, un_un ;
   first zero_zero, un_zero ;
-  zero_zero : (!e) & !s {
+  zero_zero : (~e) & ~s {
     e goto un_un ;
   } 
-  zero_un : (!e) & s {
+  zero_un : (~e) & s {
     e goto un_zero ;
   } 
   un_un : e & s {
-    !e goto zero_un ;
+    ~e goto zero_un ;
   } 
-  un_zero : e & !s {
-    !e goto zero_zero ;
+  un_zero : e & ~s {
+    ~e goto zero_zero ;
   } 
 } ;
 

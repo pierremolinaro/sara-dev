@@ -3,10 +3,10 @@ $mode_lavage(eav1, eav2)()(r1, r2) :=
     state etat_lavage, etat_balayage, etat_pv ;
     first etat_lavage ;
     last etat_balayage, etat_pv;
-    etat_lavage : ! eav1 & eav2 & !r1 & !r2 {
-      !eav1 & !eav2 goto etat_balayage ;
+    etat_lavage : ~ eav1 & eav2 & ~r1 & ~r2 {
+      ~eav1 & ~eav2 goto etat_balayage ;
     }
-    etat_balayage : !eav1 & !eav2 & !r1 & !r2 
+    etat_balayage : ~eav1 & ~eav2 & ~r1 & ~r2 
 { 
     eav1 & eav2 goto etat_pv ;
 }
@@ -20,10 +20,10 @@ auto {
     state etat_lav, etat_bal, etat_p ;
     first etat_lav ;
 	last etat_bal, etat_p;
-    etat_lav : eav1 & !eav2 & r1 & !r2 {
-     !eav1 & !eav2 goto etat_bal ;
+    etat_lav : eav1 & ~eav2 & r1 & ~r2 {
+     ~eav1 & ~eav2 goto etat_bal ;
     }
-    etat_bal : !eav1 & !eav2 & !r1 & !r2 
+    etat_bal : ~eav1 & ~eav2 & ~r1 & ~r2 
 { 
 	 eav1 & eav2 goto etat_p ;
 }

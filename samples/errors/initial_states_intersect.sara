@@ -1,11 +1,11 @@
-$exemple1 (input)(output) :=
+$exemple1 (input)()(output) :=
   auto {
     state state1, state2  ;
     first state1, state2 ;
-    state1 : input)(!output {
-      ! input goto state2 ;
+    state1 : input & ~output {
+      ~ input goto state2 ;
     }
-    state2 : input)(!output {
+    state2 : input & ~output {
       input goto state1 ;
     }
   }
