@@ -5,3 +5,7 @@ exemple1 (a, b -> r) := r = (a & b) ;
 exemple2 (a, b -> s) := s = (a | b) ;
 
 exemple3 (a, b -> r, s) := (r = (a & b)) & (s = (a | b)) ;
+
+exemple4 (a, b -> r) := (r = ! (a & b)) & (r = b) ;
+
+exemple5 (a -> r) := (r = a) & (r = !a) ;

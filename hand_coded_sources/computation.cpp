@@ -79,8 +79,7 @@ C_bdd cPtr_C_equalExpression::computeBDD (const uint16 inBDDslotOffset) const {
 
 class C_saraSystem {
   public : C_saraSystem (void) ;
-  public : TC_unique_dyn_array <C_string> mInputNamesArray ;
-  public : TC_unique_dyn_array <C_string> mOutputNamesArray ;
+  public : TC_unique_dyn_array <C_string> mNamesArray ;
   public : C_bdd mInitialStatesBDD ;
   public : C_bdd mAccessibleStatesBDD ;
   public : C_bdd mTransitionRelationBDD ;
@@ -88,9 +87,7 @@ class C_saraSystem {
 
 //---------------------------------------------------------------------------*
 
-C_saraSystem::C_saraSystem (void) :
-mInputNamesArray (0 COMMA_HERE),
-mOutputNamesArray (0 COMMA_HERE) {
+C_saraSystem::C_saraSystem (void):mNamesArray (0 COMMA_HERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -100,8 +97,7 @@ void swap (C_saraSystem & ioOperand1,
 
 void swap (C_saraSystem & ioOperand1,
            C_saraSystem & ioOperand2) {
-  swap (ioOperand1.mInputNamesArray, ioOperand2.mInputNamesArray) ;
-  swap (ioOperand1.mOutputNamesArray, ioOperand2.mOutputNamesArray) ;
+  swap (ioOperand1.mNamesArray, ioOperand2.mNamesArray) ;
   swap (ioOperand1.mInitialStatesBDD, ioOperand2.mInitialStatesBDD) ;
   swap (ioOperand1.mTransitionRelationBDD, ioOperand2.mTransitionRelationBDD) ;
   swap (ioOperand1.mAccessibleStatesBDD, ioOperand2.mAccessibleStatesBDD) ;
@@ -128,8 +124,7 @@ performComputations (C_lexique & inLexique,
       currentComponent->mInfo.mComponent ()->compute (inLexique, 
                                                       displayBDDvaluesCount,
                                                       displayBDDvalues,
-                                                      system.mInputNamesArray,
-                                                      system.mOutputNamesArray,
+                                                      system.mNamesArray,
                                                       system.mInitialStatesBDD,
                                                       system.mAccessibleStatesBDD,
                                                       system.mTransitionRelationBDD) ;
@@ -142,88 +137,63 @@ performComputations (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_automatonComponent::
+void cPtr_C_machineComponent::
 compute (C_lexique & inLexique,
          const bool inDisplayBDDvaluesCount,
          const bool inDisplayBDDvalues,
-         TC_unique_dyn_array <C_string> & outInputNamesArray,
-         TC_unique_dyn_array <C_string> & outOutputNamesArray,
+         TC_unique_dyn_array <C_string> & outNamesArray,
          C_bdd & outInitialStatesBDD,
          C_bdd & outAccessibleStatesBDD,
          C_bdd & outAccessibilityRelationBDD) const {
 //--- Build input variables array names
-  const sint32 inputVariablesCount = mInputVariableMap.getCount () ;
-  { TC_unique_dyn_array <C_string> inputVariableNameArray (inputVariablesCount COMMA_HERE) ;
-    swap (inputVariableNameArray, outInputNamesArray) ;
+  const sint32 variablesCount = mVariablesMap.getCount () ;
+  { TC_unique_dyn_array <C_string> variableNamesArray (variablesCount COMMA_HERE) ;
+    swap (variableNamesArray, outNamesArray) ;
   }
-  GGS_M_inputOutputVarMap::element_type * currentInputVar = mInputVariableMap.getFirstItem () ;
+  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.getFirstItem () ;
   sint32 index = 0 ;
-  while (currentInputVar != NULL) {
-    outInputNamesArray (index COMMA_HERE) = currentInputVar->mKey ;
+  while (currentVar != NULL) {
+    outNamesArray (index COMMA_HERE) = currentVar->mKey ;
     index ++ ;
-    currentInputVar = currentInputVar->getNextItem () ;
-  }
-//--- Build output variables array names
-  const sint32 outputVariablesCount = mOutputVariableMap.getCount () ;
-  { TC_unique_dyn_array <C_string> outputVariableNameArray (outputVariablesCount COMMA_HERE) ;
-    swap (outputVariableNameArray, outOutputNamesArray) ;
-  }
-  GGS_M_inputOutputVarMap::element_type * currentOutputVar = mOutputVariableMap.getFirstItem () ;
-  index = 0 ;
-  while (currentOutputVar != NULL) {
-    outOutputNamesArray (index COMMA_HERE) = currentOutputVar->mKey ;
-    index ++ ;
-    currentOutputVar = currentOutputVar->getNextItem () ;
+    currentVar = currentVar->getNextItem () ;
   }
 //--- Compute automaton from definition expression
   mDefinition ()->computeFromExpression (inLexique,
-                                         inDisplayBDDvaluesCount,
-                                         inDisplayBDDvalues,
-                                         outInputNamesArray,
-                                         outOutputNamesArray,
+                                         variablesCount,
                                          outInitialStatesBDD,
                                          outAccessibleStatesBDD,
                                          outAccessibilityRelationBDD) ;
-//--- 
-  const sint32 input_plus_output_count = inputVariablesCount + outputVariablesCount ;
-  TC_unique_dyn_array <C_string> inputOutputVariableNameArray (input_plus_output_count COMMA_HERE) ;
-  for (sint32 i=0 ; i<inputVariablesCount ; i++) {
-    inputOutputVariableNameArray (i COMMA_HERE) = outInputNamesArray (i COMMA_HERE) ;
-  }
-  for (sint32 i=0 ; i<outputVariablesCount ; i++) {
-    inputOutputVariableNameArray (inputVariablesCount+ i COMMA_HERE) = outOutputNamesArray (i COMMA_HERE) ;
-  }
-//--- 
-  
-  TC_unique_dyn_array <C_string> transitionsVariableNameArray (input_plus_output_count + input_plus_output_count COMMA_HERE) ;
-  for (sint32 i=0 ; i<input_plus_output_count ; i++) {
-    transitionsVariableNameArray (i COMMA_HERE) = inputOutputVariableNameArray (i COMMA_HERE) ;
-    transitionsVariableNameArray (input_plus_output_count + i COMMA_HERE) = inputOutputVariableNameArray (i COMMA_HERE) ;
+//---   
+  TC_unique_dyn_array <C_string> transitionsVariableNameArray (variablesCount + variablesCount COMMA_HERE) ;
+  for (sint32 i=0 ; i<variablesCount ; i++) {
+    transitionsVariableNameArray (i COMMA_HERE) = outNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray (variablesCount + i COMMA_HERE) = outNamesArray (i COMMA_HERE) ;
   }
 //--- Print message
-  const uint16 statesBDDbitsCount = (uint16) (outInputNamesArray.getCount () + outOutputNamesArray.getCount ()) ;
+  const sint32 inputVariablesCount = mInputVariableCount.getValue () ;
+  const sint32 outputVariablesCount = variablesCount - inputVariablesCount ;
   printf ("  %ld input variable%s, %ld output variable%s;\n",
-          outInputNamesArray.getCount (),
-          (outInputNamesArray.getCount () > 1) ? "s" : "",
-          outOutputNamesArray.getCount (),
-          (outOutputNamesArray.getCount () > 1) ? "s" : "") ;
-  uint64 n = outInitialStatesBDD.getBDDvaluesCount (statesBDDbitsCount) ;
+          inputVariablesCount,
+          (inputVariablesCount > 1) ? "s" : "",
+          outputVariablesCount,
+          (outputVariablesCount > 1) ? "s" : "") ;
+  uint64 n = outInitialStatesBDD.getBDDvaluesCount (variablesCount) ;
   uint32 nodes = outInitialStatesBDD.getBDDnodesCount () ;
   printf ("  %llu initial state%s (%lu node%s);\n",
           n, (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
   if (inDisplayBDDvalues) {
-    outInitialStatesBDD.printBDD (inputOutputVariableNameArray) ;
+    outInitialStatesBDD.printBDD (outNamesArray) ;
   }
-  n = outAccessibleStatesBDD.getBDDvaluesCount (statesBDDbitsCount) ;
+  n = outAccessibleStatesBDD.getBDDvaluesCount (variablesCount) ;
   nodes = outAccessibleStatesBDD.getBDDnodesCount () ;
   printf ("  %llu accessible state%s (%lu node%s);\n",
           n, (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
   if (inDisplayBDDvalues) {
-    outAccessibleStatesBDD.printBDD (inputOutputVariableNameArray) ;
+    outAccessibleStatesBDD.printBDD (outNamesArray) ;
   }
-  n = outAccessibilityRelationBDD.getBDDvaluesCount (statesBDDbitsCount + statesBDDbitsCount) ;
+  n = outAccessibilityRelationBDD.getBDDvaluesCount (variablesCount + variablesCount) ;
   nodes = outAccessibilityRelationBDD.getBDDnodesCount () ;
   printf ("  %llu transition%s (%lu node%s).\n",
           n, (n > 1) ? "s" : "",
@@ -237,16 +207,10 @@ compute (C_lexique & inLexique,
 
 void cPtr_C_automatonDefinition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
-  const uint16 inputVariablesCount = (uint16) inInputNamesArray.getCount () ;
-  const uint16 outputVariablesCount = (uint16) inOutputNamesArray.getCount () ;
-  const uint16 n_plus_p_bitsCount = outputVariablesCount + inputVariablesCount ;
 //--- Build state array names
   TC_unique_dyn_array <C_string> stateNameArray (mStatesMap.getCount () COMMA_HERE) ;
   GGS_M_stateMap::element_type * currentState = mStatesMap.getFirstItem () ;
@@ -263,8 +227,6 @@ computeFromExpression (C_lexique & inLexique,
 //    Slots n .. n+p-1 are assigned to outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  TC_unique_dyn_array <C_bdd> stateInputExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
-  TC_unique_dyn_array <C_bdd> stateOutputExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
   TC_unique_dyn_array <C_bdd> stateExpressionBDD (mStatesMap.getCount () COMMA_HERE) ;
   index = 0 ;
   GGS_L_stateDefinition::element_type * currentDefinition = mStateDefinitionList.getFirstItem () ;
@@ -280,14 +242,6 @@ computeFromExpression (C_lexique & inLexique,
                    << "' is empty" ;
       currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
     }
-  //--- Extract input configuration
-    stateInputExpressionBDD (index COMMA_HERE) = stateExpressionBDD (index COMMA_HERE).existsOnBitsAfterNumber (inputVariablesCount) ;
-  //--- Extract output configuration (NOT OPTIMIZED)
-    C_bdd outputConfiguration = stateExpressionBDD (index COMMA_HERE) ;
-    for (uint16 i=0 ; i<inputVariablesCount ; i++) {
-      outputConfiguration = outputConfiguration.existsOnBitNumber (i) ;
-    }
-    stateOutputExpressionBDD (index COMMA_HERE) = outputConfiguration ;
   //--- Go to next state definition  
     currentDefinition = currentDefinition->getNextItem () ;
     index ++ ;
@@ -318,32 +272,12 @@ computeFromExpression (C_lexique & inLexique,
 //    Each automaton has n inputs, p outputs
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
-//--- Define initial states BDD bits names
-  TC_unique_dyn_array <C_string> initialStatesBitNames (n_plus_p_bitsCount COMMA_HERE) ;
-  for (uint16 i=0 ; i<inputVariablesCount ; i++) {
-    initialStatesBitNames (i COMMA_HERE) = inInputNamesArray (i COMMA_HERE) ;
-  }
-  for (uint16 i=inputVariablesCount ; i<n_plus_p_bitsCount ; i++) {
-    initialStatesBitNames (i COMMA_HERE) = inOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
-  }
 //--- Compute BDD initial states
   GGS_L_initialStatesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
     outInitialStatesBDD |= stateExpressionBDD (currentInitialState->mInitialStateIndex.getValue () COMMA_HERE) ;
     currentInitialState = currentInitialState->getNextItem () ;
-  }
-//--- Display initial states BDD
-  if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
-    const uint64 n = outInitialStatesBDD.getBDDvaluesCount (n_plus_p_bitsCount) ;
-    const uint32 nodes = outInitialStatesBDD.getBDDnodesCount () ;
-    printf ("  %llu initial state%s (%lu node%s);\n",
-            n, (n > 1) ? "s" : "",
-	    		  nodes, (nodes > 1) ? "s" : "") ;
-    if (inDisplayBDDvalues) {
-      printf ("Initial states BDD :\n") ;
-      outInitialStatesBDD.printBDD (initialStatesBitNames) ;
-    }
   }
 //--- Check initial states are disjoined
   currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
@@ -387,9 +321,9 @@ computeFromExpression (C_lexique & inLexique,
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
-      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (n_plus_p_bitsCount) ;
+      const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (inVariablesCount) ;
       const uint32 targetStateIndex = currentTransition->mTargetStateIndex.getValue () ;
-      const C_bdd targetStateBDD = stateOutputExpressionBDD (targetStateIndex COMMA_HERE).translate (n_plus_p_bitsCount, n_plus_p_bitsCount) ;
+      const C_bdd targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
       currentTransition = currentTransition->getNextItem () ;
     }
@@ -401,37 +335,11 @@ computeFromExpression (C_lexique & inLexique,
     currentDefinition = currentDefinition->getNextItem () ;
     index ++ ;
   }
-//--- Define transitionBDD bits names
-  const uint16 transitionsBDDbitCount = n_plus_p_bitsCount + n_plus_p_bitsCount ;
-  TC_unique_dyn_array <C_string> transitionBDDbitNames (transitionsBDDbitCount COMMA_HERE) ;
-  for (uint16 i=0 ; i<inputVariablesCount ; i++) {
-    transitionBDDbitNames (i COMMA_HERE) = inInputNamesArray (i COMMA_HERE) ;
-    transitionBDDbitNames (i+n_plus_p_bitsCount COMMA_HERE) = inInputNamesArray (i COMMA_HERE) ;
-  }
-  for (uint16 i=inputVariablesCount ; i<n_plus_p_bitsCount ; i++) {
-    transitionBDDbitNames (i COMMA_HERE) = inOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
-    transitionBDDbitNames (i+n_plus_p_bitsCount COMMA_HERE) = inOutputNamesArray (i-inputVariablesCount COMMA_HERE) ;
-  }
-//--- Display transitions BDD
-  if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
-    const uint64 n = transitionsBDD.getBDDvaluesCount (transitionsBDDbitCount) ;
-    const uint32 nodes = transitionsBDD.getBDDnodesCount () ;
-    printf ("  %llu explicit transition%s (%lu node%s);\n",
-            n, (n > 1) ? "s" : "",
-	    		  nodes, (nodes > 1) ? "s" : "") ;
-    if (inDisplayBDDvalues) {
-      printf ("Transitions BDD :\n") ;
-      transitionsBDD.printBDD (transitionBDDbitNames) ;
-    }
-  }
 //--- Check transitions of each state
   currentDefinition = mStateDefinitionList.getFirstItem () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
     const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
-    if (inDisplayBDDvaluesCount || inDisplayBDDvalues) {
-      printf ("For state %s :\n", stateNameArray (stateIndex COMMA_HERE).getStringPtr ()) ;
-    }
   //--- Check that action does not intersect with state input expression
     sint32 transitionIndex = 0 ;
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
@@ -440,7 +348,7 @@ computeFromExpression (C_lexique & inLexique,
     //--- Compute action BDD
       const C_bdd actionBDD = currentTransition->mActionExpression ()->computeBDD (0) ;
     //--- Check action does not intersect with state input expression
-      if (! (stateInputExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
+      if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_string errorMessage ;
         errorMessage << "this action intersects with current state input configuration" ;
         currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
@@ -460,7 +368,7 @@ computeFromExpression (C_lexique & inLexique,
         testedTransition = testedTransition->getNextItem () ;
       }
     //--- Check that action is compatible input configuration of target state
-      const C_bdd x = actionBDD & stateInputExpressionBDD (currentTransition->mTargetStateIndex.getValue () COMMA_HERE) ;
+      const C_bdd x = actionBDD & stateExpressionBDD (currentTransition->mTargetStateIndex.getValue () COMMA_HERE) ;
       if (! x.isEqualToBDD (actionBDD)) {
         C_string errorMessage ;
         errorMessage << "this action is not compatible with input configuration of target state" ;
@@ -478,21 +386,21 @@ computeFromExpression (C_lexique & inLexique,
   outAccessibilityRelationBDD = transitionsBDD ;
   for (sint32 i=0 ; i<stateExpressionBDD.getCount () ; i++) {
     const C_bdd stateExpression = stateExpressionBDD (i COMMA_HERE) ;
-    const C_bdd translatedStateExpression = stateExpression.translate (n_plus_p_bitsCount, n_plus_p_bitsCount) ;
+    const C_bdd translatedStateExpression = stateExpression.translate (inVariablesCount, inVariablesCount) ;
     outAccessibilityRelationBDD |= stateExpression & translatedStateExpression ;
   }
 //--- Now, compute accessible states from initial states
-  uint16 * substitutionArray = new uint16 [n_plus_p_bitsCount + n_plus_p_bitsCount] ;
-  for (uint16 i=0 ; i<n_plus_p_bitsCount ; i++) {
-    substitutionArray [i] = (uint16) (n_plus_p_bitsCount + i) ;
-    substitutionArray [n_plus_p_bitsCount + i] = i ;
+  uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
+  for (uint16 i=0 ; i<inVariablesCount ; i++) {
+    substitutionArray [i] = (uint16) (inVariablesCount + i) ;
+    substitutionArray [inVariablesCount + i] = i ;
   }
   C_bdd newlyAccessibleStates ;
   do{
     outAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= outInitialStatesBDD ;
-    const C_bdd x = (newlyAccessibleStates & outAccessibilityRelationBDD).substitution (substitutionArray, (uint16) (n_plus_p_bitsCount + n_plus_p_bitsCount)) ;
-    newlyAccessibleStates |= x.existsOnBitsAfterNumber (n_plus_p_bitsCount) ;
+    const C_bdd x = (newlyAccessibleStates & outAccessibilityRelationBDD).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
   }while (! outAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
   delete [] substitutionArray ; substitutionArray = NULL ;
 //--- At least, check that every state is accessible
@@ -513,10 +421,7 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_andComposition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
@@ -525,10 +430,7 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd leftAccessibleStatesBDD ;
   C_bdd leftAccessibilityRelationBDD ;
   mLeftOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           leftInitialStatesBDD,
                                           leftAccessibleStatesBDD,
                                           leftAccessibilityRelationBDD) ;
@@ -537,10 +439,7 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd rightAccessibleStatesBDD ;
   C_bdd rightAccessibilityRelationBDD ;
   mRightOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           rightInitialStatesBDD,
                                           rightAccessibleStatesBDD,
                                           rightAccessibilityRelationBDD) ;
@@ -555,10 +454,7 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_orComposition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
@@ -567,10 +463,7 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd leftAccessibleStatesBDD ;
   C_bdd leftAccessibilityRelationBDD ;
   mLeftOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           leftInitialStatesBDD,
                                           leftAccessibleStatesBDD,
                                           leftAccessibilityRelationBDD) ;
@@ -579,18 +472,14 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd rightAccessibleStatesBDD ;
   C_bdd rightAccessibilityRelationBDD ;
   mRightOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           rightInitialStatesBDD,
                                           rightAccessibleStatesBDD,
                                           rightAccessibilityRelationBDD) ;
 //--- Compute or composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
-  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
-  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD | rightAccessibilityRelationBDD) | (outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount)) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD | rightAccessibilityRelationBDD) | (outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount)) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -598,10 +487,7 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_xorComposition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
@@ -610,10 +496,7 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd leftAccessibleStatesBDD ;
   C_bdd leftAccessibilityRelationBDD ;
   mLeftOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           leftInitialStatesBDD,
                                           leftAccessibleStatesBDD,
                                           leftAccessibilityRelationBDD) ;
@@ -622,18 +505,14 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd rightAccessibleStatesBDD ;
   C_bdd rightAccessibilityRelationBDD ;
   mRightOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           rightInitialStatesBDD,
                                           rightAccessibleStatesBDD,
                                           rightAccessibilityRelationBDD) ;
 //--- Compute xor composition
   outInitialStatesBDD = leftInitialStatesBDD != rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD != rightAccessibleStatesBDD ;
-  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
-  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD != rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD != rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -641,10 +520,7 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_impliesComposition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
@@ -653,10 +529,7 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd leftAccessibleStatesBDD ;
   C_bdd leftAccessibilityRelationBDD ;
   mLeftOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           leftInitialStatesBDD,
                                           leftAccessibleStatesBDD,
                                           leftAccessibilityRelationBDD) ;
@@ -665,18 +538,14 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd rightAccessibleStatesBDD ;
   C_bdd rightAccessibilityRelationBDD ;
   mRightOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           rightInitialStatesBDD,
                                           rightAccessibleStatesBDD,
                                           rightAccessibilityRelationBDD) ;
 //--- Compute implies composition
   outInitialStatesBDD = leftInitialStatesBDD.implies (rightInitialStatesBDD) ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD.implies (rightAccessibleStatesBDD) ;
-  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
-  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD.implies (rightAccessibilityRelationBDD)) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD.implies (rightAccessibilityRelationBDD)) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -684,10 +553,7 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_equalComposition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
@@ -696,10 +562,7 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd leftAccessibleStatesBDD ;
   C_bdd leftAccessibilityRelationBDD ;
   mLeftOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           leftInitialStatesBDD,
                                           leftAccessibleStatesBDD,
                                           leftAccessibilityRelationBDD) ;
@@ -708,18 +571,14 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd rightAccessibleStatesBDD ;
   C_bdd rightAccessibilityRelationBDD ;
   mRightOperand ()->computeFromExpression (inLexique,
-                                          inDisplayBDDvaluesCount,
-                                          inDisplayBDDvalues,
-                                          inInputNamesArray,
-                                          inOutputNamesArray,
+                                          inVariablesCount,
                                           rightInitialStatesBDD,
                                           rightAccessibleStatesBDD,
                                           rightAccessibilityRelationBDD) ;
 //--- Compute implies composition
   outInitialStatesBDD = leftInitialStatesBDD == rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD == rightAccessibleStatesBDD ;
-  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
-  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD == rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
+  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD == rightAccessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -727,10 +586,7 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_notComposition::
 computeFromExpression (C_lexique & inLexique,
-                       const bool inDisplayBDDvaluesCount,
-                       const bool inDisplayBDDvalues,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
@@ -739,18 +595,14 @@ computeFromExpression (C_lexique & inLexique,
   C_bdd accessibleStatesBDD ;
   C_bdd accessibilityRelationBDD ;
   mOperand ()->computeFromExpression (inLexique,
-                                      inDisplayBDDvaluesCount,
-                                      inDisplayBDDvalues,
-                                      inInputNamesArray,
-                                      inOutputNamesArray,
+                                      inVariablesCount,
                                       initialStatesBDD,
                                       accessibleStatesBDD,
                                       accessibilityRelationBDD) ;
 //--- Compute not composition
   outInitialStatesBDD = ~ initialStatesBDD ;
   outAccessibleStatesBDD = ~ accessibleStatesBDD ;
-  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
-  outAccessibilityRelationBDD = (~ accessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (translationCount, translationCount) ;
+  outAccessibilityRelationBDD = (~ accessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
   C_bdd::markAndSweepUnusedNodes () ;
 }
 
@@ -758,18 +610,36 @@ computeFromExpression (C_lexique & inLexique,
 
 void cPtr_C_variableDefinition::
 computeFromExpression (C_lexique & /* inLexique */,
-                       const bool /* inDisplayBDDvaluesCount */,
-                       const bool /* inDisplayBDDvalues */,
-                       const TC_unique_dyn_array <C_string> & inInputNamesArray,
-                       const TC_unique_dyn_array <C_string> & inOutputNamesArray,
+                       const sint32 inVariablesCount,
                        C_bdd & outInitialStatesBDD,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
   const C_bdd bdd ((uint16) (mInputOutputVariableIndex.getValue ()), true) ;
   outInitialStatesBDD = bdd ;
   outAccessibleStatesBDD = bdd ;
-  const uint16 translationCount = (uint16) (inInputNamesArray.getCount () + inOutputNamesArray.getCount ()) ;
-  outAccessibilityRelationBDD = bdd & bdd.translate (translationCount, translationCount) ;
+  outAccessibilityRelationBDD = bdd & bdd.translate (inVariablesCount, inVariablesCount) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_existsDefinition::
+computeFromExpression (C_lexique & inLexique,
+                       const sint32 inVariablesCount,
+                       C_bdd & outInitialStatesBDD,
+                       C_bdd & outAccessibleStatesBDD,
+                       C_bdd & outAccessibilityRelationBDD) const {
+//--- Compute operand
+  C_bdd initialStatesBDD ;
+  C_bdd accessibleStatesBDD ;
+  C_bdd accessibilityRelationBDD ;
+  mOperand ()->computeFromExpression (inLexique,
+                                      inVariablesCount,
+                                      initialStatesBDD,
+                                      accessibleStatesBDD,
+                                      accessibilityRelationBDD) ;
+  outInitialStatesBDD = initialStatesBDD ;
+  outAccessibleStatesBDD = accessibleStatesBDD ;
+  outAccessibilityRelationBDD = accessibilityRelationBDD ;
 }
 
 //---------------------------------------------------------------------------*
