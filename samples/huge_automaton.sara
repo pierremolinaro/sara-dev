@@ -1,9 +1,6 @@
 use_and ; and_cache 23 ; map 23 ; ite_cache 0 ;
 
-$exemplee1
-(ee1, ee2, ee3, ee4, ee5, ee6, ee7, ee8, ee9, ee10, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10)
-()
-(ss1, ss2, ss3, ss4, s1, s2, s3, s4) :=
+$exemple1 (e1, e2, e3, e4, e5, e6, e7, e8, e9, e10)()(s1, s2, s3, s4) :=
   auto {
     state state1, state2, state3, state4, state5, state6, state7, state8, state9, state10, state11 ;
     first state1, state3, state6 ;
@@ -69,70 +66,13 @@ $exemplee1
       !e1 & e2 & e3 & e4 & e5 & e6 & e7 & e8 & e9 & e10 goto state10 ;
     }
   }
-  &
-  auto {
-    state statee1, statee2, statee3, statee4, statee5, statee6, statee7, statee8, statee9, statee10, statee11 ;
-    first statee1, statee3, statee6 ;
-    statee1 : !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 & ss1 & !ss2 & !ss3  {
-      !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 goto statee2 ;
-      !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 goto statee3 ;
-      !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 goto statee4;
-      !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
-      !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
-      !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10  goto statee9 ;
-    }                                                                                                     
-    statee2 : !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 & !ss1 & !ss2 & ss3{
-      !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
-      !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 goto statee1;
-    }
-    statee3 :  !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 & ss1 & !ss2 & ss4 {
-      !ee1 & !ee2 & !ee3 & !ee4 & ee5 & ee8 & !ee10 goto statee2 ;
-      !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
-      !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 goto statee6 ;
-    }
-    statee4 : !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 & ss1 & !ss2  {
-      !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 goto statee1 ;
-      !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
-      !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
-    }
-    statee5 : !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 & ss1 & ss2 & ss3 {
-      !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 & !ee10 goto statee1 ;
-      !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 goto statee6 ;
-      !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
-      !ee1 & !ee2 & !ee3 & ee4 & ee5 & ee7 goto statee4 ;
-    }
-    statee6 :  !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 & ss4 & !ss2 {
-      !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
-      !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 goto statee3 ;
-      !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
-    }
-    statee7 :  !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 & ss2 & !ss3 & ss4 {
-      !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
-      !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 goto statee10 ;
-      !ee1 & !ee2 & !ee3 & ee4 & !ee5 & ee6 & ee10 goto statee3 ;
-    }
-    statee8 :  !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 & ss1 & ss4 {
-      !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 goto statee9 ;
-      !ee1 & !ee2 & ee3 & !ee4 & ee5 & !ee7 & !ee9 goto statee6 ;
-      !ee1 & !ee2 & !ee3 & !ee4 & !ee5 & ee10 goto statee1 ;
-      ee5 & ee6 & !ee8 & ee9 & ee10 goto statee11 ;
-      !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
-    }
-    statee9 :  !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 & !ss1 & !ss2 & !ss4 {
-      !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
-      !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 goto statee10 ;
-      !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
-      !ee1 & !ee2 & ee3 & !ee4 & !ee5 & !ee8 & !ee9 & !ee10 goto statee5 ;
-      ee5 & ee6 & !ee8 & ee9 & ee10 goto statee11 ;
-    }
-    statee10 :  !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 & ss1 & ss2 & ss3 & ss4{
-      !ee1 & !ee2 & ee3 & ee4 & !ee5 & !ee7 & ee10 goto statee7 ;
-      !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10  goto statee9 ;
-    }
-    statee11 :  ee5 & ee6 & !ee8 & ee9 & ee10 & !ss1 & !ss2 {
-      !ee1 & ee2 & ee3 & !ee4 & !ee7 & !ee8 & !ee10 goto statee9 ;
-      !ee1 & ee2 & !ee3 & !ee4 & !ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
-      !ee1 & ee2 & ee3 & ee4 & ee5 & ee6 & ee7 & ee8 & ee9 & ee10 goto statee10 ;
-    }
-  }
+;
+
+$exemplee1
+(ee1, ee2, ee3, ee4, ee5, ee6, ee7, ee8, ee9, ee10, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10)
+()
+(ss1, ss2, ss3, ss4, s1, s2, s3, s4) :=
+  $exemple1 (ee1, ee2, ee3, ee4, ee5, ee6, ee7, ee8, ee9, ee10)()(ss1, ss2, ss3, ss4)
+   &
+  $exemple1 (e1, e2, e3, e4, e5, e6, e7, e8, e9, e10)()(s1, s2, s3, s4)
 ;
