@@ -1039,14 +1039,13 @@ computeFromExpression (C_lexique & inLexique,
                        C_bdd & outAccessibleStatesBDD,
                        C_bdd & outAccessibilityRelationBDD) const {
 //--- Compute operand
-  C_bdd accessibilityRelationBDD ;
   mOperand ()->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
                                       outTerminalStatesBDD,
                                       outAccessibleStatesBDD,
-                                      accessibilityRelationBDD) ;
+                                      outAccessibilityRelationBDD) ;
 //--- translate initial state BDD by inVariablesCount slots
   const C_bdd translatedInitialStates = outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 //--- Add transitions from terminal states to initial states

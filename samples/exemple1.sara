@@ -1,4 +1,4 @@
-$exemple1 (eav1, eav2)(r1, r2) :=
+$exemple1 (eav1, eav2)()(r1, r2) :=
   auto {
     state etat_repos, etat_petite_vitesse, etat_grande_vitesse  ;
     first etat_repos ;
