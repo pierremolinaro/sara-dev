@@ -4,7 +4,9 @@
 
 style identifier -> "Identifiers" ;style keyWords -> "Key words" ;
 style machineNameStyle -> "Machine names" ;style delimitors -> "Delimitors" ;style integer_csts -> "Integer constants" ; # -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "last", "goto", "timer", "all", "none", "check",
- "nolast", "modalcomp", "exclude", "to" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
+ "nolast", "modalcomp", "exclude", "to",
+ "ite_cache", "and_cache", "map", "bdd",
+ "use_and", "use_ite", "use_and_ite" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
 
 # -------------------------- Delimitors -------------------------------
 list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "!", "?", "|", "(", ")", ":=", "^", "=", "*", "@", "**" ;rule list delimitorsList ;
@@ -99,7 +101,7 @@ abstract class @AC_job  include header ;end class ; class @C_machineCheck ex
 
 class @C_machineComponent extends @AC_job  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;end class ;
 
-#---------------------------------------------------------------------------*
+class @typeUse_AND extends @AC_jobend class ;class @typeUse_ITE extends @AC_jobend class ;class @typeUse_AND_ITE extends @AC_jobend class ;class @typeResize_AND_cache extends @AC_job  @luint mNewSize ;end class ;class @typeResize_ITE_cache extends @AC_job  @luint mNewSize ;end class ;class @typeResizeMap extends @AC_job  @luint mNewSize ;end class ;class @typeDisplayBDDstats extends @AC_jobend class ;#---------------------------------------------------------------------------*
 
 list @L_jobList  @AC_job mComponent ;end list ;
 
@@ -110,6 +112,51 @@ map @M_machinesMap  insert insertKey error message "the '" . * . "' machine has
 #---------------------------------------------------------------------------*end semantics ;#---------------------------------------------------------------------------*#                                                                           *#   S Y N T A X                                                             *#                                                                           *#---------------------------------------------------------------------------*syntax sara_parser :import lexique sara_scanner ;import semantics sara_semantics ;rule <start_symbol> ;rule <explicit_automaton>  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList;rule <io_expression>  ?!@M_variablesMap ioVarMap  !@AC_expression outExpression;rule <io_and_expression>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression;rule <io_primary>   ?!@M_variablesMap ioVarMap  !@AC_expression outExpression;action performComputations  ?!@L_jobList ioJobList;#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [empty] ;  @M_machinesMap machinesMap [empty] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !? componentsMap ;end rule ; #---------------------------------------------------------------------------*
 
 rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [empty] ;  @M_stateMap statesMap [empty] ;  @L_stateDefinition stateDefinitionList [empty] ;#--- Machine name  $check$ ;  @lstring machineName ;  $machineIdf$ ? machineName ;  $;$ ;#--- Insert machine into machine map  @luint machineIndex ;  search ioMachinesMap.searchKey machineName (...) -> machineIndex ;#--- Insert into component map  @AC_job job := [@C_machineCheck new !machineIndex] ; ioJobList += !job ;end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $use_and$ ;
+  $;$ ;  @AC_job job := [@typeUse_AND new] ;  ioJobList += !job ;end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $use_ite$ ;
+  $;$ ;  @AC_job job := [@typeUse_ITE new] ;  ioJobList += !job ;end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $use_and_ite$ ;
+  $;$ ;  @AC_job job := [@typeUse_AND_ITE new] ;  ioJobList += !job ;end rule ;
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $and_cache$ ;
+  @luint size ;
+  $literal_integer$ ? size ;
+  $;$ ;  @AC_job job := [@typeResize_AND_cache new !size] ;  ioJobList += !job ;end rule ;
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $ite_cache$ ;
+  @luint size ;
+  $literal_integer$ ? size ;
+  $;$ ;  @AC_job job := [@typeResize_ITE_cache new !size] ;  ioJobList += !job ;end rule ;
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $map$ ;
+  @luint size ;
+  $literal_integer$ ? size ;
+  $;$ ;  @AC_job job := [@typeResizeMap new !size] ;  ioJobList += !job ;end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>  ?!@M_machinesMap unused ioMachinesMap  ?!@L_jobList ioJobList:
+  $bdd$ ;
+  $;$ ;  @AC_job job := [@typeDisplayBDDstats new] ;  ioJobList += !job ;end rule ;
 
 #---------------------------------------------------------------------------*
 
