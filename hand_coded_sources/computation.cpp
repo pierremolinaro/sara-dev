@@ -99,8 +99,8 @@ performComputations (C_lexique & inLexique,
   //--- Options
     const bool displayBDDvaluesCount = inLexique.getBoolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount", true) ;
     const bool displayBDDvalues = inLexique.getBoolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues", true) ;
-    C_bdd::setHashMapSize (21) ;
-    C_bdd::setITEcacheSize (21) ;
+    C_bdd::setHashMapSize (23) ;
+    C_bdd::setITEcacheSize (23) ;
   //--- Loop for each component
     GGS_M_componentMap::element_type * currentComponent = inComponentMap.getFirstItem () ;
     while (currentComponent != NULL) {
@@ -467,6 +467,7 @@ computeFromExpression (C_lexique & inLexique,
       mEndOfDefinition.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
     }
   }
+  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -508,6 +509,7 @@ computeFromExpression (C_lexique & inLexique,
   outInitialStatesBDD = leftInitialStatesBDD & rightInitialStatesBDD ;
   outAccessibleStatesBDD = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
   outAccessibilityRelationBDD = leftAccessibilityRelationBDD & rightAccessibilityRelationBDD ;
+  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
