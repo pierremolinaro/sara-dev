@@ -485,6 +485,46 @@ computeFromExpression (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_C_modalComposition::
+computeFromExpression (C_lexique & inLexique,
+                       const sint32 inVariablesCount,
+                       C_bdd & outInitialStatesBDD,
+                       C_bdd & outAccessibleStatesBDD,
+                       C_bdd & outAccessibilityRelationBDD) const {
+//--- Compute left operand
+  C_bdd leftInitialStatesBDD ;
+  C_bdd leftAccessibleStatesBDD ;
+  C_bdd leftAccessibilityRelationBDD ;
+  mLeftOperand ()->computeFromExpression (inLexique,
+                                          inVariablesCount,
+                                          leftInitialStatesBDD,
+                                          leftAccessibleStatesBDD,
+                                          leftAccessibilityRelationBDD) ;
+//--- Compute right operand
+  C_bdd rightInitialStatesBDD ;
+  C_bdd rightAccessibleStatesBDD ;
+  C_bdd rightAccessibilityRelationBDD ;
+  mRightOperand ()->computeFromExpression (inLexique,
+                                          inVariablesCount,
+                                          rightInitialStatesBDD,
+                                          rightAccessibleStatesBDD,
+                                          rightAccessibilityRelationBDD) ;
+//--- Check if modal composition is valid
+  const C_bdd intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
+  if (! intersection.isFalse ()) {
+    C_string errorMessage ;
+    errorMessage << "operands transitions intersects, modal composition is not valid" ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+  }
+//--- Compute modal composition
+  outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
+  outAccessibleStatesBDD = leftAccessibleStatesBDD | rightAccessibleStatesBDD ;
+  outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
+  C_bdd::markAndSweepUnusedNodes () ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_C_xorComposition::
 computeFromExpression (C_lexique & inLexique,
                        const sint32 inVariablesCount,
@@ -647,6 +687,31 @@ computeFromExpression (C_lexique & inLexique,
     outAccessibilityRelationBDD = outAccessibilityRelationBDD.existsOnBitNumber (i) ;
   }
   outAccessibilityRelationBDD.rollDownVariables (totalVariableCount + previousVariableCount, previousVariableCount) ; 
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_saturationOperation::
+computeFromExpression (C_lexique & inLexique,
+                       const sint32 inVariablesCount,
+                       C_bdd & outInitialStatesBDD,
+                       C_bdd & outAccessibleStatesBDD,
+                       C_bdd & outAccessibilityRelationBDD) const {
+//--- Compute operand
+  C_bdd accessibilityRelationBDD ;
+  mOperand ()->computeFromExpression (inLexique,
+                                      inVariablesCount,
+                                      outInitialStatesBDD,
+                                      outAccessibleStatesBDD,
+                                      accessibilityRelationBDD) ;
+//--- Perform substitution on accessibility relation
+  uint16 * substitionVector = new uint16 [inVariablesCount + inVariablesCount] ;
+//  const C_bdd translatedAccessibilityRelationBDD = outAccessibilityRelationBDD.substitution (
+
+
+
+  outAccessibilityRelationBDD = (~ accessibilityRelationBDD) & outAccessibleStatesBDD & outAccessibleStatesBDD.translate (inVariablesCount, inVariablesCount) ;
+  C_bdd::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
