@@ -1,0 +1,76 @@
+$oneBitDownCounter (c)()(s) :=
+  auto {
+    state zero_zero, zero_one, one_zero, one_one ;
+    first zero_zero, one_zero ;
+    last zero_zero, zero_one, one_zero, one_one ;
+    zero_zero : (!c) & !s {
+      c goto one_one ;
+    } 
+    zero_one : (!c) & s {
+      c goto one_zero ;
+    } 
+    one_one : c & s {
+      !c goto zero_one ;
+    } 
+    one_zero : c & !s {
+      !c goto zero_zero ;
+    }
+  }
+;
+
+check $oneBitDownCounter ;
+
+$twoBitDownCounter (c)()(s1, s0) :=
+  $oneBitDownCounter (c)()(s0) &
+  $oneBitDownCounter (s0)()(s1)
+;
+
+check $twoBitDownCounter ;
+
+$fourBitDownCounter (c)()(s3, s2, s1, s0) :=
+  $twoBitDownCounter (c)()(s1, s0) &
+  $twoBitDownCounter (s1)()(s3, s2)
+;
+
+check $fourBitDownCounter ;
+
+scenario $fourBitDownCounter (c)()(s3, s2, s1, s0) {
+  "counting test" :0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0:1:0 ;
+
+}
+
+#------------ DOWN COUNTERS WITH ASYNCHRONOUS RESET -----------
+
+$oneBitDownCounterWithReset (c, r)()(s) :=
+  modalcomp {
+    m1 : (!r) & $oneBitDownCounter (c)()(s) ;
+    m2 : r & ! s ;
+    exclude m2 to m2 ;
+    exclude m1 to m1 ;
+  }
+;
+
+check $oneBitDownCounterWithReset ;
+
+$twoBitDownCounterWithReset (c, r)()(s1, s0) :=
+  $oneBitDownCounterWithReset (c, r)()(s0) &
+  $oneBitDownCounterWithReset (s0, r)()(s1)
+;
+
+check $twoBitDownCounterWithReset ;
+
+$fourBitDownCounterWithReset (c, r)()(s3, s2, s1, s0) :=
+  $twoBitDownCounterWithReset (c, r)()(s1, s0) &
+  $twoBitDownCounterWithReset (s1, r)()(s3, s2)
+;
+
+check $fourBitDownCounterWithReset ;
+
+scenario $fourBitDownCounterWithReset (c, r)()(s3, s2, s1, s0) {
+  "counting test" :0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0
+                  :0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0
+                  :0,0:1,0:0,0:1,0:0,0:1,0:0,0:1,0:0,0 ;
+  "reset has priority" :0,1:1,1:0,1 ;
+  "counting then reset" :0,0:1,0:0,0:1,0:0,1;
+}
+
