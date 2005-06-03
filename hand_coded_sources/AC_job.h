@@ -22,7 +22,7 @@
 
 #define macro_AC_job \
   public : virtual void compute (C_lexique & inLexique, \
-                                 TC_grow_array <C_saraMachine> & ioSaraSystemArray, \
+                                 TCArray <C_saraMachine> & ioSaraSystemArray, \
                                  const bool inDisplayBDDvaluesCount, \
                                  const bool inDisplayBDDvalues) const = 0 ;
 
@@ -30,7 +30,7 @@
 
 #define macroInheritFrom_AC_job \
   public : virtual void compute (C_lexique & inLexique, \
-                                 TC_grow_array <C_saraMachine> & ioSaraSystemArray, \
+                                 TCArray <C_saraMachine> & ioSaraSystemArray, \
                                  const bool inDisplayBDDvaluesCount, \
                                  const bool inDisplayBDDvalues) const ;
 
