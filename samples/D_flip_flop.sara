@@ -1,4 +1,5 @@
 $bascule_rs (r, s)()(q, qb) := (q = ~ (qb & s)) & (qb = ~ (r & q)) ;
+check $bascule_rs ;
 
 $bascule_rs_modifiee (r, s)()(q, qb) :=
   auto {
@@ -32,6 +33,7 @@ $bascule_rs_modifiee (r, s)()(q, qb) :=
     }
   }
 ;
+check $bascule_rs_modifiee ;
 
 $d_flip_flop (d, clk)()(q, qb) := 
  ? x, y, z, t, u, v (

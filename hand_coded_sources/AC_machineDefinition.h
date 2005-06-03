@@ -25,7 +25,7 @@ class C_saraMachine {
   public : C_string mMachineName ;
   public : uint16 mInputVariablesCount ;
   public : uint16 mInputAndInternalVariablesCount ;
-  public : TC_unique_dyn_array <C_string> mNamesArray ;
+  public : TCUniqueArray <C_string> mNamesArray ;
   public : C_bdd mInitialStatesBDD ;
   public : C_bdd mTerminalStatesBDD ;
   public : C_bdd mTransitionRelationBDD ;
@@ -36,7 +36,7 @@ class C_saraMachine {
 
 #define macro_AC_machineDefinition \
   public : virtual void computeFromExpression (C_lexique & inLexique, \
-                                               const TC_grow_array <C_saraMachine> & inSaraSystemArray, \
+                                               const TCArray <C_saraMachine> & inSaraSystemArray, \
                                                const uint16 inVariablesCount, \
                                                C_bdd & outInitialStatesBDD, \
                                                C_bdd & outTerminalStatesBDD, \
@@ -47,7 +47,7 @@ class C_saraMachine {
 
 #define macroInheritFrom_AC_machineDefinition \
   public : virtual void computeFromExpression (C_lexique & inLexique, \
-                                               const TC_grow_array <C_saraMachine> & inSaraSystemArray, \
+                                               const TCArray <C_saraMachine> & inSaraSystemArray, \
                                                const uint16 inVariablesCount, \
                                                C_bdd & outInitialStatesBDD, \
                                                C_bdd & outTerminalStatesBDD, \

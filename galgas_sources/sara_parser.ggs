@@ -5,7 +5,7 @@
 style identifier -> "Identifiers" ;style keyWords -> "Key words" ;
 style machineNameStyle -> "Machine names" ;style delimitors -> "Delimitors" ;style integer_csts -> "Integer constants" ;style stringStyle -> "Character strings" ;
 # -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "last", "goto", "timer", "all", "none", "check",
- "nolast", "modalcomp", "exclude", "to", "scenario",
+ "nolast", "modalcomp", "exclude", "to", "scenario", "trans",
  "ite_cache", "and_cache", "map", "bdd",
  "use_and", "use_ite", "use_and_ite" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
 
@@ -97,6 +97,8 @@ end list ;
 
 class @C_modalCompositionComponent extends @AC_machineDefinition  @M_modesMap mModeMap ;
   @L_exclusionListForModes mExclusionList ;end class ;
+
+class @C_trans extends @AC_machineDefinition  @AC_expression mSourceStateExpression ;  @AC_expression mTargetStateExpression ;end class ;
 
 list @L_translationVector  @luint mTargetSlot ;end list ;  class @C_importMachine extends @AC_machineDefinition  @uint mIndexOfImportedMachine ;  @L_translationVector mTranslationVector ;end class ;
 
@@ -341,7 +343,16 @@ rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_vari
       end if ;
     end repeat ;
     $}$ ;
-    outDefinition := [@C_modalCompositionComponent new !modeMap !exclusionList] ;  or    @lstring variableName ;    $identifier$ ? variableName ;    @luint varIndex ;    search variablesMap.searchKey variableName () -> varIndex ;    outDefinition := [@C_variableDefinition new ! varIndex] ;  end select ;end rule ;
+    outDefinition := [@C_modalCompositionComponent new !modeMap !exclusionList] ;
+  or
+    $trans$ ;
+    ${$ ;
+    @AC_expression sourceExpression ;    <io_expression> !? variablesMap ?sourceExpression ;
+    $to$ ;
+    @AC_expression targetExpression ;    <io_expression> !? variablesMap ?targetExpression ;
+    $}$ ;
+    outDefinition := [@C_trans new !sourceExpression !targetExpression] ;
+  or    @lstring variableName ;    $identifier$ ? variableName ;    @luint varIndex ;    search variablesMap.searchKey variableName () -> varIndex ;    outDefinition := [@C_variableDefinition new !varIndex] ;  end select ;end rule ;
 
 #---------------------------------------------------------------------------*
 
@@ -363,5 +374,6 @@ end syntax ;#-----------------------------------------------------------------
 #---------------------------------------------------------------------------*#                                                                           *#   G R A M M A R                                                           *#                                                                           *#---------------------------------------------------------------------------*grammar sara_grammar "LL1" :  import lexique sara_scanner ;  import option sara_cli_options ;  import syntax sara_parser ;  start <start_symbol> ;end grammar ;
 
 #---------------------------------------------------------------------------*#                                                                           *#   C O C O A                                                               *#                                                                           *#---------------------------------------------------------------------------*
+
 cocoa cocoa_sara :
-program "sara" ;import grammar sara_grammar ;end cocoa ;#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 0.1.0" . "sara" :  import grammar sara_grammar ;#--- max error and warning count  error 100 ;  warning 100 ;end program ;#--------------------------------------------------------------------------------*
+ program "sara" ; import grammar sara_grammar ;end cocoa ;#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 0.1.1" . "sara" :  import grammar sara_grammar ;#--- max error and warning count  error 100 ;  warning 100 ;end program ;#--------------------------------------------------------------------------------*
