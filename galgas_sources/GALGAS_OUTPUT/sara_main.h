@@ -37,7 +37,7 @@
 class sara_main : public C_defaultUserSemanticActions {
   protected : sara_scanner mScanner_ ;
   protected : C_galgas_terminal_io mTerminalIO ;
-  protected : C_string mSourceFileExtension_ ;
+  protected : C_String mSourceFileExtension_ ;
 
 //--- Command line options
   protected : bool mOption_sara_cli_options_displayBDDvaluesCount ;
@@ -46,7 +46,7 @@ class sara_main : public C_defaultUserSemanticActions {
 //--- Constructor
   public : sara_main (const C_galgas_io_parameters & inIOparameters) ;
 
-  public : void doCompilation (const C_string & inSourceFileName_,
+  public : void doCompilation (const C_String & inSourceFileName_,
                                sint16 & returnCode) ;
 } ;
 

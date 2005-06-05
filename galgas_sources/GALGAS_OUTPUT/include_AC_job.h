@@ -31,7 +31,7 @@
 
 #include "AC_job.h"
 
-class cPtr_AC_job : public C_reference_count {
+class cPtr_AC_job : public C_GGS_Object {
 //--- START OF USER ZONE 2
 
 

@@ -16,21 +16,21 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "bdd/C_bdd.h"
+#include "bdd/C_BDD.h"
 
 //---------------------------------------------------------------------------*
 
 #define macro_AC_job \
-  public : virtual void compute (C_lexique & inLexique, \
-                                 TCArray <C_saraMachine> & ioSaraSystemArray, \
+  public : virtual void compute (C_Lexique & inLexique, \
+                                 TC_Array <C_saraMachine> & ioSaraSystemArray, \
                                  const bool inDisplayBDDvaluesCount, \
                                  const bool inDisplayBDDvalues) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_AC_job \
-  public : virtual void compute (C_lexique & inLexique, \
-                                 TCArray <C_saraMachine> & ioSaraSystemArray, \
+  public : virtual void compute (C_Lexique & inLexique, \
+                                 TC_Array <C_saraMachine> & ioSaraSystemArray, \
                                  const bool inDisplayBDDvaluesCount, \
                                  const bool inDisplayBDDvalues) const ;
 

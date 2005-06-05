@@ -22,7 +22,7 @@
 
 #ifndef sara_scanner_0_DEFINED
 #define sara_scanner_0_DEFINED
-#include "galgas/C_lexique.h"
+#include "galgas/C_Lexique.h"
 
 //--- START OF USER ZONE 2
 
@@ -35,7 +35,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class sara_scanner : public C_lexique {
+class sara_scanner : public C_Lexique {
 // Terminal symbols enumeration
   public : enum {sara_scanner_1_,
   sara_scanner_1_identifier,
@@ -86,21 +86,21 @@ class sara_scanner : public C_lexique {
 //--- Key words table 'keyWordList'
   public : static const sint16 sara_scanner_table_size_keyWordList ;
   private : static const C_lexique_table_entry sara_scanner_table_for_keyWordList [22] ;
-  public : static sint16 search_into_keyWordList (const C_string & inSearchedString) ;
+  public : static sint16 search_into_keyWordList (const C_String & inSearchedString) ;
 
 //--- Key words table 'delimitorsList'
   public : static const sint16 sara_scanner_table_size_delimitorsList ;
   private : static const C_lexique_table_entry sara_scanner_table_for_delimitorsList [18] ;
-  public : static sint16 search_into_delimitorsList (const C_string & inSearchedString) ;
+  public : static sint16 search_into_delimitorsList (const C_String & inSearchedString) ;
 
   protected : virtual void parseLexicalToken (const bool inPropagateLexicaleErrorException) ;
   protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,
-                                                              C_string & messageErreur) ;
+                                                              C_String & messageErreur) ;
 
 //--- Constructor
   public : sara_scanner (AC_galgas_io * inGalgasInputOutput) ;
   public : uint32 ulongValue ; // user defined attribute
-  public : C_string identifierString ; // user defined attribute
+  public : C_String identifierString ; // user defined attribute
   public : virtual sint16 getTerminalVocabularyCount_ (void) const { return 44 ; }
 
   public : static sint32 getStylesCount (void) ;

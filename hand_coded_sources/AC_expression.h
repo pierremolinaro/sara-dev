@@ -16,16 +16,16 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "bdd/C_bdd.h"
+#include "bdd/C_BDD.h"
 
 //---------------------------------------------------------------------------*
 
 #define macro_AC_expression \
-  public : virtual C_bdd computeBDD (const uint16 inBDDslotOffset) const = 0 ;
+  public : virtual C_BDD computeBDD (const uint16 inBDDslotOffset) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_AC_expression \
-  public : virtual C_bdd computeBDD (const uint16 inBDDslotOffset) const ;
+  public : virtual C_BDD computeBDD (const uint16 inBDDslotOffset) const ;
 
 //---------------------------------------------------------------------------*
