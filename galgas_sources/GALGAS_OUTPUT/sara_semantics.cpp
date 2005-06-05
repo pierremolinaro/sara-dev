@@ -20,8 +20,8 @@
 
 //--- END OF USER ZONE 1
 
-#include "memory/M_memory_control.h"
-#include "files/C_text_file_write.h"
+#include "utilities/MF_MemoryControl.h"
+#include "files/C_TextFileWrite.h"
 #include "sara_semantics.h"
 
 
@@ -49,8 +49,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_M_variablesMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_M_variablesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_M_variablesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_M_variablesMap * info = (e_M_variablesMap *) inInfo ;
@@ -61,15 +61,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_M_variablesMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_M_variablesMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_M_variablesMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -91,7 +91,7 @@ GGS_bool GGS_M_variablesMap::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_M_variablesMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -101,7 +101,7 @@ void GGS_M_variablesMap::internalInsertForDuplication (AC_galgas_map_element * i
 //---------------------------------------------------------------------------*
 
 void GGS_M_variablesMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_luint * outIndex) {
@@ -112,7 +112,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -125,17 +125,17 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_M_variablesMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_luint * outIndex) {
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -153,7 +153,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_M_variablesMap (C_lexique & inLexique,
+void searchKey_M_variablesMap (C_Lexique & inLexique,
                                 GGS_M_variablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) {
@@ -169,7 +169,7 @@ void searchKey_M_variablesMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_M_variablesMap (C_lexique & lexique_var_,
+void insertKey_M_variablesMap (C_Lexique & lexique_var_,
                                 GGS_M_variablesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) {
@@ -202,8 +202,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_M_stateMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_M_stateMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_M_stateMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_M_stateMap * info = (e_M_stateMap *) inInfo ;
@@ -214,15 +214,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_M_stateMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_M_stateMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_M_stateMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -244,7 +244,7 @@ GGS_bool GGS_M_stateMap::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_M_stateMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -254,7 +254,7 @@ void GGS_M_stateMap::internalInsertForDuplication (AC_galgas_map_element * inPtr
 //---------------------------------------------------------------------------*
 
 void GGS_M_stateMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_luint * outIndex) {
@@ -265,7 +265,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -278,17 +278,17 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_M_stateMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_luint * outIndex) {
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -306,7 +306,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_M_stateMap (C_lexique & inLexique,
+void searchKey_M_stateMap (C_Lexique & inLexique,
                                 GGS_M_stateMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) {
@@ -322,7 +322,7 @@ void searchKey_M_stateMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_M_stateMap (C_lexique & lexique_var_,
+void insertKey_M_stateMap (C_Lexique & lexique_var_,
                                 GGS_M_stateMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) {
@@ -338,7 +338,7 @@ void insertKey_M_stateMap (C_lexique & lexique_var_,
 
 //---------------------------------------------------------------------------*
 
-void defineState_M_stateMap (C_lexique & lexique_var_,
+void defineState_M_stateMap (C_Lexique & lexique_var_,
                                 GGS_M_stateMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_luint * outIndex) {
@@ -1364,8 +1364,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_M_modesMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_M_modesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_M_modesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_M_modesMap * info = (e_M_modesMap *) inInfo ;
@@ -1376,15 +1376,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_M_modesMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_M_modesMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_M_modesMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -1406,7 +1406,7 @@ GGS_bool GGS_M_modesMap::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_M_modesMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -1416,7 +1416,7 @@ void GGS_M_modesMap::internalInsertForDuplication (AC_galgas_map_element * inPtr
 //---------------------------------------------------------------------------*
 
 void GGS_M_modesMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_AC_machineDefinition &  inParameter0,
@@ -1430,7 +1430,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -1443,7 +1443,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_M_modesMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_AC_machineDefinition   * outParameter0,
@@ -1451,10 +1451,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -1478,7 +1478,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_M_modesMap (C_lexique & inLexique,
+void searchKey_M_modesMap (C_Lexique & inLexique,
                                 GGS_M_modesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_AC_machineDefinition   * outParameter0,
@@ -1496,7 +1496,7 @@ void searchKey_M_modesMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_M_modesMap (C_lexique & lexique_var_,
+void insertKey_M_modesMap (C_Lexique & lexique_var_,
                                 GGS_M_modesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_AC_machineDefinition & inParameter0,
@@ -3530,8 +3530,8 @@ mInfo (inInfo) {
 
 AC_galgas_map_element * GGS_M_machinesMap::
 new_element (void * inKey, void * inInfo) {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
-  M_assert (reinterpret_cast <e_M_machinesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <e_M_machinesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   e_M_machinesMap * info = (e_M_machinesMap *) inInfo ;
@@ -3542,15 +3542,15 @@ new_element (void * inKey, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 sint32 GGS_M_machinesMap::element_type::compareKeys (void * inKey) const {
-  M_assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <GGS_lstring *> (inKey) != NULL, "Dynamic cast error", 0, 0) ;
   GGS_lstring * key = (GGS_lstring *) inKey ;
   return mKey.compare_key_for_map (* key) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_string GGS_M_machinesMap::element_type::getStringForKey (void) const {
-  C_string result ;
+C_String GGS_M_machinesMap::element_type::getStringForKey (void) const {
+  C_String result ;
   result << mKey ;
   return result ;
 }
@@ -3572,7 +3572,7 @@ GGS_bool GGS_M_machinesMap::reader_hasKey (const GGS_lstring & inKey) const {
 //---------------------------------------------------------------------------*
 
 void GGS_M_machinesMap::internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  M_assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   element_type * p = (element_type *) inPtr ;
   bool extension = false ; // Unused here
   sint32 index = -1 ; // Unused here
@@ -3582,7 +3582,7 @@ void GGS_M_machinesMap::internalInsertForDuplication (AC_galgas_map_element * in
 //---------------------------------------------------------------------------*
 
 void GGS_M_machinesMap::
-insertElement (C_lexique & inLexique,
+insertElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                const GGS_uint &  inParameter0,
@@ -3602,7 +3602,7 @@ insertElement (C_lexique & inLexique,
     bool extension = false ; // Unused here
     internalInsert ((void * ) & inKey, (void *) & info, mRoot, extension, index) ;
     if (index < 0) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
      }
@@ -3615,7 +3615,7 @@ insertElement (C_lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_M_machinesMap::
-searchElement (C_lexique & inLexique,
+searchElement (C_Lexique & inLexique,
                const char * inErrorMessagesArray [],
                const GGS_lstring & inKey,
                GGS_uint   * outParameter0,
@@ -3625,10 +3625,10 @@ searchElement (C_lexique & inLexique,
   element_type * node = NULL  ;
   if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search ((void *) & inKey) ;
-    M_assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (element_type *) p ;
     if (node == NULL) {
-      C_string keyString ;
+      C_String keyString ;
       keyString << inKey ;
       buildMapSemanticErrorMessage (inLexique, inKey, inErrorMessagesArray, keyString) ;
     }
@@ -3664,7 +3664,7 @@ searchElement (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void searchKey_M_machinesMap (C_lexique & inLexique,
+void searchKey_M_machinesMap (C_Lexique & inLexique,
                                 GGS_M_machinesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 GGS_uint   * outParameter0,
@@ -3686,7 +3686,7 @@ void searchKey_M_machinesMap (C_lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void insertKey_M_machinesMap (C_lexique & lexique_var_,
+void insertKey_M_machinesMap (C_Lexique & lexique_var_,
                                 GGS_M_machinesMap & ioMap,
                                 const GGS_lstring & inKey,
                                 const GGS_uint & inParameter0,

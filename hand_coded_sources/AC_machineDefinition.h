@@ -16,42 +16,42 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "bdd/C_bdd.h"
+#include "bdd/C_BDD.h"
 
 //---------------------------------------------------------------------------*
 
 class C_saraMachine {
   public : C_saraMachine (void) ;
-  public : C_string mMachineName ;
+  public : C_String mMachineName ;
   public : uint16 mInputVariablesCount ;
   public : uint16 mInputAndInternalVariablesCount ;
-  public : TCUniqueArray <C_string> mNamesArray ;
-  public : C_bdd mInitialStatesBDD ;
-  public : C_bdd mTerminalStatesBDD ;
-  public : C_bdd mTransitionRelationBDD ;
-  public : C_bdd mAccessibleStatesBDD ;
+  public : TC_UniqueArray <C_String> mNamesArray ;
+  public : C_BDD mInitialStatesBDD ;
+  public : C_BDD mTerminalStatesBDD ;
+  public : C_BDD mTransitionRelationBDD ;
+  public : C_BDD mAccessibleStatesBDD ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 #define macro_AC_machineDefinition \
-  public : virtual void computeFromExpression (C_lexique & inLexique, \
-                                               const TCArray <C_saraMachine> & inSaraSystemArray, \
+  public : virtual void computeFromExpression (C_Lexique & inLexique, \
+                                               const TC_Array <C_saraMachine> & inSaraSystemArray, \
                                                const uint16 inVariablesCount, \
-                                               C_bdd & outInitialStatesBDD, \
-                                               C_bdd & outTerminalStatesBDD, \
-                                               C_bdd & outAccessibleStatesBDD, \
-                                               C_bdd & outAccessibilityRelationBDD) const = 0 ;
+                                               C_BDD & outInitialStatesBDD, \
+                                               C_BDD & outTerminalStatesBDD, \
+                                               C_BDD & outAccessibleStatesBDD, \
+                                               C_BDD & outAccessibilityRelationBDD) const = 0 ;
 
 //---------------------------------------------------------------------------*
 
 #define macroInheritFrom_AC_machineDefinition \
-  public : virtual void computeFromExpression (C_lexique & inLexique, \
-                                               const TCArray <C_saraMachine> & inSaraSystemArray, \
+  public : virtual void computeFromExpression (C_Lexique & inLexique, \
+                                               const TC_Array <C_saraMachine> & inSaraSystemArray, \
                                                const uint16 inVariablesCount, \
-                                               C_bdd & outInitialStatesBDD, \
-                                               C_bdd & outTerminalStatesBDD, \
-                                               C_bdd & outAccessibleStatesBDD, \
-                                               C_bdd & outAccessibilityRelationBDD) const ;
+                                               C_BDD & outInitialStatesBDD, \
+                                               C_BDD & outTerminalStatesBDD, \
+                                               C_BDD & outAccessibleStatesBDD, \
+                                               C_BDD & outAccessibilityRelationBDD) const ;
 
 //---------------------------------------------------------------------------*

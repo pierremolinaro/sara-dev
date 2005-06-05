@@ -265,9 +265,9 @@ sint32 sara_cli_options::getStringOptionsCount (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_string sara_cli_options::
+C_String sara_cli_options::
 getStringOptionValue (const sint32 /* inIndex */) const {
-  return C_string () ;
+  return C_String () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -277,7 +277,7 @@ getStringOptionValue (const sint32 /* inIndex */) const {
 //---------------------------------------------------------------------------*
 
 void sara_cli_options::
-setStringOptionValue (const sint32 /* inIndex */, const C_string & /* inValue */) {
+setStringOptionValue (const sint32 /* inIndex */, const C_String & /* inValue */) {
 }
 
 //---------------------------------------------------------------------------*
@@ -319,14 +319,14 @@ getStringOptionDescription (const sint32 /* inIndex */) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_string sara_cli_options::
+C_String sara_cli_options::
 getStringOptionValueFromKeys (const char * /* inModuleName */,
                               const char * /* inOptionName */,
                               bool * outFound) const {
   if (* outFound) {
     * outFound = false ;
   }
-  return C_string () ;
+  return C_String () ;
 }
 
 //---------------------------------------------------------------------------*
