@@ -40,7 +40,7 @@
 	<key>CFBundleSignature</key>
 	<string>SRAX</string>
 	<key>CFBundleVersion</key>
-	<string>build 48, libpm v58</string>
+	<string>build 51, libpm v61</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
