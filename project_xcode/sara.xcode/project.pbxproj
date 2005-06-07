@@ -258,7 +258,7 @@
 			};
 			dependencies = (
 				CF819BE707AE65D0000408D9,
-				CF8C665F0850719900BFE117,
+				CF93CB130855CA1B0003EC0E,
 			);
 			isa = PBXNativeTarget;
 			name = "Cocoa Sara";
@@ -2779,18 +2779,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		CF8C665E0850719900BFE117 = {
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA;
-			isa = PBXContainerItemProxy;
-			proxyType = 1;
-			remoteGlobalIDString = CF7A1402058CEFE2007126C1;
-			remoteInfo = "Sara tool debug";
-		};
-		CF8C665F0850719900BFE117 = {
-			isa = PBXTargetDependency;
-			target = CF7A1402058CEFE2007126C1;
-			targetProxy = CF8C665E0850719900BFE117;
-		};
 		CF9041F0057F687D007362F4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -2826,6 +2814,18 @@
 			isa = PBXBuildFile;
 			settings = {
 			};
+		};
+		CF93CB120855CA1B0003EC0E = {
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = CF7A1402058CEFE2007126C1;
+			remoteInfo = "Sara tool debug";
+		};
+		CF93CB130855CA1B0003EC0E = {
+			isa = PBXTargetDependency;
+			target = CF7A1402058CEFE2007126C1;
+			targetProxy = CF93CB120855CA1B0003EC0E;
 		};
 		CFA61CA8061090380089CEA5 = {
 			fileEncoding = 30;
