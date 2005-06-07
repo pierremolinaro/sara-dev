@@ -2,7 +2,7 @@
 //                                                                           *
 //  Implementation of overrided methods for SARA                             *
 //                                                                           *
-//  Copyright (C) 2004 Pierre Molinaro.                                      *
+//  Copyright (C) 2004-2005 Eva Rakotomalala & Pierre Molinaro.              *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -1241,6 +1241,25 @@ computeFromExpression (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_C_suppressInitialStatesOperation::
+computeFromExpression (C_Lexique & inLexique,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 inVariablesCount,
+                       C_BDD & outInitialStatesBDD,
+                       C_BDD & outTerminalStatesBDD,
+                       C_BDD & outAccessibleStatesBDD,
+                       C_BDD & outAccessibilityRelationBDD) const {
+  mOperand ()->computeFromExpression (inLexique,
+                                      inSaraSystemArray,
+                                      inVariablesCount,
+                                      outInitialStatesBDD,
+                                      outTerminalStatesBDD,
+                                      outAccessibleStatesBDD,
+                                      outAccessibilityRelationBDD) ;
+  outInitialStatesBDD = C_BDD () ;
+}
+//---------------------------------------------------------------------------*
+
 void cPtr_C_suppressTerminalStatesOperation::
 computeFromExpression (C_Lexique & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
@@ -1348,6 +1367,7 @@ computeFromExpression (C_Lexique & inLexique,
     while (currentMode != NULL) {
       macroValidPointer (currentMode) ;
       modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
+      // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
       currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
@@ -1360,6 +1380,7 @@ computeFromExpression (C_Lexique & inLexique,
     }
   }
 //--- Check that modes are weakly disjoints
+  // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
   for (uint16 i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] = (uint16) (inVariablesCount + i) ;
@@ -1367,17 +1388,19 @@ computeFromExpression (C_Lexique & inLexique,
   }
   for (sint32 mode=0 ; mode<modeCount ; mode++) {
     for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+      // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
       C_BDD leftAccessiblesStates ;
       C_BDD newlyAccessibleStates ;
       do{
-       leftAccessiblesStates = newlyAccessibleStates ;
+        leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
       }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
       if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
         C_String errorMessage ;
@@ -1388,15 +1411,18 @@ computeFromExpression (C_Lexique & inLexique,
         modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
       }
     //--- Compute in right operand accessible states from intersection
+      // printf ("right\n") ; fflush (stdout) ;
       C_BDD rightAccessiblesStates ;
       newlyAccessibleStates = C_BDD () ;
       do{
+        // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
+      //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
       if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
@@ -1417,6 +1443,7 @@ computeFromExpression (C_Lexique & inLexique,
         modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
       }
     //--- Check terminal states are compatible
+      //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
       const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         C_String errorMessage ;
@@ -1431,6 +1458,7 @@ computeFromExpression (C_Lexique & inLexique,
   }
   delete [] substitutionArray ; substitutionArray = NULL ;
 //--- Compute modal composition
+  // printf (" Compute modal composition\n") ; fflush (stdout) ;
   outInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
   outTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
   outAccessibleStatesBDD = accessibleStatesArray (0 COMMA_HERE) ;
