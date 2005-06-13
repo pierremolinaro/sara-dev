@@ -65,19 +65,19 @@ class GGS_M_variablesMap : public AC_galgas_map {
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
   //--- Method for getting key as C_String
-    public : virtual C_String getStringForKey (void) const ;
+    public : virtual C_String stringForKey (void) const ;
   //--- Get pointers
-    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
-    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
-    public : inline element_type * getSupPtr (void) const { return (element_type *) mSupPtr ; }
+    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }
+    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }
+    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }
   //--- Data members
     public : const GGS_lstring mKey ;
     public : e_M_variablesMap mInfo ;
   } ;
 //--- Get pointers
-  public : inline element_type * getRoot (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * getFirstItem (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * getLastItem (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;
 //--- 'empty' constructor
@@ -133,19 +133,19 @@ class GGS_M_stateMap : public AC_galgas_map {
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
   //--- Method for getting key as C_String
-    public : virtual C_String getStringForKey (void) const ;
+    public : virtual C_String stringForKey (void) const ;
   //--- Get pointers
-    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
-    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
-    public : inline element_type * getSupPtr (void) const { return (element_type *) mSupPtr ; }
+    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }
+    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }
+    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }
   //--- Data members
     public : const GGS_lstring mKey ;
     public : e_M_stateMap mInfo ;
   } ;
 //--- Get pointers
-  public : inline element_type * getRoot (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * getFirstItem (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * getLastItem (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;
 //--- 'empty' constructor
@@ -230,7 +230,7 @@ class GGS_L_transitionDefinition {
                                 const GGS_location & ,
                                 const GGS_luint & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -255,7 +255,7 @@ class GGS_L_transitionDefinition {
 //--- Constructor 'new'
   public : static GGS_L_transitionDefinition constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_AC_expression & argument_0,
                                 const GGS_location & argument_1,
                                 const GGS_luint & argument_2) ;
@@ -291,7 +291,7 @@ class GGS_L_stateDefinition {
                                 const GGS_location & ,
                                 const GGS_L_transitionDefinition & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -316,7 +316,7 @@ class GGS_L_stateDefinition {
 //--- Constructor 'new'
   public : static GGS_L_stateDefinition constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0,
                                 const GGS_AC_expression & argument_1,
                                 const GGS_location & argument_2,
@@ -350,7 +350,7 @@ class GGS_L_statesDefinitionList {
     public : element_type (const GGS_luint & ,
                                 const GGS_location & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -375,7 +375,7 @@ class GGS_L_statesDefinitionList {
 //--- Constructor 'new'
   public : static GGS_L_statesDefinitionList constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0,
                                 const GGS_location & argument_1) ;
   protected : void internalAppendItem (const GGS_luint & argument_0,
@@ -440,19 +440,19 @@ class GGS_M_modesMap : public AC_galgas_map {
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
   //--- Method for getting key as C_String
-    public : virtual C_String getStringForKey (void) const ;
+    public : virtual C_String stringForKey (void) const ;
   //--- Get pointers
-    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
-    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
-    public : inline element_type * getSupPtr (void) const { return (element_type *) mSupPtr ; }
+    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }
+    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }
+    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }
   //--- Data members
     public : const GGS_lstring mKey ;
     public : e_M_modesMap mInfo ;
   } ;
 //--- Get pointers
-  public : inline element_type * getRoot (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * getFirstItem (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * getLastItem (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;
 //--- 'empty' constructor
@@ -505,7 +505,7 @@ class GGS_L_exclusionListForModes {
     public : element_type (const GGS_luint & ,
                                 const GGS_luint & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -530,7 +530,7 @@ class GGS_L_exclusionListForModes {
 //--- Constructor 'new'
   public : static GGS_L_exclusionListForModes constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1) ;
   protected : void internalAppendItem (const GGS_luint & argument_0,
@@ -558,7 +558,7 @@ class GGS_L_translationVector {
     public : GGS_luint  mTargetSlot ;
     public : element_type (const GGS_luint & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -583,7 +583,7 @@ class GGS_L_translationVector {
 //--- Constructor 'new'
   public : static GGS_L_translationVector constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0) ;
   protected : void internalAppendItem (const GGS_luint & argument_0) ;
   public : void insulateList (void) ;
@@ -636,7 +636,7 @@ class GGS_L_inputConfigurationForScenario {
     public : GGS_luint  mInputValue ;
     public : element_type (const GGS_luint & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -661,7 +661,7 @@ class GGS_L_inputConfigurationForScenario {
 //--- Constructor 'new'
   public : static GGS_L_inputConfigurationForScenario constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_luint & argument_0) ;
   protected : void internalAppendItem (const GGS_luint & argument_0) ;
   public : void insulateList (void) ;
@@ -687,7 +687,7 @@ class GGS_L_inputScenario {
     public : GGS_L_inputConfigurationForScenario  mInputConfiguration ;
     public : element_type (const GGS_L_inputConfigurationForScenario & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -712,7 +712,7 @@ class GGS_L_inputScenario {
 //--- Constructor 'new'
   public : static GGS_L_inputScenario constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_L_inputConfigurationForScenario & argument_0) ;
   protected : void internalAppendItem (const GGS_L_inputConfigurationForScenario & argument_0) ;
   public : void insulateList (void) ;
@@ -740,7 +740,7 @@ class GGS_L_scenarioList {
     public : element_type (const GGS_lstring & ,
                                 const GGS_L_inputScenario & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -765,7 +765,7 @@ class GGS_L_scenarioList {
 //--- Constructor 'new'
   public : static GGS_L_scenarioList constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_L_inputScenario & argument_1) ;
   protected : void internalAppendItem (const GGS_lstring & argument_0,
@@ -793,7 +793,7 @@ class GGS_L_jobList {
     public : GGS_AC_job  mComponent ;
     public : element_type (const GGS_AC_job & ) ;
 
-    public : inline element_type * getNextItem (void) const { return mNextItem ; }
+    public : inline element_type * nextObject (void) const { return mNextItem ; }
     private : element_type (const element_type &) ;
     private : void operator = (const element_type &) ;
     public : ~element_type (void) {}
@@ -818,7 +818,7 @@ class GGS_L_jobList {
 //--- Constructor 'new'
   public : static GGS_L_jobList constructor_empty (void) ;
 //--- Get first item
-  public : inline element_type * getFirstItem (void) const { return mFirstItem ; }
+  public : inline element_type * firstObject (void) const { return mFirstItem ; }
   public : void addAssign_operation (const GGS_AC_job & argument_0) ;
   protected : void internalAppendItem (const GGS_AC_job & argument_0) ;
   public : void insulateList (void) ;
@@ -856,19 +856,19 @@ class GGS_M_machinesMap : public AC_galgas_map {
   //--- Method for key compare
     public : virtual sint32 compareKeys (void * inKey) const ;
   //--- Method for getting key as C_String
-    public : virtual C_String getStringForKey (void) const ;
+    public : virtual C_String stringForKey (void) const ;
   //--- Get pointers
-    public : inline element_type * getNextItem (void) const { return (element_type *) mNextItem ; }
-    public : inline element_type * getInfPtr (void) const { return (element_type *) mInfPtr ; }
-    public : inline element_type * getSupPtr (void) const { return (element_type *) mSupPtr ; }
+    public : inline element_type * nextObject (void) const { return (element_type *) mNextItem ; }
+    public : inline element_type * infObject (void) const { return (element_type *) mInfPtr ; }
+    public : inline element_type * supObject (void) const { return (element_type *) mSupPtr ; }
   //--- Data members
     public : const GGS_lstring mKey ;
     public : e_M_machinesMap mInfo ;
   } ;
 //--- Get pointers
-  public : inline element_type * getRoot (void) const { return (element_type *) mRoot ; }
-  public : inline element_type * getFirstItem (void) const { return (element_type *) mFirstItem ; }
-  public : inline element_type * getLastItem (void) const { return (element_type *) mLastItem ; }
+  public : inline element_type * rootObject (void) const { return (element_type *) mRoot ; }
+  public : inline element_type * firstObject (void) const { return (element_type *) mFirstItem ; }
+  public : inline element_type * lastObject (void) const { return (element_type *) mLastItem ; }
 //--- Create a new element
   protected : virtual AC_galgas_map_element * new_element (void * inKey, void * inInfo) ;
 //--- 'empty' constructor
