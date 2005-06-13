@@ -118,7 +118,7 @@ const char * sara_cli_options::getBoolOptionDescription (const sint32 inIndex) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-bool sara_cli_options::getBoolOptionValueFromKeys (const char * inModuleName,
+bool sara_cli_options::boolOptionValueFromKeys (const char * inModuleName,
                               const char * inOptionName,
                               bool * outFound) const {
   const char * kKeyArray [3] = {"displayBDDvaluesCount",
@@ -226,7 +226,7 @@ const char * sara_cli_options::getUintOptionDescription (const sint32 inIndex) c
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-uint32 sara_cli_options::getUintOptionValueFromKeys (const char * inModuleName,
+uint32 sara_cli_options::uintOptionValueFromKeys (const char * inModuleName,
                               const char * inOptionName,
                               bool * outFound) const {
   const char * kKeyArray [1] = {""} ;
@@ -320,7 +320,7 @@ getStringOptionDescription (const sint32 /* inIndex */) const {
 //---------------------------------------------------------------------------*
 
 C_String sara_cli_options::
-getStringOptionValueFromKeys (const char * /* inModuleName */,
+stringOptionValueFromKeys (const char * /* inModuleName */,
                               const char * /* inOptionName */,
                               bool * outFound) const {
   if (* outFound) {

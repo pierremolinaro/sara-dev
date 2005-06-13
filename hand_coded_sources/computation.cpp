@@ -120,11 +120,11 @@ void swap (C_saraMachine & ioOperand1,
 void
 performComputations (C_Lexique & inLexique,
                      GGS_L_jobList & inComponentMap) {
-  if (inLexique.getCurrentFileErrorsCount () == 0) {
+  if (inLexique.currentFileErrorsCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
-    const bool displayBDDvaluesCount = inLexique.getBoolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount", true) ;
-    const bool displayBDDvalues = inLexique.getBoolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues", true) ;
+    const bool displayBDDvaluesCount = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount", true) ;
+    const bool displayBDDvalues = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues", true) ;
   //--- Initial cache and map sizes
     printf ("Initial size of BDD unique table: %lu; initial size of ITE cache: %lu; initial size of AND cache: %lu.\n",
             C_BDD::getHashMapEntriesCount (), C_BDD::getITEcacheEntriesCount (), C_BDD::getANDcacheEntriesCount ()) ;
@@ -141,7 +141,7 @@ performComputations (C_Lexique & inLexique,
     }  
     fflush (stdout) ;
   //--- Loop for each component
-    GGS_L_jobList::element_type * currentComponent = inComponentMap.getFirstItem () ;
+    GGS_L_jobList::element_type * currentComponent = inComponentMap.firstObject () ;
     while (currentComponent != NULL) {
       macroValidPointer (currentComponent) ;
       C_saraMachine system ;
@@ -150,7 +150,7 @@ performComputations (C_Lexique & inLexique,
                                                 displayBDDvaluesCount,
                                                 displayBDDvalues) ;
       fflush (stdout) ;
-      currentComponent = currentComponent->getNextItem () ;
+      currentComponent = currentComponent->nextObject () ;
     }
   }
 }
@@ -162,7 +162,7 @@ compute (C_Lexique & inLexique,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
-  printf ("------------------ Computations for '%s' machine\n", mMachineName.getStringPtr ()) ;
+  printf ("------------------ Computations for '%s' machine\n", mMachineName.cString ()) ;
   C_saraMachine machine ;
   machine.mMachineName = mMachineName ;
 //--- Build input variables array names
@@ -174,12 +174,12 @@ compute (C_Lexique & inLexique,
   { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.getFirstItem () ;
+  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.firstObject () ;
   sint32 index = 0 ;
   while (currentVar != NULL) {
     machine.mNamesArray (index COMMA_HERE) = currentVar->mKey ;
     index ++ ;
-    currentVar = currentVar->getNextItem () ;
+    currentVar = currentVar->nextObject () ;
   }
 //--- Compute automaton from definition expression
   mDefinition ()->computeFromExpression (inLexique,
@@ -298,7 +298,7 @@ compute (C_Lexique & /* inLexique */,
 //--- Get machine index
   const sint32 machineIndex = (sint32) mMachineIndex.getValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  printf ("------------------ Checkings for '%s' machine\n", machine.mMachineName.getStringPtr ()) ;
+  printf ("------------------ Checkings for '%s' machine\n", machine.mMachineName.cString ()) ;
 //--- Checking input configuration is full
   const C_BDD notHandledInputConfigurations = ~ machine.mInitialStatesBDD.existsOnBitsAfterNumber (machine.mInputVariablesCount) ;
   if (notHandledInputConfigurations.isFalse ()) {
@@ -505,7 +505,7 @@ compute (C_Lexique & /* inLexique */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
- printf ("------------------ Scenarios for '%s' machine\n", ioSaraSystemArray ( (sint32) mMachineIndex.getValue () COMMA_HERE).mMachineName.getStringPtr ()) ;
+ printf ("------------------ Scenarios for '%s' machine\n", ioSaraSystemArray ( (sint32) mMachineIndex.getValue () COMMA_HERE).mMachineName.cString ()) ;
 //--- Initial state BDD
   const C_BDD initialStateBDD = ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mInitialStatesBDD ;
 //--- transitions BDD
@@ -513,22 +513,22 @@ compute (C_Lexique & /* inLexique */,
 //--- variables count
   const uint16 variableCount = (uint16) ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
-  GGS_L_scenarioList::element_type * scenario = mScenarioList.getFirstItem () ;
+  GGS_L_scenarioList::element_type * scenario = mScenarioList.firstObject () ;
   while (scenario != NULL) {
     macroValidPointer (scenario) ;
   //--- Print scenario title
-    printf ("Scenario '%s':\n", scenario->mScenarioTitle.getStringPtr ()) ;
+    printf ("Scenario '%s':\n", scenario->mScenarioTitle.cString ()) ;
   //--- Build initial configuration
-    GGS_L_inputScenario::element_type * currentInput = scenario->mInputScenario.getFirstItem () ;
+    GGS_L_inputScenario::element_type * currentInput = scenario->mInputScenario.firstObject () ;
     macroValidPointer (currentInput) ;
     uint64 initialConfiguration = 0 ;
     uint16 shift = 0 ;
-    GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.getFirstItem () ;
+    GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.firstObject () ;
     while (v != NULL) {
       macroValidPointer (v) ;
       initialConfiguration += ((uint64) v->mInputValue.getValue ()) << shift ;
       shift ++ ;
-      v = v->getNextItem () ;
+      v = v->nextObject () ;
     }
     const C_BDD initialInputConfigurationBDD = C_BDD::varCompareConst (0, shift, C_BDD::kEqual, initialConfiguration) ;
     C_BDD currentState = initialInputConfigurationBDD & initialStateBDD ;
@@ -542,18 +542,18 @@ compute (C_Lexique & /* inLexique */,
     currentState.printBDD (ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray, 3) ;
     uint64 valuesCount = currentState.getBDDvaluesCount (shift) ;
   //--- Loop throught input sequence
-    currentInput = currentInput->getNextItem () ;
+    currentInput = currentInput->nextObject () ;
     while ((currentInput != NULL) && (valuesCount == 1ULL)) {
       macroValidPointer (currentInput) ;
     //--- Parse new input configuration
       uint64 inputConfiguration = 0 ;
       shift = 0 ;
-      GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.getFirstItem () ;
+      GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.firstObject () ;
       while (v != NULL) {
         macroValidPointer (v) ;
         inputConfiguration += ((uint64) v->mInputValue.getValue ()) << shift ;
         shift ++ ;
-        v = v->getNextItem () ;
+        v = v->nextObject () ;
       }
       const C_BDD inputConfigurationBDD = C_BDD::varCompareConst (variableCount, shift, C_BDD::kEqual, inputConfiguration) ;
       const C_BDD newState = currentState & transitionsBDD & inputConfigurationBDD ;
@@ -563,7 +563,7 @@ compute (C_Lexique & /* inLexique */,
       currentState.printBDDwithoutHeader (ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray, variableCount, 3) ;
       valuesCount = currentState.getBDDvaluesCount (shift) ;
     //--- Goto next input
-      currentInput = currentInput->getNextItem () ;
+      currentInput = currentInput->nextObject () ;
     }
     delete [] substitutionVector ; substitutionVector = NULL ;
     if (valuesCount == 0ULL) {
@@ -573,7 +573,7 @@ compute (C_Lexique & /* inLexique */,
       printfUINT64 (valuesCount) ;
       printf (" states).\n") ;
     }
-    scenario = scenario->getNextItem () ;
+    scenario = scenario->nextObject () ;
   }
 }
 
@@ -589,10 +589,10 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Build state array names
   TC_UniqueArray <C_String> stateNameArray (mStatesMap.count () COMMA_HERE) ;
-  GGS_M_stateMap::element_type * currentState = mStatesMap.getFirstItem () ;
+  GGS_M_stateMap::element_type * currentState = mStatesMap.firstObject () ;
   while (currentState != NULL) {
     stateNameArray.addObject (currentState->mKey) ;
-    currentState = currentState->getNextItem () ;
+    currentState = currentState->nextObject () ;
   }
 //----------------------------------------------------------------------- States BDD array
 //    BDD slots assignments
@@ -602,7 +602,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
   TC_UniqueArray <C_BDD> stateExpressionBDD (mStatesMap.count (), C_BDD () COMMA_HERE) ;
-  GGS_L_stateDefinition::element_type * currentDefinition = mStateDefinitionList.getFirstItem () ;
+  GGS_L_stateDefinition::element_type * currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
   //--- Get state index
@@ -615,16 +615,16 @@ computeFromExpression (C_Lexique & inLexique,
       errorMessage << "input configuration for state '"
                    << stateNameArray (stateIndex COMMA_HERE)
                    << "' is empty" ;
-      currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+      currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
     }
   //--- Go to next state definition  
-    currentDefinition = currentDefinition->getNextItem () ;
+    currentDefinition = currentDefinition->nextObject () ;
   }
 //----------------------------------------------------------------------- Check that states are disjoined
-  currentDefinition = mStateDefinitionList.getFirstItem () ;
+  currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
-    GGS_L_stateDefinition::element_type * testedState = currentDefinition->getNextItem () ;
+    GGS_L_stateDefinition::element_type * testedState = currentDefinition->nextObject () ;
     while (testedState != NULL) {
       macroValidPointer (testedState) ;
       if (! (stateExpressionBDD ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
@@ -635,12 +635,12 @@ computeFromExpression (C_Lexique & inLexique,
                    << "' intersects expression for state '"
                    << stateNameArray ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
                    << "'" ;
-        testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
-      testedState = testedState->getNextItem () ;
+      testedState = testedState->nextObject () ;
     }
   //--- Go to next state definition  
-    currentDefinition = currentDefinition->getNextItem () ;
+    currentDefinition = currentDefinition->nextObject () ;
   }
 //----------------------------------------------------------------------- Initial states BDD
 //    BDD slots assignments
@@ -648,18 +648,18 @@ computeFromExpression (C_Lexique & inLexique,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Compute BDD initial states
-  GGS_L_statesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
+  GGS_L_statesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.firstObject () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
     // printf ("INIT : %ld\n", currentInitialState->mStateIndex.getValue ()) ;
     outInitialStatesBDD |= stateExpressionBDD ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE) ;
-    currentInitialState = currentInitialState->getNextItem () ;
+    currentInitialState = currentInitialState->nextObject () ;
   }
 //--- Check initial states are disjoined
-  currentInitialState = mInitialStatesDefinitionList.getFirstItem () ;
+  currentInitialState = mInitialStatesDefinitionList.firstObject () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
-    GGS_L_statesDefinitionList::element_type * testedInitialState = currentInitialState->getNextItem () ;
+    GGS_L_statesDefinitionList::element_type * testedInitialState = currentInitialState->nextObject () ;
     while (testedInitialState != NULL) {
       macroValidPointer (testedInitialState) ;
       const C_BDD intersection = stateExpressionBDD ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE)
@@ -671,11 +671,11 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' intersects previous initial state '"
                      << stateNameArray ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE)
                      << "'" ;
-        testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
-      testedInitialState = testedInitialState->getNextItem () ;
+      testedInitialState = testedInitialState->nextObject () ;
     }
-    currentInitialState = currentInitialState->getNextItem () ;
+    currentInitialState = currentInitialState->nextObject () ;
   }
 //----------------------------------------------------------------------- Terminal states BDD
 //    BDD slots assignments
@@ -683,11 +683,11 @@ computeFromExpression (C_Lexique & inLexique,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Compute BDD initial states
-  GGS_L_statesDefinitionList::element_type * currentTerminalState = mTerminalStatesDefinitionList.getFirstItem () ;
+  GGS_L_statesDefinitionList::element_type * currentTerminalState = mTerminalStatesDefinitionList.firstObject () ;
   while (currentTerminalState != NULL) {
     macroValidPointer (currentTerminalState) ;
     outTerminalStatesBDD |= stateExpressionBDD ((sint32) currentTerminalState->mStateIndex.getValue () COMMA_HERE) ;
-    currentTerminalState = currentTerminalState->getNextItem () ;
+    currentTerminalState = currentTerminalState->nextObject () ;
   }
 //----------------------------------------------------------------------- Transitions BDD
 //    A transition is a 4-uple (e, s, e', s')
@@ -700,37 +700,37 @@ computeFromExpression (C_Lexique & inLexique,
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
   outAccessibilityRelationBDD = C_BDD () ;
-  currentDefinition = mStateDefinitionList.getFirstItem () ;
+  currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
   //--- Get current state index
     const sint32 currentStateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
   //--- Accumulate transitions targets for each transition
     C_BDD transitionsTargetBDD ;
-    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
+    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
       const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inVariablesCount) ;
       const sint32 targetStateIndex = (sint32) currentTransition->mTargetStateIndex.getValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
-      currentTransition = currentTransition->getNextItem () ;
+      currentTransition = currentTransition->nextObject () ;
     }
   //--- Combine with state BDD
     transitionsTargetBDD &= stateExpressionBDD (currentStateIndex COMMA_HERE) ;
   //--- Accumulate into transitions BDD
     outAccessibilityRelationBDD |= transitionsTargetBDD ;
   //--- Go to next state definition
-    currentDefinition = currentDefinition->getNextItem () ;
+    currentDefinition = currentDefinition->nextObject () ;
   }
 //--- Check transitions of each state
-  currentDefinition = mStateDefinitionList.getFirstItem () ;
+  currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
     const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
   //--- Check that action does not intersect with state input expression
     sint32 transitionIndex = 0 ;
-    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.getFirstItem () ;
+    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
     //--- Compute action BDD
@@ -739,10 +739,10 @@ computeFromExpression (C_Lexique & inLexique,
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this action intersects with current state input configuration" ;
-        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
     //--- Check action does not intersect with other actions
-      GGS_L_transitionDefinition::element_type * testedTransition = currentTransition->getNextItem () ;
+      GGS_L_transitionDefinition::element_type * testedTransition = currentTransition->nextObject () ;
       while (testedTransition != NULL) {
         macroValidPointer (testedTransition) ;
       //--- Compute action BDD
@@ -751,23 +751,23 @@ computeFromExpression (C_Lexique & inLexique,
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
           errorMessage << "this action intersects with #" << transitionIndex << " previous action" ;
-          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
         }
-        testedTransition = testedTransition->getNextItem () ;
+        testedTransition = testedTransition->nextObject () ;
       }
     //--- Check that action is compatible input configuration of target state
       const C_BDD x = actionBDD & stateExpressionBDD ((sint32) currentTransition->mTargetStateIndex.getValue () COMMA_HERE) ;
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
-        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
     //--- Goto next transition
-      currentTransition = currentTransition->getNextItem () ;
+      currentTransition = currentTransition->nextObject () ;
       transitionIndex ++ ;
     }
   //--- Goto next state
-    currentDefinition = currentDefinition->getNextItem () ;
+    currentDefinition = currentDefinition->nextObject () ;
   }
 //----------------------------------------------------------------------- Compute accessible states
   uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
@@ -792,7 +792,7 @@ computeFromExpression (C_Lexique & inLexique,
       errorMessage << "state '"
                    << stateNameArray (i COMMA_HERE)
                    << "' is not accessible" ;
-      mEndOfDefinition.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+      mEndOfDefinition.signalSemanticError (inLexique, errorMessage.cString ()) ;
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
@@ -925,7 +925,7 @@ computeFromExpression (C_Lexique & inLexique,
   if (! intersection.isFalse ()) {
     C_String errorMessage ;
     errorMessage << "operands transitions intersects, strong modal composition is not valid" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -988,7 +988,7 @@ computeFromExpression (C_Lexique & inLexique,
   if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "left operand does not respect weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
   }
 //--- Compute in right operand accessible states from intersection
   C_BDD rightAccessiblesStates ;
@@ -1004,21 +1004,21 @@ computeFromExpression (C_Lexique & inLexique,
   if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "right operand does not respect weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD).isEqualToBDD (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "initial states are not compatible with weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD).isEqualToBDD (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "terminal states are not compatible with weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1318,14 +1318,14 @@ computeFromExpression (C_Lexique & /* inLexique */,
   const uint16 importedMachineVariableCount = (uint16) mTranslationVector.count () ;
   uint16 * statesSubstitutionArray = new uint16 [importedMachineVariableCount] ;
   uint16 * transitionsSubstitutionArray = new uint16 [importedMachineVariableCount + importedMachineVariableCount] ;
-  GGS_L_translationVector::element_type * p = mTranslationVector.getFirstItem () ;
+  GGS_L_translationVector::element_type * p = mTranslationVector.firstObject () ;
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
     statesSubstitutionArray [index] = (uint16) p->mTargetSlot.getValue () ;
     transitionsSubstitutionArray [index] = (uint16) p->mTargetSlot.getValue () ;
     transitionsSubstitutionArray [importedMachineVariableCount + index] = (uint16) (inVariablesCount + p->mTargetSlot.getValue ()) ;
-    p = p->getNextItem () ;
+    p = p->nextObject () ;
     index ++ ;
   }
 //--- Translate initial state BDD
@@ -1362,7 +1362,7 @@ computeFromExpression (C_Lexique & inLexique,
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
-  GGS_M_modesMap::element_type * currentMode = mModeMap.getFirstItem () ;
+  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
   {sint32 index = 0 ;
     while (currentMode != NULL) {
       macroValidPointer (currentMode) ;
@@ -1375,7 +1375,7 @@ computeFromExpression (C_Lexique & inLexique,
                                                               terminalStatesArray (index COMMA_HERE),
                                                               accessibleStatesArray (index COMMA_HERE),
                                                               accessibilityRelationStatesArray (index COMMA_HERE)) ;
-      currentMode = currentMode->getNextItem () ;
+      currentMode = currentMode->nextObject () ;
       index ++ ;
     }
   }
@@ -1408,7 +1408,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1429,7 +1429,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1440,7 +1440,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1452,7 +1452,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.getStringPtr ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
     }
   }
@@ -1475,10 +1475,10 @@ computeFromExpression (C_Lexique & inLexique,
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
-        GGS_L_exclusionListForModes::element_type * currentExclusion = mExclusionList.getFirstItem () ;
+        GGS_L_exclusionListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
         while ((currentExclusion != NULL) && isAccepted) {
           isAccepted = (sourceMode != (sint32) currentExclusion->mExcludedSourceMode.getValue ()) || (targetMode != (sint32) currentExclusion->mExcludedTargetMode.getValue ()) ;
-          currentExclusion = currentExclusion->getNextItem () ;
+          currentExclusion = currentExclusion->nextObject () ;
         }
       //--- If accepted, add transition
         if (isAccepted) {

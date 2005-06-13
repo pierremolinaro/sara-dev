@@ -980,7 +980,7 @@ void sara_grammar::nt_definition_expression_factor_ (sara_scanner & lexique_var_
                                 GGS_M_machinesMap & parameter_1,
                                 GGS_M_variablesMap & parameter_2,
                                 GGS_AC_machineDefinition & parameter_3) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_definition_expression_factor_sara_parser_855_36_ (lexique_var_, parameter_1, parameter_2, parameter_3) ;
     break ;
@@ -1002,7 +1002,7 @@ void sara_grammar::nt_definition_expression_factor_ (sara_scanner & lexique_var_
 void sara_grammar::nt_component_ (sara_scanner & lexique_var_,
                                 GGS_M_machinesMap & parameter_1,
                                 GGS_L_jobList & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_component_sara_parser_439_17_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -1074,7 +1074,7 @@ void sara_grammar::nt_io_and_expression_ (sara_scanner & lexique_var_,
 void sara_grammar::nt_io_primary_ (sara_scanner & lexique_var_,
                                 GGS_M_variablesMap & parameter_1,
                                 GGS_AC_expression & parameter_2) {
-  switch (lexique_var_.getNextProductionIndex ()) {
+  switch (lexique_var_.nextProductionIndex ()) {
   case 1 :
     pr_io_primary_sara_parser_743_18_ (lexique_var_, parameter_1, parameter_2) ;
     break ;
@@ -1103,7 +1103,7 @@ void sara_grammar::nt_io_primary_ (sara_scanner & lexique_var_,
 
 
 sint16 sara_grammar::select_repeat_sara_parser_0 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1114,7 +1114,7 @@ sint16 sara_grammar::select_repeat_sara_parser_0 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_1 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1125,7 +1125,7 @@ sint16 sara_grammar::select_repeat_sara_parser_1 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_sara_parser_2 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1136,7 +1136,7 @@ sint16 sara_grammar::select_sara_parser_2 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_3 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1147,7 +1147,7 @@ sint16 sara_grammar::select_repeat_sara_parser_3 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_4 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1158,7 +1158,7 @@ sint16 sara_grammar::select_repeat_sara_parser_4 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_5 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1169,7 +1169,7 @@ sint16 sara_grammar::select_repeat_sara_parser_5 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_sara_parser_6 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1180,7 +1180,7 @@ sint16 sara_grammar::select_sara_parser_6 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_7 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1191,7 +1191,7 @@ sint16 sara_grammar::select_repeat_sara_parser_7 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_8 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1202,7 +1202,7 @@ sint16 sara_grammar::select_repeat_sara_parser_8 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_9 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1213,7 +1213,7 @@ sint16 sara_grammar::select_repeat_sara_parser_9 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_10 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1224,7 +1224,7 @@ sint16 sara_grammar::select_repeat_sara_parser_10 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_11 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1235,7 +1235,7 @@ sint16 sara_grammar::select_repeat_sara_parser_11 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_12 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1246,7 +1246,7 @@ sint16 sara_grammar::select_repeat_sara_parser_12 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_13 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1257,7 +1257,7 @@ sint16 sara_grammar::select_repeat_sara_parser_13 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_14 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1268,7 +1268,7 @@ sint16 sara_grammar::select_repeat_sara_parser_14 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_15 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1279,7 +1279,7 @@ sint16 sara_grammar::select_repeat_sara_parser_15 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_sara_parser_16 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1290,7 +1290,7 @@ sint16 sara_grammar::select_sara_parser_16 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_17 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1301,7 +1301,7 @@ sint16 sara_grammar::select_repeat_sara_parser_17 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_18 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1312,7 +1312,7 @@ sint16 sara_grammar::select_repeat_sara_parser_18 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_19 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1323,7 +1323,7 @@ sint16 sara_grammar::select_repeat_sara_parser_19 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_20 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1334,7 +1334,7 @@ sint16 sara_grammar::select_repeat_sara_parser_20 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_sara_parser_21 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1345,7 +1345,7 @@ sint16 sara_grammar::select_sara_parser_21 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_22 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1356,7 +1356,7 @@ sint16 sara_grammar::select_repeat_sara_parser_22 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_23 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1367,7 +1367,7 @@ sint16 sara_grammar::select_repeat_sara_parser_23 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_24 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1378,7 +1378,7 @@ sint16 sara_grammar::select_repeat_sara_parser_24 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_25 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1389,7 +1389,7 @@ sint16 sara_grammar::select_repeat_sara_parser_25 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_sara_parser_26 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1400,7 +1400,7 @@ sint16 sara_grammar::select_sara_parser_26 (sara_scanner & lexique_var_) {
 
 
 sint16 sara_grammar::select_repeat_sara_parser_27 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1411,7 +1411,7 @@ sint16 sara_grammar::select_repeat_sara_parser_27 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_28 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1422,7 +1422,7 @@ sint16 sara_grammar::select_repeat_sara_parser_28 (sara_scanner & lexique_var_) 
 
 
 sint16 sara_grammar::select_repeat_sara_parser_29 (sara_scanner & lexique_var_) {
-  return lexique_var_.getNextProductionIndex () ;
+  return lexique_var_.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

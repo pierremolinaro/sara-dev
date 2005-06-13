@@ -1233,13 +1233,13 @@ pr_explicit_automaton_sara_parser_1035_26_ (sara_scanner & lexique_var_,
       }
     }
   }
-  GGS_M_stateMap::element_type * operand_36556 = var_cas_statesMap.getFirstItem () ;
+  GGS_M_stateMap::element_type * operand_36556 = var_cas_statesMap.firstObject () ;
   while (operand_36556 != NULL) {
     macroValidPointer (operand_36556) ;
     if (((! var_cas_stateDefinitionMap.reader_hasKey (operand_36556->mKey))).isBuiltAndTrue ()) {
         GGS_location (lexique_var_).reader_location ().signalGGSSemanticError (lexique_var_, ((((GGS_string (true, "'")) + (operand_36556->mKey.reader_value ()))) + (GGS_string (true, "' state is not described")))) ;
     }
-    operand_36556 = operand_36556->getNextItem () ;
+    operand_36556 = operand_36556->nextObject () ;
   }
   lexique_var_.acceptTerminal (sara_scanner::sara_scanner_1__7D) ;
   var_cas_outDefinition = GGS_C_explicitAutomatonDefinition::constructor_new (var_cas_statesMap, var_cas_initialStatesDefinitionList, var_cas_terminalStatesDefinitionList, var_cas_stateDefinitionList, GGS_location (lexique_var_)) ;

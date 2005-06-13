@@ -68,7 +68,7 @@ sint32 GGS_M_variablesMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_variablesMap::element_type::getStringForKey (void) const {
+C_String GGS_M_variablesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -221,7 +221,7 @@ sint32 GGS_M_stateMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_stateMap::element_type::getStringForKey (void) const {
+C_String GGS_M_stateMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -1383,7 +1383,7 @@ sint32 GGS_M_modesMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_modesMap::element_type::getStringForKey (void) const {
+C_String GGS_M_modesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
@@ -3580,7 +3580,7 @@ sint32 GGS_M_machinesMap::element_type::compareKeys (void * inKey) const {
 
 //---------------------------------------------------------------------------*
 
-C_String GGS_M_machinesMap::element_type::getStringForKey (void) const {
+C_String GGS_M_machinesMap::element_type::stringForKey (void) const {
   C_String result ;
   result << mKey ;
   return result ;
