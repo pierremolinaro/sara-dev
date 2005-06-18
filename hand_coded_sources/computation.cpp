@@ -42,7 +42,7 @@ static void printfUINT64 (const uint64 inValue) {
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_VariableExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return C_BDD ((uint16) (mInputVarIndex.getValue () + inBDDslotOffset), true) ;
+  return C_BDD ((uint16) (mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -166,10 +166,10 @@ compute (C_Lexique & inLexique,
   C_saraMachine machine ;
   machine.mMachineName = mMachineName ;
 //--- Build input variables array names
-  const uint16 inputVariablesCount = (uint16) mInputVariableCount.getValue () ;
+  const uint16 inputVariablesCount = (uint16) mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
   const uint16 variablesCount = (uint16) mVariablesMap.count () ;
-  const uint16 inputAndInternalVariablesCount = (uint16) mInputAndInternalVariableCount.getValue () ;
+  const uint16 inputAndInternalVariablesCount = (uint16) mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
   { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
@@ -296,7 +296,7 @@ compute (C_Lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const sint32 machineIndex = (sint32) mMachineIndex.getValue () ;
+  const sint32 machineIndex = (sint32) mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   printf ("------------------ Checkings for '%s' machine\n", machine.mMachineName.cString ()) ;
 //--- Checking input configuration is full
@@ -425,10 +425,10 @@ compute (C_Lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   C_Timer duree ;
-  C_BDD::setHashMapSize ((uint16) mNewSize.getValue ()) ;
+  C_BDD::setHashMapSize ((uint16) mNewSize.uintValue ()) ;
   duree.stopTimer () ;
   printf ("------------------ map %lu: BDD unique table resized to %lu (done in ",
-          mNewSize.getValue (), C_BDD::getHashMapEntriesCount ()) ;
+          mNewSize.uintValue (), C_BDD::getHashMapEntriesCount ()) ;
   duree.printTimer (stdout) ;
   printf (").\n\n") ; 
 }
@@ -441,10 +441,10 @@ compute (C_Lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   C_Timer duree ;
-  C_BDD::setANDcacheSize ((sint32) mNewSize.getValue ()) ;
+  C_BDD::setANDcacheSize ((sint32) mNewSize.uintValue ()) ;
   duree.stopTimer () ;
   printf ("------------------ and_cache %lu: AND cache resized to %lu (done in ",
-          mNewSize.getValue (), C_BDD::getANDcacheEntriesCount ()) ;
+          mNewSize.uintValue (), C_BDD::getANDcacheEntriesCount ()) ;
   duree.printTimer (stdout) ;
   printf (").\n\n") ;  
 }
@@ -457,10 +457,10 @@ compute (C_Lexique & /* inLexique */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   C_Timer duree ;
-  C_BDD::setITEcacheSize ((sint32) mNewSize.getValue ()) ;
+  C_BDD::setITEcacheSize ((sint32) mNewSize.uintValue ()) ;
   duree.stopTimer () ;
   printf ("------------------ ite_cache %lu: ITE cache resized to %lu (done in ",
-          mNewSize.getValue (), C_BDD::getITEcacheEntriesCount ()) ;
+          mNewSize.uintValue (), C_BDD::getITEcacheEntriesCount ()) ;
   duree.printTimer (stdout) ;
   printf (").\n\n") ;  
 }
@@ -505,13 +505,13 @@ compute (C_Lexique & /* inLexique */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
- printf ("------------------ Scenarios for '%s' machine\n", ioSaraSystemArray ( (sint32) mMachineIndex.getValue () COMMA_HERE).mMachineName.cString ()) ;
+ printf ("------------------ Scenarios for '%s' machine\n", ioSaraSystemArray ( (sint32) mMachineIndex.uintValue () COMMA_HERE).mMachineName.cString ()) ;
 //--- Initial state BDD
-  const C_BDD initialStateBDD = ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mInitialStatesBDD ;
+  const C_BDD initialStateBDD = ioSaraSystemArray ((sint32) mMachineIndex.uintValue () COMMA_HERE).mInitialStatesBDD ;
 //--- transitions BDD
-  const C_BDD transitionsBDD = ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mTransitionRelationBDD ;
+  const C_BDD transitionsBDD = ioSaraSystemArray ((sint32) mMachineIndex.uintValue () COMMA_HERE).mTransitionRelationBDD ;
 //--- variables count
-  const uint16 variableCount = (uint16) ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray.count () ;
+  const uint16 variableCount = (uint16) ioSaraSystemArray ((sint32) mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
   GGS_L_scenarioList::element_type * scenario = mScenarioList.firstObject () ;
   while (scenario != NULL) {
@@ -526,7 +526,7 @@ compute (C_Lexique & /* inLexique */,
     GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.firstObject () ;
     while (v != NULL) {
       macroValidPointer (v) ;
-      initialConfiguration += ((uint64) v->mInputValue.getValue ()) << shift ;
+      initialConfiguration += ((uint64) v->mInputValue.uintValue ()) << shift ;
       shift ++ ;
       v = v->nextObject () ;
     }
@@ -539,7 +539,7 @@ compute (C_Lexique & /* inLexique */,
       substitutionVector [i + variableCount] = i ;
     }
   //--- Display initial configuration
-    currentState.printBDD (ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray, 3) ;
+    currentState.printBDD (ioSaraSystemArray ((sint32) mMachineIndex.uintValue () COMMA_HERE).mNamesArray, 3) ;
     uint64 valuesCount = currentState.getBDDvaluesCount (shift) ;
   //--- Loop throught input sequence
     currentInput = currentInput->nextObject () ;
@@ -551,7 +551,7 @@ compute (C_Lexique & /* inLexique */,
       GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.firstObject () ;
       while (v != NULL) {
         macroValidPointer (v) ;
-        inputConfiguration += ((uint64) v->mInputValue.getValue ()) << shift ;
+        inputConfiguration += ((uint64) v->mInputValue.uintValue ()) << shift ;
         shift ++ ;
         v = v->nextObject () ;
       }
@@ -560,7 +560,7 @@ compute (C_Lexique & /* inLexique */,
       currentState = newState.substitution (substitutionVector, (uint16) (variableCount + variableCount)) ;
       currentState = currentState.existsOnBitsAfterNumber (variableCount) ;
     //--- Display current configuration
-      currentState.printBDDwithoutHeader (ioSaraSystemArray ((sint32) mMachineIndex.getValue () COMMA_HERE).mNamesArray, variableCount, 3) ;
+      currentState.printBDDwithoutHeader (ioSaraSystemArray ((sint32) mMachineIndex.uintValue () COMMA_HERE).mNamesArray, variableCount, 3) ;
       valuesCount = currentState.getBDDvaluesCount (shift) ;
     //--- Goto next input
       currentInput = currentInput->nextObject () ;
@@ -606,7 +606,7 @@ computeFromExpression (C_Lexique & inLexique,
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
   //--- Get state index
-    const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
+    const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Enter state configuration
     stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition->mStateExpression ()->computeBDD (0) ;
   //--- Check state configuration is not empty
@@ -627,13 +627,13 @@ computeFromExpression (C_Lexique & inLexique,
     GGS_L_stateDefinition::element_type * testedState = currentDefinition->nextObject () ;
     while (testedState != NULL) {
       macroValidPointer (testedState) ;
-      if (! (stateExpressionBDD ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
-           & stateExpressionBDD ((sint32) testedState->mStateIndex.getValue () COMMA_HERE)).isFalse ()) {
+      if (! (stateExpressionBDD ((sint32) currentDefinition->mStateIndex.uintValue () COMMA_HERE)
+           & stateExpressionBDD ((sint32) testedState->mStateIndex.uintValue () COMMA_HERE)).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "expression for state '"
-                   << stateNameArray ((sint32) testedState->mStateIndex.getValue () COMMA_HERE)
+                   << stateNameArray ((sint32) testedState->mStateIndex.uintValue () COMMA_HERE)
                    << "' intersects expression for state '"
-                   << stateNameArray ((sint32) currentDefinition->mStateIndex.getValue () COMMA_HERE)
+                   << stateNameArray ((sint32) currentDefinition->mStateIndex.uintValue () COMMA_HERE)
                    << "'" ;
         testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
@@ -651,8 +651,8 @@ computeFromExpression (C_Lexique & inLexique,
   GGS_L_statesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.firstObject () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
-    // printf ("INIT : %ld\n", currentInitialState->mStateIndex.getValue ()) ;
-    outInitialStatesBDD |= stateExpressionBDD ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE) ;
+    // printf ("INIT : %ld\n", currentInitialState->mStateIndex.uintValue ()) ;
+    outInitialStatesBDD |= stateExpressionBDD ((sint32) currentInitialState->mStateIndex.uintValue () COMMA_HERE) ;
     currentInitialState = currentInitialState->nextObject () ;
   }
 //--- Check initial states are disjoined
@@ -662,14 +662,14 @@ computeFromExpression (C_Lexique & inLexique,
     GGS_L_statesDefinitionList::element_type * testedInitialState = currentInitialState->nextObject () ;
     while (testedInitialState != NULL) {
       macroValidPointer (testedInitialState) ;
-      const C_BDD intersection = stateExpressionBDD ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE)
-        & stateExpressionBDD ((sint32) testedInitialState->mStateIndex.getValue () COMMA_HERE) ;
+      const C_BDD intersection = stateExpressionBDD ((sint32) currentInitialState->mStateIndex.uintValue () COMMA_HERE)
+        & stateExpressionBDD ((sint32) testedInitialState->mStateIndex.uintValue () COMMA_HERE) ;
       if (! intersection.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "initial state '"
-                     << stateNameArray ((sint32) testedInitialState->mStateIndex.getValue () COMMA_HERE)
+                     << stateNameArray ((sint32) testedInitialState->mStateIndex.uintValue () COMMA_HERE)
                      << "' intersects previous initial state '"
-                     << stateNameArray ((sint32) currentInitialState->mStateIndex.getValue () COMMA_HERE)
+                     << stateNameArray ((sint32) currentInitialState->mStateIndex.uintValue () COMMA_HERE)
                      << "'" ;
         testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
       }
@@ -686,7 +686,7 @@ computeFromExpression (C_Lexique & inLexique,
   GGS_L_statesDefinitionList::element_type * currentTerminalState = mTerminalStatesDefinitionList.firstObject () ;
   while (currentTerminalState != NULL) {
     macroValidPointer (currentTerminalState) ;
-    outTerminalStatesBDD |= stateExpressionBDD ((sint32) currentTerminalState->mStateIndex.getValue () COMMA_HERE) ;
+    outTerminalStatesBDD |= stateExpressionBDD ((sint32) currentTerminalState->mStateIndex.uintValue () COMMA_HERE) ;
     currentTerminalState = currentTerminalState->nextObject () ;
   }
 //----------------------------------------------------------------------- Transitions BDD
@@ -704,14 +704,14 @@ computeFromExpression (C_Lexique & inLexique,
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
   //--- Get current state index
-    const sint32 currentStateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
+    const sint32 currentStateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Accumulate transitions targets for each transition
     C_BDD transitionsTargetBDD ;
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
       const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inVariablesCount) ;
-      const sint32 targetStateIndex = (sint32) currentTransition->mTargetStateIndex.getValue () ;
+      const sint32 targetStateIndex = (sint32) currentTransition->mTargetStateIndex.uintValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
       currentTransition = currentTransition->nextObject () ;
@@ -727,7 +727,7 @@ computeFromExpression (C_Lexique & inLexique,
   currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
-    const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.getValue () ;
+    const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Check that action does not intersect with state input expression
     sint32 transitionIndex = 0 ;
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
@@ -756,7 +756,7 @@ computeFromExpression (C_Lexique & inLexique,
         testedTransition = testedTransition->nextObject () ;
       }
     //--- Check that action is compatible input configuration of target state
-      const C_BDD x = actionBDD & stateExpressionBDD ((sint32) currentTransition->mTargetStateIndex.getValue () COMMA_HERE) ;
+      const C_BDD x = actionBDD & stateExpressionBDD ((sint32) currentTransition->mTargetStateIndex.uintValue () COMMA_HERE) ;
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
@@ -1189,7 +1189,7 @@ computeFromExpression (C_Lexique & /* inLexique */,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibleStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  const C_BDD bdd ((uint16) (mInputOutputVariableIndex.getValue ()), true) ;
+  const C_BDD bdd ((uint16) (mInputOutputVariableIndex.uintValue ()), true) ;
   outInitialStatesBDD = bdd ;
   outTerminalStatesBDD = bdd ;
   outAccessibleStatesBDD = bdd ;
@@ -1206,8 +1206,8 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibleStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  const uint16 previousVariableCount = (uint16) mPreviousVariableCount.getValue () ;
-  const uint16 totalVariableCount = (uint16) mTotalVariableCount.getValue () ;
+  const uint16 previousVariableCount = (uint16) mPreviousVariableCount.uintValue () ;
+  const uint16 totalVariableCount = (uint16) mTotalVariableCount.uintValue () ;
 //--- Compute operand
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
@@ -1313,7 +1313,7 @@ computeFromExpression (C_Lexique & /* inLexique */,
                        C_BDD & outAccessibleStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Get index of imported machine
-  const sint32 indexOfImportedMachine = (sint32) mIndexOfImportedMachine.getValue () ;
+  const sint32 indexOfImportedMachine = (sint32) mIndexOfImportedMachine.uintValue () ;
 //--- Construct substitution arraies
   const uint16 importedMachineVariableCount = (uint16) mTranslationVector.count () ;
   uint16 * statesSubstitutionArray = new uint16 [importedMachineVariableCount] ;
@@ -1322,9 +1322,9 @@ computeFromExpression (C_Lexique & /* inLexique */,
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
-    statesSubstitutionArray [index] = (uint16) p->mTargetSlot.getValue () ;
-    transitionsSubstitutionArray [index] = (uint16) p->mTargetSlot.getValue () ;
-    transitionsSubstitutionArray [importedMachineVariableCount + index] = (uint16) (inVariablesCount + p->mTargetSlot.getValue ()) ;
+    statesSubstitutionArray [index] = (uint16) p->mTargetSlot.uintValue () ;
+    transitionsSubstitutionArray [index] = (uint16) p->mTargetSlot.uintValue () ;
+    transitionsSubstitutionArray [importedMachineVariableCount + index] = (uint16) (inVariablesCount + p->mTargetSlot.uintValue ()) ;
     p = p->nextObject () ;
     index ++ ;
   }
@@ -1477,7 +1477,7 @@ computeFromExpression (C_Lexique & inLexique,
         bool isAccepted = true ;
         GGS_L_exclusionListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
         while ((currentExclusion != NULL) && isAccepted) {
-          isAccepted = (sourceMode != (sint32) currentExclusion->mExcludedSourceMode.getValue ()) || (targetMode != (sint32) currentExclusion->mExcludedTargetMode.getValue ()) ;
+          isAccepted = (sourceMode != (sint32) currentExclusion->mExcludedSourceMode.uintValue ()) || (targetMode != (sint32) currentExclusion->mExcludedTargetMode.uintValue ()) ;
           currentExclusion = currentExclusion->nextObject () ;
         }
       //--- If accepted, add transition
