@@ -388,13 +388,21 @@ compute (C_Lexique & /* inLexique */,
   }
 //--- Check all states are stable
 // Set of instable states [e:is] : ?is' (trans [e:is] to [e:is'] & is != is')
-  const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, machine.mInputVariablesCount, C_BDD::kEqual, variableCount) ;
-  const C_BDD nonEqualOutputConstraint = C_BDD::varCompareVar (machine.mInputVariablesCount,
-                                                               (uint16) (variableCount - machine.mInputVariablesCount),
-                                                               C_BDD::kNonEqual,
-                                                               (uint16) (variableCount + machine.mInputVariablesCount)) ;
-  const C_BDD nonStableTransitions = machine.mTransitionRelationBDD & equalInputConstraint & nonEqualOutputConstraint ;
-  const C_BDD notStableStates = nonStableTransitions.existsOnBitsAfterNumber (variableCount) ;
+//--- Commented out by PM on june 27, 2005 (for version 0.1.3)
+//  const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, machine.mInputVariablesCount, C_BDD::kEqual, variableCount) ;
+//  const C_BDD nonEqualOutputConstraint = C_BDD::varCompareVar (machine.mInputVariablesCount,
+//                                                               (uint16) (variableCount - machine.mInputVariablesCount),
+//                                                               C_BDD::kNonEqual,
+//                                                               (uint16) (variableCount + machine.mInputVariablesCount)) ;
+//  const C_BDD nonStableTransitions = machine.mTransitionRelationBDD & equalInputConstraint & nonEqualOutputConstraint ;
+//  const C_BDD notStableStates = nonStableTransitions.existsOnBitsAfterNumber (variableCount) ;
+//--- End of commented out by PM on june 27, 2005
+//--- Added by PM on june 27, 2005 (for version 0.1.3)
+  const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, variableCount, C_BDD::kEqual, variableCount) ;
+  const C_BDD stableTransitions = machine.mTransitionRelationBDD & equalInputConstraint ;
+  const C_BDD stableStates = stableTransitions.existsOnBitsAfterNumber (variableCount) ;
+  const C_BDD notStableStates = machine.mAccessibleStatesBDD & ~ stableStates ;
+//--- End of added by PM on june 27, 2005 (for version 0.1.3)
   if (notStableStates.isFalse ()) {
     printf ("  All states are stable;\n") ;
   }else{
@@ -1347,7 +1355,147 @@ computeFromExpression (C_Lexique & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_modalCompositionComponent::
+void cPtr_C_additiveModalCompositionComponent::
+computeFromExpression (C_Lexique & inLexique,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 inVariablesCount,
+                       C_BDD & outInitialStatesBDD,
+                       C_BDD & outTerminalStatesBDD,
+                       C_BDD & outAccessibleStatesBDD,
+                       C_BDD & outAccessibilityRelationBDD) const {
+//--- Compute BDDs for each mode
+  const sint32 modeCount = (sint32) mModeMap.count () ;
+  TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  {sint32 index = 0 ;
+    while (currentMode != NULL) {
+      macroValidPointer (currentMode) ;
+      modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
+      // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
+      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+                                                              inSaraSystemArray,
+                                                              inVariablesCount,
+                                                              initialStatesArray (index COMMA_HERE),
+                                                              terminalStatesArray (index COMMA_HERE),
+                                                              accessibleStatesArray (index COMMA_HERE),
+                                                              accessibilityRelationStatesArray (index COMMA_HERE)) ;
+      currentMode = currentMode->nextObject () ;
+      index ++ ;
+    }
+  }
+//--- Check that modes are weakly disjoints
+  // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
+  uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
+  for (uint16 i=0 ; i<inVariablesCount ; i++) {
+    substitutionArray [i] = (uint16) (inVariablesCount + i) ;
+    substitutionArray [inVariablesCount + i] = i ;
+  }
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+      // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
+    //--- compute intersection
+      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+    //--- Compute in left operand accessible states from intersection
+      C_BDD leftAccessiblesStates ;
+      C_BDD newlyAccessibleStates ;
+      do{
+        leftAccessiblesStates = newlyAccessibleStates ;
+        newlyAccessibleStates |= intersection ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
+      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      // printf ("fin intersection\n") ; fflush (stdout) ;
+    //--- Check that only states in intersection are accessible
+      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+        C_String errorMessage ;
+        errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
+                     << "' mode does not respect weak modal composition with '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' mode" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Compute in right operand accessible states from intersection
+      // printf ("right\n") ; fflush (stdout) ;
+      C_BDD rightAccessiblesStates ;
+      newlyAccessibleStates = C_BDD () ;
+      do{
+        // printf ("calcul...\n") ; fflush (stdout) ;
+        rightAccessiblesStates = newlyAccessibleStates ;
+        newlyAccessibleStates |= intersection ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
+      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+    //--- Check that only states in intersection are accessible
+      //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
+      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+        C_String errorMessage ;
+        errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
+                     << "' mode does not respect weak modal composition with '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' mode" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Check initial states are compatible
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      if (! initialStatesAreCompatible) {
+        C_String errorMessage ;
+        errorMessage << "initial states of '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' and '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' modes are not compatible with weak modal composition" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Check terminal states are compatible
+      //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      if (! terminalStatesAreCompatible) {
+        C_String errorMessage ;
+        errorMessage << "terminal states of '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' and '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' modes are not compatible with weak modal composition" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    }
+  }
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- Compute modal composition
+  // printf (" Compute modal composition\n") ; fflush (stdout) ;
+  outInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
+  outTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
+  outAccessibleStatesBDD = accessibleStatesArray (0 COMMA_HERE) ;
+  outAccessibilityRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
+  for (sint32 mode=1 ; mode < modeCount ; mode++) {
+    outInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
+    outTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
+    outAccessibleStatesBDD |= accessibleStatesArray (mode COMMA_HERE) ;
+    outAccessibilityRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
+  }
+//--- Add to accessibility relation transition from terminal states to initial state (if accepted)
+  GGS_ListForModes::element_type * currentInclusion = mInclusionList.firstObject () ;
+  while (currentInclusion != NULL) {
+    const sint32 sourceMode = (sint32) currentInclusion->mSourceMode.uintValue () ;
+    const sint32 targetMode = (sint32) currentInclusion->mTargetMode.uintValue () ;
+  //--- translate initial state BDD by inVariablesCount slots
+    const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
+  //--- Transitions to from terminal states to initial states
+    const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+  //--- Add transitions from terminal states to initial states
+    outAccessibilityRelationBDD |= transitions ;
+  //--- Next inclusion
+    currentInclusion = currentInclusion->nextObject () ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_substractiveModalCompositionComponent::
 computeFromExpression (C_Lexique & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
@@ -1475,17 +1623,19 @@ computeFromExpression (C_Lexique & inLexique,
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
-        GGS_L_exclusionListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
+        GGS_ListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
         while ((currentExclusion != NULL) && isAccepted) {
-          isAccepted = (sourceMode != (sint32) currentExclusion->mExcludedSourceMode.uintValue ()) || (targetMode != (sint32) currentExclusion->mExcludedTargetMode.uintValue ()) ;
+          isAccepted = (sourceMode != (sint32) currentExclusion->mSourceMode.uintValue ()) || (targetMode != (sint32) currentExclusion->mTargetMode.uintValue ()) ;
           currentExclusion = currentExclusion->nextObject () ;
         }
       //--- If accepted, add transition
         if (isAccepted) {
         //--- translate initial state BDD by inVariablesCount slots
           const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
+        //--- Transitions to from terminal states to initial states
+          const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
         //--- Add transitions from terminal states to initial states
-          outAccessibilityRelationBDD |= terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+          outAccessibilityRelationBDD |= transitions ;
         }
       }
     }
