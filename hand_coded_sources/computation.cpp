@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Implementation of overrided methods for SARA                             *
+//  Implementation of specific methods for SARA                              *
 //                                                                           *
 //  Copyright (C) 2004-2005 Eva Rakotomalala & Pierre Molinaro.              *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
