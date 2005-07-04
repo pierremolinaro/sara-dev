@@ -1659,3 +1659,534 @@ computeFromExpression (C_Lexique & /* inLexique */,
 }
 
 //---------------------------------------------------------------------------*
+
+void cPtr_C_machineDefinedByAdditiveModalComp::
+compute (C_Lexique & inLexique,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool inDisplayBDDvalues) const {
+  printf ("------------------ Computations for '%s' machine\n", mMachineName.cString ()) ;
+  C_saraMachine machine ;
+  machine.mMachineName = mMachineName ;
+//--- Build input variables array names
+  const uint16 inputVariablesCount = (uint16) mInputVariableCount.uintValue () ;
+  machine.mInputVariablesCount = inputVariablesCount ;
+  const uint16 variablesCount = (uint16) mVariablesMap.count () ;
+  const uint16 inputAndInternalVariablesCount = (uint16) mInputAndInternalVariableCount.uintValue () ;
+  machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
+  { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
+    swap (machine.mNamesArray, variableNamesArray) ;
+  }
+  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.firstObject () ;
+  sint32 index = 0 ;
+  while (currentVar != NULL) {
+    machine.mNamesArray (index COMMA_HERE) = currentVar->mKey ;
+    index ++ ;
+    currentVar = currentVar->nextObject () ;
+  }
+//----------- Compute automaton from definition expression
+/*  mDefinition ()->computeFromExpression (inLexique,
+                                         ioSaraSystemArray,
+                                         variablesCount,
+                                         machine.mInitialStatesBDD,
+                                         machine.mTerminalStatesBDD,
+                                         machine.mAccessibleStatesBDD,
+                                         machine.mTransitionRelationBDD) ;*/
+//--- Compute BDDs for each mode
+  const sint32 modeCount = (sint32) mModeMap.count () ;
+  TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  {sint32 index = 0 ;
+    while (currentMode != NULL) {
+      macroValidPointer (currentMode) ;
+      modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
+      // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
+      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+                                                              ioSaraSystemArray,
+                                                              variablesCount,
+                                                              initialStatesArray (index COMMA_HERE),
+                                                              terminalStatesArray (index COMMA_HERE),
+                                                              accessibleStatesArray (index COMMA_HERE),
+                                                              accessibilityRelationStatesArray (index COMMA_HERE)) ;
+      currentMode = currentMode->nextObject () ;
+      index ++ ;
+    }
+  }
+//--- Check that modes are weakly disjoints
+  // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
+  uint16 * substitutionArray = new uint16 [variablesCount + variablesCount] ;
+  for (uint16 i=0 ; i<variablesCount ; i++) {
+    substitutionArray [i] = (uint16) (variablesCount + i) ;
+    substitutionArray [variablesCount + i] = i ;
+  }
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+      // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
+    //--- compute intersection
+      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+    //--- Compute in left operand accessible states from intersection
+      C_BDD leftAccessiblesStates ;
+      C_BDD newlyAccessibleStates ;
+      do{
+        leftAccessiblesStates = newlyAccessibleStates ;
+        newlyAccessibleStates |= intersection ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      // printf ("fin intersection\n") ; fflush (stdout) ;
+    //--- Check that only states in intersection are accessible
+      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+        C_String errorMessage ;
+        errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
+                     << "' mode does not respect weak modal composition with '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' mode" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Compute in right operand accessible states from intersection
+      // printf ("right\n") ; fflush (stdout) ;
+      C_BDD rightAccessiblesStates ;
+      newlyAccessibleStates = C_BDD () ;
+      do{
+        // printf ("calcul...\n") ; fflush (stdout) ;
+        rightAccessiblesStates = newlyAccessibleStates ;
+        newlyAccessibleStates |= intersection ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+    //--- Check that only states in intersection are accessible
+      //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
+      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+        C_String errorMessage ;
+        errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
+                     << "' mode does not respect weak modal composition with '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' mode" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Check initial states are compatible
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      if (! initialStatesAreCompatible) {
+        C_String errorMessage ;
+        errorMessage << "initial states of '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' and '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' modes are not compatible with weak modal composition" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Check terminal states are compatible
+      //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      if (! terminalStatesAreCompatible) {
+        C_String errorMessage ;
+        errorMessage << "terminal states of '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' and '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' modes are not compatible with weak modal composition" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    }
+  }
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- Compute modal composition
+  // printf (" Compute modal composition\n") ; fflush (stdout) ;
+  machine.mInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
+  machine.mTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
+  machine.mAccessibleStatesBDD = accessibleStatesArray (0 COMMA_HERE) ;
+  machine.mTransitionRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
+  for (sint32 mode=1 ; mode < modeCount ; mode++) {
+    machine.mInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
+    machine.mTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
+    machine.mAccessibleStatesBDD |= accessibleStatesArray (mode COMMA_HERE) ;
+    machine.mTransitionRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
+  }
+//--- Add to accessibility relation transition from terminal states to initial state (if accepted)
+  GGS_ListForModes::element_type * currentInclusion = mInclusionList.firstObject () ;
+  while (currentInclusion != NULL) {
+    const sint32 sourceMode = (sint32) currentInclusion->mSourceMode.uintValue () ;
+    const sint32 targetMode = (sint32) currentInclusion->mTargetMode.uintValue () ;
+  //--- translate initial state BDD by variablesCount slots
+    const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (variablesCount, variablesCount) ;
+  //--- Transitions to from terminal states to initial states
+    const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+  //--- Add transitions from terminal states to initial states
+    machine.mTransitionRelationBDD |= transitions ;
+  //--- Next inclusion
+    currentInclusion = currentInclusion->nextObject () ;
+  }
+//---------- Compute accessible states
+  substitutionArray = new uint16 [variablesCount + variablesCount] ;
+  for (uint16 i=0 ; i<variablesCount ; i++) {
+    substitutionArray [i] = (uint16) (variablesCount + i) ;
+    substitutionArray [variablesCount + i] = i ;
+  }
+  C_BDD newlyAccessibleStates ;
+  do{
+    machine.mAccessibleStatesBDD = newlyAccessibleStates ;
+    newlyAccessibleStates |= machine.mInitialStatesBDD ;
+    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+  }while (! machine.mAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- 
+  machine.mTransitionRelationBDD &= machine.mAccessibleStatesBDD ;
+  machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
+
+//---   
+  TC_UniqueArray <C_String> transitionsVariableNameArray (variablesCount + variablesCount, "" COMMA_HERE) ;
+  for (sint32 i=0 ; i<variablesCount ; i++) {
+    transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+  }
+//--- Print messages
+  const sint32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
+  const sint32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
+  printf ("  %hu input variable%s, %ld internal variable%s, %ld output variable%s;\n",
+          inputVariablesCount, (inputVariablesCount > 1) ? "s" : "",
+          internalVariablesCount, (internalVariablesCount > 1) ? "s" : "",
+          outputVariablesCount, (outputVariablesCount > 1) ? "s" : "") ;
+  uint64 n = machine.mInitialStatesBDD.getBDDvaluesCount (variablesCount) ;
+  uint32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" initial state%s (%lu node%s);\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
+  }
+  n = machine.mTerminalStatesBDD.getBDDvaluesCount (variablesCount) ;
+  nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" terminal state%s (%lu node%s);\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
+  }
+  n = machine.mAccessibleStatesBDD.getBDDvaluesCount (variablesCount) ;
+  nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" accessible state%s (%lu node%s);\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
+  }
+  n = machine.mTransitionRelationBDD.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
+  nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" transition%s (%lu node%s).\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+//--- Restrict transitions to target == source
+  C_BDD constraint = ~ C_BDD () ;
+  for (sint32 i=0 ; i<variablesCount ; i++) {
+    constraint &= C_BDD ((uint16) i, false) == C_BDD ((uint16) (variablesCount + i), false) ;
+  }
+  const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
+  n = transitionsWithSourceEqualTarget.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
+  nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" transition%s with target equals source (%lu node%s).\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+//--- Display transitions from states to different states
+  const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
+  n = t.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
+  nodes = t.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" transition%s to other states (%lu node%s).\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    t.printBDD (transitionsVariableNameArray, 3) ;
+  }
+//--- Enter result in machines array
+  ioSaraSystemArray.addObjectUsingSwap (machine) ;
+//--- Mark and sweep unused BDD nodes
+  C_BDD::markAndSweepUnusedNodes () ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_machineDefinedBySubstractiveModalComp::
+compute (C_Lexique & inLexique,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool inDisplayBDDvalues) const {
+  printf ("------------------ Computations for '%s' machine\n", mMachineName.cString ()) ;
+  C_saraMachine machine ;
+  machine.mMachineName = mMachineName ;
+//--- Build input variables array names
+  const uint16 inputVariablesCount = (uint16) mInputVariableCount.uintValue () ;
+  machine.mInputVariablesCount = inputVariablesCount ;
+  const uint16 variablesCount = (uint16) mVariablesMap.count () ;
+  const uint16 inputAndInternalVariablesCount = (uint16) mInputAndInternalVariableCount.uintValue () ;
+  machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
+  { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
+    swap (machine.mNamesArray, variableNamesArray) ;
+  }
+  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.firstObject () ;
+  sint32 index = 0 ;
+  while (currentVar != NULL) {
+    machine.mNamesArray (index COMMA_HERE) = currentVar->mKey ;
+    index ++ ;
+    currentVar = currentVar->nextObject () ;
+  }
+//----------- Compute automaton from definition expression
+/*  mDefinition ()->computeFromExpression (inLexique,
+                                         ioSaraSystemArray,
+                                         variablesCount,
+                                         machine.mInitialStatesBDD,
+                                         machine.mTerminalStatesBDD,
+                                         machine.mAccessibleStatesBDD,
+                                         machine.mTransitionRelationBDD) ;*/
+//--- Compute BDDs for each mode
+  const sint32 modeCount = (sint32) mModeMap.count () ;
+  TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  {sint32 index = 0 ;
+    while (currentMode != NULL) {
+      macroValidPointer (currentMode) ;
+      modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
+      // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
+      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+                                                              ioSaraSystemArray,
+                                                              variablesCount,
+                                                              initialStatesArray (index COMMA_HERE),
+                                                              terminalStatesArray (index COMMA_HERE),
+                                                              accessibleStatesArray (index COMMA_HERE),
+                                                              accessibilityRelationStatesArray (index COMMA_HERE)) ;
+      currentMode = currentMode->nextObject () ;
+      index ++ ;
+    }
+  }
+//--- Check that modes are weakly disjoints
+  // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
+  uint16 * substitutionArray = new uint16 [variablesCount + variablesCount] ;
+  for (uint16 i=0 ; i<variablesCount ; i++) {
+    substitutionArray [i] = (uint16) (variablesCount + i) ;
+    substitutionArray [variablesCount + i] = i ;
+  }
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+      // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
+    //--- compute intersection
+      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+    //--- Compute in left operand accessible states from intersection
+      C_BDD leftAccessiblesStates ;
+      C_BDD newlyAccessibleStates ;
+      do{
+        leftAccessiblesStates = newlyAccessibleStates ;
+        newlyAccessibleStates |= intersection ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      // printf ("fin intersection\n") ; fflush (stdout) ;
+    //--- Check that only states in intersection are accessible
+      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+        C_String errorMessage ;
+        errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
+                     << "' mode does not respect weak modal composition with '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' mode" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Compute in right operand accessible states from intersection
+      // printf ("right\n") ; fflush (stdout) ;
+      C_BDD rightAccessiblesStates ;
+      newlyAccessibleStates = C_BDD () ;
+      do{
+        // printf ("calcul...\n") ; fflush (stdout) ;
+        rightAccessiblesStates = newlyAccessibleStates ;
+        newlyAccessibleStates |= intersection ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+    //--- Check that only states in intersection are accessible
+      //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
+      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+        C_String errorMessage ;
+        errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
+                     << "' mode does not respect weak modal composition with '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' mode" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Check initial states are compatible
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      if (! initialStatesAreCompatible) {
+        C_String errorMessage ;
+        errorMessage << "initial states of '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' and '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' modes are not compatible with weak modal composition" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    //--- Check terminal states are compatible
+      //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      if (! terminalStatesAreCompatible) {
+        C_String errorMessage ;
+        errorMessage << "terminal states of '"
+                     << modeNamesArray (mode COMMA_HERE)
+                     << "' and '"
+                     << modeNamesArray (testedMode COMMA_HERE)
+                     << "' modes are not compatible with weak modal composition" ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+      }
+    }
+  }
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- Compute modal composition
+  // printf (" Compute modal composition\n") ; fflush (stdout) ;
+  machine.mInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
+  machine.mTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
+  machine.mAccessibleStatesBDD = accessibleStatesArray (0 COMMA_HERE) ;
+  machine.mTransitionRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
+  for (sint32 mode=1 ; mode < modeCount ; mode++) {
+    machine.mInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
+    machine.mTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
+    machine.mAccessibleStatesBDD |= accessibleStatesArray (mode COMMA_HERE) ;
+    machine.mTransitionRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
+  }
+//--- Add to accessibility relation transition from terminal states to initial state (if accepted)
+  for (sint32 sourceMode=0 ; sourceMode < modeCount ; sourceMode++) {
+    for (sint32 targetMode=0 ; targetMode < modeCount ; targetMode++) {
+      if (sourceMode != targetMode) {
+      //--- Is theses transitions accepted ?
+        bool isAccepted = true ;
+        GGS_ListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
+        while ((currentExclusion != NULL) && isAccepted) {
+          isAccepted = (sourceMode != (sint32) currentExclusion->mSourceMode.uintValue ()) || (targetMode != (sint32) currentExclusion->mTargetMode.uintValue ()) ;
+          currentExclusion = currentExclusion->nextObject () ;
+        }
+      //--- If accepted, add transition
+        if (isAccepted) {
+        //--- translate initial state BDD by inVariablesCount slots
+          const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (variablesCount, variablesCount) ;
+        //--- Transitions to from terminal states to initial states
+          const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+        //--- Add transitions from terminal states to initial states
+          machine.mTransitionRelationBDD |= transitions ;
+        }
+      }
+    }
+  }
+//---------- Compute accessible states
+  substitutionArray = new uint16 [variablesCount + variablesCount] ;
+  for (uint16 i=0 ; i<variablesCount ; i++) {
+    substitutionArray [i] = (uint16) (variablesCount + i) ;
+    substitutionArray [variablesCount + i] = i ;
+  }
+  C_BDD newlyAccessibleStates ;
+  do{
+    machine.mAccessibleStatesBDD = newlyAccessibleStates ;
+    newlyAccessibleStates |= machine.mInitialStatesBDD ;
+    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, (uint16) (variablesCount + variablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+  }while (! machine.mAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  delete [] substitutionArray ; substitutionArray = NULL ;
+//--- 
+  machine.mTransitionRelationBDD &= machine.mAccessibleStatesBDD ;
+  machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
+
+//---   
+  TC_UniqueArray <C_String> transitionsVariableNameArray (variablesCount + variablesCount, "" COMMA_HERE) ;
+  for (sint32 i=0 ; i<variablesCount ; i++) {
+    transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+  }
+//--- Print messages
+  const sint32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
+  const sint32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
+  printf ("  %hu input variable%s, %ld internal variable%s, %ld output variable%s;\n",
+          inputVariablesCount, (inputVariablesCount > 1) ? "s" : "",
+          internalVariablesCount, (internalVariablesCount > 1) ? "s" : "",
+          outputVariablesCount, (outputVariablesCount > 1) ? "s" : "") ;
+  uint64 n = machine.mInitialStatesBDD.getBDDvaluesCount (variablesCount) ;
+  uint32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" initial state%s (%lu node%s);\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
+  }
+  n = machine.mTerminalStatesBDD.getBDDvaluesCount (variablesCount) ;
+  nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" terminal state%s (%lu node%s);\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
+  }
+  n = machine.mAccessibleStatesBDD.getBDDvaluesCount (variablesCount) ;
+  nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" accessible state%s (%lu node%s);\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
+  }
+  n = machine.mTransitionRelationBDD.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
+  nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" transition%s (%lu node%s).\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+//--- Restrict transitions to target == source
+  C_BDD constraint = ~ C_BDD () ;
+  for (sint32 i=0 ; i<variablesCount ; i++) {
+    constraint &= C_BDD ((uint16) i, false) == C_BDD ((uint16) (variablesCount + i), false) ;
+  }
+  const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
+  n = transitionsWithSourceEqualTarget.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
+  nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" transition%s with target equals source (%lu node%s).\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+//--- Display transitions from states to different states
+  const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
+  n = t.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
+  nodes = t.getBDDnodesCount () ;
+  printf ("  ") ;
+  printfUINT64 (n) ;
+  printf (" transition%s to other states (%lu node%s).\n",
+          (n > 1) ? "s" : "",
+          nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    t.printBDD (transitionsVariableNameArray, 3) ;
+  }
+//--- Enter result in machines array
+  ioSaraSystemArray.addObjectUsingSwap (machine) ;
+//--- Mark and sweep unused BDD nodes
+  C_BDD::markAndSweepUnusedNodes () ;
+}
+
+//---------------------------------------------------------------------------*

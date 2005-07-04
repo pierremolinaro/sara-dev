@@ -64,8 +64,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 141760284;
-			PBXWorkspaceStateSaveDate = 141760284;
+			PBXPerProjectTemplateStateSaveDate = 142162514;
+			PBXWorkspaceStateSaveDate = 142162514;
+		};
+		perUserProjectItems = {
+			CF5187F3087960730073D140 /* PBXTextBookmark */ = CF5187F3087960730073D140 /* PBXTextBookmark */;
+			CF5187FA087964CB0073D140 /* PBXTextBookmark */ = CF5187FA087964CB0073D140 /* PBXTextBookmark */;
 		};
 		sourceControlManager = CFB6140F085440A000DE5041 /* Source Control */;
 		userBuildSettings = {
@@ -91,6 +95,24 @@
 			CFB614070854404800DE5041 /* Sara tool */,
 		);
 	};
+	CF5187F3087960730073D140 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: `outAccessibilityRelationBDD' undeclared (first use this function)";
+		fRef = CF907D6A06119D7700A366ED /* computation.cpp */;
+		rLen = 1;
+		rLoc = 2087;
+		rType = 1;
+	};
+	CF5187FA087964CB0073D140 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CF907D6A06119D7700A366ED /* computation.cpp */;
+		name = outAccessibilityRelationBDD;
+		rLen = 27;
+		rLoc = 30502;
+		rType = 0;
+		vrLen = 2050;
+		vrLoc = 29640;
+	};
 	CF7A1402058CEFE2007126C1 /* Sara tool debug */ = {
 		activeExec = 0;
 		executables = (
@@ -99,10 +121,10 @@
 	};
 	CF907D6A06119D7700A366ED /* computation.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1388, 23268}}";
-			sepNavSelRange = "{212, 0}";
-			sepNavVisRect = "{{0, 0}, {1077, 565}}";
-			sepNavWindowFrame = "{{25, 115}, {1122, 685}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1388, 30702}}";
+			sepNavSelRange = "{30502, 27}";
+			sepNavVisRect = "{{0, 8057}, {730, 589}}";
+			sepNavWindowFrame = "{{34, 133}, {775, 709}}";
 		};
 	};
 	CFB614070854404800DE5041 /* Sara tool */ = {
