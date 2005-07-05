@@ -1660,6 +1660,29 @@ computeFromExpression (C_Lexique & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
+static void
+addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
+                        const C_BDD & inSourceAccessibilityRelation,
+                        const C_BDD & inSourceTerminalStates,
+                        const sint32 inVariablesCount,
+                        const sint32 inInputVariablesCount,
+                        const C_BDD & inTargetInitialStates) {
+//--- Transitions from terminal states
+   const C_BDD transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
+//--- Filter theses transitions by eliminating target internal and output variables
+   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber (inVariablesCount + inInputVariablesCount) ;
+//--- translate initial state BDD by variablesCount slots
+   const C_BDD translatedInitialStates = inTargetInitialStates.translate (inVariablesCount, inVariablesCount) ;
+//--- Transitions to from terminal states to initial states
+   const C_BDD transitions = inSourceTerminalStates & translatedInitialStates ;
+//--- Eliminate from theses transitions all the transitions that raise an ambiguity
+   const C_BDD transitionsToAdd = transitions & ~ filteredTransitionsFromTerminalStates ;
+//--- Add transitions from terminal states to initial states
+   ioAcculmulatedTransitions |= transitionsToAdd ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_C_machineDefinedByAdditiveModalComp::
 compute (C_Lexique & inLexique,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
@@ -1684,14 +1707,6 @@ compute (C_Lexique & inLexique,
     index ++ ;
     currentVar = currentVar->nextObject () ;
   }
-//----------- Compute automaton from definition expression
-/*  mDefinition ()->computeFromExpression (inLexique,
-                                         ioSaraSystemArray,
-                                         variablesCount,
-                                         machine.mInitialStatesBDD,
-                                         machine.mTerminalStatesBDD,
-                                         machine.mAccessibleStatesBDD,
-                                         machine.mTransitionRelationBDD) ;*/
 //--- Compute BDDs for each mode
   const sint32 modeCount = (sint32) mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
@@ -1811,12 +1826,13 @@ compute (C_Lexique & inLexique,
   while (currentInclusion != NULL) {
     const sint32 sourceMode = (sint32) currentInclusion->mSourceMode.uintValue () ;
     const sint32 targetMode = (sint32) currentInclusion->mTargetMode.uintValue () ;
-  //--- translate initial state BDD by variablesCount slots
-    const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (variablesCount, variablesCount) ;
-  //--- Transitions to from terminal states to initial states
-    const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
-  //--- Add transitions from terminal states to initial states
-    machine.mTransitionRelationBDD |= transitions ;
+  //--- Add filtered transitions from terminal states to initial states
+    addFilteredTransitions (machine.mTransitionRelationBDD,
+                            accessibilityRelationStatesArray (sourceMode COMMA_HERE),
+                            terminalStatesArray (sourceMode COMMA_HERE),
+                            variablesCount,
+                            inputVariablesCount,
+                            initialStatesArray (targetMode COMMA_HERE)) ;
   //--- Next inclusion
     currentInclusion = currentInclusion->nextObject () ;
   }
@@ -2080,12 +2096,13 @@ compute (C_Lexique & inLexique,
         }
       //--- If accepted, add transition
         if (isAccepted) {
-        //--- translate initial state BDD by inVariablesCount slots
-          const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (variablesCount, variablesCount) ;
-        //--- Transitions to from terminal states to initial states
-          const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
-        //--- Add transitions from terminal states to initial states
-          machine.mTransitionRelationBDD |= transitions ;
+        //--- Add filtered transitions from terminal states to initial states
+          addFilteredTransitions (machine.mTransitionRelationBDD,
+                                  accessibilityRelationStatesArray (sourceMode COMMA_HERE),
+                                  terminalStatesArray (sourceMode COMMA_HERE),
+                                  variablesCount,
+                                  inputVariablesCount,
+                                  initialStatesArray (targetMode COMMA_HERE)) ;
         }
       }
     }
