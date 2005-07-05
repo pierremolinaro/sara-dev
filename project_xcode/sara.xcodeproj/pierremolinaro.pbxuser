@@ -3,7 +3,7 @@
 	089C1660FE840EACC02AAC07 /* English */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1077, 565}}";
-			sepNavSelRange = "{165, 0}";
+			sepNavSelRange = "{109, 0}";
 			sepNavVisRect = "{{0, 0}, {1077, 565}}";
 			sepNavWindowFrame = "{{15, 158}, {1122, 685}}";
 		};
@@ -13,6 +13,9 @@
 		activeBuildStyle = CFA7AB90058DAD29009AC1FE /* Deployment */;
 		activeExecutable = CFB614090854404800DE5041 /* Cocoa Sara */;
 		activeTarget = 8D15AC270486D014006FF6A4 /* Cocoa Sara */;
+		breakpoints = (
+		);
+		breakpointsGroup = CFEF0C10087A7933002253F4 /* XCBreakpointsBucket */;
 		codeSenseManager = CFB61410085440A000DE5041 /* Code sense */;
 		executables = (
 			CFB614070854404800DE5041 /* Sara tool */,
@@ -64,12 +67,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 142162514;
-			PBXWorkspaceStateSaveDate = 142162514;
-		};
-		perUserProjectItems = {
-			CF5187F3087960730073D140 /* PBXTextBookmark */ = CF5187F3087960730073D140 /* PBXTextBookmark */;
-			CF5187FA087964CB0073D140 /* PBXTextBookmark */ = CF5187FA087964CB0073D140 /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 142241763;
+			PBXWorkspaceStateSaveDate = 142241763;
 		};
 		sourceControlManager = CFB6140F085440A000DE5041 /* Source Control */;
 		userBuildSettings = {
@@ -95,36 +94,26 @@
 			CFB614070854404800DE5041 /* Sara tool */,
 		);
 	};
-	CF5187F3087960730073D140 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		comments = "error: `outAccessibilityRelationBDD' undeclared (first use this function)";
-		fRef = CF907D6A06119D7700A366ED /* computation.cpp */;
-		rLen = 1;
-		rLoc = 2087;
-		rType = 1;
-	};
-	CF5187FA087964CB0073D140 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CF907D6A06119D7700A366ED /* computation.cpp */;
-		name = outAccessibilityRelationBDD;
-		rLen = 27;
-		rLoc = 30502;
-		rType = 0;
-		vrLen = 2050;
-		vrLoc = 29640;
-	};
 	CF7A1402058CEFE2007126C1 /* Sara tool debug */ = {
 		activeExec = 0;
 		executables = (
 			CFB614080854404800DE5041 /* Sara tool debug */,
 		);
 	};
+	CF825DB1085387390077AEAF /* TC_UniqueArray.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {944, 18018}}";
+			sepNavSelRange = "{4637, 0}";
+			sepNavVisRect = "{{0, 945}, {730, 589}}";
+			sepNavWindowFrame = "{{15, 134}, {775, 709}}";
+		};
+	};
 	CF907D6A06119D7700A366ED /* computation.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1388, 30702}}";
-			sepNavSelRange = "{30502, 27}";
-			sepNavVisRect = "{{0, 8057}, {730, 589}}";
-			sepNavWindowFrame = "{{34, 133}, {775, 709}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1388, 30940}}";
+			sepNavSelRange = "{114552, 0}";
+			sepNavVisRect = "{{0, 29212}, {959, 671}}";
+			sepNavWindowFrame = "{{148, 39}, {1004, 791}}";
 		};
 	};
 	CFB614070854404800DE5041 /* Sara tool */ = {
@@ -211,5 +200,19 @@
 	CFB61410085440A000DE5041 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	CFEF0C10087A7933002253F4 /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+		);
+	};
+	CFF53902057A563000854C83 /* C_bdd.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {902, 29148}}";
+			sepNavSelRange = "{48771, 23}";
+			sepNavVisRect = "{{0, 17815}, {730, 589}}";
+			sepNavWindowFrame = "{{38, 113}, {775, 709}}";
+		};
 	};
 }
