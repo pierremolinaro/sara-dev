@@ -1670,9 +1670,9 @@ addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
 //--- Transitions from terminal states
    const C_BDD transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
 //--- Filter theses transitions by eliminating target internal and output variables
-   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber (inVariablesCount + inInputVariablesCount) ;
+   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((uint16) (inVariablesCount + inInputVariablesCount)) ;
 //--- translate initial state BDD by variablesCount slots
-   const C_BDD translatedInitialStates = inTargetInitialStates.translate (inVariablesCount, inVariablesCount) ;
+   const C_BDD translatedInitialStates = inTargetInitialStates.translate ((uint16) inVariablesCount, (uint16)inVariablesCount) ;
 //--- Transitions to from terminal states to initial states
    const C_BDD transitions = inSourceTerminalStates & translatedInitialStates ;
 //--- Eliminate from theses transitions all the transitions that raise an ambiguity
