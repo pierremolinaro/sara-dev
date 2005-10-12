@@ -40,7 +40,6 @@ class C_saraMachine {
                                                const uint16 inVariablesCount, \
                                                C_BDD & outInitialStatesBDD, \
                                                C_BDD & outTerminalStatesBDD, \
-                                               C_BDD & outAccessibleStatesBDD, \
                                                C_BDD & outAccessibilityRelationBDD) const = 0 ;
 
 //---------------------------------------------------------------------------*
@@ -51,7 +50,6 @@ class C_saraMachine {
                                                const uint16 inVariablesCount, \
                                                C_BDD & outInitialStatesBDD, \
                                                C_BDD & outTerminalStatesBDD, \
-                                               C_BDD & outAccessibleStatesBDD, \
                                                C_BDD & outAccessibilityRelationBDD) const ;
 
 //---------------------------------------------------------------------------*
