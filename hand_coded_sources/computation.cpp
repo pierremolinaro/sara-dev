@@ -878,7 +878,7 @@ computeFromExpression (C_Lexique & inLexique,
 //--- Compute or composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
   outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
-  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD | rightAccessibilityRelationBDD) ;
+  outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
 }
 
 //---------------------------------------------------------------------------*
@@ -901,6 +901,10 @@ computeFromExpression (C_Lexique & inLexique,
                                       terminalStatesBDD,
                                       accessibilityRelationBDD) ;
 //--- Compute not composition
+  outInitialStatesBDD = ~initialStatesBDD ;
+  outTerminalStatesBDD = ~terminalStatesBDD ;
+  outAccessibilityRelationBDD = ~accessibilityRelationBDD ;
+
   outInitialStatesBDD = initialStatesBDD.getOpposite () ;
   outTerminalStatesBDD = terminalStatesBDD.getOpposite () ;
   outAccessibilityRelationBDD = accessibilityRelationBDD.getOpposite () ;
@@ -910,8 +914,8 @@ computeFromExpression (C_Lexique & inLexique,
 
 static inline C_BDD
 equalEqual (const C_BDD & inA, const C_BDD & inB) {
+  return inA == inB ;
 //  return ((inA.getOpposite () & inB.getOpposite ()).getOpposite () & (inA & inB).getOpposite ()).getOpposite () ;
-  return (inA & inB).getOpposite ().getOpposite () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -947,6 +951,9 @@ computeFromExpression (C_Lexique & inLexique,
   outInitialStatesBDD = equalEqual (leftInitialStatesBDD, rightInitialStatesBDD) ;
   outTerminalStatesBDD = equalEqual (leftTerminalStatesBDD, rightTerminalStatesBDD) ;
   outAccessibilityRelationBDD = equalEqual (leftAccessibilityRelationBDD, rightAccessibilityRelationBDD) ;
+//  outInitialStatesBDD = leftInitialStatesBDD == rightInitialStatesBDD ;
+//  outTerminalStatesBDD = leftTerminalStatesBDD == rightTerminalStatesBDD ;
+//  outAccessibilityRelationBDD = leftAccessibilityRelationBDD == rightAccessibilityRelationBDD ;
 }
 
 //---------------------------------------------------------------------------*

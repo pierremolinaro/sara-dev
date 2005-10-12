@@ -252,34 +252,8 @@
 		CFB4DADB063CF5C3002FD35C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFB4DAD0063CF5B7002FD35C /* main.mm */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFCD26D90850D5D000A26954 /* saraDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF8061095160089CEA5 /* saraDebug */; };
+		CFDBA4C808FD746E00DD7CAD /* saraPrefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = CFDBA4C708FD746E00DD7CAD /* saraPrefix.pch */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		CFCD26340850C95400A26954 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.gcc.3_3;
-			fileType = sourcecode.c;
-			isEditable = 1;
-			outputFiles = (
-			);
-		};
-		CFCD26350850C96400A26954 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.gcc.3_3;
-			fileType = sourcecode.c;
-			isEditable = 1;
-			outputFiles = (
-			);
-		};
-		CFCD26360850C97800A26954 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.gcc.3_3;
-			fileType = sourcecode.c;
-			isEditable = 1;
-			outputFiles = (
-			);
-		};
-/* End PBXBuildRule section */
 
 /* Begin PBXBuildStyle section */
 		CFA7AB90058DAD29009AC1FE /* Deployment */ = {
@@ -368,7 +342,6 @@
 		CF825D50085386810077AEAF /* OC_GGS_RulerView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_RulerView.mm; sourceTree = "<group>"; };
 		CF825D51085386810077AEAF /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextView.h; sourceTree = "<group>"; };
 		CF825D52085386810077AEAF /* OC_GGS_TextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_TextView.mm; sourceTree = "<group>"; };
-		CF825D53085386810077AEAF /* PP_CocoaGalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_CocoaGalgasPrefix.pch; sourceTree = "<group>"; };
 		CF825D5E0853868A0077AEAF /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		CF825D600853868A0077AEAF /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/OC_GGS_Document.nib; sourceTree = "<group>"; };
 		CF825D63085386A80077AEAF /* C_PrimeCache2.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrimeCache2.cpp; sourceTree = "<group>"; };
@@ -444,6 +417,7 @@
 		CFA61CF8061095160089CEA5 /* saraDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = saraDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB4DAD0063CF5B7002FD35C /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFDBA4C708FD746E00DD7CAD /* saraPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = saraPrefix.pch; path = ../hand_coded_sources/saraPrefix.pch; sourceTree = SOURCE_ROOT; };
 		CFF53872057A558F00854C83 /* AC_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_io.cpp; sourceTree = "<group>"; };
 		CFF53877057A558F00854C83 /* C_galgas_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_stringset.cpp; sourceTree = "<group>"; };
 		CFF5387B057A558F00854C83 /* C_galgas_uint_array.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_uint_array.cpp; sourceTree = "<group>"; };
@@ -530,6 +504,7 @@
 		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CFDBA4C708FD746E00DD7CAD /* saraPrefix.pch */,
 				CFB4DAD0063CF5B7002FD35C /* main.mm */,
 			);
 			name = "Other Sources";
@@ -602,7 +577,6 @@
 				CF825D50085386810077AEAF /* OC_GGS_RulerView.mm */,
 				CF825D51085386810077AEAF /* OC_GGS_TextView.h */,
 				CF825D52085386810077AEAF /* OC_GGS_TextView.mm */,
-				CF825D53085386810077AEAF /* PP_CocoaGalgasPrefix.pch */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -857,6 +831,7 @@
 				CF825DF60853878C0077AEAF /* MF_Assert.h in Headers */,
 				CF825DF80853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFE085387EC0077AEAF /* C_Timer.h in Headers */,
+				CFDBA4C808FD746E00DD7CAD /* saraPrefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,7 +910,6 @@
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 			);
 			buildRules = (
-				CFCD26360850C97800A26954 /* PBXBuildRule */,
 			);
 			buildSettings = {
 				DEPLOYMENT_LOCATION = NO;
@@ -1010,7 +984,6 @@
 				8DD76F690486A84900D96B5E /* CopyFiles */,
 			);
 			buildRules = (
-				CFCD26340850C95400A26954 /* PBXBuildRule */,
 			);
 			buildSettings = {
 				DEPLOYMENT_LOCATION = NO;
@@ -1054,7 +1027,6 @@
 				CF7A1401058CEFE2007126C1 /* Sources */,
 			);
 			buildRules = (
-				CFCD26350850C96400A26954 /* PBXBuildRule */,
 			);
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1339,7 +1311,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
+				GCC_PREFIX_HEADER = ../hand_coded_sources/saraPrefix.pch;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
@@ -1350,6 +1322,10 @@
 				);
 				INSTALL_PATH = "$(HOME)/bin";
 				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = sara;
 				WARNING_CFLAGS = (
@@ -1360,36 +1336,6 @@
 				ZERO_LINK = NO;
 			};
 			name = Deployment;
-		};
-		CF32C9500856F9220042CEEB /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = /usr/lib/gcc/darwin/3.3;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = sara;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
-			name = Default;
 		};
 		CF32C9520856F9220042CEEB /* Deployment */ = {
 			isa = XCBuildConfiguration;
@@ -1415,29 +1361,6 @@
 			};
 			name = Deployment;
 		};
-		CF32C9530856F9220042CEEB /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = saraDebug;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-			};
-			name = Default;
-		};
 		CF32C9550856F9220042CEEB /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1448,7 +1371,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
+				GCC_PREFIX_HEADER = ../hand_coded_sources/saraPrefix.pch;
 				GCC_SHORT_ENUMS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
@@ -1493,74 +1416,12 @@
 				WRAPPER_EXTENSION = app;
 			};
 			name = Deployment;
-		};
-		CF32C9560856F9220042CEEB /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEPLOYMENT_LOCATION = NO;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_TRIGRAPHS = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 1;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
-				GCC_SHORT_ENUMS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = NO;
-				GCC_WARN_UNUSED_LABEL = NO;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					../galgas_sources/GALGAS_OUTPUT,
-					../hand_coded_sources,
-					../../libpm,
-				);
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
-				);
-				OTHER_LDFLAGS = "";
-				PREBINDING = YES;
-				PRODUCT_NAME = cocoaSara;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				WRAPPER_EXTENSION = app;
-			};
-			name = Default;
 		};
 		CF32C9580856F9220042CEEB /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
 			name = Deployment;
-		};
-		CF32C9590856F9220042CEEB /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-			};
-			name = Default;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1569,37 +1430,33 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF32C94F0856F9220042CEEB /* Deployment */,
-				CF32C9500856F9220042CEEB /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Deployment;
 		};
 		CF32C9510856F9220042CEEB /* Build configuration list for PBXNativeTarget "Sara tool debug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF32C9520856F9220042CEEB /* Deployment */,
-				CF32C9530856F9220042CEEB /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Deployment;
 		};
 		CF32C9540856F9220042CEEB /* Build configuration list for PBXNativeTarget "Cocoa Sara" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF32C9550856F9220042CEEB /* Deployment */,
-				CF32C9560856F9220042CEEB /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Deployment;
 		};
 		CF32C9570856F9220042CEEB /* Build configuration list for PBXProject "sara" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF32C9580856F9220042CEEB /* Deployment */,
-				CF32C9590856F9220042CEEB /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Deployment;
 		};
 /* End XCConfigurationList section */
 	};
