@@ -20,20 +20,6 @@
 
 //---------------------------------------------------------------------------*
 
-class C_saraMachine {
-  public : C_saraMachine (void) ;
-  public : C_String mMachineName ;
-  public : uint16 mInputVariablesCount ;
-  public : uint16 mInputAndInternalVariablesCount ;
-  public : TC_UniqueArray <C_String> mNamesArray ;
-  public : C_BDD mInitialStatesBDD ;
-  public : C_BDD mTerminalStatesBDD ;
-  public : C_BDD mTransitionRelationBDD ;
-  public : C_BDD mAccessibleStatesBDD ;
-} ;
-
-//---------------------------------------------------------------------------*
-
 #define macro_AC_machineDefinition \
   public : virtual void computeFromExpression (C_Lexique & inLexique, \
                                                const TC_Array <C_saraMachine> & inSaraSystemArray, \

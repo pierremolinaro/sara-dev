@@ -41,56 +41,138 @@ static void printfUINT64 (const uint64 inValue) {
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_VariableExpression::computeBDD (const uint16 inBDDslotOffset) const {
+C_BDD cPtr_C_VariableExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
   return C_BDD ((uint16) (mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_trueExpression::computeBDD (const uint16 /* inBDDslotOffset */) const {
+C_BDD cPtr_C_trueExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 /* inBDDslotOffset */) const {
   return ~ C_BDD () ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_falseExpression::computeBDD (const uint16 /* inBDDslotOffset */) const {
+C_BDD cPtr_C_falseExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 /* inBDDslotOffset */) const {
   return C_BDD () ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_notExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return ~ mExpression ()->computeBDD (inBDDslotOffset) ;
+C_BDD cPtr_C_notExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+  return ~ mExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_andExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inBDDslotOffset) & mRightExpression ()->computeBDD (inBDDslotOffset) ;
+C_BDD cPtr_C_andExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+      & mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_orExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inBDDslotOffset) | mRightExpression ()->computeBDD (inBDDslotOffset) ;
+C_BDD cPtr_C_orExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+      | mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_xorExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inBDDslotOffset) != mRightExpression ()->computeBDD (inBDDslotOffset) ;
+C_BDD cPtr_C_xorExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+     != mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_impliesExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inBDDslotOffset).implies (mRightExpression ()->computeBDD (inBDDslotOffset)) ;
+C_BDD cPtr_C_impliesExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+    .implies (mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_equalExpression::computeBDD (const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inBDDslotOffset) == mRightExpression ()->computeBDD (inBDDslotOffset) ;
+C_BDD cPtr_C_equalExpression::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+     == mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+}
+
+//---------------------------------------------------------------------------*
+
+C_BDD cPtr_C_importBoolMachine::
+computeBDD (C_Lexique & inLexique,
+            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const uint16 inVariablesCount,
+            const uint16 inBDDslotOffset) const {
+//--- Get index of imported machine
+  const sint32 indexOfImportedMachine = (sint32) mIndexOfImportedMachine.uintValue () ;
+//--- Check that imported machine is actually boolean
+  const C_BDD initialStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mInitialStatesBDD ;
+  const C_BDD terminalStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTerminalStatesBDD ;
+  const C_BDD transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
+  if (! initialStatesOfImportedMachine.isEqualToBDD (terminalStatesOfImportedMachine)) {
+    C_String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage) ;
+  }
+  const uint16 importedMachineVariableCount = (uint16) mTranslationVector.count () ;
+  const C_BDD boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
+  if (! boolAccessibilityRelationBDD.isEqualToBDD (transitionsOfImportedMachine)) {
+    C_String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage) ;
+  }
+//--- Construct substitution arraies
+  uint16 * statesSubstitutionArray = new uint16 [importedMachineVariableCount] ;
+  GGS_L_translationVector::element_type * p = mTranslationVector.firstObject () ;
+  sint32 index = 0 ;
+  while (p != NULL) {
+    macroValidPointer (p) ;
+    statesSubstitutionArray [index] = (uint16) p->mTargetSlot.uintValue () ;
+    p = p->nextObject () ;
+    index ++ ;
+  }
+//--- Translate initial state BDD
+  C_BDD initialStatesBDD = initialStatesOfImportedMachine.substitution (statesSubstitutionArray, importedMachineVariableCount) ;
+//---
+  delete [] statesSubstitutionArray ;
+//--- Return initial states
+  return initialStatesBDD ;
 }
 
 //---------------------------------------------------------------------------*
@@ -385,18 +467,7 @@ compute (C_Lexique & /* inLexique */,
     }
     incompleteStatesAndInput.printBDD (transitionsVariableNameArray, (uint16) (variableCount+machine.mInputVariablesCount), 3) ;
   }
-//--- Check all states are stable
-// Set of instable states [e:is] : ?is' (trans [e:is] to [e:is'] & is != is')
-//--- Commented out by PM on june 27, 2005 (for version 0.1.3)
-//  const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, machine.mInputVariablesCount, C_BDD::kEqual, variableCount) ;
-//  const C_BDD nonEqualOutputConstraint = C_BDD::varCompareVar (machine.mInputVariablesCount,
-//                                                               (uint16) (variableCount - machine.mInputVariablesCount),
-//                                                               C_BDD::kNonEqual,
-//                                                               (uint16) (variableCount + machine.mInputVariablesCount)) ;
-//  const C_BDD nonStableTransitions = machine.mTransitionRelationBDD & equalInputConstraint & nonEqualOutputConstraint ;
-//  const C_BDD notStableStates = nonStableTransitions.existsOnBitsAfterNumber (variableCount) ;
-//--- End of commented out by PM on june 27, 2005
-//--- Added by PM on june 27, 2005 (for version 0.1.3)
+//--- Check all states are stable (added by PM on june 27, 2005, for version 0.1.3)
   const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, variableCount, C_BDD::kEqual, variableCount) ;
   const C_BDD stableTransitions = machine.mTransitionRelationBDD & equalInputConstraint ;
   const C_BDD stableStates = stableTransitions.existsOnBitsAfterNumber (variableCount) ;
@@ -410,6 +481,22 @@ compute (C_Lexique & /* inLexique */,
     printfUINT64 (n) ;
     printf (" instable state%s:\n", (n > 1) ? "s" : "") ;
     notStableStates.printBDD (machine.mNamesArray, variableCount, 3) ;
+  }
+//--- Check machine is combinatory ? (added by PM on october 13th, 2005)
+  if (mCheckMachineIsBoolean.boolValue ()) {
+    bool ok = true ;
+    if (!  machine.mInitialStatesBDD.isEqualToBDD ( machine.mTerminalStatesBDD)) {
+      printf ("  checkbool error: this machine is not combinatory (initial states != terminal states).\n") ;
+      ok = false ;
+    }
+    const C_BDD boolAccessibilityRelationBDD =  machine.mInitialStatesBDD & machine.mInitialStatesBDD.translate (variableCount, variableCount) ;
+    if (! boolAccessibilityRelationBDD.isEqualToBDD (machine.mTransitionRelationBDD)) {
+      printf ("  checkbool error: this machine is not combinatory (transitions != initial states x initial states).\n") ;
+      ok = false ;
+    }
+    if (ok) {
+      printf ("  Machine is combinatory.\n") ;
+    }
   }
 }
 
@@ -588,7 +675,7 @@ compute (C_Lexique & /* inLexique */,
 
 void cPtr_C_explicitAutomatonDefinition::
 computeFromExpression (C_Lexique & inLexique,
-                       const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
@@ -614,7 +701,7 @@ computeFromExpression (C_Lexique & inLexique,
   //--- Get state index
     const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Enter state configuration
-    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition->mStateExpression ()->computeBDD (0) ;
+    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition->mStateExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
   //--- Check state configuration is not empty
     if (stateExpressionBDD (stateIndex COMMA_HERE).isFalse ()) {
       C_String errorMessage ;
@@ -716,7 +803,7 @@ computeFromExpression (C_Lexique & inLexique,
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
-      const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inVariablesCount) ;
+      const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
       const sint32 targetStateIndex = (sint32) currentTransition->mTargetStateIndex.uintValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
@@ -740,7 +827,7 @@ computeFromExpression (C_Lexique & inLexique,
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
     //--- Compute action BDD
-      const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (0) ;
+      const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
     //--- Check action does not intersect with state input expression
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
@@ -752,7 +839,7 @@ computeFromExpression (C_Lexique & inLexique,
       while (testedTransition != NULL) {
         macroValidPointer (testedTransition) ;
       //--- Compute action BDD
-        const C_BDD testedActionBDD = testedTransition->mActionExpression ()->computeBDD (0) ;
+        const C_BDD testedActionBDD = testedTransition->mActionExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
@@ -813,7 +900,7 @@ computeFromExpression (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_andComposition::
+void cPtr_C_parallelComposition::
 computeFromExpression (C_Lexique & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
@@ -848,112 +935,25 @@ computeFromExpression (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_orComposition::
-computeFromExpression (C_Lexique & inLexique,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const uint16 inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
-//--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
-                                          inSaraSystemArray,
-                                          inVariablesCount,
-                                          leftInitialStatesBDD,
-                                          leftTerminalStatesBDD,
-                                          leftAccessibilityRelationBDD) ;
-//--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
-                                           inSaraSystemArray,
-                                           inVariablesCount,
-                                           rightInitialStatesBDD,
-                                           rightTerminalStatesBDD,
-                                           rightAccessibilityRelationBDD) ;
-//--- Compute or composition
-  outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
-  outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
-  outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_notComposition::
-computeFromExpression (C_Lexique & inLexique,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const uint16 inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
-//--- Compute operand
-  C_BDD initialStatesBDD ;
-  C_BDD terminalStatesBDD ;
-  C_BDD accessibilityRelationBDD ;
-  mOperand ()->computeFromExpression (inLexique,
-                                      inSaraSystemArray,
-                                      inVariablesCount,
-                                      initialStatesBDD,
-                                      terminalStatesBDD,
-                                      accessibilityRelationBDD) ;
-//--- Compute not composition
-  outInitialStatesBDD = ~initialStatesBDD ;
-  outTerminalStatesBDD = ~terminalStatesBDD ;
-  outAccessibilityRelationBDD = ~accessibilityRelationBDD ;
-
-  outInitialStatesBDD = initialStatesBDD.getOpposite () ;
-  outTerminalStatesBDD = terminalStatesBDD.getOpposite () ;
-  outAccessibilityRelationBDD = accessibilityRelationBDD.getOpposite () ;
-}
-
-//---------------------------------------------------------------------------*
-
-static inline C_BDD
-equalEqual (const C_BDD & inA, const C_BDD & inB) {
-  return inA == inB ;
-//  return ((inA.getOpposite () & inB.getOpposite ()).getOpposite () & (inA & inB).getOpposite ()).getOpposite () ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_equalComposition::
-computeFromExpression (C_Lexique & inLexique,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const uint16 inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
-//--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
-                                          inSaraSystemArray,
-                                          inVariablesCount,
-                                          leftInitialStatesBDD,
-                                          leftTerminalStatesBDD,
-                                          leftAccessibilityRelationBDD) ;
-//--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
-                                           inSaraSystemArray,
-                                           inVariablesCount,
-                                           rightInitialStatesBDD,
-                                           rightTerminalStatesBDD,
-                                           rightAccessibilityRelationBDD) ;
-//--- Compute implies composition
-  outInitialStatesBDD = equalEqual (leftInitialStatesBDD, rightInitialStatesBDD) ;
-  outTerminalStatesBDD = equalEqual (leftTerminalStatesBDD, rightTerminalStatesBDD) ;
-  outAccessibilityRelationBDD = equalEqual (leftAccessibilityRelationBDD, rightAccessibilityRelationBDD) ;
-//  outInitialStatesBDD = leftInitialStatesBDD == rightInitialStatesBDD ;
-//  outTerminalStatesBDD = leftTerminalStatesBDD == rightTerminalStatesBDD ;
-//  outAccessibilityRelationBDD = leftAccessibilityRelationBDD == rightAccessibilityRelationBDD ;
+static C_BDD
+accessibleStates (const C_BDD & inInitialState,
+                  const C_BDD & inAccessibilityRelation,
+                  const uint16 inVariablesCount) {
+  uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
+  for (uint16 i=0 ; i<inVariablesCount ; i++) {
+    substitutionArray [i] = (uint16) (inVariablesCount + i) ;
+    substitutionArray [inVariablesCount + i] = i ;
+  }
+  C_BDD accessibleStates ;
+  C_BDD newlyAccessibleStates ;
+  do{
+    accessibleStates = newlyAccessibleStates ;
+    newlyAccessibleStates |= inInitialState ;
+    const C_BDD x = (newlyAccessibleStates & inAccessibilityRelation).substitution (substitutionArray, (uint16) (inVariablesCount + inVariablesCount)) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
+  }while (! accessibleStates.isEqualToBDD (newlyAccessibleStates)) ;
+  delete [] substitutionArray ;
+  return accessibleStates ;
 }
 
 //---------------------------------------------------------------------------*
@@ -986,12 +986,14 @@ computeFromExpression (C_Lexique & inLexique,
                                            rightTerminalStatesBDD,
                                            rightAccessibilityRelationBDD) ;
 //--- Check if modal composition is valid
-/* §§  const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
+  const C_BDD leftAccessibleStatesBDD = accessibleStates (leftInitialStatesBDD, leftAccessibilityRelationBDD, inVariablesCount) ;
+  const C_BDD rightAccessibleStatesBDD = accessibleStates (rightInitialStatesBDD, rightAccessibilityRelationBDD, inVariablesCount) ;
+  const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
   if (! intersection.isFalse ()) {
     C_String errorMessage ;
     errorMessage << "operands transitions intersects, strong modal composition is not valid" ;
     mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
-  }*/
+  }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
   outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
@@ -1028,7 +1030,9 @@ computeFromExpression (C_Lexique & inLexique,
                                            rightTerminalStatesBDD,
                                            rightAccessibilityRelationBDD) ;
 //--- compute intersection
-/* §§  const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
+  const C_BDD leftAccessibleStatesBDD = accessibleStates (leftInitialStatesBDD, leftAccessibilityRelationBDD, inVariablesCount) ;
+  const C_BDD rightAccessibleStatesBDD = accessibleStates (rightInitialStatesBDD, rightAccessibilityRelationBDD, inVariablesCount) ;
+  const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
 //--- Compute in left operand accessible states from intersection
   C_BDD leftAccessiblesStates ;
   uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
@@ -1078,7 +1082,7 @@ computeFromExpression (C_Lexique & inLexique,
     C_String errorMessage ;
     errorMessage << "terminal states are not compatible with weak modal composition" ;
     mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
-  }*/
+  }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
   outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
@@ -1087,87 +1091,16 @@ computeFromExpression (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_xorComposition::
+void cPtr_C_boolToSeqExpression::
 computeFromExpression (C_Lexique & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-//--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
-                                          inSaraSystemArray,
-                                          inVariablesCount,
-                                          leftInitialStatesBDD,
-                                          leftTerminalStatesBDD,
-                                          leftAccessibilityRelationBDD) ;
-//--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
-                                           inSaraSystemArray,
-                                           inVariablesCount,
-                                           rightInitialStatesBDD,
-                                           rightTerminalStatesBDD,
-                                           rightAccessibilityRelationBDD) ;
-//--- Compute xor composition
-  outInitialStatesBDD = leftInitialStatesBDD != rightInitialStatesBDD ;
-  outTerminalStatesBDD = leftTerminalStatesBDD != rightTerminalStatesBDD ;
-  outAccessibilityRelationBDD = (leftAccessibilityRelationBDD != rightAccessibilityRelationBDD) ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_impliesComposition::
-computeFromExpression (C_Lexique & inLexique,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const uint16 inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
-//--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
-                                          inSaraSystemArray,
-                                          inVariablesCount,
-                                          leftInitialStatesBDD,
-                                          leftTerminalStatesBDD,
-                                          leftAccessibilityRelationBDD) ;
-//--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
-                                           inSaraSystemArray,
-                                           inVariablesCount,
-                                           rightInitialStatesBDD,
-                                           rightTerminalStatesBDD,
-                                           rightAccessibilityRelationBDD) ;
-//--- Compute implies composition
-  outInitialStatesBDD = leftInitialStatesBDD.implies (rightInitialStatesBDD) ;
-  outTerminalStatesBDD = leftTerminalStatesBDD.implies (rightTerminalStatesBDD) ;
-  outAccessibilityRelationBDD = leftAccessibilityRelationBDD.implies (rightAccessibilityRelationBDD) ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_C_variableDefinition::
-computeFromExpression (C_Lexique & /* inLexique */,
-                       const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
-                       const uint16 inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
-  const C_BDD bdd ((uint16) (mInputOutputVariableIndex.uintValue ()), true) ;
-  outInitialStatesBDD = bdd ;
-  outTerminalStatesBDD = bdd ;
-  outAccessibilityRelationBDD = bdd & bdd.translate (inVariablesCount, inVariablesCount) ;
+  outInitialStatesBDD = mExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
+  outTerminalStatesBDD = outInitialStatesBDD ;
+  outAccessibilityRelationBDD = outInitialStatesBDD & outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1318,7 +1251,7 @@ computeFromExpression (C_Lexique & inLexique,
   const sint32 modeCount = (sint32) mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-// §  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
@@ -1337,6 +1270,10 @@ computeFromExpression (C_Lexique & inLexique,
       index ++ ;
     }
   }
+//--- Compute accessible states
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), inVariablesCount) ;
+  }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
@@ -1347,7 +1284,6 @@ computeFromExpression (C_Lexique & inLexique,
   for (sint32 mode=0 ; mode<modeCount ; mode++) {
     for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
-    /* §§
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
@@ -1412,7 +1348,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
         modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
-      }*/
+      }
     }
   }
   delete [] substitutionArray ; substitutionArray = NULL ;
@@ -1455,7 +1391,7 @@ computeFromExpression (C_Lexique & inLexique,
   const sint32 modeCount = (sint32) mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-//  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
@@ -1474,6 +1410,10 @@ computeFromExpression (C_Lexique & inLexique,
       index ++ ;
     }
   }
+//--- Compute accessible states
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), inVariablesCount) ;
+  }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint16 * substitutionArray = new uint16 [inVariablesCount + inVariablesCount] ;
@@ -1484,7 +1424,6 @@ computeFromExpression (C_Lexique & inLexique,
   for (sint32 mode=0 ; mode<modeCount ; mode++) {
     for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
-    /* §§
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
@@ -1549,7 +1488,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
         modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
-      }*/
+      }
     }
   }
   delete [] substitutionArray ; substitutionArray = NULL ;
@@ -1591,15 +1530,16 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_trans::
-computeFromExpression (C_Lexique & /* inLexique */,
-                       const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+computeFromExpression (C_Lexique & inLexique,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
   outInitialStatesBDD = C_BDD () ;
   outTerminalStatesBDD = C_BDD () ;
-  outAccessibilityRelationBDD = mSourceStateExpression ()->computeBDD (0) & mTargetStateExpression ()->computeBDD (inVariablesCount) ;
+  outAccessibilityRelationBDD = mSourceStateExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0)
+        & mTargetStateExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1655,7 +1595,7 @@ compute (C_Lexique & inLexique,
   const sint32 modeCount = (sint32) mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-// §  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
@@ -1674,6 +1614,10 @@ compute (C_Lexique & inLexique,
       index ++ ;
     }
   }
+//--- Compute accessible states
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variablesCount) ;
+  }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint16 * substitutionArray = new uint16 [variablesCount + variablesCount] ;
@@ -1684,7 +1628,6 @@ compute (C_Lexique & inLexique,
   for (sint32 mode=0 ; mode<modeCount ; mode++) {
     for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
-    /* §§
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
@@ -1749,7 +1692,7 @@ compute (C_Lexique & inLexique,
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
         modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
-      }*/
+      }
     }
   }
   delete [] substitutionArray ; substitutionArray = NULL ;
@@ -1908,7 +1851,7 @@ compute (C_Lexique & inLexique,
   const sint32 modeCount = (sint32) mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-// §  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
@@ -1927,6 +1870,10 @@ compute (C_Lexique & inLexique,
       index ++ ;
     }
   }
+//--- Compute accessible states
+  for (sint32 mode=0 ; mode<modeCount ; mode++) {
+    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variablesCount) ;
+  }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint16 * substitutionArray = new uint16 [variablesCount + variablesCount] ;
@@ -1937,7 +1884,6 @@ compute (C_Lexique & inLexique,
   for (sint32 mode=0 ; mode<modeCount ; mode++) {
     for (sint32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
-     /* §§
      //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
@@ -2002,7 +1948,7 @@ compute (C_Lexique & inLexique,
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
         modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
-      }*/
+      }
     }
   }
   delete [] substitutionArray ; substitutionArray = NULL ;
