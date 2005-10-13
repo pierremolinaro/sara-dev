@@ -1,0 +1,53 @@
+#Description du mode Arrêt 
+$ModeArret (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {~eav1 & ~eav2 & ~autom & Arefix & ~R1 & ~R2} ;
+
+#Description du mode de préparation à l'arrêt (attente Arefix)
+$Mode_Prepa_Arret (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {~eav1 & ~eav2 & ~autom & ~Arefix & R1 & ~R2};
+
+#Description du mode PV
+$ModePV (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {~eav1 & eav2 & ~autom & R1 & ~R2} ;
+
+#Description du mode GV 
+$ModeGV (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {eav1 & eav2 & ~autom & R1 & R2}; 
+
+#Descritpion du mode défaut
+$ModeDefautCommodo (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {eav1 & ~eav2 & ~autom & ~R1 & ~R2};
+
+#Description des modes autom
+$ModeArret_Auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {autom & Arefix & ~cp1 & ~cp2 & ~R1 & ~R2};
+
+$Mode_Prepa_Arret_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {autom & ~Arefix & ~cp1 & ~cp2 & ~R1 & ~R2};
+
+$ModePV_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {autom & ~cp1 & cp2 & R1 & ~R2} ;
+
+$ModeGV_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {autom & cp1 & cp2 & R1 & R2}; 
+
+$ModeDefautCommodo_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):= bool {autom & cp1 & ~cp2 & ~R1 & ~R2};
+
+$Systeme (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2):=
+	modalcompsub {
+		m1	: $ModeArret (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m2	: $Mode_Prepa_Arret (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m3	: $ModePV (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m4	: $ModeGV (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m5	: $ModeDefautCommodo (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m6	: $ModeArret_Auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m7	: $Mode_Prepa_Arret_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m8	: $ModePV_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+		m9	: $ModeGV_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2); 
+		m10	: $ModeDefautCommodo_auto (eav1,eav2,autom,Arefix,cp1,cp2) () (R1,R2);
+
+##exclusion mode arret à prepa arret
+#		exclude m1 to m2;
+#		exclude m1 to m7;
+#		exclude m6 to m2;
+#		exclude m6 to m7;
+##exclusion GV -> Arrêt
+#		exclude m4 to m1;
+#		exclude m4 to m6;
+#		exclude m9 to m1;
+#		exclude m9 to m6;
+#		exclude m5 to m2;
+ } ;
+
+checkbool $Systeme;
