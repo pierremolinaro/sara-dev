@@ -1,0 +1,17 @@
+$M1 (e1, e2) () (q) := bool {(e1 | e2) = q} ;
+check $M1 ;
+
+$M2 (e1, e2) () (q) := bool {(e1 & e2) = q} ;
+check $M2 ;
+
+$ID (e) () (q) := bool {e = q} ;
+check $ID ;
+
+$NEG (e) () (q) := bool {e = ~q} ;
+check $NEG ;
+
+$M3 (e1, e2, e3) () (x, s) := $M1 (e1, e2) () (x) || $M2 (x, e3) () (s) ;
+check $M3 ;
+
+$M3P (e1, e2, e3) () (x, s) := bool {$M1 (e1, e2) () (x) & $M2 (x, e3) () (s)} ;
+checkbool $M3P ;
