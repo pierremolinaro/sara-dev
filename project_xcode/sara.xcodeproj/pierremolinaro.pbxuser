@@ -87,10 +87,10 @@
 	};
 	CF907D6A06119D7700A366ED /* computation.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1388, 29736}}";
-			sepNavSelRange = "{49764, 0}";
-			sepNavVisRect = "{{0, 12949}, {916, 654}}";
-			sepNavWindowFrame = "{{15, 69}, {961, 774}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1388, 30870}}";
+			sepNavSelRange = "{21669, 0}";
+			sepNavVisRect = "{{0, 5770}, {916, 654}}";
+			sepNavWindowFrame = "{{95, 33}, {961, 774}}";
 		};
 	};
 	CFF212ED08FE94CA003E5C7E /* Cocoa Sara */ = {
@@ -177,5 +177,21 @@
 	CFF212F908FE94E2003E5C7E /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {734, 728}}";
+			sepNavSelRange = "{1817, 20}";
+			sepNavVisRect = "{{0, 311}, {734, 180}}";
+			sepNavWindowFrame = "{{38, 48}, {961, 774}}";
+		};
+	};
+	CFF53902057A563000854C83 /* C_bdd.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {916, 29386}}";
+			sepNavSelRange = "{2300, 76}";
+			sepNavVisRect = "{{0, 0}, {916, 654}}";
+			sepNavWindowFrame = "{{15, 69}, {961, 774}}";
+		};
 	};
 }

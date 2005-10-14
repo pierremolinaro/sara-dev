@@ -371,6 +371,87 @@ compute (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_C_machineCheckIdentical::
+compute (C_Lexique & /* inLexique */,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+//--- Get machine index
+  const sint32 machineIndex1 = (sint32) mMachineIndex1.uintValue () ;
+  const sint32 machineIndex2 = (sint32) mMachineIndex2.uintValue () ;
+  const C_saraMachine & machine1 = ioSaraSystemArray (machineIndex1 COMMA_HERE) ;
+  const C_saraMachine & machine2 = ioSaraSystemArray (machineIndex2 COMMA_HERE) ;
+  printf ("------------------ Checking '%s' and '%s' machines identical\n", machine1.mMachineName.cString (), machine2.mMachineName.cString ()) ;
+  bool ok = true ;
+//--- Check that input variable count are the same
+  if (machine1.mInputVariablesCount == machine2.mInputVariablesCount) {
+    printf ("  Same input variable count (%hu) ;\n", machine1.mInputVariablesCount) ;
+  }else{
+    ok = false ;
+    printf ("  Error: first machine has %hu input variable%s, second one %hu ;\n",
+             machine1.mInputVariablesCount,
+             (machine1.mInputVariablesCount > 1) ? "s" : "",
+             machine2.mInputVariablesCount) ;
+  }
+//--- Check that all variable count are the same
+  const sint32 internalAndOutputVariableCount1 = machine1.mNamesArray.count () - machine1.mInputVariablesCount ;
+  const sint32 internalAndOutputVariableCount2 = machine2.mNamesArray.count () - machine2.mInputVariablesCount ;
+  if (internalAndOutputVariableCount1 == internalAndOutputVariableCount2) {
+    printf ("  Same internal and output variable count (%ld) ;\n", internalAndOutputVariableCount1) ;
+  }else{
+    ok = false ;
+    printf ("  Error: first machine has %ld internal and output variable%s, second one %ld ;\n",
+            internalAndOutputVariableCount1,
+             (internalAndOutputVariableCount1 > 1) ? "s" : "",
+             internalAndOutputVariableCount2) ;
+  }
+//--- Check initial states are identical
+  bool identical = ok ;
+  if (ok) {
+    if (machine2.mInitialStatesBDD.isEqualToBDD (machine1.mInitialStatesBDD)) {
+      printf ("  Same initial states;\n") ;
+    }else{
+      identical = false ;
+      printf ("  Error: initial states are different;\n") ;
+    }
+  }
+//--- Check terminal states are identical
+  if (ok) {
+    if (machine2.mTerminalStatesBDD.isEqualToBDD (machine1.mTerminalStatesBDD)) {
+      printf ("  Same terminal states;\n") ;
+    }else{
+      identical = false ;
+      printf ("  Error: terminal states are different;\n") ;
+    }
+  }
+//--- Check transitions are identical
+  if (ok) {
+    if (machine2.mTransitionRelationBDD.isEqualToBDD (machine1.mTransitionRelationBDD)) {
+      printf ("  Same transitions;\n") ;
+    }else{
+      identical = false ;
+      printf ("  Error: transitions are different;\n") ;
+    }
+  }
+//--- Check accessible states are identical
+  if (ok) {
+    if (machine2.mAccessibleStatesBDD.isEqualToBDD (machine1.mAccessibleStatesBDD)) {
+      printf ("  Same accessible states;\n") ;
+    }else{
+      identical = false ;
+      printf ("  Error: accessible states are different;\n") ;
+    }
+  }
+//--- Conclusion
+  if (identical) {
+    printf ("  Machines are identical.\n") ;
+  }else{
+    printf ("  Machines are different.\n") ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_C_machineCheck::
 compute (C_Lexique & /* inLexique */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
