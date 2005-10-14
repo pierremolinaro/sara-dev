@@ -46,7 +46,7 @@
 					200,
 					63,
 					20,
-					48.1626,
+					48,
 					43,
 					43,
 				);
@@ -60,8 +60,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 150903430;
-			PBXWorkspaceStateSaveDate = 150903430;
+			PBXPerProjectTemplateStateSaveDate = 150975148;
+			PBXWorkspaceStateSaveDate = 150975148;
 		};
 		sourceControlManager = CFF212F808FE94E2003E5C7E /* Source Control */;
 		userBuildSettings = {
@@ -84,6 +84,14 @@
 		executables = (
 			CFF212EF08FE94CA003E5C7E /* Sara tool debug */,
 		);
+	};
+	CF907D6A06119D7700A366ED /* computation.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1388, 29736}}";
+			sepNavSelRange = "{49764, 0}";
+			sepNavVisRect = "{{0, 12949}, {916, 654}}";
+			sepNavWindowFrame = "{{15, 69}, {961, 774}}";
+		};
 	};
 	CFF212ED08FE94CA003E5C7E /* Cocoa Sara */ = {
 		isa = PBXExecutable;

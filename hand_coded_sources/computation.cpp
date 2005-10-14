@@ -935,6 +935,41 @@ computeFromExpression (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_C_orComposition::
+computeFromExpression (C_Lexique & inLexique,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 inVariablesCount,
+                       C_BDD & outInitialStatesBDD,
+                       C_BDD & outTerminalStatesBDD,
+                       C_BDD & outAccessibilityRelationBDD) const {
+//--- Compute left operand
+  C_BDD leftInitialStatesBDD ;
+  C_BDD leftTerminalStatesBDD ;
+  C_BDD leftAccessibilityRelationBDD ;
+  mLeftOperand ()->computeFromExpression (inLexique,
+                                          inSaraSystemArray,
+                                          inVariablesCount,
+                                          leftInitialStatesBDD,
+                                          leftTerminalStatesBDD,
+                                          leftAccessibilityRelationBDD) ;
+//--- Compute right operand
+  C_BDD rightInitialStatesBDD ;
+  C_BDD rightTerminalStatesBDD ;
+  C_BDD rightAccessibilityRelationBDD ;
+  mRightOperand ()->computeFromExpression (inLexique,
+                                           inSaraSystemArray,
+                                           inVariablesCount,
+                                           rightInitialStatesBDD,
+                                           rightTerminalStatesBDD,
+                                           rightAccessibilityRelationBDD) ;
+//--- Compute and composition
+  outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
+  outTerminalStatesBDD = leftTerminalStatesBDD | rightTerminalStatesBDD ;
+  outAccessibilityRelationBDD = leftAccessibilityRelationBDD | rightAccessibilityRelationBDD ;
+}
+
+//---------------------------------------------------------------------------*
+
 static C_BDD
 accessibleStates (const C_BDD & inInitialState,
                   const C_BDD & inAccessibilityRelation,

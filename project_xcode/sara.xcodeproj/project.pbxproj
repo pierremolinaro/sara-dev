@@ -254,33 +254,6 @@
 		CFF212FC08FE94EF003E5C7E /* AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildRule section */
-		CFCD26340850C95400A26954 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.gcc.3_3;
-			fileType = sourcecode.c;
-			isEditable = 1;
-			outputFiles = (
-			);
-		};
-		CFCD26350850C96400A26954 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.gcc.3_3;
-			fileType = sourcecode.c;
-			isEditable = 1;
-			outputFiles = (
-			);
-		};
-		CFCD26360850C97800A26954 /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.gcc.3_3;
-			fileType = sourcecode.c;
-			isEditable = 1;
-			outputFiles = (
-			);
-		};
-/* End PBXBuildRule section */
-
 /* Begin PBXBuildStyle section */
 		CFA7AB90058DAD29009AC1FE /* Deployment */ = {
 			isa = PBXBuildStyle;
@@ -935,7 +908,6 @@
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 			);
 			buildRules = (
-				CFCD26360850C97800A26954 /* PBXBuildRule */,
 			);
 			buildSettings = {
 				DEPLOYMENT_LOCATION = NO;
@@ -1010,7 +982,6 @@
 				8DD76F690486A84900D96B5E /* CopyFiles */,
 			);
 			buildRules = (
-				CFCD26340850C95400A26954 /* PBXBuildRule */,
 			);
 			buildSettings = {
 				DEPLOYMENT_LOCATION = NO;
@@ -1054,7 +1025,6 @@
 				CF7A1401058CEFE2007126C1 /* Sources */,
 			);
 			buildRules = (
-				CFCD26350850C96400A26954 /* PBXBuildRule */,
 			);
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
