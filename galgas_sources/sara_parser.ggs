@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*#                                                                           *#   L E X I Q U E                                                           *#                                                                           *#---------------------------------------------------------------------------*lexique sara_scanner :header "galgas/F_LexicalActions.h" ;@lstring identifierString ;@luint ulongValue ;style identifier -> "Identifiers" ;style keyWords -> "Key words" ;style machineNameStyle -> "Machine names" ;style delimitors -> "Delimitors" ;style integer_csts -> "Integer constants" ;style stringStyle -> "Character strings" ;# -------------------------- identifier or key word --------------------# keywords can be written in lower# for identifiers, case is significant$identifier$ ! identifierString error message "an identifier" style identifier ;list keyWordList error message "the '" . * . "' key word" style keyWords : "auto", "state", "first", "last", "goto", "timer", "true", "false", "check", "checkbool", "nofirst", "nolast", "modalcompadd", "exclude", "modalcompsub", "include", "to", "scenario", "trans", "ite_cache", "and_cache", "map", "bdd", "bool", "use_and", "use_ite", "use_and_ite" ;rule 'a'->'z' | 'A'->'Z' :  repeat    enterCharacterIntoString (identifierString, *) ;  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :  end repeat ;  send search identifierString in keyWordList default $identifier$ ;end rule ;
 
-# -------------------------- Delimitors -------------------------------list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "~", "?", "|", "||", "(", ")", ":=", "^", "=", "*", "@", "**" ;rule list delimitorsList ;
+# -------------------------- Delimitors -------------------------------list delimitorsList error message "the '" . * . "' delimitor" style delimitors :  ",", ";", ":", "{", "}", "->", "&", "~", "?", "|", "||", "+", "(", ")", ":=", "^", "=", "*", "@", "**" ;rule list delimitorsList ;
 
 # -------------------- Characters string --------------------------------------$literal_string$ ! identifierString error message "a character string constant \"...\"" style stringStyle ;message incorrectStringEnd : "string does not end with '\"'" ;message incorrectCharInString : "this character cannot appear within a string" ;rule '"' :  repeat  while '\\' :    select    when 'n' :      enterCharacterIntoString (identifierString, '\n') ;    when '\\' :      enterCharacterIntoString (identifierString, '\\') ;    when '"' :      enterCharacterIntoString (identifierString, '"') ;    default      error incorrectCharInString ;    end select ;   while ' ' | '!' | '#'-> '\127' :    enterCharacterIntoString (identifierString, *) ;  end repeat ;  select  when '"' :    send $literal_string$ ;  default    error incorrectStringEnd ;  end select ;end rule ;
 
@@ -52,6 +52,8 @@ class @C_explicitAutomatonDefinition extends @AC_machineDefinition  @M_stateMap
 class @C_existsDefinition extends @AC_machineDefinition  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;end class ;
 
 class @C_parallelComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
+
+class @C_orComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
 
 class @C_strongModalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
 
@@ -181,7 +183,7 @@ rule <io_primary>   ?!@M_machinesMap ioMachinesMap
 
 #---------------------------------------------------------------------------*#         DEFINITION EXPRESSION                                             *#---------------------------------------------------------------------------*
 
-rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_term> !?ioMachinesMap !?variablesMap ?outDefinition ;end rule ;
+rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@AC_machineDefinition outDefinition:  <definition_expression_term> !?ioMachinesMap !?variablesMap ?outDefinition ;  repeat  while    $+$ ;    @AC_machineDefinition leftOperand := outDefinition ;    @AC_machineDefinition rightOperand ;    <definition_expression_term> !?ioMachinesMap !? variablesMap ?rightOperand ;    outDefinition := [@C_orComposition new !leftOperand !rightOperand] ;  end repeat ;end rule ;
 
 #---------------------------------------------------------------------------*
 
