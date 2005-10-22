@@ -333,7 +333,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>30 272 690 397 0 0 1152 848 </string>
+						<string>-11 176 690 397 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -370,7 +370,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {482, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>30 272 690 397 0 0 1152 848 </string>
+								<string>-11 176 690 397 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -390,7 +390,7 @@
 								<key>Frame</key>
 								<string>{{0, 5}, {482, 351}}</string>
 								<key>RubberWindowFrame</key>
-								<string>30 272 690 397 0 0 1152 848 </string>
+								<string>-11 176 690 397 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -414,9 +414,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CFFD5E6108FFBD9500DA4447</string>
+				<string>CFF58C5B09001EB500C60E3D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CFFD5E6208FFBD9500DA4447</string>
+				<string>CFF58C5C09001EB500C60E3D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -535,7 +535,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>150977941.66214001</real>
+	<real>151002462.15015799</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -550,13 +550,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
-		<string>CFFD5E3608FFB2FF00DA4447</string>
-		<string>/Volumes/raid/developpements/mes_prgms/sara/project_xcode/sara.xcodeproj</string>
+		<string>/Users/pierremolinaro/Documents/developpements/mes_prgms/sara/project_xcode/sara.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>30 272 690 397 0 0 1152 848 </string>
+	<string>-11 176 690 397 0 0 1680 1028 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>

@@ -9,6 +9,9 @@
 			8DD76F620486A84900D96B5E /* Sara tool */,
 			CF7A1402058CEFE2007126C1 /* Sara tool debug */,
 		);
+		breakpoints = (
+		);
+		breakpointsGroup = CF328596090A82B500D96925 /* XCBreakpointsBucket */;
 		codeSenseManager = CFF212F908FE94E2003E5C7E /* Code sense */;
 		executables = (
 			CFF212ED08FE94CA003E5C7E /* Cocoa Sara */,
@@ -60,8 +63,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 150975148;
-			PBXWorkspaceStateSaveDate = 150975148;
+			PBXPerProjectTemplateStateSaveDate = 151669340;
+			PBXWorkspaceStateSaveDate = 151669340;
 		};
 		sourceControlManager = CFF212F808FE94E2003E5C7E /* Source Control */;
 		userBuildSettings = {
@@ -79,6 +82,12 @@
 			CFF212EE08FE94CA003E5C7E /* Sara tool */,
 		);
 	};
+	CF328596090A82B500D96925 /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+		);
+	};
 	CF7A1402058CEFE2007126C1 /* Sara tool debug */ = {
 		activeExec = 0;
 		executables = (
@@ -87,10 +96,10 @@
 	};
 	CF907D6A06119D7700A366ED /* computation.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1388, 30870}}";
-			sepNavSelRange = "{21669, 0}";
-			sepNavVisRect = "{{0, 5770}, {916, 654}}";
-			sepNavWindowFrame = "{{95, 33}, {961, 774}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1616, 35898}}";
+			sepNavSelRange = "{65975, 0}";
+			sepNavVisRect = "{{0, 20271}, {916, 701}}";
+			sepNavWindowFrame = "{{187, 228}, {961, 774}}";
 		};
 	};
 	CFF212ED08FE94CA003E5C7E /* Cocoa Sara */ = {

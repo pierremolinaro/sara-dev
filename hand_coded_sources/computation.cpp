@@ -338,6 +338,9 @@ compute (C_Lexique & inLexique,
   printf (" transition%s (%lu node%s).\n",
           (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    machine.mTransitionRelationBDD.printBDD (transitionsVariableNameArray, 3) ;
+  }
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (sint32 i=0 ; i<variablesCount ; i++) {
@@ -351,6 +354,9 @@ compute (C_Lexique & inLexique,
   printf (" transition%s with target equals source (%lu node%s).\n",
           (n > 1) ? "s" : "",
           nodes, (nodes > 1) ? "s" : "") ;
+  if (inDisplayBDDvalues) {
+    transitionsWithSourceEqualTarget.printBDD (transitionsVariableNameArray, 3) ;
+  }
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.getBDDvaluesCount ((uint16) (variablesCount + variablesCount)) ;
@@ -397,7 +403,7 @@ compute (C_Lexique & /* inLexique */,
   const sint32 internalAndOutputVariableCount1 = machine1.mNamesArray.count () - machine1.mInputVariablesCount ;
   const sint32 internalAndOutputVariableCount2 = machine2.mNamesArray.count () - machine2.mInputVariablesCount ;
   if (internalAndOutputVariableCount1 == internalAndOutputVariableCount2) {
-    printf ("  Same internal and output variable count (%ld) ;\n", internalAndOutputVariableCount1) ;
+    printf ("  Same internal and output variable count (%ld);\n", internalAndOutputVariableCount1) ;
   }else{
     ok = false ;
     printf ("  Error: first machine has %ld internal and output variable%s, second one %ld ;\n",
@@ -1246,6 +1252,45 @@ computeFromExpression (C_Lexique & inLexique,
   outAccessibilityRelationBDD = accessibilityRelationBDD.existsOnBitsAfterNumber ((uint16) (totalVariableCount + previousVariableCount)) ;
   for (uint16 i=previousVariableCount ; i<totalVariableCount ; i++) {
     outAccessibilityRelationBDD = outAccessibilityRelationBDD.existsOnBitNumber (i) ;
+  }
+  uint16 * substitutionVector = new uint16 [totalVariableCount + previousVariableCount] ;
+  for (uint16 i=0 ; i<totalVariableCount ; i++) {
+    substitutionVector [i] = i ;
+  }
+  for (uint16 i=totalVariableCount ; i<((uint16) (totalVariableCount + previousVariableCount)) ; i++) {
+    substitutionVector [i] = (uint16) (previousVariableCount + i - totalVariableCount) ;
+  }
+  outAccessibilityRelationBDD = outAccessibilityRelationBDD.substitution (substitutionVector, (uint16) (totalVariableCount + previousVariableCount)) ;
+  delete [] substitutionVector ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_forallDefinition::
+computeFromExpression (C_Lexique & inLexique,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 /* inVariablesCount */,
+                       C_BDD & outInitialStatesBDD,
+                       C_BDD & outTerminalStatesBDD,
+                       C_BDD & outAccessibilityRelationBDD) const {
+  const uint16 previousVariableCount = (uint16) mPreviousVariableCount.uintValue () ;
+  const uint16 totalVariableCount = (uint16) mTotalVariableCount.uintValue () ;
+//--- Compute operand
+  C_BDD initialStatesBDD ;
+  C_BDD terminalStatesBDD ;
+  C_BDD accessibilityRelationBDD ;
+  mOperand ()->computeFromExpression (inLexique,
+                                      inSaraSystemArray,
+                                      totalVariableCount,
+                                      initialStatesBDD,
+                                      terminalStatesBDD,
+                                      accessibilityRelationBDD) ;
+  outInitialStatesBDD = initialStatesBDD.forallOnBitsAfterNumber (previousVariableCount) ;
+  outTerminalStatesBDD = terminalStatesBDD.forallOnBitsAfterNumber (previousVariableCount) ;
+//--- Compute accessibilty relation (NOT OPTIMIZED)
+  outAccessibilityRelationBDD = accessibilityRelationBDD.forallOnBitsAfterNumber ((uint16) (totalVariableCount + previousVariableCount)) ;
+  for (uint16 i=previousVariableCount ; i<totalVariableCount ; i++) {
+    outAccessibilityRelationBDD = outAccessibilityRelationBDD.forallOnBitNumber (i) ;
   }
   uint16 * substitutionVector = new uint16 [totalVariableCount + previousVariableCount] ;
   for (uint16 i=0 ; i<totalVariableCount ; i++) {
