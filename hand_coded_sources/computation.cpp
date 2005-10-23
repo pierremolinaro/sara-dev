@@ -546,7 +546,7 @@ compute (C_Lexique & /* inLexique */,
     const uint64 n = incompleteStatesAndInput.getBDDvaluesCount ((uint16) (variableCount+machine.mInputVariablesCount)) ;
     printf ("  ") ;
     printfUINT64 (n) ;
-    printf (" incomplete state%s for input:\n", (n > 1) ? "s" : "") ;
+    printf (" incomplete state%s:\n", (n > 1) ? "s" : "") ;
     TC_UniqueArray <C_String> transitionsVariableNameArray ((uint16) (variableCount + variableCount), "" COMMA_HERE) ;
     for (sint32 i=0 ; i<variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
@@ -1358,6 +1358,31 @@ computeFromExpression (C_Lexique & inLexique,
   const C_BDD translatedInitialStates = outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 //--- Add transitions from terminal states to initial states
   outAccessibilityRelationBDD |= outTerminalStatesBDD & translatedInitialStates ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_complementationOperation::
+computeFromExpression (C_Lexique & inLexique,
+                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const uint16 inVariablesCount,
+                       C_BDD & outInitialStatesBDD,
+                       C_BDD & outTerminalStatesBDD,
+                       C_BDD & outAccessibilityRelationBDD) const {
+//--- Compute operand
+  C_BDD initialStatesBDD ;
+  C_BDD terminalStatesBDD ;
+  C_BDD accessibilityRelationBDD ;
+  mOperand ()->computeFromExpression (inLexique,
+                                      inSaraSystemArray,
+                                      inVariablesCount,
+                                      initialStatesBDD,
+                                      terminalStatesBDD,
+                                      accessibilityRelationBDD) ;
+//--- Complement
+  outInitialStatesBDD = ~ initialStatesBDD ;
+  outTerminalStatesBDD = ~ terminalStatesBDD ;
+  outAccessibilityRelationBDD = ~ accessibilityRelationBDD ;
 }
 
 //---------------------------------------------------------------------------*
