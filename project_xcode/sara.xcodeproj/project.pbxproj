@@ -250,6 +250,8 @@
 		CFB4DADB063CF5C3002FD35C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFB4DAD0063CF5B7002FD35C /* main.mm */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFCD26D90850D5D000A26954 /* saraDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF8061095160089CEA5 /* saraDebug */; };
+		CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
+		CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
 		CFF212FB08FE94EF003E5C7E /* AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */; };
 		CFF212FC08FE94EF003E5C7E /* AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */; };
 /* End PBXBuildFile section */
@@ -416,6 +418,7 @@
 		CFA61CF8061095160089CEA5 /* saraDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = saraDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB4DAD0063CF5B7002FD35C /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_map.h; sourceTree = "<group>"; };
 		CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_boolExpression.h; sourceTree = "<group>"; };
 		CFF53872057A558F00854C83 /* AC_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_io.cpp; sourceTree = "<group>"; };
 		CFF53877057A558F00854C83 /* C_galgas_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_stringset.cpp; sourceTree = "<group>"; };
@@ -677,6 +680,8 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */,
+				CFA61CD4061091C90089CEA5 /* AC_galgas_map.cpp */,
 				CF825D9F085387240077AEAF /* C_GGS_Object.cpp */,
 				CF825DA0085387240077AEAF /* C_GGS_Object.h */,
 				CF825DA1085387240077AEAF /* C_Lexique.cpp */,
@@ -684,7 +689,6 @@
 				CF825DA3085387240077AEAF /* F_LexicalActions.cpp */,
 				CF825DA4085387240077AEAF /* F_LexicalActions.h */,
 				CFF53872057A558F00854C83 /* AC_galgas_io.cpp */,
-				CFA61CD4061091C90089CEA5 /* AC_galgas_map.cpp */,
 				CFF53877057A558F00854C83 /* C_galgas_stringset.cpp */,
 				CFF5387B057A558F00854C83 /* C_galgas_uint_array.cpp */,
 				CFF53881057A558F00854C83 /* GGS_bool.cpp */,
@@ -830,6 +834,7 @@
 				CF825DF80853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFE085387EC0077AEAF /* C_Timer.h in Headers */,
 				CFF212FB08FE94EF003E5C7E /* AC_boolExpression.h in Headers */,
+				CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +898,7 @@
 				CF825DEA0853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFC085387EC0077AEAF /* C_Timer.h in Headers */,
 				CFF212FC08FE94EF003E5C7E /* AC_boolExpression.h in Headers */,
+				CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,6 +1149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA61CD5061091C90089CEA5 /* AC_galgas_map.cpp in Sources */,
 				CF2A8818058CCF07003EF2F4 /* C_bdd.cpp in Sources */,
 				CF2A8822058CCF0E003EF2F4 /* C_galgas_bdd.cpp in Sources */,
 				CF2A8827058CCF12003EF2F4 /* C_galgas_null_io.cpp in Sources */,
@@ -1165,7 +1172,6 @@
 				CFA61CBC061090380089CEA5 /* sara_parser.cpp in Sources */,
 				CFA61CBE061090380089CEA5 /* sara_scanner.cpp in Sources */,
 				CFA61CC0061090380089CEA5 /* sara_semantics.cpp in Sources */,
-				CFA61CD5061091C90089CEA5 /* AC_galgas_map.cpp in Sources */,
 				CF907D6B06119D7700A366ED /* computation.cpp in Sources */,
 				CF361AB60611FE0900B38168 /* C_display_bdd.cpp in Sources */,
 				CF825D6B085386A80077AEAF /* C_PrimeCache2.cpp in Sources */,

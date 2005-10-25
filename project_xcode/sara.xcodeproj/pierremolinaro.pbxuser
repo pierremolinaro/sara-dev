@@ -24,7 +24,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					243,
+					130,
 					20,
 					48,
 					43,
@@ -47,7 +47,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					200,
-					63,
+					10,
 					20,
 					48,
 					43,
@@ -63,12 +63,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 151787732;
-			PBXWorkspaceStateSaveDate = 151787732;
-		};
-		perUserProjectItems = {
-			CF3BDDD6090B93A600B1BBD1 /* PBXTextBookmark */ = CF3BDDD6090B93A600B1BBD1 /* PBXTextBookmark */;
-			CF81A6B5090C1B79005A1E05 /* PBXTextBookmark */ = CF81A6B5090C1B79005A1E05 /* PBXTextBookmark */;
+			PBXPerProjectTemplateStateSaveDate = 151952258;
+			PBXWorkspaceStateSaveDate = 151952258;
 		};
 		sourceControlManager = CFF212F808FE94E2003E5C7E /* Source Control */;
 		userBuildSettings = {
@@ -92,15 +88,13 @@
 		objects = (
 		);
 	};
-	CF3BDDD6090B93A600B1BBD1 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CF907D6A06119D7700A366ED /* computation.cpp */;
-		name = "computation.cpp: 549";
-		rLen = 0;
-		rLoc = 27036;
-		rType = 0;
-		vrLen = 3156;
-		vrLoc = 24957;
+	CF3FF0C805877B62000D2F8C /* GGS_lstring.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {884, 1051}}";
+			sepNavSelRange = "{2410, 120}";
+			sepNavVisRect = "{{0, 172}, {884, 857}}";
+			sepNavWindowFrame = "{{38, 72}, {929, 930}}";
+		};
 	};
 	CF7A1402058CEFE2007126C1 /* Sara tool debug */ = {
 		activeExec = 0;
@@ -108,22 +102,59 @@
 			CFF212EF08FE94CA003E5C7E /* Sara tool debug */,
 		);
 	};
-	CF81A6B5090C1B79005A1E05 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = CF907D6A06119D7700A366ED /* computation.cpp */;
-		name = "computation.cpp: 1385";
-		rLen = 0;
-		rLoc = 70737;
-		rType = 0;
-		vrLen = 2162;
-		vrLoc = 68660;
+	CF825D4E085386810077AEAF /* OC_GGS_PreferencesController.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {937, 14481}}";
+			sepNavSelRange = "{1469, 12}";
+			sepNavVisRect = "{{0, 384}, {813, 482}}";
+		};
 	};
 	CF907D6A06119D7700A366ED /* computation.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1616, 36394}}";
 			sepNavSelRange = "{70737, 0}";
-			sepNavVisRect = "{{0, 21511}, {916, 701}}";
+			sepNavVisRect = "{{0, 21501}, {916, 701}}";
 			sepNavWindowFrame = "{{187, 228}, {961, 774}}";
+		};
+	};
+	CFA61CAF061090380089CEA5 /* sara_parser.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {3534, 28701}}";
+			sepNavSelRange = "{96484, 12}";
+			sepNavVisRect = "{{0, 27844}, {884, 857}}";
+			sepNavWindowFrame = "{{61, 51}, {929, 930}}";
+		};
+	};
+	CFA61CB3061090380089CEA5 /* sara_semantics.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1049, 60959}}";
+			sepNavSelRange = "{143520, 0}";
+			sepNavVisRect = "{{0, 58630}, {813, 259}}";
+			sepNavWindowFrame = "{{569, 87}, {929, 930}}";
+		};
+	};
+	CFA61CB4061090380089CEA5 /* sara_semantics.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {937, 40400}}";
+			sepNavSelRange = "{38673, 0}";
+			sepNavVisRect = "{{0, 13465}, {813, 259}}";
+			sepNavWindowFrame = "{{737, 75}, {929, 930}}";
+		};
+	};
+	CFA61CD4061091C90089CEA5 /* AC_galgas_map.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {884, 5468}}";
+			sepNavSelRange = "{9521, 0}";
+			sepNavVisRect = "{{0, 4611}, {884, 857}}";
+			sepNavWindowFrame = "{{753, 28}, {929, 930}}";
+		};
+	};
+	CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {884, 2170}}";
+			sepNavSelRange = "{4114, 13}";
+			sepNavVisRect = "{{0, 1000}, {884, 857}}";
+			sepNavWindowFrame = "{{523, 93}, {929, 930}}";
 		};
 	};
 	CFF212ED08FE94CA003E5C7E /* Cocoa Sara */ = {
@@ -217,6 +248,14 @@
 			sepNavSelRange = "{1817, 20}";
 			sepNavVisRect = "{{0, 311}, {734, 180}}";
 			sepNavWindowFrame = "{{38, 48}, {961, 774}}";
+		};
+	};
+	CFF53891057A558F00854C83 /* GGS_lstring.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {884, 1436}}";
+			sepNavSelRange = "{3649, 53}";
+			sepNavVisRect = "{{0, 579}, {884, 857}}";
+			sepNavWindowFrame = "{{392, 66}, {929, 930}}";
 		};
 	};
 	CFF53902057A563000854C83 /* C_bdd.cpp */ = {
