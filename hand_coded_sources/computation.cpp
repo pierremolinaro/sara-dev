@@ -42,9 +42,9 @@ static void printfUINT64 (const uint64 inValue) {
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_VariableExpression::
-computeBDD (C_Lexique & inLexique,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const uint16 inVariablesCount,
+computeBDD (C_Lexique & /* inLexique */,
+            const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+            const uint16 /* inVariablesCount */,
             const uint16 inBDDslotOffset) const {
   return C_BDD ((uint16) (mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
 }
@@ -52,9 +52,9 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_trueExpression::
-computeBDD (C_Lexique & inLexique,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const uint16 inVariablesCount,
+computeBDD (C_Lexique & /* inLexique */,
+            const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+            const uint16 /* inVariablesCount */,
             const uint16 /* inBDDslotOffset */) const {
   return ~ C_BDD () ;
 }
@@ -62,9 +62,9 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_falseExpression::
-computeBDD (C_Lexique & inLexique,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const uint16 inVariablesCount,
+computeBDD (C_Lexique & /* inLexique */,
+            const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+            const uint16 /* inVariablesCount */,
             const uint16 /* inBDDslotOffset */) const {
   return C_BDD () ;
 }
@@ -139,8 +139,8 @@ computeBDD (C_Lexique & inLexique,
 C_BDD cPtr_C_importBoolMachine::
 computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const uint16 inVariablesCount,
-            const uint16 inBDDslotOffset) const {
+            const uint16 /* inVariablesCount */,
+            const uint16 /* inBDDslotOffset */) const {
 //--- Get index of imported machine
   const sint32 indexOfImportedMachine = (sint32) mIndexOfImportedMachine.uintValue () ;
 //--- Check that imported machine is actually boolean
