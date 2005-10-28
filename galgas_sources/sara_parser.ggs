@@ -6,104 +6,104 @@
 
 # -------------------------- Machine name -----------------------------$machineIdf$ ! identifierString error message "a machine name ($...)" style machineNameStyle ;message incorrectMachineNameBeginning : "incorrect machine name beginning" ;rule '$' :  select  when 'a'->'z' | 'A'->'Z' | '_' :    repeat      enterCharacterIntoString (identifierString, *) ;    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :    end repeat ;  default    error incorrectMachineNameBeginning ;  end select ;  send $machineIdf$ ; end rule ;
 
-#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;#------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :map @M_variablesMap  insert insertKey error message "the '" . * . "' variable has been already declared" ;  search searchKey error message "the '" . * . "' variable is not declared" ;end map ;
+#------------------------------- Decimal positive number ------------------$literal_integer$ ! ulongValue error message "a decimal number" style integer_csts ;message decimalNumberTooLarge : "decimal number too large" ;message internalError : "internal error" ;rule '0'->'9' :  enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  repeat  while '0'->'9' :    enterDigitIntoUlong (ulongValue, *) error decimalNumberTooLarge, internalError ;  while '_' :  end repeat ;  send $literal_integer$ ;end rule ;#--- separators  rule '\1' -> ' ' :  end rule ;#------------------------------------ Comment ----------------------------message incorrectEndOfComment : "incorrect end of comment" ;rule '#' :  repeat  while '\1' ->'\t' | '\v'-> '\255' :  end repeat ;  select  when '\n' :  default    error incorrectEndOfComment ;  end select ;end rule ;end lexique ;#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :map @M_variablesMap {  insert insertKey error message "the '" . * . "' variable has been already declared" ;  search searchKey error message "the '" . * . "' variable is not declared" ;}
 
-map @M_stateMap  insert insertKey error message "the '" . * . "' state has been already declared" ;  insert defineState error message "the '" . * . "' state has been already defined" ;  search searchKey error message "the '" . * . "' state is not declared" ;end map ;
+map @M_stateMap {  insert insertKey error message "the '" . * . "' state has been already declared" ;  insert defineState error message "the '" . * . "' state has been already defined" ;  search searchKey error message "the '" . * . "' state is not declared" ;}
 
 #---------------------------------------------------------------------------*
 
-list @L_translationVector  @luint mTargetSlot ;end list ;abstract class @AC_boolExpression  include header ;end class ;
+list @L_translationVector {  @luint mTargetSlot ;}abstract class @AC_boolExpression {  include header ;}
 
-class @C_importBoolMachine extends @AC_boolExpression  @uint mIndexOfImportedMachine ;
+class @C_importBoolMachine extends @AC_boolExpression {  @uint mIndexOfImportedMachine ;
   @location mErrorLocation ;  @L_translationVector mTranslationVector ;
-end class ;
+}
 
-class @C_andExpression extends @AC_boolExpression  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;end class ;  class @C_orExpression extends @AC_boolExpression   @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;end class ;  class @C_xorExpression extends @AC_boolExpression   @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;end class ;  class @C_impliesExpression extends @AC_boolExpression   @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;end class ;  class @C_equalExpression extends @AC_boolExpression   @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;end class ;  class @C_notExpression extends @AC_boolExpression   @AC_boolExpression mExpression ;end class ;    class @C_VariableExpression extends @AC_boolExpression   @luint mInputVarIndex ;end class ;
+class @C_andExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_orExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_xorExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_impliesExpression extends @AC_boolExpression  {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_equalExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_notExpression extends @AC_boolExpression {  @AC_boolExpression mExpression ;}    class @C_VariableExpression extends @AC_boolExpression {  @luint mInputVarIndex ;}
 
-class @C_trueExpression extends @AC_boolExpression end class ;
+class @C_trueExpression extends @AC_boolExpression {}
 
-class @C_falseExpression extends @AC_boolExpression end class ;
-
-#---------------------------------------------------------------------------*
-
-list @L_transitionDefinition  @AC_boolExpression mActionExpression ;  @location mEndOfExpression ;  @luint mTargetStateIndex ;end list ;list @L_stateDefinition  @luint mStateIndex ;  @AC_boolExpression mStateExpression ;  @location mEndOfStateExpression ;  @L_transitionDefinition mTransitionsList ;end list ;
+class @C_falseExpression extends @AC_boolExpression {}
 
 #---------------------------------------------------------------------------*
 
-list @L_statesDefinitionList  @luint mStateIndex ;  @location mStateLocation ;end list ;
+list @L_transitionDefinition {  @AC_boolExpression mActionExpression ;  @location mEndOfExpression ;  @luint mTargetStateIndex ;}list @L_stateDefinition {  @luint mStateIndex ;  @AC_boolExpression mStateExpression ;  @location mEndOfStateExpression ;  @L_transitionDefinition mTransitionsList ;}
 
 #---------------------------------------------------------------------------*
 
-abstract class @AC_machineDefinition  include header ; end class ;
-
-map @M_modesMap  insert insertKey error message "the '" . * . "' mode has been already declared" ;  search searchKey error message "the '" . * . "' mode is not declared" ;  @AC_machineDefinition mModeDefinition ;end map ;
-
-list @ListForModes  @luint mSourceMode ;  @luint mTargetMode ;end list ;
-
-class @C_substractiveModalCompositionComponent extends @AC_machineDefinition  @M_modesMap mModeMap ;  @ListForModes mExclusionList ;end class ;
-
-class @C_additiveModalCompositionComponent extends @AC_machineDefinition  @M_modesMap mModeMap ;  @ListForModes mInclusionList ;end class ;
-
-class @C_trans extends @AC_machineDefinition  @AC_boolExpression mSourceStateExpression ;  @AC_boolExpression mTargetStateExpression ;end class ;
-  class @C_importMachine extends @AC_machineDefinition  @uint mIndexOfImportedMachine ;  @L_translationVector mTranslationVector ;
-end class ;
-
-class @C_explicitAutomatonDefinition extends @AC_machineDefinition  @M_stateMap mStatesMap ;  @L_statesDefinitionList mInitialStatesDefinitionList ;  @L_statesDefinitionList mTerminalStatesDefinitionList ;  @L_stateDefinition mStateDefinitionList ;  @location mEndOfDefinition ;end class ;
-
- class @C_boolToSeqExpression extends @AC_machineDefinition   @AC_boolExpression mExpression ; end class ;  
-class @C_existsDefinition extends @AC_machineDefinition  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;end class ;
-
-class @C_forallDefinition extends @AC_machineDefinition  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;end class ;
-
-class @C_parallelComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
-
-class @C_orComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;end class ;
-
-class @C_strongModalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
-
-class @C_weakModalComposition extends @AC_machineDefinition  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;end class ;
-
-class @C_fullSaturationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;
-end class ;
-
-class @C_complementationOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;
-end class ;
-
-class @C_suppressTerminalStatesOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
-
-class @C_suppressInitialStatesOperation extends @AC_machineDefinition  @AC_machineDefinition mOperand ;end class ;
+list @L_statesDefinitionList {  @luint mStateIndex ;  @location mStateLocation ;}
 
 #---------------------------------------------------------------------------*
 
-abstract class @AC_job
-  include header ;end class ; class @C_machineCheck extends @AC_job  @luint mMachineIndex ;
-  @bool mCheckMachineIsBoolean ;end class ;
+abstract class @AC_machineDefinition {  include header ; }
 
-class @C_machineCheckIdentical extends @AC_job  @luint mMachineIndex1 ;
+map @M_modesMap {  insert insertKey error message "the '" . * . "' mode has been already declared" ;  search searchKey error message "the '" . * . "' mode is not declared" ;  @AC_machineDefinition mModeDefinition ;}
+
+list @ListForModes {  @luint mSourceMode ;  @luint mTargetMode ;}
+
+class @C_substractiveModalCompositionComponent extends @AC_machineDefinition {  @M_modesMap mModeMap ;  @ListForModes mExclusionList ;}
+
+class @C_additiveModalCompositionComponent extends @AC_machineDefinition {  @M_modesMap mModeMap ;  @ListForModes mInclusionList ;}
+
+class @C_trans extends @AC_machineDefinition {  @AC_boolExpression mSourceStateExpression ;  @AC_boolExpression mTargetStateExpression ;}
+  class @C_importMachine extends @AC_machineDefinition {  @uint mIndexOfImportedMachine ;  @L_translationVector mTranslationVector ;
+}
+
+class @C_explicitAutomatonDefinition extends @AC_machineDefinition {  @M_stateMap mStatesMap ;  @L_statesDefinitionList mInitialStatesDefinitionList ;  @L_statesDefinitionList mTerminalStatesDefinitionList ;  @L_stateDefinition mStateDefinitionList ;  @location mEndOfDefinition ;}
+
+ class @C_boolToSeqExpression extends @AC_machineDefinition {   @AC_boolExpression mExpression ; }  
+class @C_existsDefinition extends @AC_machineDefinition {  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;}
+
+class @C_forallDefinition extends @AC_machineDefinition {  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;}
+
+class @C_parallelComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_orComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_strongModalComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_weakModalComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_fullSaturationOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;
+}
+
+class @C_complementationOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;
+}
+
+class @C_suppressTerminalStatesOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;}
+
+class @C_suppressInitialStatesOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;}
+
+#---------------------------------------------------------------------------*
+
+abstract class @AC_job {
+  include header ;} class @C_machineCheck extends @AC_job {  @luint mMachineIndex ;
+  @bool mCheckMachineIsBoolean ;}
+
+class @C_machineCheckIdentical extends @AC_job {  @luint mMachineIndex1 ;
   @luint mMachineIndex2 ;
-end class ;
+}
 
-class @C_machineComponent extends @AC_job  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;end class ;
+class @C_machineComponent extends @AC_job {  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;}
 
-class @C_machineDefinedByAdditiveModalComp extends @AC_job  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @M_modesMap mModeMap ;  @ListForModes mInclusionList ;end class ;
+class @C_machineDefinedByAdditiveModalComp extends @AC_job {  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @M_modesMap mModeMap ;  @ListForModes mInclusionList ;}
 
-class @C_machineDefinedBySubstractiveModalComp extends @AC_job  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @M_modesMap mModeMap ;  @ListForModes mExclusionList ;end class ;
+class @C_machineDefinedBySubstractiveModalComp extends @AC_job {  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @M_modesMap mModeMap ;  @ListForModes mExclusionList ;}
 
-list @L_inputConfigurationForScenario  @luint mInputValue ;end list ;
+list @L_inputConfigurationForScenario {  @luint mInputValue ;}
 
-list @L_inputScenario  @L_inputConfigurationForScenario mInputConfiguration ;end list ;
+list @L_inputScenario {  @L_inputConfigurationForScenario mInputConfiguration ;}
 
-list @L_scenarioList  @lstring mScenarioTitle ;  @L_inputScenario mInputScenario ;end list ;
+list @L_scenarioList {  @lstring mScenarioTitle ;  @L_inputScenario mInputScenario ;}
 
-class @C_scenarioComponent extends @AC_job  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @L_scenarioList mScenarioList ;end class ;
+class @C_scenarioComponent extends @AC_job {  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @L_scenarioList mScenarioList ;}
 
-class @typeUse_AND extends @AC_jobend class ;class @typeUse_ITE extends @AC_jobend class ;class @typeUse_AND_ITE extends @AC_jobend class ;class @typeResize_AND_cache extends @AC_job  @luint mNewSize ;end class ;class @typeResize_ITE_cache extends @AC_job  @luint mNewSize ;end class ;class @typeResizeMap extends @AC_job  @luint mNewSize ;end class ;class @typeDisplayBDDstats extends @AC_jobend class ;#---------------------------------------------------------------------------*
+class @typeUse_AND extends @AC_job {}class @typeUse_ITE extends @AC_job {}class @typeUse_AND_ITE extends @AC_job {}class @typeResize_AND_cache extends @AC_job {  @luint mNewSize ;}class @typeResize_ITE_cache extends @AC_job {  @luint mNewSize ;}class @typeResizeMap extends @AC_job {  @luint mNewSize ;}class @typeDisplayBDDstats extends @AC_job {}#---------------------------------------------------------------------------*
 
-list @L_jobList  @AC_job mComponent ;end list ;
+list @L_jobList {  @AC_job mComponent ;}
 
 #---------------------------------------------------------------------------*
 
-map @M_machinesMap  insert insertKey error message "the '" . * . "' machine has been already declared" ;  search searchKey error message "the '" . * . "' machine is not defined" ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;end map ;
+map @M_machinesMap {  insert insertKey error message "the '" . * . "' machine has been already declared" ;  search searchKey error message "the '" . * . "' machine is not defined" ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;}
 
 #---------------------------------------------------------------------------*end semantics ;#---------------------------------------------------------------------------*#                                                                           *#   S Y N T A X                                                             *#                                                                           *#---------------------------------------------------------------------------*syntax sara_parser :import lexique sara_scanner ;import semantics sara_semantics ;rule <start_symbol> ;rule <modalcompadd_definition>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@M_modesMap outModeMap  !@ListForModes outInclusionList;rule <modalcompsub_definition>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@M_modesMap outModeMap  !@ListForModes outExclusionList;rule <explicit_automaton>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList;rule <io_bool_expression>  ?!@M_machinesMap ioMachinesMap
   ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;rule <io_and_expression>   ?!@M_machinesMap ioMachinesMap
