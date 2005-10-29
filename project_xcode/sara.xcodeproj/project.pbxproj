@@ -54,10 +54,6 @@
 		CF3B8A80058CD05C00D682D2 /* AC_galgas_io.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0B705877B62000D2F8C /* AC_galgas_io.h */; };
 		CF3B8A81058CD05D00D682D2 /* AC_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53872057A558F00854C83 /* AC_galgas_io.cpp */; };
 		CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
-		CF4836A807C0BEC000D96DC7 /* AC_job.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4836A707C0BEC000D96DC7 /* AC_job.h */; };
-		CF4836A907C0BEC000D96DC7 /* AC_job.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4836A707C0BEC000D96DC7 /* AC_job.h */; };
-		CF64C40D07B3C83B00DC23F2 /* AC_machineDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CF64C40B07B3C83B00DC23F2 /* AC_machineDefinition.h */; };
-		CF64C40F07B3C83B00DC23F2 /* AC_machineDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CF64C40B07B3C83B00DC23F2 /* AC_machineDefinition.h */; };
 		CF7A1462058D008C007126C1 /* C_bdd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53902057A563000854C83 /* C_bdd.cpp */; };
 		CF7A1463058D0090007126C1 /* C_bdd_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF538F8057A563000854C83 /* C_bdd_descriptor.cpp */; };
 		CF7A1464058D0096007126C1 /* C_bdd_set1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF538FA057A563000854C83 /* C_bdd_set1.cpp */; };
@@ -246,10 +242,94 @@
 		CFB4DADB063CF5C3002FD35C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFB4DAD0063CF5B7002FD35C /* main.mm */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFCD26D90850D5D000A26954 /* saraDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF8061095160089CEA5 /* saraDebug */; };
+		CFD21AB60913D1AF0011F11E /* include_AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8C0913D1AF0011F11E /* include_AC_boolExpression.h */; };
+		CFD21AB70913D1AF0011F11E /* include_AC_job.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8D0913D1AF0011F11E /* include_AC_job.h */; };
+		CFD21AB80913D1AF0011F11E /* include_AC_machineDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8E0913D1AF0011F11E /* include_AC_machineDefinition.h */; };
+		CFD21AB90913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8F0913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h */; };
+		CFD21ABA0913D1AF0011F11E /* include_C_andExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A900913D1AF0011F11E /* include_C_andExpression.h */; };
+		CFD21ABB0913D1AF0011F11E /* include_C_boolToSeqExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A910913D1AF0011F11E /* include_C_boolToSeqExpression.h */; };
+		CFD21ABC0913D1AF0011F11E /* include_C_complementationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A920913D1AF0011F11E /* include_C_complementationOperation.h */; };
+		CFD21ABD0913D1AF0011F11E /* include_C_equalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A930913D1AF0011F11E /* include_C_equalExpression.h */; };
+		CFD21ABE0913D1AF0011F11E /* include_C_existsDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A940913D1AF0011F11E /* include_C_existsDefinition.h */; };
+		CFD21ABF0913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A950913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h */; };
+		CFD21AC00913D1AF0011F11E /* include_C_falseExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A960913D1AF0011F11E /* include_C_falseExpression.h */; };
+		CFD21AC10913D1AF0011F11E /* include_C_forallDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A970913D1AF0011F11E /* include_C_forallDefinition.h */; };
+		CFD21AC20913D1AF0011F11E /* include_C_fullSaturationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A980913D1AF0011F11E /* include_C_fullSaturationOperation.h */; };
+		CFD21AC30913D1AF0011F11E /* include_C_impliesExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A990913D1AF0011F11E /* include_C_impliesExpression.h */; };
+		CFD21AC40913D1AF0011F11E /* include_C_importBoolMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9A0913D1AF0011F11E /* include_C_importBoolMachine.h */; };
+		CFD21AC50913D1AF0011F11E /* include_C_importMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9B0913D1AF0011F11E /* include_C_importMachine.h */; };
+		CFD21AC60913D1AF0011F11E /* include_C_machineCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9C0913D1AF0011F11E /* include_C_machineCheck.h */; };
+		CFD21AC70913D1AF0011F11E /* include_C_machineCheckIdentical.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9D0913D1AF0011F11E /* include_C_machineCheckIdentical.h */; };
+		CFD21AC80913D1AF0011F11E /* include_C_machineComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9E0913D1AF0011F11E /* include_C_machineComponent.h */; };
+		CFD21AC90913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9F0913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h */; };
+		CFD21ACA0913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA00913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h */; };
+		CFD21ACB0913D1AF0011F11E /* include_C_notExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA10913D1AF0011F11E /* include_C_notExpression.h */; };
+		CFD21ACC0913D1AF0011F11E /* include_C_orComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA20913D1AF0011F11E /* include_C_orComposition.h */; };
+		CFD21ACD0913D1AF0011F11E /* include_C_orExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA30913D1AF0011F11E /* include_C_orExpression.h */; };
+		CFD21ACE0913D1AF0011F11E /* include_C_parallelComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA40913D1AF0011F11E /* include_C_parallelComposition.h */; };
+		CFD21ACF0913D1AF0011F11E /* include_C_scenarioComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA50913D1AF0011F11E /* include_C_scenarioComponent.h */; };
+		CFD21AD00913D1AF0011F11E /* include_C_strongModalComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA60913D1AF0011F11E /* include_C_strongModalComposition.h */; };
+		CFD21AD10913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA70913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h */; };
+		CFD21AD20913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA80913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h */; };
+		CFD21AD30913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA90913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h */; };
+		CFD21AD40913D1AF0011F11E /* include_C_trans.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAA0913D1AF0011F11E /* include_C_trans.h */; };
+		CFD21AD50913D1AF0011F11E /* include_C_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAB0913D1AF0011F11E /* include_C_trueExpression.h */; };
+		CFD21AD60913D1AF0011F11E /* include_C_VariableExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAC0913D1AF0011F11E /* include_C_VariableExpression.h */; };
+		CFD21AD70913D1AF0011F11E /* include_C_weakModalComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAD0913D1AF0011F11E /* include_C_weakModalComposition.h */; };
+		CFD21AD80913D1AF0011F11E /* include_C_xorExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAE0913D1AF0011F11E /* include_C_xorExpression.h */; };
+		CFD21AD90913D1AF0011F11E /* include_typeDisplayBDDstats.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAF0913D1AF0011F11E /* include_typeDisplayBDDstats.h */; };
+		CFD21ADA0913D1AF0011F11E /* include_typeResize_AND_cache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB00913D1AF0011F11E /* include_typeResize_AND_cache.h */; };
+		CFD21ADB0913D1AF0011F11E /* include_typeResize_ITE_cache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB10913D1AF0011F11E /* include_typeResize_ITE_cache.h */; };
+		CFD21ADC0913D1AF0011F11E /* include_typeResizeMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB20913D1AF0011F11E /* include_typeResizeMap.h */; };
+		CFD21ADD0913D1AF0011F11E /* include_typeUse_AND_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB30913D1AF0011F11E /* include_typeUse_AND_ITE.h */; };
+		CFD21ADE0913D1AF0011F11E /* include_typeUse_AND.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB40913D1AF0011F11E /* include_typeUse_AND.h */; };
+		CFD21ADF0913D1AF0011F11E /* include_typeUse_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */; };
+		CFD21AE00913D1AF0011F11E /* include_AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8C0913D1AF0011F11E /* include_AC_boolExpression.h */; };
+		CFD21AE10913D1AF0011F11E /* include_AC_job.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8D0913D1AF0011F11E /* include_AC_job.h */; };
+		CFD21AE20913D1AF0011F11E /* include_AC_machineDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8E0913D1AF0011F11E /* include_AC_machineDefinition.h */; };
+		CFD21AE30913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8F0913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h */; };
+		CFD21AE40913D1AF0011F11E /* include_C_andExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A900913D1AF0011F11E /* include_C_andExpression.h */; };
+		CFD21AE50913D1AF0011F11E /* include_C_boolToSeqExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A910913D1AF0011F11E /* include_C_boolToSeqExpression.h */; };
+		CFD21AE60913D1AF0011F11E /* include_C_complementationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A920913D1AF0011F11E /* include_C_complementationOperation.h */; };
+		CFD21AE70913D1AF0011F11E /* include_C_equalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A930913D1AF0011F11E /* include_C_equalExpression.h */; };
+		CFD21AE80913D1AF0011F11E /* include_C_existsDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A940913D1AF0011F11E /* include_C_existsDefinition.h */; };
+		CFD21AE90913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A950913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h */; };
+		CFD21AEA0913D1AF0011F11E /* include_C_falseExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A960913D1AF0011F11E /* include_C_falseExpression.h */; };
+		CFD21AEB0913D1AF0011F11E /* include_C_forallDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A970913D1AF0011F11E /* include_C_forallDefinition.h */; };
+		CFD21AEC0913D1AF0011F11E /* include_C_fullSaturationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A980913D1AF0011F11E /* include_C_fullSaturationOperation.h */; };
+		CFD21AED0913D1AF0011F11E /* include_C_impliesExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A990913D1AF0011F11E /* include_C_impliesExpression.h */; };
+		CFD21AEE0913D1AF0011F11E /* include_C_importBoolMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9A0913D1AF0011F11E /* include_C_importBoolMachine.h */; };
+		CFD21AEF0913D1AF0011F11E /* include_C_importMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9B0913D1AF0011F11E /* include_C_importMachine.h */; };
+		CFD21AF00913D1AF0011F11E /* include_C_machineCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9C0913D1AF0011F11E /* include_C_machineCheck.h */; };
+		CFD21AF10913D1AF0011F11E /* include_C_machineCheckIdentical.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9D0913D1AF0011F11E /* include_C_machineCheckIdentical.h */; };
+		CFD21AF20913D1AF0011F11E /* include_C_machineComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9E0913D1AF0011F11E /* include_C_machineComponent.h */; };
+		CFD21AF30913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A9F0913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h */; };
+		CFD21AF40913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA00913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h */; };
+		CFD21AF50913D1AF0011F11E /* include_C_notExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA10913D1AF0011F11E /* include_C_notExpression.h */; };
+		CFD21AF60913D1AF0011F11E /* include_C_orComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA20913D1AF0011F11E /* include_C_orComposition.h */; };
+		CFD21AF70913D1AF0011F11E /* include_C_orExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA30913D1AF0011F11E /* include_C_orExpression.h */; };
+		CFD21AF80913D1AF0011F11E /* include_C_parallelComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA40913D1AF0011F11E /* include_C_parallelComposition.h */; };
+		CFD21AF90913D1AF0011F11E /* include_C_scenarioComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA50913D1AF0011F11E /* include_C_scenarioComponent.h */; };
+		CFD21AFA0913D1AF0011F11E /* include_C_strongModalComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA60913D1AF0011F11E /* include_C_strongModalComposition.h */; };
+		CFD21AFB0913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA70913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h */; };
+		CFD21AFC0913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA80913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h */; };
+		CFD21AFD0913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AA90913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h */; };
+		CFD21AFE0913D1AF0011F11E /* include_C_trans.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAA0913D1AF0011F11E /* include_C_trans.h */; };
+		CFD21AFF0913D1AF0011F11E /* include_C_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAB0913D1AF0011F11E /* include_C_trueExpression.h */; };
+		CFD21B000913D1AF0011F11E /* include_C_VariableExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAC0913D1AF0011F11E /* include_C_VariableExpression.h */; };
+		CFD21B010913D1AF0011F11E /* include_C_weakModalComposition.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAD0913D1AF0011F11E /* include_C_weakModalComposition.h */; };
+		CFD21B020913D1AF0011F11E /* include_C_xorExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAE0913D1AF0011F11E /* include_C_xorExpression.h */; };
+		CFD21B030913D1AF0011F11E /* include_typeDisplayBDDstats.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AAF0913D1AF0011F11E /* include_typeDisplayBDDstats.h */; };
+		CFD21B040913D1AF0011F11E /* include_typeResize_AND_cache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB00913D1AF0011F11E /* include_typeResize_AND_cache.h */; };
+		CFD21B050913D1AF0011F11E /* include_typeResize_ITE_cache.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB10913D1AF0011F11E /* include_typeResize_ITE_cache.h */; };
+		CFD21B060913D1AF0011F11E /* include_typeResizeMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB20913D1AF0011F11E /* include_typeResizeMap.h */; };
+		CFD21B070913D1AF0011F11E /* include_typeUse_AND_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB30913D1AF0011F11E /* include_typeUse_AND_ITE.h */; };
+		CFD21B080913D1AF0011F11E /* include_typeUse_AND.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB40913D1AF0011F11E /* include_typeUse_AND.h */; };
+		CFD21B090913D1AF0011F11E /* include_typeUse_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */; };
+		CFD21F960913E70E0011F11E /* grammar_sara_main.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21F950913E70E0011F11E /* grammar_sara_main.h */; };
+		CFD21F970913E70E0011F11E /* grammar_sara_main.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21F950913E70E0011F11E /* grammar_sara_main.h */; };
 		CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
 		CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
-		CFF212FB08FE94EF003E5C7E /* AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */; };
-		CFF212FC08FE94EF003E5C7E /* AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
@@ -320,8 +400,6 @@
 		CF3FF0C905877B62000D2F8C /* GGS_luint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_luint.h; sourceTree = "<group>"; };
 		CF3FF0CA05877B62000D2F8C /* GGS_string.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_string.h; sourceTree = "<group>"; };
 		CF3FF0CB05877B62000D2F8C /* GGS_uint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_uint.h; sourceTree = "<group>"; };
-		CF4836A707C0BEC000D96DC7 /* AC_job.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_job.h; sourceTree = "<group>"; };
-		CF64C40B07B3C83B00DC23F2 /* AC_machineDefinition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_machineDefinition.h; sourceTree = "<group>"; };
 		CF825D44085386810077AEAF /* F_CocoaWrapperForGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_CocoaWrapperForGalgas.h; sourceTree = "<group>"; };
 		CF825D45085386810077AEAF /* I_Action.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Action.tiff; sourceTree = "<group>"; };
 		CF825D46085386810077AEAF /* I_SaveAs.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_SaveAs.tiff; sourceTree = "<group>"; };
@@ -413,8 +491,50 @@
 		CFA61CF8061095160089CEA5 /* saraDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = saraDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB4DAD0063CF5B7002FD35C /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFD21A8C0913D1AF0011F11E /* include_AC_boolExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_boolExpression.h; sourceTree = "<group>"; };
+		CFD21A8D0913D1AF0011F11E /* include_AC_job.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_job.h; sourceTree = "<group>"; };
+		CFD21A8E0913D1AF0011F11E /* include_AC_machineDefinition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_AC_machineDefinition.h; sourceTree = "<group>"; };
+		CFD21A8F0913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_additiveModalCompositionComponent.h; sourceTree = "<group>"; };
+		CFD21A900913D1AF0011F11E /* include_C_andExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_andExpression.h; sourceTree = "<group>"; };
+		CFD21A910913D1AF0011F11E /* include_C_boolToSeqExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_boolToSeqExpression.h; sourceTree = "<group>"; };
+		CFD21A920913D1AF0011F11E /* include_C_complementationOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_complementationOperation.h; sourceTree = "<group>"; };
+		CFD21A930913D1AF0011F11E /* include_C_equalExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_equalExpression.h; sourceTree = "<group>"; };
+		CFD21A940913D1AF0011F11E /* include_C_existsDefinition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_existsDefinition.h; sourceTree = "<group>"; };
+		CFD21A950913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_explicitAutomatonDefinition.h; sourceTree = "<group>"; };
+		CFD21A960913D1AF0011F11E /* include_C_falseExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_falseExpression.h; sourceTree = "<group>"; };
+		CFD21A970913D1AF0011F11E /* include_C_forallDefinition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_forallDefinition.h; sourceTree = "<group>"; };
+		CFD21A980913D1AF0011F11E /* include_C_fullSaturationOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_fullSaturationOperation.h; sourceTree = "<group>"; };
+		CFD21A990913D1AF0011F11E /* include_C_impliesExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_impliesExpression.h; sourceTree = "<group>"; };
+		CFD21A9A0913D1AF0011F11E /* include_C_importBoolMachine.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_importBoolMachine.h; sourceTree = "<group>"; };
+		CFD21A9B0913D1AF0011F11E /* include_C_importMachine.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_importMachine.h; sourceTree = "<group>"; };
+		CFD21A9C0913D1AF0011F11E /* include_C_machineCheck.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_machineCheck.h; sourceTree = "<group>"; };
+		CFD21A9D0913D1AF0011F11E /* include_C_machineCheckIdentical.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_machineCheckIdentical.h; sourceTree = "<group>"; };
+		CFD21A9E0913D1AF0011F11E /* include_C_machineComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_machineComponent.h; sourceTree = "<group>"; };
+		CFD21A9F0913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_machineDefinedByAdditiveModalComp.h; sourceTree = "<group>"; };
+		CFD21AA00913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_machineDefinedBySubstractiveModalComp.h; sourceTree = "<group>"; };
+		CFD21AA10913D1AF0011F11E /* include_C_notExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_notExpression.h; sourceTree = "<group>"; };
+		CFD21AA20913D1AF0011F11E /* include_C_orComposition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_orComposition.h; sourceTree = "<group>"; };
+		CFD21AA30913D1AF0011F11E /* include_C_orExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_orExpression.h; sourceTree = "<group>"; };
+		CFD21AA40913D1AF0011F11E /* include_C_parallelComposition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_parallelComposition.h; sourceTree = "<group>"; };
+		CFD21AA50913D1AF0011F11E /* include_C_scenarioComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_scenarioComponent.h; sourceTree = "<group>"; };
+		CFD21AA60913D1AF0011F11E /* include_C_strongModalComposition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_strongModalComposition.h; sourceTree = "<group>"; };
+		CFD21AA70913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_substractiveModalCompositionComponent.h; sourceTree = "<group>"; };
+		CFD21AA80913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_suppressInitialStatesOperation.h; sourceTree = "<group>"; };
+		CFD21AA90913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_suppressTerminalStatesOperation.h; sourceTree = "<group>"; };
+		CFD21AAA0913D1AF0011F11E /* include_C_trans.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_trans.h; sourceTree = "<group>"; };
+		CFD21AAB0913D1AF0011F11E /* include_C_trueExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_trueExpression.h; sourceTree = "<group>"; };
+		CFD21AAC0913D1AF0011F11E /* include_C_VariableExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_VariableExpression.h; sourceTree = "<group>"; };
+		CFD21AAD0913D1AF0011F11E /* include_C_weakModalComposition.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_weakModalComposition.h; sourceTree = "<group>"; };
+		CFD21AAE0913D1AF0011F11E /* include_C_xorExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_xorExpression.h; sourceTree = "<group>"; };
+		CFD21AAF0913D1AF0011F11E /* include_typeDisplayBDDstats.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDisplayBDDstats.h; sourceTree = "<group>"; };
+		CFD21AB00913D1AF0011F11E /* include_typeResize_AND_cache.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeResize_AND_cache.h; sourceTree = "<group>"; };
+		CFD21AB10913D1AF0011F11E /* include_typeResize_ITE_cache.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeResize_ITE_cache.h; sourceTree = "<group>"; };
+		CFD21AB20913D1AF0011F11E /* include_typeResizeMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeResizeMap.h; sourceTree = "<group>"; };
+		CFD21AB30913D1AF0011F11E /* include_typeUse_AND_ITE.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_AND_ITE.h; sourceTree = "<group>"; };
+		CFD21AB40913D1AF0011F11E /* include_typeUse_AND.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_AND.h; sourceTree = "<group>"; };
+		CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_ITE.h; sourceTree = "<group>"; };
+		CFD21F950913E70E0011F11E /* grammar_sara_main.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_sara_main.h; sourceTree = "<group>"; };
 		CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_map.h; sourceTree = "<group>"; };
-		CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_boolExpression.h; sourceTree = "<group>"; };
 		CFF53872057A558F00854C83 /* AC_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_io.cpp; sourceTree = "<group>"; };
 		CFF5387B057A558F00854C83 /* C_galgas_uint_array.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_uint_array.cpp; sourceTree = "<group>"; };
 		CFF53881057A558F00854C83 /* GGS_bool.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_bool.cpp; sourceTree = "<group>"; };
@@ -577,7 +697,7 @@
 			path = cocoa_galgas;
 			sourceTree = "<group>";
 		};
-		CFF53732057A4E5000854C83 /* Generated By Galgas */ = {
+		CFD21A8A0913D1890011F11E /* Sources Files */ = {
 			isa = PBXGroup;
 			children = (
 				CFA61CA8061090380089CEA5 /* cocoa_sara.mm */,
@@ -594,6 +714,65 @@
 				CFA61CB3061090380089CEA5 /* sara_semantics.cpp */,
 				CFA61CB4061090380089CEA5 /* sara_semantics.h */,
 			);
+			name = "Sources Files";
+			sourceTree = "<group>";
+		};
+		CFD21A8B0913D19F0011F11E /* Include Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFD21F950913E70E0011F11E /* grammar_sara_main.h */,
+				CFD21A8C0913D1AF0011F11E /* include_AC_boolExpression.h */,
+				CFD21A8D0913D1AF0011F11E /* include_AC_job.h */,
+				CFD21A8E0913D1AF0011F11E /* include_AC_machineDefinition.h */,
+				CFD21A8F0913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h */,
+				CFD21A900913D1AF0011F11E /* include_C_andExpression.h */,
+				CFD21A910913D1AF0011F11E /* include_C_boolToSeqExpression.h */,
+				CFD21A920913D1AF0011F11E /* include_C_complementationOperation.h */,
+				CFD21A930913D1AF0011F11E /* include_C_equalExpression.h */,
+				CFD21A940913D1AF0011F11E /* include_C_existsDefinition.h */,
+				CFD21A950913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h */,
+				CFD21A960913D1AF0011F11E /* include_C_falseExpression.h */,
+				CFD21A970913D1AF0011F11E /* include_C_forallDefinition.h */,
+				CFD21A980913D1AF0011F11E /* include_C_fullSaturationOperation.h */,
+				CFD21A990913D1AF0011F11E /* include_C_impliesExpression.h */,
+				CFD21A9A0913D1AF0011F11E /* include_C_importBoolMachine.h */,
+				CFD21A9B0913D1AF0011F11E /* include_C_importMachine.h */,
+				CFD21A9C0913D1AF0011F11E /* include_C_machineCheck.h */,
+				CFD21A9D0913D1AF0011F11E /* include_C_machineCheckIdentical.h */,
+				CFD21A9E0913D1AF0011F11E /* include_C_machineComponent.h */,
+				CFD21A9F0913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h */,
+				CFD21AA00913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h */,
+				CFD21AA10913D1AF0011F11E /* include_C_notExpression.h */,
+				CFD21AA20913D1AF0011F11E /* include_C_orComposition.h */,
+				CFD21AA30913D1AF0011F11E /* include_C_orExpression.h */,
+				CFD21AA40913D1AF0011F11E /* include_C_parallelComposition.h */,
+				CFD21AA50913D1AF0011F11E /* include_C_scenarioComponent.h */,
+				CFD21AA60913D1AF0011F11E /* include_C_strongModalComposition.h */,
+				CFD21AA70913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h */,
+				CFD21AA80913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h */,
+				CFD21AA90913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h */,
+				CFD21AAA0913D1AF0011F11E /* include_C_trans.h */,
+				CFD21AAB0913D1AF0011F11E /* include_C_trueExpression.h */,
+				CFD21AAC0913D1AF0011F11E /* include_C_VariableExpression.h */,
+				CFD21AAD0913D1AF0011F11E /* include_C_weakModalComposition.h */,
+				CFD21AAE0913D1AF0011F11E /* include_C_xorExpression.h */,
+				CFD21AAF0913D1AF0011F11E /* include_typeDisplayBDDstats.h */,
+				CFD21AB00913D1AF0011F11E /* include_typeResize_AND_cache.h */,
+				CFD21AB10913D1AF0011F11E /* include_typeResize_ITE_cache.h */,
+				CFD21AB20913D1AF0011F11E /* include_typeResizeMap.h */,
+				CFD21AB30913D1AF0011F11E /* include_typeUse_AND_ITE.h */,
+				CFD21AB40913D1AF0011F11E /* include_typeUse_AND.h */,
+				CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */,
+			);
+			name = "Include Files";
+			sourceTree = "<group>";
+		};
+		CFF53732057A4E5000854C83 /* Generated By Galgas */ = {
+			isa = PBXGroup;
+			children = (
+				CFD21A8B0913D19F0011F11E /* Include Files */,
+				CFD21A8A0913D1890011F11E /* Sources Files */,
+			);
 			name = "Generated By Galgas";
 			path = ../galgas_sources/GALGAS_OUTPUT;
 			sourceTree = SOURCE_ROOT;
@@ -601,9 +780,6 @@
 		CFF53737057A4E9400854C83 /* Hand Coded Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CFF212FA08FE94EF003E5C7E /* AC_boolExpression.h */,
-				CF4836A707C0BEC000D96DC7 /* AC_job.h */,
-				CF64C40B07B3C83B00DC23F2 /* AC_machineDefinition.h */,
 				CF907D6A06119D7700A366ED /* computation.cpp */,
 			);
 			name = "Hand Coded Sources";
@@ -797,8 +973,6 @@
 				CF0846C806637E9E009D1770 /* C_bdd_set3.h in Headers */,
 				CF0846C906637E9E009D1770 /* C_bdd.h in Headers */,
 				CF0846CA06637E9E009D1770 /* C_display_bdd.h in Headers */,
-				CF64C40D07B3C83B00DC23F2 /* AC_machineDefinition.h in Headers */,
-				CF4836A807C0BEC000D96DC7 /* AC_job.h in Headers */,
 				CF825D6C085386A80077AEAF /* C_PrimeCache2.h in Headers */,
 				CF825D6E085386A80077AEAF /* C_PrimeCache3.h in Headers */,
 				CF825D8A085386E10077AEAF /* AC_CLI_Options.h in Headers */,
@@ -824,8 +998,50 @@
 				CF825DF60853878C0077AEAF /* MF_Assert.h in Headers */,
 				CF825DF80853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFE085387EC0077AEAF /* C_Timer.h in Headers */,
-				CFF212FB08FE94EF003E5C7E /* AC_boolExpression.h in Headers */,
 				CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */,
+				CFD21AB60913D1AF0011F11E /* include_AC_boolExpression.h in Headers */,
+				CFD21AB70913D1AF0011F11E /* include_AC_job.h in Headers */,
+				CFD21AB80913D1AF0011F11E /* include_AC_machineDefinition.h in Headers */,
+				CFD21AB90913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h in Headers */,
+				CFD21ABA0913D1AF0011F11E /* include_C_andExpression.h in Headers */,
+				CFD21ABB0913D1AF0011F11E /* include_C_boolToSeqExpression.h in Headers */,
+				CFD21ABC0913D1AF0011F11E /* include_C_complementationOperation.h in Headers */,
+				CFD21ABD0913D1AF0011F11E /* include_C_equalExpression.h in Headers */,
+				CFD21ABE0913D1AF0011F11E /* include_C_existsDefinition.h in Headers */,
+				CFD21ABF0913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h in Headers */,
+				CFD21AC00913D1AF0011F11E /* include_C_falseExpression.h in Headers */,
+				CFD21AC10913D1AF0011F11E /* include_C_forallDefinition.h in Headers */,
+				CFD21AC20913D1AF0011F11E /* include_C_fullSaturationOperation.h in Headers */,
+				CFD21AC30913D1AF0011F11E /* include_C_impliesExpression.h in Headers */,
+				CFD21AC40913D1AF0011F11E /* include_C_importBoolMachine.h in Headers */,
+				CFD21AC50913D1AF0011F11E /* include_C_importMachine.h in Headers */,
+				CFD21AC60913D1AF0011F11E /* include_C_machineCheck.h in Headers */,
+				CFD21AC70913D1AF0011F11E /* include_C_machineCheckIdentical.h in Headers */,
+				CFD21AC80913D1AF0011F11E /* include_C_machineComponent.h in Headers */,
+				CFD21AC90913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h in Headers */,
+				CFD21ACA0913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h in Headers */,
+				CFD21ACB0913D1AF0011F11E /* include_C_notExpression.h in Headers */,
+				CFD21ACC0913D1AF0011F11E /* include_C_orComposition.h in Headers */,
+				CFD21ACD0913D1AF0011F11E /* include_C_orExpression.h in Headers */,
+				CFD21ACE0913D1AF0011F11E /* include_C_parallelComposition.h in Headers */,
+				CFD21ACF0913D1AF0011F11E /* include_C_scenarioComponent.h in Headers */,
+				CFD21AD00913D1AF0011F11E /* include_C_strongModalComposition.h in Headers */,
+				CFD21AD10913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h in Headers */,
+				CFD21AD20913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h in Headers */,
+				CFD21AD30913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h in Headers */,
+				CFD21AD40913D1AF0011F11E /* include_C_trans.h in Headers */,
+				CFD21AD50913D1AF0011F11E /* include_C_trueExpression.h in Headers */,
+				CFD21AD60913D1AF0011F11E /* include_C_VariableExpression.h in Headers */,
+				CFD21AD70913D1AF0011F11E /* include_C_weakModalComposition.h in Headers */,
+				CFD21AD80913D1AF0011F11E /* include_C_xorExpression.h in Headers */,
+				CFD21AD90913D1AF0011F11E /* include_typeDisplayBDDstats.h in Headers */,
+				CFD21ADA0913D1AF0011F11E /* include_typeResize_AND_cache.h in Headers */,
+				CFD21ADB0913D1AF0011F11E /* include_typeResize_ITE_cache.h in Headers */,
+				CFD21ADC0913D1AF0011F11E /* include_typeResizeMap.h in Headers */,
+				CFD21ADD0913D1AF0011F11E /* include_typeUse_AND_ITE.h in Headers */,
+				CFD21ADE0913D1AF0011F11E /* include_typeUse_AND.h in Headers */,
+				CFD21ADF0913D1AF0011F11E /* include_typeUse_ITE.h in Headers */,
+				CFD21F960913E70E0011F11E /* grammar_sara_main.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,8 +1076,6 @@
 				CF0846CE06637E9E009D1770 /* C_bdd_set3.h in Headers */,
 				CF0846CF06637E9E009D1770 /* C_bdd.h in Headers */,
 				CF0846D006637E9E009D1770 /* C_display_bdd.h in Headers */,
-				CF64C40F07B3C83B00DC23F2 /* AC_machineDefinition.h in Headers */,
-				CF4836A907C0BEC000D96DC7 /* AC_job.h in Headers */,
 				CF825D68085386A80077AEAF /* C_PrimeCache2.h in Headers */,
 				CF825D6A085386A80077AEAF /* C_PrimeCache3.h in Headers */,
 				CF825D80085386E10077AEAF /* AC_CLI_Options.h in Headers */,
@@ -887,8 +1101,50 @@
 				CF825DE80853878C0077AEAF /* MF_Assert.h in Headers */,
 				CF825DEA0853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFC085387EC0077AEAF /* C_Timer.h in Headers */,
-				CFF212FC08FE94EF003E5C7E /* AC_boolExpression.h in Headers */,
 				CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */,
+				CFD21AE00913D1AF0011F11E /* include_AC_boolExpression.h in Headers */,
+				CFD21AE10913D1AF0011F11E /* include_AC_job.h in Headers */,
+				CFD21AE20913D1AF0011F11E /* include_AC_machineDefinition.h in Headers */,
+				CFD21AE30913D1AF0011F11E /* include_C_additiveModalCompositionComponent.h in Headers */,
+				CFD21AE40913D1AF0011F11E /* include_C_andExpression.h in Headers */,
+				CFD21AE50913D1AF0011F11E /* include_C_boolToSeqExpression.h in Headers */,
+				CFD21AE60913D1AF0011F11E /* include_C_complementationOperation.h in Headers */,
+				CFD21AE70913D1AF0011F11E /* include_C_equalExpression.h in Headers */,
+				CFD21AE80913D1AF0011F11E /* include_C_existsDefinition.h in Headers */,
+				CFD21AE90913D1AF0011F11E /* include_C_explicitAutomatonDefinition.h in Headers */,
+				CFD21AEA0913D1AF0011F11E /* include_C_falseExpression.h in Headers */,
+				CFD21AEB0913D1AF0011F11E /* include_C_forallDefinition.h in Headers */,
+				CFD21AEC0913D1AF0011F11E /* include_C_fullSaturationOperation.h in Headers */,
+				CFD21AED0913D1AF0011F11E /* include_C_impliesExpression.h in Headers */,
+				CFD21AEE0913D1AF0011F11E /* include_C_importBoolMachine.h in Headers */,
+				CFD21AEF0913D1AF0011F11E /* include_C_importMachine.h in Headers */,
+				CFD21AF00913D1AF0011F11E /* include_C_machineCheck.h in Headers */,
+				CFD21AF10913D1AF0011F11E /* include_C_machineCheckIdentical.h in Headers */,
+				CFD21AF20913D1AF0011F11E /* include_C_machineComponent.h in Headers */,
+				CFD21AF30913D1AF0011F11E /* include_C_machineDefinedByAdditiveModalComp.h in Headers */,
+				CFD21AF40913D1AF0011F11E /* include_C_machineDefinedBySubstractiveModalComp.h in Headers */,
+				CFD21AF50913D1AF0011F11E /* include_C_notExpression.h in Headers */,
+				CFD21AF60913D1AF0011F11E /* include_C_orComposition.h in Headers */,
+				CFD21AF70913D1AF0011F11E /* include_C_orExpression.h in Headers */,
+				CFD21AF80913D1AF0011F11E /* include_C_parallelComposition.h in Headers */,
+				CFD21AF90913D1AF0011F11E /* include_C_scenarioComponent.h in Headers */,
+				CFD21AFA0913D1AF0011F11E /* include_C_strongModalComposition.h in Headers */,
+				CFD21AFB0913D1AF0011F11E /* include_C_substractiveModalCompositionComponent.h in Headers */,
+				CFD21AFC0913D1AF0011F11E /* include_C_suppressInitialStatesOperation.h in Headers */,
+				CFD21AFD0913D1AF0011F11E /* include_C_suppressTerminalStatesOperation.h in Headers */,
+				CFD21AFE0913D1AF0011F11E /* include_C_trans.h in Headers */,
+				CFD21AFF0913D1AF0011F11E /* include_C_trueExpression.h in Headers */,
+				CFD21B000913D1AF0011F11E /* include_C_VariableExpression.h in Headers */,
+				CFD21B010913D1AF0011F11E /* include_C_weakModalComposition.h in Headers */,
+				CFD21B020913D1AF0011F11E /* include_C_xorExpression.h in Headers */,
+				CFD21B030913D1AF0011F11E /* include_typeDisplayBDDstats.h in Headers */,
+				CFD21B040913D1AF0011F11E /* include_typeResize_AND_cache.h in Headers */,
+				CFD21B050913D1AF0011F11E /* include_typeResize_ITE_cache.h in Headers */,
+				CFD21B060913D1AF0011F11E /* include_typeResizeMap.h in Headers */,
+				CFD21B070913D1AF0011F11E /* include_typeUse_AND_ITE.h in Headers */,
+				CFD21B080913D1AF0011F11E /* include_typeUse_AND.h in Headers */,
+				CFD21B090913D1AF0011F11E /* include_typeUse_ITE.h in Headers */,
+				CFD21F970913E70E0011F11E /* grammar_sara_main.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
