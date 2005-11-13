@@ -76,7 +76,7 @@ computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
-  return ~ mExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  return ~ mExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -86,8 +86,8 @@ computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-      & mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  return mLeftExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+      & mRightExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -97,8 +97,8 @@ computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-      | mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  return mLeftExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+      | mRightExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -108,8 +108,8 @@ computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-     != mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  return mLeftExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+     != mRightExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -119,8 +119,8 @@ computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-    .implies (mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
+  return mLeftExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+    .implies (mRightExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -130,8 +130,8 @@ computeBDD (C_Lexique & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
-  return mLeftExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-     == mRightExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  return mLeftExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+     == mRightExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -227,7 +227,7 @@ performComputations (C_Lexique & inLexique,
     while (currentComponent != NULL) {
       macroValidPointer (currentComponent) ;
       C_saraMachine system ;
-      currentComponent->mComponent ()->compute (inLexique, 
+      currentComponent->mComponent (HERE)->compute (inLexique, 
                                                 saraSystemArray,
                                                 displayBDDvaluesCount,
                                                 displayBDDvalues) ;
@@ -264,7 +264,7 @@ compute (C_Lexique & inLexique,
     currentVar = currentVar->nextObject () ;
   }
 //--- Compute automaton from definition expression
-  mDefinition ()->computeFromExpression (inLexique,
+  mDefinition (HERE)->computeFromExpression (inLexique,
                                          ioSaraSystemArray,
                                          variablesCount,
                                          machine.mInitialStatesBDD,
@@ -788,7 +788,7 @@ computeFromExpression (C_Lexique & inLexique,
   //--- Get state index
     const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Enter state configuration
-    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition->mStateExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
+    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition->mStateExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
   //--- Check state configuration is not empty
     if (stateExpressionBDD (stateIndex COMMA_HERE).isFalse ()) {
       C_String errorMessage ;
@@ -890,7 +890,7 @@ computeFromExpression (C_Lexique & inLexique,
     GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
-      const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
+      const C_BDD actionBDD = currentTransition->mActionExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
       const sint32 targetStateIndex = (sint32) currentTransition->mTargetStateIndex.uintValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
@@ -914,7 +914,7 @@ computeFromExpression (C_Lexique & inLexique,
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
     //--- Compute action BDD
-      const C_BDD actionBDD = currentTransition->mActionExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
+      const C_BDD actionBDD = currentTransition->mActionExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
     //--- Check action does not intersect with state input expression
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
@@ -926,7 +926,7 @@ computeFromExpression (C_Lexique & inLexique,
       while (testedTransition != NULL) {
         macroValidPointer (testedTransition) ;
       //--- Compute action BDD
-        const C_BDD testedActionBDD = testedTransition->mActionExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
+        const C_BDD testedActionBDD = testedTransition->mActionExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
@@ -998,7 +998,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
+  mLeftOperand (HERE)->computeFromExpression (inLexique,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1008,7 +1008,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
+  mRightOperand (HERE)->computeFromExpression (inLexique,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1033,7 +1033,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
+  mLeftOperand (HERE)->computeFromExpression (inLexique,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1043,7 +1043,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
+  mRightOperand (HERE)->computeFromExpression (inLexique,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1091,7 +1091,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
+  mLeftOperand (HERE)->computeFromExpression (inLexique,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1101,7 +1101,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
+  mRightOperand (HERE)->computeFromExpression (inLexique,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1135,7 +1135,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mLeftOperand ()->computeFromExpression (inLexique,
+  mLeftOperand (HERE)->computeFromExpression (inLexique,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1145,7 +1145,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mRightOperand ()->computeFromExpression (inLexique,
+  mRightOperand (HERE)->computeFromExpression (inLexique,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1220,7 +1220,7 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  outInitialStatesBDD = mExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
+  outInitialStatesBDD = mExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0) ;
   outTerminalStatesBDD = outInitialStatesBDD ;
   outAccessibilityRelationBDD = outInitialStatesBDD & outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 }
@@ -1240,7 +1240,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
   C_BDD accessibilityRelationBDD ;
-  mOperand ()->computeFromExpression (inLexique,
+  mOperand (HERE)->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       totalVariableCount,
                                       initialStatesBDD,
@@ -1279,7 +1279,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
   C_BDD accessibilityRelationBDD ;
-  mOperand ()->computeFromExpression (inLexique,
+  mOperand (HERE)->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       totalVariableCount,
                                       initialStatesBDD,
@@ -1312,7 +1312,7 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  mOperand ()->computeFromExpression (inLexique,
+  mOperand (HERE)->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
@@ -1329,7 +1329,7 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  mOperand ()->computeFromExpression (inLexique,
+  mOperand (HERE)->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
@@ -1348,7 +1348,7 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Compute operand
-  mOperand ()->computeFromExpression (inLexique,
+  mOperand (HERE)->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
@@ -1373,7 +1373,7 @@ computeFromExpression (C_Lexique & inLexique,
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
   C_BDD accessibilityRelationBDD ;
-  mOperand ()->computeFromExpression (inLexique,
+  mOperand (HERE)->computeFromExpression (inLexique,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       initialStatesBDD,
@@ -1446,7 +1446,7 @@ computeFromExpression (C_Lexique & inLexique,
       macroValidPointer (currentMode) ;
       modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+      currentMode->mInfo.mModeDefinition (HERE)->computeFromExpression (inLexique,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1586,7 +1586,7 @@ computeFromExpression (C_Lexique & inLexique,
       macroValidPointer (currentMode) ;
       modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+      currentMode->mInfo.mModeDefinition (HERE)->computeFromExpression (inLexique,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1724,8 +1724,8 @@ computeFromExpression (C_Lexique & inLexique,
                        C_BDD & outAccessibilityRelationBDD) const {
   outInitialStatesBDD = C_BDD () ;
   outTerminalStatesBDD = C_BDD () ;
-  outAccessibilityRelationBDD = mSourceStateExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0)
-        & mTargetStateExpression ()->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
+  outAccessibilityRelationBDD = mSourceStateExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, 0)
+        & mTargetStateExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1790,7 +1790,7 @@ compute (C_Lexique & inLexique,
       macroValidPointer (currentMode) ;
       modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+      currentMode->mInfo.mModeDefinition (HERE)->computeFromExpression (inLexique,
                                                               ioSaraSystemArray,
                                                               variablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -2046,7 +2046,7 @@ compute (C_Lexique & inLexique,
       macroValidPointer (currentMode) ;
       modeNamesArray (index COMMA_HERE) = currentMode->mKey ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode->mInfo.mModeDefinition ()->computeFromExpression (inLexique,
+      currentMode->mInfo.mModeDefinition (HERE)->computeFromExpression (inLexique,
                                                               ioSaraSystemArray,
                                                               variablesCount,
                                                               initialStatesArray (index COMMA_HERE),
