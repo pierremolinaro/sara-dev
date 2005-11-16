@@ -1,8 +1,8 @@
-$exemple0 (a)()(r) := ~ r ;
+$exemple0 (a)()(r) := bool {~ r} ;
 
-$porteET (a, b)()(r) := r = (a & b) ;
+$porteET (e1, e2)()(s) := bool {(e1 & e2) = s} ;
 
-check $porteET ;
+checkbool $porteET ;
 
 $ANDgateWithAuto (a, b)()(r) :=
   auto {
@@ -19,22 +19,22 @@ $ANDgateWithAuto (a, b)()(r) :=
 
 check $ANDgateWithAuto ;
 
-$exemple2 (a, b)()(s) := s = (a | b) ;
+$exemple2 (a, b)()(s) := bool {s = (a | b)} ;
 
-$exemple3 (a, b)()(r, s) := (r = (a & b)) & (s = (a | b)) ;
+$exemple3 (a, b)()(r, s) := bool {(r = (a & b)) & (s = (a | b))} ;
 
-$exemple4 (a)()(r) :=  ? b ((r = ~ (a & b)) & (r = b)) ;
+$exemple4 (a)()(r) :=  ? b (bool {(r = ~ (a & b)) & (r = b)}) ;
 
-$exemple5 (a)()(r) := (r = a) & (r = ~a) ;
+$exemple5 (a)()(r) := bool {(r = a) & (r = ~a)} ;
 
 $exemple6 (a, b)()(r, s) := $exemple3 (a, b)()(r, s) ;
 
 $exemple7 (a, b)()(r, s) := $exemple3 (b, a)()(s, r) ;
 
-$exemple (e1, e2, e3)()(s) := ? x ((x = (e1 | e2)) & ((x & e3) = s)) ;
+$exemple (e1, e2, e3)()(s) := ? x (bool {(x = (e1 | e2)) & ((x & e3) = s)}) ;
 
 check $exemple ;
 
-$instable (e)()(s) := (e & s) = ~s ;
+$instable (e)()(s) := bool {(e & s) = ~s} ;
 
 check $instable ;
