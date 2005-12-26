@@ -1,6 +1,6 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building sara command line tool for Linux        *
+# MAKEFILE for building sara command line tool for Unix         *
 #                                                               *
 #---------------------------------------------------------------*
 
@@ -26,11 +26,11 @@ include ../common_files_for_make/makefile.mke
 
 #---------------------------------------------------------------*
 #                                                               *
-#     Include gcc tools for Linux                               *
+#     Include gcc tools for Unix                                *
 #                                                               *
 #---------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/linux_gcc_tools.mke
+include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools.mke
 
 #---------------------------------------------------------------*
 #                                                               *
