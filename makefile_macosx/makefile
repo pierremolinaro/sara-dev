@@ -4,12 +4,12 @@
 #                                                               *
 #---------------------------------------------------------------*
 
-#--- Release and debug versions of common_sources_makefile.mke
+#--- Release and debug versions of sara
 EXECUTABLE := sara
 EXECUTABLE_DEBUG := sara_debug
 
 #--- Install directory (for "install" goal)
-INSTALL_DIR := /usr/bin
+INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------*
 

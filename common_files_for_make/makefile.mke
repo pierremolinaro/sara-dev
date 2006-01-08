@@ -1,11 +1,11 @@
 #---------------------------------------------------------------*
 #                                                               *
-#               This file is included by                        *
+#   This file is included by every platform makefile            *
 #                                                               *
-# If defines the common datas for Sara line tools.              *
+#       It defines the common datas for Sara line tools.        *
 #---------------------------------------------------------------*
 
-#--- Lib PM directory
+#--- LIBPM path
 LIB_PM_PATH := ../../libpm
 
 #---------------------------------------------------------------*
