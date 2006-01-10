@@ -200,8 +200,8 @@ void swap (C_saraMachine & ioOperand1,
 //---------------------------------------------------------------------------*
 
 void
-performComputations (C_Lexique & inLexique,
-                     GGS_L_jobList & inComponentMap) {
+routine_performComputations (C_Lexique & inLexique,
+                             GGS_L_jobList & inComponentMap) {
   if (inLexique.currentFileErrorsCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
