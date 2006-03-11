@@ -453,7 +453,7 @@ void GGS_L_translationVector
 
 cPtr_AC_boolExpression::
 cPtr_AC_boolExpression (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -1349,7 +1349,7 @@ void GGS_L_statesDefinitionList
 
 cPtr_AC_machineDefinition::
 cPtr_AC_machineDefinition (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
@@ -2220,7 +2220,7 @@ mOperand (argument_0) {
 
 cPtr_AC_job::
 cPtr_AC_job (LOCATION_ARGS)
-:C_GGS_Object (THERE) {
+:GGS_class (THERE) {
 }
 
 //---------------------------------------------------------------------------*
