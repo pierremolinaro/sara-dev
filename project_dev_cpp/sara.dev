@@ -918,7 +918,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit89]
-FileName=..\..\libpm\galgas\GGS_class.cpp
+FileName=..\..\libpm\galgas\C_GGS_Object.cpp
 CompileCpp=0
 Folder=libpm/GALGAS
 Compile=1
