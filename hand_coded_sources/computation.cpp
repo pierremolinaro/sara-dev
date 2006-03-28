@@ -149,13 +149,13 @@ computeBDD (C_Lexique & inLexique,
   const C_BDD transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
   if (! initialStatesOfImportedMachine.isEqualToBDD (terminalStatesOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
   const uint16 importedMachineVariableCount = (uint16) mTranslationVector.count () ;
   const C_BDD boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
   if (! boolAccessibilityRelationBDD.isEqualToBDD (transitionsOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
 //--- Construct substitution arraies
   uint16 * statesSubstitutionArray = new uint16 [importedMachineVariableCount] ;
@@ -201,7 +201,8 @@ void swap (C_saraMachine & ioOperand1,
 
 void
 routine_performComputations (C_Lexique & inLexique,
-                             GGS_L_jobList & inComponentMap) {
+                             GGS_L_jobList & inComponentMap
+                             COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorsCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
@@ -795,7 +796,7 @@ computeFromExpression (C_Lexique & inLexique,
       errorMessage << "input configuration for state '"
                    << stateNameArray (stateIndex COMMA_HERE)
                    << "' is empty" ;
-      currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
+      currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
     }
   //--- Go to next state definition  
     currentDefinition = currentDefinition->nextObject () ;
@@ -815,7 +816,7 @@ computeFromExpression (C_Lexique & inLexique,
                    << "' intersects expression for state '"
                    << stateNameArray ((sint32) currentDefinition->mStateIndex.uintValue () COMMA_HERE)
                    << "'" ;
-        testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
+        testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
       testedState = testedState->nextObject () ;
     }
@@ -851,7 +852,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' intersects previous initial state '"
                      << stateNameArray ((sint32) currentInitialState->mStateIndex.uintValue () COMMA_HERE)
                      << "'" ;
-        testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
+        testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
       testedInitialState = testedInitialState->nextObject () ;
     }
@@ -919,7 +920,7 @@ computeFromExpression (C_Lexique & inLexique,
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this action intersects with current state input configuration" ;
-        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
       GGS_L_transitionDefinition::element_type * testedTransition = currentTransition->nextObject () ;
@@ -931,7 +932,7 @@ computeFromExpression (C_Lexique & inLexique,
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
           errorMessage << "this action intersects with #" << transitionIndex << " previous action" ;
-          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
+          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
         }
         testedTransition = testedTransition->nextObject () ;
       }
@@ -940,7 +941,7 @@ computeFromExpression (C_Lexique & inLexique,
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
-        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString ()) ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Goto next transition
       currentTransition = currentTransition->nextObject () ;
@@ -973,7 +974,7 @@ computeFromExpression (C_Lexique & inLexique,
       errorMessage << "state '"
                    << stateNameArray (i COMMA_HERE)
                    << "' is not accessible" ;
-      mEndOfDefinition.signalSemanticError (inLexique, errorMessage.cString ()) ;
+      mEndOfDefinition.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
@@ -1114,7 +1115,7 @@ computeFromExpression (C_Lexique & inLexique,
   if (! intersection.isFalse ()) {
     C_String errorMessage ;
     errorMessage << "operands transitions intersects, strong modal composition is not valid" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1173,7 +1174,7 @@ computeFromExpression (C_Lexique & inLexique,
   if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "left operand does not respect weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
   C_BDD rightAccessiblesStates ;
@@ -1189,21 +1190,21 @@ computeFromExpression (C_Lexique & inLexique,
   if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "right operand does not respect weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD).isEqualToBDD (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "initial states are not compatible with weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD).isEqualToBDD (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "terminal states are not compatible with weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString ()) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1489,7 +1490,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1510,7 +1511,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1521,7 +1522,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1533,7 +1534,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     }
   }
@@ -1629,7 +1630,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1650,7 +1651,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1661,7 +1662,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1673,7 +1674,7 @@ computeFromExpression (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     }
   }
@@ -1833,7 +1834,7 @@ compute (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1854,7 +1855,7 @@ compute (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1865,7 +1866,7 @@ compute (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1877,7 +1878,7 @@ compute (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     }
   }
@@ -2089,7 +2090,7 @@ compute (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2110,7 +2111,7 @@ compute (C_Lexique & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2121,7 +2122,7 @@ compute (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2133,7 +2134,7 @@ compute (C_Lexique & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString ()) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     }
   }
