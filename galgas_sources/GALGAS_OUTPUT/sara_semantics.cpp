@@ -17,7 +17,7 @@
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   static const char gGGSsourceFile [] = "sara_parser.ggs" ;
   #define SOURCE_FILE_AT_LINE(line) , gGGSsourceFile, line
 #else
@@ -399,7 +399,7 @@ GGS_L_translationVector
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_translationVector
 ::GGS_L_translationVector (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -614,7 +614,7 @@ GGS_AC_boolExpression (cPtr_AC_boolExpression * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_AC_boolExpression * GGS_AC_boolExpression
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -673,7 +673,7 @@ mTranslationVector.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_importBoolMachine * GGS_C_importBoolMachine::
     constructor_new (const GGS_uint & argument_0,
                                 const GGS_location & argument_1,
@@ -713,7 +713,7 @@ mRightExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_andExpression * GGS_C_andExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0,
                                 const GGS_AC_boolExpression & argument_1 COMMA_LOCATION_ARGS) {
@@ -751,7 +751,7 @@ mRightExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_orExpression * GGS_C_orExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0,
                                 const GGS_AC_boolExpression & argument_1 COMMA_LOCATION_ARGS) {
@@ -789,7 +789,7 @@ mRightExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_xorExpression * GGS_C_xorExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0,
                                 const GGS_AC_boolExpression & argument_1 COMMA_LOCATION_ARGS) {
@@ -827,7 +827,7 @@ mRightExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_impliesExpression * GGS_C_impliesExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0,
                                 const GGS_AC_boolExpression & argument_1 COMMA_LOCATION_ARGS) {
@@ -865,7 +865,7 @@ mRightExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_equalExpression * GGS_C_equalExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0,
                                 const GGS_AC_boolExpression & argument_1 COMMA_LOCATION_ARGS) {
@@ -900,7 +900,7 @@ mExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_notExpression * GGS_C_notExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_notExpression * ptr_ = (cPtr_C_notExpression *) NULL ;
@@ -933,7 +933,7 @@ mInputVarIndex.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_VariableExpression * GGS_C_VariableExpression::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_VariableExpression * ptr_ = (cPtr_C_VariableExpression *) NULL ;
@@ -964,7 +964,7 @@ void cPtr_C_trueExpression::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_trueExpression * GGS_C_trueExpression::
     constructor_new (LOCATION_ARGS) {
     cPtr_C_trueExpression * ptr_ = (cPtr_C_trueExpression *) NULL ;
@@ -995,7 +995,7 @@ void cPtr_C_falseExpression::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_falseExpression * GGS_C_falseExpression::
     constructor_new (LOCATION_ARGS) {
     cPtr_C_falseExpression * ptr_ = (cPtr_C_falseExpression *) NULL ;
@@ -1047,7 +1047,7 @@ GGS_L_transitionDefinition
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_transitionDefinition
 ::GGS_L_transitionDefinition (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -1257,7 +1257,7 @@ GGS_L_stateDefinition
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_stateDefinition
 ::GGS_L_stateDefinition (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -1466,7 +1466,7 @@ GGS_L_statesDefinitionList
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_statesDefinitionList
 ::GGS_L_statesDefinitionList (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -1686,7 +1686,7 @@ GGS_AC_machineDefinition (cPtr_AC_machineDefinition * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_AC_machineDefinition * GGS_AC_machineDefinition
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -1928,7 +1928,7 @@ GGS_ListForModes
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_ListForModes
 ::GGS_ListForModes (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -2114,7 +2114,7 @@ mExclusionList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_substractiveModalCompositionComponent * GGS_C_substractiveModalCompositionComponent::
     constructor_new (const GGS_M_modesMap & argument_0,
                                 const GGS_ListForModes & argument_1 COMMA_LOCATION_ARGS) {
@@ -2152,7 +2152,7 @@ mInclusionList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_additiveModalCompositionComponent * GGS_C_additiveModalCompositionComponent::
     constructor_new (const GGS_M_modesMap & argument_0,
                                 const GGS_ListForModes & argument_1 COMMA_LOCATION_ARGS) {
@@ -2190,7 +2190,7 @@ mTargetStateExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_trans * GGS_C_trans::
     constructor_new (const GGS_AC_boolExpression & argument_0,
                                 const GGS_AC_boolExpression & argument_1 COMMA_LOCATION_ARGS) {
@@ -2228,7 +2228,7 @@ mTranslationVector.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_importMachine * GGS_C_importMachine::
     constructor_new (const GGS_uint & argument_0,
                                 const GGS_L_translationVector & argument_1 COMMA_LOCATION_ARGS) {
@@ -2275,7 +2275,7 @@ mEndOfDefinition.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_explicitAutomatonDefinition * GGS_C_explicitAutomatonDefinition::
     constructor_new (const GGS_M_stateMap & argument_0,
                                 const GGS_L_statesDefinitionList & argument_1,
@@ -2316,7 +2316,7 @@ mExpression.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_boolToSeqExpression * GGS_C_boolToSeqExpression::
     constructor_new (const GGS_AC_boolExpression & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_boolToSeqExpression * ptr_ = (cPtr_C_boolToSeqExpression *) NULL ;
@@ -2355,7 +2355,7 @@ mOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_existsDefinition * GGS_C_existsDefinition::
     constructor_new (const GGS_uint & argument_0,
                                 const GGS_uint & argument_1,
@@ -2398,7 +2398,7 @@ mOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_forallDefinition * GGS_C_forallDefinition::
     constructor_new (const GGS_uint & argument_0,
                                 const GGS_uint & argument_1,
@@ -2438,7 +2438,7 @@ mRightOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_parallelComposition * GGS_C_parallelComposition::
     constructor_new (const GGS_AC_machineDefinition & argument_0,
                                 const GGS_AC_machineDefinition & argument_1 COMMA_LOCATION_ARGS) {
@@ -2476,7 +2476,7 @@ mRightOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_orComposition * GGS_C_orComposition::
     constructor_new (const GGS_AC_machineDefinition & argument_0,
                                 const GGS_AC_machineDefinition & argument_1 COMMA_LOCATION_ARGS) {
@@ -2517,7 +2517,7 @@ mRightOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_strongModalComposition * GGS_C_strongModalComposition::
     constructor_new (const GGS_AC_machineDefinition & argument_0,
                                 const GGS_location & argument_1,
@@ -2560,7 +2560,7 @@ mRightOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_weakModalComposition * GGS_C_weakModalComposition::
     constructor_new (const GGS_AC_machineDefinition & argument_0,
                                 const GGS_location & argument_1,
@@ -2597,7 +2597,7 @@ mOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_fullSaturationOperation * GGS_C_fullSaturationOperation::
     constructor_new (const GGS_AC_machineDefinition & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_fullSaturationOperation * ptr_ = (cPtr_C_fullSaturationOperation *) NULL ;
@@ -2630,7 +2630,7 @@ mOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_complementationOperation * GGS_C_complementationOperation::
     constructor_new (const GGS_AC_machineDefinition & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_complementationOperation * ptr_ = (cPtr_C_complementationOperation *) NULL ;
@@ -2663,7 +2663,7 @@ mOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_suppressTerminalStatesOperation * GGS_C_suppressTerminalStatesOperation::
     constructor_new (const GGS_AC_machineDefinition & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_suppressTerminalStatesOperation * ptr_ = (cPtr_C_suppressTerminalStatesOperation *) NULL ;
@@ -2696,7 +2696,7 @@ mOperand.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_suppressInitialStatesOperation * GGS_C_suppressInitialStatesOperation::
     constructor_new (const GGS_AC_machineDefinition & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_C_suppressInitialStatesOperation * ptr_ = (cPtr_C_suppressInitialStatesOperation *) NULL ;
@@ -2766,7 +2766,7 @@ GGS_AC_job (cPtr_AC_job * inSource) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_AC_job * GGS_AC_job
 ::operator () (LOCATION_ARGS) const {
     macroValidPointerThere (mPointer) ;
@@ -2822,7 +2822,7 @@ mCheckMachineIsBoolean.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_machineCheck * GGS_C_machineCheck::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_bool& argument_1 COMMA_LOCATION_ARGS) {
@@ -2860,7 +2860,7 @@ mMachineIndex2.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_machineCheckIdentical * GGS_C_machineCheckIdentical::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_luint & argument_1 COMMA_LOCATION_ARGS) {
@@ -2910,7 +2910,7 @@ mDefinition.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_machineComponent * GGS_C_machineComponent::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_luint & argument_1,
@@ -2971,7 +2971,7 @@ mInclusionList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_machineDefinedByAdditiveModalComp * GGS_C_machineDefinedByAdditiveModalComp::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_luint & argument_1,
@@ -3034,7 +3034,7 @@ mExclusionList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_machineDefinedBySubstractiveModalComp * GGS_C_machineDefinedBySubstractiveModalComp::
     constructor_new (const GGS_lstring & argument_0,
                                 const GGS_luint & argument_1,
@@ -3092,7 +3092,7 @@ GGS_L_inputConfigurationForScenario
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_inputConfigurationForScenario
 ::GGS_L_inputConfigurationForScenario (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -3283,7 +3283,7 @@ GGS_L_inputScenario
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_inputScenario
 ::GGS_L_inputScenario (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -3477,7 +3477,7 @@ GGS_L_scenarioList
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_scenarioList
 ::GGS_L_scenarioList (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
@@ -3672,7 +3672,7 @@ mScenarioList.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_C_scenarioComponent * GGS_C_scenarioComponent::
     constructor_new (const GGS_luint & argument_0,
                                 const GGS_uint & argument_1,
@@ -3711,7 +3711,7 @@ void cPtr_typeUse_AND::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeUse_AND * GGS_typeUse_AND::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeUse_AND * ptr_ = (cPtr_typeUse_AND *) NULL ;
@@ -3742,7 +3742,7 @@ void cPtr_typeUse_ITE::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeUse_ITE * GGS_typeUse_ITE::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeUse_ITE * ptr_ = (cPtr_typeUse_ITE *) NULL ;
@@ -3773,7 +3773,7 @@ void cPtr_typeUse_AND_ITE::appendForDescription (C_String & ioString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeUse_AND_ITE * GGS_typeUse_AND_ITE::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeUse_AND_ITE * ptr_ = (cPtr_typeUse_AND_ITE *) NULL ;
@@ -3806,7 +3806,7 @@ mNewSize.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeResize_AND_cache * GGS_typeResize_AND_cache::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeResize_AND_cache * ptr_ = (cPtr_typeResize_AND_cache *) NULL ;
@@ -3839,7 +3839,7 @@ mNewSize.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeResize_ITE_cache * GGS_typeResize_ITE_cache::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeResize_ITE_cache * ptr_ = (cPtr_typeResize_ITE_cache *) NULL ;
@@ -3872,7 +3872,7 @@ mNewSize.reader_description () ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeResizeMap * GGS_typeResizeMap::
     constructor_new (const GGS_luint & argument_0 COMMA_LOCATION_ARGS) {
     cPtr_typeResizeMap * ptr_ = (cPtr_typeResizeMap *) NULL ;
@@ -3903,7 +3903,7 @@ void cPtr_typeDisplayBDDstats::appendForDescription (C_String & ioString) const 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typeDisplayBDDstats * GGS_typeDisplayBDDstats::
     constructor_new (LOCATION_ARGS) {
     cPtr_typeDisplayBDDstats * ptr_ = (cPtr_typeDisplayBDDstats *) NULL ;
@@ -3949,7 +3949,7 @@ GGS_L_jobList
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_MEMORY_CHECK_CODE
+#ifndef DO_NOT_GENERATE_CHECKINGS
   GGS_L_jobList
 ::GGS_L_jobList (UNUSED_LOCATION_ARGS) {
     mFirstItem = (element_type *) NULL ;
