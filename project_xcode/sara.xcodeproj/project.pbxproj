@@ -1705,10 +1705,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
-				);
+				OTHER_CFLAGS = "-Wall";
 				OTHER_LDFLAGS = "";
 				PREBINDING = YES;
 				PRODUCT_NAME = cocoaSara;
@@ -1761,10 +1758,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-Wall",
-					"-DDO_NOT_GENERATE_MEMORY_CHECK_CODE",
-				);
+				OTHER_CFLAGS = "-Wall";
 				OTHER_LDFLAGS = "";
 				PREBINDING = YES;
 				PRODUCT_NAME = cocoaSara;
