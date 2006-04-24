@@ -383,7 +383,7 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D15AC370486D014006FF6A4 /* cocoaSara.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D15AC370486D014006FF6A4 /* cocoaSara.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = cocoaSara.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF337A2A09EFAED600EC41F6 /* C_SourceTextForCoca.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCoca.mm; sourceTree = "<group>"; };
 		CF337A2B09EFAED600EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
 		CF3B8A9B058CD21900D682D2 /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/gcc/darwin/3.3/libstdc++.a"; sourceTree = "<absolute>"; };
