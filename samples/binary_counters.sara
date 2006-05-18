@@ -21,14 +21,14 @@ $oneBitCounter (c)()(s) :=
 check $oneBitCounter ;
 
 $twoBitDownCounter (c)()(s1, s0) :=
-  $oneBitCounter (c)()(s0) &
+  $oneBitCounter (c)()(s0) ||
   $oneBitCounter (s0)()(s1)
 ;
 
 check $twoBitDownCounter ;
 
 $fourBitDownCounter (c)()(s3, s2, s1, s0) :=
-  $twoBitDownCounter (c)()(s1, s0) &
+  $twoBitDownCounter (c)()(s1, s0) ||
   $twoBitDownCounter (s1)()(s3, s2)
 ;
 
@@ -42,23 +42,23 @@ scenario $fourBitDownCounter (c)()(s3, s2, s1, s0) {
 #------------ DOWN COUNTERS WITH ASYNCHRONOUS RESET -----------
 
 $oneBitCounterWithReset (c, r)()(s) :=
-  modalcomp {
-    m1 : (~r) & $oneBitCounter (c)()(s) ;
-    m2 : r & ~ s ;
+  modalcompsub {
+    m1 : bool {~r} || $oneBitCounter (c)()(s) ;
+    m2 : bool {r & ~ s} ;
   }
 ;
 
 check $oneBitCounterWithReset ;
 
 $twoBitDownCounterWithReset (c, r)()(s1, s0) :=
-  $oneBitCounterWithReset (c, r)()(s0) &
+  $oneBitCounterWithReset (c, r)()(s0) ||
   $oneBitCounterWithReset (s0, r)()(s1)
 ;
 
 check $twoBitDownCounterWithReset ;
 
 $fourBitDownCounterWithReset (c, r)()(s3, s2, s1, s0) :=
-  $twoBitDownCounterWithReset (c, r)()(s1, s0) &
+  $twoBitDownCounterWithReset (c, r)()(s1, s0) ||
   $twoBitDownCounterWithReset (s1, r)()(s3, s2)
 ;
 
@@ -72,3 +72,14 @@ scenario $fourBitDownCounterWithReset (c, r)()(s3, s2, s1, s0) {
   "counting then reset" :0,0:1,0:0,0:1,0:0,1;
 }
 
+#------------ UP COUNTERS WITH ASYNCHRONOUS RESET -----------
+
+$twoBitCounterWithAsynchronousReset (c, r)()(s1, s0) :=  ? cc (   $oneBitCounterWithReset ( c, r)()(s0) ||   $oneBitCounterWithReset (cc, r)()(s1) ||   bool {cc = ~s0}  );
+check $twoBitCounterWithAsynchronousReset ;
+$fourBitCounterWithAsynchronousReset (c, r)()(s3, s2, s1, s0) :=  ? cc (   $twoBitCounterWithAsynchronousReset ( c, r)()(s1, s0) ||   $twoBitCounterWithAsynchronousReset (cc, r)()(s3, s2) ||   bool {cc = ~s1}  );check $fourBitCounterWithAsynchronousReset ;
+$mod5upCounter (c)()(s3, s2, s1, s0) :=  ? r (    $fourBitCounterWithAsynchronousReset (c, r)()(s3, s2, s1, s0) ||    bool {r = s0 & s2}  );
+check $mod5upCounter ; # FAILS
+
+scenario $mod5upCounter (c)()(s3, s2, s1, s0) {
+  "counting test" :0:1:0:1:0:1:0:1:0:1:0:1:0 ;
+}

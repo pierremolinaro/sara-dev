@@ -18,11 +18,11 @@ $diviseur_par_deux (e)()(s) := auto {
 check $diviseur_par_deux ;
 
 $diviseur_par_quatre (e)(i)(s) := 
-  $diviseur_par_deux (e)()(i) & $diviseur_par_deux (i)()(s) ;
+  $diviseur_par_deux (e)()(i) || $diviseur_par_deux (i)()(s) ;
 
 check $diviseur_par_quatre ;
 
 $diviseur_par_quatre_errone (e)()(s) := 
- ? i ($diviseur_par_deux (e)()(i) & $diviseur_par_deux (i)()(s)) ;
+ ? i ($diviseur_par_deux (e)()(i) || $diviseur_par_deux (i)()(s)) ;
 
 check $diviseur_par_quatre_errone ;

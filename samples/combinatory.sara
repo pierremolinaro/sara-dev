@@ -33,8 +33,8 @@ $exemple7 (a, b)()(r, s) := $exemple3 (b, a)()(s, r) ;
 
 $exemple (e1, e2, e3)()(s) := ? x (bool {(x = (e1 | e2)) & ((x & e3) = s)}) ;
 
-check $exemple ;
+checkbool $exemple ;
 
 $instable (e)()(s) := bool {(e & s) = ~s} ;
 
-check $instable ;
+checkbool $instable ;

@@ -1,4 +1,4 @@
-$bascule_rs (r, s)()(q, qb) := (q = ~ (qb & s)) & (qb = ~ (r & q)) ;
+$bascule_rs (r, s)()(q, qb) := bool {(q = ~ (qb & s)) & (qb = ~ (r & q))} ;
 check $bascule_rs ;
 
 $bascule_rs_modifiee (r, s)()(q, qb) :=
@@ -37,9 +37,9 @@ check $bascule_rs_modifiee ;
 
 $d_flip_flop (d, clk)()(q, qb) := 
  ? x, y, z, t, u, v (
-  (x = ~ (d & clk)) & (y = ~ (x & clk)) &
-  $bascule_rs (x, y)()(t, z)   &
-  (u = ~ (z & ~clk)) & (v = ~ (t & ~ clk)) &
+  bool {(x = ~ (d & clk)) & (y = ~ (x & clk))} ||
+  $bascule_rs (x, y)()(t, z)  ||
+  bool {(u = ~ (z & ~clk)) & (v = ~ (t & ~ clk))} ||
   $bascule_rs (u, v)()(qb, q)
  )
 ;
@@ -47,9 +47,9 @@ check $d_flip_flop ;
 
 $d_flip_flop_modifie (d, clk)()(q, qb) := 
  ? x, y, z, t, u, v (
-  (x = ~ (d & clk)) & (y = ~ (x & clk)) &
-  $bascule_rs_modifiee (x, y)()(t, z)   &
-  (u = ~ (z & ~clk)) & (v = ~ (t & ~ clk)) &
+  bool {(x = ~ (d & clk)) & (y = ~ (x & clk))} ||
+  $bascule_rs_modifiee (x, y)()(t, z) ||
+  bool {(u = ~ (z & ~clk)) & (v = ~ (t & ~ clk))} ||
   $bascule_rs_modifiee (u, v)()(qb, q)
  )
 ;
@@ -58,5 +58,28 @@ check $d_flip_flop_modifie ;
 scenario $d_flip_flop_modifie (d, clk)()(q, qb) {
  "comptage" :0,0:1,0:1,1:0,1:0,0:1,0:1,1:0,1:0,0 ;
  "d et clk synchrones" :0,0:1,1:0,0 ;
-
 }
+
+$simple_d_flip_flop (d, clk)()(q) := 
+? qb ($d_flip_flop_modifie (d, clk)()(q, qb)) ;
+
+check $simple_d_flip_flop ;
+
+#---- COMPTEUR MODULO 5 SYNCHRONE
+$synchronousMod5UpCounter (clk)()(s2, s1, s0) :=
+ ? b2, b1, b0 (
+  $simple_d_flip_flop (b2, clk)()(s2) ||
+  $simple_d_flip_flop (b1, clk)()(s1) ||
+  $simple_d_flip_flop (b0, clk)()(s0) ||
+  bool {
+    (~s2 & ~s1 & ~s0 & ~b2 & ~b1 &  b0) |
+    (~s2 & ~s1 &  s0 & ~b2 &  b1 & ~b0) |
+    (~s2 &  s1 & ~s0 & ~b2 &  b1 &  b0) |
+    (~s2 &  s1 &  s0 &  b2 & ~b1 & ~b0) |
+    ( s2 & ~s1 & ~s0 & ~b2 & ~b1 & ~b0)
+  }
+ )
+;
+
+check $synchronousMod5UpCounter ;
+

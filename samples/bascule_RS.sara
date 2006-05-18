@@ -1,4 +1,4 @@
-$bascule_rs (r, s)()(q, qb) := (q = ~ (qb & s)) & (qb = ~ (r & q)) ;
+$bascule_rs (r, s)()(q, qb) := bool {(q = ~ (qb & s)) & (qb = ~ (r & q))} ;
 check $bascule_rs ;
 
 $bascule_rs_modifiee (r, s)()(q, qb) :=
