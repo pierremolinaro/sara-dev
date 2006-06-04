@@ -1,0 +1,28 @@
+$d_flip_flop (d, clk)()(q) :=
+auto {
+ state zero_zero, zero_one, one_zero, one_one ;
+ first zero_zero, one_zero ;
+ last zero_zero, zero_one, one_zero, one_one ;
+ zero_zero : ~clk & ~q {
+   ~d & clk goto one_zero ;
+    d & clk goto one_one ;
+ }
+ zero_one : ~clk & q {
+   ~d & clk goto one_zero ;
+    d & clk goto one_one ;
+ }
+ one_zero : clk & ~q {
+   ~clk goto zero_zero ;
+ }
+ one_one : clk & q {
+   ~clk goto zero_one ;
+ }
+} ;
+
+check $d_flip_flop ;
+
+scenario $d_flip_flop (d, clk)()(q) {
+ "counting" :0,0:1,0:1,1:0,1:0,1:1,1:0,1:0,0 ;
+ "d et clk synchrones" :0,0:1,1:0,0 ;
+}
+
