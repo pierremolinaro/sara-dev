@@ -1,0 +1,48 @@
+#---------------------------------------------------------------*
+#                                                               *
+# MAKEFILE for building sara command line tools for Mac OS X    *
+#                                                               *
+#---------------------------------------------------------------*
+
+#--- Release and debug versions of sara
+EXECUTABLE := sara64
+EXECUTABLE_DEBUG := sara64_debug
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects64
+DEBUG_OBJECTS_DIR := debug_objects64
+
+#--- Install directory (for "install" goal)
+INSTALL_DIR := /usr/local/bin
+
+#---------------------------------------------------------------*
+
+#--- Linker Options for this platform
+PLATFORM_LINKER_OPTIONS :=
+
+#---------------------------------------------------------------*
+
+include ../common_files_for_make/makefile.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include gcc tools for MAC OS X                            *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_64.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include makefile that performs actual work                *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+
+#---------------------------------------------------------------*
