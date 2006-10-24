@@ -1,7 +1,7 @@
 [Project]
 FileName=sara.dev
 Name=sara
-UnitCount=94
+UnitCount=96
 Type=1
 Ver=1
 ObjFiles=""
@@ -1257,3 +1257,22 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+[Unit122]
+FileName=..\..\libpm\galgas\AC_galgas_list.cpp
+CompileCpp=0
+Folder=libpm/GALGAS
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit123]
+FileName=..\..\libpm\galgas\AC_galgas_list.h
+CompileCpp=0
+Folder=libpm/GALGAS
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
