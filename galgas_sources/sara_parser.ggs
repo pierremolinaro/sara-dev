@@ -119,7 +119,48 @@ map @M_machinesMap {  @uint mInputVariableCount ;  @uint mInputAndInternalVari
 #---------------------------------------------------------------------------*end semantics ;#---------------------------------------------------------------------------*#                                                                           *#   S Y N T A X                                                             *#                                                                           *#---------------------------------------------------------------------------*syntax sara_parser :import lexique sara_scanner ;import semantics sara_semantics ;rule <start_symbol> ;rule <modalcompadd_definition>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@M_modesMap outModeMap  !@ListForModes outInclusionList;rule <modalcompsub_definition>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap variablesMap  !@M_modesMap outModeMap  !@ListForModes outExclusionList;rule <explicit_automaton>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_term>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <definition_expression_factor>  ?!@M_machinesMap ioMachinesMap  ?!@M_variablesMap outputVariableMap  !@AC_machineDefinition outDefinition;rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList;rule <io_bool_expression>  ?!@M_machinesMap ioMachinesMap
   ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;rule <io_and_expression>   ?!@M_machinesMap ioMachinesMap
   ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;rule <io_primary>   ?!@M_machinesMap ioMachinesMap
-  ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;action performComputations  ?!@L_jobList ioJobList;#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [emptyList] ;  @M_machinesMap machinesMap [emptyMap] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !? componentsMap ;
+  ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;action performComputations  ?!@L_jobList ioJobList;
+
+#---------------------------------------------------------------------------*
+
+#list @myList {
+#  @string mString ;
+#  @uint mUInt ;
+#}
+
+#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [emptyList] ;  @M_machinesMap machinesMap [emptyMap] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !? componentsMap ;
+##--- Build a list
+#  @myList aList [listWithValue !"b" !2] ; # Using ‘listWithValue' constructor
+#  aList := aList . [@myList listWithValue !"c" !3] ; # Using ‘.' operator as list concatenation
+#  [!?aList prependValue !"a" !1] ;
+##--- Display the list: ("a", 1), ("b", 2), ("c", 3)
+#  message "--- Display the list: ('a', 1), ('b', 2), ('c', 3)\n" ;
+#  log aList ;
+##--- Display the first: ("a", 1)
+#  message "--- Display the first: ('a', 1)\n" ;
+#  @string s ;
+#  @uint n ;
+#  [aList first ?s ?n] ;
+#  log s, n ;
+##--- Display the last: ("c", 3)
+#  message "--- Display the last: ('c', 3)\n" ;
+#  [aList last ?s ?n] ;
+#  log s, n ;
+##--- Using popFirst
+#  message "--- Using popFirst: display('a', 1), ('b', 2), ('c', 3)\n" ;
+#  @myList aListCopy := aList ;
+#  loop [aListCopy length] + 1:
+#  while [aListCopy length] > 0 do
+#    [!?aListCopy popFirst ?s ?n] ;
+#    log s, n ;
+#  end loop ;
+##--- Using popLast
+#  message "--- Using popLast: display('c', 3), ('b', 2), ('a', 1)\n" ;
+#  loop [aList length] + 1:
+#  while [aList length] > 0 do
+#    [!?aList popLast ?s ?n] ;
+#    log s, n ;
+#  end loop ;
 end rule ; #---------------------------------------------------------------------------*
 
 rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [emptyMap] ;  @M_stateMap statesMap [emptyMap] ;  @L_stateDefinition stateDefinitionList [emptyList] ;#--- Machine name  $check$ ;  @lstring machineName ;  $machineIdf$ ? machineName ;  $;$ ;#--- Insert machine into machine map  @luint machineIndex ;  [ioMachinesMap searchKeyGetIndex !machineName ?machineIndex ?* ?* ?*] ;#--- Insert into component map  @AC_job job := [@C_machineCheck new !machineIndex !false] ; ioJobList += !job ;end rule ;
