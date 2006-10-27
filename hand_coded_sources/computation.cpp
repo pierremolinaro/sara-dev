@@ -187,7 +187,7 @@ void
 routine_performComputations (C_Lexique & inLexique,
                              GGS_L_jobList & inComponentMap
                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.currentFileErrorsCount () == 0) {
+  if (inLexique.totalErrorCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
     const bool displayBDDvaluesCount = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount", true) ;
