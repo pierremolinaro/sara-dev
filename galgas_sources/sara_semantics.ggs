@@ -1,0 +1,100 @@
+#---------------------------------------------------------------------------*#                                                                           *#   S E M A N T I C S                                                       *#                                                                           *#---------------------------------------------------------------------------*semantics sara_semantics :map @M_variablesMap {  insert insertKey error message "the '%K' variable has been already declared" ;  search searchKey, searchKeyGetIndex error message "the '%K' variable is not declared" ;}
+
+map @M_stateMap {  insert insertKey error message "the '%K' state has been already declared" ;  insert defineState error message "the '%K' state has been already defined" ;  search searchKey, searchKeyGetIndex error message "the '%K' state is not declared" ;}
+
+#---------------------------------------------------------------------------*
+
+list @L_translationVector {  @luint mTargetSlot ;}abstract class @AC_boolExpression {}
+
+class @C_importBoolMachine extends @AC_boolExpression {  @uint mIndexOfImportedMachine ;
+  @location mErrorLocation ;  @L_translationVector mTranslationVector ;
+}
+
+class @C_andExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_orExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_xorExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_impliesExpression extends @AC_boolExpression  {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_equalExpression extends @AC_boolExpression {  @AC_boolExpression mLeftExpression ;  @AC_boolExpression mRightExpression ;}  class @C_notExpression extends @AC_boolExpression {  @AC_boolExpression mExpression ;}    class @C_VariableExpression extends @AC_boolExpression {  @luint mInputVarIndex ;}
+
+class @C_trueExpression extends @AC_boolExpression {}
+
+class @C_falseExpression extends @AC_boolExpression {}
+
+#---------------------------------------------------------------------------*
+
+list @L_transitionDefinition {  @AC_boolExpression mActionExpression ;  @location mEndOfExpression ;  @luint mTargetStateIndex ;}list @L_stateDefinition {  @luint mStateIndex ;  @AC_boolExpression mStateExpression ;  @location mEndOfStateExpression ;  @L_transitionDefinition mTransitionsList ;}
+
+#---------------------------------------------------------------------------*
+
+list @L_statesDefinitionList {  @luint mStateIndex ;  @location mStateLocation ;}
+
+#---------------------------------------------------------------------------*
+
+abstract class @AC_machineDefinition {}
+
+map @M_modesMap {  @AC_machineDefinition mModeDefinition ;  insert insertKey error message "the '%K' mode has been already declared" ;  search searchKey, searchKeyGetIndex error message "the '%K' mode is not declared" ;}
+
+list @ListForModes {  @luint mSourceMode ;  @luint mTargetMode ;}
+
+class @C_substractiveModalCompositionComponent extends @AC_machineDefinition {  @M_modesMap mModeMap ;  @ListForModes mExclusionList ;}
+
+class @C_additiveModalCompositionComponent extends @AC_machineDefinition {  @M_modesMap mModeMap ;  @ListForModes mInclusionList ;}
+
+class @C_trans extends @AC_machineDefinition {  @AC_boolExpression mSourceStateExpression ;  @AC_boolExpression mTargetStateExpression ;}
+  class @C_importMachine extends @AC_machineDefinition {  @uint mIndexOfImportedMachine ;  @L_translationVector mTranslationVector ;
+}
+
+class @C_explicitAutomatonDefinition extends @AC_machineDefinition {  @M_stateMap mStatesMap ;  @L_statesDefinitionList mInitialStatesDefinitionList ;  @L_statesDefinitionList mTerminalStatesDefinitionList ;  @L_stateDefinition mStateDefinitionList ;  @location mEndOfDefinition ;}
+
+ class @C_boolToSeqExpression extends @AC_machineDefinition {   @AC_boolExpression mExpression ; }  
+class @C_existsDefinition extends @AC_machineDefinition {  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;}
+
+class @C_forallDefinition extends @AC_machineDefinition {  @uint mPreviousVariableCount ;  @uint mTotalVariableCount ;  @AC_machineDefinition mOperand ;}
+
+class @C_parallelComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_orComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_strongModalComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_weakModalComposition extends @AC_machineDefinition {  @AC_machineDefinition mLeftOperand ;  @location mErrorLocation ;  @AC_machineDefinition mRightOperand ;}
+
+class @C_fullSaturationOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;
+}
+
+class @C_complementationOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;
+}
+
+class @C_suppressTerminalStatesOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;}
+
+class @C_suppressInitialStatesOperation extends @AC_machineDefinition {  @AC_machineDefinition mOperand ;}
+
+#---------------------------------------------------------------------------*
+
+abstract class @AC_job {
+} class @C_machineCheck extends @AC_job {  @luint mMachineIndex ;
+  @bool mCheckMachineIsBoolean ;}
+
+class @C_machineCheckIdentical extends @AC_job {  @luint mMachineIndex1 ;
+  @luint mMachineIndex2 ;
+}
+
+class @C_machineComponent extends @AC_job {  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @AC_machineDefinition mDefinition ;}
+
+class @C_machineDefinedByAdditiveModalComp extends @AC_job {  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @M_modesMap mModeMap ;  @ListForModes mInclusionList ;}
+
+class @C_machineDefinedBySubstractiveModalComp extends @AC_job {  @lstring mMachineName ;  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @M_modesMap mModeMap ;  @ListForModes mExclusionList ;}
+
+list @L_inputConfigurationForScenario {  @luint mInputValue ;}
+
+list @L_inputScenario {  @L_inputConfigurationForScenario mInputConfiguration ;}
+
+list @L_scenarioList {  @lstring mScenarioTitle ;  @L_inputScenario mInputScenario ;}
+
+class @C_scenarioComponent extends @AC_job {  @luint mMachineIndex ;  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  @L_scenarioList mScenarioList ;}
+
+class @typeUse_AND extends @AC_job {}class @typeUse_ITE extends @AC_job {}class @typeUse_AND_ITE extends @AC_job {}class @typeResize_AND_cache extends @AC_job {  @luint mNewSize ;}class @typeResize_ITE_cache extends @AC_job {  @luint mNewSize ;}class @typeResizeMap extends @AC_job {  @luint mNewSize ;}class @typeDisplayBDDstats extends @AC_job {}#---------------------------------------------------------------------------*
+
+list @L_jobList {  @AC_job mComponent ;}
+
+#---------------------------------------------------------------------------*
+
+map @M_machinesMap {  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  insert insertKey, insertKeyGetIndex error message "the '%K' machine has been already declared" ;  search searchKey, searchKeyGetIndex error message "the '%K' machine is not defined" ;}
+
+#---------------------------------------------------------------------------*end semantics ;
