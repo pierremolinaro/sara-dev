@@ -1,0 +1,5 @@
+#---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 1.4.0" :  import grammar sara_grammar in "sara_grammar.ggs" ;  error 100 ;  warning 100 ;
+  when . "sara":
+    message "a sara text source file"
+    grammar sara_grammar
+  ;end program ;#--------------------------------------------------------------------------------*

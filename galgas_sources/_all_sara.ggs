@@ -1,0 +1,7 @@
+compile "sara_scanner.ggs" ;
+compile "sara_semantics.ggs" ;
+compile "sara_cli_options.ggs" ;
+compile "sara_parser.ggs" ;
+compile "sara_grammar.ggs" ;
+compile "cocoa_sara.ggs" ;
+compile "sara_main.ggs" ;
