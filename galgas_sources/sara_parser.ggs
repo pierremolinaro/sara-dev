@@ -10,7 +10,7 @@
 #  @uint mUInt ;
 #}
 
-#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [emptyList] ;  @M_machinesMap machinesMap [emptyMap] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !? componentsMap ;
+#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [emptyList] ;  @M_machinesMap machinesMap [emptyMap] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !?componentsMap ;
 ##--- Build a list
 #  @myList aList [listWithValue !"b" !2] ; # Using ‘listWithValue' constructor
 #  aList := aList . [@myList listWithValue !"c" !3] ; # Using ‘.' operator as list concatenation
@@ -43,6 +43,16 @@
 #    [!?aList popLast ?s ?n] ;
 #    log s, n ;
 #  end loop ;
+
+##--- Remove
+#  @stringset allKeys := [machinesMap allKeys] ;
+#  log allKeys ;
+#  foreach allKeys (@string kKey) :
+#    @lstring s [new !kKey !here] ;
+#    log kKey ;
+#    [!?machinesMap removeKey !s ?3*] ;
+#  end foreach ;
+#  log machinesMap ;
 end rule ; #---------------------------------------------------------------------------*
 
 rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [emptyMap] ;  @M_stateMap statesMap [emptyMap] ;  @L_stateDefinition stateDefinitionList [emptyList] ;#--- Machine name  $check$ ;  @lstring machineName ;  $machineIdf$ ? machineName ;  $;$ ;#--- Insert machine into machine map  @luint machineIndex ;  [ioMachinesMap searchKeyGetIndex !machineName ?machineIndex ?* ?* ?*] ;#--- Insert into component map  @AC_job job := [@C_machineCheck new !machineIndex !false] ; ioJobList += !job ;end rule ;
