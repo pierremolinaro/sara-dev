@@ -95,6 +95,6 @@ list @L_jobList {  @AC_job mComponent ;}
 
 #---------------------------------------------------------------------------*
 
-map @M_machinesMap {  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  insert insertKey, insertKeyGetIndex error message "the '%K' machine has been already declared" ;  search searchKey, searchKeyGetIndex error message "the '%K' machine is not defined" ;}
+map @M_machinesMap {  @uint mInputVariableCount ;  @uint mInputAndInternalVariableCount ;  @M_variablesMap mVariablesMap ;  insert insertKey, insertKeyGetIndex error message "the '%K' machine has been already declared" ;  search searchKey, searchKeyGetIndex error message "the '%K' machine is not defined" ;  remove removeKey, removeKeyGetIndex error message "the '%K' machine is not defined" ;}
 
 #---------------------------------------------------------------------------*end semantics ;
