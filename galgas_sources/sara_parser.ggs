@@ -53,6 +53,11 @@
 #    [!?machinesMap removeKey !s ?3*] ;
 #  end foreach ;
 #  log machinesMap ;
+
+##--- Make directory test
+#  @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/a/b/c/d" ;
+#  log s ;
+#  [s makeDirectory] ;
 end rule ; #---------------------------------------------------------------------------*
 
 rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [emptyMap] ;  @M_stateMap statesMap [emptyMap] ;  @L_stateDefinition stateDefinitionList [emptyList] ;#--- Machine name  $check$ ;  @lstring machineName ;  $machineIdf$ ? machineName ;  $;$ ;#--- Insert machine into machine map  @luint machineIndex ;  [ioMachinesMap searchKeyGetIndex !machineName ?machineIndex ?* ?* ?*] ;#--- Insert into component map  @AC_job job := [@C_machineCheck new !machineIndex !false] ; ioJobList += !job ;end rule ;
