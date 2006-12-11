@@ -241,6 +241,11 @@
 		CFA61CFA0610951F0089CEA5 /* sara in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF6061095160089CEA5 /* sara */; };
 		CFA7ADBD058DB57E009AC1FE /* AC_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53872057A558F00854C83 /* AC_galgas_io.cpp */; };
 		CFA7ADD7058DB5DF009AC1FE /* C_galgas_null_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF86361A0586289600B23462 /* C_galgas_null_io.cpp */; };
+		CFABC3BD0B2DA0A5000157E0 /* GGS_location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5388F057A558F00854C83 /* GGS_location.cpp */; };
+		CFABC3BE0B2DA0A6000157E0 /* GGS_lstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53891057A558F00854C83 /* GGS_lstring.cpp */; };
+		CFABC3BF0B2DA0A7000157E0 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
+		CFABC3C10B2DA0B8000157E0 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
+		CFABC3C40B2DA0CD000157E0 /* F_main-fake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFABC3C30B2DA0CD000157E0 /* F_main-fake.cpp */; };
 		CFB4DADB063CF5C3002FD35C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFB4DAD0063CF5B7002FD35C /* main.mm */; };
 		CFBC76C90AC695E600443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76C80AC695E600443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
@@ -497,6 +502,7 @@
 		CFA61CDB061092C10089CEA5 /* saraDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = saraDocuments.icns; sourceTree = "<group>"; };
 		CFA61CF6061095160089CEA5 /* sara */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sara; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA61CF8061095160089CEA5 /* saraDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = saraDebug; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFABC3C30B2DA0CD000157E0 /* F_main-fake.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = "F_main-fake.cpp"; sourceTree = "<group>"; };
 		CFB4DAD0063CF5B7002FD35C /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		CFBC76C70AC695E600443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76C80AC695E600443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
@@ -656,6 +662,7 @@
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
+				CFABC3C30B2DA0CD000157E0 /* F_main-fake.cpp */,
 				CF512D9E092B3040008F7E87 /* C_builtin_CLI_Options.cpp */,
 				CF512D9F092B3040008F7E87 /* C_builtin_CLI_Options.h */,
 				CF825D75085386E00077AEAF /* AC_CLI_Options.cpp */,
@@ -1303,6 +1310,11 @@
 				CF6557C70A25EB5900979050 /* C_galgas_CLI_Options.cpp in Sources */,
 				CFA5D1630A32F661009B4370 /* C_ErrorOut.cpp in Sources */,
 				CFBC76C90AC695E600443ACA /* OC_GGS_BuildResultTextView.mm in Sources */,
+				CFABC3BD0B2DA0A5000157E0 /* GGS_location.cpp in Sources */,
+				CFABC3BE0B2DA0A6000157E0 /* GGS_lstring.cpp in Sources */,
+				CFABC3BF0B2DA0A7000157E0 /* GGS_luint.cpp in Sources */,
+				CFABC3C10B2DA0B8000157E0 /* GGS_string.cpp in Sources */,
+				CFABC3C40B2DA0CD000157E0 /* F_main-fake.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
