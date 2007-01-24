@@ -350,6 +350,10 @@
 		CFDC50A30961ACE0006A0AFD /* GGS_stringset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC50A10961ACE0006A0AFD /* GGS_stringset.h */; };
 		CFDC50A40961ACE0006A0AFD /* GGS_stringset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC50A00961ACE0006A0AFD /* GGS_stringset.cpp */; };
 		CFDC50A50961ACE0006A0AFD /* GGS_stringset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDC50A10961ACE0006A0AFD /* GGS_stringset.h */; };
+		CFF664A00B67741700E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF6649E0B67741700E97917 /* GGS_binaryset.cpp */; };
+		CFF664A10B67741700E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF6649F0B67741700E97917 /* GGS_binaryset.h */; };
+		CFF664A20B67741700E97917 /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF6649E0B67741700E97917 /* GGS_binaryset.cpp */; };
+		CFF664A30B67741700E97917 /* GGS_binaryset.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF6649F0B67741700E97917 /* GGS_binaryset.h */; };
 		CFF8619009C0DA6100F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8618E09C0DA6100F90D05 /* C_GGS_Object.cpp */; };
 		CFF8619109C0DA6100F90D05 /* C_GGS_Object.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF8618F09C0DA6100F90D05 /* C_GGS_Object.h */; };
 		CFF8619209C0DA6100F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8618E09C0DA6100F90D05 /* C_GGS_Object.cpp */; };
@@ -575,6 +579,8 @@
 		CFF53893057A558F00854C83 /* GGS_luint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_luint.cpp; sourceTree = "<group>"; };
 		CFF53895057A558F00854C83 /* GGS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_string.cpp; sourceTree = "<group>"; };
 		CFF53897057A558F00854C83 /* GGS_uint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_uint.cpp; sourceTree = "<group>"; };
+		CFF6649E0B67741700E97917 /* GGS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_binaryset.cpp; sourceTree = "<group>"; };
+		CFF6649F0B67741700E97917 /* GGS_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_binaryset.h; sourceTree = "<group>"; };
 		CFF8618E09C0DA6100F90D05 /* C_GGS_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_Object.cpp; sourceTree = "<group>"; };
 		CFF8618F09C0DA6100F90D05 /* C_GGS_Object.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_Object.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -882,6 +888,8 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CFF6649E0B67741700E97917 /* GGS_binaryset.cpp */,
+				CFF6649F0B67741700E97917 /* GGS_binaryset.h */,
 				CF4896140B666D16005A9E78 /* GGS_uint64.cpp */,
 				CF4896150B666D16005A9E78 /* GGS_uint64.h */,
 				CF4896160B666D16005A9E78 /* predefined_types.cpp */,
@@ -1081,6 +1089,7 @@
 				CF7B06FF0AEE46AB00E94B20 /* AC_galgas_list.h in Headers */,
 				CF4896190B666D16005A9E78 /* GGS_uint64.h in Headers */,
 				CF48961B0B666D16005A9E78 /* predefined_types.h in Headers */,
+				CFF664A10B67741700E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,6 +1196,7 @@
 				CF7B07010AEE46AB00E94B20 /* AC_galgas_list.h in Headers */,
 				CF48961D0B666D16005A9E78 /* GGS_uint64.h in Headers */,
 				CF48961F0B666D16005A9E78 /* predefined_types.h in Headers */,
+				CFF664A30B67741700E97917 /* GGS_binaryset.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1394,6 +1404,7 @@
 				CF7B06FE0AEE46AB00E94B20 /* AC_galgas_list.cpp in Sources */,
 				CF4896180B666D16005A9E78 /* GGS_uint64.cpp in Sources */,
 				CF48961A0B666D16005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664A00B67741700E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,6 +1464,7 @@
 				CF7B07000AEE46AB00E94B20 /* AC_galgas_list.cpp in Sources */,
 				CF48961C0B666D16005A9E78 /* GGS_uint64.cpp in Sources */,
 				CF48961E0B666D16005A9E78 /* predefined_types.cpp in Sources */,
+				CFF664A20B67741700E97917 /* GGS_binaryset.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
