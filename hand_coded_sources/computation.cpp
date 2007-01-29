@@ -190,8 +190,8 @@ routine_performComputations (C_Lexique & inLexique,
   if (inLexique.totalErrorCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
-    const bool displayBDDvaluesCount = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount", true) ;
-    const bool displayBDDvalues = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues", true) ;
+    const bool displayBDDvaluesCount = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount" COMMA_HERE) ;
+    const bool displayBDDvalues = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues" COMMA_HERE) ;
   //--- Initial cache and map sizes
     co << "Initial size of BDD unique table: "
        << C_BDD::getHashMapEntriesCount () 
