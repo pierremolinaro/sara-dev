@@ -330,6 +330,8 @@
 		CFD21B090913D1AF0011F11E /* include_typeUse_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */; };
 		CFD21F960913E70E0011F11E /* grammar_sara_main.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21F950913E70E0011F11E /* grammar_sara_main.h */; };
 		CFD21F970913E70E0011F11E /* grammar_sara_main.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21F950913E70E0011F11E /* grammar_sara_main.h */; };
+		CFD64F040BA16DFF00DAE493 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD64F010BA16DFF00DAE493 /* NSSplitViewExtensions.m */; };
+		CFD64F050BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFD64F030BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
 		CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
 		CFDC50A20961ACE0006A0AFD /* GGS_stringset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC50A00961ACE0006A0AFD /* GGS_stringset.cpp */; };
@@ -550,6 +552,10 @@
 		CFD21AB40913D1AF0011F11E /* include_typeUse_AND.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_AND.h; sourceTree = "<group>"; };
 		CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUse_ITE.h; sourceTree = "<group>"; };
 		CFD21F950913E70E0011F11E /* grammar_sara_main.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammar_sara_main.h; sourceTree = "<group>"; };
+		CFD64F000BA16DFF00DAE493 /* NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = NSSplitViewExtensions.h; sourceTree = "<group>"; };
+		CFD64F010BA16DFF00DAE493 /* NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = NSSplitViewExtensions.m; sourceTree = "<group>"; };
+		CFD64F020BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
+		CFD64F030BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_map.h; sourceTree = "<group>"; };
 		CFDC50A00961ACE0006A0AFD /* GGS_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_stringset.cpp; sourceTree = "<group>"; };
 		CFDC50A10961ACE0006A0AFD /* GGS_stringset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_stringset.h; sourceTree = "<group>"; };
@@ -700,6 +706,10 @@
 				CF825D46085386810077AEAF /* I_SaveAs.tiff */,
 				CF825D47085386810077AEAF /* I_Stop.tiff */,
 				CF825D48085386810077AEAF /* I_Window.png */,
+				CFD64F000BA16DFF00DAE493 /* NSSplitViewExtensions.h */,
+				CFD64F010BA16DFF00DAE493 /* NSSplitViewExtensions.m */,
+				CFD64F020BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.h */,
+				CFD64F030BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm */,
 				CF337A2A09EFAED600EC41F6 /* C_SourceTextForCoca.mm */,
 				CF337A2B09EFAED600EC41F6 /* C_SourceTextForCocoa.h */,
 				CF825D49085386810077AEAF /* OC_GGS_BuildWindowController.h */,
@@ -1319,6 +1329,8 @@
 				CFABC3C10B2DA0B8000157E0 /* GGS_string.cpp in Sources */,
 				CFABC3C40B2DA0CD000157E0 /* F_main-fake.cpp in Sources */,
 				CFEA399A0B6E94D60059CEDF /* C_galgas_io.cpp in Sources */,
+				CFD64F040BA16DFF00DAE493 /* NSSplitViewExtensions.m in Sources */,
+				CFD64F050BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
