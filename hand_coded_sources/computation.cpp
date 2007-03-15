@@ -26,7 +26,7 @@
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_VariableExpression::
-computeBDD (C_Lexique & /* inLexique */,
+computeBDD (C_Compiler & /* inLexique */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
             const uint16 /* inVariablesCount */,
             const uint16 inBDDslotOffset) const {
@@ -36,7 +36,7 @@ computeBDD (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_trueExpression::
-computeBDD (C_Lexique & /* inLexique */,
+computeBDD (C_Compiler & /* inLexique */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
             const uint16 /* inVariablesCount */,
             const uint16 /* inBDDslotOffset */) const {
@@ -46,7 +46,7 @@ computeBDD (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_falseExpression::
-computeBDD (C_Lexique & /* inLexique */,
+computeBDD (C_Compiler & /* inLexique */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
             const uint16 /* inVariablesCount */,
             const uint16 /* inBDDslotOffset */) const {
@@ -56,7 +56,7 @@ computeBDD (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_notExpression::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
@@ -66,7 +66,7 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_andExpression::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
@@ -77,7 +77,7 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_orExpression::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
@@ -88,7 +88,7 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_xorExpression::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
@@ -99,7 +99,7 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_impliesExpression::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
@@ -110,7 +110,7 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_equalExpression::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 inVariablesCount,
             const uint16 inBDDslotOffset) const {
@@ -121,7 +121,7 @@ computeBDD (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 C_BDD cPtr_C_importBoolMachine::
-computeBDD (C_Lexique & inLexique,
+computeBDD (C_Compiler & inLexique,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint16 /* inVariablesCount */,
             const uint16 /* inBDDslotOffset */) const {
@@ -184,7 +184,7 @@ void swap (C_saraMachine & ioOperand1,
 //---------------------------------------------------------------------------*
 
 void
-routine_performComputations (C_Lexique & inLexique,
+routine_performComputations (C_Compiler & inLexique,
                              GGS_L_jobList & inComponentMap
                              COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.totalErrorCount () == 0) {
@@ -230,7 +230,7 @@ routine_performComputations (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_machineComponent::
-compute (C_Lexique & inLexique,
+compute (C_Compiler & inLexique,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
@@ -361,7 +361,7 @@ compute (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_machineCheckIdentical::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -450,7 +450,7 @@ compute (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_machineCheck::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -576,7 +576,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeDisplayBDDstats::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -587,7 +587,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeResizeMap::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -606,7 +606,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeResize_AND_cache::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -625,7 +625,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeResize_ITE_cache::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -644,7 +644,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeUse_AND::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -655,7 +655,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeUse_ITE::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -666,7 +666,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_typeUse_AND_ITE::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -677,7 +677,7 @@ compute (C_Lexique & /* inLexique */,
 //----------------------------------------------------------------------------*
 
 void cPtr_C_scenarioComponent::
-compute (C_Lexique & /* inLexique */,
+compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
@@ -758,7 +758,7 @@ compute (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_explicitAutomatonDefinition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -985,7 +985,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_parallelComposition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1020,7 +1020,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_orComposition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1078,7 +1078,7 @@ accessibleStates (const C_BDD & inInitialState,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_strongModalComposition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1122,7 +1122,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_weakModalComposition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1211,7 +1211,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_boolToSeqExpression::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1225,7 +1225,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_existsDefinition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 /* inVariablesCount */,
                        C_BDD & outInitialStatesBDD,
@@ -1264,7 +1264,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_forallDefinition::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 /* inVariablesCount */,
                        C_BDD & outInitialStatesBDD,
@@ -1303,7 +1303,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_suppressInitialStatesOperation::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1320,7 +1320,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_suppressTerminalStatesOperation::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1338,7 +1338,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_fullSaturationOperation::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1360,7 +1360,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_complementationOperation::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1385,7 +1385,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_importMachine::
-computeFromExpression (C_Lexique & /* inLexique */,
+computeFromExpression (C_Compiler & /* inLexique */,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1424,7 +1424,7 @@ computeFromExpression (C_Lexique & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_additiveModalCompositionComponent::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1564,7 +1564,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_substractiveModalCompositionComponent::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1713,7 +1713,7 @@ computeFromExpression (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_trans::
-computeFromExpression (C_Lexique & inLexique,
+computeFromExpression (C_Compiler & inLexique,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint16 inVariablesCount,
                        C_BDD & outInitialStatesBDD,
@@ -1751,7 +1751,7 @@ addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_machineDefinedByAdditiveModalComp::
-compute (C_Lexique & inLexique,
+compute (C_Compiler & inLexique,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
@@ -1991,7 +1991,7 @@ compute (C_Lexique & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_machineDefinedBySubstractiveModalComp::
-compute (C_Lexique & inLexique,
+compute (C_Compiler & inLexique,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
