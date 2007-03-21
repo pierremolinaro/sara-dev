@@ -10,6 +10,9 @@
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CF0F85F90BB18DEA007785B6 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4896160B666D16005A9E78 /* predefined_types.cpp */; };
+		CF0F85FA0BB18DEF007785B6 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06FC0AEE46AB00E94B20 /* AC_galgas_list.cpp */; };
+		CF0F85FC0BB18DFC007785B6 /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4896140B666D16005A9E78 /* GGS_uint64.cpp */; };
 		CF2A8841058CCF42003EF2F4 /* galgas_header.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0C005877B62000D2F8C /* galgas_header.h */; };
 		CF2A8842058CCF43003EF2F4 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF2A8843058CCF43003EF2F4 /* GGS_bool.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0C105877B62000D2F8C /* GGS_bool.h */; };
@@ -30,6 +33,7 @@
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
 		CF2A8857058CCF57003EF2F4 /* GGS_uint.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3FF0CB05877B62000D2F8C /* GGS_uint.h */; };
 		CF337A2C09EFAED600EC41F6 /* C_SourceTextForCoca.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF337A2A09EFAED600EC41F6 /* C_SourceTextForCoca.mm */; };
+		CF35C2F00BB17AFE008D4278 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF4896180B666D16005A9E78 /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4896140B666D16005A9E78 /* GGS_uint64.cpp */; };
 		CF4896190B666D16005A9E78 /* GGS_uint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4896150B666D16005A9E78 /* GGS_uint64.h */; };
@@ -1331,6 +1335,10 @@
 				CFEA399A0B6E94D60059CEDF /* C_galgas_io.cpp in Sources */,
 				CFD64F040BA16DFF00DAE493 /* NSSplitViewExtensions.m in Sources */,
 				CFD64F050BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
+				CF35C2F00BB17AFE008D4278 /* GGS_bool.cpp in Sources */,
+				CF0F85F90BB18DEA007785B6 /* predefined_types.cpp in Sources */,
+				CF0F85FA0BB18DEF007785B6 /* AC_galgas_list.cpp in Sources */,
+				CF0F85FC0BB18DFC007785B6 /* GGS_uint64.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

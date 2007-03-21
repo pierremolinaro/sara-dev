@@ -3,7 +3,7 @@
   ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;nonterminal <io_primary>   ?!@M_machinesMap ioMachinesMap
   ?!@M_variablesMap ioVarMap  !@AC_boolExpression outExpression;action performComputations  ?!@L_jobList ioJobList;
 
-#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [emptyList] ;  @M_machinesMap machinesMap [emptyMap] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  action performComputations !?componentsMap ;
+#---------------------------------------------------------------------------*rule <start_symbol>:  @L_jobList componentsMap [emptyList] ;  @M_machinesMap machinesMap [emptyMap] ;  repeat    <component> !?machinesMap !?componentsMap ;  while  end repeat ;  performComputations !?componentsMap ;
 end rule ; #---------------------------------------------------------------------------*
 
 rule <component>  ?!@M_machinesMap ioMachinesMap  ?!@L_jobList ioJobList:  @M_variablesMap variablesMap [emptyMap] ;  @M_stateMap statesMap [emptyMap] ;  @L_stateDefinition stateDefinitionList [emptyList] ;#--- Machine name  $check$ ;  @lstring machineName ;  $machineIdf$ ? machineName ;  $;$ ;#--- Insert machine into machine map  @luint machineIndex ;  [ioMachinesMap searchKeyGetIndex !machineName ?machineIndex ?* ?* ?*] ;#--- Insert into component map  @AC_job job := [@C_machineCheck new !machineIndex !false] ; ioJobList += !job ;end rule ;
