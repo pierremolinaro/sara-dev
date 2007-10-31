@@ -334,6 +334,7 @@
 		CFD21B090913D1AF0011F11E /* include_typeUse_ITE.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21AB50913D1AF0011F11E /* include_typeUse_ITE.h */; };
 		CFD21F960913E70E0011F11E /* grammar_sara_main.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21F950913E70E0011F11E /* grammar_sara_main.h */; };
 		CFD21F970913E70E0011F11E /* grammar_sara_main.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21F950913E70E0011F11E /* grammar_sara_main.h */; };
+		CFD63FAE0CD88263002B6753 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
 		CFD64F040BA16DFF00DAE493 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD64F010BA16DFF00DAE493 /* NSSplitViewExtensions.m */; };
 		CFD64F050BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFD64F030BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */; };
@@ -1304,9 +1305,11 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = CF32C9570856F9220042CEEB /* Build configuration list for PBXProject "sara" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* essai_cocoa */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* Cocoa Sara */,
 				8DD76F620486A84900D96B5E /* Sara tool */,
@@ -1389,6 +1392,7 @@
 				CF0F85F90BB18DEA007785B6 /* predefined_types.cpp in Sources */,
 				CF0F85FA0BB18DEF007785B6 /* AC_galgas_list.cpp in Sources */,
 				CF0F85FC0BB18DFC007785B6 /* GGS_uint64.cpp in Sources */,
+				CFD63FAE0CD88263002B6753 /* GGS_uint.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
