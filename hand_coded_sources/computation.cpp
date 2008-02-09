@@ -143,7 +143,7 @@ computeBDD (C_Compiler & inLexique,
   }
 //--- Construct substitution arraies
   uint16 * statesSubstitutionArray = new uint16 [importedMachineVariableCount] ;
-  GGS_L_translationVector::element_type * p = mTranslationVector.firstObject () ;
+  GGS_L_translationVector::cElement * p = mTranslationVector.firstObject () ;
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
@@ -213,7 +213,7 @@ routine_performComputations (C_Compiler & inLexique,
     }  
     fflush (stdout) ;
   //--- Loop for each component
-    GGS_L_jobList::element_type * currentComponent = inComponentMap.firstObject () ;
+    GGS_L_jobList::cElement * currentComponent = inComponentMap.firstObject () ;
     while (currentComponent != NULL) {
       macroValidPointer (currentComponent) ;
       C_saraMachine system ;
@@ -246,7 +246,7 @@ compute (C_Compiler & inLexique,
   { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.firstObject () ;
+  GGS_M_variablesMap::cElement * currentVar = mVariablesMap.firstObject () ;
   sint32 index = 0 ;
   while (currentVar != NULL) {
     machine.mNamesArray (index COMMA_HERE) = currentVar->mKey ;
@@ -691,17 +691,17 @@ compute (C_Compiler & /* inLexique */,
 //--- variables count
   const uint16 variableCount = (uint16) ioSaraSystemArray ((sint32) mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
-  GGS_L_scenarioList::element_type * scenario = mScenarioList.firstObject () ;
+  GGS_L_scenarioList::cElement * scenario = mScenarioList.firstObject () ;
   while (scenario != NULL) {
     macroValidPointer (scenario) ;
   //--- Print scenario title
     co << "Scenario '" << scenario->mScenarioTitle << "':\n" ;
   //--- Build initial configuration
-    GGS_L_inputScenario::element_type * currentInput = scenario->mInputScenario.firstObject () ;
+    GGS_L_inputScenario::cElement * currentInput = scenario->mInputScenario.firstObject () ;
     macroValidPointer (currentInput) ;
     uint64 initialConfiguration = 0 ;
     uint16 shift = 0 ;
-    GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.firstObject () ;
+    GGS_L_inputConfigurationForScenario::cElement * v = currentInput->mInputConfiguration.firstObject () ;
     while (v != NULL) {
       macroValidPointer (v) ;
       initialConfiguration += ((uint64) v->mInputValue.uintValue ()) << shift ;
@@ -726,7 +726,7 @@ compute (C_Compiler & /* inLexique */,
     //--- Parse new input configuration
       uint64 inputConfiguration = 0 ;
       shift = 0 ;
-      GGS_L_inputConfigurationForScenario::element_type * v = currentInput->mInputConfiguration.firstObject () ;
+      GGS_L_inputConfigurationForScenario::cElement * v = currentInput->mInputConfiguration.firstObject () ;
       while (v != NULL) {
         macroValidPointer (v) ;
         inputConfiguration += ((uint64) v->mInputValue.uintValue ()) << shift ;
@@ -766,7 +766,7 @@ computeFromExpression (C_Compiler & inLexique,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Build state array names
   TC_UniqueArray <C_String> stateNameArray (mStatesMap.count () COMMA_HERE) ;
-  GGS_M_stateMap::element_type * currentState = mStatesMap.firstObject () ;
+  GGS_M_stateMap::cElement * currentState = mStatesMap.firstObject () ;
   while (currentState != NULL) {
     stateNameArray.addObject (currentState->mKey) ;
     currentState = currentState->nextObject () ;
@@ -779,7 +779,7 @@ computeFromExpression (C_Compiler & inLexique,
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
   TC_UniqueArray <C_BDD> stateExpressionBDD (mStatesMap.count (), C_BDD () COMMA_HERE) ;
-  GGS_L_stateDefinition::element_type * currentDefinition = mStateDefinitionList.firstObject () ;
+  GGS_L_stateDefinition::cElement * currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
   //--- Get state index
@@ -801,7 +801,7 @@ computeFromExpression (C_Compiler & inLexique,
   currentDefinition = mStateDefinitionList.firstObject () ;
   while (currentDefinition != NULL) {
     macroValidPointer (currentDefinition) ;
-    GGS_L_stateDefinition::element_type * testedState = currentDefinition->nextObject () ;
+    GGS_L_stateDefinition::cElement * testedState = currentDefinition->nextObject () ;
     while (testedState != NULL) {
       macroValidPointer (testedState) ;
       if (! (stateExpressionBDD ((sint32) currentDefinition->mStateIndex.uintValue () COMMA_HERE)
@@ -825,7 +825,7 @@ computeFromExpression (C_Compiler & inLexique,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Compute BDD initial states
-  GGS_L_statesDefinitionList::element_type * currentInitialState = mInitialStatesDefinitionList.firstObject () ;
+  GGS_L_statesDefinitionList::cElement * currentInitialState = mInitialStatesDefinitionList.firstObject () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
     // printf ("INIT : %ld\n", currentInitialState->mStateIndex.uintValue ()) ;
@@ -836,7 +836,7 @@ computeFromExpression (C_Compiler & inLexique,
   currentInitialState = mInitialStatesDefinitionList.firstObject () ;
   while (currentInitialState != NULL) {
     macroValidPointer (currentInitialState) ;
-    GGS_L_statesDefinitionList::element_type * testedInitialState = currentInitialState->nextObject () ;
+    GGS_L_statesDefinitionList::cElement * testedInitialState = currentInitialState->nextObject () ;
     while (testedInitialState != NULL) {
       macroValidPointer (testedInitialState) ;
       const C_BDD intersection = stateExpressionBDD ((sint32) currentInitialState->mStateIndex.uintValue () COMMA_HERE)
@@ -860,7 +860,7 @@ computeFromExpression (C_Compiler & inLexique,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Compute BDD initial states
-  GGS_L_statesDefinitionList::element_type * currentTerminalState = mTerminalStatesDefinitionList.firstObject () ;
+  GGS_L_statesDefinitionList::cElement * currentTerminalState = mTerminalStatesDefinitionList.firstObject () ;
   while (currentTerminalState != NULL) {
     macroValidPointer (currentTerminalState) ;
     outTerminalStatesBDD |= stateExpressionBDD ((sint32) currentTerminalState->mStateIndex.uintValue () COMMA_HERE) ;
@@ -884,7 +884,7 @@ computeFromExpression (C_Compiler & inLexique,
     const sint32 currentStateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Accumulate transitions targets for each transition
     C_BDD transitionsTargetBDD ;
-    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
+    GGS_L_transitionDefinition::cElement * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
       const C_BDD actionBDD = currentTransition->mActionExpression (HERE)->computeBDD (inLexique, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
@@ -907,7 +907,7 @@ computeFromExpression (C_Compiler & inLexique,
     const sint32 stateIndex = (sint32) currentDefinition->mStateIndex.uintValue () ;
   //--- Check that action does not intersect with state input expression
     sint32 transitionIndex = 0 ;
-    GGS_L_transitionDefinition::element_type * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
+    GGS_L_transitionDefinition::cElement * currentTransition = currentDefinition->mTransitionsList.firstObject () ;
     while (currentTransition != NULL) {
       macroValidPointer (currentTransition) ;
     //--- Compute action BDD
@@ -919,7 +919,7 @@ computeFromExpression (C_Compiler & inLexique,
         currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
-      GGS_L_transitionDefinition::element_type * testedTransition = currentTransition->nextObject () ;
+      GGS_L_transitionDefinition::cElement * testedTransition = currentTransition->nextObject () ;
       while (testedTransition != NULL) {
         macroValidPointer (testedTransition) ;
       //--- Compute action BDD
@@ -1397,7 +1397,7 @@ computeFromExpression (C_Compiler & /* inLexique */,
   const uint16 importedMachineVariableCount = (uint16) mTranslationVector.count () ;
   uint16 * statesSubstitutionArray = new uint16 [importedMachineVariableCount] ;
   uint16 * transitionsSubstitutionArray = new uint16 [importedMachineVariableCount + importedMachineVariableCount] ;
-  GGS_L_translationVector::element_type * p = mTranslationVector.firstObject () ;
+  GGS_L_translationVector::cElement * p = mTranslationVector.firstObject () ;
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
@@ -1437,7 +1437,7 @@ computeFromExpression (C_Compiler & inLexique,
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
-  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  GGS_M_modesMap::cElement * currentMode = mModeMap.firstObject () ;
   {sint32 index = 0 ;
     while (currentMode != NULL) {
       macroValidPointer (currentMode) ;
@@ -1546,7 +1546,7 @@ computeFromExpression (C_Compiler & inLexique,
     outAccessibilityRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
   }
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
-  GGS_ListForModes::element_type * currentInclusion = mInclusionList.firstObject () ;
+  GGS_ListForModes::cElement * currentInclusion = mInclusionList.firstObject () ;
   while (currentInclusion != NULL) {
     const sint32 sourceMode = (sint32) currentInclusion->mSourceMode.uintValue () ;
     const sint32 targetMode = (sint32) currentInclusion->mTargetMode.uintValue () ;
@@ -1577,7 +1577,7 @@ computeFromExpression (C_Compiler & inLexique,
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
-  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  GGS_M_modesMap::cElement * currentMode = mModeMap.firstObject () ;
   {sint32 index = 0 ;
     while (currentMode != NULL) {
       macroValidPointer (currentMode) ;
@@ -1691,7 +1691,7 @@ computeFromExpression (C_Compiler & inLexique,
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
-        GGS_ListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
+        GGS_ListForModes::cElement * currentExclusion = mExclusionList.firstObject () ;
         while ((currentExclusion != NULL) && isAccepted) {
           isAccepted = (sourceMode != (sint32) currentExclusion->mSourceMode.uintValue ()) || (targetMode != (sint32) currentExclusion->mTargetMode.uintValue ()) ;
           currentExclusion = currentExclusion->nextObject () ;
@@ -1767,7 +1767,7 @@ compute (C_Compiler & inLexique,
   { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.firstObject () ;
+  GGS_M_variablesMap::cElement * currentVar = mVariablesMap.firstObject () ;
   sint32 index = 0 ;
   while (currentVar != NULL) {
     machine.mNamesArray (index COMMA_HERE) = currentVar->mKey ;
@@ -1781,7 +1781,7 @@ compute (C_Compiler & inLexique,
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
-  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  GGS_M_modesMap::cElement * currentMode = mModeMap.firstObject () ;
   {sint32 index = 0 ;
     while (currentMode != NULL) {
       macroValidPointer (currentMode) ;
@@ -1890,7 +1890,7 @@ compute (C_Compiler & inLexique,
     machine.mTransitionRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
   }
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
-  GGS_ListForModes::element_type * currentInclusion = mInclusionList.firstObject () ;
+  GGS_ListForModes::cElement * currentInclusion = mInclusionList.firstObject () ;
   while (currentInclusion != NULL) {
     const sint32 sourceMode = (sint32) currentInclusion->mSourceMode.uintValue () ;
     const sint32 targetMode = (sint32) currentInclusion->mTargetMode.uintValue () ;
@@ -2007,7 +2007,7 @@ compute (C_Compiler & inLexique,
   { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  GGS_M_variablesMap::element_type * currentVar = mVariablesMap.firstObject () ;
+  GGS_M_variablesMap::cElement * currentVar = mVariablesMap.firstObject () ;
   sint32 index = 0 ;
   while (currentVar != NULL) {
     machine.mNamesArray (index COMMA_HERE) = currentVar->mKey ;
@@ -2022,7 +2022,7 @@ compute (C_Compiler & inLexique,
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
-  GGS_M_modesMap::element_type * currentMode = mModeMap.firstObject () ;
+  GGS_M_modesMap::cElement * currentMode = mModeMap.firstObject () ;
   {sint32 index = 0 ;
     while (currentMode != NULL) {
       macroValidPointer (currentMode) ;
@@ -2136,7 +2136,7 @@ compute (C_Compiler & inLexique,
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
-        GGS_ListForModes::element_type * currentExclusion = mExclusionList.firstObject () ;
+        GGS_ListForModes::cElement * currentExclusion = mExclusionList.firstObject () ;
         while ((currentExclusion != NULL) && isAccepted) {
           isAccepted = (sourceMode != (sint32) currentExclusion->mSourceMode.uintValue ()) || (targetMode != (sint32) currentExclusion->mTargetMode.uintValue ()) ;
           currentExclusion = currentExclusion->nextObject () ;
