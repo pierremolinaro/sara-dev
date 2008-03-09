@@ -2,7 +2,7 @@
 //                                                                           *
 //  Implementation of specific methods for SARA                              *
 //                                                                           *
-//  Copyright (C) 2004, ..., 2006 Eva Rakotomalala & Pierre Molinaro.        *
+//  Copyright (C) 2004, ..., 2008 Eva Rakotomalala & Pierre Molinaro.        *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -185,7 +185,7 @@ void swap (C_saraMachine & ioOperand1,
 
 void
 routine_performComputations (C_Compiler & inLexique,
-                             GGS_L_jobList & inComponentMap
+                             const GGS_L_jobList inComponentMap
                              COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.totalErrorCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
