@@ -161,7 +161,15 @@ computeBDD (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-C_saraMachine::C_saraMachine (void):mNamesArray (0 COMMA_HERE) {
+C_saraMachine::C_saraMachine (void):
+mMachineName (),
+mInputVariablesCount (0),
+mInputAndInternalVariablesCount (0),
+mNamesArray (0 COMMA_HERE),
+mInitialStatesBDD (),
+mTerminalStatesBDD (),
+mTransitionRelationBDD (),
+mAccessibleStatesBDD () {
 }
 
 //---------------------------------------------------------------------------*
