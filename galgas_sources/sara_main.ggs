@@ -1,13 +1,13 @@
 #---------------------------------------------------------------------------*#                                                                           *#   P R O G R A M                                                           *#                                                                           *#---------------------------------------------------------------------------*program sara_main "version 1.4.0" :  import grammar sara_grammar in "sara_grammar.ggs" ;
 
-  routine {
+  before {
   }
 
   when . "sara" message "an '.sara' source file" ??@lstring inSourceFile {
     grammar sara_grammar in inSourceFile;
   }
 
-  routine {
+  after {
   }
 
 end program ;#--------------------------------------------------------------------------------*
