@@ -266,7 +266,6 @@
 		CFB9E64F0DF28FD700885084 /* TC_UniqueFixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB9E6370DF28FD700885084 /* TC_UniqueFixedSizeArray.h */; };
 		CFB9E6500DF28FD700885084 /* TF_AVL_Tree.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB9E6380DF28FD700885084 /* TF_AVL_Tree.h */; };
 		CFBC76C90AC695E600443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76C80AC695E600443ACA /* OC_GGS_BuildResultTextView.mm */; };
-		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFCD26D90850D5D000A26954 /* saraDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF8061095160089CEA5 /* saraDebug */; };
 		CFD21AB60913D1AF0011F11E /* include_AC_boolExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8C0913D1AF0011F11E /* include_AC_boolExpression.h */; };
 		CFD21AB70913D1AF0011F11E /* include_AC_job.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD21A8D0913D1AF0011F11E /* include_AC_job.h */; };
@@ -1385,7 +1384,6 @@
 			files = (
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
-				CFC30F93058A225E003D0386 /* Info.plist in Resources */,
 				CFA61CDC061092C10089CEA5 /* saraApplication.icns in Resources */,
 				CFA61CDD061092C10089CEA5 /* saraDocuments.icns in Resources */,
 				CFA61CFA0610951F0089CEA5 /* sara in Resources */,
