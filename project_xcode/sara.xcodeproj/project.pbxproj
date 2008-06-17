@@ -366,8 +366,6 @@
 		CFDF681B0BD21F21009F9171 /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68110BD21F21009F9171 /* AC_galgas_class.h */; };
 		CFDF681C0BD21F21009F9171 /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68120BD21F21009F9171 /* AC_galgas_domain.cpp */; };
 		CFDF681D0BD21F21009F9171 /* AC_galgas_domain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68130BD21F21009F9171 /* AC_galgas_domain.h */; };
-		CFDF681E0BD21F21009F9171 /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68140BD21F21009F9171 /* AC_galgas_entity.cpp */; };
-		CFDF681F0BD21F21009F9171 /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68150BD21F21009F9171 /* AC_galgas_entity.h */; };
 		CFDF68200BD21F21009F9171 /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68160BD21F21009F9171 /* AC_galgas_mapindex.cpp */; };
 		CFDF68210BD21F21009F9171 /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68170BD21F21009F9171 /* AC_galgas_mapindex.h */; };
 		CFDF68220BD21F21009F9171 /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68180BD21F21009F9171 /* AC_galgas_sortedlist.cpp */; };
@@ -376,8 +374,6 @@
 		CFDF68250BD21F21009F9171 /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68110BD21F21009F9171 /* AC_galgas_class.h */; };
 		CFDF68260BD21F21009F9171 /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68120BD21F21009F9171 /* AC_galgas_domain.cpp */; };
 		CFDF68270BD21F21009F9171 /* AC_galgas_domain.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68130BD21F21009F9171 /* AC_galgas_domain.h */; };
-		CFDF68280BD21F21009F9171 /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68140BD21F21009F9171 /* AC_galgas_entity.cpp */; };
-		CFDF68290BD21F21009F9171 /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68150BD21F21009F9171 /* AC_galgas_entity.h */; };
 		CFDF682A0BD21F21009F9171 /* AC_galgas_mapindex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68160BD21F21009F9171 /* AC_galgas_mapindex.cpp */; };
 		CFDF682B0BD21F21009F9171 /* AC_galgas_mapindex.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDF68170BD21F21009F9171 /* AC_galgas_mapindex.h */; };
 		CFDF682C0BD21F21009F9171 /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDF68180BD21F21009F9171 /* AC_galgas_sortedlist.cpp */; };
@@ -617,8 +613,6 @@
 		CFDF68110BD21F21009F9171 /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
 		CFDF68120BD21F21009F9171 /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
 		CFDF68130BD21F21009F9171 /* AC_galgas_domain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_domain.h; sourceTree = "<group>"; };
-		CFDF68140BD21F21009F9171 /* AC_galgas_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_entity.cpp; sourceTree = "<group>"; };
-		CFDF68150BD21F21009F9171 /* AC_galgas_entity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_entity.h; sourceTree = "<group>"; };
 		CFDF68160BD21F21009F9171 /* AC_galgas_mapindex.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_mapindex.cpp; sourceTree = "<group>"; };
 		CFDF68170BD21F21009F9171 /* AC_galgas_mapindex.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_mapindex.h; sourceTree = "<group>"; };
 		CFDF68180BD21F21009F9171 /* AC_galgas_sortedlist.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_sortedlist.cpp; sourceTree = "<group>"; };
@@ -961,8 +955,6 @@
 				CFDF68110BD21F21009F9171 /* AC_galgas_class.h */,
 				CFDF68120BD21F21009F9171 /* AC_galgas_domain.cpp */,
 				CFDF68130BD21F21009F9171 /* AC_galgas_domain.h */,
-				CFDF68140BD21F21009F9171 /* AC_galgas_entity.cpp */,
-				CFDF68150BD21F21009F9171 /* AC_galgas_entity.h */,
 				CFDF68160BD21F21009F9171 /* AC_galgas_mapindex.cpp */,
 				CFDF68170BD21F21009F9171 /* AC_galgas_mapindex.h */,
 				CFDF68180BD21F21009F9171 /* AC_galgas_sortedlist.cpp */,
@@ -1161,7 +1153,6 @@
 				CFEA399C0B6E94D60059CEDF /* C_galgas_io.h in Headers */,
 				CFDF681B0BD21F21009F9171 /* AC_galgas_class.h in Headers */,
 				CFDF681D0BD21F21009F9171 /* AC_galgas_domain.h in Headers */,
-				CFDF681F0BD21F21009F9171 /* AC_galgas_entity.h in Headers */,
 				CFDF68210BD21F21009F9171 /* AC_galgas_mapindex.h in Headers */,
 				CFDF68230BD21F21009F9171 /* AC_galgas_sortedlist.h in Headers */,
 				CFB9E6390DF28FD700885084 /* TC_AVL_TreeForCollision.h in Headers */,
@@ -1281,7 +1272,6 @@
 				CFEA399E0B6E94D60059CEDF /* C_galgas_io.h in Headers */,
 				CFDF68250BD21F21009F9171 /* AC_galgas_class.h in Headers */,
 				CFDF68270BD21F21009F9171 /* AC_galgas_domain.h in Headers */,
-				CFDF68290BD21F21009F9171 /* AC_galgas_entity.h in Headers */,
 				CFDF682B0BD21F21009F9171 /* AC_galgas_mapindex.h in Headers */,
 				CFDF682D0BD21F21009F9171 /* AC_galgas_sortedlist.h in Headers */,
 				CFB9E6450DF28FD700885084 /* TC_AVL_TreeForCollision.h in Headers */,
@@ -1511,7 +1501,6 @@
 				CFEA399B0B6E94D60059CEDF /* C_galgas_io.cpp in Sources */,
 				CFDF681A0BD21F21009F9171 /* AC_galgas_class.cpp in Sources */,
 				CFDF681C0BD21F21009F9171 /* AC_galgas_domain.cpp in Sources */,
-				CFDF681E0BD21F21009F9171 /* AC_galgas_entity.cpp in Sources */,
 				CFDF68200BD21F21009F9171 /* AC_galgas_mapindex.cpp in Sources */,
 				CFDF68220BD21F21009F9171 /* AC_galgas_sortedlist.cpp in Sources */,
 			);
@@ -1574,7 +1563,6 @@
 				CFEA399D0B6E94D60059CEDF /* C_galgas_io.cpp in Sources */,
 				CFDF68240BD21F21009F9171 /* AC_galgas_class.cpp in Sources */,
 				CFDF68260BD21F21009F9171 /* AC_galgas_domain.cpp in Sources */,
-				CFDF68280BD21F21009F9171 /* AC_galgas_entity.cpp in Sources */,
 				CFDF682A0BD21F21009F9171 /* AC_galgas_mapindex.cpp in Sources */,
 				CFDF682C0BD21F21009F9171 /* AC_galgas_sortedlist.cpp in Sources */,
 			);
