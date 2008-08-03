@@ -1,7 +1,10 @@
-compile "sara_scanner.ggs" ;
-compile "sara_semantics.ggs" ;
-compile "sara_cli_options.ggs" ;
-compile "sara_parser.ggs" ;
-compile "sara_grammar.ggs" ;
+project
+  compile "sara_scanner.ggs" ;
+  compile "sara_semantics.ggs" ;
+  compile "sara_cli_options.ggs" ;
+  compile "sara_parser.ggs" ;
+  compile "sara_grammar.ggs" ;
+  compile "sara_main.ggs" ;
+end project ;
+
 compile "cocoa_sara.ggs" ;
-compile "sara_main.ggs" ;
