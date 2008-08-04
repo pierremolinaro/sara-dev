@@ -239,7 +239,6 @@
 		CFABC3BE0B2DA0A6000157E0 /* GGS_lstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53891057A558F00854C83 /* GGS_lstring.cpp */; };
 		CFABC3BF0B2DA0A7000157E0 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
 		CFABC3C10B2DA0B8000157E0 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
-		CFABC3C40B2DA0CD000157E0 /* F_main-fake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFABC3C30B2DA0CD000157E0 /* F_main-fake.cpp */; };
 		CFB4DADB063CF5C3002FD35C /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFB4DAD0063CF5B7002FD35C /* main.mm */; };
 		CFB9E6390DF28FD700885084 /* TC_AVL_TreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB9E62D0DF28FD700885084 /* TC_AVL_TreeForCollision.h */; };
 		CFB9E63A0DF28FD700885084 /* TC_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB9E62E0DF28FD700885084 /* TC_Array.h */; };
@@ -590,7 +589,6 @@
 		CFA61CDB061092C10089CEA5 /* saraDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = saraDocuments.icns; sourceTree = "<group>"; };
 		CFA61CF6061095160089CEA5 /* sara */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sara; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA61CF8061095160089CEA5 /* saraDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = saraDebug; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFABC3C30B2DA0CD000157E0 /* F_main-fake.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = "F_main-fake.cpp"; sourceTree = "<group>"; };
 		CFB4DAD0063CF5B7002FD35C /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		CFB9E62D0DF28FD700885084 /* TC_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_AVL_TreeForCollision.h; sourceTree = "<group>"; };
 		CFB9E62E0DF28FD700885084 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
@@ -801,7 +799,6 @@
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
-				CFABC3C30B2DA0CD000157E0 /* F_main-fake.cpp */,
 				CF512D9E092B3040008F7E87 /* C_builtin_CLI_Options.cpp */,
 				CF512D9F092B3040008F7E87 /* C_builtin_CLI_Options.h */,
 				CF825D75085386E00077AEAF /* AC_CLI_Options.cpp */,
@@ -1552,7 +1549,6 @@
 				CFABC3BE0B2DA0A6000157E0 /* GGS_lstring.cpp in Sources */,
 				CFABC3BF0B2DA0A7000157E0 /* GGS_luint.cpp in Sources */,
 				CFABC3C10B2DA0B8000157E0 /* GGS_string.cpp in Sources */,
-				CFABC3C40B2DA0CD000157E0 /* F_main-fake.cpp in Sources */,
 				CFEA399A0B6E94D60059CEDF /* C_galgas_io.cpp in Sources */,
 				CFD64F040BA16DFF00DAE493 /* NSSplitViewExtensions.m in Sources */,
 				CFD64F050BA16DFF00DAE493 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */,
