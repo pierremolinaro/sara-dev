@@ -1,10 +1,10 @@
 project
-  lexique "sara_scanner.ggs" : makefile, xcode ;
-  semantics "sara_semantics.ggs" : makefile, xcode ;
-  option "sara_cli_options.ggs" : makefile, xcode ;
-  syntax "sara_parser.ggs" : makefile, xcode ;
-  grammar "sara_grammar.ggs" : makefile, xcode ;
-  program "sara_main.ggs" : makefile, xcode ;
-  gui "cocoa_sara.ggs" : xcode ;
-  extern "computation.cpp" : makefile, xcode ;
+  lexique "sara_scanner.ggs" : makefile, xcode_tool, xcode_app ;
+  semantics "sara_semantics.ggs" : makefile, xcode_tool ;
+  option "sara_cli_options.ggs" : makefile, xcode_tool, xcode_app ;
+  syntax "sara_parser.ggs" : makefile, xcode_tool ;
+  grammar "sara_grammar.ggs" : makefile, xcode_tool ;
+  program "sara_main.ggs" : makefile, xcode_tool ;
+  gui "cocoa_sara.ggs" : xcode_tool, xcode_app ;
+  extern "computation.cpp" : makefile, xcode_tool ;
 end project ;
