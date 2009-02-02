@@ -7,3 +7,7 @@ sara_grammar
 sara_main
 cocoa_sara
 computation
+::
+sara_scanner
+sara_cli_options
+cocoa_sara
