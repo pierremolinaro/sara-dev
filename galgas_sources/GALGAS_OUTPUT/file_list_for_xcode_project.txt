@@ -1,0 +1,13 @@
+# Intermediate file for Xcode Project
+sara_scanner
+sara_semantics
+sara_cli_options
+sara_parser
+sara_grammar
+sara_main
+cocoa_sara
+computation
+::
+sara_scanner
+sara_cli_options
+cocoa_sara
