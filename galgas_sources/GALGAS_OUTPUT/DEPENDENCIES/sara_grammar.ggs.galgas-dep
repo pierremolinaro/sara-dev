@@ -1,7 +1,0 @@
-0::
-sara_scanner.ggs
-sara_cli_options.ggs
-sara_parser.ggs
-sara_semantics.ggs::
-GALGAS_OUTPUT/sara_grammar.cpp
-GALGAS_OUTPUT/sara_grammar.h
