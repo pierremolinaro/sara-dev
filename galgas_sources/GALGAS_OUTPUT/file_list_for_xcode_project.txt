@@ -834,7 +834,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA5F5BB252D13F5F431E4BBB = {
+		920CF82AB059BFCCBD02BE6A = {
 			isa = PBXGroup;
 			children = (
 				A0B923820DCC509A6F75849B /* Hand Coded Sources */,
@@ -905,10 +905,10 @@
 /* Begin PBXProject section */
 		6BBF9AC94A7E459509A20ED0 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 920CF82AB059BFCCBD02BE6A /* Build configuration list for PBXProject "sara" */;
+			buildConfigurationList = BA5F5BB252D13F5F431E4BBB /* Build configuration list for PBXProject "sara" */;
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
-			mainGroup = BA5F5BB252D13F5F431E4BBB;
+			mainGroup = 920CF82AB059BFCCBD02BE6A;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1326,7 +1326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		920CF82AB059BFCCBD02BE6A /* Build configuration list for PBXProject "sara" */ = {
+		BA5F5BB252D13F5F431E4BBB /* Build configuration list for PBXProject "sara" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EC378BD83E0A727608B5DB01 /* Default */,
