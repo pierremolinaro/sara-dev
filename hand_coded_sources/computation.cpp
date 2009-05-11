@@ -202,11 +202,11 @@ routine_performComputations (C_Compiler & inLexique,
     const bool displayBDDvalues = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues" COMMA_HERE) ;
   //--- Initial cache and map sizes
     co << "Initial size of BDD unique table: "
-       << C_BDD::getHashMapEntriesCount () 
+       << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
        << "; initial size of ITE cache: "
-       << C_BDD::getITEcacheEntriesCount ()
+       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
        << "; initial size of AND cache: "
-       << C_BDD::getANDcacheEntriesCount ()
+       << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
        << ".\n" ;
     switch (C_BDD::getComputingMode ()) {
     case C_BDD::ITE_COMPUTED_FROM_AND :
@@ -295,42 +295,42 @@ compute (C_Compiler & inLexique,
 //--- Print messages
   const sint32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
   const sint32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
-  co << "  " << inputVariablesCount
+  co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
-     << ", " << internalVariablesCount
+     << ", " << cStringWithSigned (internalVariablesCount)
      << " internal variable"
      << ((internalVariablesCount > 1) ? "s" : "")
-     << ", " << outputVariablesCount
+     << ", " << cStringWithSigned (outputVariablesCount)
      << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
   uint64 n = machine.mInitialStatesBDD.valueCount (variablesCount) ;
   uint32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " initial state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mTerminalStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " terminal state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " accessible state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mTransitionRelationBDD.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " transition" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     machine.mTransitionRelationBDD.printBDD (transitionsVariableNameArray, 3) ;
   }
@@ -342,9 +342,9 @@ compute (C_Compiler & inLexique,
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " transition" << ((n > 1) ? "s" : "")
-     << " with target equals source (" << nodes
+     << " with target equals source (" << cStringWithUnsigned (nodes)
      << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     transitionsWithSourceEqualTarget.printBDD (transitionsVariableNameArray, 3) ;
@@ -353,9 +353,9 @@ compute (C_Compiler & inLexique,
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = t.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " transition" << ((n > 1) ? "s" : "")
-     << " to other states (" << nodes
+     << " to other states (" << cStringWithUnsigned (nodes)
      << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     t.printBDD (transitionsVariableNameArray, 3) ;
@@ -386,29 +386,29 @@ compute (C_Compiler & /* inLexique */,
   bool ok = true ;
 //--- Check that input variable count are the same
   if (machine1.mInputVariablesCount == machine2.mInputVariablesCount) {
-    co << "  Same input variable count (" << machine1.mInputVariablesCount << ") ;\n" ;
+    co << "  Same input variable count (" << cStringWithUnsigned (machine1.mInputVariablesCount) << ") ;\n" ;
   }else{
     ok = false ;
     co << "  Error: first machine has "
-       << machine1.mInputVariablesCount
+       << cStringWithUnsigned (machine1.mInputVariablesCount)
        << " input variable"
        << ((machine1.mInputVariablesCount > 1) ? "s" : "")
        << ", second one "
-       << machine2.mInputVariablesCount
+       << cStringWithSigned (machine2.mInputVariablesCount)
        << " ;\n" ;
   }
 //--- Check that all variable count are the same
   const sint32 internalAndOutputVariableCount1 = machine1.mNamesArray.count () - machine1.mInputVariablesCount ;
   const sint32 internalAndOutputVariableCount2 = machine2.mNamesArray.count () - machine2.mInputVariablesCount ;
   if (internalAndOutputVariableCount1 == internalAndOutputVariableCount2) {
-    co << "  Same internal and output variable count (" << internalAndOutputVariableCount1 << ");\n" ;
+    co << "  Same internal and output variable count (" << cStringWithSigned (internalAndOutputVariableCount1) << ");\n" ;
   }else{
     ok = false ;
     co << "  Error: first machine has "
-       << internalAndOutputVariableCount1
+       << cStringWithSigned (internalAndOutputVariableCount1)
        << " internal and output variable"
        << ((internalAndOutputVariableCount1 > 1) ? "s" : "")
-       << ", second one " << internalAndOutputVariableCount2 << " ;\n" ;
+       << ", second one " << cStringWithSigned (internalAndOutputVariableCount2) << " ;\n" ;
   }
 //--- Check initial states are identical
   bool identical = ok ;
@@ -472,7 +472,7 @@ compute (C_Compiler & /* inLexique */,
     co << "  All input configurations are handled;\n" ;
   }else{
     const uint64 n = notHandledInputConfigurations.valueCount (machine.mInputVariablesCount) ;
-    co << "  " << n
+    co << "  " << cStringWithUnsigned64 (n)
        << " missing input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
     notHandledInputConfigurations.printBDD (machine.mNamesArray, machine.mInputVariablesCount, 3) ;
   }
@@ -498,7 +498,7 @@ compute (C_Compiler & /* inLexique */,
     co << "  No ambiguous input configuration;\n" ;
   }else{
     const uint64 n = ambiguousInput.valueCount (variableCount) ;
-    co << "  " << n
+    co << "  " << cStringWithUnsigned64 (n)
        << " ambiguous input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
     ambiguousInput.printBDD (machine.mNamesArray, 3) ;
   }
@@ -524,7 +524,7 @@ compute (C_Compiler & /* inLexique */,
     co << "  No ambiguous transition;\n" ;
   }else{
     const uint64 n = ambiguousTransitions.valueCount ((uint16) (variableCount+variableCount)) ;
-    co << "  " << n
+    co << "  " << cStringWithUnsigned64 (n)
        << " ambiguous transition" << ((n > 1) ? "s" : "") << ":\n" ;
     TC_UniqueArray <C_String> transitionsVariableNameArray ((uint16) (variableCount + variableCount), "" COMMA_HERE) ;
     for (sint32 i=0 ; i<variableCount ; i++) {
@@ -540,7 +540,7 @@ compute (C_Compiler & /* inLexique */,
     co << "  No incomplete state;\n" ;
   }else{
     const uint64 n = incompleteStatesAndInput.valueCount ((uint16) (variableCount+machine.mInputVariablesCount)) ;
-    co << "  " << n
+    co << "  " << cStringWithUnsigned64 (n)
        << " incomplete state" << ((n > 1) ? "s" : "") << ":\n" ;
     TC_UniqueArray <C_String> transitionsVariableNameArray ((uint16) (variableCount + variableCount), "" COMMA_HERE) ;
     for (sint32 i=0 ; i<variableCount ; i++) {
@@ -559,7 +559,7 @@ compute (C_Compiler & /* inLexique */,
     co << "  All states are stable;\n" ;
   }else{
     const uint64 n = notStableStates.valueCount (variableCount) ;
-    co << "  " << n
+    co << "  " << cStringWithUnsigned64 (n)
        << " instable state" << ((n > 1) ? "s" : "") << ":\n" ;
     notStableStates.printBDD (machine.mNamesArray, variableCount, 3) ;
   }
@@ -603,9 +603,9 @@ compute (C_Compiler & /* inLexique */,
   C_BDD::setHashMapSize ((uint16) mNewSize.uintValue ()) ;
   duree.stopTimer () ;
   co << "------------------ map "
-     << mNewSize.uintValue ()
+     << cStringWithUnsigned (mNewSize.uintValue ())
      << ": BDD unique table resized to "
-     << C_BDD::getHashMapEntriesCount ()
+     << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
      << " (done in "
      << duree
      << ").\n\n" ; 
@@ -622,9 +622,9 @@ compute (C_Compiler & /* inLexique */,
   C_BDD::setANDcacheSize ((sint32) mNewSize.uintValue ()) ;
   duree.stopTimer () ;
   co << "------------------ and_cache "
-     << mNewSize.uintValue ()
+     << cStringWithUnsigned (mNewSize.uintValue ())
      << ": AND cache resized to "
-     << C_BDD::getANDcacheEntriesCount ()
+     << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
      << " (done in "
      << duree
      << ").\n\n" ;  
@@ -641,9 +641,9 @@ compute (C_Compiler & /* inLexique */,
   C_BDD::setITEcacheSize ((sint32) mNewSize.uintValue ()) ;
   duree.stopTimer () ;
   co << "------------------ ite_cache "
-     << mNewSize.uintValue ()
+     << cStringWithUnsigned (mNewSize.uintValue ())
      << ": ITE cache resized to "
-     << C_BDD::getITEcacheEntriesCount ()
+     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
      << " (done in "
      << duree
      << ").\n\n" ;  
@@ -756,7 +756,7 @@ compute (C_Compiler & /* inLexique */,
       co << "*** ERROR: dead state.\n" ;
     }else if (valuesCount > 1ULL) {
       co << "*** ERROR: ambiguous transition ("
-         << valuesCount
+         << cStringWithUnsigned64 (valuesCount)
          << " states).\n" ;
     }
     scenario = scenario->nextObject () ;
@@ -800,7 +800,7 @@ computeFromExpression (C_Compiler & inLexique,
       errorMessage << "input configuration for state '"
                    << stateNameArray (stateIndex COMMA_HERE)
                    << "' is empty" ;
-      currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+      currentDefinition->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
     }
   //--- Go to next state definition  
     currentDefinition = currentDefinition->nextObject () ;
@@ -820,7 +820,7 @@ computeFromExpression (C_Compiler & inLexique,
                    << "' intersects expression for state '"
                    << stateNameArray ((sint32) currentDefinition->mStateIndex.uintValue () COMMA_HERE)
                    << "'" ;
-        testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        testedState->mEndOfStateExpression.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
       testedState = testedState->nextObject () ;
     }
@@ -856,7 +856,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' intersects previous initial state '"
                      << stateNameArray ((sint32) currentInitialState->mStateIndex.uintValue () COMMA_HERE)
                      << "'" ;
-        testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        testedInitialState->mStateLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
       testedInitialState = testedInitialState->nextObject () ;
     }
@@ -924,7 +924,7 @@ computeFromExpression (C_Compiler & inLexique,
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this action intersects with current state input configuration" ;
-        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
       GGS_L_transitionDefinition::cElement * testedTransition = currentTransition->nextObject () ;
@@ -935,8 +935,8 @@ computeFromExpression (C_Compiler & inLexique,
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
-          errorMessage << "this action intersects with #" << transitionIndex << " previous action" ;
-          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+          errorMessage << "this action intersects with #" << cStringWithSigned (transitionIndex) << " previous action" ;
+          testedTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
         }
         testedTransition = testedTransition->nextObject () ;
       }
@@ -945,7 +945,7 @@ computeFromExpression (C_Compiler & inLexique,
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
-        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        currentTransition->mEndOfExpression.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Goto next transition
       currentTransition = currentTransition->nextObject () ;
@@ -978,7 +978,7 @@ computeFromExpression (C_Compiler & inLexique,
       errorMessage << "state '"
                    << stateNameArray (i COMMA_HERE)
                    << "' is not accessible" ;
-      mEndOfDefinition.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+      mEndOfDefinition.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
@@ -1119,7 +1119,7 @@ computeFromExpression (C_Compiler & inLexique,
   if (! intersection.isFalse ()) {
     C_String errorMessage ;
     errorMessage << "operands transitions intersects, strong modal composition is not valid" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1178,7 +1178,7 @@ computeFromExpression (C_Compiler & inLexique,
   if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "left operand does not respect weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
   C_BDD rightAccessiblesStates ;
@@ -1194,21 +1194,21 @@ computeFromExpression (C_Compiler & inLexique,
   if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "right operand does not respect weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD).isEqualToBDD (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "initial states are not compatible with weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD).isEqualToBDD (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "terminal states are not compatible with weak modal composition" ;
-    mErrorLocation.signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+    mErrorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1494,7 +1494,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1515,7 +1515,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1526,7 +1526,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1538,7 +1538,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     }
   }
@@ -1634,7 +1634,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1655,7 +1655,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1666,7 +1666,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1678,7 +1678,7 @@ computeFromExpression (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     }
   }
@@ -1838,7 +1838,7 @@ compute (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1859,7 +1859,7 @@ compute (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1870,7 +1870,7 @@ compute (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1882,7 +1882,7 @@ compute (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     }
   }
@@ -1941,35 +1941,35 @@ compute (C_Compiler & inLexique,
   const sint32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
   uint64 n = machine.mInitialStatesBDD.valueCount (variablesCount) ;
   uint32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
-  co << "  " << inputVariablesCount
+  co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
-     << ", " << internalVariablesCount
+     << ", " << cStringWithSigned (internalVariablesCount)
      << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
-     << ", " << outputVariablesCount << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n"
-        "  " << n << " initial state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << ", " << cStringWithSigned (outputVariablesCount) << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n"
+        "  " << cStringWithUnsigned64 (n) << " initial state" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mTerminalStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
-  co << "  " << n
+  co << "  " << cStringWithUnsigned64 (n)
      << " terminal state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
-  co << "  " << n << " accessible state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ";\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " accessible state" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ";\n" ;
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mTransitionRelationBDD.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
-  co << "  " << n << " transition" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " transition" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (sint32 i=0 ; i<variablesCount ; i++) {
@@ -1978,15 +1978,15 @@ compute (C_Compiler & inLexique,
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
-  co << "  " << n << " transition" << ((n > 1) ? "s" : "")
+  co << "  " << cStringWithUnsigned64 (n) << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source ("
-     << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = t.getBDDnodesCount () ;
-  co << "  " << n << " transition" << ((n > 1) ? "s" : "")
-     << " to other states (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " transition" << ((n > 1) ? "s" : "")
+     << " to other states (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     t.printBDD (transitionsVariableNameArray, 3) ;
   }
@@ -2079,7 +2079,7 @@ compute (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2100,7 +2100,7 @@ compute (C_Compiler & inLexique,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2111,7 +2111,7 @@ compute (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2123,7 +2123,7 @@ compute (C_Compiler & inLexique,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage.cString () COMMA_HERE) ;
+        modeNamesArray (testedMode COMMA_HERE).signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       }
     }
   }
@@ -2190,34 +2190,34 @@ compute (C_Compiler & inLexique,
   const sint32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
   const sint32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
   co << "  "
-     << inputVariablesCount << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
-     << ", " << internalVariablesCount << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
-     << ", " << outputVariablesCount << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
+     << cStringWithSigned (inputVariablesCount) << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
+     << ", " << cStringWithSigned (internalVariablesCount) << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
+     << ", " << cStringWithSigned (outputVariablesCount) << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
   uint64 n = machine.mInitialStatesBDD.valueCount (variablesCount) ;
   uint32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
-  co << "  " << n << " initial state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " initial state" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mTerminalStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
-  co << "  " << n << " terminal state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " terminal state" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
-  co << "  " << n << " accessible state" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " accessible state" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
   n = machine.mTransitionRelationBDD.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
-  co << "  " << n << " transition" << ((n > 1) ? "s" : "")
-     << " (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " transition" << ((n > 1) ? "s" : "")
+     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (sint32 i=0 ; i<variablesCount ; i++) {
@@ -2226,15 +2226,15 @@ compute (C_Compiler & inLexique,
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
-  co << "  " << n << " transition" << ((n > 1) ? "s" : "")
+  co << "  " << cStringWithUnsigned64 (n) << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source ("
-     << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount ((uint16) (variablesCount + variablesCount)) ;
   nodes = t.getBDDnodesCount () ;
-  co << "  " << n << " transition" << ((n > 1) ? "s" : "")
-     << " to other states (" << nodes << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+  co << "  " << cStringWithUnsigned64 (n) << " transition" << ((n > 1) ? "s" : "")
+     << " to other states (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     t.printBDD (transitionsVariableNameArray, 3) ;
   }
