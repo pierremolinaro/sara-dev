@@ -4,7 +4,7 @@ map @M_stateMap {  insert insertKey error message "the '%K' state has been alre
 
 #---------------------------------------------------------------------------*
 
-list @L_translationVector {  @luint mTargetSlot ;}abstract class @AC_boolExpression [generatedInSeparateFile] {}
+list @L_translationVector {  @luint mTargetSlot ;}abstract class @AC_boolExpression feature generatedInSeparateFile {}
 
 class @C_importBoolMachine extends @AC_boolExpression {  @uint mIndexOfImportedMachine ;
   @location mErrorLocation ;  @L_translationVector mTranslationVector ;
@@ -26,7 +26,7 @@ list @L_statesDefinitionList {  @luint mStateIndex ;  @location mStateLocation
 
 #---------------------------------------------------------------------------*
 
-abstract class @AC_machineDefinition [generatedInSeparateFile] {}
+abstract class @AC_machineDefinition feature generatedInSeparateFile {}
 
 map @M_modesMap {  @AC_machineDefinition mModeDefinition ;  insert insertKey error message "the '%K' mode has been already declared" ;  search searchKey, searchKeyGetIndex error message "the '%K' mode is not declared" ;}
 
@@ -67,7 +67,7 @@ class @C_suppressInitialStatesOperation extends @AC_machineDefinition {  @AC_ma
 
 #---------------------------------------------------------------------------*
 
-abstract class @AC_job [generatedInSeparateFile] {
+abstract class @AC_job feature generatedInSeparateFile {
 } class @C_machineCheck extends @AC_job {  @luint mMachineIndex ;
   @bool mCheckMachineIsBoolean ;}
 
