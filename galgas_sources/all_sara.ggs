@@ -1,7 +1,7 @@
 project all_sara :
   lexique "sara_scanner.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "sara_semantics.ggs" : makefile, xcode_tool ;
-  option "sara_cli_options.ggs" : makefile, xcode_tool, xcode_app ;
+  option "sara_cli_options.gOption" : makefile, xcode_tool, xcode_app ;
   syntax "sara_parser.ggs" : makefile, xcode_tool ;
   grammar "sara_grammar.ggs" : makefile, xcode_tool ;
   program "sara_main.ggs" : makefile, xcode_tool ;
