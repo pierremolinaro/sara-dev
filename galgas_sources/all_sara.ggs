@@ -1,5 +1,5 @@
 project all_sara :
-  lexique "sara_scanner.ggs" : makefile, xcode_tool, xcode_app ;
+  lexique "sara_scanner.gLexique" : makefile, xcode_tool, xcode_app ;
   semantics "sara_semantics.ggs" : makefile, xcode_tool ;
   option "sara_cli_options.gOption" : makefile, xcode_tool, xcode_app ;
   syntax "sara_parser.ggs" : makefile, xcode_tool ;
