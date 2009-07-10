@@ -22,6 +22,7 @@
 #include "collections/TC_Array.h"
 #include "utilities/MF_MemoryControl.h"
 #include "time/C_Timer.h"
+#include "sara_cli_options.h"
 
 //---------------------------------------------------------------------------*
 
@@ -198,8 +199,8 @@ routine_performComputations (C_Compiler & inLexique,
   if (inLexique.totalErrorCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
-    const bool displayBDDvaluesCount = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvaluesCount" COMMA_HERE) ;
-    const bool displayBDDvalues = inLexique.boolOptionValueFromKeys ("sara_cli_options", "displayBDDvalues" COMMA_HERE) ;
+    const bool displayBDDvaluesCount = gOption_sara_5F_cli_5F_options_displayBDDvaluesCount.mValue ;
+    const bool displayBDDvalues = gOption_sara_5F_cli_5F_options_displayBDDvalues.mValue ;
   //--- Initial cache and map sizes
     co << "Initial size of BDD unique table: "
        << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
