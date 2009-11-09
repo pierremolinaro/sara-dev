@@ -3,7 +3,7 @@ project all_sara :
   semantics "sara_semantics.ggs" : makefile, xcode_tool ;
   option "sara_cli_options.gOption" : makefile, xcode_tool, xcode_app ;
   syntax "sara_parser.ggs" : makefile, xcode_tool ;
-  grammar "sara_grammar.ggs" : makefile, xcode_tool ;
+  grammar "sara_grammar.gGrammar" : makefile, xcode_tool ;
   program "sara_main.ggs" : makefile, xcode_tool ;
   gui "cocoa_sara.gGui" : xcode_tool, xcode_app ;
   extern "../hand_coded_sources/computation.cpp" : makefile, xcode_tool ;

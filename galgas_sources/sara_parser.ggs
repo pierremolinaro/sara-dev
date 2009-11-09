@@ -5,6 +5,7 @@
 #---------------------------------------------------------------------------*
 
 syntax sara_parser :
+with "sara_scanner.gLexique" ;
 import lexique sara_scanner in "sara_scanner.gLexique" ;
 import semantics sara_semantics in "sara_semantics.ggs" ;
 
