@@ -7,20 +7,22 @@
 semantics sara_semantics :
 
 map @M_variablesMap {
+  @uint mIndex ;
   insert insertKey error message "the '%K' variable has been already declared" ;
-  search searchKey, searchKeyGetIndex error message "the '%K' variable is not declared" ;
+  search searchKey error message "the '%K' variable is not declared" ;
 }
 
 map @M_stateMap {
+  @uint mIndex ;
   insert insertKey error message "the '%K' state has been already declared" ;
   insert defineState error message "the '%K' state has been already defined" ;
-  search searchKey, searchKeyGetIndex error message "the '%K' state is not declared" ;
+  search searchKey error message "the '%K' state is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @L_translationVector {
-  @luint mTargetSlot ;
+  @uint mTargetSlot ;
 }
 
 abstract class @AC_boolExpression feature generatedInSeparateFile {
@@ -62,7 +64,7 @@ class @C_notExpression extends @AC_boolExpression {
 }
     
 class @C_VariableExpression extends @AC_boolExpression {
-  @luint mInputVarIndex ;
+  @uint mInputVarIndex ;
 }
 
 class @C_trueExpression extends @AC_boolExpression {
@@ -76,11 +78,11 @@ class @C_falseExpression extends @AC_boolExpression {
 list @L_transitionDefinition {
   @AC_boolExpression mActionExpression ;
   @location mEndOfExpression ;
-  @luint mTargetStateIndex ;
+  @uint mTargetStateIndex ;
 }
 
 list @L_stateDefinition {
-  @luint mStateIndex ;
+  @uint mStateIndex ;
   @AC_boolExpression mStateExpression ;
   @location mEndOfStateExpression ;
   @L_transitionDefinition mTransitionsList ;
@@ -89,7 +91,7 @@ list @L_stateDefinition {
 #---------------------------------------------------------------------------*
 
 list @L_statesDefinitionList {
-  @luint mStateIndex ;
+  @uint mStateIndex ;
   @location mStateLocation ;
 }
 
@@ -99,14 +101,15 @@ abstract class @AC_machineDefinition feature generatedInSeparateFile {
 }
 
 map @M_modesMap {
+  @uint mIndex ;
   @AC_machineDefinition mModeDefinition ;
   insert insertKey error message "the '%K' mode has been already declared" ;
-  search searchKey, searchKeyGetIndex error message "the '%K' mode is not declared" ;
+  search searchKey error message "the '%K' mode is not declared" ;
 }
 
 list @ListForModes {
-  @luint mSourceMode ;
-  @luint mTargetMode ;
+  @uint mSourceMode ;
+  @uint mTargetMode ;
 }
 
 class @C_substractiveModalCompositionComponent extends @AC_machineDefinition {
@@ -197,18 +200,18 @@ abstract class @AC_job feature generatedInSeparateFile {
 }
  
 class @C_machineCheck extends @AC_job {
-  @luint mMachineIndex ;
+  @uint mMachineIndex ;
   @bool mCheckMachineIsBoolean ;
 }
 
 class @C_machineCheckIdentical extends @AC_job {
-  @luint mMachineIndex1 ;
-  @luint mMachineIndex2 ;
+  @uint mMachineIndex1 ;
+  @uint mMachineIndex2 ;
 }
 
 class @C_machineComponent extends @AC_job {
   @lstring mMachineName ;
-  @luint mMachineIndex ;
+  @uint mMachineIndex ;
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
@@ -217,7 +220,7 @@ class @C_machineComponent extends @AC_job {
 
 class @C_machineDefinedByAdditiveModalComp extends @AC_job {
   @lstring mMachineName ;
-  @luint mMachineIndex ;
+  @uint mMachineIndex ;
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
@@ -227,7 +230,7 @@ class @C_machineDefinedByAdditiveModalComp extends @AC_job {
 
 class @C_machineDefinedBySubstractiveModalComp extends @AC_job {
   @lstring mMachineName ;
-  @luint mMachineIndex ;
+  @uint mMachineIndex ;
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
@@ -249,7 +252,7 @@ list @L_scenarioList {
 }
 
 class @C_scenarioComponent extends @AC_job {
-  @luint mMachineIndex ;
+  @uint mMachineIndex ;
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
@@ -289,12 +292,13 @@ list @L_jobList {
 #---------------------------------------------------------------------------*
 
 map @M_machinesMap {
+  @uint mIndex ;
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
-  insert insertKey, insertKeyGetIndex error message "the '%K' machine has been already declared" ;
-  search searchKey, searchKeyGetIndex error message "the '%K' machine is not defined" ;
-  remove removeKey, removeKeyGetIndex error message "the '%K' machine is not defined" ;
+  insert insertKey error message "the '%K' machine has been already declared" ;
+  search searchKey error message "the '%K' machine is not defined" ;
+  remove removeKey error message "the '%K' machine is not defined" ;
 }
 
 #---------------------------------------------------------------------------*
