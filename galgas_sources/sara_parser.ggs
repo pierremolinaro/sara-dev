@@ -97,8 +97,8 @@ rule <component>
   $machineIdf$ ? machineName ;
   $;$ ;
 #--- Insert machine into machine map
-  @luint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKeyGetIndex !machineName ?machineIndex ?* ?* ?*] ;
+  @uint machineIndex ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheck new !machineIndex !false] ;
   ioSemanticContext.componentsMap += !job ;
@@ -121,11 +121,11 @@ rule <component>
   $machineIdf$ ? machineName2 ;
   $;$ ;
 #--- Insert machine into machine map
-  @luint machineIndex1 ;
-  [[ioSemanticContext machinesMap] searchKeyGetIndex !machineName1 ?machineIndex1 ?* ?* ?*] ;
+  @uint machineIndex1 ;
+  [[ioSemanticContext machinesMap] searchKey !machineName1 ?machineIndex1 ?* ?* ?*] ;
 #--- Insert machine into machine map
-  @luint machineIndex2 ;
-  [[ioSemanticContext machinesMap] searchKeyGetIndex !machineName2 ?machineIndex2 ?* ?* ?*] ;
+  @uint machineIndex2 ;
+  [[ioSemanticContext machinesMap] searchKey !machineName2 ?machineIndex2 ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheckIdentical new !machineIndex1 !machineIndex2] ;
   ioSemanticContext.componentsMap += !job ;
@@ -145,8 +145,8 @@ rule <component>
   $machineIdf$ ? machineName ;
   $;$ ;
 #--- Insert machine into machine map
-  @luint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKeyGetIndex !machineName ?machineIndex ?* ?* ?*] ;
+  @uint machineIndex ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheck new !machineIndex !true] ;
   ioSemanticContext.componentsMap += !job ;
@@ -250,7 +250,7 @@ rule <component>
   repeat
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
-    [!?variablesMap insertKey !inputVarName] ;
+    [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -263,7 +263,7 @@ rule <component>
     repeat
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
-      [!?variablesMap insertKey !outputVarName] ;
+      [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
     while
       $,$ ;
     end repeat ;
@@ -275,7 +275,7 @@ rule <component>
   repeat
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
-    [!?variablesMap insertKey !outputVarName] ;
+    [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -285,8 +285,8 @@ rule <component>
   @AC_machineDefinition definition ;
   <definition_expression> !ioSemanticContext !?variablesMap ?definition ;
 #--- Insert machine into machine map
-  @luint machineIndex ;
-  [!?ioSemanticContext.machinesMap insertKeyGetIndex !machineName ?machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
+  [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineComponent new !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !definition] ;
   ioSemanticContext.componentsMap += !machine ;
@@ -310,7 +310,7 @@ rule <component>
   repeat
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
-    [!?variablesMap insertKey !inputVarName] ;
+    [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -323,7 +323,7 @@ rule <component>
     repeat
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
-      [!?variablesMap insertKey !outputVarName] ;
+      [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
     while
       $,$ ;
     end repeat ;
@@ -335,7 +335,7 @@ rule <component>
   repeat
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
-    [!?variablesMap insertKey !outputVarName] ;
+    [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -351,8 +351,8 @@ rule <component>
     ?inclusionList
   ;
 #--- Insert machine into machine map
-  @luint machineIndex ;
-  [!?ioSemanticContext.machinesMap insertKeyGetIndex !machineName ?machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
+  [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineDefinedByAdditiveModalComp new
    !machineName
@@ -384,7 +384,7 @@ rule <component>
   repeat
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
-    [!?variablesMap insertKey !inputVarName] ;
+    [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -397,7 +397,7 @@ rule <component>
     repeat
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
-      [!?variablesMap insertKey !outputVarName] ;
+      [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
     while
       $,$ ;
     end repeat ;
@@ -409,7 +409,7 @@ rule <component>
   repeat
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
-    [!?variablesMap insertKey !outputVarName] ;
+    [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -425,8 +425,8 @@ rule <component>
     ?exclusionList
   ;
 #--- Insert machine into machine map
-  @luint machineIndex ;
-  [!?ioSemanticContext.machinesMap insertKeyGetIndex !machineName ?machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
+  [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineDefinedBySubstractiveModalComp new
    !machineName
@@ -452,17 +452,17 @@ rule <component>
   @lstring machineName ;
   $machineIdf$ ? machineName ;
 #--- Search machine from machine map
-  @luint machineIndex ;
+  @uint machineIndex ;
   @uint inputVariablesCountFromDefinition ;
   @uint inputAndInternalVariablesCountFromDefinition ;
   @M_variablesMap variablesMapFromDefinition ;
-  [[ioSemanticContext machinesMap] searchKeyGetIndex !machineName ?machineIndex ?inputVariablesCountFromDefinition ?inputAndInternalVariablesCountFromDefinition ?variablesMapFromDefinition] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?inputVariablesCountFromDefinition ?inputAndInternalVariablesCountFromDefinition ?variablesMapFromDefinition] ;
 #--- Parse input variables
   $($ ;
   repeat
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
-    [!?variablesMap insertKey !inputVarName] ;
+    [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -480,7 +480,7 @@ rule <component>
     repeat
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
-      [!?variablesMap insertKey !outputVarName] ;
+      [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
     while
       $,$ ;
     end repeat ;
@@ -497,7 +497,7 @@ rule <component>
   repeat
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
-    [!?variablesMap insertKey !outputVarName] ;
+    [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -614,8 +614,8 @@ rule <io_primary>
 :
   @lstring inputVarName ;
   $identifier$ ? inputVarName ;
-  @luint inputVarIndex ;
-  [ioVarMap searchKeyGetIndex !inputVarName ?inputVarIndex] ;
+  @uint inputVarIndex ;
+  [ioVarMap searchKey!inputVarName ?inputVarIndex] ;
   outExpression := [@C_VariableExpression new !inputVarIndex] ;
 end rule ;
 
@@ -666,16 +666,16 @@ rule <io_primary>
   @uint machineInputVariableCount ;
   @uint machineInputAndInternalVariableCount ;
   @M_variablesMap machineVariablesMap ;
-  @luint indexOfImportedMachine ;
-  [[inSemanticContext machinesMap] searchKeyGetIndex !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap] ;
+  @uint indexOfImportedMachine ;
+  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap] ;
   @L_translationVector translationVector [emptyList] ;
 #--- Parse input variables
   $($ ;
   repeat
     @lstring inputVar ;
     $identifier$ ? inputVar ;
-    @luint inputVarIndex ;
-    [ioVarMap searchKeyGetIndex !inputVar ?inputVarIndex] ;
+    @uint inputVarIndex ;
+    [ioVarMap searchKey !inputVar ?inputVarIndex] ;
     translationVector += !inputVarIndex ;
   while
     $,$ ;
@@ -693,8 +693,8 @@ rule <io_primary>
     repeat
       @lstring internalVar ;
       $identifier$ ? internalVar ;
-      @luint internalVarIndex ;
-      [ioVarMap searchKeyGetIndex !internalVar ?internalVarIndex] ;
+      @uint internalVarIndex ;
+      [ioVarMap searchKey !internalVar ?internalVarIndex] ;
       translationVector += ! internalVarIndex ;
     while
       $,$ ;
@@ -711,8 +711,8 @@ rule <io_primary>
   repeat
     @lstring outputVar ;
     $identifier$ ? outputVar ;
-    @luint outputVarIndex ;
-    [ioVarMap searchKeyGetIndex !outputVar ?outputVarIndex] ;
+    @uint outputVarIndex ;
+    [ioVarMap searchKey !outputVar ?outputVarIndex] ;
     translationVector += !outputVarIndex ;
   while
     $,$ ;
@@ -725,7 +725,7 @@ rule <io_primary>
     . " variables, but this operand defines " . [allVariablesCount string] . " variables" ;
   end if ;
   outExpression := [@C_importBoolMachine new
-    ![indexOfImportedMachine uint]
+    !indexOfImportedMachine
     ![machineIdentifier location]
     !translationVector]
   ;
@@ -799,7 +799,7 @@ rule <modalcompadd_definition>
     $:$ ;
     @AC_machineDefinition def ;
     <definition_expression> !inSemanticContext !?variablesMap ?def ;
-    [!?outModeMap insertKey !modeName !def] ;
+    [!?outModeMap insertKey !modeName ![outModeMap count] !def] ;
     $;$ ;
   while
   end repeat ;
@@ -808,16 +808,16 @@ rule <modalcompadd_definition>
     $include$ ;
     @lstring sourceModeName ;
     $identifier$ ? sourceModeName ;
-    @luint sourceModeIndex ;
-    [outModeMap searchKeyGetIndex !sourceModeName ?sourceModeIndex ?*] ;
+    @uint sourceModeIndex ;
+    [outModeMap searchKey !sourceModeName ?sourceModeIndex ?*] ;
     $to$ ;
     @lstring targetModeName ;
     $identifier$ ? targetModeName ;
-    @luint targetModeIndex ;
-    [outModeMap searchKeyGetIndex !targetModeName ?targetModeIndex ?*] ;
+    @uint targetModeIndex ;
+    [outModeMap searchKey !targetModeName ?targetModeIndex ?*] ;
     $;$ ;
-    if [sourceModeIndex uint] == [targetModeIndex uint] then
-      warning targetModeIndex : "unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode" ;
+    if sourceModeIndex == targetModeIndex then
+      warning targetModeName : "unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode" ;
     else
       outInclusionList += !sourceModeIndex !targetModeIndex ;
     end if ;
@@ -840,7 +840,7 @@ rule <modalcompsub_definition>
     $:$ ;
     @AC_machineDefinition def ;
     <definition_expression> !inSemanticContext !?variablesMap ?def ;
-    [!?outModeMap insertKey !modeName !def] ;
+    [!?outModeMap insertKey !modeName ![outModeMap count] !def] ;
     $;$ ;
   while
   end repeat ;
@@ -849,16 +849,16 @@ rule <modalcompsub_definition>
     $exclude$ ;
     @lstring sourceModeName ;
     $identifier$ ? sourceModeName ;
-    @luint sourceModeIndex ;
-    [outModeMap searchKeyGetIndex !sourceModeName ?sourceModeIndex ?*] ;
+    @uint sourceModeIndex ;
+    [outModeMap searchKey !sourceModeName ?sourceModeIndex ?*] ;
     $to$ ;
     @lstring targetModeName ;
     $identifier$ ? targetModeName ;
-    @luint targetModeIndex ;
-    [outModeMap searchKeyGetIndex !targetModeName ?targetModeIndex ?*] ;
+    @uint targetModeIndex ;
+    [outModeMap searchKey !targetModeName ?targetModeIndex ?*] ;
     $;$ ;
-    if [sourceModeIndex uint] == [targetModeIndex uint] then
-      warning targetModeIndex : "unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode" ;
+    if sourceModeIndex == targetModeIndex then
+      warning targetModeName : "unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode" ;
     else
       outExclusionList += !sourceModeIndex !targetModeIndex ;
     end if ;
@@ -885,7 +885,7 @@ rule <definition_expression_factor>
     repeat
       @lstring variableName ;
       $identifier$ ? variableName ;
-      [!?extendedVariablesMap insertKey !variableName] ;
+      [!?extendedVariablesMap insertKey !variableName ![extendedVariablesMap count]] ;
     while
       $,$ ;
     end repeat ;
@@ -902,7 +902,7 @@ rule <definition_expression_factor>
     repeat
       @lstring variableName ;
       $identifier$ ? variableName ;
-      [!?extendedVariablesMap insertKey !variableName] ;
+      [!?extendedVariablesMap insertKey !variableName ![extendedVariablesMap count]] ;
     while
       $,$ ;
     end repeat ;
@@ -994,16 +994,16 @@ rule <definition_expression_factor>
   @uint machineInputVariableCount ;
   @uint machineInputAndInternalVariableCount ;
   @M_variablesMap machineVariablesMap ;
-  @luint indexOfImportedMachine ;
-  [[inSemanticContext machinesMap] searchKeyGetIndex !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap] ;
+  @uint indexOfImportedMachine ;
+  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap] ;
   @L_translationVector translationVector [emptyList] ;
 #--- Parse input variables
   $($ ;
   repeat
     @lstring inputVar ;
     $identifier$ ? inputVar ;
-    @luint inputVarIndex ;
-    [ioVarMap searchKeyGetIndex !inputVar ?inputVarIndex] ;
+    @uint inputVarIndex ;
+    [ioVarMap searchKey !inputVar ?inputVarIndex] ;
     translationVector += !inputVarIndex ;
   while
     $,$ ;
@@ -1021,8 +1021,8 @@ rule <definition_expression_factor>
     repeat
       @lstring internalVar ;
       $identifier$ ? internalVar ;
-      @luint internalVarIndex ;
-      [ioVarMap searchKeyGetIndex !internalVar ?internalVarIndex] ;
+      @uint internalVarIndex ;
+      [ioVarMap searchKey !internalVar ?internalVarIndex] ;
       translationVector += ! internalVarIndex ;
     while
       $,$ ;
@@ -1039,8 +1039,8 @@ rule <definition_expression_factor>
   repeat
     @lstring outputVar ;
     $identifier$ ? outputVar ;
-    @luint outputVarIndex ;
-    [ioVarMap searchKeyGetIndex !outputVar ?outputVarIndex] ;
+    @uint outputVarIndex ;
+    [ioVarMap searchKey !outputVar ?outputVarIndex] ;
     translationVector += !outputVarIndex ;
   while
     $,$ ;
@@ -1052,7 +1052,7 @@ rule <definition_expression_factor>
     error here : "The '$" . [machineIdentifier string] . "' machine defines " . [machineAllVariablesCount string]
     . " variables, but this operand defines " . [allVariablesCount string] . " variables" ;
   end if ;
-  outDefinition := [@C_importMachine new ![indexOfImportedMachine uint] !translationVector] ;
+  outDefinition := [@C_importMachine new !indexOfImportedMachine !translationVector] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1073,7 +1073,7 @@ rule <explicit_automaton>
   repeat
     @lstring stateName ;
     $identifier$ ? stateName ;
-    [!?statesMap insertKey !stateName] ;
+    [!?statesMap insertKey !stateName ![statesMap count]] ;
   while
     $,$ ;
   end repeat ;
@@ -1084,8 +1084,8 @@ rule <explicit_automaton>
   repeat
     @lstring initialState ;
     $identifier$ ? initialState ;
-    @luint initialStateIndex ;
-    [statesMap searchKeyGetIndex !initialState ?initialStateIndex] ;
+    @uint initialStateIndex ;
+    [statesMap searchKey !initialState ?initialStateIndex] ;
     initialStatesDefinitionList += !initialStateIndex !here ;
   while
     $,$ ;
@@ -1099,8 +1099,8 @@ rule <explicit_automaton>
     repeat
       @lstring terminalState ;
       $identifier$ ? terminalState ;
-      @luint terminalStateIndex ;
-      [statesMap searchKeyGetIndex !terminalState ?terminalStateIndex] ;
+      @uint terminalStateIndex ;
+      [statesMap searchKey !terminalState ?terminalStateIndex] ;
       terminalStatesDefinitionList += ! terminalStateIndex !here ;
     while
       $,$ ;
@@ -1113,9 +1113,9 @@ rule <explicit_automaton>
   #--- Current state
     @lstring stateName ;
     $identifier$ ? stateName ;
-    @luint stateIndex ;
-    [statesMap searchKeyGetIndex !stateName ?stateIndex] ;
-    [!?stateDefinitionMap defineState !stateName] ;
+    @uint stateIndex ;
+    [statesMap searchKey !stateName ?stateIndex] ;
+    [!?stateDefinitionMap defineState !stateName ![stateDefinitionMap count]] ;
     $:$ ;
   #--- State input expression
     @AC_boolExpression stateExpression ;
@@ -1132,8 +1132,8 @@ rule <explicit_automaton>
       $goto$ ;
       @lstring targetStateName ;
       $identifier$ ? targetStateName ;
-      @luint targetStateIndex ;
-      [statesMap searchKeyGetIndex !targetStateName ?targetStateIndex] ;
+      @uint targetStateIndex ;
+      [statesMap searchKey !targetStateName ?targetStateIndex] ;
       transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex ;
       $;$ ;
     end repeat ;
