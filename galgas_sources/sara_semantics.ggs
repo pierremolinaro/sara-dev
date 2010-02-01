@@ -199,10 +199,27 @@ class @C_suppressInitialStatesOperation extends @AC_machineDefinition {
 abstract class @AC_job feature generatedInSeparateFile {
 }
  
+class @C_machineDisplayStates extends @AC_job {
+  @uint mMachineIndex ;
+}
+
+class @C_machineDisplayInitialStates extends @AC_job {
+  @uint mMachineIndex ;
+}
+
+class @C_machineDisplayTerminalStates extends @AC_job {
+  @uint mMachineIndex ;
+}
+
+class @C_machineDisplayTransitions extends @AC_job {
+  @uint mMachineIndex ;
+}
+
 class @C_machineCheck extends @AC_job {
   @uint mMachineIndex ;
   @bool mCheckMachineIsBoolean ;
 }
+
 
 class @C_machineCheckIdentical extends @AC_job {
   @uint mMachineIndex1 ;

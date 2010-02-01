@@ -74,10 +74,30 @@ scenario $fourBitDownCounterWithReset (c, r)()(s3, s2, s1, s0) {
 
 #------------ UP COUNTERS WITH ASYNCHRONOUS RESET -----------
 
-$twoBitCounterWithAsynchronousReset (c, r)()(s1, s0) :=  ? cc (   $oneBitCounterWithReset ( c, r)()(s0) ||   $oneBitCounterWithReset (cc, r)()(s1) ||   bool {cc = ~s0}  );
+$twoBitCounterWithAsynchronousReset (c, r)()(s1, s0) :=
+  ? cc (
+   $oneBitCounterWithReset ( c, r)()(s0) ||
+   $oneBitCounterWithReset (cc, r)()(s1) ||
+   bool {cc = ~s0}
+  )
+;
 check $twoBitCounterWithAsynchronousReset ;
-$fourBitCounterWithAsynchronousReset (c, r)()(s3, s2, s1, s0) :=  ? cc (   $twoBitCounterWithAsynchronousReset ( c, r)()(s1, s0) ||   $twoBitCounterWithAsynchronousReset (cc, r)()(s3, s2) ||   bool {cc = ~s1}  );check $fourBitCounterWithAsynchronousReset ;
-$mod5upCounter (c)()(s3, s2, s1, s0) :=  ? r (    $fourBitCounterWithAsynchronousReset (c, r)()(s3, s2, s1, s0) ||    bool {r = s0 & s2}  );
+
+$fourBitCounterWithAsynchronousReset (c, r)()(s3, s2, s1, s0) :=
+  ? cc (
+   $twoBitCounterWithAsynchronousReset ( c, r)()(s1, s0) ||
+   $twoBitCounterWithAsynchronousReset (cc, r)()(s3, s2) ||
+   bool {cc = ~s1}
+  )
+;
+check $fourBitCounterWithAsynchronousReset ;
+
+$mod5upCounter (c)()(s3, s2, s1, s0) :=
+  ? r (
+    $fourBitCounterWithAsynchronousReset (c, r)()(s3, s2, s1, s0) ||
+    bool {r = s0 & s2}
+  )
+;
 check $mod5upCounter ; # FAILS
 
 scenario $mod5upCounter (c)()(s3, s2, s1, s0) {
