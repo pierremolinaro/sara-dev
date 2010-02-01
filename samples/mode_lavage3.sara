@@ -19,13 +19,13 @@ $modeAttenteArefix (eav1, eav2)()(r1, r2) :=
 auto {
     state etat_lav, etat_bal, etat_p ;
     first etat_lav ;
-	last etat_bal, etat_p;
+    last etat_bal, etat_p;
     etat_lav : eav1 & ~eav2 & r1 & ~r2 {
      ~eav1 & ~eav2 goto etat_bal ;
     }
     etat_bal : ~eav1 & ~eav2 & ~r1 & ~r2 
 { 
-	 eav1 & eav2 goto etat_p ;
+  eav1 & eav2 goto etat_p ;
 }
    etat_p : eav1 & eav2 & r1 & r2 
 { 
@@ -34,8 +34,8 @@ auto {
 ;
 
 $tousLesModes(eav1, eav2)()(r1, r2) := 
-	$mode_lavage(eav1, eav2)()(r1, r2) **
-	$modeAttenteArefix (eav1, eav2)()(r1, r2)
+ $mode_lavage(eav1, eav2)()(r1, r2) **
+ $modeAttenteArefix (eav1, eav2)()(r1, r2)
 ;
 check $tousLesModes ;
 $tousLesModesAvecSaturation (eav1, eav2)()(r1, r2) := 

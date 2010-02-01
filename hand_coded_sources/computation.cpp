@@ -2,7 +2,7 @@
 //                                                                           *
 //  Implementation of specific methods for SARA                              *
 //                                                                           *
-//  Copyright (C) 2004, ..., 2008 Eva Rakotomalala & Pierre Molinaro.        *
+//  Copyright (C) 2004, ..., 2010 Eva Rakotomalala & Pierre Molinaro.        *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -22,6 +22,7 @@
 #include "collections/TC_Array.h"
 #include "utilities/MF_MemoryControl.h"
 #include "time/C_Timer.h"
+#include "bdd/C_Display_BDD.h"
 #include "sara_cli_options.h"
 
 //---------------------------------------------------------------------------*
@@ -454,6 +455,80 @@ compute (C_Compiler & /* inLexique */,
   }else{
     co << "  Machines are different.\n" ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_machineDisplayStates::
+compute (C_Compiler & /* inLexique */,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+//--- Get machine index
+  const PMSInt32 machineIndex = (PMSInt32) mMachineIndex.uintValue () ;
+  const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
+  co << "------------------ States of '" << machine.mMachineName << "' machine\n" ;
+  C_Display_BDD machineDisplay ((PMUInt16) machine.mNamesArray.count ()) ;
+  for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
+    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+  }
+  machine.mAccessibleStatesBDD.printBDD (co, (PMUInt16) machine.mNamesArray.count (), machineDisplay) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_machineDisplayInitialStates::
+compute (C_Compiler & /* inLexique */,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+//--- Get machine index
+  const PMSInt32 machineIndex = (PMSInt32) mMachineIndex.uintValue () ;
+  const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
+  co << "------------------ First states of '" << machine.mMachineName << "' machine\n" ;
+  C_Display_BDD machineDisplay ((PMUInt16) machine.mNamesArray.count ()) ;
+  for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
+    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+  }
+  machine.mInitialStatesBDD.printBDD (co, (PMUInt16) machine.mNamesArray.count (), machineDisplay) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_machineDisplayTerminalStates::
+compute (C_Compiler & /* inLexique */,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+//--- Get machine index
+  const PMSInt32 machineIndex = (PMSInt32) mMachineIndex.uintValue () ;
+  const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
+  co << "------------------ Last states of '" << machine.mMachineName << "' machine\n" ;
+  C_Display_BDD machineDisplay ((PMUInt16) machine.mNamesArray.count ()) ;
+  for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
+    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+  }
+  machine.mTerminalStatesBDD.printBDD (co, (PMUInt16) machine.mNamesArray.count (), machineDisplay) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_machineDisplayTransitions::
+compute (C_Compiler & /* inLexique */,
+         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         const bool /* inDisplayBDDvaluesCount */,
+         const bool /* inDisplayBDDvalues */) const {
+//--- Get machine index
+  const PMSInt32 machineIndex = (PMSInt32) mMachineIndex.uintValue () ;
+  const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
+  co << "------------------ Transitions of '" << machine.mMachineName << "' machine\n" ;
+  const PMSInt32 n = machine.mNamesArray.count () ;
+  C_Display_BDD machineDisplay ((PMUInt16) (n + n)) ;
+  for (PMSInt32 i=0 ; i<n ; i++) {
+    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName (i + n, machine.mNamesArray (i COMMA_HERE), 1) ;
+  }
+  machine.mTransitionRelationBDD.printBDD (co, (PMUInt16) (n + n), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*

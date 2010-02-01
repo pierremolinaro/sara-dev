@@ -92,6 +92,96 @@ rule <component>
   @M_stateMap statesMap [emptyMap] ;
   @L_stateDefinition stateDefinitionList [emptyList] ;
 #--- Machine name
+  $state$ ;
+  $display$ ;
+  @lstring machineName ;
+  $machineIdf$ ? machineName ;
+  $;$ ;
+#--- Insert machine into machine map
+  @uint machineIndex ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+#--- Insert into component map
+  @AC_job job := [@C_machineDisplayStates new !machineIndex] ;
+  ioSemanticContext.componentsMap += !job ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>
+  ?!@semanticContext ioSemanticContext
+:
+  @M_variablesMap variablesMap [emptyMap] ;
+  @M_stateMap statesMap [emptyMap] ;
+  @L_stateDefinition stateDefinitionList [emptyList] ;
+#--- Machine name
+  $trans$ ;
+  $display$ ;
+  @lstring machineName ;
+  $machineIdf$ ? machineName ;
+  $;$ ;
+#--- Insert machine into machine map
+  @uint machineIndex ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+#--- Insert into component map
+  @AC_job job := [@C_machineDisplayTransitions new !machineIndex] ;
+  ioSemanticContext.componentsMap += !job ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>
+  ?!@semanticContext ioSemanticContext
+:
+  @M_variablesMap variablesMap [emptyMap] ;
+  @M_stateMap statesMap [emptyMap] ;
+  @L_stateDefinition stateDefinitionList [emptyList] ;
+#--- Machine name
+  $first$ ;
+  $state$ ;
+  $display$ ;
+  @lstring machineName ;
+  $machineIdf$ ? machineName ;
+  $;$ ;
+#--- Insert machine into machine map
+  @uint machineIndex ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+#--- Insert into component map
+  @AC_job job := [@C_machineDisplayInitialStates new !machineIndex] ;
+  ioSemanticContext.componentsMap += !job ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>
+  ?!@semanticContext ioSemanticContext
+:
+  @M_variablesMap variablesMap [emptyMap] ;
+  @M_stateMap statesMap [emptyMap] ;
+  @L_stateDefinition stateDefinitionList [emptyList] ;
+#--- Machine name
+  $last$ ;
+  $state$ ;
+  $display$ ;
+  @lstring machineName ;
+  $machineIdf$ ? machineName ;
+  $;$ ;
+#--- Insert machine into machine map
+  @uint machineIndex ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+#--- Insert into component map
+  @AC_job job := [@C_machineDisplayTerminalStates new !machineIndex] ;
+  ioSemanticContext.componentsMap += !job ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <component>
+  ?!@semanticContext ioSemanticContext
+:
+  @M_variablesMap variablesMap [emptyMap] ;
+  @M_stateMap statesMap [emptyMap] ;
+  @L_stateDefinition stateDefinitionList [emptyList] ;
+#--- Machine name
   $check$ ;
   @lstring machineName ;
   $machineIdf$ ? machineName ;
