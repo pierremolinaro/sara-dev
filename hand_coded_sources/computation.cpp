@@ -323,7 +323,7 @@ compute (C_Compiler & inLexique,
   n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned64 (n)
-     << " accessible state" << ((n > 1) ? "s" : "")
+     << " reachable state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
