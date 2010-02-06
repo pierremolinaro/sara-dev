@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------*
 
 grammar sara_grammar "LL1" :
-  with "sara_parser.ggs" ;
+  with "sara_parser.gSyntax" ;
   import lexique sara_scanner in "sara_scanner.gLexique" ;
   import option sara_cli_options in "sara_cli_options.gOption" ;
   import syntax sara_parser in "sara_parser.ggs" ;
