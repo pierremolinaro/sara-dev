@@ -470,7 +470,7 @@ compute (C_Compiler & /* inLexique */,
   co << "------------------ States of '" << machine.mMachineName << "' machine\n" ;
   C_Display_BDD machineDisplay ((PMUInt16) machine.mNamesArray.count ()) ;
   for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
   machine.mAccessibleStatesBDD.printBDD (co, (PMUInt16) machine.mNamesArray.count (), machineDisplay) ;
 }
@@ -488,7 +488,7 @@ compute (C_Compiler & /* inLexique */,
   co << "------------------ First states of '" << machine.mMachineName << "' machine\n" ;
   C_Display_BDD machineDisplay ((PMUInt16) machine.mNamesArray.count ()) ;
   for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
   machine.mInitialStatesBDD.printBDD (co, (PMUInt16) machine.mNamesArray.count (), machineDisplay) ;
 }
@@ -506,7 +506,7 @@ compute (C_Compiler & /* inLexique */,
   co << "------------------ Last states of '" << machine.mMachineName << "' machine\n" ;
   C_Display_BDD machineDisplay ((PMUInt16) machine.mNamesArray.count ()) ;
   for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
   machine.mTerminalStatesBDD.printBDD (co, (PMUInt16) machine.mNamesArray.count (), machineDisplay) ;
 }
@@ -525,8 +525,8 @@ compute (C_Compiler & /* inLexique */,
   const PMSInt32 n = machine.mNamesArray.count () ;
   C_Display_BDD machineDisplay ((PMUInt16) (n + n)) ;
   for (PMSInt32 i=0 ; i<n ; i++) {
-    machineDisplay.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
-    machineDisplay.defineVariableName (i + n, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) (i + n), machine.mNamesArray (i COMMA_HERE), 1) ;
   }
   machine.mTransitionRelationBDD.printBDD (co, (PMUInt16) (n + n), machineDisplay) ;
 }
