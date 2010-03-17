@@ -102,7 +102,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayStates new !machineIndex] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -124,7 +124,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayTransitions new !machineIndex] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -147,7 +147,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayInitialStates new !machineIndex] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -170,7 +170,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayTerminalStates new !machineIndex] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -191,7 +191,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheck new !machineIndex !false] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -218,7 +218,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName2 ?machineIndex2 ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheckIdentical new !machineIndex1 !machineIndex2] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -239,7 +239,7 @@ rule <component>
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheck new !machineIndex !true] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -250,7 +250,7 @@ rule <component>
   $use_and$ ;
   $;$ ;
   @AC_job job := [@typeUse_AND new] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -261,7 +261,7 @@ rule <component>
   $use_ite$ ;
   $;$ ;
   @AC_job job := [@typeUse_ITE new] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -272,7 +272,7 @@ rule <component>
   $use_and_ite$ ;
   $;$ ;
   @AC_job job := [@typeUse_AND_ITE new] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -285,7 +285,7 @@ rule <component>
   $literal_integer$ ? size ;
   $;$ ;
   @AC_job job := [@typeResize_AND_cache new !size] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -297,7 +297,7 @@ rule <component>
   $literal_integer$ ? size ;
   $;$ ;
   @AC_job job := [@typeResize_ITE_cache new !size] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -310,7 +310,7 @@ rule <component>
   $literal_integer$ ? size ;
   $;$ ;
   @AC_job job := [@typeResizeMap new !size] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -321,7 +321,7 @@ rule <component>
   $bdd$ ;
   $;$ ;
   @AC_job job := [@typeDisplayBDDstats new] ;
-  ioSemanticContext.componentsMap += !job ;
+  ioSemanticContext->componentsMap += !job ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -376,10 +376,10 @@ rule <component>
   <definition_expression> !ioSemanticContext !?variablesMap ?definition ;
 #--- Insert machine into machine map
   const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
-  [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineComponent new !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !definition] ;
-  ioSemanticContext.componentsMap += !machine ;
+  ioSemanticContext->componentsMap += !machine ;
   $;$ ;
 end rule ;
 
@@ -442,7 +442,7 @@ rule <component>
   ;
 #--- Insert machine into machine map
   const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
-  [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineDefinedByAdditiveModalComp new
    !machineName
@@ -453,7 +453,7 @@ rule <component>
    !modeMap
    !inclusionList
   ] ;
-  ioSemanticContext.componentsMap += !machine ;
+  ioSemanticContext->componentsMap += !machine ;
   $;$ ;
 end rule ;
 
@@ -516,7 +516,7 @@ rule <component>
   ;
 #--- Insert machine into machine map
   const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
-  [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineDefinedBySubstractiveModalComp new
    !machineName
@@ -527,7 +527,7 @@ rule <component>
    !modeMap
    !exclusionList
   ] ;
-  ioSemanticContext.componentsMap += !machine ;
+  ioSemanticContext->componentsMap += !machine ;
   $;$ ;
 end rule ;
 #---------------------------------------------------------------------------*
@@ -631,7 +631,7 @@ rule <component>
   $}$ ;
 #--- Insert job into job list
   @AC_job machine := [@C_scenarioComponent new !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !scenarioList] ;
-  ioSemanticContext.componentsMap += !machine ;
+  ioSemanticContext->componentsMap += !machine ;
 end rule ;
 
 #---------------------------------------------------------------------------*
