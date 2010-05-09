@@ -1234,8 +1234,8 @@ rule <explicit_automaton>
   end repeat ;
 #--- Check all states are defined
   foreach statesMap do
-    if not [stateDefinitionMap hasKey ![key string]] then
-      error here : "'" . [key string] . "' state is not described" ;
+    if not [stateDefinitionMap hasKey ![lkey string]] then
+      error here : "'" . lkey . "' state is not described" ;
     end if ;
   end foreach ;
 #--- End of input source
