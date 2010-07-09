@@ -205,22 +205,22 @@ routine_performComputations (C_Compiler & inLexique,
   //--- Initial cache and map sizes
     co << "Initial size of BDD unique table: "
        << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-       << "; initial size of ITE cache: "
-       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
+//       << "; initial size of ITE cache: "
+//       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
        << "; initial size of AND cache: "
        << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
        << ".\n" ;
-    switch (C_BDD::getComputingMode ()) {
-    case C_BDD::ITE_COMPUTED_FROM_AND :
-      co << "ITE is computed from AND.\n\n" ;
-      break ;
-    case C_BDD::AND_COMPUTED_FROM_ITE :
-      co << "AND is computed from ITE.\n\n" ;
-      break ;
-    case C_BDD::ITE_and_AND_ARE_INDEPENDANT :
-      co << "AND and ITE are computed independantly.\n\n" ;
-      break ;
-    }  
+    /* switch (C_BDD::getComputingMode ()) {
+        case C_BDD::ITE_COMPUTED_FROM_AND :
+          co << "ITE is computed from AND.\n\n" ;
+          break ;
+        case C_BDD::AND_COMPUTED_FROM_ITE :
+          co << "AND is computed from ITE.\n\n" ;
+          break ;
+        case C_BDD::ITE_and_AND_ARE_INDEPENDANT :
+          co << "AND and ITE are computed independantly.\n\n" ;
+          break ;
+        } */  
     fflush (stdout) ;
   //--- Loop for each component
     GGS_L_jobList::cElement * currentComponent = inComponentMap.firstObject () ;
@@ -713,16 +713,16 @@ compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  C_Timer duree ;
-  C_BDD::setITEcacheSize ((PMSInt32) mNewSize.uintValue ()) ;
-  duree.stopTimer () ;
-  co << "------------------ ite_cache "
-     << cStringWithUnsigned (mNewSize.uintValue ())
-     << ": ITE cache resized to "
-     << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
-     << " (done in "
-     << duree
-     << ").\n\n" ;  
+  /* C_Timer duree ;
+    C_BDD::setITEcacheSize ((PMSInt32) mNewSize.uintValue ()) ;
+    duree.stopTimer () ;
+    co << "------------------ ite_cache "
+       << cStringWithUnsigned (mNewSize.uintValue ())
+       << ": ITE cache resized to "
+       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
+       << " (done in "
+       << duree
+       << ").\n\n" ;  */ 
 }
 
 //----------------------------------------------------------------------------*
@@ -732,8 +732,8 @@ compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
-  co << "------------------ use_and: ITE is now computed from AND.\n\n" ;
+  /* C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
+      co << "------------------ use_and: ITE is now computed from AND.\n\n" ; */
 }
 
 //----------------------------------------------------------------------------*
@@ -743,8 +743,8 @@ compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
-  co << "------------------ use_ite: AND is now computed from ITE.\n\n" ;
+  /* C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
+    co << "------------------ use_ite: AND is now computed from ITE.\n\n" ; */
 }
 
 //----------------------------------------------------------------------------*
@@ -754,8 +754,8 @@ compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
-  co << "------------------ use_and_ite: AND and ITE are now computed independantly.\n\n" ;
+  /* C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
+    co << "------------------ use_and_ite: AND and ITE are now computed independantly.\n\n" ; */
 }
 
 //----------------------------------------------------------------------------*
