@@ -202,26 +202,6 @@ routine_performComputations (C_Compiler & inLexique,
   //--- Options
     const bool displayBDDvaluesCount = gOption_sara_5F_cli_5F_options_displayBDDvaluesCount.mValue ;
     const bool displayBDDvalues = gOption_sara_5F_cli_5F_options_displayBDDvalues.mValue ;
-  //--- Initial cache and map sizes
-    co << "Initial size of BDD unique table: "
-       << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-//       << "; initial size of ITE cache: "
-//       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
-       << "; initial size of AND cache: "
-       << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
-       << ".\n" ;
-    /* switch (C_BDD::getComputingMode ()) {
-        case C_BDD::ITE_COMPUTED_FROM_AND :
-          co << "ITE is computed from AND.\n\n" ;
-          break ;
-        case C_BDD::AND_COMPUTED_FROM_ITE :
-          co << "AND is computed from ITE.\n\n" ;
-          break ;
-        case C_BDD::ITE_and_AND_ARE_INDEPENDANT :
-          co << "AND and ITE are computed independantly.\n\n" ;
-          break ;
-        } */  
-    fflush (stdout) ;
   //--- Loop for each component
     GGS_L_jobList::cElement * currentComponent = inComponentMap.firstObject () ;
     while (currentComponent != NULL) {
@@ -675,16 +655,16 @@ compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  C_Timer duree ;
-  C_BDD::setHashMapSize ((PMUInt16) mNewSize.uintValue ()) ;
-  duree.stopTimer () ;
-  co << "------------------ map "
-     << cStringWithUnsigned (mNewSize.uintValue ())
-     << ": BDD unique table resized to "
-     << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-     << " (done in "
-     << duree
-     << ").\n\n" ; 
+  /* C_Timer duree ;
+    C_BDD::setHashMapSize ((PMUInt16) mNewSize.uintValue ()) ;
+    duree.stopTimer () ;
+    co << "------------------ map "
+       << cStringWithUnsigned (mNewSize.uintValue ())
+       << ": BDD unique table resized to "
+       << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
+       << " (done in "
+       << duree
+       << ").\n\n" ; */ 
 }
 
 //----------------------------------------------------------------------------*
@@ -694,16 +674,16 @@ compute (C_Compiler & /* inLexique */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  C_Timer duree ;
-  C_BDD::setANDcacheSize ((PMSInt32) mNewSize.uintValue ()) ;
-  duree.stopTimer () ;
-  co << "------------------ and_cache "
-     << cStringWithUnsigned (mNewSize.uintValue ())
-     << ": AND cache resized to "
-     << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
-     << " (done in "
-     << duree
-     << ").\n\n" ;  
+  /* C_Timer duree ;
+    C_BDD::setANDcacheSize ((PMSInt32) mNewSize.uintValue ()) ;
+    duree.stopTimer () ;
+    co << "------------------ and_cache "
+       << cStringWithUnsigned (mNewSize.uintValue ())
+       << ": AND cache resized to "
+       << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
+       << " (done in "
+       << duree
+       << ").\n\n" ; */  
 }
 
 //----------------------------------------------------------------------------*
