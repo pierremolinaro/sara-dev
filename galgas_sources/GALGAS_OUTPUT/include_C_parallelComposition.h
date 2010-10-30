@@ -21,7 +21,7 @@ class cPtr_C_parallelComposition : public cPtr_AC_machineDefinition {
   private : typedef cPtr_AC_machineDefinition inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual void computeFromExpression (C_Compiler & inLexique,
+  public : virtual void computeFromExpression (C_CompilerEx & inCompiler,
                                                const TC_Array <C_saraMachine> & inSaraSystemArray,
                                                const PMUInt16 inVariablesCount,
                                                C_BDD & outInitialStatesBDD,

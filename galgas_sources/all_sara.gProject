@@ -6,5 +6,5 @@ project all_sara :
   grammar "sara_grammar.gGrammar" : makefile, xcode_tool ;
   program "sara_main.gProgram" : makefile, xcode_tool ;
   gui "cocoa_sara.gGui" : xcode_tool, xcode_app ;
-  extern "../hand_coded_sources/computation.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/computation-v2.cpp" : makefile, xcode_tool ;
 end project ;
