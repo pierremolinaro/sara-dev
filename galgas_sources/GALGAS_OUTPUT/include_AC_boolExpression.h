@@ -36,7 +36,7 @@
 class cPtr_AC_boolExpression : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual C_BDD computeBDD (C_Compiler & inLexique,
+  public : virtual C_BDD computeBDD (C_CompilerEx & inCompiler,
                                      const TC_Array <C_saraMachine> & inSaraSystemArray,
                                      const PMUInt16 inVariablesCount,
                                      const PMUInt16 inBDDslotOffset) const = 0 ;

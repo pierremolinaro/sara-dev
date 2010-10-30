@@ -20,7 +20,7 @@
 class cPtr_AC_machineDefinition : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void computeFromExpression (C_Compiler & inLexique,
+  public : virtual void computeFromExpression (C_CompilerEx & inCompiler,
                                                const TC_Array <C_saraMachine> & inSaraSystemArray,
                                                const PMUInt16 inVariablesCount,
                                                C_BDD & outInitialStatesBDD,

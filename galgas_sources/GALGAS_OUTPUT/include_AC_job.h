@@ -20,7 +20,7 @@
 class cPtr_AC_job : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void compute (C_Compiler & inLexique,
+  public : virtual void compute (C_CompilerEx & inCompiler,
                                  TC_Array <C_saraMachine> & ioSaraSystemArray,
                                  const bool inDisplayBDDvaluesCount,
                                  const bool inDisplayBDDvalues) const = 0 ;

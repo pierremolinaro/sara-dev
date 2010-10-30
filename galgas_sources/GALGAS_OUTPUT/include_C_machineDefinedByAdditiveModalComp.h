@@ -21,7 +21,7 @@ class cPtr_C_machineDefinedByAdditiveModalComp : public cPtr_AC_job {
   private : typedef cPtr_AC_job inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual void compute (C_Compiler & inLexique,
+  public : virtual void compute (C_CompilerEx & inCompiler,
                                  TC_Array <C_saraMachine> & ioSaraSystemArray,
                                  const bool inDisplayBDDvaluesCount,
                                  const bool inDisplayBDDvalues) const ;

@@ -21,7 +21,7 @@ class cPtr_C_equalExpression : public cPtr_AC_boolExpression {
   private : typedef cPtr_AC_boolExpression inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual C_BDD computeBDD (C_Compiler & inLexique,
+  public : virtual C_BDD computeBDD (C_CompilerEx & inCompiler,
                                      const TC_Array <C_saraMachine> & inSaraSystemArray,
                                      const PMUInt16 inVariablesCount,
                                      const PMUInt16 inBDDslotOffset) const ;
