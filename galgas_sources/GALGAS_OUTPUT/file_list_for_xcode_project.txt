@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		894217686BA124D7356686C9 /* ../hand_coded_sources/computation-v2.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
+		894217686BA124D7356686C9 /* computation-v2.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
 		930E414107EE22B6198C578F /* sara_cli_options.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
 		83A4C3A763A7E62D825349F7 /* sara_grammar.cpp */ = {isa = PBXBuildFile; fileRef = A2F3E71D9181A67B7542122C ; settings = {ATTRIBUTES = (); }; };
 		E1833F3FDB077CA70BBD5D66 /* sara_main.cpp */ = {isa = PBXBuildFile; fileRef = 5A880FAF6FB5E6087EB1B2DC ; settings = {ATTRIBUTES = (); }; };
@@ -91,7 +91,7 @@
 		2C25763A55CC642422644317 /* C_String.cpp */ = {isa = PBXBuildFile; fileRef = 4F3240AD5B9B413AA7346A1E ; settings = {ATTRIBUTES = (); }; };
 		B191F8F9DE3F924F0940515F /* unicode_character_cpp.cpp */ = {isa = PBXBuildFile; fileRef = 59E3BB12D203F45A912EEAF2 ; settings = {ATTRIBUTES = (); }; };
 		5380FCACCE3976BF7C08AF5B /* unicode_string_routines.cpp */ = {isa = PBXBuildFile; fileRef = C950ECB729A966504AF0A635 ; settings = {ATTRIBUTES = (); }; };
-		F61279C928F19721878FAC41 /* ../hand_coded_sources/computation-v2.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
+		F61279C928F19721878FAC41 /* computation-v2.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
 		B53F4CC0AD3819A36752467B /* sara_cli_options.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
 		D8E091C2AB4C7C7DE644D37B /* sara_grammar.cpp */ = {isa = PBXBuildFile; fileRef = A2F3E71D9181A67B7542122C ; settings = {ATTRIBUTES = (); }; };
 		710521C12EE76289D9440817 /* sara_main.cpp */ = {isa = PBXBuildFile; fileRef = 5A880FAF6FB5E6087EB1B2DC ; settings = {ATTRIBUTES = (); }; };
@@ -222,7 +222,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		95D565EF66E7DFF9F98764DA /* computation-v2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = computation-v2.cpp; path = ../hand_coded_sources/computation-v2.cpp; sourceTree = "<group>"; };
 		6F7A3BB4700CFDDEF19FA23F /* AC_GALGAS_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AC_GALGAS_class.cpp; path = AC_GALGAS_class.cpp; sourceTree = "<group>"; };
 		827B703E6ACF9C726942A1E4 /* AC_GALGAS_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AC_GALGAS_class.h; path = AC_GALGAS_class.h; sourceTree = "<group>"; };
 		102A8D3BE2FE5614F42BA989 /* AC_GALGAS_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AC_GALGAS_list.cpp; path = AC_GALGAS_list.cpp; sourceTree = "<group>"; };
@@ -426,6 +425,7 @@
 		226AF2F3114485AA4E0A23B4 /* capSortedListElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = capSortedListElement.cpp; path = capSortedListElement.cpp; sourceTree = "<group>"; };
 		D5213FD0ECE03148E62E461E /* capSortedListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = capSortedListElement.h; path = capSortedListElement.h; sourceTree = "<group>"; };
 		22BCC25A6F606EB525FFDC56 /* cocoa_sara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = cocoa_sara.m; path = cocoa_sara.m; sourceTree = "<group>"; };
+		95D565EF66E7DFF9F98764DA /* computation-v2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = computation-v2.cpp; path = computation-v2.cpp; sourceTree = "<group>"; };
 		E6AC95EA2C0343A2395834DD /* cpp-allocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpp-allocation.cpp; path = cpp-allocation.cpp; sourceTree = "<group>"; };
 		3138416A242F40FB7D7F338E /* cpp-allocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpp-allocation.h; path = cpp-allocation.h; sourceTree = "<group>"; };
 		EC990F19C78C75BD1E06F215 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = enterDefaultCommandLineOptions.h; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
@@ -477,10 +477,10 @@
 		A0B923820DCC509A6F75849B /* Hand Coded Sources */ = {
 			isa = PBXGroup;
 			children = (
-				95D565EF66E7DFF9F98764DA /* ../hand_coded_sources/computation-v2.cpp */,
+				95D565EF66E7DFF9F98764DA /* computation-v2.cpp */,
 			);
 			name = "Hand Coded Sources";
-			path = "../galgas_sources";
+			path = "../hand_coded_sources";
 			sourceTree = "<group>";
 		};
 		F062936A96D3C8BD1F8F2FF3 /* Generated by GALGAS */ = {
@@ -832,7 +832,7 @@
 				74C28E489B44E954EC0B9BCA /* Strings */,
 			);
 			name = LIBPM;
-			path = "../libpm";
+			path = "libpm";
 			sourceTree = "<group>";
 		};
 		1CE41366A4BBE8A49B02A028 /* Project Resources */ = {
@@ -1244,7 +1244,7 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../libpm/galgas/PP_GalgasPrefix.pch";
+				GCC_PREFIX_HEADER = "libpm/galgas/PP_GalgasPrefix.pch";
 				PRODUCT_NAME = "sara";
 			};
 			name = Default;
@@ -1264,7 +1264,7 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch";
+				GCC_PREFIX_HEADER = "libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch";
 				INFOPLIST_FILE = "Info.plist";
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
@@ -1279,7 +1279,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = (
 					i386,
-					ppc,
 				);
 				GCC_DEBUGGING_SYMBOLS = default;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -1315,7 +1314,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"../galgas_sources/GALGAS_OUTPUT",
-					"../libpm",
+					"libpm",
 					"../hand_coded_sources/**",
 				);
 				PREBINDING = NO;

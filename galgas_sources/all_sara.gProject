@@ -1,10 +1,18 @@
-project all_sara :
-  lexique "sara_scanner.gLexique" : makefile, xcode_tool, xcode_app ;
-  semantics "sara_semantics.gSemantics" : makefile, xcode_tool ;
-  option "sara_cli_options.gOption" : makefile, xcode_tool, xcode_app ;
-  syntax "sara_parser.gSyntax" : makefile, xcode_tool ;
-  grammar "sara_grammar.gGrammar" : makefile, xcode_tool ;
-  program "sara_main.gProgram" : makefile, xcode_tool ;
-  gui "cocoa_sara.gGui" : xcode_tool, xcode_app ;
-  extern "../hand_coded_sources/computation-v2.cpp" : makefile, xcode_tool ;
+project all_sara -> "sara" :
+#--- Targets
+  feature "makefile-macosx" ;
+  feature "makefile-unix" ;
+  feature "makefile-i386-linux-on-macosx" ;
+  feature "makefile-mingw-on-macosx" ;
+  feature "xcode-project" ;
+  feature "xcode-arch:i386" ;
+#---
+  lexique "sara_scanner.gLexique" ;
+  semantics "sara_semantics.gSemantics" ;
+  option "sara_cli_options.gOption" ;
+  syntax "sara_parser.gSyntax" ;
+  grammar "sara_grammar.gGrammar" ;
+  program "sara_main.gProgram" ;
+  gui "cocoa_sara.gGui" ;
+  extern "computation-v2.cpp" ;
 end project ;

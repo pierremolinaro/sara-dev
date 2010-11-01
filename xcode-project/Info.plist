@@ -12,9 +12,9 @@
 				<string>sara</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>saraDocuments.icns</string>
+			<string>saraDocuments</string>
 			<key>CFBundleTypeName</key>
-			<string>SARA Source</string>
+			<string>sara Source</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>TEXT</string>
@@ -30,17 +30,19 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>saraApplication.icns</string>
+	<string>saraApplication</string>
 	<key>CFBundleIdentifier</key>
-	<string>fr.ec-nantes.irccyn.saraGalgas</string>
+	<string>com.yourcompany.sara</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
-	<string>SRAX</string>
+	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>build 69, libpm v81</string>
+	<string>1.0</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
