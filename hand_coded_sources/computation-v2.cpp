@@ -148,7 +148,7 @@ computeBDD (C_Compiler * inCompiler,
   cEnumerator_L_5F_translationVector e (mAttribute_mTranslationVector, true) ;
   PMSInt32 index = 0 ;
   while (e.hasCurrentObject ()) {
-    statesSubstitutionArray [index] = (PMUInt16) e.current_mTargetSlot ().uintValue () ;
+    statesSubstitutionArray [index] = (PMUInt16) e.current_mTargetSlot (HERE).uintValue () ;
     e.gotoNextObject () ;
     index ++ ;
   }
@@ -205,7 +205,7 @@ routine_performComputations (const GALGAS_L_5F_jobList inComponentMap,
     cEnumerator_L_5F_jobList currentComponent (inComponentMap, true) ;
     while (currentComponent.hasCurrentObject ()) {
       C_saraMachine system ;
-      currentComponent.current_mComponent ().ptr ()->compute (inCompiler, 
+      currentComponent.current_mComponent (HERE).ptr ()->compute (inCompiler, 
                                                 saraSystemArray,
                                                 displayBDDvaluesCount,
                                                 displayBDDvalues) ;
@@ -237,7 +237,7 @@ compute (C_Compiler * inCompiler,
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, true) ;
   PMSInt32 index = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey ().mAttribute_string.stringValue () ;
+    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
     index ++ ;
     currentVar.gotoNextObject () ;
   }
@@ -756,14 +756,14 @@ compute (C_Compiler * /* inCompiler */,
   cEnumerator_L_5F_scenarioList scenario (mAttribute_mScenarioList, true) ;
   while (scenario.hasCurrentObject ()) {
   //--- Print scenario title
-    co << "Scenario '" << scenario.current_mScenarioTitle () << "':\n" ;
+    co << "Scenario '" << scenario.current_mScenarioTitle (HERE) << "':\n" ;
   //--- Build initial configuration
-    cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (), true) ;
+    cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (HERE), true) ;
     PMUInt64 initialConfiguration = 0 ;
     PMUInt16 shift = 0 ;
-    cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (), true) ;
+    cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), true) ;
     while (v.hasCurrentObject ()) {
-      initialConfiguration += ((PMUInt64) v.current_mInputValue ().mAttribute_uint.uintValue ()) << shift ;
+      initialConfiguration += ((PMUInt64) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
       shift ++ ;
       v.gotoNextObject () ;
     }
@@ -784,9 +784,9 @@ compute (C_Compiler * /* inCompiler */,
     //--- Parse new input configuration
       PMUInt64 inputConfiguration = 0 ;
       shift = 0 ;
-      cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (), true) ;
+      cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), true) ;
       while (v.hasCurrentObject ()) {
-        inputConfiguration += ((PMUInt64) v.current_mInputValue ().mAttribute_uint.uintValue ()) << shift ;
+        inputConfiguration += ((PMUInt64) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
         shift ++ ;
         v.gotoNextObject () ;
       }
@@ -825,7 +825,7 @@ computeFromExpression (C_Compiler * inCompiler,
   TC_UniqueArray <C_String> stateNameArray (mAttribute_mStatesMap.count () COMMA_HERE) ;
   cEnumerator_M_5F_stateMap currentState (mAttribute_mStatesMap, true) ;
   while (currentState.hasCurrentObject ()) {
-    stateNameArray.addObject (currentState.current_lkey ().mAttribute_string.stringValue ()) ;
+    stateNameArray.addObject (currentState.current_lkey (HERE).mAttribute_string.stringValue ()) ;
     currentState.gotoNextObject () ;
   }
 //----------------------------------------------------------------------- States BDD array
@@ -839,16 +839,16 @@ computeFromExpression (C_Compiler * inCompiler,
   cEnumerator_L_5F_stateDefinition currentDefinition (mAttribute_mStateDefinitionList, true) ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get state index
-    const PMSInt32 stateIndex = (PMSInt32) currentDefinition.current_mStateIndex ().uintValue () ;
+    const PMSInt32 stateIndex = (PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Enter state configuration
-    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition.current_mStateExpression ().ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition.current_mStateExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
   //--- Check state configuration is not empty
     if (stateExpressionBDD (stateIndex COMMA_HERE).isFalse ()) {
       C_String errorMessage ;
       errorMessage << "input configuration for state '"
                    << stateNameArray (stateIndex COMMA_HERE)
                    << "' is empty" ;
-      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (), errorMessage COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage COMMA_HERE) ;
     }
   //--- Go to next state definition  
     currentDefinition.gotoNextObject () ;
@@ -859,15 +859,15 @@ computeFromExpression (C_Compiler * inCompiler,
     cEnumerator_L_5F_stateDefinition testedState (mAttribute_mStateDefinitionList, true) ;
     testedState.gotoIndex (currentDefinition.index () + 1) ;
     while (testedState.hasCurrentObject ()) {
-      if (! (stateExpressionBDD ((PMSInt32) currentDefinition.current_mStateIndex ().uintValue () COMMA_HERE)
-           & stateExpressionBDD ((PMSInt32) testedState.current_mStateIndex ().uintValue () COMMA_HERE)).isFalse ()) {
+      if (! (stateExpressionBDD ((PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+           & stateExpressionBDD ((PMSInt32) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "expression for state '"
-                   << stateNameArray ((PMSInt32) testedState.current_mStateIndex ().uintValue () COMMA_HERE)
+                   << stateNameArray ((PMSInt32) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                    << "' intersects expression for state '"
-                   << stateNameArray ((PMSInt32) currentDefinition.current_mStateIndex ().uintValue () COMMA_HERE)
+                   << stateNameArray ((PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                    << "'" ;
-        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage COMMA_HERE) ;
       }
       testedState.gotoNextObject () ;
     }
@@ -883,7 +883,7 @@ computeFromExpression (C_Compiler * inCompiler,
   cEnumerator_L_5F_statesDefinitionList currentInitialState (mAttribute_mInitialStatesDefinitionList, true) ;
   while (currentInitialState.hasCurrentObject ()) {
     // printf ("INIT : %ld\n", currentInitialState->mStateIndex.uintValue ()) ;
-    outInitialStatesBDD |= stateExpressionBDD ((PMSInt32) currentInitialState.current_mStateIndex ().uintValue () COMMA_HERE) ;
+    outInitialStatesBDD |= stateExpressionBDD ((PMSInt32) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
     currentInitialState.gotoNextObject () ;
   }
 //--- Check initial states are disjoined
@@ -892,16 +892,16 @@ computeFromExpression (C_Compiler * inCompiler,
     cEnumerator_L_5F_statesDefinitionList testedInitialState (mAttribute_mInitialStatesDefinitionList, true) ;
     testedInitialState.gotoIndex (currentInitialState.index () + 1) ;
     while (testedInitialState.hasCurrentObject ()) {
-      const C_BDD intersection = stateExpressionBDD ((PMSInt32) currentInitialState.current_mStateIndex ().uintValue () COMMA_HERE)
-        & stateExpressionBDD ((PMSInt32) testedInitialState.current_mStateIndex ().uintValue () COMMA_HERE) ;
+      const C_BDD intersection = stateExpressionBDD ((PMSInt32) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+        & stateExpressionBDD ((PMSInt32) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (! intersection.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "initial state '"
-                     << stateNameArray ((PMSInt32) testedInitialState.current_mStateIndex ().uintValue () COMMA_HERE)
+                     << stateNameArray ((PMSInt32) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                      << "' intersects previous initial state '"
-                     << stateNameArray ((PMSInt32) currentInitialState.current_mStateIndex ().uintValue () COMMA_HERE)
+                     << stateNameArray ((PMSInt32) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                      << "'" ;
-        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage COMMA_HERE) ;
       }
       testedInitialState.gotoNextObject () ;
     }
@@ -915,7 +915,7 @@ computeFromExpression (C_Compiler * inCompiler,
 //--- Compute BDD initial states
   cEnumerator_L_5F_statesDefinitionList currentTerminalState (mAttribute_mTerminalStatesDefinitionList, true) ;
   while (currentTerminalState.hasCurrentObject ()) {
-    outTerminalStatesBDD |= stateExpressionBDD ((PMSInt32) currentTerminalState.current_mStateIndex ().uintValue () COMMA_HERE) ;
+    outTerminalStatesBDD |= stateExpressionBDD ((PMSInt32) currentTerminalState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
     currentTerminalState.gotoNextObject () ;
   }
 //----------------------------------------------------------------------- Transitions BDD
@@ -932,13 +932,13 @@ computeFromExpression (C_Compiler * inCompiler,
   currentDefinition.rewind () ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get current state index
-    const PMSInt32 currentStateIndex = (PMSInt32) currentDefinition.current_mStateIndex ().uintValue () ;
+    const PMSInt32 currentStateIndex = (PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Accumulate transitions targets for each transition
     C_BDD transitionsTargetBDD ;
-    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (), true) ;
+    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), true) ;
     while (currentTransition.hasCurrentObject ()) {
-      const C_BDD actionBDD = currentTransition.current_mActionExpression ().ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
-      const PMSInt32 targetStateIndex = (PMSInt32) currentTransition.current_mTargetStateIndex ().uintValue () ;
+      const C_BDD actionBDD = currentTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
+      const PMSInt32 targetStateIndex = (PMSInt32) currentTransition.current_mTargetStateIndex (HERE).uintValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
       currentTransition.gotoNextObject () ;
@@ -953,39 +953,39 @@ computeFromExpression (C_Compiler * inCompiler,
 //--- Check transitions of each state
   currentDefinition.rewind () ;
   while (currentDefinition.hasCurrentObject ()) {
-    const PMSInt32 stateIndex = (PMSInt32) currentDefinition.current_mStateIndex ().uintValue () ;
+    const PMSInt32 stateIndex = (PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Check that action does not intersect with state input expression
     PMSInt32 transitionIndex = 0 ;
-    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (), true) ;
+    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), true) ;
     while (currentTransition.hasCurrentObject ()) {
     //--- Compute action BDD
-      const C_BDD actionBDD = currentTransition.current_mActionExpression ().ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+      const C_BDD actionBDD = currentTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
     //--- Check action does not intersect with state input expression
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this action intersects with current state input configuration" ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
-      cEnumerator_L_5F_transitionDefinition testedTransition (currentDefinition.current_mTransitionsList (), true) ;
+      cEnumerator_L_5F_transitionDefinition testedTransition (currentDefinition.current_mTransitionsList (HERE), true) ;
       testedTransition.gotoIndex (currentTransition.index () + 1) ;
       while (testedTransition.hasCurrentObject ()) {
       //--- Compute action BDD
-        const C_BDD testedActionBDD = testedTransition.current_mActionExpression ().ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+        const C_BDD testedActionBDD = testedTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
           errorMessage << "this action intersects with #" << cStringWithSigned (transitionIndex) << " previous action" ;
-          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (), errorMessage COMMA_HERE) ;
+          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage COMMA_HERE) ;
         }
         testedTransition.gotoNextObject () ;
       }
     //--- Check that action is compatible input configuration of target state
-      const C_BDD x = actionBDD & stateExpressionBDD ((PMSInt32) currentTransition.current_mTargetStateIndex ().uintValue () COMMA_HERE) ;
+      const C_BDD x = actionBDD & stateExpressionBDD ((PMSInt32) currentTransition.current_mTargetStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage COMMA_HERE) ;
       }
     //--- Goto next transition
       currentTransition.gotoNextObject () ;
@@ -1448,9 +1448,9 @@ computeFromExpression (C_Compiler * /* inCompiler */,
   cEnumerator_L_5F_translationVector p (mAttribute_mTranslationVector, true) ;
   PMSInt32 index = 0 ;
   while (p.hasCurrentObject ()) {
-    statesSubstitutionArray [index] = (PMUInt16) p.current_mTargetSlot ().uintValue () ;
-    transitionsSubstitutionArray [index] = (PMUInt16) p.current_mTargetSlot ().uintValue () ;
-    transitionsSubstitutionArray [importedMachineVariableCount + index] = (PMUInt16) (inVariablesCount + p.current_mTargetSlot ().uintValue ()) ;
+    statesSubstitutionArray [index] = (PMUInt16) p.current_mTargetSlot (HERE).uintValue () ;
+    transitionsSubstitutionArray [index] = (PMUInt16) p.current_mTargetSlot (HERE).uintValue () ;
+    transitionsSubstitutionArray [importedMachineVariableCount + index] = (PMUInt16) (inVariablesCount + p.current_mTargetSlot (HERE).uintValue ()) ;
     p.gotoNextObject () ;
     index ++ ;
   }
@@ -1487,9 +1487,9 @@ computeFromExpression (C_Compiler * inCompiler,
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, true) ;
   {PMSInt32 index = 0 ;
     while (currentMode.hasCurrentObject ()) {
-      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey () ;
+      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition ().ptr ()->computeFromExpression (inCompiler,
+      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1594,8 +1594,8 @@ computeFromExpression (C_Compiler * inCompiler,
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
   cEnumerator_ListForModes currentInclusion (mAttribute_mInclusionList, true) ;
   while (currentInclusion.hasCurrentObject ()) {
-    const PMSInt32 sourceMode = (PMSInt32) currentInclusion.current_mSourceMode ().uintValue () ;
-    const PMSInt32 targetMode = (PMSInt32) currentInclusion.current_mTargetMode ().uintValue () ;
+    const PMSInt32 sourceMode = (PMSInt32) currentInclusion.current_mSourceMode (HERE).uintValue () ;
+    const PMSInt32 targetMode = (PMSInt32) currentInclusion.current_mTargetMode (HERE).uintValue () ;
   //--- translate initial state BDD by inVariablesCount slots
     const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
   //--- Transitions to from terminal states to initial states
@@ -1626,9 +1626,9 @@ computeFromExpression (C_Compiler * inCompiler,
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, true) ;
   {PMSInt32 index = 0 ;
     while (currentMode.hasCurrentObject ()) {
-      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey () ;
+      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition ().ptr ()->computeFromExpression (inCompiler,
+      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1738,7 +1738,7 @@ computeFromExpression (C_Compiler * inCompiler,
         bool isAccepted = true ;
         cEnumerator_ListForModes currentExclusion (mAttribute_mExclusionList, true) ;
         while ((currentExclusion.hasCurrentObject ()) && isAccepted) {
-          isAccepted = (sourceMode != (PMSInt32) currentExclusion.current_mSourceMode ().uintValue ()) || (targetMode != (PMSInt32) currentExclusion.current_mTargetMode ().uintValue ()) ;
+          isAccepted = (sourceMode != (PMSInt32) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (PMSInt32) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
           currentExclusion.gotoNextObject () ;
         }
       //--- If accepted, add transition
@@ -1815,7 +1815,7 @@ compute (C_Compiler * inCompiler,
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, true) ;
   PMSInt32 index = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey ().mAttribute_string.stringValue () ;
+    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
     index ++ ;
     currentVar.gotoNextObject () ;
   }
@@ -1829,9 +1829,9 @@ compute (C_Compiler * inCompiler,
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, true) ;
   {PMSInt32 index = 0 ;
     while (currentMode.hasCurrentObject ()) {
-      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey () ;
+      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition ().ptr ()->computeFromExpression (inCompiler,
+      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
                                                               ioSaraSystemArray,
                                                               variablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1936,8 +1936,8 @@ compute (C_Compiler * inCompiler,
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
   cEnumerator_ListForModes currentInclusion (mAttribute_mInclusionList, true) ;
   while (currentInclusion.hasCurrentObject ()) {
-    const PMSInt32 sourceMode = (PMSInt32) currentInclusion.current_mSourceMode ().uintValue () ;
-    const PMSInt32 targetMode = (PMSInt32) currentInclusion.current_mTargetMode ().uintValue () ;
+    const PMSInt32 sourceMode = (PMSInt32) currentInclusion.current_mSourceMode (HERE).uintValue () ;
+    const PMSInt32 targetMode = (PMSInt32) currentInclusion.current_mTargetMode (HERE).uintValue () ;
   //--- Add filtered transitions from terminal states to initial states
     addFilteredTransitions (machine.mTransitionRelationBDD,
                             accessibilityRelationStatesArray (sourceMode COMMA_HERE),
@@ -2054,7 +2054,7 @@ compute (C_Compiler * inCompiler,
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, true) ;
   PMSInt32 index = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey ().mAttribute_string.stringValue () ;
+    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
     index ++ ;
     currentVar.gotoNextObject () ;
   }
@@ -2069,9 +2069,9 @@ compute (C_Compiler * inCompiler,
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, true) ;
   {PMSInt32 index = 0 ;
     while (currentMode.hasCurrentObject ()) {
-      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey () ;
+      modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition ().ptr ()->computeFromExpression (inCompiler,
+      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
                                                               ioSaraSystemArray,
                                                               variablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -2181,7 +2181,7 @@ compute (C_Compiler * inCompiler,
         bool isAccepted = true ;
         cEnumerator_ListForModes currentExclusion (mAttribute_mExclusionList, true) ;
         while ((currentExclusion.hasCurrentObject ()) && isAccepted) {
-          isAccepted = (sourceMode != (PMSInt32) currentExclusion.current_mSourceMode ().uintValue ()) || (targetMode != (PMSInt32) currentExclusion.current_mTargetMode ().uintValue ()) ;
+          isAccepted = (sourceMode != (PMSInt32) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (PMSInt32) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
           currentExclusion.gotoNextObject () ;
         }
       //--- If accepted, add transition
