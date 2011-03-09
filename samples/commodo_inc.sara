@@ -45,7 +45,7 @@ $commodoIncremental (ah, ab)()(ea1, ea2) := auto {
 
 check $commodoIncremental ;
 
-$modeArret (eav1, eav2, arefix)()(r1, r2) := ~eav1 & ~eav2 & arefix & ~r1 & ~r2 ;
+$modeArret (eav1, eav2, arefix)()(r1, r2) := bool {~eav1 & ~eav2 & arefix & ~r1 & ~r2} ;
 
 $modeAttenteArefix (eav1, eav2, arefix)()(r1, r2) := ~eav1 & ~eav2 & ~arefix & r1 & ~r2 ;
 

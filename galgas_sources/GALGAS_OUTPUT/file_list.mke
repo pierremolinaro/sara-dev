@@ -13,7 +13,7 @@ endif
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
 SOURCES_DIR += ../galgas_sources/GALGAS_OUTPUT/include-files
-SOURCES_DIR += ../hand_coded_sources/
+SOURCES_DIR += ../hand_coded_sources
 
 
 #---------------------------------------------------------------*
@@ -70,6 +70,7 @@ SOURCES += C_HTML_FileWrite.cpp
 
 #--- Streams
 SOURCES += AC_OutputStream.cpp
+SOURCES += C_ColoredConsole.cpp
 SOURCES += C_ConsoleOut.cpp
 SOURCES += C_ErrorOut.cpp
 
