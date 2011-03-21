@@ -39,7 +39,7 @@ list delimitorsList error message "the '%K' delimitor" style delimitors :
 rule list delimitorsList ;
 # -------------------- Characters string --------------------------------------
 
-$literal_string$ ! identifierString error message "a character string constant \"...\"" style stringStyle ;
+$literal_string$ ! identifierString error message "a character string constant \"...\"" style stringStyle feature nonAtomicSelection ;
 
 message incorrectStringEnd : "string does not end with '\"'" ;
 message incorrectCharInString : "this character cannot appear within a string" ;
@@ -101,7 +101,7 @@ end rule ;
   end rule ;
 #------------------------------------ Comment ----------------------------
 message incorrectEndOfComment : "incorrect end of comment" ;
-$comment$ error message "a comment" style commentStyle ;
+$comment$ error message "a comment" style commentStyle feature nonAtomicSelection ;
 
 rule '#' :
   repeat
