@@ -196,7 +196,7 @@ void
 routine_performComputations (const GALGAS_L_5F_jobList inComponentMap,
                              C_Compiler * inCompiler
                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (inCompiler->totalErrorCount () == 0) {
+  if (totalErrorCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
     const bool displayBDDvaluesCount = gOption_sara_5F_cli_5F_options_displayBDDvaluesCount.mValue ;
