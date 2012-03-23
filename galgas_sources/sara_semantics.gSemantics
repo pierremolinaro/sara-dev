@@ -232,6 +232,7 @@ class @C_machineComponent extends @AC_job {
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
+  @stringlist mNameList ;
   @AC_machineDefinition mDefinition ;
 }
 
@@ -313,6 +314,7 @@ map @M_machinesMap {
   @uint mInputVariableCount ;
   @uint mInputAndInternalVariableCount ;
   @M_variablesMap mVariablesMap ;
+  @stringlist mNameList ;
   insert insertKey error message "the '%K' machine has been already declared" ;
   search searchKey error message "the '%K' machine is not defined" ;
   remove removeKey error message "the '%K' machine is not defined" ;

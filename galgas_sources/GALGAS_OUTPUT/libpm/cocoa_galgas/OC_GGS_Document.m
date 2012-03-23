@@ -56,7 +56,7 @@
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
-    mBuildTask = [OC_GGS_BuildTaskProxy new] ;
+    mBuildTask = [[OC_GGS_BuildTaskProxy alloc] initWithDocument:self] ;
   }
   return self;
 }
@@ -270,6 +270,18 @@
     withKeyPath:@"mRawOutputString"
     options:NULL
   ] ;
+  [mRawOutputTextView
+    bind:@"editable"
+    toObject:self
+    withKeyPath:@"no"
+    options:NULL
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) no {
+  return NO ;
 }
 
 //---------------------------------------------------------------------------*
@@ -438,6 +450,17 @@
   #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject shiftRightAction] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) validateMenuItem:(NSMenuItem *) item {
+  BOOL result = YES ;
+  if ((item.action == @selector (actionComment:)) || (item.action == @selector (actionUncomment:))) {
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+    result = selectedObject.textSyntaxColoring.tokenizer.blockComment.length > 0 ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -985,7 +1008,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mBuildTask buildDocument:self] ;
+  [mBuildTask build] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1022,9 +1045,9 @@
   #endif
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) {
     [[NSRunLoop currentRunLoop]
-      performSelector:@selector (buildDocument:)
+      performSelector:@selector (build)
       target:mBuildTask
-      argument:self
+      argument:nil
       order:0
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
     ] ;

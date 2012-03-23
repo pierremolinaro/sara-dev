@@ -44,7 +44,7 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayStates new !machineIndex] ;
   ioSemanticContext->componentsMap += !job ;
@@ -66,7 +66,7 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayTransitions new !machineIndex] ;
   ioSemanticContext->componentsMap += !job ;
@@ -89,7 +89,7 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayInitialStates new !machineIndex] ;
   ioSemanticContext->componentsMap += !job ;
@@ -112,7 +112,7 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineDisplayTerminalStates new !machineIndex] ;
   ioSemanticContext->componentsMap += !job ;
@@ -133,7 +133,7 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheck new !machineIndex !false] ;
   ioSemanticContext->componentsMap += !job ;
@@ -157,10 +157,10 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex1 ;
-  [[ioSemanticContext machinesMap] searchKey !machineName1 ?machineIndex1 ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName1 ?machineIndex1 ?* ?* ?* ?*] ;
 #--- Insert machine into machine map
   @uint machineIndex2 ;
-  [[ioSemanticContext machinesMap] searchKey !machineName2 ?machineIndex2 ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName2 ?machineIndex2 ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheckIdentical new !machineIndex1 !machineIndex2] ;
   ioSemanticContext->componentsMap += !job ;
@@ -181,7 +181,7 @@ rule <component>
   $;$ ;
 #--- Insert machine into machine map
   @uint machineIndex ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?*] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*] ;
 #--- Insert into component map
   @AC_job job := [@C_machineCheck new !machineIndex !true] ;
   ioSemanticContext->componentsMap += !job ;
@@ -277,6 +277,7 @@ rule <component>
   @M_variablesMap variablesMap [emptyMap] ;
   @M_stateMap statesMap [emptyMap] ;
   @L_stateDefinition stateDefinitionList [emptyList] ;
+  @stringlist nameList [emptyList] ;
 #--- Machine name
   @lstring machineName ;
   $machineIdf$ ? machineName ;
@@ -286,6 +287,7 @@ rule <component>
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
     [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
+    nameList += !inputVarName->string ;
   while
     $,$ ;
   end repeat ;
@@ -299,6 +301,7 @@ rule <component>
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
       [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
+      nameList += !outputVarName->string ;
     while
       $,$ ;
     end repeat ;
@@ -311,6 +314,7 @@ rule <component>
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
     [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
+    nameList += !outputVarName->string ;
   while
     $,$ ;
   end repeat ;
@@ -321,9 +325,16 @@ rule <component>
   <definition_expression> !ioSemanticContext !?variablesMap ?definition ;
 #--- Insert machine into machine map
   const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
-  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  [!?ioSemanticContext->machinesMap insertKey
+    !machineName
+    !machineIndex
+    !inputVariablesCount
+    !inputAndInternalVariablesCount
+    !variablesMap
+    !nameList
+  ] ;
 #--- Insert into component map
-  @AC_job machine := [@C_machineComponent new !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !definition] ;
+  @AC_job machine := [@C_machineComponent new !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList !definition] ;
   ioSemanticContext->componentsMap += !machine ;
   $;$ ;
 end rule ;
@@ -336,6 +347,7 @@ rule <component>
   @M_variablesMap variablesMap [emptyMap] ;
   @M_stateMap statesMap [emptyMap] ;
   @L_stateDefinition stateDefinitionList [emptyList] ;
+  @stringlist nameList [emptyList] ;
 #--- Machine name
   $modalcompadd$ ;
   @lstring machineName ;
@@ -346,6 +358,7 @@ rule <component>
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
     [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
+    nameList += !inputVarName->string ;
   while
     $,$ ;
   end repeat ;
@@ -359,6 +372,7 @@ rule <component>
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
       [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
+      nameList += !outputVarName->string ;
     while
       $,$ ;
     end repeat ;
@@ -371,6 +385,7 @@ rule <component>
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
     [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
+    nameList += !outputVarName->string ;
   while
     $,$ ;
   end repeat ;
@@ -387,7 +402,7 @@ rule <component>
   ;
 #--- Insert machine into machine map
   const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
-  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineDefinedByAdditiveModalComp new
    !machineName
@@ -410,6 +425,7 @@ rule <component>
   @M_variablesMap variablesMap [emptyMap] ;
   @M_stateMap statesMap [emptyMap] ;
   @L_stateDefinition stateDefinitionList [emptyList] ;
+  @stringlist nameList [emptyList] ;
 #--- Machine name
   $modalcompsub$ ;
   @lstring machineName ;
@@ -420,6 +436,7 @@ rule <component>
     @lstring inputVarName ;
     $identifier$ ? inputVarName ;
     [!?variablesMap insertKey !inputVarName ![variablesMap count]] ;
+    nameList += !inputVarName->string ;
   while
     $,$ ;
   end repeat ;
@@ -433,6 +450,7 @@ rule <component>
       @lstring outputVarName ;
       $identifier$ ? outputVarName ;
       [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
+      nameList += !outputVarName->string ;
     while
       $,$ ;
     end repeat ;
@@ -445,6 +463,7 @@ rule <component>
     @lstring outputVarName ;
     $identifier$ ? outputVarName ;
     [!?variablesMap insertKey !outputVarName ![variablesMap count]] ;
+    nameList += !outputVarName->string ;
   while
     $,$ ;
   end repeat ;
@@ -461,7 +480,7 @@ rule <component>
   ;
 #--- Insert machine into machine map
   const @uint machineIndex := [[ioSemanticContext machinesMap] count] ;
-  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap] ;
+  [!?ioSemanticContext->machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList] ;
 #--- Insert into component map
   @AC_job machine := [@C_machineDefinedBySubstractiveModalComp new
    !machineName
@@ -491,7 +510,7 @@ rule <component>
   @uint inputVariablesCountFromDefinition ;
   @uint inputAndInternalVariablesCountFromDefinition ;
   @M_variablesMap variablesMapFromDefinition ;
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?inputVariablesCountFromDefinition ?inputAndInternalVariablesCountFromDefinition ?variablesMapFromDefinition] ;
+  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?inputVariablesCountFromDefinition ?inputAndInternalVariablesCountFromDefinition ?variablesMapFromDefinition ?*] ;
 #--- Parse input variables
   $($ ;
   repeat
@@ -702,7 +721,7 @@ rule <io_primary>
   @uint machineInputAndInternalVariableCount ;
   @M_variablesMap machineVariablesMap ;
   @uint indexOfImportedMachine ;
-  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap] ;
+  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap ?*] ;
   @L_translationVector translationVector [emptyList] ;
 #--- Parse input variables
   $($ ;
@@ -1030,7 +1049,7 @@ rule <definition_expression_factor>
   @uint machineInputAndInternalVariableCount ;
   @M_variablesMap machineVariablesMap ;
   @uint indexOfImportedMachine ;
-  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap] ;
+  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap ?*] ;
   @L_translationVector translationVector [emptyList] ;
 #--- Parse input variables
   $($ ;
