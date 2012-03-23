@@ -234,10 +234,10 @@ compute (C_Compiler * inCompiler,
   { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
+  cEnumerator_stringlist currentVar (mAttribute_mNameList, kEnumeration_up) ;
   PMSInt32 index = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
+    machine.mNamesArray (index COMMA_HERE) = currentVar.current_mValue (HERE).stringValue () ;
     index ++ ;
     currentVar.gotoNextObject () ;
   }
