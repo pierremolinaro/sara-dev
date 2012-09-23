@@ -5,6 +5,7 @@ project all_sara -> "sara" :
   feature "makefile_i386_linux_on_macosx" ;
   feature "makefile_mingw_on_macosx" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.irccyn" ;
 #---
   lexique "sara_scanner.gLexique" ;
   semantics "sara_semantics.gSemantics" ;
