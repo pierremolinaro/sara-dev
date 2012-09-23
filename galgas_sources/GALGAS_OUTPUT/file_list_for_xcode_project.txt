@@ -212,7 +212,7 @@
 		2BCD9A273F8BBB72BE3A687B /* enterDefaultCommandLineOptions.m */ = {isa = PBXBuildFile; fileRef = 778DFAECDC212708F721B788 ; settings = {ATTRIBUTES = (); }; };
 		D1D1A4BE65601CC6DDC1520E /* OC_GGS_Document.m */ = {isa = PBXBuildFile; fileRef = 19AD8176D665453CFB2E55F0 ; settings = {ATTRIBUTES = (); }; };
 		5494AE9D2F5A76AA1C00FA2F /* OC_GGS_DocumentData.m */ = {isa = PBXBuildFile; fileRef = 6AB90CE0268229151C9BDE11 ; settings = {ATTRIBUTES = (); }; };
-		FCAEF229B342C437FE2B95F7 /* OC_GGS_PreferencesController.m */ = {isa = PBXBuildFile; fileRef = 754BA1C09B3695E0CB6CDE7F ; settings = {ATTRIBUTES = (); }; };
+		FCAEF229B342C437FE2B95F7 /* OC_GGS_ApplicationDelegate.m */ = {isa = PBXBuildFile; fileRef = 754BA1C09B3695E0CB6CDE7F ; settings = {ATTRIBUTES = (); }; };
 		8B3E9753913F4D435B53C308 /* PMIssueDescriptor.m */ = {isa = PBXBuildFile; fileRef = 80A295F8076B1C5722A46AA2 ; settings = {ATTRIBUTES = (); }; };
 		60B4BD07F9BB215D59EF5561 /* OC_GGS_TextDisplayDescriptor.m */ = {isa = PBXBuildFile; fileRef = 7FBDB1988EF4C628EBA02591 ; settings = {ATTRIBUTES = (); }; };
 		F13D451727AEFF9082C29A5C /* OC_GGS_TextSyntaxColoring.m */ = {isa = PBXBuildFile; fileRef = 6E7929B125F8597834FA83A4 ; settings = {ATTRIBUTES = (); }; };
@@ -227,8 +227,8 @@
 		B73F030B4F67EEAEBA301103 /* cocoa_sara.m */ = {isa = PBXBuildFile; fileRef = 22BCC25A6F606EB525FFDC56 ; settings = {ATTRIBUTES = (); }; };
 		1C2EC9232F3A2F028AD5C89B /* AppKit.framework */ = {isa = PBXBuildFile; fileRef = AF6023646EDE0E1F7C1EAC75 ; settings = {ATTRIBUTES = (); }; };
 		83065D403869739AE7F0995E /* Cocoa.framework */ = {isa = PBXBuildFile; fileRef = F73A9969845DFE4146C5660E ; settings = {ATTRIBUTES = (); }; };
-		0361D157D9673ECB926AF5AE /* saraApplication.icns */ = {isa = PBXBuildFile; fileRef = CC52BC6F3D620BCEDC94A4B6 ; settings = {ATTRIBUTES = (); }; };
-		0BEDED7D215102B49D5C09A0 /* saraDocuments.icns */ = {isa = PBXBuildFile; fileRef = 5B344BC40F3BC04F65B7A357 ; settings = {ATTRIBUTES = (); }; };
+		0361D157D9673ECB926AF5AE /* application_icns.icns */ = {isa = PBXBuildFile; fileRef = CC52BC6F3D620BCEDC94A4B6 ; settings = {ATTRIBUTES = (); }; };
+		0BEDED7D215102B49D5C09A0 /* sara_icns.icns */ = {isa = PBXBuildFile; fileRef = 5B344BC40F3BC04F65B7A357 ; settings = {ATTRIBUTES = (); }; };
 		E8752B27EDA3A12363109E80 /* sara */ = {isa = PBXBuildFile; fileRef = 76FA1A4F25F62E0EB5261CA3 ; settings = {ATTRIBUTES = (); }; };
 		EA13F91BF3C48159F7C24F78 /* sara_debug */ = {isa = PBXBuildFile; fileRef = 640CA02B0D42DABEB8E46BB7 ; settings = {ATTRIBUTES = (); }; };
 		AFDF976CFDC032E3BDE78DE5 /* I_Stop.tiff */ = {isa = PBXBuildFile; fileRef = 68B6EDD3015B3EDC9A11367B ; settings = {ATTRIBUTES = (); }; };
@@ -371,6 +371,8 @@
 		74C28E489B44E954EC0B9BCA /* M_SourceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "M_SourceLocation.h"; path = "M_SourceLocation.h"; sourceTree = "<group>"; };
 		3138416A242F40FB7D7F338E /* M_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "M_Threads.h"; path = "M_Threads.h"; sourceTree = "<group>"; };
 		CDCD5072BB1864CDEE4D3D6E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xib; name = "English"; path = "English.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		6A60928B05A7E228A89C3799 /* OC_GGS_ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_ApplicationDelegate.h"; path = "OC_GGS_ApplicationDelegate.h"; sourceTree = "<group>"; };
+		754BA1C09B3695E0CB6CDE7F /* OC_GGS_ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "OC_GGS_ApplicationDelegate.m"; path = "OC_GGS_ApplicationDelegate.m"; sourceTree = "<group>"; };
 		C30201F73F142449D037028D /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_BuildTask.h"; path = "OC_GGS_BuildTask.h"; sourceTree = "<group>"; };
 		08E959397ADF34B1D77E88D7 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "OC_GGS_BuildTask.m"; path = "OC_GGS_BuildTask.m"; sourceTree = "<group>"; };
 		30BD3DCAEFC96F40275BDC0A /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_CommandLineOption.h"; path = "OC_GGS_CommandLineOption.h"; sourceTree = "<group>"; };
@@ -380,8 +382,6 @@
 		7964F8DDDEB95FC584CD965D /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xib; name = "English"; path = "English.lproj/OC_GGS_Document.xib"; sourceTree = "<group>"; };
 		3AFB633E50CDF1B20DE6F466 /* OC_GGS_DocumentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_DocumentData.h"; path = "OC_GGS_DocumentData.h"; sourceTree = "<group>"; };
 		6AB90CE0268229151C9BDE11 /* OC_GGS_DocumentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "OC_GGS_DocumentData.m"; path = "OC_GGS_DocumentData.m"; sourceTree = "<group>"; };
-		6A60928B05A7E228A89C3799 /* OC_GGS_PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_PreferencesController.h"; path = "OC_GGS_PreferencesController.h"; sourceTree = "<group>"; };
-		754BA1C09B3695E0CB6CDE7F /* OC_GGS_PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "OC_GGS_PreferencesController.m"; path = "OC_GGS_PreferencesController.m"; sourceTree = "<group>"; };
 		976AAB5298D5DA10FE66F21D /* OC_GGS_RulerViewForBuildOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_RulerViewForBuildOutput.h"; path = "OC_GGS_RulerViewForBuildOutput.h"; sourceTree = "<group>"; };
 		28D4BF8CE0FF2EC19B371514 /* OC_GGS_RulerViewForBuildOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "OC_GGS_RulerViewForBuildOutput.m"; path = "OC_GGS_RulerViewForBuildOutput.m"; sourceTree = "<group>"; };
 		3223EFBC24C7D2583BE69251 /* OC_GGS_RulerViewForTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OC_GGS_RulerViewForTextView.h"; path = "OC_GGS_RulerViewForTextView.h"; sourceTree = "<group>"; };
@@ -433,6 +433,7 @@
 		920CF82AB059BFCCBD02BE6A /* TF_sup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TF_sup.h"; path = "TF_sup.h"; sourceTree = "<group>"; };
 		872F539BEF8C3F919874E9D7 /* acPtr_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "acPtr_class.cpp"; path = "acPtr_class.cpp"; sourceTree = "<group>"; };
 		0045EB7A6EC44C54D29ED402 /* acPtr_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "acPtr_class.h"; path = "acPtr_class.h"; sourceTree = "<group>"; };
+		CC52BC6F3D620BCEDC94A4B6 /* application_icns.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "application_icns.icns"; path = "application_icns.icns"; sourceTree = "<group>"; };
 		CBCC5E5D1C6E28598E8CBBE8 /* basic-allocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "basic-allocation.cpp"; path = "basic-allocation.cpp"; sourceTree = "<group>"; };
 		C950ECB729A966504AF0A635 /* basic-allocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "basic-allocation.h"; path = "basic-allocation.h"; sourceTree = "<group>"; };
 		052A8CE66358EB576B8912C8 /* cCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "cCollectionElement.cpp"; path = "cCollectionElement.cpp"; sourceTree = "<group>"; };
@@ -468,13 +469,12 @@
 		6C3ABCA69FA097B85867D9A4 /* predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "predefined-types.cpp"; path = "predefined-types.cpp"; sourceTree = "<group>"; };
 		CA20DB309E056E3D2DCD7D69 /* predefined-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "predefined-types.h"; path = "predefined-types.h"; sourceTree = "<group>"; };
 		76FA1A4F25F62E0EB5261CA3 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "sara"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC52BC6F3D620BCEDC94A4B6 /* saraApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "saraApplication.icns"; path = "saraApplication.icns"; sourceTree = "<group>"; };
-		5B344BC40F3BC04F65B7A357 /* saraDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "saraDocuments.icns"; path = "saraDocuments.icns"; sourceTree = "<group>"; };
 		9D4C2F636F067F89CC14862C /* sara_cli_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sara_cli_options.cpp"; path = "sara_cli_options.cpp"; sourceTree = "<group>"; };
 		4B5CE2FE28308FD9F2A7BAF3 /* sara_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "sara_cli_options.h"; path = "sara_cli_options.h"; sourceTree = "<group>"; };
 		640CA02B0D42DABEB8E46BB7 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "sara_debug"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F3E71D9181A67B7542122C /* sara_grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sara_grammar.cpp"; path = "sara_grammar.cpp"; sourceTree = "<group>"; };
 		BBCE2345D7772B0674A318D5 /* sara_grammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "sara_grammar.h"; path = "sara_grammar.h"; sourceTree = "<group>"; };
+		5B344BC40F3BC04F65B7A357 /* sara_icns.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "sara_icns.icns"; path = "sara_icns.icns"; sourceTree = "<group>"; };
 		5A880FAF6FB5E6087EB1B2DC /* sara_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sara_main.cpp"; path = "sara_main.cpp"; sourceTree = "<group>"; };
 		CEEA167A5A36DEDD4BEA2543 /* sara_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "sara_main.h"; path = "sara_main.h"; sourceTree = "<group>"; };
 		FB98AB9159F51FD0297E236D /* sara_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sara_parser.cpp"; path = "sara_parser.cpp"; sourceTree = "<group>"; };
@@ -584,8 +584,8 @@
 				E76FC522773286A895BC8436 /* OC_GGS_Document.h */,
 				6AB90CE0268229151C9BDE11 /* OC_GGS_DocumentData.m */,
 				3AFB633E50CDF1B20DE6F466 /* OC_GGS_DocumentData.h */,
-				754BA1C09B3695E0CB6CDE7F /* OC_GGS_PreferencesController.m */,
-				6A60928B05A7E228A89C3799 /* OC_GGS_PreferencesController.h */,
+				754BA1C09B3695E0CB6CDE7F /* OC_GGS_ApplicationDelegate.m */,
+				6A60928B05A7E228A89C3799 /* OC_GGS_ApplicationDelegate.h */,
 				80A295F8076B1C5722A46AA2 /* PMIssueDescriptor.m */,
 				A126B2F4B2374F342BE9ED44 /* PMIssueDescriptor.h */,
 				7FBDB1988EF4C628EBA02591 /* OC_GGS_TextDisplayDescriptor.m */,
@@ -885,8 +885,8 @@
 		7D74717E0B1F21D122E04521 /* User Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CC52BC6F3D620BCEDC94A4B6 /* saraApplication.icns */,
-				5B344BC40F3BC04F65B7A357 /* saraDocuments.icns */,
+				CC52BC6F3D620BCEDC94A4B6 /* application_icns.icns */,
+				5B344BC40F3BC04F65B7A357 /* sara_icns.icns */,
 			);
 			name = "User Resources";
 			path = "userResources";
@@ -1353,13 +1353,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				GCC_DEBUGGING_SYMBOLS = default;
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
-				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
@@ -1367,7 +1365,6 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
@@ -1375,7 +1372,6 @@
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_PROTOTYPE_CONVERSION = YES;
 				GCC_WARN_SHADOW = NO;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
@@ -1391,7 +1387,6 @@
 					"../galgas_sources/GALGAS_OUTPUT/libpm",
 					"../hand_coded_sources/**",
 				);
-				PREBINDING = NO;
 				SDKROOT = macosx10.6 ;
 			};
 			name = Default;
