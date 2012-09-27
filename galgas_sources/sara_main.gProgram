@@ -4,7 +4,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program sara_main "version 1.4.0" :
+program sara_main :
   import "sara_grammar.gGrammar" ;
 
   before {
