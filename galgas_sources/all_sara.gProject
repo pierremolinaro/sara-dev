@@ -1,4 +1,4 @@
-project all_sara -> "sara" :
+project all_sara (0:0:1) -> "sara" :
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
