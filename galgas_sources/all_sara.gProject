@@ -3,6 +3,7 @@ project all_sara (0:0:1) -> "sara" :
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
+  feature "makefile_x86_64_linux_on_macosx" ;
   feature "makefile_mingw_on_macosx" ;
   feature "SnowLeopard" ;
   feature applicationBundleBase : "fr.irccyn" ;
