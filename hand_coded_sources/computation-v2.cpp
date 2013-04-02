@@ -780,7 +780,7 @@ compute (C_Compiler * /* inCompiler */,
     PMUInt64 valuesCount = currentState.valueCount (shift) ;
   //--- Loop throught input sequence
     currentInput.gotoNextObject () ;
-    while ((currentInput.hasCurrentObject ()) && (valuesCount == 1ULL)) {
+    while ((currentInput.hasCurrentObject ()) && (valuesCount == 1)) {
     //--- Parse new input configuration
       PMUInt64 inputConfiguration = 0 ;
       shift = 0 ;
@@ -801,9 +801,9 @@ compute (C_Compiler * /* inCompiler */,
       currentInput.gotoNextObject () ;
     }
     delete [] substitutionVector ; substitutionVector = NULL ;
-    if (valuesCount == 0ULL) {
+    if (valuesCount == 0) {
       co << "*** ERROR: dead state.\n" ;
-    }else if (valuesCount > 1ULL) {
+    }else if (valuesCount > 1) {
       co << "*** ERROR: ambiguous transition ("
          << cStringWithUnsigned (valuesCount)
          << " states).\n" ;
