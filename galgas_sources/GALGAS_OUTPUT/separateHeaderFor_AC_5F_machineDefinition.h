@@ -22,7 +22,7 @@ class cPtr_AC_5F_machineDefinition : public acPtr_class {
 
   public : virtual void computeFromExpression (C_Compiler * inCompiler,
                                                const TC_Array <C_saraMachine> & inSaraSystemArray,
-                                               const PMUInt16 inVariablesCount,
+                                               const PMUInt32 inVariablesCount,
                                                C_BDD & outInitialStatesBDD,
                                                C_BDD & outTerminalStatesBDD,
                                                C_BDD & outAccessibilityRelationBDD) const = 0 ;

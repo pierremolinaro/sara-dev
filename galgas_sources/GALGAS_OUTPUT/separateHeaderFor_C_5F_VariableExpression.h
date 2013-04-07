@@ -22,8 +22,8 @@ class cPtr_C_5F_VariableExpression : public cPtr_AC_5F_boolExpression {
 
   public : virtual C_BDD computeBDD (C_Compiler * inCompiler,
                                      const TC_Array <C_saraMachine> & inSaraSystemArray,
-                                     const PMUInt16 inVariablesCount,
-                                     const PMUInt16 inBDDslotOffset) const ;
+                                     const PMUInt32 inVariablesCount,
+                                     const PMUInt32 inBDDslotOffset) const ;
 
 //--- END OF USER ZONE 2
 
