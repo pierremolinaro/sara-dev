@@ -15,8 +15,8 @@
   class C_saraMachine {
     public : C_saraMachine (void) ;
     public : C_String mMachineName ;
-    public : PMUInt16 mInputVariablesCount ;
-    public : PMUInt16 mInputAndInternalVariablesCount ;
+    public : PMUInt32 mInputVariablesCount ;
+    public : PMUInt32 mInputAndInternalVariablesCount ;
     public : TC_UniqueArray <C_String> mNamesArray ;
     public : C_BDD mInitialStatesBDD ;
     public : C_BDD mTerminalStatesBDD ;
@@ -38,8 +38,8 @@ class cPtr_AC_5F_boolExpression : public acPtr_class {
 
   public : virtual C_BDD computeBDD (C_Compiler * inCompiler,
                                      const TC_Array <C_saraMachine> & inSaraSystemArray,
-                                     const PMUInt16 inVariablesCount,
-                                     const PMUInt16 inBDDslotOffset) const = 0 ;
+                                     const PMUInt32 inVariablesCount,
+                                     const PMUInt32 inBDDslotOffset) const = 0 ;
 
 //--- END OF USER ZONE 2
 
