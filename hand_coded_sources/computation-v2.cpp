@@ -284,7 +284,7 @@ compute (C_Compiler * inCompiler,
      << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount)
      << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
-  PMUInt64 n = machine.mInitialStatesBDD.valueCount (variablesCount) ;
+  PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
   PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " initial state" << ((n > 1) ? "s" : "")
@@ -292,7 +292,7 @@ compute (C_Compiler * inCompiler,
   if (inDisplayBDDvalues) {
     machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mTerminalStatesBDD.valueCount (variablesCount) ;
+  n = machine.mTerminalStatesBDD.valueCount64 (variablesCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " terminal state" << ((n > 1) ? "s" : "")
@@ -300,7 +300,7 @@ compute (C_Compiler * inCompiler,
   if (inDisplayBDDvalues) {
     machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
+  n = machine.mAccessibleStatesBDD.valueCount64 (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " reachable state" << ((n > 1) ? "s" : "")
@@ -308,7 +308,7 @@ compute (C_Compiler * inCompiler,
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mTransitionRelationBDD.valueCount (variablesCount + variablesCount) ;
+  n = machine.mTransitionRelationBDD.valueCount64 (variablesCount + variablesCount) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " transition" << ((n > 1) ? "s" : "")
@@ -322,7 +322,7 @@ compute (C_Compiler * inCompiler,
     constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
-  n = transitionsWithSourceEqualTarget.valueCount (variablesCount + variablesCount) ;
+  n = transitionsWithSourceEqualTarget.valueCount64 (variablesCount + variablesCount) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " transition" << ((n > 1) ? "s" : "")
@@ -333,7 +333,7 @@ compute (C_Compiler * inCompiler,
   }
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
-  n = t.valueCount (variablesCount + variablesCount) ;
+  n = t.valueCount64 (variablesCount + variablesCount) ;
   nodes = t.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " transition" << ((n > 1) ? "s" : "")
@@ -527,7 +527,7 @@ compute (C_Compiler * /* inCompiler */,
   if (notHandledInputConfigurations.isFalse ()) {
     co << "  All input configurations are handled;\n" ;
   }else{
-    const PMUInt64 n = notHandledInputConfigurations.valueCount (machine.mInputVariablesCount) ;
+    const PMUInt64 n = notHandledInputConfigurations.valueCount64 (machine.mInputVariablesCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " missing input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
     notHandledInputConfigurations.printBDD (machine.mNamesArray, machine.mInputVariablesCount, 3) ;
@@ -554,7 +554,7 @@ compute (C_Compiler * /* inCompiler */,
   if (ambiguousInput.isFalse ()) {
     co << "  No ambiguous input configuration;\n" ;
   }else{
-    const PMUInt64 n = ambiguousInput.valueCount (variableCount) ;
+    const PMUInt64 n = ambiguousInput.valueCount64 (variableCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " ambiguous input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
     ambiguousInput.printBDD (machine.mNamesArray, 3) ;
@@ -580,7 +580,7 @@ compute (C_Compiler * /* inCompiler */,
   if (ambiguousTransitions.isFalse ()) {
     co << "  No ambiguous transition;\n" ;
   }else{
-    const PMUInt64 n = ambiguousTransitions.valueCount ( (variableCount+variableCount)) ;
+    const PMUInt64 n = ambiguousTransitions.valueCount64 ( (variableCount+variableCount)) ;
     co << "  " << cStringWithUnsigned (n)
        << " ambiguous transition" << ((n > 1) ? "s" : "") << ":\n" ;
     TC_UniqueArray <C_String> transitionsVariableNameArray ( (variableCount + variableCount), "" COMMA_HERE) ;
@@ -596,7 +596,7 @@ compute (C_Compiler * /* inCompiler */,
   if (incompleteStatesAndInput.isFalse ()) {
     co << "  No incomplete state;\n" ;
   }else{
-    const PMUInt64 n = incompleteStatesAndInput.valueCount ( (variableCount+machine.mInputVariablesCount)) ;
+    const PMUInt64 n = incompleteStatesAndInput.valueCount64 ( (variableCount+machine.mInputVariablesCount)) ;
     co << "  " << cStringWithUnsigned (n)
        << " incomplete state" << ((n > 1) ? "s" : "") << ":\n" ;
     TC_UniqueArray <C_String> transitionsVariableNameArray ( (variableCount + variableCount), "" COMMA_HERE) ;
@@ -615,7 +615,7 @@ compute (C_Compiler * /* inCompiler */,
   if (notStableStates.isFalse ()) {
     co << "  All states are stable;\n" ;
   }else{
-    const PMUInt64 n = notStableStates.valueCount (variableCount) ;
+    const PMUInt64 n = notStableStates.valueCount64 (variableCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " instable state" << ((n > 1) ? "s" : "") << ":\n" ;
     notStableStates.printBDD (machine.mNamesArray, variableCount, 3) ;
@@ -781,7 +781,7 @@ compute (C_Compiler * /* inCompiler */,
     }
   //--- Display initial configuration
     currentState.printBDD (ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, 3) ;
-    PMUInt64 valuesCount = currentState.valueCount (shift) ;
+    PMUInt64 valuesCount = currentState.valueCount64 (shift) ;
   //--- Loop throught input sequence
     currentInput.gotoNextObject () ;
     while ((currentInput.hasCurrentObject ()) && (valuesCount == 1)) {
@@ -800,7 +800,7 @@ compute (C_Compiler * /* inCompiler */,
       currentState = currentState.existsOnBitsAfterNumber (variableCount) ;
     //--- Display current configuration
       currentState.printBDDwithoutHeader (ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, variableCount, 3) ;
-      valuesCount = currentState.valueCount (shift) ;
+      valuesCount = currentState.valueCount64 (shift) ;
     //--- Goto next input
       currentInput.gotoNextObject () ;
     }
@@ -1991,7 +1991,7 @@ compute (C_Compiler * inCompiler,
 //--- Print messages
   const PMSInt32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
   const PMSInt32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
-  PMUInt64 n = machine.mInitialStatesBDD.valueCount (variablesCount) ;
+  PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
   PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
@@ -2003,7 +2003,7 @@ compute (C_Compiler * inCompiler,
   if (inDisplayBDDvalues) {
     machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mTerminalStatesBDD.valueCount (variablesCount) ;
+  n = machine.mTerminalStatesBDD.valueCount64 (variablesCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " terminal state" << ((n > 1) ? "s" : "")
@@ -2011,14 +2011,14 @@ compute (C_Compiler * inCompiler,
   if (inDisplayBDDvalues) {
     machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
+  n = machine.mAccessibleStatesBDD.valueCount64 (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " accessible state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ";\n" ;
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mTransitionRelationBDD.valueCount ( (variablesCount + variablesCount)) ;
+  n = machine.mTransitionRelationBDD.valueCount64 ( (variablesCount + variablesCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
@@ -2028,14 +2028,14 @@ compute (C_Compiler * inCompiler,
     constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
-  n = transitionsWithSourceEqualTarget.valueCount ( (variablesCount + variablesCount)) ;
+  n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source ("
      << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
-  n = t.valueCount ( (variablesCount + variablesCount)) ;
+  n = t.valueCount64 ( (variablesCount + variablesCount)) ;
   nodes = t.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " to other states (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
@@ -2247,28 +2247,28 @@ compute (C_Compiler * inCompiler,
      << cStringWithSigned (inputVariablesCount) << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount) << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount) << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
-  PMUInt64 n = machine.mInitialStatesBDD.valueCount (variablesCount) ;
+  PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
   PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " initial state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mInitialStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mTerminalStatesBDD.valueCount (variablesCount) ;
+  n = machine.mTerminalStatesBDD.valueCount64 (variablesCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " terminal state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mTerminalStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mAccessibleStatesBDD.valueCount (variablesCount) ;
+  n = machine.mAccessibleStatesBDD.valueCount64 (variablesCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " accessible state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     machine.mAccessibleStatesBDD.printBDD (machine.mNamesArray, 3) ;
   }
-  n = machine.mTransitionRelationBDD.valueCount ( (variablesCount + variablesCount)) ;
+  n = machine.mTransitionRelationBDD.valueCount64 ( (variablesCount + variablesCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
@@ -2278,14 +2278,14 @@ compute (C_Compiler * inCompiler,
     constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
-  n = transitionsWithSourceEqualTarget.valueCount ( (variablesCount + variablesCount)) ;
+  n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source ("
      << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
-  n = t.valueCount ( (variablesCount + variablesCount)) ;
+  n = t.valueCount64 ( (variablesCount + variablesCount)) ;
   nodes = t.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " to other states (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
