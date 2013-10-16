@@ -232,7 +232,7 @@ compute (C_Compiler * inCompiler,
   const PMUInt32 variablesCount = mAttribute_mVariablesMap.count () ;
   const PMUInt32 inputAndInternalVariablesCount = mAttribute_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
+  { TC_UniqueArray <C_String> variableNamesArray ((PMSInt32) variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_stringlist currentVar (mAttribute_mNameList, kEnumeration_up) ;
@@ -269,14 +269,14 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_UniqueArray <C_String> transitionsVariableNameArray (variablesCount + variablesCount, "" COMMA_HERE) ;
+  TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variablesCount + variablesCount), "" COMMA_HERE) ;
   for (PMUInt32 i=0 ; i<variablesCount ; i++) {
-    transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((PMSInt32) i COMMA_HERE) = machine.mNamesArray ((PMSInt32) i COMMA_HERE) ;
+    transitionsVariableNameArray ((PMSInt32)  (variablesCount + i) COMMA_HERE) = machine.mNamesArray ((PMSInt32) i COMMA_HERE) ;
   }
 //--- Print messages
-  const PMSInt32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
-  const PMSInt32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
+  const PMSInt32 outputVariablesCount = (PMSInt32) (variablesCount - inputAndInternalVariablesCount) ;
+  const PMSInt32 internalVariablesCount = (PMSInt32)  (inputAndInternalVariablesCount - inputVariablesCount) ;
   co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount)
@@ -380,8 +380,8 @@ compute (C_Compiler * /* inCompiler */,
        << " ;\n" ;
   }
 //--- Check that all variable count are the same
-  const PMSInt32 internalAndOutputVariableCount1 = machine1.mNamesArray.count () - machine1.mInputVariablesCount ;
-  const PMSInt32 internalAndOutputVariableCount2 = machine2.mNamesArray.count () - machine2.mInputVariablesCount ;
+  const PMSInt32 internalAndOutputVariableCount1 = (PMSInt32) machine1.mNamesArray.count () - (PMSInt32) machine1.mInputVariablesCount ;
+  const PMSInt32 internalAndOutputVariableCount2 = (PMSInt32) machine2.mNamesArray.count () - (PMSInt32) machine2.mInputVariablesCount ;
   if (internalAndOutputVariableCount1 == internalAndOutputVariableCount2) {
     co << "  Same internal and output variable count (" << cStringWithSigned (internalAndOutputVariableCount1) << ");\n" ;
   }else{
@@ -448,11 +448,11 @@ compute (C_Compiler * /* inCompiler */,
   const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ States of '" << machine.mMachineName << "' machine\n" ;
-  C_Display_BDD machineDisplay (machine.mNamesArray.count ()) ;
+  C_Display_BDD machineDisplay ((PMUInt32) machine.mNamesArray.count ()) ;
   for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName ( i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mAccessibleStatesBDD.printBDD (co, machine.mNamesArray.count (), machineDisplay) ;
+  machine.mAccessibleStatesBDD.printBDD (co, (PMUInt32) machine.mNamesArray.count (), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -466,11 +466,11 @@ compute (C_Compiler * /* inCompiler */,
   const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ First states of '" << machine.mMachineName << "' machine\n" ;
-  C_Display_BDD machineDisplay ( machine.mNamesArray.count ()) ;
+  C_Display_BDD machineDisplay ((PMUInt32) machine.mNamesArray.count ()) ;
   for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName ( i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mInitialStatesBDD.printBDD (co,  machine.mNamesArray.count (), machineDisplay) ;
+  machine.mInitialStatesBDD.printBDD (co, (PMUInt32) machine.mNamesArray.count (), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -484,11 +484,11 @@ compute (C_Compiler * /* inCompiler */,
   const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ Last states of '" << machine.mMachineName << "' machine\n" ;
-  C_Display_BDD machineDisplay ( machine.mNamesArray.count ()) ;
+  C_Display_BDD machineDisplay ((PMUInt32) machine.mNamesArray.count ()) ;
   for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName ( i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mTerminalStatesBDD.printBDD (co,  machine.mNamesArray.count (), machineDisplay) ;
+  machine.mTerminalStatesBDD.printBDD (co, (PMUInt32) machine.mNamesArray.count (), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -503,12 +503,12 @@ compute (C_Compiler * /* inCompiler */,
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ Transitions of '" << machine.mMachineName << "' machine\n" ;
   const PMSInt32 n = machine.mNamesArray.count () ;
-  C_Display_BDD machineDisplay (n + n) ;
+  C_Display_BDD machineDisplay ((PMUInt32) (n + n)) ;
   for (PMSInt32 i=0 ; i<n ; i++) {
-    machineDisplay.defineVariableName ( i, machine.mNamesArray (i COMMA_HERE), 1) ;
-    machineDisplay.defineVariableName ( (i + n), machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32)i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((PMUInt32) (i + n), machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mTransitionRelationBDD.printBDD (co, n + n, machineDisplay) ;
+  machine.mTransitionRelationBDD.printBDD (co, (PMUInt32) (n + n), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -530,11 +530,11 @@ compute (C_Compiler * /* inCompiler */,
     const PMUInt64 n = notHandledInputConfigurations.valueCount64 (machine.mInputVariablesCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " missing input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
-    notHandledInputConfigurations.printBDD (machine.mNamesArray, machine.mInputVariablesCount, 3) ;
+    notHandledInputConfigurations.printBDD (machine.mNamesArray, (PMSInt32) machine.mInputVariablesCount, 3) ;
   }
 //--- Checking input configuration is not ambiguous
 //  Ambiguous set (e, s) := ?s' ((e, s) initial & (e, s') initial et s != s')
-  const PMUInt32 variableCount = machine.mNamesArray.count () ;
+  const PMUInt32 variableCount = (PMUInt32) machine.mNamesArray.count () ;
   const PMUInt32 outputVariablesCount = variableCount - machine.mInputVariablesCount ;
   PMUInt32 * substitutionVector = NULL ;
   macroMyNewPODArray (substitutionVector, PMUInt32, variableCount) ;
@@ -583,10 +583,10 @@ compute (C_Compiler * /* inCompiler */,
     const PMUInt64 n = ambiguousTransitions.valueCount64 ( (variableCount+variableCount)) ;
     co << "  " << cStringWithUnsigned (n)
        << " ambiguous transition" << ((n > 1) ? "s" : "") << ":\n" ;
-    TC_UniqueArray <C_String> transitionsVariableNameArray ( (variableCount + variableCount), "" COMMA_HERE) ;
-    for (PMUInt32 i=0 ; i<variableCount ; i++) {
+    TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variableCount + variableCount), "" COMMA_HERE) ;
+    for (PMSInt32 i=0 ; i<(PMSInt32)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-      transitionsVariableNameArray (variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+      transitionsVariableNameArray ((PMSInt32) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     }
     ambiguousTransitions.printBDD (transitionsVariableNameArray, 3) ;
   }
@@ -599,12 +599,12 @@ compute (C_Compiler * /* inCompiler */,
     const PMUInt64 n = incompleteStatesAndInput.valueCount64 ( (variableCount+machine.mInputVariablesCount)) ;
     co << "  " << cStringWithUnsigned (n)
        << " incomplete state" << ((n > 1) ? "s" : "") << ":\n" ;
-    TC_UniqueArray <C_String> transitionsVariableNameArray ( (variableCount + variableCount), "" COMMA_HERE) ;
-    for (PMUInt32 i=0 ; i<variableCount ; i++) {
+    TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variableCount + variableCount), "" COMMA_HERE) ;
+    for (PMSInt32 i=0 ; i<(PMSInt32)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-      transitionsVariableNameArray (variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+      transitionsVariableNameArray ((PMSInt32) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     }
-    incompleteStatesAndInput.printBDD (transitionsVariableNameArray,  (variableCount+machine.mInputVariablesCount), 3) ;
+    incompleteStatesAndInput.printBDD (transitionsVariableNameArray, (PMSInt32) (variableCount+machine.mInputVariablesCount), 3) ;
   }
 //--- Check all states are stable (added by PM on june 27, 2005, for version 0.1.3)
   const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, variableCount, C_BDD::kEqual, variableCount) ;
@@ -618,7 +618,7 @@ compute (C_Compiler * /* inCompiler */,
     const PMUInt64 n = notStableStates.valueCount64 (variableCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " instable state" << ((n > 1) ? "s" : "") << ":\n" ;
-    notStableStates.printBDD (machine.mNamesArray, variableCount, 3) ;
+    notStableStates.printBDD (machine.mNamesArray, (PMSInt32) variableCount, 3) ;
   }
 //--- Check machine is combinatory ? (added by PM on october 13th, 2005)
   if (mAttribute_mCheckMachineIsBoolean.boolValue ()) {
@@ -754,7 +754,7 @@ compute (C_Compiler * /* inCompiler */,
 //--- transitions BDD
   const C_BDD transitionsBDD = ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mTransitionRelationBDD ;
 //--- variables count
-  const PMUInt32 variableCount =  ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
+  const PMUInt32 variableCount = (PMUInt32) ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
   cEnumerator_L_5F_scenarioList scenario (mAttribute_mScenarioList, kEnumeration_up) ;
   while (scenario.hasCurrentObject ()) {
@@ -799,7 +799,7 @@ compute (C_Compiler * /* inCompiler */,
       currentState = newState.substitution (substitutionVector,  (variableCount + variableCount) COMMA_HERE) ;
       currentState = currentState.existsOnBitsAfterNumber (variableCount) ;
     //--- Display current configuration
-      currentState.printBDDwithoutHeader (ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, variableCount, 3) ;
+      currentState.printBDDwithoutHeader (ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, (PMSInt32) variableCount, 3) ;
       valuesCount = currentState.valueCount64 (shift) ;
     //--- Goto next input
       currentInput.gotoNextObject () ;
@@ -826,7 +826,7 @@ computeFromExpression (C_Compiler * inCompiler,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Build state array names
-  TC_UniqueArray <C_String> stateNameArray (mAttribute_mStatesMap.count () COMMA_HERE) ;
+  TC_UniqueArray <C_String> stateNameArray ((PMSInt32) mAttribute_mStatesMap.count () COMMA_HERE) ;
   cEnumerator_M_5F_stateMap currentState (mAttribute_mStatesMap, kEnumeration_up) ;
   while (currentState.hasCurrentObject ()) {
     stateNameArray.addObject (currentState.current_lkey (HERE).mAttribute_string.stringValue ()) ;
@@ -839,7 +839,7 @@ computeFromExpression (C_Compiler * inCompiler,
 //    Slots n .. n+p-1 are assigned to outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  TC_UniqueArray <C_BDD> stateExpressionBDD (mAttribute_mStatesMap.count (), C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> stateExpressionBDD ((PMSInt32) mAttribute_mStatesMap.count (), C_BDD () COMMA_HERE) ;
   cEnumerator_L_5F_stateDefinition currentDefinition (mAttribute_mStateDefinitionList, kEnumeration_up) ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get state index
@@ -1457,7 +1457,7 @@ computeFromExpression (C_Compiler * /* inCompiler */,
   PMUInt32 * transitionsSubstitutionArray = NULL ;
   macroMyNewPODArray (transitionsSubstitutionArray, PMUInt32, importedMachineVariableCount + importedMachineVariableCount) ;
   cEnumerator_L_5F_translationVector p (mAttribute_mTranslationVector, kEnumeration_up) ;
-  PMSInt32 index = 0 ;
+  PMUInt32 index = 0 ;
   while (p.hasCurrentObject ()) {
     statesSubstitutionArray [index] =  p.current_mTargetSlot (HERE).uintValue () ;
     transitionsSubstitutionArray [index] =  p.current_mTargetSlot (HERE).uintValue () ;
@@ -1795,9 +1795,9 @@ addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
 //--- Transitions from terminal states
    const C_BDD transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
 //--- Filter theses transitions by eliminating target internal and output variables
-   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ( (inVariablesCount + inInputVariablesCount)) ;
+   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((PMUInt32) (inVariablesCount + inInputVariablesCount)) ;
 //--- translate initial state BDD by variablesCount slots
-   const C_BDD translatedInitialStates = inTargetInitialStates.translate ( inVariablesCount, inVariablesCount) ;
+   const C_BDD translatedInitialStates = inTargetInitialStates.translate ((PMUInt32) inVariablesCount, (PMUInt32) inVariablesCount) ;
 //--- Transitions to from terminal states to initial states
    const C_BDD transitions = inSourceTerminalStates & translatedInitialStates ;
 //--- Eliminate from theses transitions all the transitions that raise an ambiguity
@@ -1822,7 +1822,7 @@ compute (C_Compiler * inCompiler,
   const PMUInt32 variablesCount =  mAttribute_mVariablesMap.count () ;
   const PMUInt32 inputAndInternalVariablesCount =  mAttribute_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
+  { TC_UniqueArray <C_String> variableNamesArray ((PMSInt32) variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
@@ -1956,8 +1956,8 @@ compute (C_Compiler * inCompiler,
     addFilteredTransitions (machine.mTransitionRelationBDD,
                             accessibilityRelationStatesArray (sourceMode COMMA_HERE),
                             terminalStatesArray (sourceMode COMMA_HERE),
-                            variablesCount,
-                            inputVariablesCount,
+                            (PMSInt32) variablesCount,
+                            (PMSInt32) inputVariablesCount,
                             initialStatesArray (targetMode COMMA_HERE)) ;
   //--- Next inclusion
     currentInclusion.gotoNextObject () ;
@@ -1983,14 +1983,14 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_UniqueArray <C_String> transitionsVariableNameArray (variablesCount + variablesCount, "" COMMA_HERE) ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variablesCount + variablesCount), "" COMMA_HERE) ;
+  for (PMSInt32 i=0 ; i<(PMSInt32) variablesCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((PMSInt32) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const PMSInt32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
-  const PMSInt32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
+  const PMSInt32 outputVariablesCount = (PMSInt32) (variablesCount - inputAndInternalVariablesCount) ;
+  const PMSInt32 internalVariablesCount = (PMSInt32) (inputAndInternalVariablesCount - inputVariablesCount) ;
   PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
   PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithSigned (inputVariablesCount)
@@ -2064,7 +2064,7 @@ compute (C_Compiler * inCompiler,
   const PMUInt32 variablesCount =  mAttribute_mVariablesMap.count () ;
   const PMUInt32 inputAndInternalVariablesCount =  mAttribute_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_UniqueArray <C_String> variableNamesArray (variablesCount, "" COMMA_HERE) ;
+  { TC_UniqueArray <C_String> variableNamesArray ((PMSInt32) variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
@@ -2207,8 +2207,8 @@ compute (C_Compiler * inCompiler,
           addFilteredTransitions (machine.mTransitionRelationBDD,
                                   accessibilityRelationStatesArray (sourceMode COMMA_HERE),
                                   terminalStatesArray (sourceMode COMMA_HERE),
-                                  variablesCount,
-                                  inputVariablesCount,
+                                  (PMSInt32) variablesCount,
+                                  (PMSInt32) inputVariablesCount,
                                   initialStatesArray (targetMode COMMA_HERE)) ;
         }
       }
@@ -2235,14 +2235,14 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_UniqueArray <C_String> transitionsVariableNameArray (variablesCount + variablesCount, "" COMMA_HERE) ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32)  (variablesCount + variablesCount), "" COMMA_HERE) ;
+  for (PMSInt32 i=0 ; i<(PMSInt32) variablesCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray (variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((PMSInt32) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const PMSInt32 outputVariablesCount = variablesCount - inputAndInternalVariablesCount ;
-  const PMSInt32 internalVariablesCount = inputAndInternalVariablesCount - inputVariablesCount ;
+  const PMSInt32 outputVariablesCount = (PMSInt32) (variablesCount - inputAndInternalVariablesCount) ;
+  const PMSInt32 internalVariablesCount = (PMSInt32) (inputAndInternalVariablesCount - inputVariablesCount) ;
   co << "  "
      << cStringWithSigned (inputVariablesCount) << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount) << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
