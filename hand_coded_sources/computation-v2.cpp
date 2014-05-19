@@ -30,8 +30,8 @@
 C_BDD cPtr_C_5F_VariableExpression::
 computeBDD (C_Compiler * /* inCompiler */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
-            const PMUInt32 /* inVariablesCount */,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t /* inVariablesCount */,
+            const uint32_t inBDDslotOffset) const {
   return C_BDD ( (mAttribute_mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
 }
 
@@ -40,8 +40,8 @@ computeBDD (C_Compiler * /* inCompiler */,
 C_BDD cPtr_C_5F_trueExpression::
 computeBDD (C_Compiler * /* inCompiler */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
-            const PMUInt32 /* inVariablesCount */,
-            const PMUInt32 /* inBDDslotOffset */) const {
+            const uint32_t /* inVariablesCount */,
+            const uint32_t /* inBDDslotOffset */) const {
   return ~ C_BDD () ;
 }
 
@@ -50,8 +50,8 @@ computeBDD (C_Compiler * /* inCompiler */,
 C_BDD cPtr_C_5F_falseExpression::
 computeBDD (C_Compiler * /* inCompiler */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
-            const PMUInt32 /* inVariablesCount */,
-            const PMUInt32 /* inBDDslotOffset */) const {
+            const uint32_t /* inVariablesCount */,
+            const uint32_t /* inBDDslotOffset */) const {
   return C_BDD () ;
 }
 
@@ -60,8 +60,8 @@ computeBDD (C_Compiler * /* inCompiler */,
 C_BDD cPtr_C_5F_notExpression::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 inVariablesCount,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t inVariablesCount,
+            const uint32_t inBDDslotOffset) const {
   return ~ mAttribute_mExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
@@ -70,8 +70,8 @@ computeBDD (C_Compiler * inCompiler,
 C_BDD cPtr_C_5F_andExpression::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 inVariablesCount,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t inVariablesCount,
+            const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
       & mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
@@ -81,8 +81,8 @@ computeBDD (C_Compiler * inCompiler,
 C_BDD cPtr_C_5F_orExpression::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 inVariablesCount,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t inVariablesCount,
+            const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
       | mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
@@ -92,8 +92,8 @@ computeBDD (C_Compiler * inCompiler,
 C_BDD cPtr_C_5F_xorExpression::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 inVariablesCount,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t inVariablesCount,
+            const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
      != mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
@@ -103,8 +103,8 @@ computeBDD (C_Compiler * inCompiler,
 C_BDD cPtr_C_5F_impliesExpression::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 inVariablesCount,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t inVariablesCount,
+            const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
     .implies (mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
@@ -114,8 +114,8 @@ computeBDD (C_Compiler * inCompiler,
 C_BDD cPtr_C_5F_equalExpression::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 inVariablesCount,
-            const PMUInt32 inBDDslotOffset) const {
+            const uint32_t inVariablesCount,
+            const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
      == mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
@@ -125,10 +125,10 @@ computeBDD (C_Compiler * inCompiler,
 C_BDD cPtr_C_5F_importBoolMachine::
 computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
-            const PMUInt32 /* inVariablesCount */,
-            const PMUInt32 /* inBDDslotOffset */) const {
+            const uint32_t /* inVariablesCount */,
+            const uint32_t /* inBDDslotOffset */) const {
 //--- Get index of imported machine
-  const PMSInt32 indexOfImportedMachine = (PMSInt32) mAttribute_mIndexOfImportedMachine.uintValue () ;
+  const int32_t indexOfImportedMachine = (int32_t) mAttribute_mIndexOfImportedMachine.uintValue () ;
 //--- Check that imported machine is actually boolean
   const C_BDD initialStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mInitialStatesBDD ;
   const C_BDD terminalStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTerminalStatesBDD ;
@@ -137,17 +137,17 @@ computeBDD (C_Compiler * inCompiler,
     C_String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
   }
-  const PMUInt32 importedMachineVariableCount =  mAttribute_mTranslationVector.count () ;
+  const uint32_t importedMachineVariableCount =  mAttribute_mTranslationVector.count () ;
   const C_BDD boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
   if (! boolAccessibilityRelationBDD.isEqualToBDD (transitionsOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
   }
 //--- Construct substitution arraies
-  PMUInt32 * statesSubstitutionArray = NULL ;
-  macroMyNewPODArray (statesSubstitutionArray, PMUInt32, importedMachineVariableCount) ;
+  uint32_t * statesSubstitutionArray = NULL ;
+  macroMyNewPODArray (statesSubstitutionArray, uint32_t, importedMachineVariableCount) ;
   cEnumerator_L_5F_translationVector e (mAttribute_mTranslationVector, kEnumeration_up) ;
-  PMSInt32 index = 0 ;
+  int32_t index = 0 ;
   while (e.hasCurrentObject ()) {
     statesSubstitutionArray [index] =  e.current_mTargetSlot (HERE).uintValue () ;
     e.gotoNextObject () ;
@@ -227,16 +227,16 @@ compute (C_Compiler * inCompiler,
   C_saraMachine machine ;
   machine.mMachineName = mAttribute_mMachineName.mAttribute_string.stringValue () ;
 //--- Build input variables array names
-  const PMUInt32 inputVariablesCount = mAttribute_mInputVariableCount.uintValue () ;
+  const uint32_t inputVariablesCount = mAttribute_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const PMUInt32 variablesCount = mAttribute_mVariablesMap.count () ;
-  const PMUInt32 inputAndInternalVariablesCount = mAttribute_mInputAndInternalVariableCount.uintValue () ;
+  const uint32_t variablesCount = mAttribute_mVariablesMap.count () ;
+  const uint32_t inputAndInternalVariablesCount = mAttribute_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_UniqueArray <C_String> variableNamesArray ((PMSInt32) variablesCount, "" COMMA_HERE) ;
+  { TC_UniqueArray <C_String> variableNamesArray ((int32_t) variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_stringlist currentVar (mAttribute_mNameList, kEnumeration_up) ;
-  PMSInt32 index = 0 ;
+  int32_t index = 0 ;
   while (currentVar.hasCurrentObject ()) {
     machine.mNamesArray (index COMMA_HERE) = currentVar.current_mValue (HERE).stringValue () ;
     index ++ ;
@@ -250,9 +250,9 @@ compute (C_Compiler * inCompiler,
                                          machine.mTerminalStatesBDD,
                                          machine.mTransitionRelationBDD) ;
 //--- Compute accessible states
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, variablesCount + variablesCount) ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     substitutionArray [i] = variablesCount + i ;
     substitutionArray [variablesCount + i] = i ;
   }
@@ -269,14 +269,14 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variablesCount + variablesCount), "" COMMA_HERE) ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
-    transitionsVariableNameArray ((PMSInt32) i COMMA_HERE) = machine.mNamesArray ((PMSInt32) i COMMA_HERE) ;
-    transitionsVariableNameArray ((PMSInt32)  (variablesCount + i) COMMA_HERE) = machine.mNamesArray ((PMSInt32) i COMMA_HERE) ;
+  TC_UniqueArray <C_String> transitionsVariableNameArray ((int32_t) (variablesCount + variablesCount), "" COMMA_HERE) ;
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
+    transitionsVariableNameArray ((int32_t) i COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
+    transitionsVariableNameArray ((int32_t)  (variablesCount + i) COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
   }
 //--- Print messages
-  const PMSInt32 outputVariablesCount = (PMSInt32) (variablesCount - inputAndInternalVariablesCount) ;
-  const PMSInt32 internalVariablesCount = (PMSInt32)  (inputAndInternalVariablesCount - inputVariablesCount) ;
+  const int32_t outputVariablesCount = (int32_t) (variablesCount - inputAndInternalVariablesCount) ;
+  const int32_t internalVariablesCount = (int32_t)  (inputAndInternalVariablesCount - inputVariablesCount) ;
   co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount)
@@ -284,8 +284,8 @@ compute (C_Compiler * inCompiler,
      << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount)
      << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
-  PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
-  PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
+  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
+  uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " initial state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
@@ -318,7 +318,7 @@ compute (C_Compiler * inCompiler,
   }
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
@@ -356,8 +356,8 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const PMSInt32 machineIndex1 = (PMSInt32) mAttribute_mMachineIndex_31_.uintValue () ;
-  const PMSInt32 machineIndex2 = (PMSInt32) mAttribute_mMachineIndex_32_.uintValue () ;
+  const int32_t machineIndex1 = (int32_t) mAttribute_mMachineIndex_31_.uintValue () ;
+  const int32_t machineIndex2 = (int32_t) mAttribute_mMachineIndex_32_.uintValue () ;
   const C_saraMachine & machine1 = ioSaraSystemArray (machineIndex1 COMMA_HERE) ;
   const C_saraMachine & machine2 = ioSaraSystemArray (machineIndex2 COMMA_HERE) ;
   co << "------------------ Checking '"
@@ -380,8 +380,8 @@ compute (C_Compiler * /* inCompiler */,
        << " ;\n" ;
   }
 //--- Check that all variable count are the same
-  const PMSInt32 internalAndOutputVariableCount1 = (PMSInt32) machine1.mNamesArray.count () - (PMSInt32) machine1.mInputVariablesCount ;
-  const PMSInt32 internalAndOutputVariableCount2 = (PMSInt32) machine2.mNamesArray.count () - (PMSInt32) machine2.mInputVariablesCount ;
+  const int32_t internalAndOutputVariableCount1 = (int32_t) machine1.mNamesArray.count () - (int32_t) machine1.mInputVariablesCount ;
+  const int32_t internalAndOutputVariableCount2 = (int32_t) machine2.mNamesArray.count () - (int32_t) machine2.mInputVariablesCount ;
   if (internalAndOutputVariableCount1 == internalAndOutputVariableCount2) {
     co << "  Same internal and output variable count (" << cStringWithSigned (internalAndOutputVariableCount1) << ");\n" ;
   }else{
@@ -445,14 +445,14 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
+  const int32_t machineIndex = (int32_t) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ States of '" << machine.mMachineName << "' machine\n" ;
-  C_Display_BDD machineDisplay ((PMUInt32) machine.mNamesArray.count ()) ;
-  for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
+  C_Display_BDD machineDisplay ((uint32_t) machine.mNamesArray.count ()) ;
+  for (int32_t i=0 ; i<machine.mNamesArray.count () ; i++) {
+    machineDisplay.defineVariableName ((uint32_t) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mAccessibleStatesBDD.printBDD (co, (PMUInt32) machine.mNamesArray.count (), machineDisplay) ;
+  machine.mAccessibleStatesBDD.printBDD (co, (uint32_t) machine.mNamesArray.count (), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -463,14 +463,14 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
+  const int32_t machineIndex = (int32_t) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ First states of '" << machine.mMachineName << "' machine\n" ;
-  C_Display_BDD machineDisplay ((PMUInt32) machine.mNamesArray.count ()) ;
-  for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
+  C_Display_BDD machineDisplay ((uint32_t) machine.mNamesArray.count ()) ;
+  for (int32_t i=0 ; i<machine.mNamesArray.count () ; i++) {
+    machineDisplay.defineVariableName ((uint32_t) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mInitialStatesBDD.printBDD (co, (PMUInt32) machine.mNamesArray.count (), machineDisplay) ;
+  machine.mInitialStatesBDD.printBDD (co, (uint32_t) machine.mNamesArray.count (), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -481,14 +481,14 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
+  const int32_t machineIndex = (int32_t) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ Last states of '" << machine.mMachineName << "' machine\n" ;
-  C_Display_BDD machineDisplay ((PMUInt32) machine.mNamesArray.count ()) ;
-  for (PMSInt32 i=0 ; i<machine.mNamesArray.count () ; i++) {
-    machineDisplay.defineVariableName ((PMUInt32) i, machine.mNamesArray (i COMMA_HERE), 1) ;
+  C_Display_BDD machineDisplay ((uint32_t) machine.mNamesArray.count ()) ;
+  for (int32_t i=0 ; i<machine.mNamesArray.count () ; i++) {
+    machineDisplay.defineVariableName ((uint32_t) i, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mTerminalStatesBDD.printBDD (co, (PMUInt32) machine.mNamesArray.count (), machineDisplay) ;
+  machine.mTerminalStatesBDD.printBDD (co, (uint32_t) machine.mNamesArray.count (), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -499,16 +499,16 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
+  const int32_t machineIndex = (int32_t) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ Transitions of '" << machine.mMachineName << "' machine\n" ;
-  const PMSInt32 n = machine.mNamesArray.count () ;
-  C_Display_BDD machineDisplay ((PMUInt32) (n + n)) ;
-  for (PMSInt32 i=0 ; i<n ; i++) {
-    machineDisplay.defineVariableName ((PMUInt32)i, machine.mNamesArray (i COMMA_HERE), 1) ;
-    machineDisplay.defineVariableName ((PMUInt32) (i + n), machine.mNamesArray (i COMMA_HERE), 1) ;
+  const int32_t n = machine.mNamesArray.count () ;
+  C_Display_BDD machineDisplay ((uint32_t) (n + n)) ;
+  for (int32_t i=0 ; i<n ; i++) {
+    machineDisplay.defineVariableName ((uint32_t)i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName ((uint32_t) (i + n), machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  machine.mTransitionRelationBDD.printBDD (co, (PMUInt32) (n + n), machineDisplay) ;
+  machine.mTransitionRelationBDD.printBDD (co, (uint32_t) (n + n), machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -519,7 +519,7 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
-  const PMSInt32 machineIndex = (PMSInt32) mAttribute_mMachineIndex.uintValue () ;
+  const int32_t machineIndex = (int32_t) mAttribute_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
   co << "------------------ Checkings for '" << machine.mMachineName << "' machine\n" ;
 //--- Checking input configuration is full
@@ -527,66 +527,66 @@ compute (C_Compiler * /* inCompiler */,
   if (notHandledInputConfigurations.isFalse ()) {
     co << "  All input configurations are handled;\n" ;
   }else{
-    const PMUInt64 n = notHandledInputConfigurations.valueCount64 (machine.mInputVariablesCount) ;
+    const uint64_t n = notHandledInputConfigurations.valueCount64 (machine.mInputVariablesCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " missing input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
-    notHandledInputConfigurations.printBDD (machine.mNamesArray, (PMSInt32) machine.mInputVariablesCount, 3) ;
+    notHandledInputConfigurations.printBDD (machine.mNamesArray, (int32_t) machine.mInputVariablesCount, 3) ;
   }
 //--- Checking input configuration is not ambiguous
 //  Ambiguous set (e, s) := ?s' ((e, s) initial & (e, s') initial et s != s')
-  const PMUInt32 variableCount = (PMUInt32) machine.mNamesArray.count () ;
-  const PMUInt32 outputVariablesCount = variableCount - machine.mInputVariablesCount ;
-  PMUInt32 * substitutionVector = NULL ;
-  macroMyNewPODArray (substitutionVector, PMUInt32, variableCount) ;
-  for (PMUInt32 i=0 ; i<machine.mInputVariablesCount ; i++) {
+  const uint32_t variableCount = (uint32_t) machine.mNamesArray.count () ;
+  const uint32_t outputVariablesCount = variableCount - machine.mInputVariablesCount ;
+  uint32_t * substitutionVector = NULL ;
+  macroMyNewPODArray (substitutionVector, uint32_t, variableCount) ;
+  for (uint32_t i=0 ; i<machine.mInputVariablesCount ; i++) {
     substitutionVector [i] = i ;
   }
-  for (PMUInt32 i=0 ; i<outputVariablesCount ; i++) {
+  for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
     substitutionVector [i + machine.mInputVariablesCount] = (i + variableCount) ;
   }
   const C_BDD sTranslatedInputConfiguration = machine.mInitialStatesBDD.substitution (substitutionVector, variableCount COMMA_HERE) ;
   macroMyDeletePODArray (substitutionVector) ;
   C_BDD sEqualSprimeConstraint = ~ C_BDD () ;
-  for (PMUInt32 i=0 ; i<outputVariablesCount ; i++) {
+  for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
     sEqualSprimeConstraint &= C_BDD ( (i + machine.mInputVariablesCount), false) == C_BDD ( (variableCount + i), false) ;
   }
   const C_BDD ambiguousInput = (machine.mInitialStatesBDD & sTranslatedInputConfiguration & ~ sEqualSprimeConstraint).existsOnBitsAfterNumber (variableCount) ;
   if (ambiguousInput.isFalse ()) {
     co << "  No ambiguous input configuration;\n" ;
   }else{
-    const PMUInt64 n = ambiguousInput.valueCount64 (variableCount) ;
+    const uint64_t n = ambiguousInput.valueCount64 (variableCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " ambiguous input configuration" << ((n > 1) ? "s" : "") << ":\n" ;
     ambiguousInput.printBDD (machine.mNamesArray, 3) ;
   }
 //--- Checking transition determinism
 // Ambiguous transitions (e, s, e', s') = ? e", s" ((e, s, e', s') transition & (e, s, e", s") transition & (e'=e") et (s'!=s"))
-  macroMyNewPODArray (substitutionVector, PMUInt32, variableCount + variableCount) ;
-  for (PMUInt32 i=0 ; i<variableCount ; i++) {
+  macroMyNewPODArray (substitutionVector, uint32_t, variableCount + variableCount) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
     substitutionVector [i] = i ;
     substitutionVector [i+variableCount] =  (i+variableCount+variableCount) ;
   }
   const C_BDD translatedTransitions = machine.mTransitionRelationBDD.substitution (substitutionVector,  (variableCount+variableCount) COMMA_HERE) ;
   macroMyDeletePODArray (substitutionVector) ;
   C_BDD ePrimeEqualsEsecondConstraint = ~ C_BDD () ;
-  for (PMUInt32 i=0 ; i<machine.mInputVariablesCount ; i++) {
+  for (uint32_t i=0 ; i<machine.mInputVariablesCount ; i++) {
     ePrimeEqualsEsecondConstraint &= C_BDD ( (i+variableCount), false) == C_BDD ( (i + variableCount + variableCount), false) ;
   }
   C_BDD sPrimeEqualsSsecondConstraint = ~ C_BDD () ;
-  for (PMUInt32 i=0 ; i<outputVariablesCount ; i++) {
+  for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
     sPrimeEqualsSsecondConstraint &= C_BDD ( (i+variableCount+machine.mInputVariablesCount), false) == C_BDD ( (i+variableCount+variableCount+machine.mInputVariablesCount), false) ;
   }
   const C_BDD ambiguousTransitions = (machine.mTransitionRelationBDD & translatedTransitions & ePrimeEqualsEsecondConstraint & ~ sPrimeEqualsSsecondConstraint).existsOnBitsAfterNumber ( (variableCount + variableCount)) ;
   if (ambiguousTransitions.isFalse ()) {
     co << "  No ambiguous transition;\n" ;
   }else{
-    const PMUInt64 n = ambiguousTransitions.valueCount64 ( (variableCount+variableCount)) ;
+    const uint64_t n = ambiguousTransitions.valueCount64 ( (variableCount+variableCount)) ;
     co << "  " << cStringWithUnsigned (n)
        << " ambiguous transition" << ((n > 1) ? "s" : "") << ":\n" ;
-    TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variableCount + variableCount), "" COMMA_HERE) ;
-    for (PMSInt32 i=0 ; i<(PMSInt32)variableCount ; i++) {
+    TC_UniqueArray <C_String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+    for (int32_t i=0 ; i<(int32_t)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-      transitionsVariableNameArray ((PMSInt32) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+      transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     }
     ambiguousTransitions.printBDD (transitionsVariableNameArray, 3) ;
   }
@@ -596,15 +596,15 @@ compute (C_Compiler * /* inCompiler */,
   if (incompleteStatesAndInput.isFalse ()) {
     co << "  No incomplete state;\n" ;
   }else{
-    const PMUInt64 n = incompleteStatesAndInput.valueCount64 ( (variableCount+machine.mInputVariablesCount)) ;
+    const uint64_t n = incompleteStatesAndInput.valueCount64 ( (variableCount+machine.mInputVariablesCount)) ;
     co << "  " << cStringWithUnsigned (n)
        << " incomplete state" << ((n > 1) ? "s" : "") << ":\n" ;
-    TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variableCount + variableCount), "" COMMA_HERE) ;
-    for (PMSInt32 i=0 ; i<(PMSInt32)variableCount ; i++) {
+    TC_UniqueArray <C_String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+    for (int32_t i=0 ; i<(int32_t)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-      transitionsVariableNameArray ((PMSInt32) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+      transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     }
-    incompleteStatesAndInput.printBDD (transitionsVariableNameArray, (PMSInt32) (variableCount+machine.mInputVariablesCount), 3) ;
+    incompleteStatesAndInput.printBDD (transitionsVariableNameArray, (int32_t) (variableCount+machine.mInputVariablesCount), 3) ;
   }
 //--- Check all states are stable (added by PM on june 27, 2005, for version 0.1.3)
   const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, variableCount, C_BDD::kEqual, variableCount) ;
@@ -615,10 +615,10 @@ compute (C_Compiler * /* inCompiler */,
   if (notStableStates.isFalse ()) {
     co << "  All states are stable;\n" ;
   }else{
-    const PMUInt64 n = notStableStates.valueCount64 (variableCount) ;
+    const uint64_t n = notStableStates.valueCount64 (variableCount) ;
     co << "  " << cStringWithUnsigned (n)
        << " instable state" << ((n > 1) ? "s" : "") << ":\n" ;
-    notStableStates.printBDD (machine.mNamesArray, (PMSInt32) variableCount, 3) ;
+    notStableStates.printBDD (machine.mNamesArray, (int32_t) variableCount, 3) ;
   }
 //--- Check machine is combinatory ? (added by PM on october 13th, 2005)
   if (mAttribute_mCheckMachineIsBoolean.boolValue ()) {
@@ -638,7 +638,7 @@ compute (C_Compiler * /* inCompiler */,
   }
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeDisplayBDDstats::
 compute (C_Compiler * /* inCompiler */,
@@ -649,7 +649,7 @@ compute (C_Compiler * /* inCompiler */,
   C_BDD::printBDDpackageOperationsSummary (co) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeResizeMap::
 compute (C_Compiler * /* inCompiler */,
@@ -668,7 +668,7 @@ compute (C_Compiler * /* inCompiler */,
        << ").\n\n" ; */ 
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeResize_5F_AND_5F_cache::
 compute (C_Compiler * /* inCompiler */,
@@ -676,7 +676,7 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   /* C_Timer duree ;
-    C_BDD::setANDcacheSize ((PMSInt32) mNewSize.uintValue ()) ;
+    C_BDD::setANDcacheSize ((int32_t) mNewSize.uintValue ()) ;
     duree.stopTimer () ;
     co << "------------------ and_cache "
        << cStringWithUnsigned (mNewSize.uintValue ())
@@ -687,7 +687,7 @@ compute (C_Compiler * /* inCompiler */,
        << ").\n\n" ; */  
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeResize_5F_ITE_5F_cache::
 compute (C_Compiler * /* inCompiler */,
@@ -695,7 +695,7 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   /* C_Timer duree ;
-    C_BDD::setITEcacheSize ((PMSInt32) mNewSize.uintValue ()) ;
+    C_BDD::setITEcacheSize ((int32_t) mNewSize.uintValue ()) ;
     duree.stopTimer () ;
     co << "------------------ ite_cache "
        << cStringWithUnsigned (mNewSize.uintValue ())
@@ -706,7 +706,7 @@ compute (C_Compiler * /* inCompiler */,
        << ").\n\n" ;  */ 
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeUse_5F_AND::
 compute (C_Compiler * /* inCompiler */,
@@ -717,7 +717,7 @@ compute (C_Compiler * /* inCompiler */,
       co << "------------------ use_and: ITE is now computed from AND.\n\n" ; */
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeUse_5F_ITE::
 compute (C_Compiler * /* inCompiler */,
@@ -728,7 +728,7 @@ compute (C_Compiler * /* inCompiler */,
     co << "------------------ use_ite: AND is now computed from ITE.\n\n" ; */
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_typeUse_5F_AND_5F_ITE::
 compute (C_Compiler * /* inCompiler */,
@@ -739,7 +739,7 @@ compute (C_Compiler * /* inCompiler */,
     co << "------------------ use_and_ite: AND and ITE are now computed independantly.\n\n" ; */
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cPtr_C_5F_scenarioComponent::
 compute (C_Compiler * /* inCompiler */,
@@ -747,14 +747,14 @@ compute (C_Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
  co << "------------------ Scenarios for '"
-    << ioSaraSystemArray ( (PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mMachineName
+    << ioSaraSystemArray ( (int32_t) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mMachineName
     << "' machine\n" ;
 //--- Initial state BDD
-  const C_BDD initialStateBDD = ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mInitialStatesBDD ;
+  const C_BDD initialStateBDD = ioSaraSystemArray ((int32_t) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mInitialStatesBDD ;
 //--- transitions BDD
-  const C_BDD transitionsBDD = ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mTransitionRelationBDD ;
+  const C_BDD transitionsBDD = ioSaraSystemArray ((int32_t) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mTransitionRelationBDD ;
 //--- variables count
-  const PMUInt32 variableCount = (PMUInt32) ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
+  const uint32_t variableCount = (uint32_t) ioSaraSystemArray ((int32_t) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
   cEnumerator_L_5F_scenarioList scenario (mAttribute_mScenarioList, kEnumeration_up) ;
   while (scenario.hasCurrentObject ()) {
@@ -762,35 +762,35 @@ compute (C_Compiler * /* inCompiler */,
     co << "Scenario '" << scenario.current_mScenarioTitle (HERE) << "':\n" ;
   //--- Build initial configuration
     cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (HERE), kEnumeration_up) ;
-    PMUInt64 initialConfiguration = 0 ;
-    PMUInt32 shift = 0 ;
+    uint64_t initialConfiguration = 0 ;
+    uint32_t shift = 0 ;
     cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), kEnumeration_up) ;
     while (v.hasCurrentObject ()) {
-      initialConfiguration += ((PMUInt64) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
+      initialConfiguration += ((uint64_t) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
       shift ++ ;
       v.gotoNextObject () ;
     }
     const C_BDD initialInputConfigurationBDD = C_BDD::varCompareConst (0, shift, C_BDD::kEqual, initialConfiguration) ;
     C_BDD currentState = initialInputConfigurationBDD & initialStateBDD ;
   //--- Build substitution vector
-    PMUInt32 * substitutionVector = NULL ;
-    macroMyNewPODArray (substitutionVector, PMUInt32, variableCount + variableCount) ;
-    for (PMUInt32 i=0 ; i<variableCount ; i++) {
+    uint32_t * substitutionVector = NULL ;
+    macroMyNewPODArray (substitutionVector, uint32_t, variableCount + variableCount) ;
+    for (uint32_t i=0 ; i<variableCount ; i++) {
       substitutionVector [i] =  (i + variableCount) ;
       substitutionVector [i + variableCount] = i ;
     }
   //--- Display initial configuration
-    currentState.printBDD (ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, 3) ;
-    PMUInt64 valuesCount = currentState.valueCount64 (shift) ;
+    currentState.printBDD (ioSaraSystemArray ((int32_t) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, 3) ;
+    uint64_t valuesCount = currentState.valueCount64 (shift) ;
   //--- Loop throught input sequence
     currentInput.gotoNextObject () ;
     while ((currentInput.hasCurrentObject ()) && (valuesCount == 1)) {
     //--- Parse new input configuration
-      PMUInt64 inputConfiguration = 0 ;
+      uint64_t inputConfiguration = 0 ;
       shift = 0 ;
       cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), kEnumeration_up) ;
       while (v.hasCurrentObject ()) {
-        inputConfiguration += ((PMUInt64) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
+        inputConfiguration += ((uint64_t) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
         shift ++ ;
         v.gotoNextObject () ;
       }
@@ -799,7 +799,7 @@ compute (C_Compiler * /* inCompiler */,
       currentState = newState.substitution (substitutionVector,  (variableCount + variableCount) COMMA_HERE) ;
       currentState = currentState.existsOnBitsAfterNumber (variableCount) ;
     //--- Display current configuration
-      currentState.printBDDwithoutHeader (ioSaraSystemArray ((PMSInt32) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, (PMSInt32) variableCount, 3) ;
+      currentState.printBDDwithoutHeader (ioSaraSystemArray ((int32_t) mAttribute_mMachineIndex.uintValue () COMMA_HERE).mNamesArray, (int32_t) variableCount, 3) ;
       valuesCount = currentState.valueCount64 (shift) ;
     //--- Goto next input
       currentInput.gotoNextObject () ;
@@ -821,12 +821,12 @@ compute (C_Compiler * /* inCompiler */,
 void cPtr_C_5F_explicitAutomatonDefinition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Build state array names
-  TC_UniqueArray <C_String> stateNameArray ((PMSInt32) mAttribute_mStatesMap.count () COMMA_HERE) ;
+  TC_UniqueArray <C_String> stateNameArray ((int32_t) mAttribute_mStatesMap.count () COMMA_HERE) ;
   cEnumerator_M_5F_stateMap currentState (mAttribute_mStatesMap, kEnumeration_up) ;
   while (currentState.hasCurrentObject ()) {
     stateNameArray.addObject (currentState.current_lkey (HERE).mAttribute_string.stringValue ()) ;
@@ -839,11 +839,11 @@ computeFromExpression (C_Compiler * inCompiler,
 //    Slots n .. n+p-1 are assigned to outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  TC_UniqueArray <C_BDD> stateExpressionBDD ((PMSInt32) mAttribute_mStatesMap.count (), C_BDD () COMMA_HERE) ;
+  TC_UniqueArray <C_BDD> stateExpressionBDD ((int32_t) mAttribute_mStatesMap.count (), C_BDD () COMMA_HERE) ;
   cEnumerator_L_5F_stateDefinition currentDefinition (mAttribute_mStateDefinitionList, kEnumeration_up) ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get state index
-    const PMSInt32 stateIndex = (PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () ;
+    const int32_t stateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Enter state configuration
     stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition.current_mStateExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
   //--- Check state configuration is not empty
@@ -863,13 +863,13 @@ computeFromExpression (C_Compiler * inCompiler,
     cEnumerator_L_5F_stateDefinition testedState (mAttribute_mStateDefinitionList, kEnumeration_up) ;
     testedState.gotoIndex (currentDefinition.index () + 1) ;
     while (testedState.hasCurrentObject ()) {
-      if (! (stateExpressionBDD ((PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
-           & stateExpressionBDD ((PMSInt32) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)).isFalse ()) {
+      if (! (stateExpressionBDD ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+           & stateExpressionBDD ((int32_t) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "expression for state '"
-                   << stateNameArray ((PMSInt32) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+                   << stateNameArray ((int32_t) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                    << "' intersects expression for state '"
-                   << stateNameArray ((PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+                   << stateNameArray ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                    << "'" ;
         inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage COMMA_HERE) ;
       }
@@ -887,7 +887,7 @@ computeFromExpression (C_Compiler * inCompiler,
   cEnumerator_L_5F_statesDefinitionList currentInitialState (mAttribute_mInitialStatesDefinitionList, kEnumeration_up) ;
   while (currentInitialState.hasCurrentObject ()) {
     // printf ("INIT : %ld\n", currentInitialState->mStateIndex.uintValue ()) ;
-    outInitialStatesBDD |= stateExpressionBDD ((PMSInt32) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
+    outInitialStatesBDD |= stateExpressionBDD ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
     currentInitialState.gotoNextObject () ;
   }
 //--- Check initial states are disjoined
@@ -896,14 +896,14 @@ computeFromExpression (C_Compiler * inCompiler,
     cEnumerator_L_5F_statesDefinitionList testedInitialState (mAttribute_mInitialStatesDefinitionList, kEnumeration_up) ;
     testedInitialState.gotoIndex (currentInitialState.index () + 1) ;
     while (testedInitialState.hasCurrentObject ()) {
-      const C_BDD intersection = stateExpressionBDD ((PMSInt32) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
-        & stateExpressionBDD ((PMSInt32) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
+      const C_BDD intersection = stateExpressionBDD ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+        & stateExpressionBDD ((int32_t) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (! intersection.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "initial state '"
-                     << stateNameArray ((PMSInt32) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+                     << stateNameArray ((int32_t) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                      << "' intersects previous initial state '"
-                     << stateNameArray ((PMSInt32) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+                     << stateNameArray ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                      << "'" ;
         inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage COMMA_HERE) ;
       }
@@ -919,7 +919,7 @@ computeFromExpression (C_Compiler * inCompiler,
 //--- Compute BDD initial states
   cEnumerator_L_5F_statesDefinitionList currentTerminalState (mAttribute_mTerminalStatesDefinitionList, kEnumeration_up) ;
   while (currentTerminalState.hasCurrentObject ()) {
-    outTerminalStatesBDD |= stateExpressionBDD ((PMSInt32) currentTerminalState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
+    outTerminalStatesBDD |= stateExpressionBDD ((int32_t) currentTerminalState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
     currentTerminalState.gotoNextObject () ;
   }
 //----------------------------------------------------------------------- Transitions BDD
@@ -936,13 +936,13 @@ computeFromExpression (C_Compiler * inCompiler,
   currentDefinition.rewind () ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get current state index
-    const PMSInt32 currentStateIndex = (PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () ;
+    const int32_t currentStateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Accumulate transitions targets for each transition
     C_BDD transitionsTargetBDD ;
     cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kEnumeration_up) ;
     while (currentTransition.hasCurrentObject ()) {
       const C_BDD actionBDD = currentTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
-      const PMSInt32 targetStateIndex = (PMSInt32) currentTransition.current_mTargetStateIndex (HERE).uintValue () ;
+      const int32_t targetStateIndex = (int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
       currentTransition.gotoNextObject () ;
@@ -957,9 +957,9 @@ computeFromExpression (C_Compiler * inCompiler,
 //--- Check transitions of each state
   currentDefinition.rewind () ;
   while (currentDefinition.hasCurrentObject ()) {
-    const PMSInt32 stateIndex = (PMSInt32) currentDefinition.current_mStateIndex (HERE).uintValue () ;
+    const int32_t stateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Check that action does not intersect with state input expression
-    PMSInt32 transitionIndex = 0 ;
+    int32_t transitionIndex = 0 ;
     cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kEnumeration_up) ;
     while (currentTransition.hasCurrentObject ()) {
     //--- Compute action BDD
@@ -985,7 +985,7 @@ computeFromExpression (C_Compiler * inCompiler,
         testedTransition.gotoNextObject () ;
       }
     //--- Check that action is compatible input configuration of target state
-      const C_BDD x = actionBDD & stateExpressionBDD ((PMSInt32) currentTransition.current_mTargetStateIndex (HERE).uintValue () COMMA_HERE) ;
+      const C_BDD x = actionBDD & stateExpressionBDD ((int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
@@ -999,9 +999,9 @@ computeFromExpression (C_Compiler * inCompiler,
     currentDefinition.gotoNextObject () ;
   }
 //----------------------------------------------------------------------- Compute accessible states
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, inVariablesCount + inVariablesCount) ;
-  for (PMUInt32 i=0 ; i<inVariablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
+  for (uint32_t i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
@@ -1016,7 +1016,7 @@ computeFromExpression (C_Compiler * inCompiler,
   macroMyDeletePODArray (substitutionArray) ;
 
 //--- At least, check that every state is accessible
-  for (PMSInt32 i=0 ; i<stateExpressionBDD.count () ; i++) {
+  for (int32_t i=0 ; i<stateExpressionBDD.count () ; i++) {
     const C_BDD intersection = stateExpressionBDD (i COMMA_HERE) & accessibleStatesBDD ;
     if (intersection.isFalse()) {
       C_String errorMessage ;
@@ -1027,7 +1027,7 @@ computeFromExpression (C_Compiler * inCompiler,
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
-  for (PMSInt32 i=0 ; i<stateExpressionBDD.count () ; i++) {
+  for (int32_t i=0 ; i<stateExpressionBDD.count () ; i++) {
     const C_BDD stateExpression = stateExpressionBDD (i COMMA_HERE) ;
     const C_BDD translatedStateExpression = stateExpression.translate (inVariablesCount, inVariablesCount) ;
     const C_BDD allStateToStateTransitions = stateExpression & translatedStateExpression ;
@@ -1040,7 +1040,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_parallelComposition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1075,7 +1075,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_orComposition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1110,10 +1110,10 @@ computeFromExpression (C_Compiler * inCompiler,
 static C_BDD
 accessibleStates (const C_BDD & inInitialState,
                   const C_BDD & inAccessibilityRelation,
-                  const PMUInt32 inVariablesCount) {
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, inVariablesCount + inVariablesCount) ;
-  for (PMUInt32 i=0 ; i<inVariablesCount ; i++) {
+                  const uint32_t inVariablesCount) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
+  for (uint32_t i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
@@ -1134,7 +1134,7 @@ accessibleStates (const C_BDD & inInitialState,
 void cPtr_C_5F_strongModalComposition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1178,7 +1178,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_weakModalComposition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1208,9 +1208,9 @@ computeFromExpression (C_Compiler * inCompiler,
   const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
 //--- Compute in left operand accessible states from intersection
   C_BDD leftAccessiblesStates ;
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, inVariablesCount + inVariablesCount) ;
-  for (PMUInt32 i=0 ; i<inVariablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
+  for (uint32_t i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
@@ -1268,7 +1268,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_boolToSeqExpression::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1282,12 +1282,12 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_existsDefinition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 /* inVariablesCount */,
+                       const uint32_t /* inVariablesCount */,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  const PMUInt32 previousVariableCount =  mAttribute_mPreviousVariableCount.uintValue () ;
-  const PMUInt32 totalVariableCount =  mAttribute_mTotalVariableCount.uintValue () ;
+  const uint32_t previousVariableCount =  mAttribute_mPreviousVariableCount.uintValue () ;
+  const uint32_t totalVariableCount =  mAttribute_mTotalVariableCount.uintValue () ;
 //--- Compute operand
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
@@ -1302,15 +1302,15 @@ computeFromExpression (C_Compiler * inCompiler,
   outTerminalStatesBDD = terminalStatesBDD.existsOnBitsAfterNumber (previousVariableCount) ;
 //--- Compute accessibilty relation (NOT OPTIMIZED)
   outAccessibilityRelationBDD = accessibilityRelationBDD.existsOnBitsAfterNumber ( (totalVariableCount + previousVariableCount)) ;
-  for (PMUInt32 i=previousVariableCount ; i<totalVariableCount ; i++) {
+  for (uint32_t i=previousVariableCount ; i<totalVariableCount ; i++) {
     outAccessibilityRelationBDD = outAccessibilityRelationBDD.existsOnBitNumber (i) ;
   }
-  PMUInt32 * substitutionVector = NULL ;
-  macroMyNewPODArray (substitutionVector, PMUInt32, totalVariableCount + previousVariableCount) ;
-  for (PMUInt32 i=0 ; i<totalVariableCount ; i++) {
+  uint32_t * substitutionVector = NULL ;
+  macroMyNewPODArray (substitutionVector, uint32_t, totalVariableCount + previousVariableCount) ;
+  for (uint32_t i=0 ; i<totalVariableCount ; i++) {
     substitutionVector [i] = i ;
   }
-  for (PMUInt32 i=totalVariableCount ; i<( (totalVariableCount + previousVariableCount)) ; i++) {
+  for (uint32_t i=totalVariableCount ; i<( (totalVariableCount + previousVariableCount)) ; i++) {
     substitutionVector [i] =  (previousVariableCount + i - totalVariableCount) ;
   }
   outAccessibilityRelationBDD = outAccessibilityRelationBDD.substitution (substitutionVector,  (totalVariableCount + previousVariableCount) COMMA_HERE) ;
@@ -1322,12 +1322,12 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_forallDefinition::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 /* inVariablesCount */,
+                       const uint32_t /* inVariablesCount */,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  const PMUInt32 previousVariableCount =  mAttribute_mPreviousVariableCount.uintValue () ;
-  const PMUInt32 totalVariableCount =  mAttribute_mTotalVariableCount.uintValue () ;
+  const uint32_t previousVariableCount =  mAttribute_mPreviousVariableCount.uintValue () ;
+  const uint32_t totalVariableCount =  mAttribute_mTotalVariableCount.uintValue () ;
 //--- Compute operand
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
@@ -1342,15 +1342,15 @@ computeFromExpression (C_Compiler * inCompiler,
   outTerminalStatesBDD = terminalStatesBDD.forallOnBitsAfterNumber (previousVariableCount) ;
 //--- Compute accessibilty relation (NOT OPTIMIZED)
   outAccessibilityRelationBDD = accessibilityRelationBDD.forallOnBitsAfterNumber ( (totalVariableCount + previousVariableCount)) ;
-  for (PMUInt32 i=previousVariableCount ; i<totalVariableCount ; i++) {
+  for (uint32_t i=previousVariableCount ; i<totalVariableCount ; i++) {
     outAccessibilityRelationBDD = outAccessibilityRelationBDD.forallOnBitNumber (i) ;
   }
-  PMUInt32 * substitutionVector = NULL ;
-  macroMyNewPODArray (substitutionVector, PMUInt32, totalVariableCount + previousVariableCount) ;
-  for (PMUInt32 i=0 ; i<totalVariableCount ; i++) {
+  uint32_t * substitutionVector = NULL ;
+  macroMyNewPODArray (substitutionVector, uint32_t, totalVariableCount + previousVariableCount) ;
+  for (uint32_t i=0 ; i<totalVariableCount ; i++) {
     substitutionVector [i] = i ;
   }
-  for (PMUInt32 i=totalVariableCount ; i<( (totalVariableCount + previousVariableCount)) ; i++) {
+  for (uint32_t i=totalVariableCount ; i<( (totalVariableCount + previousVariableCount)) ; i++) {
     substitutionVector [i] =  (previousVariableCount + i - totalVariableCount) ;
   }
   outAccessibilityRelationBDD = outAccessibilityRelationBDD.substitution (substitutionVector,  (totalVariableCount + previousVariableCount) COMMA_HERE) ;
@@ -1362,7 +1362,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_suppressInitialStatesOperation::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1379,7 +1379,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_suppressTerminalStatesOperation::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1397,7 +1397,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_fullSaturationOperation::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1419,7 +1419,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_complementationOperation::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1444,20 +1444,20 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_importMachine::
 computeFromExpression (C_Compiler * /* inCompiler */,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Get index of imported machine
-  const PMSInt32 indexOfImportedMachine = (PMSInt32) mAttribute_mIndexOfImportedMachine.uintValue () ;
+  const int32_t indexOfImportedMachine = (int32_t) mAttribute_mIndexOfImportedMachine.uintValue () ;
 //--- Construct substitution arraies
-  const PMUInt32 importedMachineVariableCount =  mAttribute_mTranslationVector.count () ;
-  PMUInt32 * statesSubstitutionArray = NULL ;
-  macroMyNewPODArray (statesSubstitutionArray, PMUInt32, importedMachineVariableCount) ;
-  PMUInt32 * transitionsSubstitutionArray = NULL ;
-  macroMyNewPODArray (transitionsSubstitutionArray, PMUInt32, importedMachineVariableCount + importedMachineVariableCount) ;
+  const uint32_t importedMachineVariableCount =  mAttribute_mTranslationVector.count () ;
+  uint32_t * statesSubstitutionArray = NULL ;
+  macroMyNewPODArray (statesSubstitutionArray, uint32_t, importedMachineVariableCount) ;
+  uint32_t * transitionsSubstitutionArray = NULL ;
+  macroMyNewPODArray (transitionsSubstitutionArray, uint32_t, importedMachineVariableCount + importedMachineVariableCount) ;
   cEnumerator_L_5F_translationVector p (mAttribute_mTranslationVector, kEnumeration_up) ;
-  PMUInt32 index = 0 ;
+  uint32_t index = 0 ;
   while (p.hasCurrentObject ()) {
     statesSubstitutionArray [index] =  p.current_mTargetSlot (HERE).uintValue () ;
     transitionsSubstitutionArray [index] =  p.current_mTargetSlot (HERE).uintValue () ;
@@ -1484,19 +1484,19 @@ computeFromExpression (C_Compiler * /* inCompiler */,
 void cPtr_C_5F_additiveModalCompositionComponent::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Compute BDDs for each mode
-  const PMSInt32 modeCount = (PMSInt32) mAttribute_mModeMap.count () ;
+  const int32_t modeCount = (int32_t) mAttribute_mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, kEnumeration_up) ;
-  {PMSInt32 index = 0 ;
+  {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
@@ -1511,19 +1511,19 @@ computeFromExpression (C_Compiler * inCompiler,
     }
   }
 //--- Compute accessible states
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
     accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), inVariablesCount) ;
   }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, inVariablesCount + inVariablesCount) ;
-  for (PMUInt32 i=0 ; i<inVariablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
+  for (uint32_t i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
-    for (PMSInt32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
+    for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
@@ -1598,7 +1598,7 @@ computeFromExpression (C_Compiler * inCompiler,
   outInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
   outTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
   outAccessibilityRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
-  for (PMSInt32 mode=1 ; mode < modeCount ; mode++) {
+  for (int32_t mode=1 ; mode < modeCount ; mode++) {
     outInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
     outTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
     outAccessibilityRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
@@ -1606,8 +1606,8 @@ computeFromExpression (C_Compiler * inCompiler,
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
   cEnumerator_ListForModes currentInclusion (mAttribute_mInclusionList, kEnumeration_up) ;
   while (currentInclusion.hasCurrentObject ()) {
-    const PMSInt32 sourceMode = (PMSInt32) currentInclusion.current_mSourceMode (HERE).uintValue () ;
-    const PMSInt32 targetMode = (PMSInt32) currentInclusion.current_mTargetMode (HERE).uintValue () ;
+    const int32_t sourceMode = (int32_t) currentInclusion.current_mSourceMode (HERE).uintValue () ;
+    const int32_t targetMode = (int32_t) currentInclusion.current_mTargetMode (HERE).uintValue () ;
   //--- translate initial state BDD by inVariablesCount slots
     const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
   //--- Transitions to from terminal states to initial states
@@ -1624,19 +1624,19 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_substractiveModalCompositionComponent::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Compute BDDs for each mode
-  const PMSInt32 modeCount = (PMSInt32) mAttribute_mModeMap.count () ;
+  const int32_t modeCount = (int32_t) mAttribute_mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, kEnumeration_up) ;
-  {PMSInt32 index = 0 ;
+  {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
@@ -1651,19 +1651,19 @@ computeFromExpression (C_Compiler * inCompiler,
     }
   }
 //--- Compute accessible states
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
     accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), inVariablesCount) ;
   }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, inVariablesCount + inVariablesCount) ;
-  for (PMUInt32 i=0 ; i<inVariablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
+  for (uint32_t i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
-    for (PMSInt32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
+    for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
@@ -1738,20 +1738,20 @@ computeFromExpression (C_Compiler * inCompiler,
   outInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
   outTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
   outAccessibilityRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
-  for (PMSInt32 mode=1 ; mode < modeCount ; mode++) {
+  for (int32_t mode=1 ; mode < modeCount ; mode++) {
     outInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
     outTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
     outAccessibilityRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
   }
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
-  for (PMSInt32 sourceMode=0 ; sourceMode < modeCount ; sourceMode++) {
-    for (PMSInt32 targetMode=0 ; targetMode < modeCount ; targetMode++) {
+  for (int32_t sourceMode=0 ; sourceMode < modeCount ; sourceMode++) {
+    for (int32_t targetMode=0 ; targetMode < modeCount ; targetMode++) {
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
         cEnumerator_ListForModes currentExclusion (mAttribute_mExclusionList, kEnumeration_up) ;
         while ((currentExclusion.hasCurrentObject ()) && isAccepted) {
-          isAccepted = (sourceMode != (PMSInt32) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (PMSInt32) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
+          isAccepted = (sourceMode != (int32_t) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (int32_t) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
           currentExclusion.gotoNextObject () ;
         }
       //--- If accepted, add transition
@@ -1773,7 +1773,7 @@ computeFromExpression (C_Compiler * inCompiler,
 void cPtr_C_5F_trans::
 computeFromExpression (C_Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
-                       const PMUInt32 inVariablesCount,
+                       const uint32_t inVariablesCount,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
@@ -1789,15 +1789,15 @@ static void
 addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
                         const C_BDD & inSourceAccessibilityRelation,
                         const C_BDD & inSourceTerminalStates,
-                        const PMSInt32 inVariablesCount,
-                        const PMSInt32 inInputVariablesCount,
+                        const int32_t inVariablesCount,
+                        const int32_t inInputVariablesCount,
                         const C_BDD & inTargetInitialStates) {
 //--- Transitions from terminal states
    const C_BDD transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
 //--- Filter theses transitions by eliminating target internal and output variables
-   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((PMUInt32) (inVariablesCount + inInputVariablesCount)) ;
+   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((uint32_t) (inVariablesCount + inInputVariablesCount)) ;
 //--- translate initial state BDD by variablesCount slots
-   const C_BDD translatedInitialStates = inTargetInitialStates.translate ((PMUInt32) inVariablesCount, (PMUInt32) inVariablesCount) ;
+   const C_BDD translatedInitialStates = inTargetInitialStates.translate ((uint32_t) inVariablesCount, (uint32_t) inVariablesCount) ;
 //--- Transitions to from terminal states to initial states
    const C_BDD transitions = inSourceTerminalStates & translatedInitialStates ;
 //--- Eliminate from theses transitions all the transitions that raise an ambiguity
@@ -1817,30 +1817,30 @@ compute (C_Compiler * inCompiler,
   C_saraMachine machine ;
   machine.mMachineName = mAttribute_mMachineName.mAttribute_string.stringValue () ;
 //--- Build input variables array names
-  const PMUInt32 inputVariablesCount =  mAttribute_mInputVariableCount.uintValue () ;
+  const uint32_t inputVariablesCount =  mAttribute_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const PMUInt32 variablesCount =  mAttribute_mVariablesMap.count () ;
-  const PMUInt32 inputAndInternalVariablesCount =  mAttribute_mInputAndInternalVariableCount.uintValue () ;
+  const uint32_t variablesCount =  mAttribute_mVariablesMap.count () ;
+  const uint32_t inputAndInternalVariablesCount =  mAttribute_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_UniqueArray <C_String> variableNamesArray ((PMSInt32) variablesCount, "" COMMA_HERE) ;
+  { TC_UniqueArray <C_String> variableNamesArray ((int32_t) variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
-  PMSInt32 index = 0 ;
+  int32_t index = 0 ;
   while (currentVar.hasCurrentObject ()) {
     machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
     index ++ ;
     currentVar.gotoNextObject () ;
   }
 //--- Compute BDDs for each mode
-  const PMSInt32 modeCount = (PMSInt32) mAttribute_mModeMap.count () ;
+  const int32_t modeCount = (int32_t) mAttribute_mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, kEnumeration_up) ;
-  {PMSInt32 index = 0 ;
+  {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
@@ -1855,19 +1855,19 @@ compute (C_Compiler * inCompiler,
     }
   }
 //--- Compute accessible states
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
     accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variablesCount) ;
   }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, variablesCount + variablesCount) ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     substitutionArray [i] =  (variablesCount + i) ;
     substitutionArray [variablesCount + i] = i ;
   }
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
-    for (PMSInt32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
+    for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
@@ -1942,7 +1942,7 @@ compute (C_Compiler * inCompiler,
   machine.mInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
   machine.mTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
   machine.mTransitionRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
-  for (PMSInt32 mode=1 ; mode < modeCount ; mode++) {
+  for (int32_t mode=1 ; mode < modeCount ; mode++) {
     machine.mInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
     machine.mTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
     machine.mTransitionRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
@@ -1950,23 +1950,23 @@ compute (C_Compiler * inCompiler,
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
   cEnumerator_ListForModes currentInclusion (mAttribute_mInclusionList, kEnumeration_up) ;
   while (currentInclusion.hasCurrentObject ()) {
-    const PMSInt32 sourceMode = (PMSInt32) currentInclusion.current_mSourceMode (HERE).uintValue () ;
-    const PMSInt32 targetMode = (PMSInt32) currentInclusion.current_mTargetMode (HERE).uintValue () ;
+    const int32_t sourceMode = (int32_t) currentInclusion.current_mSourceMode (HERE).uintValue () ;
+    const int32_t targetMode = (int32_t) currentInclusion.current_mTargetMode (HERE).uintValue () ;
   //--- Add filtered transitions from terminal states to initial states
     addFilteredTransitions (machine.mTransitionRelationBDD,
                             accessibilityRelationStatesArray (sourceMode COMMA_HERE),
                             terminalStatesArray (sourceMode COMMA_HERE),
-                            (PMSInt32) variablesCount,
-                            (PMSInt32) inputVariablesCount,
+                            (int32_t) variablesCount,
+                            (int32_t) inputVariablesCount,
                             initialStatesArray (targetMode COMMA_HERE)) ;
   //--- Next inclusion
     currentInclusion.gotoNextObject () ;
   }
 //---------- Compute accessible states
   if (variablesCount > 0) {
-    macroMyNewPODArray (substitutionArray, PMUInt32, variablesCount + variablesCount) ;
+    macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
   }
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     substitutionArray [i] =  (variablesCount + i) ;
     substitutionArray [variablesCount + i] = i ;
   }
@@ -1983,16 +1983,16 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32) (variablesCount + variablesCount), "" COMMA_HERE) ;
-  for (PMSInt32 i=0 ; i<(PMSInt32) variablesCount ; i++) {
+  TC_UniqueArray <C_String> transitionsVariableNameArray ((int32_t) (variablesCount + variablesCount), "" COMMA_HERE) ;
+  for (int32_t i=0 ; i<(int32_t) variablesCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray ((PMSInt32) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((int32_t) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const PMSInt32 outputVariablesCount = (PMSInt32) (variablesCount - inputAndInternalVariablesCount) ;
-  const PMSInt32 internalVariablesCount = (PMSInt32) (inputAndInternalVariablesCount - inputVariablesCount) ;
-  PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
-  PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
+  const int32_t outputVariablesCount = (int32_t) (variablesCount - inputAndInternalVariablesCount) ;
+  const int32_t internalVariablesCount = (int32_t) (inputAndInternalVariablesCount - inputVariablesCount) ;
+  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
+  uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount)
@@ -2024,7 +2024,7 @@ compute (C_Compiler * inCompiler,
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
@@ -2059,16 +2059,16 @@ compute (C_Compiler * inCompiler,
   C_saraMachine machine ;
   machine.mMachineName = mAttribute_mMachineName.mAttribute_string.stringValue () ;
 //--- Build input variables array names
-  const PMUInt32 inputVariablesCount =  mAttribute_mInputVariableCount.uintValue () ;
+  const uint32_t inputVariablesCount =  mAttribute_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const PMUInt32 variablesCount =  mAttribute_mVariablesMap.count () ;
-  const PMUInt32 inputAndInternalVariablesCount =  mAttribute_mInputAndInternalVariableCount.uintValue () ;
+  const uint32_t variablesCount =  mAttribute_mVariablesMap.count () ;
+  const uint32_t inputAndInternalVariablesCount =  mAttribute_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_UniqueArray <C_String> variableNamesArray ((PMSInt32) variablesCount, "" COMMA_HERE) ;
+  { TC_UniqueArray <C_String> variableNamesArray ((int32_t) variablesCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
-  PMSInt32 index = 0 ;
+  int32_t index = 0 ;
   while (currentVar.hasCurrentObject ()) {
     machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
     index ++ ;
@@ -2076,14 +2076,14 @@ compute (C_Compiler * inCompiler,
   }
 //----------- Compute automaton from definition expression
 //--- Compute BDDs for each mode
-  const PMSInt32 modeCount = (PMSInt32) mAttribute_mModeMap.count () ;
+  const int32_t modeCount = (int32_t) mAttribute_mModeMap.count () ;
   TC_UniqueArray <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
   TC_UniqueArray <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mAttribute_mModeMap, kEnumeration_up) ;
-  {PMSInt32 index = 0 ;
+  {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
@@ -2098,19 +2098,19 @@ compute (C_Compiler * inCompiler,
     }
   }
 //--- Compute accessible states
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
     accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variablesCount) ;
   }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
-  PMUInt32 * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, PMUInt32, variablesCount + variablesCount) ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     substitutionArray [i] =  (variablesCount + i) ;
     substitutionArray [variablesCount + i] = i ;
   }
-  for (PMSInt32 mode=0 ; mode<modeCount ; mode++) {
-    for (PMSInt32 testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
+  for (int32_t mode=0 ; mode<modeCount ; mode++) {
+    for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
      //--- compute intersection
       const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
@@ -2185,20 +2185,20 @@ compute (C_Compiler * inCompiler,
   machine.mInitialStatesBDD = initialStatesArray (0 COMMA_HERE) ;
   machine.mTerminalStatesBDD = terminalStatesArray (0 COMMA_HERE) ;
   machine.mTransitionRelationBDD = accessibilityRelationStatesArray (0 COMMA_HERE) ;
-  for (PMSInt32 mode=1 ; mode < modeCount ; mode++) {
+  for (int32_t mode=1 ; mode < modeCount ; mode++) {
     machine.mInitialStatesBDD |= initialStatesArray (mode COMMA_HERE) ;
     machine.mTerminalStatesBDD |= terminalStatesArray (mode COMMA_HERE) ;
     machine.mTransitionRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
   }
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
-  for (PMSInt32 sourceMode=0 ; sourceMode < modeCount ; sourceMode++) {
-    for (PMSInt32 targetMode=0 ; targetMode < modeCount ; targetMode++) {
+  for (int32_t sourceMode=0 ; sourceMode < modeCount ; sourceMode++) {
+    for (int32_t targetMode=0 ; targetMode < modeCount ; targetMode++) {
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
         cEnumerator_ListForModes currentExclusion (mAttribute_mExclusionList, kEnumeration_up) ;
         while ((currentExclusion.hasCurrentObject ()) && isAccepted) {
-          isAccepted = (sourceMode != (PMSInt32) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (PMSInt32) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
+          isAccepted = (sourceMode != (int32_t) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (int32_t) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
           currentExclusion.gotoNextObject () ;
         }
       //--- If accepted, add transition
@@ -2207,8 +2207,8 @@ compute (C_Compiler * inCompiler,
           addFilteredTransitions (machine.mTransitionRelationBDD,
                                   accessibilityRelationStatesArray (sourceMode COMMA_HERE),
                                   terminalStatesArray (sourceMode COMMA_HERE),
-                                  (PMSInt32) variablesCount,
-                                  (PMSInt32) inputVariablesCount,
+                                  (int32_t) variablesCount,
+                                  (int32_t) inputVariablesCount,
                                   initialStatesArray (targetMode COMMA_HERE)) ;
         }
       }
@@ -2216,9 +2216,9 @@ compute (C_Compiler * inCompiler,
   }
 //---------- Compute accessible states
   if (variablesCount > 0) {
-    macroMyNewPODArray (substitutionArray, PMUInt32, variablesCount + variablesCount) ;
+    macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
   }
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
     substitutionArray [i] =  (variablesCount + i) ;
     substitutionArray [variablesCount + i] = i ;
   }
@@ -2235,20 +2235,20 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_UniqueArray <C_String> transitionsVariableNameArray ((PMSInt32)  (variablesCount + variablesCount), "" COMMA_HERE) ;
-  for (PMSInt32 i=0 ; i<(PMSInt32) variablesCount ; i++) {
+  TC_UniqueArray <C_String> transitionsVariableNameArray ((int32_t)  (variablesCount + variablesCount), "" COMMA_HERE) ;
+  for (int32_t i=0 ; i<(int32_t) variablesCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray ((PMSInt32) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((int32_t) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const PMSInt32 outputVariablesCount = (PMSInt32) (variablesCount - inputAndInternalVariablesCount) ;
-  const PMSInt32 internalVariablesCount = (PMSInt32) (inputAndInternalVariablesCount - inputVariablesCount) ;
+  const int32_t outputVariablesCount = (int32_t) (variablesCount - inputAndInternalVariablesCount) ;
+  const int32_t internalVariablesCount = (int32_t) (inputAndInternalVariablesCount - inputVariablesCount) ;
   co << "  "
      << cStringWithSigned (inputVariablesCount) << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount) << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount) << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
-  PMUInt64 n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
-  PMUInt32 nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
+  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
+  uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " initial state" << ((n > 1) ? "s" : "")
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
@@ -2274,8 +2274,8 @@ compute (C_Compiler * inCompiler,
      << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
-  for (PMUInt32 i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
+  for (uint32_t i=0 ; i<variablesCount ; i++) {
+    constraint &= C_BDD (i, false) == C_BDD ( (variablesCount + i), false) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
