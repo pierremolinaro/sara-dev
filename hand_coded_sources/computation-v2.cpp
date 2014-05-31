@@ -95,7 +95,7 @@ computeBDD (C_Compiler * inCompiler,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-     != mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+     .notEqualTo (mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -117,7 +117,7 @@ computeBDD (C_Compiler * inCompiler,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   return mAttribute_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-     == mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+     .equalTo (mAttribute_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -133,13 +133,13 @@ computeBDD (C_Compiler * inCompiler,
   const C_BDD initialStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mInitialStatesBDD ;
   const C_BDD terminalStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTerminalStatesBDD ;
   const C_BDD transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
-  if (! initialStatesOfImportedMachine.isEqualToBDD (terminalStatesOfImportedMachine)) {
+  if (initialStatesOfImportedMachine != (terminalStatesOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
   }
   const uint32_t importedMachineVariableCount =  mAttribute_mTranslationVector.count () ;
   const C_BDD boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
-  if (! boolAccessibilityRelationBDD.isEqualToBDD (transitionsOfImportedMachine)) {
+  if (boolAccessibilityRelationBDD != (transitionsOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
   }
@@ -262,7 +262,7 @@ compute (C_Compiler * inCompiler,
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
     const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, variablesCount + variablesCount COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-  }while (! machine.mAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- 
   machine.mTransitionRelationBDD &= machine.mAccessibleStatesBDD ;
@@ -319,7 +319,7 @@ compute (C_Compiler * inCompiler,
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
+    constraint &= C_BDD ( i, false).equalTo (C_BDD ((variablesCount + i), false)) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount64 (variablesCount + variablesCount) ;
@@ -395,7 +395,7 @@ compute (C_Compiler * /* inCompiler */,
 //--- Check initial states are identical
   bool identical = ok ;
   if (ok) {
-    if (machine2.mInitialStatesBDD.isEqualToBDD (machine1.mInitialStatesBDD)) {
+    if (machine2.mInitialStatesBDD == (machine1.mInitialStatesBDD)) {
       co << "  Same initial states;\n" ;
     }else{
       identical = false ;
@@ -404,7 +404,7 @@ compute (C_Compiler * /* inCompiler */,
   }
 //--- Check terminal states are identical
   if (ok) {
-    if (machine2.mTerminalStatesBDD.isEqualToBDD (machine1.mTerminalStatesBDD)) {
+    if (machine2.mTerminalStatesBDD == (machine1.mTerminalStatesBDD)) {
       co << "  Same terminal states;\n" ;
     }else{
       identical = false ;
@@ -413,7 +413,7 @@ compute (C_Compiler * /* inCompiler */,
   }
 //--- Check transitions are identical
   if (ok) {
-    if (machine2.mTransitionRelationBDD.isEqualToBDD (machine1.mTransitionRelationBDD)) {
+    if (machine2.mTransitionRelationBDD == (machine1.mTransitionRelationBDD)) {
       co << "  Same transitions;\n" ;
     }else{
       identical = false ;
@@ -422,7 +422,7 @@ compute (C_Compiler * /* inCompiler */,
   }
 //--- Check accessible states are identical
   if (ok) {
-    if (machine2.mAccessibleStatesBDD.isEqualToBDD (machine1.mAccessibleStatesBDD)) {
+    if (machine2.mAccessibleStatesBDD == (machine1.mAccessibleStatesBDD)) {
       co << "  Same accessible states;\n" ;
     }else{
       identical = false ;
@@ -548,7 +548,7 @@ compute (C_Compiler * /* inCompiler */,
   macroMyDeletePODArray (substitutionVector) ;
   C_BDD sEqualSprimeConstraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
-    sEqualSprimeConstraint &= C_BDD ( (i + machine.mInputVariablesCount), false) == C_BDD ( (variableCount + i), false) ;
+    sEqualSprimeConstraint &= C_BDD ( (i + machine.mInputVariablesCount), false).equalTo (C_BDD ( (variableCount + i), false)) ;
   }
   const C_BDD ambiguousInput = (machine.mInitialStatesBDD & sTranslatedInputConfiguration & ~ sEqualSprimeConstraint).existsOnBitsAfterNumber (variableCount) ;
   if (ambiguousInput.isFalse ()) {
@@ -570,11 +570,11 @@ compute (C_Compiler * /* inCompiler */,
   macroMyDeletePODArray (substitutionVector) ;
   C_BDD ePrimeEqualsEsecondConstraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<machine.mInputVariablesCount ; i++) {
-    ePrimeEqualsEsecondConstraint &= C_BDD ( (i+variableCount), false) == C_BDD ( (i + variableCount + variableCount), false) ;
+    ePrimeEqualsEsecondConstraint &= C_BDD ( (i+variableCount), false).equalTo (C_BDD ( (i + variableCount + variableCount), false)) ;
   }
   C_BDD sPrimeEqualsSsecondConstraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
-    sPrimeEqualsSsecondConstraint &= C_BDD ( (i+variableCount+machine.mInputVariablesCount), false) == C_BDD ( (i+variableCount+variableCount+machine.mInputVariablesCount), false) ;
+    sPrimeEqualsSsecondConstraint &= C_BDD ( (i+variableCount+machine.mInputVariablesCount), false).equalTo (C_BDD ( (i+variableCount+variableCount+machine.mInputVariablesCount), false)) ;
   }
   const C_BDD ambiguousTransitions = (machine.mTransitionRelationBDD & translatedTransitions & ePrimeEqualsEsecondConstraint & ~ sPrimeEqualsSsecondConstraint).existsOnBitsAfterNumber ( (variableCount + variableCount)) ;
   if (ambiguousTransitions.isFalse ()) {
@@ -623,12 +623,12 @@ compute (C_Compiler * /* inCompiler */,
 //--- Check machine is combinatory ? (added by PM on october 13th, 2005)
   if (mAttribute_mCheckMachineIsBoolean.boolValue ()) {
     bool ok = true ;
-    if (!  machine.mInitialStatesBDD.isEqualToBDD ( machine.mTerminalStatesBDD)) {
+    if (machine.mInitialStatesBDD != ( machine.mTerminalStatesBDD)) {
       co << "  checkbool error: this machine is not combinatory (initial states != terminal states).\n" ;
       ok = false ;
     }
     const C_BDD boolAccessibilityRelationBDD =  machine.mInitialStatesBDD & machine.mInitialStatesBDD.translate (variableCount, variableCount) ;
-    if (! boolAccessibilityRelationBDD.isEqualToBDD (machine.mTransitionRelationBDD)) {
+    if (boolAccessibilityRelationBDD != (machine.mTransitionRelationBDD)) {
       co << "  checkbool error: this machine is not combinatory (transitions != initial states x initial states).\n" ;
       ok = false ;
     }
@@ -1012,7 +1012,7 @@ computeFromExpression (C_Compiler * inCompiler,
     newlyAccessibleStates |= outInitialStatesBDD ;
     const C_BDD x = (newlyAccessibleStates & outAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-  }while (! accessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (accessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 
 //--- At least, check that every state is accessible
@@ -1124,7 +1124,7 @@ accessibleStates (const C_BDD & inInitialState,
     newlyAccessibleStates |= inInitialState ;
     const C_BDD x = (newlyAccessibleStates & inAccessibilityRelation).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-  }while (! accessibleStates.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (accessibleStates != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
   return accessibleStates ;
 }
@@ -1220,9 +1220,9 @@ computeFromExpression (C_Compiler * inCompiler,
     newlyAccessibleStates |= intersection ;
     const C_BDD x = (newlyAccessibleStates & leftAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-  }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
 //--- Check that only states in intersection are accessible
-  if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+  if (intersection != (leftAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "left operand does not respect weak modal composition" ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
@@ -1235,23 +1235,23 @@ computeFromExpression (C_Compiler * inCompiler,
     newlyAccessibleStates |= intersection ;
     const C_BDD x = (newlyAccessibleStates & rightAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-  }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- Check that only states in intersection are accessible
-  if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+  if (intersection != (rightAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "right operand does not respect weak modal composition" ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
   }
 //--- Check initial states are compatible
-  const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD).isEqualToBDD (intersection & rightInitialStatesBDD) ;
+  const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD) == (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "initial states are not compatible with weak modal composition" ;
     inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
-  const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD).isEqualToBDD (intersection & rightTerminalStatesBDD) ;
+  const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD) == (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "terminal states are not compatible with weak modal composition" ;
@@ -1535,10 +1535,10 @@ computeFromExpression (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
-      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+      if (intersection != (leftAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -1556,10 +1556,10 @@ computeFromExpression (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
-      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+      if (intersection != (rightAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -1568,7 +1568,7 @@ computeFromExpression (C_Compiler * inCompiler,
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
-      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "initial states of '"
@@ -1580,7 +1580,7 @@ computeFromExpression (C_Compiler * inCompiler,
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
-      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "terminal states of '"
@@ -1675,10 +1675,10 @@ computeFromExpression (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
-      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+      if (intersection != (leftAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -1696,10 +1696,10 @@ computeFromExpression (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
-      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
-      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+      if (intersection != (rightAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -1708,7 +1708,7 @@ computeFromExpression (C_Compiler * inCompiler,
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
-      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "initial states of '"
@@ -1720,7 +1720,7 @@ computeFromExpression (C_Compiler * inCompiler,
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
-      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "terminal states of '"
@@ -1879,10 +1879,10 @@ compute (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
-      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+      if (intersection != (leftAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -1900,10 +1900,10 @@ compute (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
-      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+      if (intersection != (rightAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -1912,7 +1912,7 @@ compute (C_Compiler * inCompiler,
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
-      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "initial states of '"
@@ -1924,7 +1924,7 @@ compute (C_Compiler * inCompiler,
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
-      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "terminal states of '"
@@ -1976,7 +1976,7 @@ compute (C_Compiler * inCompiler,
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
     const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-  }while (! machine.mAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- 
   machine.mTransitionRelationBDD &= machine.mAccessibleStatesBDD ;
@@ -2025,7 +2025,7 @@ compute (C_Compiler * inCompiler,
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD ( i, false) == C_BDD ( (variablesCount + i), false) ;
+    constraint &= C_BDD ( i, false).equalTo (C_BDD ( (variablesCount + i), false)) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
@@ -2122,10 +2122,10 @@ compute (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-      }while (! leftAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
-      if (! intersection.isEqualToBDD (leftAccessiblesStates)) {
+      if (intersection != (leftAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (mode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -2143,10 +2143,10 @@ compute (C_Compiler * inCompiler,
         newlyAccessibleStates |= intersection ;
         const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-      }while (! rightAccessiblesStates.isEqualToBDD (newlyAccessibleStates)) ;
+      }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
-      if (! intersection.isEqualToBDD (rightAccessiblesStates)) {
+      if (intersection != (rightAccessiblesStates)) {
         C_String errorMessage ;
         errorMessage << "accessibility of '" << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode does not respect weak modal composition with '"
@@ -2155,7 +2155,7 @@ compute (C_Compiler * inCompiler,
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
       }
     //--- Check initial states are compatible
-      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
+      const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "initial states of '"
@@ -2167,7 +2167,7 @@ compute (C_Compiler * inCompiler,
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
-      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)).isEqualToBDD (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
+      const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         C_String errorMessage ;
         errorMessage << "terminal states of '"
@@ -2228,7 +2228,7 @@ compute (C_Compiler * inCompiler,
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
     const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
-  }while (! machine.mAccessibleStatesBDD.isEqualToBDD (newlyAccessibleStates)) ;
+  }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- 
   machine.mTransitionRelationBDD &= machine.mAccessibleStatesBDD ;
@@ -2275,7 +2275,7 @@ compute (C_Compiler * inCompiler,
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD (i, false) == C_BDD ( (variablesCount + i), false) ;
+    constraint &= C_BDD (i, false).equalTo (C_BDD ( (variablesCount + i), false)) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
