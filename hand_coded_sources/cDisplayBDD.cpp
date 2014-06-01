@@ -1,11 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     C++ class for displaying BDDs (use with the BDD package 'C_BDD.cpp')    *
+//  Copyright (C) 2000, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
-//  This file is part of libpm library                                         *
-//                                                                             *
-//  Copyright (C) 2000, ..., 2005 Pierre Molinaro.                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -21,7 +19,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "bdd/C_Display_BDD.h"
+#include "cDisplayBDD.h"
 #include "streams/AC_OutputStream.h"
 #include "utilities/MF_MemoryControl.h"
 
@@ -31,7 +29,7 @@
 
 //-----------------------------------------------------------------------------*
 
-C_Display_BDD::C_Display_BDD (const uint32_t nombreChaines) :
+cDisplayBDD::cDisplayBDD (const uint32_t nombreChaines) :
 aNombreChaines (0),
 aTab (),
 aDimensions (NULL) {
@@ -40,13 +38,13 @@ aDimensions (NULL) {
 
 //-----------------------------------------------------------------------------*
 
-C_Display_BDD::~C_Display_BDD (void) {
+cDisplayBDD::~cDisplayBDD (void) {
   vider () ;
 }
 
 //-----------------------------------------------------------------------------*
 
-void C_Display_BDD::vider (void) {
+void cDisplayBDD::vider (void) {
   aTab.free () ;
   macroMyDeleteArray (aDimensions) ;
   aNombreChaines = 0 ;
@@ -54,7 +52,7 @@ void C_Display_BDD::vider (void) {
 
 //-----------------------------------------------------------------------------*
 
-void C_Display_BDD::allouer (const uint32_t nombreChaines) {
+void cDisplayBDD::allouer (const uint32_t nombreChaines) {
   vider () ;
   aTab.makeRoom ((int32_t) nombreChaines) ;
   macroMyDeleteArray (aDimensions) ;
@@ -69,25 +67,24 @@ void C_Display_BDD::allouer (const uint32_t nombreChaines) {
 
 //-----------------------------------------------------------------------------*
 
-void C_Display_BDD::defineVariableName (const uint32_t indice,
+void cDisplayBDD::defineVariableName (const uint32_t indice,
                                         const C_String & chaine,
                                         const uint32_t dimensions) {
   if (indice < aNombreChaines) {
     aDimensions [indice] = dimensions ;
-  //  aTab ((int32_t) indice COMMA_HERE) = chaine ;
     aTab.addObject (chaine) ;
   }
 }
 
 //-----------------------------------------------------------------------------*
 
-int32_t C_Display_BDD::longueur (const uint32_t indice) const  {
+int32_t cDisplayBDD::longueur (const uint32_t indice) const  {
   return aTab ((int32_t) indice COMMA_HERE).length () ;
 }
 
 //-----------------------------------------------------------------------------*
 
-uint32_t C_Display_BDD::
+uint32_t cDisplayBDD::
 obtenirDimension (const uint32_t indice) const {
   uint32_t dim = 1 ;
   if (indice < aNombreChaines) {
@@ -98,7 +95,7 @@ obtenirDimension (const uint32_t indice) const {
 
 //-----------------------------------------------------------------------------*
 
-void C_Display_BDD::ecrire (const uint32_t indice,
+void cDisplayBDD::ecrire (const uint32_t indice,
                             AC_OutputStream & inStream) const {
   inStream << aTab ((int32_t) indice COMMA_HERE) ;
 }
