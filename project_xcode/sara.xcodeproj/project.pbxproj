@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6C325499F1680B9896BEEDEB /* cDisplayBDD.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
 		3DE83D861C3176A6273CAC6D /* computation-v2.cpp */ = {isa = PBXBuildFile; fileRef = A0B923820DCC509A6F75849B ; settings = {ATTRIBUTES = (); }; };
-		A885DB0D477D707121934FF8 /* printBDDWithVariables.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
+		A885DB0D477D707121934FF8 /* printBDD.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
 		E5241343AA7ACB6A06A751E7 /* sara_cli_options.cpp */ = {isa = PBXBuildFile; fileRef = A2F3E71D9181A67B7542122C ; settings = {ATTRIBUTES = (); }; };
 		CB3ACA1AE2D0018624204529 /* sara_grammar.cpp */ = {isa = PBXBuildFile; fileRef = 5A880FAF6FB5E6087EB1B2DC ; settings = {ATTRIBUTES = (); }; };
 		C6FCB220FFE637CDA29BB3F6 /* sara_main.cpp */ = {isa = PBXBuildFile; fileRef = FB98AB9159F51FD0297E236D ; settings = {ATTRIBUTES = (); }; };
@@ -108,7 +108,7 @@
 		F758B5066EF31B18039B8CE5 /* unicode_string_routines.cpp */ = {isa = PBXBuildFile; fileRef = 1CE41366A4BBE8A49B02A028 ; settings = {ATTRIBUTES = (); }; };
 		56EA8AE0BE8B5306971900A4 /* cDisplayBDD.cpp */ = {isa = PBXBuildFile; fileRef = 95D565EF66E7DFF9F98764DA ; settings = {ATTRIBUTES = (); }; };
 		B70C9DCD35E62896010CD9FF /* computation-v2.cpp */ = {isa = PBXBuildFile; fileRef = A0B923820DCC509A6F75849B ; settings = {ATTRIBUTES = (); }; };
-		D4B7B94528899DE0A43B9FB3 /* printBDDWithVariables.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
+		D4B7B94528899DE0A43B9FB3 /* printBDD.cpp */ = {isa = PBXBuildFile; fileRef = 9D4C2F636F067F89CC14862C ; settings = {ATTRIBUTES = (); }; };
 		ECE5E7EFEB46DB8F10A74059 /* sara_cli_options.cpp */ = {isa = PBXBuildFile; fileRef = A2F3E71D9181A67B7542122C ; settings = {ATTRIBUTES = (); }; };
 		EE7B0833588399B1FCD177C7 /* sara_grammar.cpp */ = {isa = PBXBuildFile; fileRef = 5A880FAF6FB5E6087EB1B2DC ; settings = {ATTRIBUTES = (); }; };
 		682D36F5C4359F4AE7BD7BA1 /* sara_main.cpp */ = {isa = PBXBuildFile; fileRef = FB98AB9159F51FD0297E236D ; settings = {ATTRIBUTES = (); }; };
@@ -474,7 +474,7 @@
 		E6AC95EA2C0343A2395834DD /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "md5.h"; path = "md5.h"; sourceTree = "<group>"; };
 		0AD8981CA2C8286F79F59954 /* predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "predefined-types.cpp"; path = "predefined-types.cpp"; sourceTree = "<group>"; };
 		CE68DAD4D52D063967F0A705 /* predefined-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "predefined-types.h"; path = "predefined-types.h"; sourceTree = "<group>"; };
-		9D4C2F636F067F89CC14862C /* printBDDWithVariables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "printBDDWithVariables.cpp"; path = "printBDDWithVariables.cpp"; sourceTree = "<group>"; };
+		9D4C2F636F067F89CC14862C /* printBDD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "printBDD.cpp"; path = "printBDD.cpp"; sourceTree = "<group>"; };
 		76D383480AFA65D325C06ED0 = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "sara"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F3E71D9181A67B7542122C /* sara_cli_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sara_cli_options.cpp"; path = "sara_cli_options.cpp"; sourceTree = "<group>"; };
 		BBCE2345D7772B0674A318D5 /* sara_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "sara_cli_options.h"; path = "sara_cli_options.h"; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 			children = (
 				95D565EF66E7DFF9F98764DA /* cDisplayBDD.cpp */,
 				A0B923820DCC509A6F75849B /* computation-v2.cpp */,
-				9D4C2F636F067F89CC14862C /* printBDDWithVariables.cpp */,
+				9D4C2F636F067F89CC14862C /* printBDD.cpp */,
 			);
 			name = "Hand Coded Sources";
 			path = "../hand_coded_sources";

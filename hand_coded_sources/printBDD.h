@@ -56,4 +56,11 @@ void printBDD (const C_BDD & inBDD,
 
 //-----------------------------------------------------------------------------*
 
+void printBDDWithoutHeader (const C_BDD & inBDD,
+                            const TC_UniqueArray <C_String> & inVariablesNames,
+                            const int32_t inVariableCount,
+                            const int32_t inLeadingSpacesCount) ;
+
+//-----------------------------------------------------------------------------*
+
 #endif

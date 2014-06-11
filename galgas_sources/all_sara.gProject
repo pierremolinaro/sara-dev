@@ -17,5 +17,5 @@ project all_sara (0:0:1) -> "sara" :
   gui "cocoa_sara.gGui" ;
   extern "computation-v2.cpp" ;
   extern "cDisplayBDD.cpp" ;
-  extern "printBDDWithVariables.cpp" ;
+  extern "printBDD.cpp" ;
 end project ;
