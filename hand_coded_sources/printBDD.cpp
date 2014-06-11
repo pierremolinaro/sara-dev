@@ -19,7 +19,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "printBDDWithVariables.h"
+#include "printBDD.h"
 #include "cDisplayBDD.h"
 #include "streams/AC_OutputStream.h"
 #include "utilities/MF_MemoryControl.h"
@@ -276,4 +276,149 @@ void printBDD (const C_BDD & inBDD,
   printBDD (inBDD, inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
 }
 
+//-----------------------------------------------------------------------------*
+
+void printBDDWithoutHeader (const C_BDD & inBDD,
+                            const TC_UniqueArray <C_String> & inVariablesNames,
+                            const int32_t inVariableCount,
+                            const int32_t inLeadingSpacesCount) {
+//--- Compute header size
+  TC_UniqueArray <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
+  for (int32_t i=0 ; i<inVariableCount ; i++) {
+    nameLengthArray.addObject (inVariablesNames (i COMMA_HERE).length ()) ;
+  }
+//--- Print BDD
+  if (inBDD.integerValue() == 0) {
+    for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
+      co << " " ;
+    }
+    co << " (false)\n" ;
+  }else if (inBDD.integerValue() == 1) {
+    TC_UniqueArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
+    printBDDline (displayString, nameLengthArray, inLeadingSpacesCount) ;
+  }else{
+    const uint32_t nodeIndex = nodeIndexForRoot (inBDD.integerValue() COMMA_HERE) ;
+    const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
+    if (var >= inVariableCount) {
+      co << "** ERROR in "
+         << __FILE__
+         << " at line %"
+         << cStringWithSigned (__LINE__)
+         << ": BDD variable ("
+         << cStringWithSigned (var)
+         << ") is greater than variable count ("
+         << cStringWithSigned (inVariableCount)
+         << ") **\n" ;
+    }else{
+      TC_UniqueArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
+      internalPrintBDD (inBDD.integerValue(), displayString, nameLengthArray, (uint32_t) (inVariableCount - 1), inLeadingSpacesCount) ;
+    }
+  }
+}
+
+//-----------------------------------------------------------------------------*
+/*
+static void
+printLineWithSeparator (AC_OutputStream & outputStream,
+                        const TC_UniqueArray <C_String> & inSeparatorArray,
+                        const TC_UniqueArray <char> & inValueArray) {
+  for (int32_t i=0 ; i<inValueArray.count () ; i++) {
+    if (i < inSeparatorArray.count ()) {
+      outputStream << inSeparatorArray (i COMMA_HERE) ;
+    }
+    outputStream << cStringWithCharacter (inValueArray (i COMMA_HERE)) ;
+  }
+  outputStream << "\n" ;
+}
+
+//-----------------------------------------------------------------------------*
+
+static void
+internalPrintWithSeparator (AC_OutputStream & outputStream,
+                            const uint32_t inValue,
+                            TC_UniqueArray <char> & inDisplayString,
+                            const TC_UniqueArray <C_String> & inSeparatorArray,
+                            uint32_t inVariableIndex) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
+    if (complement == 1) {
+      printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
+    }
+  }else{
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    while (inVariableIndex > var) {
+      inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
+      inVariableIndex -- ;
+    }
+  //--- Branche Zero
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    if (branche0 != 0) {
+      inDisplayString.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
+      if (branche0 == 1) {
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
+        }
+        printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
+      }else{
+        internalPrintWithSeparator (outputStream, branche0, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
+      }
+    }
+  //--- Branche 1
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    if (branche1 != 0) {
+      inDisplayString.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
+      if (branche1 == 1) {
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
+        }
+        printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
+      }else{
+        internalPrintWithSeparator (outputStream, branche1, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
+      }
+    }
+  }
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_BDD::printWithSeparator (AC_OutputStream & outputStream,
+                                   const TC_UniqueArray <C_String> & inSeparatorArray) const {
+  const uint32_t variablesCount = (uint32_t) inSeparatorArray.count () ;
+//--- Print BDD
+  if (mBDDvalue == 1) {
+    TC_UniqueArray <char> displayString ((int32_t) variablesCount, 'X' COMMA_HERE) ;
+    printLineWithSeparator (outputStream, inSeparatorArray, displayString) ;
+  }else if (mBDDvalue != 0) {
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    TC_UniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
+    internalPrintWithSeparator (outputStream,
+                                mBDDvalue,
+                                displayString,
+                                inSeparatorArray,
+                                (uint32_t) (variablesCount - 1)) ;
+  }
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_BDD::print (AC_OutputStream & outputStream) const {
+  if (mBDDvalue == 0) {
+    outputStream << "(false)\n" ;
+  }else if (mBDDvalue == 1) {
+    outputStream << "(true)\n" ;
+  }else{
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    TC_UniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
+    TC_UniqueArray <C_String> separatorArray ;
+    internalPrintWithSeparator (outputStream,
+                                mBDDvalue,
+                                displayString,
+                                separatorArray,
+                                var) ;
+  }
+}
+*/
 //-----------------------------------------------------------------------------*
