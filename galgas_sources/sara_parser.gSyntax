@@ -9,12 +9,6 @@ import "sara_semantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-extern routine performComputations
-  ??@L_jobList ioJobList
-;
-
-#---------------------------------------------------------------------------*
-
 rule <start_symbol>
 :
   @semanticContext semanticContext [new

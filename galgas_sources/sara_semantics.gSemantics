@@ -329,4 +329,10 @@ struct @semanticContext {
 
 #---------------------------------------------------------------------------*
 
+extern routine performComputations
+  ??@L_jobList ioJobList
+;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;
