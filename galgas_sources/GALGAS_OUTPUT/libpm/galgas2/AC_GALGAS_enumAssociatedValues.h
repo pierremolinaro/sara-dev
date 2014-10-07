@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  acPtr_class : Base class for GALGAS class                                                                          *
+//  AC_GALGAS_enumAssociatedValues : class for enum associated values                                                  *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -23,86 +23,57 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "galgas2/AC_GALGAS_class.h"
-#include "galgas2/acPtr_class.h"
-#include "galgas2/C_galgas_type_descriptor.h"
-#include "strings/C_String.h"
+#ifndef AC_GALGAS_ENUM_ASSOCIATED_VALUES_CLASS_DEFINED
+#define AC_GALGAS_ENUM_ASSOCIATED_VALUES_CLASS_DEFINED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * AC_GALGAS_class::dynamicTypeDescriptor (void) const {
-  const C_galgas_type_descriptor * result = NULL ;
-  if (NULL != mObjectPtr) {
-    result = mObjectPtr->classDescriptor () ;
+#include "utilities/C_SharedObject.h"
+#include "galgas2/AC_GALGAS_root.h"
+#include "galgas2/typeComparisonResult.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumAssociatedValues : public C_SharedObject {
+  public : cEnumAssociatedValues (LOCATION_ARGS) ;
+
+  public : virtual void description (class C_String & ioString,
+                                     const int32_t inIndentation) const = 0 ;
+  public : virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const = 0 ;
+  
+  public : virtual ~ cEnumAssociatedValues (void) {}
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class AC_GALGAS_enumAssociatedValues {
+  private : const cEnumAssociatedValues * mSharedPtr ;
+
+//--- Default constructor
+  public : AC_GALGAS_enumAssociatedValues (void) ;
+
+//---
+  public : void setPointer (const cEnumAssociatedValues * inUniquePtr) ;
+
+//--- Handle copy
+  public : AC_GALGAS_enumAssociatedValues (const AC_GALGAS_enumAssociatedValues & inSource) ;
+  public : AC_GALGAS_enumAssociatedValues & operator = (const AC_GALGAS_enumAssociatedValues & inSource) ;
+
+//--- Destructor
+  public : virtual ~ AC_GALGAS_enumAssociatedValues (void) ;
+
+//---
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+
+  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const ;
+
+  public : VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mSharedPtr ;
   }
-  return result ;
-}
+} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_class::AC_GALGAS_class (void) :
-AC_GALGAS_root (),
-mObjectPtr (NULL) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_class::AC_GALGAS_class (const acPtr_class * inPointer) :
-AC_GALGAS_root (),
-mObjectPtr (NULL) {
-  macroAssignSharedObject (mObjectPtr, (acPtr_class *) inPointer) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_class::~AC_GALGAS_class (void) {
-  macroDetachSharedObject (mObjectPtr) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void AC_GALGAS_class::drop (void) {
-  macroDetachSharedObject (mObjectPtr) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_class::AC_GALGAS_class (const AC_GALGAS_class & inSource) :
-AC_GALGAS_root (),
-mObjectPtr (NULL) {
-  macroAssignSharedObject (mObjectPtr, inSource.mObjectPtr) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_class & AC_GALGAS_class::operator = (const AC_GALGAS_class & inSource) {
-  macroAssignSharedObject (mObjectPtr, inSource.mObjectPtr) ;
-  return * this ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void AC_GALGAS_class::description (C_String & ioString,
-                                   const int32_t inIndentation) const {
-  ioString << "<@"
-           << staticTypeDescriptor ()->mGalgasTypeName
-           << ":" ;
-  if (isValid ()) {
-    mObjectPtr->description (ioString, inIndentation) ;
-  }else{
-    ioString << "not built" ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void AC_GALGAS_class::insulate (LOCATION_ARGS) {
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    acPtr_class * ptr = mObjectPtr->duplicate (THERE) ;
-    macroAssignSharedObject (mObjectPtr, ptr) ;
-    macroDetachSharedObject (ptr) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
+#endif
