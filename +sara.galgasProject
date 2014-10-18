@@ -15,7 +15,7 @@ project (0:0:1) -> "sara" {
   "galgas-sources/sara_grammar.galgas"
   "galgas-sources/sara_main.galgas"
   "galgas-sources/cocoa_sara.galgas"
-  %tool-source : "hand_coded_sources/computation-v2.cpp"
-  %tool-source : "hand_coded_sources/cDisplayBDD.cpp"
-  %tool-source : "hand_coded_sources/printBDD.cpp"
+  %tool-source : "computation-v2.cpp"
+  %tool-source : "cDisplayBDD.cpp"
+  %tool-source : "printBDD.cpp"
 }
