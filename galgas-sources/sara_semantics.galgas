@@ -1,0 +1,336 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S E M A N T I C S                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+map @M_variablesMap {
+  @uint mIndex
+  insert insertKey error message "the '%K' variable has been already declared"
+  search searchKey error message "the '%K' variable is not declared"
+}
+
+map @M_stateMap {
+  @uint mIndex
+  insert insertKey error message "the '%K' state has been already declared"
+  insert defineState error message "the '%K' state has been already defined"
+  search searchKey error message "the '%K' state is not declared"
+}
+
+#---------------------------------------------------------------------------*
+
+list @L_translationVector {
+  @uint mTargetSlot
+}
+
+abstract class @AC_boolExpression %generatedInSeparateFile {
+}
+
+class @C_importBoolMachine : @AC_boolExpression {
+  @uint mIndexOfImportedMachine
+  @location mErrorLocation
+  @L_translationVector mTranslationVector
+}
+
+class @C_andExpression : @AC_boolExpression {
+  @AC_boolExpression mLeftExpression
+  @AC_boolExpression mRightExpression
+}
+  
+class @C_orExpression : @AC_boolExpression {
+  @AC_boolExpression mLeftExpression
+  @AC_boolExpression mRightExpression
+}
+  
+class @C_xorExpression : @AC_boolExpression {
+  @AC_boolExpression mLeftExpression
+  @AC_boolExpression mRightExpression
+}
+  
+class @C_impliesExpression : @AC_boolExpression  {
+  @AC_boolExpression mLeftExpression
+  @AC_boolExpression mRightExpression
+}
+  
+class @C_equalExpression : @AC_boolExpression {
+  @AC_boolExpression mLeftExpression
+  @AC_boolExpression mRightExpression
+}
+  
+class @C_notExpression : @AC_boolExpression {
+  @AC_boolExpression mExpression
+}
+    
+class @C_VariableExpression : @AC_boolExpression {
+  @uint mInputVarIndex
+}
+
+class @C_trueExpression : @AC_boolExpression {
+}
+
+class @C_falseExpression : @AC_boolExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+list @L_transitionDefinition {
+  @AC_boolExpression mActionExpression
+  @location mEndOfExpression
+  @uint mTargetStateIndex
+}
+
+list @L_stateDefinition {
+  @uint mStateIndex
+  @AC_boolExpression mStateExpression
+  @location mEndOfStateExpression
+  @L_transitionDefinition mTransitionsList
+}
+
+#---------------------------------------------------------------------------*
+
+list @L_statesDefinitionList {
+  @uint mStateIndex
+  @location mStateLocation
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @AC_machineDefinition %generatedInSeparateFile {
+}
+
+map @M_modesMap {
+  @uint mIndex
+  @AC_machineDefinition mModeDefinition
+  insert insertKey error message "the '%K' mode has been already declared"
+  search searchKey error message "the '%K' mode is not declared"
+}
+
+list @ListForModes {
+  @uint mSourceMode
+  @uint mTargetMode
+}
+
+class @C_substractiveModalCompositionComponent : @AC_machineDefinition {
+  @M_modesMap mModeMap
+  @ListForModes mExclusionList
+}
+
+class @C_additiveModalCompositionComponent : @AC_machineDefinition {
+  @M_modesMap mModeMap
+  @ListForModes mInclusionList
+}
+
+class @C_trans : @AC_machineDefinition {
+  @AC_boolExpression mSourceStateExpression
+  @AC_boolExpression mTargetStateExpression
+}
+  
+class @C_importMachine : @AC_machineDefinition {
+  @uint mIndexOfImportedMachine
+  @L_translationVector mTranslationVector
+}
+
+class @C_explicitAutomatonDefinition : @AC_machineDefinition {
+  @M_stateMap mStatesMap
+  @L_statesDefinitionList mInitialStatesDefinitionList
+  @L_statesDefinitionList mTerminalStatesDefinitionList
+  @L_stateDefinition mStateDefinitionList
+  @location mEndOfDefinition
+}
+
+ class @C_boolToSeqExpression : @AC_machineDefinition {
+   @AC_boolExpression mExpression
+ }
+  
+class @C_existsDefinition : @AC_machineDefinition {
+  @uint mPreviousVariableCount
+  @uint mTotalVariableCount
+  @AC_machineDefinition mOperand
+}
+
+class @C_forallDefinition : @AC_machineDefinition {
+  @uint mPreviousVariableCount
+  @uint mTotalVariableCount
+  @AC_machineDefinition mOperand
+}
+
+class @C_parallelComposition : @AC_machineDefinition {
+  @AC_machineDefinition mLeftOperand
+  @AC_machineDefinition mRightOperand
+}
+
+class @C_orComposition : @AC_machineDefinition {
+  @AC_machineDefinition mLeftOperand
+  @AC_machineDefinition mRightOperand
+}
+
+class @C_strongModalComposition : @AC_machineDefinition {
+  @AC_machineDefinition mLeftOperand
+  @location mErrorLocation
+  @AC_machineDefinition mRightOperand
+}
+
+class @C_weakModalComposition : @AC_machineDefinition {
+  @AC_machineDefinition mLeftOperand
+  @location mErrorLocation
+  @AC_machineDefinition mRightOperand
+}
+
+class @C_fullSaturationOperation : @AC_machineDefinition {
+  @AC_machineDefinition mOperand
+}
+
+class @C_complementationOperation : @AC_machineDefinition {
+  @AC_machineDefinition mOperand
+}
+
+class @C_suppressTerminalStatesOperation : @AC_machineDefinition {
+  @AC_machineDefinition mOperand
+}
+
+class @C_suppressInitialStatesOperation : @AC_machineDefinition {
+  @AC_machineDefinition mOperand
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @AC_job %generatedInSeparateFile {
+}
+ 
+class @C_machineDisplayStates : @AC_job {
+  @uint mMachineIndex
+}
+
+class @C_machineDisplayInitialStates : @AC_job {
+  @uint mMachineIndex
+}
+
+class @C_machineDisplayTerminalStates : @AC_job {
+  @uint mMachineIndex
+}
+
+class @C_machineDisplayTransitions : @AC_job {
+  @uint mMachineIndex
+}
+
+class @C_machineCheck : @AC_job {
+  @uint mMachineIndex
+  @bool mCheckMachineIsBoolean
+}
+
+
+class @C_machineCheckIdentical : @AC_job {
+  @uint mMachineIndex1
+  @uint mMachineIndex2
+}
+
+class @C_machineComponent : @AC_job {
+  @lstring mMachineName
+  @uint mMachineIndex
+  @uint mInputVariableCount
+  @uint mInputAndInternalVariableCount
+  @M_variablesMap mVariablesMap
+  @stringlist mNameList
+  @AC_machineDefinition mDefinition
+}
+
+class @C_machineDefinedByAdditiveModalComp : @AC_job {
+  @lstring mMachineName
+  @uint mMachineIndex
+  @uint mInputVariableCount
+  @uint mInputAndInternalVariableCount
+  @M_variablesMap mVariablesMap
+  @M_modesMap mModeMap
+  @ListForModes mInclusionList
+}
+
+class @C_machineDefinedBySubstractiveModalComp : @AC_job {
+  @lstring mMachineName
+  @uint mMachineIndex
+  @uint mInputVariableCount
+  @uint mInputAndInternalVariableCount
+  @M_variablesMap mVariablesMap
+  @M_modesMap mModeMap
+  @ListForModes mExclusionList
+}
+
+list @L_inputConfigurationForScenario {
+  @luint mInputValue
+}
+
+list @L_inputScenario {
+  @L_inputConfigurationForScenario mInputConfiguration
+}
+
+list @L_scenarioList {
+  @lstring mScenarioTitle
+  @L_inputScenario mInputScenario
+}
+
+class @C_scenarioComponent : @AC_job {
+  @uint mMachineIndex
+  @uint mInputVariableCount
+  @uint mInputAndInternalVariableCount
+  @M_variablesMap mVariablesMap
+  @L_scenarioList mScenarioList
+}
+
+class @typeUse_AND : @AC_job {
+}
+
+class @typeUse_ITE : @AC_job {
+}
+
+class @typeUse_AND_ITE : @AC_job {
+}
+
+class @typeResize_AND_cache : @AC_job {
+  @luint mNewSize
+}
+
+class @typeResize_ITE_cache : @AC_job {
+  @luint mNewSize
+}
+
+class @typeResizeMap : @AC_job {
+  @luint mNewSize
+}
+
+class @typeDisplayBDDstats : @AC_job {
+}
+
+#---------------------------------------------------------------------------*
+
+list @L_jobList {
+  @AC_job mComponent
+}
+
+#---------------------------------------------------------------------------*
+
+map @M_machinesMap {
+  @uint mIndex
+  @uint mInputVariableCount
+  @uint mInputAndInternalVariableCount
+  @M_variablesMap mVariablesMap
+  @stringlist mNameList
+  insert insertKey error message "the '%K' machine has been already declared"
+  search searchKey error message "the '%K' machine is not defined"
+  remove removeKey error message "the '%K' machine is not defined"
+}
+
+#---------------------------------------------------------------------------*
+
+struct @semanticContext {
+  @L_jobList componentsMap
+  @M_machinesMap machinesMap
+}
+
+#---------------------------------------------------------------------------*
+
+extern proc performComputations
+  ?let @L_jobList ioJobList
+
+#---------------------------------------------------------------------------*
+

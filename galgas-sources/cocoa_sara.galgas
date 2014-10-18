@@ -1,0 +1,15 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C O C O A                                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+gui cocoa {
+
+with option sara_cli_options
+
+with lexique sara_scanner {
+  fileExtension: "sara"
+  title: "Source"
+}
+}
