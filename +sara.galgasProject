@@ -1,0 +1,21 @@
+project (0:0:1) -> "sara" {
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-x86linux64-on-macosx
+  %makefile-win32-on-macosx
+  %LatestMacOS
+  %applicationBundleBase : "fr.irccyn"
+#---
+  "galgas-sources/sara_scanner.galgas"
+  "galgas-sources/sara_semantics.galgas"
+  "galgas-sources/sara_cli_options.galgas"
+  "galgas-sources/sara_parser.galgas"
+  "galgas-sources/sara_grammar.galgas"
+  "galgas-sources/sara_main.galgas"
+  "galgas-sources/cocoa_sara.galgas"
+  %tool-source : "hand_coded_sources/computation-v2.cpp"
+  %tool-source : "hand_coded_sources/cDisplayBDD.cpp"
+  %tool-source : "hand_coded_sources/printBDD.cpp"
+}

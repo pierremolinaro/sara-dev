@@ -1,0 +1,12 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C O M M A N D    L I N E    O P T I O N S                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+option sara_cli_options {
+  @bool displayBDDvaluesCount : 'c', "display-bdd-values-count" -> "displays values count for every BDD"
+  @bool displayBDDvalues : 'v', "display-bdd-values" -> "displays values for every BDD"
+}
+
+#---------------------------------------------------------------------------*
