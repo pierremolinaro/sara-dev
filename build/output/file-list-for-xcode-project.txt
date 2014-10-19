@@ -3225,14 +3225,14 @@
   };
 
   /*------------------------------------------------------------------ PBXGroup section */
-  A2F3E71D9181A67B7542122C /* Hand Coded Sources */ = {
+  A2F3E71D9181A67B7542122C /* Hand Coded Sources (Tool) */ = {
     isa = PBXGroup;
     children = (
       BBCE2345D7772B0674A318D5, 
       CEEA167A5A36DEDD4BEA2543, 
       2E2D7FBDEA1AFC51C7C6AD26, 
     );
-    name = "Hand Coded Sources";
+    name = "Hand Coded Sources (Tool)";
     path = "../";
     sourceTree = "<group>";
   };
