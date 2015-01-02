@@ -12,6 +12,182 @@
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_C_5F_trans::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_C_5F_trans) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mSourceStateExpression.objectCompare (p->mAttribute_mSourceStateExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTargetStateExpression.objectCompare (p->mAttribute_mTargetStateExpression) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_C_5F_trans::objectCompare (const GALGAS_C_5F_trans & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_trans::GALGAS_C_5F_trans (void) :
+GALGAS_AC_5F_machineDefinition () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_trans::GALGAS_C_5F_trans (const cPtr_C_5F_trans * inSourcePtr) :
+GALGAS_AC_5F_machineDefinition (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_trans) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_trans GALGAS_C_5F_trans::constructor_new (const GALGAS_AC_5F_boolExpression & inAttribute_mSourceStateExpression,
+                                                      const GALGAS_AC_5F_boolExpression & inAttribute_mTargetStateExpression
+                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_C_5F_trans result ;
+  if (inAttribute_mSourceStateExpression.isValid () && inAttribute_mTargetStateExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_C_5F_trans (inAttribute_mSourceStateExpression, inAttribute_mTargetStateExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_AC_5F_boolExpression GALGAS_C_5F_trans::reader_mSourceStateExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AC_5F_boolExpression result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_trans) ;
+    result = p->mAttribute_mSourceStateExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_AC_5F_boolExpression cPtr_C_5F_trans::reader_mSourceStateExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSourceStateExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_AC_5F_boolExpression GALGAS_C_5F_trans::reader_mTargetStateExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_AC_5F_boolExpression result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_trans) ;
+    result = p->mAttribute_mTargetStateExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_AC_5F_boolExpression cPtr_C_5F_trans::reader_mTargetStateExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetStateExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                          Pointer class for @C_trans class                                           *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_C_5F_trans::cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
+                                  const GALGAS_AC_5F_boolExpression & in_mTargetStateExpression
+                                  COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (THERE),
+mAttribute_mSourceStateExpression (in_mSourceStateExpression),
+mAttribute_mTargetStateExpression (in_mTargetStateExpression) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_C_5F_trans::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_C_5F_trans ;
+}
+
+void cPtr_C_5F_trans::description (C_String & ioString,
+                                   const int32_t inIndentation) const {
+  ioString << "[@C_trans:" ;
+  mAttribute_mSourceStateExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTargetStateExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_C_5F_trans::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_C_5F_trans (mAttribute_mSourceStateExpression, mAttribute_mTargetStateExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                    @C_trans type                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_C_5F_trans ("C_trans",
+                                   & kTypeDescriptor_GALGAS_AC_5F_machineDefinition) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_C_5F_trans::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_C_5F_trans ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_C_5F_trans::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_C_5F_trans (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_trans GALGAS_C_5F_trans::extractObject (const GALGAS_object & inObject,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_C_5F_trans result ;
+  const GALGAS_C_5F_trans * p = (const GALGAS_C_5F_trans *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_C_5F_trans *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("C_trans", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_C_5F_weakModalComposition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_weakModalComposition * p = (const cPtr_C_5F_weakModalComposition *) inOperandPtr ;
@@ -256,8 +432,6 @@ static const char * kSourceFileHelpMessages [] = {
 
 static void routine_before (C_Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  }
 }
 
 
@@ -269,8 +443,6 @@ static void routine_before (C_Compiler * /* inCompiler */
 
 static void routine_after (C_Compiler * /* inCompiler */
                            COMMA_UNUSED_LOCATION_ARGS) {
-  {
-  }
 }
 
 
@@ -283,7 +455,7 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  cGrammar_sara_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile  COMMA_SOURCE_FILE ("sara_main.galgas", 13)) ;
+  cGrammar_sara_5F_grammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile  COMMA_SOURCE_FILE ("sara_main.galgas", 11)) ;
 }
 
 
@@ -319,7 +491,6 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
-        setCurrentCompiledFilePath (sourceFilesArray (i COMMA_HERE)) ;
         if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
           enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
         }
@@ -329,7 +500,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         const GALGAS_lstring sourceFilePath (sfp, location) ;
         int16_t r = 0 ;
         if (fileExtension == "sara") {
-          routine_programRule_5F__30_ (sourceFilePath, commonLexique COMMA_HERE) ;
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
+            routine_programRule_5F__30_ (sourceFilePath, commonLexique COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_sara_5F_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_sara_5F_grammar::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_sara_5F_grammar::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_sara_5F_grammar::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          }
         }else{
           printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
           r = 1 ;

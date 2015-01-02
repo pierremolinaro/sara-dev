@@ -10,7 +10,7 @@ style identifier -> "Identifiers"
 style keyWords -> "Key words"
 style machineNameStyle -> "Machine names"
 style delimitors -> "Delimitors"
-style integer_csts -> "Integer constants"
+style integerStyle -> "Integer constants"
 style stringStyle -> "Character strings"
 style commentStyle -> "Comments"
 # -------------------------- identifier or key word --------------------
@@ -82,7 +82,7 @@ rule '$' {
   send $machineIdf$ 
 }
 #------------------------------- Decimal positive number ------------------
-$literal_integer$ ! ulongValue  style integer_csts error message "a decimal number"
+$literal_integer$ ! ulongValue  style integerStyle error message "a decimal number"
 message decimalNumberTooLarge : "decimal number too large"
 
 message internalError : "internal error"

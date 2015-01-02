@@ -2648,6 +2648,7 @@ bool C_Lexique_sara_5F_scanner::parseLexicalToken (void) {
         }else{
           lexicalError (gLexicalMessage_sara_5F_scanner_incorrectEndOfComment COMMA_LINE_AND_SOURCE_FILE) ;
         }
+        enterDroppedTerminal (kToken_comment) ;
       }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
         token.mTokenCode = kToken_ ; // Empty string code
       }else{ // Unknown input character
@@ -2683,14 +2684,14 @@ void C_Lexique_sara_5F_scanner::enterToken (const cTokenFor_sara_5F_scanner & in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //               A T T R I B U T E   A C C E S S                                                                       *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_sara_5F_scanner::attributeValue_identifierString (void) const {
   cTokenFor_sara_5F_scanner * ptr = (cTokenFor_sara_5F_scanner *) mCurrentTokenPtr ;
   return ptr->mLexicalAttribute_identifierString ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_sara_5F_scanner::attributeValue_ulongValue (void) const {
   cTokenFor_sara_5F_scanner * ptr = (cTokenFor_sara_5F_scanner *) mCurrentTokenPtr ;
@@ -2699,7 +2700,7 @@ uint32_t C_Lexique_sara_5F_scanner::attributeValue_ulongValue (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring C_Lexique_sara_5F_scanner::synthetizedAttribute_identifierString (void) const {
   cTokenFor_sara_5F_scanner * ptr = (cTokenFor_sara_5F_scanner *) mCurrentTokenPtr ;
@@ -2710,7 +2711,7 @@ GALGAS_lstring C_Lexique_sara_5F_scanner::synthetizedAttribute_identifierString 
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint C_Lexique_sara_5F_scanner::synthetizedAttribute_ulongValue (void) const {
   cTokenFor_sara_5F_scanner * ptr = (cTokenFor_sara_5F_scanner *) mCurrentTokenPtr ;
@@ -2781,6 +2782,92 @@ GALGAS_stringlist C_Lexique_sara_5F_scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("*") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("@") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("**") COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint32_t C_Lexique_sara_5F_scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [55] = {0,
+    1 /* sara_scanner_1_identifier */,
+    6 /* sara_scanner_1_literal_5F_string */,
+    3 /* sara_scanner_1_machineIdf */,
+    5 /* sara_scanner_1_literal_5F_integer */,
+    7 /* sara_scanner_1_comment */,
+    2 /* sara_scanner_1_auto */,
+    2 /* sara_scanner_1_state */,
+    2 /* sara_scanner_1_first */,
+    2 /* sara_scanner_1_last */,
+    2 /* sara_scanner_1_goto */,
+    2 /* sara_scanner_1_true */,
+    2 /* sara_scanner_1_false */,
+    2 /* sara_scanner_1_nofirst */,
+    2 /* sara_scanner_1_nolast */,
+    2 /* sara_scanner_1_modalcompadd */,
+    2 /* sara_scanner_1_exclude */,
+    2 /* sara_scanner_1_modalcompsub */,
+    2 /* sara_scanner_1_include */,
+    2 /* sara_scanner_1_to */,
+    2 /* sara_scanner_1_scenario */,
+    2 /* sara_scanner_1_trans */,
+    2 /* sara_scanner_1_display */,
+    2 /* sara_scanner_1_ite_5F_cache */,
+    2 /* sara_scanner_1_and_5F_cache */,
+    2 /* sara_scanner_1_map */,
+    2 /* sara_scanner_1_bdd */,
+    2 /* sara_scanner_1_bool */,
+    2 /* sara_scanner_1_use_5F_and */,
+    2 /* sara_scanner_1_use_5F_ite */,
+    2 /* sara_scanner_1_use_5F_and_5F_ite */,
+    2 /* sara_scanner_1_check */,
+    2 /* sara_scanner_1_checkbool */,
+    2 /* sara_scanner_1_checkidentical */,
+    4 /* sara_scanner_1__2C_ */,
+    4 /* sara_scanner_1__3B_ */,
+    4 /* sara_scanner_1__3A_ */,
+    4 /* sara_scanner_1__7B_ */,
+    4 /* sara_scanner_1__7D_ */,
+    4 /* sara_scanner_1__2D__3E_ */,
+    4 /* sara_scanner_1__26_ */,
+    4 /* sara_scanner_1__7E_ */,
+    4 /* sara_scanner_1__3F_ */,
+    4 /* sara_scanner_1__21_ */,
+    4 /* sara_scanner_1__7C_ */,
+    4 /* sara_scanner_1__7C__7C_ */,
+    4 /* sara_scanner_1__2B_ */,
+    4 /* sara_scanner_1__28_ */,
+    4 /* sara_scanner_1__29_ */,
+    4 /* sara_scanner_1__3A__3D_ */,
+    4 /* sara_scanner_1__5E_ */,
+    4 /* sara_scanner_1__3D_ */,
+    4 /* sara_scanner_1__2A_ */,
+    4 /* sara_scanner_1__40_ */,
+    4 /* sara_scanner_1__2A__2A_ */
+  } ;
+  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_Lexique_sara_5F_scanner::styleNameForIndex (const uint32_t inStyleIndex) const {
+  C_String result ;
+  if (inStyleIndex < 8) {
+    static const char * kStyleArray [8] = {
+      "",
+      "identifier",
+      "keyWords",
+      "machineNameStyle",
+      "delimitors",
+      "integerStyle",
+      "stringStyle",
+      "commentStyle"
+    } ;
+    result = kStyleArray [inStyleIndex] ;
+  }
   return result ;
 }
 
@@ -11648,6 +11735,31 @@ void cGrammar_sara_5F_grammar::nt_start_5F_symbol_ (C_Lexique_sara_5F_scanner * 
   rule_sara_5F_parser_start_5F_symbol_i0_(inLexique) ;
 }
 
+void cGrammar_sara_5F_grammar::performIndexing (C_Compiler * /* inCompiler */,
+             const C_String & /* inSourceFilePath */) {
+}
+
+void cGrammar_sara_5F_grammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_sara_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performLexicalAnalysis () ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
+void cGrammar_sara_5F_grammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+             const C_String & inSourceFilePath) {
+  C_Lexique_sara_5F_scanner * scanner = NULL ;
+  macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  if (scanner->sourceText () != NULL) {
+    scanner->performTopDownParsing (gProductions_sara_grammar, gProductionNames_sara_grammar, gProductionIndexes_sara_grammar,
+                                    gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 536) ;
+  }
+  macroDetachSharedObject (scanner) ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Grammar start symbol implementation                                          *
@@ -20148,182 +20260,6 @@ GALGAS_C_5F_suppressTerminalStatesOperation GALGAS_C_5F_suppressTerminalStatesOp
       result = *p ;
     }else{
       inCompiler->castError ("C_suppressTerminalStatesOperation", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_C_5F_trans::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_C_5F_trans) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mSourceStateExpression.objectCompare (p->mAttribute_mSourceStateExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTargetStateExpression.objectCompare (p->mAttribute_mTargetStateExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_C_5F_trans::objectCompare (const GALGAS_C_5F_trans & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_C_5F_trans::GALGAS_C_5F_trans (void) :
-GALGAS_AC_5F_machineDefinition () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_C_5F_trans::GALGAS_C_5F_trans (const cPtr_C_5F_trans * inSourcePtr) :
-GALGAS_AC_5F_machineDefinition (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_trans) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_C_5F_trans GALGAS_C_5F_trans::constructor_new (const GALGAS_AC_5F_boolExpression & inAttribute_mSourceStateExpression,
-                                                      const GALGAS_AC_5F_boolExpression & inAttribute_mTargetStateExpression
-                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_C_5F_trans result ;
-  if (inAttribute_mSourceStateExpression.isValid () && inAttribute_mTargetStateExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_C_5F_trans (inAttribute_mSourceStateExpression, inAttribute_mTargetStateExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_AC_5F_boolExpression GALGAS_C_5F_trans::reader_mSourceStateExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_AC_5F_boolExpression result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_trans) ;
-    result = p->mAttribute_mSourceStateExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_AC_5F_boolExpression cPtr_C_5F_trans::reader_mSourceStateExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSourceStateExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_AC_5F_boolExpression GALGAS_C_5F_trans::reader_mTargetStateExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_AC_5F_boolExpression result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_trans) ;
-    result = p->mAttribute_mTargetStateExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_AC_5F_boolExpression cPtr_C_5F_trans::reader_mTargetStateExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTargetStateExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                          Pointer class for @C_trans class                                           *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_C_5F_trans::cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
-                                  const GALGAS_AC_5F_boolExpression & in_mTargetStateExpression
-                                  COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
-mAttribute_mSourceStateExpression (in_mSourceStateExpression),
-mAttribute_mTargetStateExpression (in_mTargetStateExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_C_5F_trans::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_trans ;
-}
-
-void cPtr_C_5F_trans::description (C_String & ioString,
-                                   const int32_t inIndentation) const {
-  ioString << "[@C_trans:" ;
-  mAttribute_mSourceStateExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTargetStateExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_C_5F_trans::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_C_5F_trans (mAttribute_mSourceStateExpression, mAttribute_mTargetStateExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                                    @C_trans type                                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_C_5F_trans ("C_trans",
-                                   & kTypeDescriptor_GALGAS_AC_5F_machineDefinition) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_C_5F_trans::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_trans ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_C_5F_trans::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_C_5F_trans (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_C_5F_trans GALGAS_C_5F_trans::extractObject (const GALGAS_object & inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_C_5F_trans result ;
-  const GALGAS_C_5F_trans * p = (const GALGAS_C_5F_trans *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_C_5F_trans *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("C_trans", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
