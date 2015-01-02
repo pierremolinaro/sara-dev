@@ -166,6 +166,10 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
 
 //--- Enter Token
   protected : void enterToken (const cTokenFor_sara_5F_scanner & inToken) ;
+
+//--- Style name for Latex
+  protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
+  protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6062,11 +6066,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-//class C_Compiler ;
-//class GALGAS_lstring ;
-//class GALGAS_string ;
-
+//  GRAMMAR sara_grammar
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cGrammar_sara_5F_grammar : public cParser_sara_5F_parser {
@@ -6185,6 +6185,18 @@ class cGrammar_sara_5F_grammar : public cParser_sara_5F_parser {
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
                                                      GALGAS_string inSourceString
                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Indexing
+  public : static void performIndexing (C_Compiler * inCompiler,
+                                        const C_String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public : static void performOnlyLexicalAnalysis (C_Compiler * inCompiler,
+                                                   const C_String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
+                                                  const C_String & inSourceFilePath) ;
 
   public : virtual int32_t select_sara_5F_parser_0 (C_Lexique_sara_5F_scanner *) ;
 
