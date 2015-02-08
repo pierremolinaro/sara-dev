@@ -1,0 +1,16 @@
+{
+  "LIBPM_DIRECTORY_PATH" : "../build/libpm",
+  "SOURCES_DIR" : ["../build/output", "../build/user-headers", "../build/libpm", "../hand_coded_sources"],
+  "SOURCES" : [
+    "all-galgas.cpp",
+    "all-libpm.cpp",
+    "all-declarations-1.cpp",
+    "all-declarations-0.cpp",
+    "computation-v2.cpp",
+    "cDisplayBDD.cpp",
+    "printBDD.cpp"
+  ],
+  "USER_LINK_OPTIONS" : [
+  ]
+}
+
