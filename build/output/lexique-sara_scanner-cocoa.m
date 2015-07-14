@@ -3,7 +3,6 @@
 
 //--- END OF USER ZONE 1
 
-
 #import "lexique-sara_scanner-cocoa.h"
 #import "PMDebug.h"
 
@@ -493,6 +492,5 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
 
 
 //--- END OF USER ZONE 2
-
 
 
