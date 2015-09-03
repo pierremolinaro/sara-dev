@@ -261,7 +261,7 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
 } ; // End of GALGAS_M_5F_variablesMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_M_5F_variablesMap : public cGenericAbstractEnumerator {
@@ -469,7 +469,7 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
 } ; // End of GALGAS_M_5F_stateMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_M_5F_stateMap : public cGenericAbstractEnumerator {
@@ -691,7 +691,7 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_translationVector class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_translationVector : public cGenericAbstractEnumerator {
@@ -905,7 +905,7 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_transitionDefinition class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_transitionDefinition : public cGenericAbstractEnumerator {
@@ -1189,7 +1189,7 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_stateDefinition class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_stateDefinition : public cGenericAbstractEnumerator {
@@ -1405,7 +1405,7 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_statesDefinitionList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_statesDefinitionList : public cGenericAbstractEnumerator {
@@ -1592,7 +1592,7 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
 } ; // End of GALGAS_M_5F_modesMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_M_5F_modesMap : public cGenericAbstractEnumerator {
@@ -1878,7 +1878,7 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
 } ; // End of GALGAS_ListForModes class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_ListForModes : public cGenericAbstractEnumerator {
@@ -2072,7 +2072,7 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_inputConfigurationForScenario class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_inputConfigurationForScenario : public cGenericAbstractEnumerator {
@@ -2260,7 +2260,7 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_inputScenario class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_inputScenario : public cGenericAbstractEnumerator {
@@ -2461,7 +2461,7 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_scenarioList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_scenarioList : public cGenericAbstractEnumerator {
@@ -2655,7 +2655,7 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
 } ; // End of GALGAS_L_5F_jobList class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
@@ -2926,7 +2926,7 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
 } ; // End of GALGAS_M_5F_machinesMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Enumerator declaration                                                    *
+//   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cEnumerator_M_5F_machinesMap : public cGenericAbstractEnumerator {
