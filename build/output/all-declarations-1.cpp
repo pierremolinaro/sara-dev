@@ -12,6 +12,325 @@
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_C_5F_machineDefinedByAdditiveModalComp::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mMachineName.objectCompare (p->mAttribute_mMachineName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mMachineIndex.objectCompare (p->mAttribute_mMachineIndex) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mInputVariableCount.objectCompare (p->mAttribute_mInputVariableCount) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mInputAndInternalVariableCount.objectCompare (p->mAttribute_mInputAndInternalVariableCount) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mVariablesMap.objectCompare (p->mAttribute_mVariablesMap) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mModeMap.objectCompare (p->mAttribute_mModeMap) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mInclusionList.objectCompare (p->mAttribute_mInclusionList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_C_5F_machineDefinedByAdditiveModalComp::objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_machineDefinedByAdditiveModalComp::GALGAS_C_5F_machineDefinedByAdditiveModalComp (void) :
+GALGAS_AC_5F_job () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_machineDefinedByAdditiveModalComp GALGAS_C_5F_machineDefinedByAdditiveModalComp::constructor_default (LOCATION_ARGS) {
+  return GALGAS_C_5F_machineDefinedByAdditiveModalComp::constructor_new (GALGAS_lstring::constructor_default (HERE),
+                                                                         GALGAS_uint::constructor_default (HERE),
+                                                                         GALGAS_uint::constructor_default (HERE),
+                                                                         GALGAS_uint::constructor_default (HERE),
+                                                                         GALGAS_M_5F_variablesMap::constructor_emptyMap (HERE),
+                                                                         GALGAS_M_5F_modesMap::constructor_emptyMap (HERE),
+                                                                         GALGAS_ListForModes::constructor_emptyList (HERE)
+                                                                         COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_machineDefinedByAdditiveModalComp::GALGAS_C_5F_machineDefinedByAdditiveModalComp (const cPtr_C_5F_machineDefinedByAdditiveModalComp * inSourcePtr) :
+GALGAS_AC_5F_job (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_machineDefinedByAdditiveModalComp GALGAS_C_5F_machineDefinedByAdditiveModalComp::constructor_new (const GALGAS_lstring & inAttribute_mMachineName,
+                                                                                                              const GALGAS_uint & inAttribute_mMachineIndex,
+                                                                                                              const GALGAS_uint & inAttribute_mInputVariableCount,
+                                                                                                              const GALGAS_uint & inAttribute_mInputAndInternalVariableCount,
+                                                                                                              const GALGAS_M_5F_variablesMap & inAttribute_mVariablesMap,
+                                                                                                              const GALGAS_M_5F_modesMap & inAttribute_mModeMap,
+                                                                                                              const GALGAS_ListForModes & inAttribute_mInclusionList
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_C_5F_machineDefinedByAdditiveModalComp result ;
+  if (inAttribute_mMachineName.isValid () && inAttribute_mMachineIndex.isValid () && inAttribute_mInputVariableCount.isValid () && inAttribute_mInputAndInternalVariableCount.isValid () && inAttribute_mVariablesMap.isValid () && inAttribute_mModeMap.isValid () && inAttribute_mInclusionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDefinedByAdditiveModalComp (inAttribute_mMachineName, inAttribute_mMachineIndex, inAttribute_mInputVariableCount, inAttribute_mInputAndInternalVariableCount, inAttribute_mVariablesMap, inAttribute_mModeMap, inAttribute_mInclusionList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mMachineName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mMachineName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mMachineName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMachineName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mMachineIndex (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mMachineIndex ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mMachineIndex (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMachineIndex ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mInputVariableCount (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mInputVariableCount ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mInputVariableCount (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInputVariableCount ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mInputAndInternalVariableCount (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mInputAndInternalVariableCount ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mInputAndInternalVariableCount (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInputAndInternalVariableCount ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_M_5F_variablesMap GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mVariablesMap (UNUSED_LOCATION_ARGS) const {
+  GALGAS_M_5F_variablesMap result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mVariablesMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_M_5F_variablesMap cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mVariablesMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mVariablesMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_M_5F_modesMap GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mModeMap (UNUSED_LOCATION_ARGS) const {
+  GALGAS_M_5F_modesMap result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mModeMap ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_M_5F_modesMap cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mModeMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mModeMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_ListForModes GALGAS_C_5F_machineDefinedByAdditiveModalComp::reader_mInclusionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_ListForModes result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (const cPtr_C_5F_machineDefinedByAdditiveModalComp *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_machineDefinedByAdditiveModalComp) ;
+    result = p->mAttribute_mInclusionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_ListForModes cPtr_C_5F_machineDefinedByAdditiveModalComp::reader_mInclusionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInclusionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                            Pointer class for @C_machineDefinedByAdditiveModalComp class                             *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_C_5F_machineDefinedByAdditiveModalComp::cPtr_C_5F_machineDefinedByAdditiveModalComp (const GALGAS_lstring & in_mMachineName,
+                                                                                          const GALGAS_uint & in_mMachineIndex,
+                                                                                          const GALGAS_uint & in_mInputVariableCount,
+                                                                                          const GALGAS_uint & in_mInputAndInternalVariableCount,
+                                                                                          const GALGAS_M_5F_variablesMap & in_mVariablesMap,
+                                                                                          const GALGAS_M_5F_modesMap & in_mModeMap,
+                                                                                          const GALGAS_ListForModes & in_mInclusionList
+                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_job (THERE),
+mAttribute_mMachineName (in_mMachineName),
+mAttribute_mMachineIndex (in_mMachineIndex),
+mAttribute_mInputVariableCount (in_mInputVariableCount),
+mAttribute_mInputAndInternalVariableCount (in_mInputAndInternalVariableCount),
+mAttribute_mVariablesMap (in_mVariablesMap),
+mAttribute_mModeMap (in_mModeMap),
+mAttribute_mInclusionList (in_mInclusionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_C_5F_machineDefinedByAdditiveModalComp::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp ;
+}
+
+void cPtr_C_5F_machineDefinedByAdditiveModalComp::description (C_String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString << "[@C_machineDefinedByAdditiveModalComp:" ;
+  mAttribute_mMachineName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mMachineIndex.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mInputVariableCount.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mVariablesMap.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mModeMap.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mInclusionList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_C_5F_machineDefinedByAdditiveModalComp::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_C_5F_machineDefinedByAdditiveModalComp (mAttribute_mMachineName, mAttribute_mMachineIndex, mAttribute_mInputVariableCount, mAttribute_mInputAndInternalVariableCount, mAttribute_mVariablesMap, mAttribute_mModeMap, mAttribute_mInclusionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @C_machineDefinedByAdditiveModalComp type                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp ("C_machineDefinedByAdditiveModalComp",
+                                                               & kTypeDescriptor_GALGAS_AC_5F_job) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_C_5F_machineDefinedByAdditiveModalComp::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_C_5F_machineDefinedByAdditiveModalComp::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_C_5F_machineDefinedByAdditiveModalComp (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_C_5F_machineDefinedByAdditiveModalComp GALGAS_C_5F_machineDefinedByAdditiveModalComp::extractObject (const GALGAS_object & inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_C_5F_machineDefinedByAdditiveModalComp result ;
+  const GALGAS_C_5F_machineDefinedByAdditiveModalComp * p = (const GALGAS_C_5F_machineDefinedByAdditiveModalComp *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_C_5F_machineDefinedByAdditiveModalComp *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("C_machineDefinedByAdditiveModalComp", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_C_5F_machineDefinedBySubstractiveModalComp::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_machineDefinedBySubstractiveModalComp * p = (const cPtr_C_5F_machineDefinedBySubstractiveModalComp *) inOperandPtr ;
