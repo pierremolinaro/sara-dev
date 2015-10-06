@@ -6183,7 +6183,8 @@ class cGrammar_sara_5F_grammar : public cParser_sara_5F_parser {
                                                    COMMA_LOCATION_ARGS) ;
 
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
-                                                     GALGAS_string inSourceString
+                                                     GALGAS_string inSourceString,
+                                                     GALGAS_string inNameString
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Indexing
