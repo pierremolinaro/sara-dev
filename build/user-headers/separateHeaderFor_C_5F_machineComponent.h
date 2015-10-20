@@ -41,13 +41,13 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mMachineName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mMachineIndex (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mInputVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap reader_mVariablesMap (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_mNameList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition reader_mDefinition (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mMachineName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_stringlist getter_mNameList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mDefinition (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

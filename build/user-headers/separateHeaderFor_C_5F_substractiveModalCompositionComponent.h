@@ -33,8 +33,8 @@ class cPtr_C_5F_substractiveModalCompositionComponent : public cPtr_AC_5F_machin
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_modesMap reader_mModeMap (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_ListForModes reader_mExclusionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_modesMap getter_mModeMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_ListForModes getter_mExclusionList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

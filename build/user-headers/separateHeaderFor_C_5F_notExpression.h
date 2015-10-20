@@ -29,7 +29,7 @@ class cPtr_C_5F_notExpression : public cPtr_AC_5F_boolExpression {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression reader_mExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mExpression (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

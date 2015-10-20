@@ -41,13 +41,13 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mMachineName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mMachineIndex (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mInputVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap reader_mVariablesMap (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_modesMap reader_mModeMap (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_ListForModes reader_mExclusionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mMachineName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_modesMap getter_mModeMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_ListForModes getter_mExclusionList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
