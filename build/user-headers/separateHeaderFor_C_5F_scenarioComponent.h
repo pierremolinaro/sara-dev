@@ -37,11 +37,11 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mMachineIndex (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mInputVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap reader_mVariablesMap (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_scenarioList reader_mScenarioList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_scenarioList getter_mScenarioList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

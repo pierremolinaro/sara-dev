@@ -39,11 +39,11 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_stateMap reader_mStatesMap (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_statesDefinitionList reader_mInitialStatesDefinitionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_statesDefinitionList reader_mTerminalStatesDefinitionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_stateDefinition reader_mStateDefinitionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfDefinition (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_M_5F_stateMap getter_mStatesMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_statesDefinitionList getter_mInitialStatesDefinitionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_statesDefinitionList getter_mTerminalStatesDefinitionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_L_5F_stateDefinition getter_mStateDefinitionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfDefinition (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

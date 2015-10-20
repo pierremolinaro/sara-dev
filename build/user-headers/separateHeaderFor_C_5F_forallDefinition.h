@@ -35,9 +35,9 @@ class cPtr_C_5F_forallDefinition : public cPtr_AC_5F_machineDefinition {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mPreviousVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mTotalVariableCount (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition reader_mOperand (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mPreviousVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_mTotalVariableCount (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
