@@ -23,9 +23,15 @@
 #include "cDisplayBDD.h"
 #include "streams/AC_OutputStream.h"
 #include "utilities/MF_MemoryControl.h"
-#include "utilities/TF_sup.h"
 #include "bdd/C_BDD.h"
 #include "bdd/C_BDD-node.h"
+
+//---------------------------------------------------------------------------*
+
+static inline int32_t sup (const int32_t inA,
+                           const int32_t inB) {
+  return (inA > inB) ? inA : inB ;
+}
 
 //-----------------------------------------------------------------------------*
 
@@ -40,7 +46,7 @@ ecrireLigneBDD (AC_OutputStream & inStream,
 //--- Ecriture des valeurs booleennes
   int32_t indiceBDD = 0 ;
   for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
-    const int32_t lg = ::TF_sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
+    const int32_t lg = ::sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
     const int32_t espaces = 1 + lg - (int32_t) inVariablesNames.obtenirDimension (i) ;
     inStream.appendSpaces (espaces) ;
     for (int32_t k=(int32_t) inVariablesNames.obtenirDimension (i) ; k>0 ; k--) {
@@ -112,7 +118,7 @@ void printBDDWithVariables (const C_BDD & inBDD,
                             const cDisplayBDD & inVariablesNames) {
 //--- Imprimer les variables
   for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
-    const int32_t lg = ::TF_sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
+    const int32_t lg = ::sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
     const int32_t espaces = 1 + lg - inVariablesNames.longueur (i) ;
     inStream.appendSpaces (espaces) ;
     inVariablesNames.ecrire (i, inStream) ;
