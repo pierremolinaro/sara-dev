@@ -16,6 +16,7 @@
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
+#include "galgas2/cLexiqueIntrospection.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1440,6 +1441,83 @@ GALGAS_stringlist C_Lexique_sara_5F_scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("**") COMMA_THERE) ;
   return result ;
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordLists_sara_5F_scanner (TC_UniqueArray <C_String> & ioList) {
+  ioList.addObject ("sara_scanner:delimitorsList") ;
+  ioList.addObject ("sara_scanner:keyWordList") ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordsForIdentifier_sara_5F_scanner (const C_String & inIdentifier,
+                                                      bool & ioFound,
+                                                      TC_UniqueArray <C_String> & ioList) {
+  if (inIdentifier == "sara_scanner:delimitorsList") {
+    ioFound = true ;
+    ioList.addObject ("!") ;
+    ioList.addObject ("&") ;
+    ioList.addObject ("(") ;
+    ioList.addObject (")") ;
+    ioList.addObject ("*") ;
+    ioList.addObject ("+") ;
+    ioList.addObject (",") ;
+    ioList.addObject (":") ;
+    ioList.addObject (";") ;
+    ioList.addObject ("=") ;
+    ioList.addObject ("\?") ;
+    ioList.addObject ("@") ;
+    ioList.addObject ("^") ;
+    ioList.addObject ("{") ;
+    ioList.addObject ("|") ;
+    ioList.addObject ("}") ;
+    ioList.addObject ("~") ;
+    ioList.addObject ("**") ;
+    ioList.addObject ("->") ;
+    ioList.addObject (":=") ;
+    ioList.addObject ("||") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+  if (inIdentifier == "sara_scanner:keyWordList") {
+    ioFound = true ;
+    ioList.addObject ("to") ;
+    ioList.addObject ("bdd") ;
+    ioList.addObject ("map") ;
+    ioList.addObject ("auto") ;
+    ioList.addObject ("bool") ;
+    ioList.addObject ("goto") ;
+    ioList.addObject ("last") ;
+    ioList.addObject ("true") ;
+    ioList.addObject ("check") ;
+    ioList.addObject ("false") ;
+    ioList.addObject ("first") ;
+    ioList.addObject ("state") ;
+    ioList.addObject ("trans") ;
+    ioList.addObject ("nolast") ;
+    ioList.addObject ("display") ;
+    ioList.addObject ("exclude") ;
+    ioList.addObject ("include") ;
+    ioList.addObject ("nofirst") ;
+    ioList.addObject ("use_and") ;
+    ioList.addObject ("use_ite") ;
+    ioList.addObject ("scenario") ;
+    ioList.addObject ("and_cache") ;
+    ioList.addObject ("checkbool") ;
+    ioList.addObject ("ite_cache") ;
+    ioList.addObject ("use_and_ite") ;
+    ioList.addObject ("modalcompadd") ;
+    ioList.addObject ("modalcompsub") ;
+    ioList.addObject ("checkidentical") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static cLexiqueIntrospection lexiqueIntrospection_sara_5F_scanner
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_sara_5F_scanner, getKeywordsForIdentifier_sara_5F_scanner) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
