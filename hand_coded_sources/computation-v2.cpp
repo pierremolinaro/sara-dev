@@ -767,11 +767,11 @@ compute (C_Compiler * /* inCompiler */,
     cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (HERE), kEnumeration_up) ;
     uint64_t initialConfiguration = 0 ;
     uint32_t shift = 0 ;
-    cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), kEnumeration_up) ;
-    while (v.hasCurrentObject ()) {
-      initialConfiguration += ((uint64_t) v.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
+    cEnumerator_L_5F_inputConfigurationForScenario vv (currentInput.current_mInputConfiguration (HERE), kEnumeration_up) ;
+    while (vv.hasCurrentObject ()) {
+      initialConfiguration += ((uint64_t) vv.current_mInputValue (HERE).mAttribute_uint.uintValue ()) << shift ;
       shift ++ ;
-      v.gotoNextObject () ;
+      vv.gotoNextObject () ;
     }
     const C_BDD initialInputConfigurationBDD = C_BDD::varCompareConst (0, shift, C_BDD::kEqual, initialConfiguration) ;
     C_BDD currentState = initialInputConfigurationBDD & initialStateBDD ;
@@ -1829,10 +1829,10 @@ compute (C_Compiler * inCompiler,
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
-  int32_t index = 0 ;
+  int32_t idx = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
-    index ++ ;
+    machine.mNamesArray (idx COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
+    idx ++ ;
     currentVar.gotoNextObject () ;
   }
 //--- Compute BDDs for each mode
@@ -2071,10 +2071,10 @@ compute (C_Compiler * inCompiler,
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mAttribute_mVariablesMap, kEnumeration_up) ;
-  int32_t index = 0 ;
+  int32_t idx = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
-    index ++ ;
+    machine.mNamesArray (idx COMMA_HERE) = currentVar.current_lkey (HERE).mAttribute_string.stringValue () ;
+    idx ++ ;
     currentVar.gotoNextObject () ;
   }
 //----------- Compute automaton from definition expression
