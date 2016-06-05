@@ -3,36 +3,29 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
 
-
-#ifndef sara_5F_scanner_CLASS_DEFINED
-#define sara_5F_scanner_CLASS_DEFINED
-
+//----------------------------------------------------------------------------------------------------------------------
+//                                                                                                                     *
+//                                               LEXIQUE sara_5F_scanner                                               *
+//                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
-#include "galgas2/predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
-//                                                                                                                     *
 //                    E X T E R N    R O U T I N E S                                                                   *
-//                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-//                                                                                                                     *
 //                    E X T E R N    F U N C T I O N S                                                                 *
-//                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-//                                                                                                                     *
 //                       T O K E N    C L A S S                                                                        *
-//                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_sara_5F_scanner : public cToken {
@@ -43,9 +36,7 @@ class cTokenFor_sara_5F_scanner : public cToken {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
-//                                                                                                                     *
 //                     S C A N N E R    C L A S S                                                                      *
-//                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 class C_Lexique_sara_5F_scanner : public C_Lexique {
@@ -173,9 +164,6 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
-
-#endif
-//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                 @M_variablesMap map                                                 *
 //                                                                                                                     *
@@ -208,10 +196,10 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_variablesMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_variablesMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_M_5F_variablesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_variablesMap & inOperand0
-                                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_variablesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_variablesMap & inOperand0
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -347,9 +335,9 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_variablesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                       const class GALGAS_uint & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_variablesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_uint & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -411,10 +399,10 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_stateMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_stateMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_M_5F_stateMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_stateMap & inOperand0
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_stateMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_stateMap & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -555,9 +543,9 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_stateMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                   const class GALGAS_uint & inOperand1
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_stateMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                         const class GALGAS_uint & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -615,10 +603,10 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_translationVector constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_translationVector constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_translationVector constructor_listWithValue (const class GALGAS_uint & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_translationVector constructor_listWithValue (const class GALGAS_uint & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_translationVector inOperand,
@@ -747,8 +735,8 @@ class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_translationVector_2D_element constructor_new (const class GALGAS_uint & inOperand0
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_translationVector_2D_element constructor_new (const class GALGAS_uint & inOperand0
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -806,12 +794,12 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_transitionDefinition constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_transitionDefinition constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_transitionDefinition constructor_listWithValue (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                                              const class GALGAS_location & inOperand1,
-                                                                              const class GALGAS_uint & inOperand2
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_transitionDefinition constructor_listWithValue (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                                    const class GALGAS_location & inOperand1,
+                                                                                    const class GALGAS_uint & inOperand2
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_transitionDefinition inOperand,
@@ -1013,10 +1001,10 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_transitionDefinition_2D_element constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                                               const class GALGAS_location & inOperand1,
-                                                                               const class GALGAS_uint & inOperand2
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_transitionDefinition_2D_element constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                                     const class GALGAS_location & inOperand1,
+                                                                                     const class GALGAS_uint & inOperand2
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1079,13 +1067,13 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_stateDefinition constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_stateDefinition constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_stateDefinition constructor_listWithValue (const class GALGAS_uint & inOperand0,
-                                                                         const class GALGAS_AC_5F_boolExpression & inOperand1,
-                                                                         const class GALGAS_location & inOperand2,
-                                                                         const class GALGAS_L_5F_transitionDefinition & inOperand3
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_stateDefinition constructor_listWithValue (const class GALGAS_uint & inOperand0,
+                                                                               const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                                               const class GALGAS_location & inOperand2,
+                                                                               const class GALGAS_L_5F_transitionDefinition & inOperand3
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_stateDefinition inOperand,
@@ -1253,11 +1241,11 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_stateDefinition_2D_element constructor_new (const class GALGAS_uint & inOperand0,
-                                                                          const class GALGAS_AC_5F_boolExpression & inOperand1,
-                                                                          const class GALGAS_location & inOperand2,
-                                                                          const class GALGAS_L_5F_transitionDefinition & inOperand3
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_stateDefinition_2D_element constructor_new (const class GALGAS_uint & inOperand0,
+                                                                                const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                                                const class GALGAS_location & inOperand2,
+                                                                                const class GALGAS_L_5F_transitionDefinition & inOperand3
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1320,11 +1308,11 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_statesDefinitionList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_statesDefinitionList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_statesDefinitionList constructor_listWithValue (const class GALGAS_uint & inOperand0,
-                                                                              const class GALGAS_location & inOperand1
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_statesDefinitionList constructor_listWithValue (const class GALGAS_uint & inOperand0,
+                                                                                    const class GALGAS_location & inOperand1
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_statesDefinitionList inOperand,
@@ -1467,9 +1455,9 @@ class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_statesDefinitionList_2D_element constructor_new (const class GALGAS_uint & inOperand0,
-                                                                               const class GALGAS_location & inOperand1
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_statesDefinitionList_2D_element constructor_new (const class GALGAS_uint & inOperand0,
+                                                                                     const class GALGAS_location & inOperand1
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1531,10 +1519,10 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_modesMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_modesMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_M_5F_modesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_modesMap & inOperand0
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_modesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_modesMap & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -1730,10 +1718,10 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_modesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                   const class GALGAS_uint & inOperand1,
-                                                                   const class GALGAS_AC_5F_machineDefinition & inOperand2
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_modesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                         const class GALGAS_uint & inOperand1,
+                                                                         const class GALGAS_AC_5F_machineDefinition & inOperand2
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1794,11 +1782,11 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_ListForModes constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_ListForModes constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_ListForModes constructor_listWithValue (const class GALGAS_uint & inOperand0,
-                                                                 const class GALGAS_uint & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_ListForModes constructor_listWithValue (const class GALGAS_uint & inOperand0,
+                                                                       const class GALGAS_uint & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_ListForModes inOperand,
@@ -1941,9 +1929,9 @@ class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_ListForModes_2D_element constructor_new (const class GALGAS_uint & inOperand0,
-                                                                  const class GALGAS_uint & inOperand1
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_ListForModes_2D_element constructor_new (const class GALGAS_uint & inOperand0,
+                                                                        const class GALGAS_uint & inOperand1
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2001,10 +1989,10 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_inputConfigurationForScenario constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_inputConfigurationForScenario constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_inputConfigurationForScenario constructor_listWithValue (const class GALGAS_luint & inOperand0
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_inputConfigurationForScenario constructor_listWithValue (const class GALGAS_luint & inOperand0
+                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_inputConfigurationForScenario inOperand,
@@ -2133,8 +2121,8 @@ class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_ro
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_inputConfigurationForScenario_2D_element constructor_new (const class GALGAS_luint & inOperand0
-                                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_inputConfigurationForScenario_2D_element constructor_new (const class GALGAS_luint & inOperand0
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2190,10 +2178,10 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_inputScenario constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_inputScenario constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_inputScenario constructor_listWithValue (const class GALGAS_L_5F_inputConfigurationForScenario & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_inputScenario constructor_listWithValue (const class GALGAS_L_5F_inputConfigurationForScenario & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_inputScenario inOperand,
@@ -2322,8 +2310,8 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_inputScenario_2D_element constructor_new (const class GALGAS_L_5F_inputConfigurationForScenario & inOperand0
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_inputScenario_2D_element constructor_new (const class GALGAS_L_5F_inputConfigurationForScenario & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2380,11 +2368,11 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_scenarioList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_scenarioList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_scenarioList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_L_5F_inputScenario & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_scenarioList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_L_5F_inputScenario & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_scenarioList inOperand,
@@ -2527,9 +2515,9 @@ class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_scenarioList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                       const class GALGAS_L_5F_inputScenario & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_scenarioList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_L_5F_inputScenario & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2587,10 +2575,10 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_jobList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_jobList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_L_5F_jobList constructor_listWithValue (const class GALGAS_AC_5F_job & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_jobList constructor_listWithValue (const class GALGAS_AC_5F_job & inOperand0
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_jobList inOperand,
@@ -2764,8 +2752,8 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_L_5F_jobList_2D_element constructor_new (const class GALGAS_AC_5F_job & inOperand0
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_L_5F_jobList_2D_element constructor_new (const class GALGAS_AC_5F_job & inOperand0
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2825,10 +2813,10 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_machinesMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_machinesMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_M_5F_machinesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_machinesMap & inOperand0
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_machinesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_machinesMap & inOperand0
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3041,13 +3029,13 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_M_5F_machinesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_uint & inOperand1,
-                                                                      const class GALGAS_uint & inOperand2,
-                                                                      const class GALGAS_uint & inOperand3,
-                                                                      const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                      const class GALGAS_stringlist & inOperand5
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_M_5F_machinesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_uint & inOperand1,
+                                                                            const class GALGAS_uint & inOperand2,
+                                                                            const class GALGAS_uint & inOperand3,
+                                                                            const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                            const class GALGAS_stringlist & inOperand5
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -3500,8 +3488,8 @@ class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_VariableExpression constructor_new (const class GALGAS_uint & inOperand0
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_VariableExpression constructor_new (const class GALGAS_uint & inOperand0
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_VariableExpression & inOperand) const ;
@@ -3557,9 +3545,9 @@ class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machin
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_additiveModalCompositionComponent constructor_new (const class GALGAS_M_5F_modesMap & inOperand0,
-                                                                                 const class GALGAS_ListForModes & inOperand1
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_additiveModalCompositionComponent constructor_new (const class GALGAS_M_5F_modesMap & inOperand0,
+                                                                                       const class GALGAS_ListForModes & inOperand1
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_additiveModalCompositionComponent & inOperand) const ;
@@ -3614,9 +3602,9 @@ class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_andExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                             const class GALGAS_AC_5F_boolExpression & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_andExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                   const class GALGAS_AC_5F_boolExpression & inOperand1
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_andExpression & inOperand) const ;
@@ -3671,8 +3659,8 @@ class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_boolToSeqExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_boolToSeqExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_boolToSeqExpression & inOperand) const ;
@@ -3725,8 +3713,8 @@ class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefiniti
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_complementationOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_complementationOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_complementationOperation & inOperand) const ;
@@ -3779,9 +3767,9 @@ class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_equalExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                               const class GALGAS_AC_5F_boolExpression & inOperand1
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_equalExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                     const class GALGAS_AC_5F_boolExpression & inOperand1
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_equalExpression & inOperand) const ;
@@ -3836,10 +3824,10 @@ class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_existsDefinition constructor_new (const class GALGAS_uint & inOperand0,
-                                                                const class GALGAS_uint & inOperand1,
-                                                                const class GALGAS_AC_5F_machineDefinition & inOperand2
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_existsDefinition constructor_new (const class GALGAS_uint & inOperand0,
+                                                                      const class GALGAS_uint & inOperand1,
+                                                                      const class GALGAS_AC_5F_machineDefinition & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_existsDefinition & inOperand) const ;
@@ -3899,12 +3887,12 @@ class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefin
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_explicitAutomatonDefinition constructor_new (const class GALGAS_M_5F_stateMap & inOperand0,
-                                                                           const class GALGAS_L_5F_statesDefinitionList & inOperand1,
-                                                                           const class GALGAS_L_5F_statesDefinitionList & inOperand2,
-                                                                           const class GALGAS_L_5F_stateDefinition & inOperand3,
-                                                                           const class GALGAS_location & inOperand4
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_explicitAutomatonDefinition constructor_new (const class GALGAS_M_5F_stateMap & inOperand0,
+                                                                                 const class GALGAS_L_5F_statesDefinitionList & inOperand1,
+                                                                                 const class GALGAS_L_5F_statesDefinitionList & inOperand2,
+                                                                                 const class GALGAS_L_5F_stateDefinition & inOperand3,
+                                                                                 const class GALGAS_location & inOperand4
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_explicitAutomatonDefinition & inOperand) const ;
@@ -3968,7 +3956,7 @@ class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_falseExpression constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_falseExpression constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_falseExpression & inOperand) const ;
@@ -4019,10 +4007,10 @@ class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_forallDefinition constructor_new (const class GALGAS_uint & inOperand0,
-                                                                const class GALGAS_uint & inOperand1,
-                                                                const class GALGAS_AC_5F_machineDefinition & inOperand2
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_forallDefinition constructor_new (const class GALGAS_uint & inOperand0,
+                                                                      const class GALGAS_uint & inOperand1,
+                                                                      const class GALGAS_AC_5F_machineDefinition & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_forallDefinition & inOperand) const ;
@@ -4079,8 +4067,8 @@ class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinitio
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_fullSaturationOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_fullSaturationOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_fullSaturationOperation & inOperand) const ;
@@ -4133,9 +4121,9 @@ class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_impliesExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                                 const class GALGAS_AC_5F_boolExpression & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_impliesExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                       const class GALGAS_AC_5F_boolExpression & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_impliesExpression & inOperand) const ;
@@ -4193,10 +4181,10 @@ class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_importBoolMachine constructor_new (const class GALGAS_uint & inOperand0,
-                                                                 const class GALGAS_location & inOperand1,
-                                                                 const class GALGAS_L_5F_translationVector & inOperand2
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_importBoolMachine constructor_new (const class GALGAS_uint & inOperand0,
+                                                                       const class GALGAS_location & inOperand1,
+                                                                       const class GALGAS_L_5F_translationVector & inOperand2
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine & inOperand) const ;
@@ -4256,9 +4244,9 @@ class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_importMachine constructor_new (const class GALGAS_uint & inOperand0,
-                                                             const class GALGAS_L_5F_translationVector & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_importMachine constructor_new (const class GALGAS_uint & inOperand0,
+                                                                   const class GALGAS_L_5F_translationVector & inOperand1
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_importMachine & inOperand) const ;
@@ -4316,9 +4304,9 @@ class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineCheck constructor_new (const class GALGAS_uint & inOperand0,
-                                                            const class GALGAS_bool & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineCheck constructor_new (const class GALGAS_uint & inOperand0,
+                                                                  const class GALGAS_bool & inOperand1
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheck & inOperand) const ;
@@ -4376,9 +4364,9 @@ class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineCheckIdentical constructor_new (const class GALGAS_uint & inOperand0,
-                                                                     const class GALGAS_uint & inOperand1
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineCheckIdentical constructor_new (const class GALGAS_uint & inOperand0,
+                                                                           const class GALGAS_uint & inOperand1
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheckIdentical & inOperand) const ;
@@ -4433,14 +4421,14 @@ class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineComponent constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                const class GALGAS_uint & inOperand1,
-                                                                const class GALGAS_uint & inOperand2,
-                                                                const class GALGAS_uint & inOperand3,
-                                                                const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                const class GALGAS_stringlist & inOperand5,
-                                                                const class GALGAS_AC_5F_machineDefinition & inOperand6
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineComponent constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                      const class GALGAS_uint & inOperand1,
+                                                                      const class GALGAS_uint & inOperand2,
+                                                                      const class GALGAS_uint & inOperand3,
+                                                                      const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                      const class GALGAS_stringlist & inOperand5,
+                                                                      const class GALGAS_AC_5F_machineDefinition & inOperand6
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineComponent & inOperand) const ;
@@ -4508,14 +4496,14 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineDefinedByAdditiveModalComp constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_uint & inOperand1,
-                                                                                 const class GALGAS_uint & inOperand2,
-                                                                                 const class GALGAS_uint & inOperand3,
-                                                                                 const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                                 const class GALGAS_M_5F_modesMap & inOperand5,
-                                                                                 const class GALGAS_ListForModes & inOperand6
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineDefinedByAdditiveModalComp constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                       const class GALGAS_uint & inOperand1,
+                                                                                       const class GALGAS_uint & inOperand2,
+                                                                                       const class GALGAS_uint & inOperand3,
+                                                                                       const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                       const class GALGAS_M_5F_modesMap & inOperand5,
+                                                                                       const class GALGAS_ListForModes & inOperand6
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp & inOperand) const ;
@@ -4583,14 +4571,14 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_jo
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineDefinedBySubstractiveModalComp constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                     const class GALGAS_uint & inOperand1,
-                                                                                     const class GALGAS_uint & inOperand2,
-                                                                                     const class GALGAS_uint & inOperand3,
-                                                                                     const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                                     const class GALGAS_M_5F_modesMap & inOperand5,
-                                                                                     const class GALGAS_ListForModes & inOperand6
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineDefinedBySubstractiveModalComp constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                           const class GALGAS_uint & inOperand1,
+                                                                                           const class GALGAS_uint & inOperand2,
+                                                                                           const class GALGAS_uint & inOperand3,
+                                                                                           const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                           const class GALGAS_M_5F_modesMap & inOperand5,
+                                                                                           const class GALGAS_ListForModes & inOperand6
+                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp & inOperand) const ;
@@ -4658,8 +4646,8 @@ class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineDisplayInitialStates constructor_new (const class GALGAS_uint & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineDisplayInitialStates constructor_new (const class GALGAS_uint & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayInitialStates & inOperand) const ;
@@ -4715,8 +4703,8 @@ class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineDisplayStates constructor_new (const class GALGAS_uint & inOperand0
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineDisplayStates constructor_new (const class GALGAS_uint & inOperand0
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayStates & inOperand) const ;
@@ -4772,8 +4760,8 @@ class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineDisplayTerminalStates constructor_new (const class GALGAS_uint & inOperand0
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineDisplayTerminalStates constructor_new (const class GALGAS_uint & inOperand0
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTerminalStates & inOperand) const ;
@@ -4829,8 +4817,8 @@ class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_machineDisplayTransitions constructor_new (const class GALGAS_uint & inOperand0
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_machineDisplayTransitions constructor_new (const class GALGAS_uint & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTransitions & inOperand) const ;
@@ -4883,8 +4871,8 @@ class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_notExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_notExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_notExpression & inOperand) const ;
@@ -4937,9 +4925,9 @@ class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_orComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
-                                                             const class GALGAS_AC_5F_machineDefinition & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_orComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                   const class GALGAS_AC_5F_machineDefinition & inOperand1
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_orComposition & inOperand) const ;
@@ -4994,9 +4982,9 @@ class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_orExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                            const class GALGAS_AC_5F_boolExpression & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_orExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                  const class GALGAS_AC_5F_boolExpression & inOperand1
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_orExpression & inOperand) const ;
@@ -5051,9 +5039,9 @@ class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_parallelComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
-                                                                   const class GALGAS_AC_5F_machineDefinition & inOperand1
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_parallelComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                         const class GALGAS_AC_5F_machineDefinition & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_parallelComposition & inOperand) const ;
@@ -5111,12 +5099,12 @@ class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_scenarioComponent constructor_new (const class GALGAS_uint & inOperand0,
-                                                                 const class GALGAS_uint & inOperand1,
-                                                                 const class GALGAS_uint & inOperand2,
-                                                                 const class GALGAS_M_5F_variablesMap & inOperand3,
-                                                                 const class GALGAS_L_5F_scenarioList & inOperand4
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_scenarioComponent constructor_new (const class GALGAS_uint & inOperand0,
+                                                                       const class GALGAS_uint & inOperand1,
+                                                                       const class GALGAS_uint & inOperand2,
+                                                                       const class GALGAS_M_5F_variablesMap & inOperand3,
+                                                                       const class GALGAS_L_5F_scenarioList & inOperand4
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const ;
@@ -5177,10 +5165,10 @@ class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_strongModalComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
-                                                                      const class GALGAS_location & inOperand1,
-                                                                      const class GALGAS_AC_5F_machineDefinition & inOperand2
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_strongModalComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                            const class GALGAS_location & inOperand1,
+                                                                            const class GALGAS_AC_5F_machineDefinition & inOperand2
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_strongModalComposition & inOperand) const ;
@@ -5240,9 +5228,9 @@ class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_ma
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_substractiveModalCompositionComponent constructor_new (const class GALGAS_M_5F_modesMap & inOperand0,
-                                                                                     const class GALGAS_ListForModes & inOperand1
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_substractiveModalCompositionComponent constructor_new (const class GALGAS_M_5F_modesMap & inOperand0,
+                                                                                           const class GALGAS_ListForModes & inOperand1
+                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_substractiveModalCompositionComponent & inOperand) const ;
@@ -5297,8 +5285,8 @@ class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDe
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_suppressInitialStatesOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_suppressInitialStatesOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_suppressInitialStatesOperation & inOperand) const ;
@@ -5351,8 +5339,8 @@ class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineD
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_suppressTerminalStatesOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_suppressTerminalStatesOperation constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_suppressTerminalStatesOperation & inOperand) const ;
@@ -5405,9 +5393,9 @@ class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_trans constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                     const class GALGAS_AC_5F_boolExpression & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_trans constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                           const class GALGAS_AC_5F_boolExpression & inOperand1
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_trans & inOperand) const ;
@@ -5465,7 +5453,7 @@ class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_trueExpression constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_trueExpression constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_trueExpression & inOperand) const ;
@@ -5516,10 +5504,10 @@ class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_weakModalComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
-                                                                    const class GALGAS_location & inOperand1,
-                                                                    const class GALGAS_AC_5F_machineDefinition & inOperand2
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_weakModalComposition constructor_new (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                          const class GALGAS_location & inOperand1,
+                                                                          const class GALGAS_AC_5F_machineDefinition & inOperand2
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_weakModalComposition & inOperand) const ;
@@ -5576,9 +5564,9 @@ class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_C_5F_xorExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                                             const class GALGAS_AC_5F_boolExpression & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_C_5F_xorExpression constructor_new (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                   const class GALGAS_AC_5F_boolExpression & inOperand1
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_C_5F_xorExpression & inOperand) const ;
@@ -5636,7 +5624,7 @@ class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeDisplayBDDstats constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_typeDisplayBDDstats constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats & inOperand) const ;
@@ -5690,8 +5678,8 @@ class GALGAS_typeResizeMap : public GALGAS_AC_5F_job {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeResizeMap constructor_new (const class GALGAS_luint & inOperand0
-                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_typeResizeMap constructor_new (const class GALGAS_luint & inOperand0
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeResizeMap & inOperand) const ;
@@ -5747,8 +5735,8 @@ class GALGAS_typeResize_5F_AND_5F_cache : public GALGAS_AC_5F_job {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeResize_5F_AND_5F_cache constructor_new (const class GALGAS_luint & inOperand0
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_typeResize_5F_AND_5F_cache constructor_new (const class GALGAS_luint & inOperand0
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeResize_5F_AND_5F_cache & inOperand) const ;
@@ -5804,8 +5792,8 @@ class GALGAS_typeResize_5F_ITE_5F_cache : public GALGAS_AC_5F_job {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeResize_5F_ITE_5F_cache constructor_new (const class GALGAS_luint & inOperand0
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_typeResize_5F_ITE_5F_cache constructor_new (const class GALGAS_luint & inOperand0
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeResize_5F_ITE_5F_cache & inOperand) const ;
@@ -5861,7 +5849,7 @@ class GALGAS_typeUse_5F_AND : public GALGAS_AC_5F_job {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeUse_5F_AND constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_typeUse_5F_AND constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeUse_5F_AND & inOperand) const ;
@@ -5915,7 +5903,7 @@ class GALGAS_typeUse_5F_AND_5F_ITE : public GALGAS_AC_5F_job {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeUse_5F_AND_5F_ITE constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_typeUse_5F_AND_5F_ITE constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeUse_5F_AND_5F_ITE & inOperand) const ;
@@ -5969,7 +5957,7 @@ class GALGAS_typeUse_5F_ITE : public GALGAS_AC_5F_job {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeUse_5F_ITE constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_typeUse_5F_ITE constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeUse_5F_ITE & inOperand) const ;
@@ -6043,9 +6031,9 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_semanticContext constructor_new (const class GALGAS_L_5F_jobList & inOperand0,
-                                                          const class GALGAS_M_5F_machinesMap & inOperand1
-                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_semanticContext constructor_new (const class GALGAS_L_5F_jobList & inOperand0,
+                                                                const class GALGAS_M_5F_machinesMap & inOperand1
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
