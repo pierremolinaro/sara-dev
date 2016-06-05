@@ -6,6 +6,7 @@
         "all-libpm.cpp",
         "all-declarations-1.cpp",
         "all-declarations-0.cpp",
+        "all-predefined-types.cpp",
         "C_galgas_quiet_option.cpp",
         "computation-v2.cpp",
         "cDisplayBDD.cpp",
