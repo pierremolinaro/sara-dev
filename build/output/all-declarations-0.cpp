@@ -7611,8 +7611,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i18_ (GALGAS_semantic
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) COMMA_SOURCE_FILE ("sara_parser.galgas", 547)) ;
         const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, var_v_16341.getter_uint (SOURCE_FILE ("sara_parser.galgas", 548)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
         if (kBoolTrue == test_9) {
-          GALGAS_location location_10 (var_v_16341.getter_location (HERE)) ; // Implicit use of 'location' getter
-          inCompiler->emitSemanticError (location_10, GALGAS_string ("this value is not a  binary digit")  COMMA_SOURCE_FILE ("sara_parser.galgas", 549)) ;
+          inCompiler->emitSemanticError (var_v_16341.getter_location (SOURCE_FILE ("sara_parser.galgas", 549)), GALGAS_string ("this value is not a  binary digit")  COMMA_SOURCE_FILE ("sara_parser.galgas", 549)) ;
         }
         var_inputConfigurationForScenario_16266.addAssign_operation (var_v_16341  COMMA_SOURCE_FILE ("sara_parser.galgas", 551)) ;
         switch (select_sara_5F_parser_19 (inCompiler)) {
@@ -7624,8 +7623,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i18_ (GALGAS_semantic
           break ;
         }
       }
-      const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, var_inputVariablesCount_14315.objectCompare (var_inputConfigurationForScenario_16266.getter_length (SOURCE_FILE ("sara_parser.galgas", 555)))).boolEnum () ;
-      if (kBoolTrue == test_11) {
+      const enumGalgasBool test_10 = GALGAS_bool (kIsNotEqual, var_inputVariablesCount_14315.objectCompare (var_inputConfigurationForScenario_16266.getter_length (SOURCE_FILE ("sara_parser.galgas", 555)))).boolEnum () ;
+      if (kBoolTrue == test_10) {
         inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 556)), GALGAS_string ("this input configuration names ").add_operation (var_inputConfigurationForScenario_16266.getter_length (SOURCE_FILE ("sara_parser.galgas", 556)).getter_string (SOURCE_FILE ("sara_parser.galgas", 556)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 556)).add_operation (GALGAS_string (" input variable(s), instead of "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 556)).add_operation (var_inputVariablesCount_14315.getter_string (SOURCE_FILE ("sara_parser.galgas", 556)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 556))  COMMA_SOURCE_FILE ("sara_parser.galgas", 556)) ;
       }
       var_inputScenario_16175.addAssign_operation (var_inputConfigurationForScenario_16266  COMMA_SOURCE_FILE ("sara_parser.galgas", 558)) ;
@@ -8285,8 +8284,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompadd_5F_definition_i29_
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("sara_parser.galgas", 830)) ;
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, var_sourceModeIndex_25849.objectCompare (var_targetModeIndex_26009)).boolEnum () ;
       if (kBoolTrue == test_2) {
-        GALGAS_location location_3 (var_targetModeName_25949.getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticWarning (location_3, GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode")  COMMA_SOURCE_FILE ("sara_parser.galgas", 832)) ;
+        inCompiler->emitSemanticWarning (var_targetModeName_25949.getter_location (SOURCE_FILE ("sara_parser.galgas", 832)), GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode")  COMMA_SOURCE_FILE ("sara_parser.galgas", 832)) ;
       }else if (kBoolFalse == test_2) {
         outArgument_outInclusionList.addAssign_operation (var_sourceModeIndex_25849, var_targetModeIndex_26009  COMMA_SOURCE_FILE ("sara_parser.galgas", 834)) ;
       }
@@ -8385,8 +8383,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompsub_5F_definition_i30_
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("sara_parser.galgas", 870)) ;
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, var_sourceModeIndex_27066.objectCompare (var_targetModeIndex_27226)).boolEnum () ;
       if (kBoolTrue == test_2) {
-        GALGAS_location location_3 (var_targetModeName_27166.getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticWarning (location_3, GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode")  COMMA_SOURCE_FILE ("sara_parser.galgas", 872)) ;
+        inCompiler->emitSemanticWarning (var_targetModeName_27166.getter_location (SOURCE_FILE ("sara_parser.galgas", 872)), GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode")  COMMA_SOURCE_FILE ("sara_parser.galgas", 872)) ;
       }else if (kBoolFalse == test_2) {
         outArgument_outExclusionList.addAssign_operation (var_sourceModeIndex_27066, var_targetModeIndex_27226  COMMA_SOURCE_FILE ("sara_parser.galgas", 874)) ;
       }
