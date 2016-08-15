@@ -138,13 +138,13 @@ computeBDD (C_Compiler * inCompiler,
   const C_BDD transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
   if (initialStatesOfImportedMachine != (terminalStatesOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
   const uint32_t importedMachineVariableCount =  mAttribute_mTranslationVector.count () ;
   const C_BDD boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
   if (boolAccessibilityRelationBDD != (transitionsOfImportedMachine)) {
     C_String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Construct substitution arraies
   uint32_t * statesSubstitutionArray = NULL ;
@@ -855,7 +855,7 @@ computeFromExpression (C_Compiler * inCompiler,
       errorMessage << "input configuration for state '"
                    << stateNameArray (stateIndex COMMA_HERE)
                    << "' is empty" ;
-      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
     }
   //--- Go to next state definition  
     currentDefinition.gotoNextObject () ;
@@ -874,7 +874,7 @@ computeFromExpression (C_Compiler * inCompiler,
                    << "' intersects expression for state '"
                    << stateNameArray ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                    << "'" ;
-        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
       testedState.gotoNextObject () ;
     }
@@ -908,7 +908,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' intersects previous initial state '"
                      << stateNameArray ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
                      << "'" ;
-        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
       testedInitialState.gotoNextObject () ;
     }
@@ -971,7 +971,7 @@ computeFromExpression (C_Compiler * inCompiler,
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this action intersects with current state input configuration" ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
       cEnumerator_L_5F_transitionDefinition testedTransition (currentDefinition.current_mTransitionsList (HERE), kEnumeration_up) ;
@@ -983,7 +983,7 @@ computeFromExpression (C_Compiler * inCompiler,
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
           errorMessage << "this action intersects with #" << cStringWithSigned (transitionIndex) << " previous action" ;
-          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage COMMA_HERE) ;
+          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
         }
         testedTransition.gotoNextObject () ;
       }
@@ -992,7 +992,7 @@ computeFromExpression (C_Compiler * inCompiler,
       if (x.isFalse ()) {
         C_String errorMessage ;
         errorMessage << "this transition is not compatible with configuration of target state" ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Goto next transition
       currentTransition.gotoNextObject () ;
@@ -1026,7 +1026,7 @@ computeFromExpression (C_Compiler * inCompiler,
       errorMessage << "state '"
                    << stateNameArray (i COMMA_HERE)
                    << "' is not accessible" ;
-      inCompiler->semanticErrorAtLocation (mAttribute_mEndOfDefinition, errorMessage COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (mAttribute_mEndOfDefinition, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
@@ -1168,7 +1168,7 @@ computeFromExpression (C_Compiler * inCompiler,
   if (! intersection.isFalse ()) {
     C_String errorMessage ;
     errorMessage << "operands transitions intersects, strong modal composition is not valid" ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1228,7 +1228,7 @@ computeFromExpression (C_Compiler * inCompiler,
   if (intersection != (leftAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "left operand does not respect weak modal composition" ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
   C_BDD rightAccessiblesStates ;
@@ -1244,21 +1244,21 @@ computeFromExpression (C_Compiler * inCompiler,
   if (intersection != (rightAccessiblesStates)) {
     C_String errorMessage ;
     errorMessage << "right operand does not respect weak modal composition" ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD) == (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "initial states are not compatible with weak modal composition" ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD) == (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     C_String errorMessage ;
     errorMessage << "terminal states are not compatible with weak modal composition" ;
-    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mAttribute_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1547,7 +1547,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1568,7 +1568,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1579,7 +1579,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1591,7 +1591,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -1687,7 +1687,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1708,7 +1708,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1719,7 +1719,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1731,7 +1731,7 @@ computeFromExpression (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -1891,7 +1891,7 @@ compute (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1912,7 +1912,7 @@ compute (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1923,7 +1923,7 @@ compute (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1935,7 +1935,7 @@ compute (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -2134,7 +2134,7 @@ compute (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2155,7 +2155,7 @@ compute (C_Compiler * inCompiler,
                      << "' mode does not respect weak modal composition with '"
                      << modeNamesArray (mode COMMA_HERE)
                      << "' mode" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2166,7 +2166,7 @@ compute (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2178,7 +2178,7 @@ compute (C_Compiler * inCompiler,
                      << "' and '"
                      << modeNamesArray (testedMode COMMA_HERE)
                      << "' modes are not compatible with weak modal composition" ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mAttribute_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
   }
