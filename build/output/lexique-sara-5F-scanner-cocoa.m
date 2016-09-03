@@ -3,7 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#import "lexique-sara_scanner-cocoa.h"
+#import "lexique-sara-5F-scanner-cocoa.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
