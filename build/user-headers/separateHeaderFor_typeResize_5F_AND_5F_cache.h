@@ -19,7 +19,7 @@ class cPtr_typeResize_5F_AND_5F_cache : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_luint mAttribute_mNewSize ;
+  public : GALGAS_luint mProperty_mNewSize ;
 
 //--- Constructor
   public : cPtr_typeResize_5F_AND_5F_cache (const GALGAS_luint & in_mNewSize

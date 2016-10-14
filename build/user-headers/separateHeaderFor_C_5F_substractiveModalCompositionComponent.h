@@ -21,8 +21,8 @@ class cPtr_C_5F_substractiveModalCompositionComponent : public cPtr_AC_5F_machin
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_M_5F_modesMap mAttribute_mModeMap ;
-  public : GALGAS_ListForModes mAttribute_mExclusionList ;
+  public : GALGAS_M_5F_modesMap mProperty_mModeMap ;
+  public : GALGAS_ListForModes mProperty_mExclusionList ;
 
 //--- Constructor
   public : cPtr_C_5F_substractiveModalCompositionComponent (const GALGAS_M_5F_modesMap & in_mModeMap,

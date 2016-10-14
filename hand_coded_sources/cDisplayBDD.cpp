@@ -54,7 +54,7 @@ void cDisplayBDD::vider (void) {
 
 void cDisplayBDD::allouer (const uint32_t nombreChaines) {
   vider () ;
-  aTab.makeRoom ((int32_t) nombreChaines) ;
+  aTab.setCapacity ((int32_t) nombreChaines) ;
   macroMyDeleteArray (aDimensions) ;
   macroMyNewArray (aDimensions, uint32_t, nombreChaines) ;
   if (aDimensions != NULL) {
@@ -72,7 +72,7 @@ void cDisplayBDD::defineVariableName (const uint32_t indice,
                                         const uint32_t dimensions) {
   if (indice < aNombreChaines) {
     aDimensions [indice] = dimensions ;
-    aTab.addObject (chaine) ;
+    aTab.appendObject (chaine) ;
   }
 }
 

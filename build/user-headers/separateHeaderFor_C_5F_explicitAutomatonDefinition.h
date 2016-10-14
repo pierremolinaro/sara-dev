@@ -21,11 +21,11 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_M_5F_stateMap mAttribute_mStatesMap ;
-  public : GALGAS_L_5F_statesDefinitionList mAttribute_mInitialStatesDefinitionList ;
-  public : GALGAS_L_5F_statesDefinitionList mAttribute_mTerminalStatesDefinitionList ;
-  public : GALGAS_L_5F_stateDefinition mAttribute_mStateDefinitionList ;
-  public : GALGAS_location mAttribute_mEndOfDefinition ;
+  public : GALGAS_M_5F_stateMap mProperty_mStatesMap ;
+  public : GALGAS_L_5F_statesDefinitionList mProperty_mInitialStatesDefinitionList ;
+  public : GALGAS_L_5F_statesDefinitionList mProperty_mTerminalStatesDefinitionList ;
+  public : GALGAS_L_5F_stateDefinition mProperty_mStateDefinitionList ;
+  public : GALGAS_location mProperty_mEndOfDefinition ;
 
 //--- Constructor
   public : cPtr_C_5F_explicitAutomatonDefinition (const GALGAS_M_5F_stateMap & in_mStatesMap,

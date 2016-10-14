@@ -21,9 +21,9 @@ class cPtr_C_5F_existsDefinition : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mPreviousVariableCount ;
-  public : GALGAS_uint mAttribute_mTotalVariableCount ;
-  public : GALGAS_AC_5F_machineDefinition mAttribute_mOperand ;
+  public : GALGAS_uint mProperty_mPreviousVariableCount ;
+  public : GALGAS_uint mProperty_mTotalVariableCount ;
+  public : GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
 //--- Constructor
   public : cPtr_C_5F_existsDefinition (const GALGAS_uint & in_mPreviousVariableCount,

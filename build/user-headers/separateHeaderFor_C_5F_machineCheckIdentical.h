@@ -19,8 +19,8 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mMachineIndex_31_ ;
-  public : GALGAS_uint mAttribute_mMachineIndex_32_ ;
+  public : GALGAS_uint mProperty_mMachineIndex_31_ ;
+  public : GALGAS_uint mProperty_mMachineIndex_32_ ;
 
 //--- Constructor
   public : cPtr_C_5F_machineCheckIdentical (const GALGAS_uint & in_mMachineIndex_31_,

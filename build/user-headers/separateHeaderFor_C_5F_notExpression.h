@@ -19,7 +19,7 @@ class cPtr_C_5F_notExpression : public cPtr_AC_5F_boolExpression {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_boolExpression mAttribute_mExpression ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_C_5F_notExpression (const GALGAS_AC_5F_boolExpression & in_mExpression

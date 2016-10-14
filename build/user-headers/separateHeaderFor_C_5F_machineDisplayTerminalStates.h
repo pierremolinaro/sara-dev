@@ -19,7 +19,7 @@ class cPtr_C_5F_machineDisplayTerminalStates : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mMachineIndex ;
+  public : GALGAS_uint mProperty_mMachineIndex ;
 
 //--- Constructor
   public : cPtr_C_5F_machineDisplayTerminalStates (const GALGAS_uint & in_mMachineIndex

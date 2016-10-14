@@ -19,7 +19,7 @@ class cPtr_typeResizeMap : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_luint mAttribute_mNewSize ;
+  public : GALGAS_luint mProperty_mNewSize ;
 
 //--- Constructor
   public : cPtr_typeResizeMap (const GALGAS_luint & in_mNewSize

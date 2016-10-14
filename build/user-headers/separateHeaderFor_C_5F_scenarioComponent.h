@@ -19,11 +19,11 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mMachineIndex ;
-  public : GALGAS_uint mAttribute_mInputVariableCount ;
-  public : GALGAS_uint mAttribute_mInputAndInternalVariableCount ;
-  public : GALGAS_M_5F_variablesMap mAttribute_mVariablesMap ;
-  public : GALGAS_L_5F_scenarioList mAttribute_mScenarioList ;
+  public : GALGAS_uint mProperty_mMachineIndex ;
+  public : GALGAS_uint mProperty_mInputVariableCount ;
+  public : GALGAS_uint mProperty_mInputAndInternalVariableCount ;
+  public : GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
+  public : GALGAS_L_5F_scenarioList mProperty_mScenarioList ;
 
 //--- Constructor
   public : cPtr_C_5F_scenarioComponent (const GALGAS_uint & in_mMachineIndex,

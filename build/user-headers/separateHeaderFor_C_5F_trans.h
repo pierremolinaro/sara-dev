@@ -21,8 +21,8 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_boolExpression mAttribute_mSourceStateExpression ;
-  public : GALGAS_AC_5F_boolExpression mAttribute_mTargetStateExpression ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
 
 //--- Constructor
   public : cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
