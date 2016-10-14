@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "utilities/M_machine.h"
-#include "collections/TC_UniqueArray.h"
+#include "collections/TC_Array.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*
@@ -44,20 +44,20 @@ void printBDDWithVariables (const C_BDD & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDD (const C_BDD & inBDD,
-               const TC_UniqueArray <C_String> & inVariablesNames,
+               const TC_Array <C_String> & inVariablesNames,
                const int32_t inVariableCount,
                const int32_t inLeadingSpacesCount) ;
 
 //-----------------------------------------------------------------------------*
 
 void printBDD (const C_BDD & inBDD,
-               const TC_UniqueArray <C_String> & inVariablesNames,
+               const TC_Array <C_String> & inVariablesNames,
                const int32_t inLeadingSpacesCount) ;
 
 //-----------------------------------------------------------------------------*
 
 void printBDDWithoutHeader (const C_BDD & inBDD,
-                            const TC_UniqueArray <C_String> & inVariablesNames,
+                            const TC_Array <C_String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) ;
 

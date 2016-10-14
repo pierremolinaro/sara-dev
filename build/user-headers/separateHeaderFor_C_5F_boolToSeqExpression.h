@@ -21,7 +21,7 @@ class cPtr_C_5F_boolToSeqExpression : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_boolExpression mAttribute_mExpression ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_C_5F_boolToSeqExpression (const GALGAS_AC_5F_boolExpression & in_mExpression

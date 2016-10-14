@@ -21,7 +21,7 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_machineDefinition mAttribute_mOperand ;
+  public : GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
 //--- Constructor
   public : cPtr_C_5F_suppressTerminalStatesOperation (const GALGAS_AC_5F_machineDefinition & in_mOperand

@@ -19,13 +19,13 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mMachineName ;
-  public : GALGAS_uint mAttribute_mMachineIndex ;
-  public : GALGAS_uint mAttribute_mInputVariableCount ;
-  public : GALGAS_uint mAttribute_mInputAndInternalVariableCount ;
-  public : GALGAS_M_5F_variablesMap mAttribute_mVariablesMap ;
-  public : GALGAS_M_5F_modesMap mAttribute_mModeMap ;
-  public : GALGAS_ListForModes mAttribute_mExclusionList ;
+  public : GALGAS_lstring mProperty_mMachineName ;
+  public : GALGAS_uint mProperty_mMachineIndex ;
+  public : GALGAS_uint mProperty_mInputVariableCount ;
+  public : GALGAS_uint mProperty_mInputAndInternalVariableCount ;
+  public : GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
+  public : GALGAS_M_5F_modesMap mProperty_mModeMap ;
+  public : GALGAS_ListForModes mProperty_mExclusionList ;
 
 //--- Constructor
   public : cPtr_C_5F_machineDefinedBySubstractiveModalComp (const GALGAS_lstring & in_mMachineName,

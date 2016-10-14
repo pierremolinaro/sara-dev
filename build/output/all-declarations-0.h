@@ -42,8 +42,6 @@ class cTokenFor_sara_5F_scanner : public cToken {
 class C_Lexique_sara_5F_scanner : public C_Lexique {
 //--- Constructors
   public : C_Lexique_sara_5F_scanner (C_Compiler * inCallerCompiler,
-                       const C_String & inDependencyFileExtension,
-                       const C_String & inDependencyFilePath,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
@@ -275,7 +273,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap ;
 
 class cMapElement_M_5F_variablesMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
+  public : GALGAS_uint mProperty_mIndex ;
 
 //--- Constructor
   public : cMapElement_M_5F_variablesMap (const GALGAS_lstring & inKey,
@@ -303,8 +301,8 @@ class cMapElement_M_5F_variablesMap : public cMapElement {
 
 class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
 
 
 //--------------------------------- Accessors
@@ -483,7 +481,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap ;
 
 class cMapElement_M_5F_stateMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
+  public : GALGAS_uint mProperty_mIndex ;
 
 //--- Constructor
   public : cMapElement_M_5F_stateMap (const GALGAS_lstring & inKey,
@@ -511,8 +509,8 @@ class cMapElement_M_5F_stateMap : public cMapElement {
 
 class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
 
 
 //--------------------------------- Accessors
@@ -585,9 +583,9 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
   public : GALGAS_L_5F_translationVector (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_translationVector (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_translationVector (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_uint & in_mTargetSlot
                                                   COMMA_LOCATION_ARGS) ;
@@ -705,7 +703,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_translationVec
 
 class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_uint mAttribute_mTargetSlot ;
+  public : GALGAS_uint mProperty_mTargetSlot ;
 
 
 //--------------------------------- Accessors
@@ -1326,9 +1324,9 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
   public : GALGAS_L_5F_transitionDefinition (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_transitionDefinition (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_transitionDefinition (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_AC_5F_boolExpression & in_mActionExpression,
                                                   const class GALGAS_location & in_mEndOfExpression,
@@ -1474,9 +1472,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_transitionDefi
 
 class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_AC_5F_boolExpression mAttribute_mActionExpression ;
-  public : GALGAS_location mAttribute_mEndOfExpression ;
-  public : GALGAS_uint mAttribute_mTargetStateIndex ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mActionExpression ;
+  public : GALGAS_location mProperty_mEndOfExpression ;
+  public : GALGAS_uint mProperty_mTargetStateIndex ;
 
 
 //--------------------------------- Accessors
@@ -1550,9 +1548,9 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
   public : GALGAS_L_5F_stateDefinition (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_stateDefinition (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_stateDefinition (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_uint & in_mStateIndex,
                                                   const class GALGAS_AC_5F_boolExpression & in_mStateExpression,
@@ -1712,10 +1710,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_stateDefinitio
 
 class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_uint mAttribute_mStateIndex ;
-  public : GALGAS_AC_5F_boolExpression mAttribute_mStateExpression ;
-  public : GALGAS_location mAttribute_mEndOfStateExpression ;
-  public : GALGAS_L_5F_transitionDefinition mAttribute_mTransitionsList ;
+  public : GALGAS_uint mProperty_mStateIndex ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mStateExpression ;
+  public : GALGAS_location mProperty_mEndOfStateExpression ;
+  public : GALGAS_L_5F_transitionDefinition mProperty_mTransitionsList ;
 
 
 //--------------------------------- Accessors
@@ -1793,9 +1791,9 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
   public : GALGAS_L_5F_statesDefinitionList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_statesDefinitionList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_statesDefinitionList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_uint & in_mStateIndex,
                                                   const class GALGAS_location & in_mStateLocation
@@ -1927,8 +1925,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_statesDefiniti
 
 class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_uint mAttribute_mStateIndex ;
-  public : GALGAS_location mAttribute_mStateLocation ;
+  public : GALGAS_uint mProperty_mStateIndex ;
+  public : GALGAS_location mProperty_mStateLocation ;
 
 
 //--------------------------------- Accessors
@@ -2163,8 +2161,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap ;
 
 class cMapElement_M_5F_modesMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_AC_5F_machineDefinition mAttribute_mModeDefinition ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_AC_5F_machineDefinition mProperty_mModeDefinition ;
 
 //--- Constructor
   public : cMapElement_M_5F_modesMap (const GALGAS_lstring & inKey,
@@ -2193,9 +2191,9 @@ class cMapElement_M_5F_modesMap : public cMapElement {
 
 class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_AC_5F_machineDefinition mAttribute_mModeDefinition ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_AC_5F_machineDefinition mProperty_mModeDefinition ;
 
 
 //--------------------------------- Accessors
@@ -2269,9 +2267,9 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
   public : GALGAS_ListForModes (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_ListForModes (cSharedList * inSharedListPtr) ;
+  public : GALGAS_ListForModes (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_uint & in_mSourceMode,
                                                   const class GALGAS_uint & in_mTargetMode
@@ -2403,8 +2401,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ListForModes ;
 
 class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_uint mAttribute_mSourceMode ;
-  public : GALGAS_uint mAttribute_mTargetMode ;
+  public : GALGAS_uint mProperty_mSourceMode ;
+  public : GALGAS_uint mProperty_mTargetMode ;
 
 
 //--------------------------------- Accessors
@@ -3743,9 +3741,9 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
   public : GALGAS_L_5F_inputConfigurationForScenario (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_inputConfigurationForScenario (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_inputConfigurationForScenario (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_luint & in_mInputValue
                                                   COMMA_LOCATION_ARGS) ;
@@ -3863,7 +3861,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputConfigura
 
 class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_luint mAttribute_mInputValue ;
+  public : GALGAS_luint mProperty_mInputValue ;
 
 
 //--------------------------------- Accessors
@@ -3932,9 +3930,9 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
   public : GALGAS_L_5F_inputScenario (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_inputScenario (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_inputScenario (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
                                                   COMMA_LOCATION_ARGS) ;
@@ -4052,7 +4050,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario 
 
 class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_L_5F_inputConfigurationForScenario mAttribute_mInputConfiguration ;
+  public : GALGAS_L_5F_inputConfigurationForScenario mProperty_mInputConfiguration ;
 
 
 //--------------------------------- Accessors
@@ -4121,9 +4119,9 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
   public : GALGAS_L_5F_scenarioList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_scenarioList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mScenarioTitle,
                                                   const class GALGAS_L_5F_inputScenario & in_mInputScenario
@@ -4255,8 +4253,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ;
 
 class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mScenarioTitle ;
-  public : GALGAS_L_5F_inputScenario mAttribute_mInputScenario ;
+  public : GALGAS_lstring mProperty_mScenarioTitle ;
+  public : GALGAS_L_5F_inputScenario mProperty_mInputScenario ;
 
 
 //--------------------------------- Accessors
@@ -4785,9 +4783,9 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
   public : GALGAS_L_5F_jobList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_L_5F_jobList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_L_5F_jobList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_AC_5F_job & in_mComponent
                                                   COMMA_LOCATION_ARGS) ;
@@ -4905,7 +4903,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList ;
 
 class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_AC_5F_job mAttribute_mComponent ;
+  public : GALGAS_AC_5F_job mProperty_mComponent ;
 
 
 //--------------------------------- Accessors
@@ -5133,11 +5131,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap ;
 
 class cMapElement_M_5F_machinesMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_uint mAttribute_mInputVariableCount ;
-  public : GALGAS_uint mAttribute_mInputAndInternalVariableCount ;
-  public : GALGAS_M_5F_variablesMap mAttribute_mVariablesMap ;
-  public : GALGAS_stringlist mAttribute_mNameList ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_uint mProperty_mInputVariableCount ;
+  public : GALGAS_uint mProperty_mInputAndInternalVariableCount ;
+  public : GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
+  public : GALGAS_stringlist mProperty_mNameList ;
 
 //--- Constructor
   public : cMapElement_M_5F_machinesMap (const GALGAS_lstring & inKey,
@@ -5169,12 +5167,12 @@ class cMapElement_M_5F_machinesMap : public cMapElement {
 
 class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_uint mAttribute_mInputVariableCount ;
-  public : GALGAS_uint mAttribute_mInputAndInternalVariableCount ;
-  public : GALGAS_M_5F_variablesMap mAttribute_mVariablesMap ;
-  public : GALGAS_stringlist mAttribute_mNameList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_uint mProperty_mInputVariableCount ;
+  public : GALGAS_uint mProperty_mInputAndInternalVariableCount ;
+  public : GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
+  public : GALGAS_stringlist mProperty_mNameList ;
 
 
 //--------------------------------- Accessors
@@ -5260,8 +5258,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2D
 
 class GALGAS_semanticContext : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_L_5F_jobList mAttribute_componentsMap ;
-  public : GALGAS_M_5F_machinesMap mAttribute_machinesMap ;
+  public : GALGAS_L_5F_jobList mProperty_componentsMap ;
+  public : GALGAS_M_5F_machinesMap mProperty_machinesMap ;
 
 
 //--------------------------------- Accessors

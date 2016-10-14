@@ -19,9 +19,9 @@ class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mIndexOfImportedMachine ;
-  public : GALGAS_location mAttribute_mErrorLocation ;
-  public : GALGAS_L_5F_translationVector mAttribute_mTranslationVector ;
+  public : GALGAS_uint mProperty_mIndexOfImportedMachine ;
+  public : GALGAS_location mProperty_mErrorLocation ;
+  public : GALGAS_L_5F_translationVector mProperty_mTranslationVector ;
 
 //--- Constructor
   public : cPtr_C_5F_importBoolMachine (const GALGAS_uint & in_mIndexOfImportedMachine,

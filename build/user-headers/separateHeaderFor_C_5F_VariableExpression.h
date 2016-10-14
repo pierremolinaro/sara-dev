@@ -19,7 +19,7 @@ class cPtr_C_5F_VariableExpression : public cPtr_AC_5F_boolExpression {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mInputVarIndex ;
+  public : GALGAS_uint mProperty_mInputVarIndex ;
 
 //--- Constructor
   public : cPtr_C_5F_VariableExpression (const GALGAS_uint & in_mInputVarIndex

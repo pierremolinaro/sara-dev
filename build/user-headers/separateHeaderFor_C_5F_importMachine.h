@@ -21,8 +21,8 @@ class cPtr_C_5F_importMachine : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_uint mAttribute_mIndexOfImportedMachine ;
-  public : GALGAS_L_5F_translationVector mAttribute_mTranslationVector ;
+  public : GALGAS_uint mProperty_mIndexOfImportedMachine ;
+  public : GALGAS_L_5F_translationVector mProperty_mTranslationVector ;
 
 //--- Constructor
   public : cPtr_C_5F_importMachine (const GALGAS_uint & in_mIndexOfImportedMachine,

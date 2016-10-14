@@ -21,8 +21,8 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_M_5F_modesMap mAttribute_mModeMap ;
-  public : GALGAS_ListForModes mAttribute_mInclusionList ;
+  public : GALGAS_M_5F_modesMap mProperty_mModeMap ;
+  public : GALGAS_ListForModes mProperty_mInclusionList ;
 
 //--- Constructor
   public : cPtr_C_5F_additiveModalCompositionComponent (const GALGAS_M_5F_modesMap & in_mModeMap,

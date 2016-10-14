@@ -21,9 +21,9 @@ class cPtr_C_5F_strongModalComposition : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_machineDefinition mAttribute_mLeftOperand ;
-  public : GALGAS_location mAttribute_mErrorLocation ;
-  public : GALGAS_AC_5F_machineDefinition mAttribute_mRightOperand ;
+  public : GALGAS_AC_5F_machineDefinition mProperty_mLeftOperand ;
+  public : GALGAS_location mProperty_mErrorLocation ;
+  public : GALGAS_AC_5F_machineDefinition mProperty_mRightOperand ;
 
 //--- Constructor
   public : cPtr_C_5F_strongModalComposition (const GALGAS_AC_5F_machineDefinition & in_mLeftOperand,

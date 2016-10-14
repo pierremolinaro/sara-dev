@@ -19,8 +19,8 @@ class cPtr_C_5F_andExpression : public cPtr_AC_5F_boolExpression {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_boolExpression mAttribute_mLeftExpression ;
-  public : GALGAS_AC_5F_boolExpression mAttribute_mRightExpression ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mLeftExpression ;
+  public : GALGAS_AC_5F_boolExpression mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_C_5F_andExpression (const GALGAS_AC_5F_boolExpression & in_mLeftExpression,
