@@ -138,6 +138,8 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
 
 //--- Indexing keys
 
+//--- Unicode test functions
+
 //--- Indexing directory
   protected : virtual C_String indexingDirectory (void) const ;
 
@@ -300,10 +302,10 @@ class cMapElement_M_5F_variablesMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mIndex ;
 
+  public : GALGAS_uint mProperty_mIndex ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -508,10 +510,10 @@ class cMapElement_M_5F_stateMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mIndex ;
 
+  public : GALGAS_uint mProperty_mIndex ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -702,9 +704,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_translationVec
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mTargetSlot ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1471,11 +1472,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_transitionDefi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_AC_5F_boolExpression mProperty_mActionExpression ;
-  public : GALGAS_location mProperty_mEndOfExpression ;
-  public : GALGAS_uint mProperty_mTargetStateIndex ;
 
+  public : GALGAS_location mProperty_mEndOfExpression ;
+
+  public : GALGAS_uint mProperty_mTargetStateIndex ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1709,12 +1711,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_stateDefinitio
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mStateIndex ;
-  public : GALGAS_AC_5F_boolExpression mProperty_mStateExpression ;
-  public : GALGAS_location mProperty_mEndOfStateExpression ;
-  public : GALGAS_L_5F_transitionDefinition mProperty_mTransitionsList ;
 
+  public : GALGAS_AC_5F_boolExpression mProperty_mStateExpression ;
+
+  public : GALGAS_location mProperty_mEndOfStateExpression ;
+
+  public : GALGAS_L_5F_transitionDefinition mProperty_mTransitionsList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1924,10 +1928,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_statesDefiniti
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mStateIndex ;
-  public : GALGAS_location mProperty_mStateLocation ;
 
+  public : GALGAS_location mProperty_mStateLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2190,11 +2194,12 @@ class cMapElement_M_5F_modesMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mIndex ;
-  public : GALGAS_AC_5F_machineDefinition mProperty_mModeDefinition ;
 
+  public : GALGAS_uint mProperty_mIndex ;
+
+  public : GALGAS_AC_5F_machineDefinition mProperty_mModeDefinition ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2400,10 +2405,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ListForModes ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mSourceMode ;
-  public : GALGAS_uint mProperty_mTargetMode ;
 
+  public : GALGAS_uint mProperty_mTargetMode ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3860,9 +3865,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputConfigura
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_luint mProperty_mInputValue ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4049,9 +4053,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_L_5F_inputConfigurationForScenario mProperty_mInputConfiguration ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4252,10 +4255,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mScenarioTitle ;
-  public : GALGAS_L_5F_inputScenario mProperty_mInputScenario ;
 
+  public : GALGAS_L_5F_inputScenario mProperty_mInputScenario ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4902,9 +4905,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_AC_5F_job mProperty_mComponent ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5166,14 +5168,18 @@ class cMapElement_M_5F_machinesMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mIndex ;
-  public : GALGAS_uint mProperty_mInputVariableCount ;
-  public : GALGAS_uint mProperty_mInputAndInternalVariableCount ;
-  public : GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
-  public : GALGAS_stringlist mProperty_mNameList ;
 
+  public : GALGAS_uint mProperty_mIndex ;
+
+  public : GALGAS_uint mProperty_mInputVariableCount ;
+
+  public : GALGAS_uint mProperty_mInputAndInternalVariableCount ;
+
+  public : GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
+
+  public : GALGAS_stringlist mProperty_mNameList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5257,10 +5263,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2D
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticContext : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_L_5F_jobList mProperty_componentsMap ;
-  public : GALGAS_M_5F_machinesMap mProperty_machinesMap ;
 
+  public : GALGAS_M_5F_machinesMap mProperty_machinesMap ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

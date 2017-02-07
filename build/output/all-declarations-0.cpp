@@ -1144,7 +1144,10 @@ C_String C_Lexique_sara_5F_scanner::getCurrentTokenString (const cToken * inToke
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-
+//---------------------------------------------------------------------------------------------------------------------*
+//            Unicode test functions                                                                                   *
+//---------------------------------------------------------------------------------------------------------------------*
+ 
 //---------------------------------------------------------------------------------------------------------------------*
 //               P A R S E    L E X I C A L    T O K E N                                                               *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1769,7 +1772,7 @@ void GALGAS_M_5F_variablesMap::setter_setMIndexForKey (GALGAS_uint inAttributeVa
                                                        GALGAS_string inKey,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_variablesMap * p = (cMapElement_M_5F_variablesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_variablesMap) ;
@@ -1782,7 +1785,7 @@ void GALGAS_M_5F_variablesMap::setter_setMIndexForKey (GALGAS_uint inAttributeVa
 cMapElement_M_5F_variablesMap * GALGAS_M_5F_variablesMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                              const GALGAS_string & inKey
                                                                                              COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_variablesMap * result = (cMapElement_M_5F_variablesMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_M_5F_variablesMap * result = (cMapElement_M_5F_variablesMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_M_5F_variablesMap) ;
   return result ;
 }
@@ -2043,7 +2046,7 @@ void GALGAS_M_5F_stateMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
                                                    GALGAS_string inKey,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_stateMap * p = (cMapElement_M_5F_stateMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
@@ -2056,7 +2059,7 @@ void GALGAS_M_5F_stateMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
 cMapElement_M_5F_stateMap * GALGAS_M_5F_stateMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                      const GALGAS_string & inKey
                                                                                      COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_stateMap * result = (cMapElement_M_5F_stateMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_M_5F_stateMap * result = (cMapElement_M_5F_stateMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_M_5F_stateMap) ;
   return result ;
 }
@@ -2523,13 +2526,13 @@ typeComparisonResult GALGAS_AC_5F_boolExpression::objectCompare (const GALGAS_AC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_AC_5F_boolExpression::GALGAS_AC_5F_boolExpression (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_AC_5F_boolExpression::GALGAS_AC_5F_boolExpression (const cPtr_AC_5F_boolExpression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_AC_5F_boolExpression) ;
 }
 
@@ -5421,13 +5424,13 @@ typeComparisonResult GALGAS_AC_5F_machineDefinition::objectCompare (const GALGAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_AC_5F_machineDefinition::GALGAS_AC_5F_machineDefinition (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_AC_5F_machineDefinition::GALGAS_AC_5F_machineDefinition (const cPtr_AC_5F_machineDefinition * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_AC_5F_machineDefinition) ;
 }
 
@@ -5675,7 +5678,7 @@ void GALGAS_M_5F_modesMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
                                                    GALGAS_string inKey,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_modesMap * p = (cMapElement_M_5F_modesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
@@ -5689,7 +5692,7 @@ void GALGAS_M_5F_modesMap::setter_setMModeDefinitionForKey (GALGAS_AC_5F_machine
                                                             GALGAS_string inKey,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_modesMap * p = (cMapElement_M_5F_modesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
@@ -5702,7 +5705,7 @@ void GALGAS_M_5F_modesMap::setter_setMModeDefinitionForKey (GALGAS_AC_5F_machine
 cMapElement_M_5F_modesMap * GALGAS_M_5F_modesMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                      const GALGAS_string & inKey
                                                                                      COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_modesMap * result = (cMapElement_M_5F_modesMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_M_5F_modesMap * result = (cMapElement_M_5F_modesMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_M_5F_modesMap) ;
   return result ;
 }
@@ -9129,13 +9132,13 @@ typeComparisonResult GALGAS_AC_5F_job::objectCompare (const GALGAS_AC_5F_job & i
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_AC_5F_job::GALGAS_AC_5F_job (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_AC_5F_job::GALGAS_AC_5F_job (const cPtr_AC_5F_job * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_AC_5F_job) ;
 }
 
@@ -13037,7 +13040,7 @@ void GALGAS_M_5F_machinesMap::setter_setMIndexForKey (GALGAS_uint inAttributeVal
                                                       GALGAS_string inKey,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_machinesMap * p = (cMapElement_M_5F_machinesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
@@ -13051,7 +13054,7 @@ void GALGAS_M_5F_machinesMap::setter_setMInputVariableCountForKey (GALGAS_uint i
                                                                    GALGAS_string inKey,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_machinesMap * p = (cMapElement_M_5F_machinesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
@@ -13065,7 +13068,7 @@ void GALGAS_M_5F_machinesMap::setter_setMInputAndInternalVariableCountForKey (GA
                                                                               GALGAS_string inKey,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_machinesMap * p = (cMapElement_M_5F_machinesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
@@ -13079,7 +13082,7 @@ void GALGAS_M_5F_machinesMap::setter_setMVariablesMapForKey (GALGAS_M_5F_variabl
                                                              GALGAS_string inKey,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_machinesMap * p = (cMapElement_M_5F_machinesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
@@ -13093,7 +13096,7 @@ void GALGAS_M_5F_machinesMap::setter_setMNameListForKey (GALGAS_stringlist inAtt
                                                          GALGAS_string inKey,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_M_5F_machinesMap * p = (cMapElement_M_5F_machinesMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
@@ -13106,7 +13109,7 @@ void GALGAS_M_5F_machinesMap::setter_setMNameListForKey (GALGAS_stringlist inAtt
 cMapElement_M_5F_machinesMap * GALGAS_M_5F_machinesMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                            const GALGAS_string & inKey
                                                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_machinesMap * result = (cMapElement_M_5F_machinesMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_M_5F_machinesMap * result = (cMapElement_M_5F_machinesMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_M_5F_machinesMap) ;
   return result ;
 }
@@ -13795,7 +13798,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i15_ (GALGAS_semantic
     {
     var_variablesMap_7596.setter_insertKey (var_inputVarName_7900, var_variablesMap_7596.getter_count (SOURCE_FILE ("sara_parser.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 266)) ;
     }
-    var_nameList_7737.addAssign_operation (var_inputVarName_7900.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 267)) ;
+    var_nameList_7737.addAssign_operation (var_inputVarName_7900.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 267)) ;
     switch (select_sara_5F_parser_1 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 269)) ;
@@ -13820,7 +13823,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i15_ (GALGAS_semantic
       {
       var_variablesMap_7596.setter_insertKey (var_outputVarName_8205, var_variablesMap_7596.getter_count (SOURCE_FILE ("sara_parser.galgas", 280)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 280)) ;
       }
-      var_nameList_7737.addAssign_operation (var_outputVarName_8205.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 281)) ;
+      var_nameList_7737.addAssign_operation (var_outputVarName_8205.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 281)) ;
       switch (select_sara_5F_parser_3 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 283)) ;
@@ -13845,7 +13848,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i15_ (GALGAS_semantic
     {
     var_variablesMap_7596.setter_insertKey (var_outputVarName_8522, var_variablesMap_7596.getter_count (SOURCE_FILE ("sara_parser.galgas", 293)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 293)) ;
     }
-    var_nameList_7737.addAssign_operation (var_outputVarName_8522.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 294)) ;
+    var_nameList_7737.addAssign_operation (var_outputVarName_8522.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 294)) ;
     switch (select_sara_5F_parser_4 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 296)) ;
@@ -13949,7 +13952,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i16_ (GALGAS_semantic
     {
     var_variablesMap_9514.setter_insertKey (var_inputVarName_9835, var_variablesMap_9514.getter_count (SOURCE_FILE ("sara_parser.galgas", 336)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 336)) ;
     }
-    var_nameList_9655.addAssign_operation (var_inputVarName_9835.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 337)) ;
+    var_nameList_9655.addAssign_operation (var_inputVarName_9835.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 337)) ;
     switch (select_sara_5F_parser_5 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 339)) ;
@@ -13974,7 +13977,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i16_ (GALGAS_semantic
       {
       var_variablesMap_9514.setter_insertKey (var_outputVarName_10140, var_variablesMap_9514.getter_count (SOURCE_FILE ("sara_parser.galgas", 350)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 350)) ;
       }
-      var_nameList_9655.addAssign_operation (var_outputVarName_10140.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 351)) ;
+      var_nameList_9655.addAssign_operation (var_outputVarName_10140.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 351)) ;
       switch (select_sara_5F_parser_7 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 353)) ;
@@ -13999,7 +14002,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i16_ (GALGAS_semantic
     {
     var_variablesMap_9514.setter_insertKey (var_outputVarName_10457, var_variablesMap_9514.getter_count (SOURCE_FILE ("sara_parser.galgas", 363)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 363)) ;
     }
-    var_nameList_9655.addAssign_operation (var_outputVarName_10457.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 364)) ;
+    var_nameList_9655.addAssign_operation (var_outputVarName_10457.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 364)) ;
     switch (select_sara_5F_parser_8 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 366)) ;
@@ -14105,7 +14108,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i17_ (GALGAS_semantic
     {
     var_variablesMap_11509.setter_insertKey (var_inputVarName_11830, var_variablesMap_11509.getter_count (SOURCE_FILE ("sara_parser.galgas", 411)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 411)) ;
     }
-    var_nameList_11650.addAssign_operation (var_inputVarName_11830.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 412)) ;
+    var_nameList_11650.addAssign_operation (var_inputVarName_11830.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 412)) ;
     switch (select_sara_5F_parser_9 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 414)) ;
@@ -14130,7 +14133,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i17_ (GALGAS_semantic
       {
       var_variablesMap_11509.setter_insertKey (var_outputVarName_12135, var_variablesMap_11509.getter_count (SOURCE_FILE ("sara_parser.galgas", 425)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 425)) ;
       }
-      var_nameList_11650.addAssign_operation (var_outputVarName_12135.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 426)) ;
+      var_nameList_11650.addAssign_operation (var_outputVarName_12135.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 426)) ;
       switch (select_sara_5F_parser_11 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 428)) ;
@@ -14155,7 +14158,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i17_ (GALGAS_semantic
     {
     var_variablesMap_11509.setter_insertKey (var_outputVarName_12452, var_variablesMap_11509.getter_count (SOURCE_FILE ("sara_parser.galgas", 438)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 438)) ;
     }
-    var_nameList_11650.addAssign_operation (var_outputVarName_12452.mProperty_string  COMMA_SOURCE_FILE ("sara_parser.galgas", 439)) ;
+    var_nameList_11650.addAssign_operation (var_outputVarName_12452.getter_string (HERE)  COMMA_SOURCE_FILE ("sara_parser.galgas", 439)) ;
     switch (select_sara_5F_parser_12 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("sara_parser.galgas", 441)) ;
