@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -266,4 +265,3 @@ extern C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#endif

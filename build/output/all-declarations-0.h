@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__30__ENTITIES_DEFINED
-#define all_2D_declarations_2D__30__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6066,4 +6065,3 @@ void routine_performComputations (const class GALGAS_L_5F_jobList constinArgumen
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-#endif
