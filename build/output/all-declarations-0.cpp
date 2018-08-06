@@ -2155,9 +2155,10 @@ GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::extractObject (const GALGAS_object & 
 class cCollectionElement_L_5F_translationVector : public cCollectionElement {
   public : GALGAS_L_5F_translationVector_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_translationVector (const GALGAS_uint & in_mTargetSlot
                                                       COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_translationVector (const GALGAS_L_5F_translationVector_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -2178,6 +2179,13 @@ cCollectionElement_L_5F_translationVector::cCollectionElement_L_5F_translationVe
                                                                                       COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mTargetSlot) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_translationVector::cCollectionElement_L_5F_translationVector (const GALGAS_L_5F_translationVector_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mTargetSlot) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2261,6 +2269,21 @@ void GALGAS_L_5F_translationVector::addAssign_operation (const GALGAS_uint & inO
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_translationVector (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_translationVector::setter_append (GALGAS_L_5F_translationVector_2D_element inElement,
+                                                   C_Compiler * /* inCompiler */
+                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_translationVector (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -4039,11 +4062,12 @@ GALGAS_C_5F_falseExpression GALGAS_C_5F_falseExpression::extractObject (const GA
 class cCollectionElement_L_5F_transitionDefinition : public cCollectionElement {
   public : GALGAS_L_5F_transitionDefinition_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_transitionDefinition (const GALGAS_AC_5F_boolExpression & in_mActionExpression,
                                                          const GALGAS_location & in_mEndOfExpression,
                                                          const GALGAS_uint & in_mTargetStateIndex
                                                          COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_transitionDefinition (const GALGAS_L_5F_transitionDefinition_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -4066,6 +4090,13 @@ cCollectionElement_L_5F_transitionDefinition::cCollectionElement_L_5F_transition
                                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mActionExpression, in_mEndOfExpression, in_mTargetStateIndex) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_transitionDefinition::cCollectionElement_L_5F_transitionDefinition (const GALGAS_L_5F_transitionDefinition_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mActionExpression, inElement.mProperty_mEndOfExpression, inElement.mProperty_mTargetStateIndex) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4165,6 +4196,21 @@ void GALGAS_L_5F_transitionDefinition::addAssign_operation (const GALGAS_AC_5F_b
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_transitionDefinition (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_transitionDefinition::setter_append (GALGAS_L_5F_transitionDefinition_2D_element inElement,
+                                                      C_Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_transitionDefinition (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -4497,12 +4543,13 @@ GALGAS_L_5F_transitionDefinition GALGAS_L_5F_transitionDefinition::extractObject
 class cCollectionElement_L_5F_stateDefinition : public cCollectionElement {
   public : GALGAS_L_5F_stateDefinition_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_stateDefinition (const GALGAS_uint & in_mStateIndex,
                                                     const GALGAS_AC_5F_boolExpression & in_mStateExpression,
                                                     const GALGAS_location & in_mEndOfStateExpression,
                                                     const GALGAS_L_5F_transitionDefinition & in_mTransitionsList
                                                     COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_stateDefinition (const GALGAS_L_5F_stateDefinition_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -4526,6 +4573,13 @@ cCollectionElement_L_5F_stateDefinition::cCollectionElement_L_5F_stateDefinition
                                                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mStateIndex, in_mStateExpression, in_mEndOfStateExpression, in_mTransitionsList) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_stateDefinition::cCollectionElement_L_5F_stateDefinition (const GALGAS_L_5F_stateDefinition_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mStateIndex, inElement.mProperty_mStateExpression, inElement.mProperty_mEndOfStateExpression, inElement.mProperty_mTransitionsList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4633,6 +4687,21 @@ void GALGAS_L_5F_stateDefinition::addAssign_operation (const GALGAS_uint & inOpe
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_stateDefinition (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_stateDefinition::setter_append (GALGAS_L_5F_stateDefinition_2D_element inElement,
+                                                 C_Compiler * /* inCompiler */
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_stateDefinition (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -5004,10 +5073,11 @@ GALGAS_L_5F_stateDefinition GALGAS_L_5F_stateDefinition::extractObject (const GA
 class cCollectionElement_L_5F_statesDefinitionList : public cCollectionElement {
   public : GALGAS_L_5F_statesDefinitionList_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_statesDefinitionList (const GALGAS_uint & in_mStateIndex,
                                                          const GALGAS_location & in_mStateLocation
                                                          COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_statesDefinitionList (const GALGAS_L_5F_statesDefinitionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -5029,6 +5099,13 @@ cCollectionElement_L_5F_statesDefinitionList::cCollectionElement_L_5F_statesDefi
                                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mStateIndex, in_mStateLocation) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_statesDefinitionList::cCollectionElement_L_5F_statesDefinitionList (const GALGAS_L_5F_statesDefinitionList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mStateIndex, inElement.mProperty_mStateLocation) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5120,6 +5197,21 @@ void GALGAS_L_5F_statesDefinitionList::addAssign_operation (const GALGAS_uint & 
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_statesDefinitionList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_statesDefinitionList::setter_append (GALGAS_L_5F_statesDefinitionList_2D_element inElement,
+                                                      C_Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_statesDefinitionList (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -5809,10 +5901,11 @@ GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::extractObject (const GALGAS_object & 
 class cCollectionElement_ListForModes : public cCollectionElement {
   public : GALGAS_ListForModes_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_ListForModes (const GALGAS_uint & in_mSourceMode,
                                             const GALGAS_uint & in_mTargetMode
                                             COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_ListForModes (const GALGAS_ListForModes_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -5834,6 +5927,13 @@ cCollectionElement_ListForModes::cCollectionElement_ListForModes (const GALGAS_u
                                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mSourceMode, in_mTargetMode) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_ListForModes::cCollectionElement_ListForModes (const GALGAS_ListForModes_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mSourceMode, inElement.mProperty_mTargetMode) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5925,6 +6025,21 @@ void GALGAS_ListForModes::addAssign_operation (const GALGAS_uint & inOperand0,
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_ListForModes (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_ListForModes::setter_append (GALGAS_ListForModes_2D_element inElement,
+                                         C_Compiler * /* inCompiler */
+                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_ListForModes (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -10020,9 +10135,10 @@ GALGAS_C_5F_machineCheckIdentical GALGAS_C_5F_machineCheckIdentical::extractObje
 class cCollectionElement_L_5F_inputConfigurationForScenario : public cCollectionElement {
   public : GALGAS_L_5F_inputConfigurationForScenario_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_inputConfigurationForScenario (const GALGAS_luint & in_mInputValue
                                                                   COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_inputConfigurationForScenario (const GALGAS_L_5F_inputConfigurationForScenario_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -10043,6 +10159,13 @@ cCollectionElement_L_5F_inputConfigurationForScenario::cCollectionElement_L_5F_i
                                                                                                               COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mInputValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_inputConfigurationForScenario::cCollectionElement_L_5F_inputConfigurationForScenario (const GALGAS_L_5F_inputConfigurationForScenario_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mInputValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -10126,6 +10249,21 @@ void GALGAS_L_5F_inputConfigurationForScenario::addAssign_operation (const GALGA
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_inputConfigurationForScenario (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_inputConfigurationForScenario::setter_append (GALGAS_L_5F_inputConfigurationForScenario_2D_element inElement,
+                                                               C_Compiler * /* inCompiler */
+                                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_inputConfigurationForScenario (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -10380,9 +10518,10 @@ GALGAS_L_5F_inputConfigurationForScenario GALGAS_L_5F_inputConfigurationForScena
 class cCollectionElement_L_5F_inputScenario : public cCollectionElement {
   public : GALGAS_L_5F_inputScenario_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_inputScenario (const GALGAS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
                                                   COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_inputScenario (const GALGAS_L_5F_inputScenario_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -10403,6 +10542,13 @@ cCollectionElement_L_5F_inputScenario::cCollectionElement_L_5F_inputScenario (co
                                                                               COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mInputConfiguration) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_inputScenario::cCollectionElement_L_5F_inputScenario (const GALGAS_L_5F_inputScenario_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mInputConfiguration) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -10486,6 +10632,21 @@ void GALGAS_L_5F_inputScenario::addAssign_operation (const GALGAS_L_5F_inputConf
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_inputScenario (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_inputScenario::setter_append (GALGAS_L_5F_inputScenario_2D_element inElement,
+                                               C_Compiler * /* inCompiler */
+                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_inputScenario (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -10740,10 +10901,11 @@ GALGAS_L_5F_inputScenario GALGAS_L_5F_inputScenario::extractObject (const GALGAS
 class cCollectionElement_L_5F_scenarioList : public cCollectionElement {
   public : GALGAS_L_5F_scenarioList_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_scenarioList (const GALGAS_lstring & in_mScenarioTitle,
                                                  const GALGAS_L_5F_inputScenario & in_mInputScenario
                                                  COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_scenarioList (const GALGAS_L_5F_scenarioList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -10765,6 +10927,13 @@ cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (cons
                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mScenarioTitle, in_mInputScenario) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GALGAS_L_5F_scenarioList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -10856,6 +11025,21 @@ void GALGAS_L_5F_scenarioList::addAssign_operation (const GALGAS_lstring & inOpe
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_scenarioList::setter_append (GALGAS_L_5F_scenarioList_2D_element inElement,
+                                              C_Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -12385,9 +12569,10 @@ GALGAS_typeDisplayBDDstats GALGAS_typeDisplayBDDstats::extractObject (const GALG
 class cCollectionElement_L_5F_jobList : public cCollectionElement {
   public : GALGAS_L_5F_jobList_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_L_5F_jobList (const GALGAS_AC_5F_job & in_mComponent
                                             COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_L_5F_jobList (const GALGAS_L_5F_jobList_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -12408,6 +12593,13 @@ cCollectionElement_L_5F_jobList::cCollectionElement_L_5F_jobList (const GALGAS_A
                                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mComponent) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_L_5F_jobList::cCollectionElement_L_5F_jobList (const GALGAS_L_5F_jobList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mComponent) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12491,6 +12683,21 @@ void GALGAS_L_5F_jobList::addAssign_operation (const GALGAS_AC_5F_job & inOperan
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_L_5F_jobList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_L_5F_jobList::setter_append (GALGAS_L_5F_jobList_2D_element inElement,
+                                         C_Compiler * /* inCompiler */
+                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_L_5F_jobList (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
