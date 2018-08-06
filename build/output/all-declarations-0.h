@@ -317,7 +317,7 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_M_5F_variablesMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_M_5F_variablesMap_2D_element (void) ;
+  public : virtual ~ GALGAS_M_5F_variablesMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_M_5F_variablesMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -525,7 +525,7 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_M_5F_stateMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_M_5F_stateMap_2D_element (void) ;
+  public : virtual ~ GALGAS_M_5F_stateMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_M_5F_stateMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -622,6 +622,10 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_translationVector_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_uint constinArgument0,
                                                        class GALGAS_uint constinArgument1,
                                                        C_Compiler * inCompiler
@@ -717,7 +721,7 @@ class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_translationVector_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_translationVector_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_translationVector_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_translationVector_2D_element (const GALGAS_uint & in_mTargetSlot) ;
@@ -1368,6 +1372,10 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_transitionDefinition_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_AC_5F_boolExpression constinArgument0,
                                                        class GALGAS_location constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -1486,7 +1494,7 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_transitionDefinition_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_transitionDefinition_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_transitionDefinition_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_transitionDefinition_2D_element (const GALGAS_AC_5F_boolExpression & in_mActionExpression,
@@ -1596,6 +1604,10 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_stateDefinition_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_uint constinArgument0,
                                                        class GALGAS_AC_5F_boolExpression constinArgument1,
                                                        class GALGAS_location constinArgument2,
@@ -1727,7 +1739,7 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_stateDefinition_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_stateDefinition_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_stateDefinition_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_stateDefinition_2D_element (const GALGAS_uint & in_mStateIndex,
@@ -1835,6 +1847,10 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_statesDefinitionList_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_uint constinArgument0,
                                                        class GALGAS_location constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -1943,7 +1959,7 @@ class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_statesDefinitionList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_statesDefinitionList_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_statesDefinitionList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_statesDefinitionList_2D_element (const GALGAS_uint & in_mStateIndex,
@@ -2208,7 +2224,7 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_M_5F_modesMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_M_5F_modesMap_2D_element (void) ;
+  public : virtual ~ GALGAS_M_5F_modesMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_M_5F_modesMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2312,6 +2328,10 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_ListForModes_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_uint constinArgument0,
                                                        class GALGAS_uint constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -2420,7 +2440,7 @@ class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
   public : GALGAS_ListForModes_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_ListForModes_2D_element (void) ;
+  public : virtual ~ GALGAS_ListForModes_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_ListForModes_2D_element (const GALGAS_uint & in_mSourceMode,
@@ -3783,6 +3803,10 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_inputConfigurationForScenario_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_luint constinArgument0,
                                                        class GALGAS_uint constinArgument1,
                                                        C_Compiler * inCompiler
@@ -3878,7 +3902,7 @@ class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_ro
   public : GALGAS_L_5F_inputConfigurationForScenario_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_inputConfigurationForScenario_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_inputConfigurationForScenario_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_inputConfigurationForScenario_2D_element (const GALGAS_luint & in_mInputValue) ;
@@ -3971,6 +3995,10 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_inputScenario_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_L_5F_inputConfigurationForScenario constinArgument0,
                                                        class GALGAS_uint constinArgument1,
                                                        C_Compiler * inCompiler
@@ -4066,7 +4094,7 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_inputScenario_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_inputScenario_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_inputScenario_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_inputScenario_2D_element (const GALGAS_L_5F_inputConfigurationForScenario & in_mInputConfiguration) ;
@@ -4162,6 +4190,10 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_scenarioList_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                        class GALGAS_L_5F_inputScenario constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -4270,7 +4302,7 @@ class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_scenarioList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_scenarioList_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_scenarioList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_scenarioList_2D_element (const GALGAS_lstring & in_mScenarioTitle,
@@ -4823,6 +4855,10 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_jobList_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_AC_5F_job constinArgument0,
                                                        class GALGAS_uint constinArgument1,
                                                        C_Compiler * inCompiler
@@ -4915,7 +4951,7 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
   public : GALGAS_L_5F_jobList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_L_5F_jobList_2D_element (void) ;
+  public : virtual ~ GALGAS_L_5F_jobList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_L_5F_jobList_2D_element (const GALGAS_AC_5F_job & in_mComponent) ;
@@ -5191,7 +5227,7 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_M_5F_machinesMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_M_5F_machinesMap_2D_element (void) ;
+  public : virtual ~ GALGAS_M_5F_machinesMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_M_5F_machinesMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -5278,7 +5314,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public : GALGAS_semanticContext (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_semanticContext (void) ;
+  public : virtual ~ GALGAS_semanticContext (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_semanticContext (const GALGAS_L_5F_jobList & in_componentsMap,
