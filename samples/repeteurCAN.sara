@@ -1,0 +1,57 @@
+$repeteur2 (Rx0, Rx1) () (Tx0, Tx1) := bool {
+  (Tx0 = Rx1 & ~Tx1) & (Tx1 = Rx0 & ~Tx0)
+} ;
+
+check $repeteur2 ;
+state display $repeteur2 ;
+trans display $repeteur2 ;
+
+$busGauche (TxG, Tx0) () (RxG, Rx0) := bool {
+  (RxG = TxG & Tx0) & (Rx0 = RxG)
+} ;
+checkbool $busGauche ;
+
+$busDroit (TxD, Tx1) () (RxD, Rx1) := bool {
+  (RxD = TxD & Tx1) & (Rx1 = RxD)
+} ;
+checkbool $busDroit ;
+
+$reseauCAN2 (TxG, TxD) () (RxG, RxD) := ? Tx0, Tx1, Rx0, Rx1 (
+    $busDroit (TxD, Tx1) () (RxD, Rx1)
+    ||
+    $busGauche (TxG, Tx0) () (RxG, Rx0)
+    ||
+    $repeteur2 (Rx0, Rx1) () (Tx0, Tx1)
+) ;
+checkbool $reseauCAN2 ;
+
+$repeteur3 (Rx0, Rx1, Rx2) () (Tx0, Tx1, Tx2) := ? X0, X1, X2 (
+  bool {
+    (X0 = ~(Rx0 | X1 | X2))
+      &
+    (X1 = ~(Rx1 | X0 | X2))
+      &
+    (X2 = ~(Rx2 | X0 | X1))
+      &
+    (Tx0 = ~ (X1 | X2))
+      &
+    (Tx1 = ~ (X0 | X2))
+      &
+    (Tx2 = ~ (X0 | X1))
+  }
+) ;
+
+check $repeteur3 ;
+
+
+$reseauCAN3 (TxG, TxD, TxH) () (RxG, RxD, RxH) := ? Tx0, Tx1, Tx2, Rx0, Rx1, Rx2 (
+    $busDroit (TxH, Tx2) () (RxH, Rx2)
+    ||
+    $busDroit (TxD, Tx1) () (RxD, Rx1)
+    ||
+    $busGauche (TxG, Tx0) () (RxG, Rx0)
+    ||
+    $repeteur3 (Rx0, Rx1, Rx2) () (Tx0, Tx1, Tx2)
+) ;
+checkbool $reseauCAN3 ;
+

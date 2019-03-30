@@ -4,7 +4,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-option sara_cli_options {
+option sara_cli_options { # Utilisé dans le code externe en C++
   @bool displayBDDvaluesCount : 'c', "display-bdd-values-count" -> "displays values count for every BDD"
   @bool displayBDDvalues : 'v', "display-bdd-values" -> "displays values for every BDD"
 }

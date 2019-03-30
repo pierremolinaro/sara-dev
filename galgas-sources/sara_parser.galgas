@@ -58,7 +58,7 @@ rule <component>
   @uint machineIndex
   [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineDisplayTransitions. new { !machineIndex}
+  @AC_job job = @C_machineDisplayTransitions.new { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 

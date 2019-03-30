@@ -232,10 +232,10 @@ compute (C_Compiler * inCompiler,
 //--- Build input variables array names
   const uint32_t inputVariablesCount = mProperty_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const uint32_t variablesCount = mProperty_mVariablesMap.count () ;
+  const uint32_t variableCount = mProperty_mVariablesMap.count () ;
   const uint32_t inputAndInternalVariablesCount = mProperty_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_Array <C_String> variableNamesArray ((int32_t) variablesCount, "" COMMA_HERE) ;
+  { TC_Array <C_String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_stringlist currentVar (mProperty_mNameList, kENUMERATION_UP) ;
@@ -248,23 +248,23 @@ compute (C_Compiler * inCompiler,
 //--- Compute automaton from definition expression
   mProperty_mDefinition.ptr ()->computeFromExpression (inCompiler,
                                          ioSaraSystemArray,
-                                         variablesCount,
+                                         variableCount,
                                          machine.mInitialStatesBDD,
                                          machine.mTerminalStatesBDD,
                                          machine.mTransitionRelationBDD) ;
 //--- Compute accessible states
   uint32_t * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    substitutionArray [i] = variablesCount + i ;
-    substitutionArray [variablesCount + i] = i ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    substitutionArray [i] = variableCount + i ;
+    substitutionArray [variableCount + i] = i ;
   }
   C_BDD newlyAccessibleStates ;
   do{
     machine.mAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, variablesCount + variablesCount COMMA_HERE) ;
-    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, variableCount + variableCount COMMA_HERE) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
   }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- 
@@ -272,13 +272,13 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_Array <C_String> transitionsVariableNameArray ((int32_t) (variablesCount + variablesCount), "" COMMA_HERE) ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
+  TC_Array <C_String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
     transitionsVariableNameArray ((int32_t) i COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
-    transitionsVariableNameArray ((int32_t)  (variablesCount + i) COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
+    transitionsVariableNameArray ((int32_t)  (variableCount + i) COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
   }
 //--- Print messages
-  const int32_t outputVariablesCount = (int32_t) (variablesCount - inputAndInternalVariablesCount) ;
+  const int32_t outputVariablesCount = (int32_t) (variableCount - inputAndInternalVariablesCount) ;
   const int32_t internalVariablesCount = (int32_t)  (inputAndInternalVariablesCount - inputVariablesCount) ;
   co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
@@ -287,61 +287,61 @@ compute (C_Compiler * inCompiler,
      << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount)
      << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
-  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
+  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variableCount) ;
   uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " initial state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mInitialStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mTerminalStatesBDD.valueCount64 (variablesCount) ;
+  n = machine.mTerminalStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " terminal state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTerminalStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mAccessibleStatesBDD.valueCount64 (variablesCount) ;
+  n = machine.mAccessibleStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " reachable state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mAccessibleStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mTransitionRelationBDD.valueCount64 (variablesCount + variablesCount) ;
+  n = machine.mTransitionRelationBDD.valueCount64 (variableCount + variableCount) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " transition" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTransitionRelationBDD, transitionsVariableNameArray, 3) ;
   }
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD ( i, false).equalTo (C_BDD ((variablesCount + i), false)) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    constraint &= C_BDD ( i, false).equalTo (C_BDD ((variableCount + i), false)) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
-  n = transitionsWithSourceEqualTarget.valueCount64 (variablesCount + variablesCount) ;
+  n = transitionsWithSourceEqualTarget.valueCount64 (variableCount + variableCount) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source (" << cStringWithUnsigned (nodes)
-     << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     printBDD (transitionsWithSourceEqualTarget, transitionsVariableNameArray, 3) ;
   }
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
-  n = t.valueCount64 (variablesCount + variablesCount) ;
+  n = t.valueCount64 (variableCount + variableCount) ;
   nodes = t.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " transition" << ((n > 1) ? "s" : "")
      << " to other states (" << cStringWithUnsigned (nodes)
-     << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     printBDD (t, transitionsVariableNameArray, 3) ;
   }
@@ -496,22 +496,36 @@ compute (C_Compiler * /* inCompiler */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_C_5F_machineDisplayTransitions::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
+void cPtr_C_5F_machineDisplayTransitions::compute (C_Compiler * /* inCompiler */,
+                                                   TC_Array <C_saraMachine> & ioSaraSystemArray,
+                                                   const bool /* inDisplayBDDvaluesCount */,
+                                                   const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
   const int32_t machineIndex = (int32_t) mProperty_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  co << "------------------ Transitions of '" << machine.mMachineName << "' machine\n" ;
-  const int32_t n = machine.mNamesArray.count () ;
-  cDisplayBDD machineDisplay ((uint32_t) (n + n)) ;
-  for (int32_t i=0 ; i<n ; i++) {
-    machineDisplay.defineVariableName ((uint32_t)i, machine.mNamesArray (i COMMA_HERE), 1) ;
-    machineDisplay.defineVariableName ((uint32_t) (i + n), machine.mNamesArray (i COMMA_HERE), 1) ;
+  co << "------------------ Transitions (old) of '" << machine.mMachineName << "' machine\n" ;
+  const uint32_t variableCount = (uint32_t) machine.mNamesArray.count () ;
+  cDisplayBDD machineDisplayOld (variableCount + variableCount) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    machineDisplayOld.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplayOld.defineVariableName (i + variableCount, machine.mNamesArray (i COMMA_HERE), 1) ;
   }
-  printBDDWithVariables (machine.mTransitionRelationBDD, co, (uint32_t) (n + n), machineDisplay) ;
+  printBDDWithVariables (machine.mTransitionRelationBDD, co, variableCount + variableCount, machineDisplayOld) ;
+  co << "------------------ Transitions (new) of '" << machine.mMachineName << "' machine\n" ;
+  uint32_t * substitutionArray = NULL ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
+  for (uint32_t i=0 ; i < variableCount ; i++) {
+    substitutionArray [i] = i + i ;
+    substitutionArray [variableCount + i] = i + i + 1 ;
+  }
+  const C_BDD x = machine.mTransitionRelationBDD.substitution (substitutionArray, variableCount + variableCount COMMA_HERE) ;
+  macroMyDeletePODArray (substitutionArray) ;
+  cDisplayBDD machineDisplay (variableCount + variableCount) ;
+  for (uint32_t i=0 ; i < variableCount ; i++) {
+    machineDisplay.defineVariableName (i + i, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName (i + i + 1, machine.mNamesArray (i COMMA_HERE), 1) ;
+  }
+  printBDDWithVariables (x, co, variableCount + variableCount, machineDisplay) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -551,7 +565,7 @@ compute (C_Compiler * /* inCompiler */,
   macroMyDeletePODArray (substitutionVector) ;
   C_BDD sEqualSprimeConstraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
-    sEqualSprimeConstraint &= C_BDD ( (i + machine.mInputVariablesCount), false).equalTo (C_BDD ( (variableCount + i), false)) ;
+    sEqualSprimeConstraint &= C_BDD (i + machine.mInputVariablesCount, false).equalTo (C_BDD ( (variableCount + i), false)) ;
   }
   const C_BDD ambiguousInput = (machine.mInitialStatesBDD & sTranslatedInputConfiguration & ~ sEqualSprimeConstraint).existsOnBitsAfterNumber (variableCount) ;
   if (ambiguousInput.isFalse ()) {
@@ -1797,7 +1811,7 @@ addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
    const C_BDD transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
 //--- Filter theses transitions by eliminating target internal and output variables
    const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((uint32_t) (inVariablesCount + inInputVariablesCount)) ;
-//--- translate initial state BDD by variablesCount slots
+//--- translate initial state BDD by variableCount slots
    const C_BDD translatedInitialStates = inTargetInitialStates.translate ((uint32_t) inVariablesCount, (uint32_t) inVariablesCount) ;
 //--- Transitions to from terminal states to initial states
    const C_BDD transitions = inSourceTerminalStates & translatedInitialStates ;
@@ -1820,10 +1834,10 @@ compute (C_Compiler * inCompiler,
 //--- Build input variables array names
   const uint32_t inputVariablesCount =  mProperty_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const uint32_t variablesCount =  mProperty_mVariablesMap.count () ;
+  const uint32_t variableCount =  mProperty_mVariablesMap.count () ;
   const uint32_t inputAndInternalVariablesCount =  mProperty_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_Array <C_String> variableNamesArray ((int32_t) variablesCount, "" COMMA_HERE) ;
+  { TC_Array <C_String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap, kENUMERATION_UP) ;
@@ -1847,7 +1861,7 @@ compute (C_Compiler * inCompiler,
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
       currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
                                                               ioSaraSystemArray,
-                                                              variablesCount,
+                                                              variableCount,
                                                               initialStatesArray (index COMMA_HERE),
                                                               terminalStatesArray (index COMMA_HERE),
                                                               accessibilityRelationStatesArray (index COMMA_HERE)) ;
@@ -1857,15 +1871,15 @@ compute (C_Compiler * inCompiler,
   }
 //--- Compute accessible states
   for (int32_t mode=0 ; mode<modeCount ; mode++) {
-    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variablesCount) ;
+    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variableCount) ;
   }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint32_t * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    substitutionArray [i] =  (variablesCount + i) ;
-    substitutionArray [variablesCount + i] = i ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    substitutionArray [i] =  (variableCount + i) ;
+    substitutionArray [variableCount + i] = i ;
   }
   for (int32_t mode=0 ; mode<modeCount ; mode++) {
     for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
@@ -1878,8 +1892,8 @@ compute (C_Compiler * inCompiler,
       do{
         leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
-        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
@@ -1899,8 +1913,8 @@ compute (C_Compiler * inCompiler,
         // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
-        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
@@ -1957,26 +1971,26 @@ compute (C_Compiler * inCompiler,
     addFilteredTransitions (machine.mTransitionRelationBDD,
                             accessibilityRelationStatesArray (sourceMode COMMA_HERE),
                             terminalStatesArray (sourceMode COMMA_HERE),
-                            (int32_t) variablesCount,
+                            (int32_t) variableCount,
                             (int32_t) inputVariablesCount,
                             initialStatesArray (targetMode COMMA_HERE)) ;
   //--- Next inclusion
     currentInclusion.gotoNextObject () ;
   }
 //---------- Compute accessible states
-  if (variablesCount > 0) {
-    macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
+  if (variableCount > 0) {
+    macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
   }
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    substitutionArray [i] =  (variablesCount + i) ;
-    substitutionArray [variablesCount + i] = i ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    substitutionArray [i] =  (variableCount + i) ;
+    substitutionArray [variableCount + i] = i ;
   }
   C_BDD newlyAccessibleStates ;
   do{
     machine.mAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
-    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
   }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- 
@@ -1984,15 +1998,15 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_Array <C_String> transitionsVariableNameArray ((int32_t) (variablesCount + variablesCount), "" COMMA_HERE) ;
-  for (int32_t i=0 ; i<(int32_t) variablesCount ; i++) {
+  TC_Array <C_String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+  for (int32_t i=0 ; i<(int32_t) variableCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray ((int32_t) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const int32_t outputVariablesCount = (int32_t) (variablesCount - inputAndInternalVariablesCount) ;
+  const int32_t outputVariablesCount = (int32_t) (variableCount - inputAndInternalVariablesCount) ;
   const int32_t internalVariablesCount = (int32_t) (inputAndInternalVariablesCount - inputVariablesCount) ;
-  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
+  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variableCount) ;
   uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithSigned (inputVariablesCount)
      << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
@@ -2000,46 +2014,46 @@ compute (C_Compiler * inCompiler,
      << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount) << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n"
         "  " << cStringWithUnsigned (n) << " initial state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mInitialStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mTerminalStatesBDD.valueCount64 (variablesCount) ;
+  n = machine.mTerminalStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n)
      << " terminal state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTerminalStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mAccessibleStatesBDD.valueCount64 (variablesCount) ;
+  n = machine.mAccessibleStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " accessible state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ";\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ";\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mAccessibleStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mTransitionRelationBDD.valueCount64 ( (variablesCount + variablesCount)) ;
+  n = machine.mTransitionRelationBDD.valueCount64 ( (variableCount + variableCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD ( i, false).equalTo (C_BDD ( (variablesCount + i), false)) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    constraint &= C_BDD ( i, false).equalTo (C_BDD ( (variableCount + i), false)) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
-  n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
+  n = transitionsWithSourceEqualTarget.valueCount64 ( (variableCount + variableCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source ("
-     << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
-  n = t.valueCount64 ( (variablesCount + variablesCount)) ;
+  n = t.valueCount64 ( (variableCount + variableCount)) ;
   nodes = t.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
-     << " to other states (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " to other states (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     printBDD (t, transitionsVariableNameArray, 3) ;
   }
@@ -2062,10 +2076,10 @@ compute (C_Compiler * inCompiler,
 //--- Build input variables array names
   const uint32_t inputVariablesCount =  mProperty_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const uint32_t variablesCount =  mProperty_mVariablesMap.count () ;
+  const uint32_t variableCount =  mProperty_mVariablesMap.count () ;
   const uint32_t inputAndInternalVariablesCount =  mProperty_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_Array <C_String> variableNamesArray ((int32_t) variablesCount, "" COMMA_HERE) ;
+  { TC_Array <C_String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   cEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap, kENUMERATION_UP) ;
@@ -2090,7 +2104,7 @@ compute (C_Compiler * inCompiler,
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
       currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
                                                               ioSaraSystemArray,
-                                                              variablesCount,
+                                                              variableCount,
                                                               initialStatesArray (index COMMA_HERE),
                                                               terminalStatesArray (index COMMA_HERE),
                                                               accessibilityRelationStatesArray (index COMMA_HERE)) ;
@@ -2100,15 +2114,15 @@ compute (C_Compiler * inCompiler,
   }
 //--- Compute accessible states
   for (int32_t mode=0 ; mode<modeCount ; mode++) {
-    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variablesCount) ;
+    accessibleStatesArray (mode COMMA_HERE) = accessibleStates (initialStatesArray (mode COMMA_HERE), accessibilityRelationStatesArray (mode COMMA_HERE), variableCount) ;
   }
 //--- Check that modes are weakly disjoints
   // printf ("Check that modes are weakly disjoints\n") ; fflush (stdout) ;
   uint32_t * substitutionArray = NULL ;
-  macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    substitutionArray [i] =  (variablesCount + i) ;
-    substitutionArray [variablesCount + i] = i ;
+  macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    substitutionArray [i] =  (variableCount + i) ;
+    substitutionArray [variableCount + i] = i ;
   }
   for (int32_t mode=0 ; mode<modeCount ; mode++) {
     for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
@@ -2121,8 +2135,8 @@ compute (C_Compiler * inCompiler,
       do{
         leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
-        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
     //--- Check that only states in intersection are accessible
@@ -2142,8 +2156,8 @@ compute (C_Compiler * inCompiler,
         // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
-        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
@@ -2208,7 +2222,7 @@ compute (C_Compiler * inCompiler,
           addFilteredTransitions (machine.mTransitionRelationBDD,
                                   accessibilityRelationStatesArray (sourceMode COMMA_HERE),
                                   terminalStatesArray (sourceMode COMMA_HERE),
-                                  (int32_t) variablesCount,
+                                  (int32_t) variableCount,
                                   (int32_t) inputVariablesCount,
                                   initialStatesArray (targetMode COMMA_HERE)) ;
         }
@@ -2216,19 +2230,19 @@ compute (C_Compiler * inCompiler,
     }
   }
 //---------- Compute accessible states
-  if (variablesCount > 0) {
-    macroMyNewPODArray (substitutionArray, uint32_t, variablesCount + variablesCount) ;
+  if (variableCount > 0) {
+    macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
   }
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    substitutionArray [i] =  (variablesCount + i) ;
-    substitutionArray [variablesCount + i] = i ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    substitutionArray [i] =  (variableCount + i) ;
+    substitutionArray [variableCount + i] = i ;
   }
   C_BDD newlyAccessibleStates ;
   do{
     machine.mAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variablesCount + variablesCount) COMMA_HERE) ;
-    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variablesCount) ;
+    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+    newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
   }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 //--- 
@@ -2236,60 +2250,60 @@ compute (C_Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---   
-  TC_Array <C_String> transitionsVariableNameArray ((int32_t)  (variablesCount + variablesCount), "" COMMA_HERE) ;
-  for (int32_t i=0 ; i<(int32_t) variablesCount ; i++) {
+  TC_Array <C_String> transitionsVariableNameArray ((int32_t)  (variableCount + variableCount), "" COMMA_HERE) ;
+  for (int32_t i=0 ; i<(int32_t) variableCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
-    transitionsVariableNameArray ((int32_t) variablesCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
+    transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
   }
 //--- Print messages
-  const int32_t outputVariablesCount = (int32_t) (variablesCount - inputAndInternalVariablesCount) ;
+  const int32_t outputVariablesCount = (int32_t) (variableCount - inputAndInternalVariablesCount) ;
   const int32_t internalVariablesCount = (int32_t) (inputAndInternalVariablesCount - inputVariablesCount) ;
   co << "  "
      << cStringWithSigned (inputVariablesCount) << " input variable" << ((inputVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (internalVariablesCount) << " internal variable" << ((internalVariablesCount > 1) ? "s" : "")
      << ", " << cStringWithSigned (outputVariablesCount) << " output variable" << ((outputVariablesCount > 1) ? "s" : "") << ";\n" ;
-  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variablesCount) ;
+  uint64_t n = machine.mInitialStatesBDD.valueCount64 (variableCount) ;
   uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " initial state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mInitialStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mTerminalStatesBDD.valueCount64 (variablesCount) ;
+  n = machine.mTerminalStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " terminal state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTerminalStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mAccessibleStatesBDD.valueCount64 (variablesCount) ;
+  n = machine.mAccessibleStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " accessible state" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ");\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ");\n" ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mAccessibleStatesBDD, machine.mNamesArray, 3) ;
   }
-  n = machine.mTransitionRelationBDD.valueCount64 ( (variablesCount + variablesCount)) ;
+  n = machine.mTransitionRelationBDD.valueCount64 ( (variableCount + variableCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
-     << " (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
-  for (uint32_t i=0 ; i<variablesCount ; i++) {
-    constraint &= C_BDD (i, false).equalTo (C_BDD ( (variablesCount + i), false)) ;
+  for (uint32_t i=0 ; i<variableCount ; i++) {
+    constraint &= C_BDD (i, false).equalTo (C_BDD ( (variableCount + i), false)) ;
   }
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ; 
-  n = transitionsWithSourceEqualTarget.valueCount64 ( (variablesCount + variablesCount)) ;
+  n = transitionsWithSourceEqualTarget.valueCount64 ( (variableCount + variableCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
      << " with target equals source ("
-     << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
-  n = t.valueCount64 ( (variablesCount + variablesCount)) ;
+  n = t.valueCount64 ( (variableCount + variableCount)) ;
   nodes = t.getBDDnodesCount () ;
   co << "  " << cStringWithUnsigned (n) << " transition" << ((n > 1) ? "s" : "")
-     << " to other states (" << cStringWithUnsigned (nodes) << " node" << ((nodes > 1) ? "s" : "") << ").\n" ;
+     << " to other states (" << cStringWithUnsigned (nodes) << " BDD node" << ((nodes > 1) ? "s" : "") << ").\n" ;
   if (inDisplayBDDvalues) {
     printBDD (t, transitionsVariableNameArray, 3) ;
   }
