@@ -47,13 +47,13 @@ check $commodoIncremental ;
 
 $modeArret (eav1, eav2, arefix)()(r1, r2) := bool {~eav1 & ~eav2 & arefix & ~r1 & ~r2} ;
 
-$modeAttenteArefix (eav1, eav2, arefix)()(r1, r2) := ~eav1 & ~eav2 & ~arefix & r1 & ~r2 ;
+$modeAttenteArefix (eav1, eav2, arefix)()(r1, r2) := bool {~eav1 & ~eav2 & ~arefix & r1 & ~r2} ;
 
-$modePetiteVitesse (eav1, eav2, arefix)()(r1, r2) := ~eav1 & eav2 & r1 & ~r2 ;
+$modePetiteVitesse (eav1, eav2, arefix)()(r1, r2) := bool {~eav1 & eav2 & r1 & ~r2} ;
 
-$modeGrandeVitesse (eav1, eav2, arefix)()(r1, r2) := eav1 & eav2 & r1 & r2 ;
+$modeGrandeVitesse (eav1, eav2, arefix)()(r1, r2) := bool {eav1 & eav2 & r1 & r2} ;
 
-$modeDefautCommodo (eav1, eav2, arefix)()(r1, r2) := eav1 & ~eav2 & ~r1 & ~r2;
+$modeDefautCommodo (eav1, eav2, arefix)()(r1, r2) := bool {eav1 & ~eav2 & ~r1 & ~r2} ;
 
 $tousLesModes (eav1, eav2, arefix)()(r1, r2) := 
   $modeArret (eav1, eav2, arefix)()(r1, r2)
@@ -69,9 +69,9 @@ $tousLesModesAvecSaturation (eav1, eav2, arefix)()(r1, r2) :=
 check $tousLesModesAvecSaturation ;
 
 $tousLesModesAvecSaturationEtCommodoIncrementalSansVarInterne (ah, ab, arefix)()(r1, r2) :=
-? e1, e2 ($tousLesModesAvecSaturation (e1, e2, arefix)()(r1, r2) & $commodoIncremental (ah, ab)()(e1, e2)) ;
+? e1, e2 ($tousLesModesAvecSaturation (e1, e2, arefix)()(r1, r2) || $commodoIncremental (ah, ab)()(e1, e2)) ;
 check $tousLesModesAvecSaturationEtCommodoIncrementalSansVarInterne ;
 
 $tousLesModesAvecSaturationEtCommodoIncremental (ah, ab, arefix)(e1, e2)(r1, r2) :=
-  $tousLesModesAvecSaturation (e2, e1, arefix)()(r1, r2) & $commodoIncremental (ah, ab)()(e1, e2) ;
+  $tousLesModesAvecSaturation (e2, e1, arefix)()(r1, r2) || $commodoIncremental (ah, ab)()(e1, e2) ;
 check $tousLesModesAvecSaturationEtCommodoIncremental ;

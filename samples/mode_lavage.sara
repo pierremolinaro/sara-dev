@@ -10,7 +10,7 @@ $mode_lavage(eav1, eav2, arefix, lav)()(r1, r2) :=
 }
  }
 ;
-$modeAttenteArefix (eav1, eav2, arefix, lav)()(r1, r2) := nolast (~eav1 & ~eav2 & ~arefix & ~lav & r1 & ~r2) ;
+$modeAttenteArefix (eav1, eav2, arefix, lav)()(r1, r2) := nolast (bool {(~eav1 & ~eav2 & ~arefix & ~lav & r1 & ~r2)}) ;
 
 $tousLesModes (eav1, eav2, arefix, lav)()(r1, r2) := 
  $mode_lavage(eav1, eav2, arefix, lav)()(r1, r2) **

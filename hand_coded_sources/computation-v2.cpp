@@ -507,8 +507,8 @@ void cPtr_C_5F_machineDisplayTransitions::compute (C_Compiler * /* inCompiler */
   const uint32_t variableCount = (uint32_t) machine.mNamesArray.count () ;
   cDisplayBDD machineDisplayOld (variableCount + variableCount) ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
-    machineDisplayOld.defineVariableName (i, machine.mNamesArray (i COMMA_HERE), 1) ;
-    machineDisplayOld.defineVariableName (i + variableCount, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplayOld.defineVariableName (i, machine.mNamesArray ((int32_t) i COMMA_HERE), 1) ;
+    machineDisplayOld.defineVariableName (i + variableCount, machine.mNamesArray ((int32_t) i COMMA_HERE), 1) ;
   }
   printBDDWithVariables (machine.mTransitionRelationBDD, co, variableCount + variableCount, machineDisplayOld) ;
   co << "------------------ Transitions (new) of '" << machine.mMachineName << "' machine\n" ;
@@ -522,8 +522,8 @@ void cPtr_C_5F_machineDisplayTransitions::compute (C_Compiler * /* inCompiler */
   macroMyDeletePODArray (substitutionArray) ;
   cDisplayBDD machineDisplay (variableCount + variableCount) ;
   for (uint32_t i=0 ; i < variableCount ; i++) {
-    machineDisplay.defineVariableName (i + i, machine.mNamesArray (i COMMA_HERE), 1) ;
-    machineDisplay.defineVariableName (i + i + 1, machine.mNamesArray (i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName (i + i, machine.mNamesArray ((int32_t) i COMMA_HERE), 1) ;
+    machineDisplay.defineVariableName (i + i + 1, machine.mNamesArray ((int32_t) i COMMA_HERE), 1) ;
   }
   printBDDWithVariables (x, co, variableCount + variableCount, machineDisplay) ;
 }
@@ -662,7 +662,7 @@ compute (C_Compiler * /* inCompiler */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  co << "------------------ bdd: print BDD package statitistics.\n" ;
+  co << "------------------ bdd: print BDD package statistics.\n" ;
   C_BDD::printBDDpackageOperationsSummary (co) ;
 }
 

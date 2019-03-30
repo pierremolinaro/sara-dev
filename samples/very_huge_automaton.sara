@@ -95,7 +95,7 @@ $exemple1 (eee1, eee2, eee3, eee4, eee5, eee6, eee7, eee8, eee9, eee10,
       ~ee1 & ee2 & ~ee3 & ~ee4 & ~ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
     }
     statee5 : ~ee1 & ~ee2 & ee3 & ~ee4 & ~ee5 & ~ee8 & ~ee9 & ~ee10 & ss1 & ss2 & ss3 {
-      ~ee1 & ~ee2 & ~ee3 & ~ee4 & ~ee5 & ee10 & ~ee10 goto statee1 ;
+      ~ee1 & ~ee2 & ~ee3 & ~ee4 & ~ee5 & ee10 goto statee1 ;
       ~ee1 & ~ee2 & ee3 & ~ee4 & ee5 & ~ee7 & ~ee9 goto statee6 ;
       ~ee1 & ee2 & ~ee3 & ~ee4 & ~ee5 & ee7 & ee8 & ee9 & ee10 goto statee8 ;
       ~ee1 & ~ee2 & ~ee3 & ee4 & ee5 & ee7 goto statee4 ;
@@ -161,7 +161,7 @@ $exemple1 (eee1, eee2, eee3, eee4, eee5, eee6, eee7, eee8, eee9, eee10,
       ~eee1 & eee2 & ~eee3 & ~eee4 & ~eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
     }
     state5 : ~eee1 & ~eee2 & eee3 & ~eee4 & ~eee5 & ~eee8 & ~eee9 & ~eee10 & sss1 & sss2 & sss3 {
-      ~eee1 & ~eee2 & ~eee3 & ~eee4 & ~eee5 & eee10 & ~eee10 goto state1 ;
+      ~eee1 & ~eee2 & ~eee3 & ~eee4 & ~eee5 & eee10 goto state1 ;
       ~eee1 & ~eee2 & eee3 & ~eee4 & eee5 & ~eee7 & ~eee9 goto state6 ;
       ~eee1 & eee2 & ~eee3 & ~eee4 & ~eee5 & eee7 & eee8 & eee9 & eee10 goto state8 ;
       ~eee1 & ~eee2 & ~eee3 & eee4 & eee5 & eee7 goto state4 ;
