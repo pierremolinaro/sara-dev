@@ -174,68 +174,68 @@ rule <component>
 
 #---------------------------------------------------------------------------*
 
-rule <component>
-  ?!@semanticContext ioSemanticContext {
-  $use_and$
-  $;$
-  @AC_job job = @typeUse_AND. new
-  ioSemanticContext.componentsMap += !job
-}
+#rule <component>
+#  ?!@semanticContext ioSemanticContext {
+#  $use_and$
+#  $;$
+#  @AC_job job = @typeUse_AND. new
+#  ioSemanticContext.componentsMap += !job
+#}
 
 #---------------------------------------------------------------------------*
 
-rule <component>
-  ?!@semanticContext ioSemanticContext {
-  $use_ite$
-  $;$
-  @AC_job job = @typeUse_ITE. new
-  ioSemanticContext.componentsMap += !job
-}
+#rule <component>
+#  ?!@semanticContext ioSemanticContext {
+#  $use_ite$
+#  $;$
+#  @AC_job job = @typeUse_ITE. new
+#  ioSemanticContext.componentsMap += !job
+#}
 
 #---------------------------------------------------------------------------*
 
-rule <component>
-  ?!@semanticContext ioSemanticContext {
-  $use_and_ite$
-  $;$
-  @AC_job job = @typeUse_AND_ITE. new
-  ioSemanticContext.componentsMap += !job
-}
+#rule <component>
+#  ?!@semanticContext ioSemanticContext {
+#  $use_and_ite$
+#  $;$
+#  @AC_job job = @typeUse_AND_ITE. new
+#  ioSemanticContext.componentsMap += !job
+#}
 
 #---------------------------------------------------------------------------*
 
-rule <component>
-  ?!@semanticContext ioSemanticContext {
-  $and_cache$
-  @luint size
-  $literal_integer$ ? size
-  $;$
-  @AC_job job = @typeResize_AND_cache. new { !size}
-  ioSemanticContext.componentsMap += !job
-}
+#rule <component>
+#  ?!@semanticContext ioSemanticContext {
+#  $and_cache$
+#  @luint size
+#  $literal_integer$ ? size
+#  $;$
+#  @AC_job job = @typeResize_AND_cache. new { !size}
+#  ioSemanticContext.componentsMap += !job
+#}
 
 #---------------------------------------------------------------------------*
-rule <component>
-  ?!@semanticContext ioSemanticContext {
-  $ite_cache$
-  @luint size
-  $literal_integer$ ? size
-  $;$
-  @AC_job job = @typeResize_ITE_cache. new { !size}
-  ioSemanticContext.componentsMap += !job
-}
+#rule <component>
+#  ?!@semanticContext ioSemanticContext {
+#  $ite_cache$
+#  @luint size
+#  $literal_integer$ ? size
+#  $;$
+#  @AC_job job = @typeResize_ITE_cache. new { !size}
+#  ioSemanticContext.componentsMap += !job
+#}
 
 #---------------------------------------------------------------------------*
 
-rule <component>
-  ?!@semanticContext ioSemanticContext {
-  $map$
-  @luint size
-  $literal_integer$ ? size
-  $;$
-  @AC_job job = @typeResizeMap. new { !size}
-  ioSemanticContext.componentsMap += !job
-}
+#rule <component>
+#  ?!@semanticContext ioSemanticContext {
+#  $map$
+#  @luint size
+#  $literal_integer$ ? size
+#  $;$
+#  @AC_job job = @typeResizeMap. new { !size}
+#  ioSemanticContext.componentsMap += !job
+#}
 
 #---------------------------------------------------------------------------*
 

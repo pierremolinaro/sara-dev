@@ -668,93 +668,93 @@ compute (C_Compiler * /* inCompiler */,
 
 //-----------------------------------------------------------------------------*
 
-void cPtr_typeResizeMap::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
-  /* C_Timer duree ;
-    C_BDD::setHashMapSize ( mNewSize.uintValue ()) ;
-    duree.stopTimer () ;
-    co << "------------------ map "
-       << cStringWithUnsigned (mNewSize.uintValue ())
-       << ": BDD unique table resized to "
-       << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
-       << " (done in "
-       << duree
-       << ").\n\n" ; */ 
-}
+//void cPtr_typeResizeMap::
+//compute (C_Compiler * /* inCompiler */,
+//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         const bool /* inDisplayBDDvaluesCount */,
+//         const bool /* inDisplayBDDvalues */) const {
+//  /* C_Timer duree ;
+//    C_BDD::setHashMapSize ( mNewSize.uintValue ()) ;
+//    duree.stopTimer () ;
+//    co << "------------------ map "
+//       << cStringWithUnsigned (mNewSize.uintValue ())
+//       << ": BDD unique table resized to "
+//       << cStringWithSigned (C_BDD::getHashMapEntriesCount ())
+//       << " (done in "
+//       << duree
+//       << ").\n\n" ; */
+//}
 
 //-----------------------------------------------------------------------------*
 
-void cPtr_typeResize_5F_AND_5F_cache::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
-  /* C_Timer duree ;
-    C_BDD::setANDcacheSize ((int32_t) mNewSize.uintValue ()) ;
-    duree.stopTimer () ;
-    co << "------------------ and_cache "
-       << cStringWithUnsigned (mNewSize.uintValue ())
-       << ": AND cache resized to "
-       << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
-       << " (done in "
-       << duree
-       << ").\n\n" ; */  
-}
+//void cPtr_typeResize_5F_AND_5F_cache::
+//compute (C_Compiler * /* inCompiler */,
+//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         const bool /* inDisplayBDDvaluesCount */,
+//         const bool /* inDisplayBDDvalues */) const {
+//  /* C_Timer duree ;
+//    C_BDD::setANDcacheSize ((int32_t) mNewSize.uintValue ()) ;
+//    duree.stopTimer () ;
+//    co << "------------------ and_cache "
+//       << cStringWithUnsigned (mNewSize.uintValue ())
+//       << ": AND cache resized to "
+//       << cStringWithSigned (C_BDD::getANDcacheEntriesCount ())
+//       << " (done in "
+//       << duree
+//       << ").\n\n" ; */
+//}
 
 //-----------------------------------------------------------------------------*
 
-void cPtr_typeResize_5F_ITE_5F_cache::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
-  /* C_Timer duree ;
-    C_BDD::setITEcacheSize ((int32_t) mNewSize.uintValue ()) ;
-    duree.stopTimer () ;
-    co << "------------------ ite_cache "
-       << cStringWithUnsigned (mNewSize.uintValue ())
-       << ": ITE cache resized to "
-       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
-       << " (done in "
-       << duree
-       << ").\n\n" ;  */ 
-}
+//void cPtr_typeResize_5F_ITE_5F_cache::
+//compute (C_Compiler * /* inCompiler */,
+//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         const bool /* inDisplayBDDvaluesCount */,
+//         const bool /* inDisplayBDDvalues */) const {
+//  /* C_Timer duree ;
+//    C_BDD::setITEcacheSize ((int32_t) mNewSize.uintValue ()) ;
+//    duree.stopTimer () ;
+//    co << "------------------ ite_cache "
+//       << cStringWithUnsigned (mNewSize.uintValue ())
+//       << ": ITE cache resized to "
+//       << cStringWithSigned (C_BDD::getITEcacheEntriesCount ())
+//       << " (done in "
+//       << duree
+//       << ").\n\n" ;  */
+//}
 
 //-----------------------------------------------------------------------------*
 
-void cPtr_typeUse_5F_AND::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
-  /* C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
-      co << "------------------ use_and: ITE is now computed from AND.\n\n" ; */
-}
+//void cPtr_typeUse_5F_AND::
+//compute (C_Compiler * /* inCompiler */,
+//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         const bool /* inDisplayBDDvaluesCount */,
+//         const bool /* inDisplayBDDvalues */) const {
+//  /* C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
+//      co << "------------------ use_and: ITE is now computed from AND.\n\n" ; */
+//}
 
 //-----------------------------------------------------------------------------*
 
-void cPtr_typeUse_5F_ITE::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
-  /* C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
-    co << "------------------ use_ite: AND is now computed from ITE.\n\n" ; */
-}
+//void cPtr_typeUse_5F_ITE::
+//compute (C_Compiler * /* inCompiler */,
+//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         const bool /* inDisplayBDDvaluesCount */,
+//         const bool /* inDisplayBDDvalues */) const {
+//  /* C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
+//    co << "------------------ use_ite: AND is now computed from ITE.\n\n" ; */
+//}
 
 //-----------------------------------------------------------------------------*
 
-void cPtr_typeUse_5F_AND_5F_ITE::
-compute (C_Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
-         const bool /* inDisplayBDDvaluesCount */,
-         const bool /* inDisplayBDDvalues */) const {
-  /* C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
-    co << "------------------ use_and_ite: AND and ITE are now computed independantly.\n\n" ; */
-}
+//void cPtr_typeUse_5F_AND_5F_ITE::
+//compute (C_Compiler * /* inCompiler */,
+//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         const bool /* inDisplayBDDvaluesCount */,
+//         const bool /* inDisplayBDDvalues */) const {
+//  /* C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
+//    co << "------------------ use_and_ite: AND and ITE are now computed independantly.\n\n" ; */
+//}
 
 //-----------------------------------------------------------------------------*
 
@@ -2313,5 +2313,4 @@ compute (C_Compiler * inCompiler,
   C_BDD::markAndSweepUnusedNodes () ;
 }
 
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*

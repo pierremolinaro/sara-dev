@@ -83,7 +83,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static const C_cocoa_lexique_table_entry ktable_for_sara_5F_scanner_keyWordList [28] = {
+static const C_cocoa_lexique_table_entry ktable_for_sara_5F_scanner_keyWordList [23] = {
   {"to", sara_scanner_1_to},
   {"bdd", sara_scanner_1_bdd},
   {"map", sara_scanner_1_map},
@@ -102,20 +102,15 @@ static const C_cocoa_lexique_table_entry ktable_for_sara_5F_scanner_keyWordList 
   {"exclude", sara_scanner_1_exclude},
   {"include", sara_scanner_1_include},
   {"nofirst", sara_scanner_1_nofirst},
-  {"use_and", sara_scanner_1_use_5F_and},
-  {"use_ite", sara_scanner_1_use_5F_ite},
   {"scenario", sara_scanner_1_scenario},
-  {"and_cache", sara_scanner_1_and_5F_cache},
   {"checkbool", sara_scanner_1_checkbool},
-  {"ite_cache", sara_scanner_1_ite_5F_cache},
-  {"use_and_ite", sara_scanner_1_use_5F_and_5F_ite},
   {"modalcompadd", sara_scanner_1_modalcompadd},
   {"modalcompsub", sara_scanner_1_modalcompsub},
   {"checkidentical", sara_scanner_1_checkidentical}
 } ;
 
 static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_sara_5F_scanner_keyWordList, 28) ;
+  return searchStringInTable (inSearchedString, ktable_for_sara_5F_scanner_keyWordList, 23) ;
 }
 
 
@@ -275,7 +270,7 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 54 ;
+  return 49 ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -305,7 +300,7 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [55] = {0,
+  static const NSUInteger kTerminalSymbolStyles [50] = {0,
     1 /* sara_scanner_1_identifier */,
     6 /* sara_scanner_1_literal_5F_string */,
     3 /* sara_scanner_1_machineIdf */,
@@ -328,14 +323,9 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
     2 /* sara_scanner_1_scenario */,
     2 /* sara_scanner_1_trans */,
     2 /* sara_scanner_1_display */,
-    2 /* sara_scanner_1_ite_5F_cache */,
-    2 /* sara_scanner_1_and_5F_cache */,
-    2 /* sara_scanner_1_map */,
     2 /* sara_scanner_1_bdd */,
     2 /* sara_scanner_1_bool */,
-    2 /* sara_scanner_1_use_5F_and */,
-    2 /* sara_scanner_1_use_5F_ite */,
-    2 /* sara_scanner_1_use_5F_and_5F_ite */,
+    2 /* sara_scanner_1_map */,
     2 /* sara_scanner_1_check */,
     2 /* sara_scanner_1_checkbool */,
     2 /* sara_scanner_1_checkidentical */,
@@ -371,7 +361,7 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [55] = {NO,
+  static const BOOL kTerminalAtomicSelection [50] = {NO,
     YES /* sara_scanner_1_identifier */,
     NO /* sara_scanner_1_literal_5F_string */,
     YES /* sara_scanner_1_machineIdf */,
@@ -394,14 +384,9 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
     YES /* sara_scanner_1_scenario */,
     YES /* sara_scanner_1_trans */,
     YES /* sara_scanner_1_display */,
-    YES /* sara_scanner_1_ite_5F_cache */,
-    YES /* sara_scanner_1_and_5F_cache */,
-    YES /* sara_scanner_1_map */,
     YES /* sara_scanner_1_bdd */,
     YES /* sara_scanner_1_bool */,
-    YES /* sara_scanner_1_use_5F_and */,
-    YES /* sara_scanner_1_use_5F_ite */,
-    YES /* sara_scanner_1_use_5F_and_5F_ite */,
+    YES /* sara_scanner_1_map */,
     YES /* sara_scanner_1_check */,
     YES /* sara_scanner_1_checkbool */,
     YES /* sara_scanner_1_checkidentical */,

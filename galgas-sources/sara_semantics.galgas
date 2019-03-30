@@ -277,26 +277,26 @@ class @C_scenarioComponent : @AC_job {
   @L_scenarioList mScenarioList
 }
 
-class @typeUse_AND : @AC_job {
-}
-
-class @typeUse_ITE : @AC_job {
-}
-
-class @typeUse_AND_ITE : @AC_job {
-}
-
-class @typeResize_AND_cache : @AC_job {
-  @luint mNewSize
-}
-
-class @typeResize_ITE_cache : @AC_job {
-  @luint mNewSize
-}
-
-class @typeResizeMap : @AC_job {
-  @luint mNewSize
-}
+#class @typeUse_AND : @AC_job {
+#}
+#
+#class @typeUse_ITE : @AC_job {
+#}
+#
+#class @typeUse_AND_ITE : @AC_job {
+#}
+#
+#class @typeResize_AND_cache : @AC_job {
+#  @luint mNewSize
+#}
+#
+#class @typeResize_ITE_cache : @AC_job {
+#  @luint mNewSize
+#}
+#
+#class @typeResizeMap : @AC_job {
+#  @luint mNewSize
+#}
 
 class @typeDisplayBDDstats : @AC_job {
 }

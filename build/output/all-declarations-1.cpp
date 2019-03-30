@@ -2164,38 +2164,11 @@ static const int16_t gProductions_sara_grammar [] = {
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 39 : <component>, in file 'sara_parser.ggs', line 177
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_use_5F_and) // $use_and$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
-, END_PRODUCTION
-// At index 42 : <component>, in file 'sara_parser.ggs', line 187
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_use_5F_ite) // $use_ite$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
-, END_PRODUCTION
-// At index 45 : <component>, in file 'sara_parser.ggs', line 197
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_use_5F_and_5F_ite) // $use_and_ite$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
-, END_PRODUCTION
-// At index 48 : <component>, in file 'sara_parser.ggs', line 207
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_and_5F_cache) // $and_cache$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
-, END_PRODUCTION
-// At index 52 : <component>, in file 'sara_parser.ggs', line 218
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_ite_5F_cache) // $ite_cache$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
-, END_PRODUCTION
-// At index 56 : <component>, in file 'sara_parser.ggs', line 230
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_map) // $map$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
-, TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
-, END_PRODUCTION
-// At index 60 : <component>, in file 'sara_parser.ggs', line 242
+// At index 39 : <component>, in file 'sara_parser.ggs', line 242
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_bdd) // $bdd$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 63 : <component>, in file 'sara_parser.ggs', line 252
+// At index 42 : <component>, in file 'sara_parser.ggs', line 252
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -2212,7 +2185,7 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 79 : <component>, in file 'sara_parser.ggs', line 321
+// At index 58 : <component>, in file 'sara_parser.ggs', line 321
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_modalcompadd) // $modalcompadd$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -2230,7 +2203,7 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (7) // <modalcompadd_definition>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 96 : <component>, in file 'sara_parser.ggs', line 396
+// At index 75 : <component>, in file 'sara_parser.ggs', line 396
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_modalcompsub) // $modalcompsub$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -2248,7 +2221,7 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (8) // <modalcompsub_definition>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 113 : <component>, in file 'sara_parser.ggs', line 469
+// At index 92 : <component>, in file 'sara_parser.ggs', line 469
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_scenario) // $scenario$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -2272,33 +2245,33 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (28) // <select_sara_5F_parser_17>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , END_PRODUCTION
-// At index 136 : <io_bool_expression>, in file 'sara_parser.ggs', line 573
+// At index 115 : <io_bool_expression>, in file 'sara_parser.ggs', line 573
 , NONTERMINAL (3) // <io_and_expression>
 , NONTERMINAL (31) // <select_sara_5F_parser_20>
 , END_PRODUCTION
-// At index 139 : <io_and_expression>, in file 'sara_parser.ggs', line 604
+// At index 118 : <io_and_expression>, in file 'sara_parser.ggs', line 604
 , NONTERMINAL (4) // <io_primary>
 , NONTERMINAL (32) // <select_sara_5F_parser_21>
 , END_PRODUCTION
-// At index 142 : <io_primary>, in file 'sara_parser.ggs', line 620
+// At index 121 : <io_primary>, in file 'sara_parser.ggs', line 620
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , NONTERMINAL (2) // <io_bool_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 146 : <io_primary>, in file 'sara_parser.ggs', line 631
+// At index 125 : <io_primary>, in file 'sara_parser.ggs', line 631
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 148 : <io_primary>, in file 'sara_parser.ggs', line 644
+// At index 127 : <io_primary>, in file 'sara_parser.ggs', line 644
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7E_) // $~$
 , NONTERMINAL (4) // <io_primary>
 , END_PRODUCTION
-// At index 151 : <io_primary>, in file 'sara_parser.ggs', line 656
+// At index 130 : <io_primary>, in file 'sara_parser.ggs', line 656
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_false) // $false$
 , END_PRODUCTION
-// At index 153 : <io_primary>, in file 'sara_parser.ggs', line 666
+// At index 132 : <io_primary>, in file 'sara_parser.ggs', line 666
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_true) // $true$
 , END_PRODUCTION
-// At index 155 : <io_primary>, in file 'sara_parser.ggs', line 676
+// At index 134 : <io_primary>, in file 'sara_parser.ggs', line 676
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -2312,15 +2285,15 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (36) // <select_sara_5F_parser_25>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 168 : <definition_expression>, in file 'sara_parser.ggs', line 753
+// At index 147 : <definition_expression>, in file 'sara_parser.ggs', line 753
 , NONTERMINAL (6) // <definition_expression_term>
 , NONTERMINAL (37) // <select_sara_5F_parser_26>
 , END_PRODUCTION
-// At index 171 : <definition_expression_term>, in file 'sara_parser.ggs', line 770
+// At index 150 : <definition_expression_term>, in file 'sara_parser.ggs', line 770
 , NONTERMINAL (9) // <definition_expression_factor>
 , NONTERMINAL (38) // <select_sara_5F_parser_27>
 , END_PRODUCTION
-// At index 174 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 801
+// At index 153 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 801
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (5) // <definition_expression>
@@ -2328,7 +2301,7 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (39) // <select_sara_5F_parser_28>
 , NONTERMINAL (40) // <select_sara_5F_parser_29>
 , END_PRODUCTION
-// At index 181 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 841
+// At index 160 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 841
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (5) // <definition_expression>
@@ -2336,10 +2309,10 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (41) // <select_sara_5F_parser_30>
 , NONTERMINAL (42) // <select_sara_5F_parser_31>
 , END_PRODUCTION
-// At index 188 : <definition_expression_factor>, in file 'sara_parser.ggs', line 881
+// At index 167 : <definition_expression_factor>, in file 'sara_parser.ggs', line 881
 , NONTERMINAL (43) // <select_sara_5F_parser_32>
 , END_PRODUCTION
-// At index 190 : <definition_expression_factor>, in file 'sara_parser.ggs', line 995
+// At index 169 : <definition_expression_factor>, in file 'sara_parser.ggs', line 995
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -2353,7 +2326,7 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (49) // <select_sara_5F_parser_38>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 203 : <explicit_automaton>, in file 'sara_parser.ggs', line 1069
+// At index 182 : <explicit_automaton>, in file 'sara_parser.ggs', line 1069
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_auto) // $auto$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_state) // $state$
@@ -2375,123 +2348,123 @@ static const int16_t gProductions_sara_grammar [] = {
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 223 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
+// At index 202 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
 , END_PRODUCTION
-// At index 224 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
+// At index 203 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
 , NONTERMINAL (1) // <component>
 , NONTERMINAL (11) // <select_sara_5F_parser_0>
 , END_PRODUCTION
-// At index 227 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
+// At index 206 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
 , END_PRODUCTION
-// At index 228 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
+// At index 207 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (12) // <select_sara_5F_parser_1>
 , END_PRODUCTION
-// At index 232 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
+// At index 211 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
 , END_PRODUCTION
-// At index 233 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
+// At index 212 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (14) // <select_sara_5F_parser_3>
 , END_PRODUCTION
-// At index 236 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
+// At index 215 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
 , END_PRODUCTION
-// At index 237 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
+// At index 216 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (14) // <select_sara_5F_parser_3>
 , END_PRODUCTION
-// At index 241 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
+// At index 220 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
 , END_PRODUCTION
-// At index 242 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
+// At index 221 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (15) // <select_sara_5F_parser_4>
 , END_PRODUCTION
-// At index 246 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
+// At index 225 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
 , END_PRODUCTION
-// At index 247 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
+// At index 226 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (16) // <select_sara_5F_parser_5>
 , END_PRODUCTION
-// At index 251 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
+// At index 230 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
 , END_PRODUCTION
-// At index 252 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
+// At index 231 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (18) // <select_sara_5F_parser_7>
 , END_PRODUCTION
-// At index 255 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
+// At index 234 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
 , END_PRODUCTION
-// At index 256 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
+// At index 235 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (18) // <select_sara_5F_parser_7>
 , END_PRODUCTION
-// At index 260 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
+// At index 239 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
 , END_PRODUCTION
-// At index 261 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
+// At index 240 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (19) // <select_sara_5F_parser_8>
 , END_PRODUCTION
-// At index 265 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
+// At index 244 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
 , END_PRODUCTION
-// At index 266 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
+// At index 245 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (20) // <select_sara_5F_parser_9>
 , END_PRODUCTION
-// At index 270 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
+// At index 249 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
 , END_PRODUCTION
-// At index 271 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
+// At index 250 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (22) // <select_sara_5F_parser_11>
 , END_PRODUCTION
-// At index 274 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
+// At index 253 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
 , END_PRODUCTION
-// At index 275 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
+// At index 254 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (22) // <select_sara_5F_parser_11>
 , END_PRODUCTION
-// At index 279 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
+// At index 258 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
 , END_PRODUCTION
-// At index 280 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
+// At index 259 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (23) // <select_sara_5F_parser_12>
 , END_PRODUCTION
-// At index 284 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
+// At index 263 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
 , END_PRODUCTION
-// At index 285 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
+// At index 264 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (24) // <select_sara_5F_parser_13>
 , END_PRODUCTION
-// At index 289 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
+// At index 268 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
 , END_PRODUCTION
-// At index 290 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
+// At index 269 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (26) // <select_sara_5F_parser_15>
 , END_PRODUCTION
-// At index 293 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
+// At index 272 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
 , END_PRODUCTION
-// At index 294 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
+// At index 273 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (26) // <select_sara_5F_parser_15>
 , END_PRODUCTION
-// At index 298 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
+// At index 277 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
 , END_PRODUCTION
-// At index 299 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
+// At index 278 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (27) // <select_sara_5F_parser_16>
 , END_PRODUCTION
-// At index 303 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
+// At index 282 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
 , END_PRODUCTION
-// At index 304 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
+// At index 283 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
@@ -2500,113 +2473,113 @@ static const int16_t gProductions_sara_grammar [] = {
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (28) // <select_sara_5F_parser_17>
 , END_PRODUCTION
-// At index 312 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
+// At index 291 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
 , END_PRODUCTION
-// At index 313 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
+// At index 292 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , NONTERMINAL (30) // <select_sara_5F_parser_19>
 , NONTERMINAL (29) // <select_sara_5F_parser_18>
 , END_PRODUCTION
-// At index 318 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
+// At index 297 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
 , END_PRODUCTION
-// At index 319 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
+// At index 298 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , NONTERMINAL (30) // <select_sara_5F_parser_19>
 , END_PRODUCTION
-// At index 323 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+// At index 302 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
 , END_PRODUCTION
-// At index 324 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+// At index 303 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7C_) // $|$
 , NONTERMINAL (3) // <io_and_expression>
 , NONTERMINAL (31) // <select_sara_5F_parser_20>
 , END_PRODUCTION
-// At index 328 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+// At index 307 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__5E_) // $^$
 , NONTERMINAL (3) // <io_and_expression>
 , NONTERMINAL (31) // <select_sara_5F_parser_20>
 , END_PRODUCTION
-// At index 332 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+// At index 311 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2D__3E_) // $->$
 , NONTERMINAL (3) // <io_and_expression>
 , NONTERMINAL (31) // <select_sara_5F_parser_20>
 , END_PRODUCTION
-// At index 336 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+// At index 315 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3D_) // $=$
 , NONTERMINAL (3) // <io_and_expression>
 , NONTERMINAL (31) // <select_sara_5F_parser_20>
 , END_PRODUCTION
-// At index 340 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
+// At index 319 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
 , END_PRODUCTION
-// At index 341 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
+// At index 320 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__26_) // $&$
 , NONTERMINAL (4) // <io_primary>
 , NONTERMINAL (32) // <select_sara_5F_parser_21>
 , END_PRODUCTION
-// At index 345 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
+// At index 324 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
 , END_PRODUCTION
-// At index 346 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
+// At index 325 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (33) // <select_sara_5F_parser_22>
 , END_PRODUCTION
-// At index 350 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
+// At index 329 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
 , END_PRODUCTION
-// At index 351 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
+// At index 330 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (35) // <select_sara_5F_parser_24>
 , END_PRODUCTION
-// At index 354 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
+// At index 333 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
 , END_PRODUCTION
-// At index 355 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
+// At index 334 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (35) // <select_sara_5F_parser_24>
 , END_PRODUCTION
-// At index 359 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
+// At index 338 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
 , END_PRODUCTION
-// At index 360 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
+// At index 339 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (36) // <select_sara_5F_parser_25>
 , END_PRODUCTION
-// At index 364 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
+// At index 343 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
 , END_PRODUCTION
-// At index 365 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
+// At index 344 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2B_) // $+$
 , NONTERMINAL (6) // <definition_expression_term>
 , NONTERMINAL (37) // <select_sara_5F_parser_26>
 , END_PRODUCTION
-// At index 369 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+// At index 348 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
 , END_PRODUCTION
-// At index 370 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+// At index 349 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2A_) // $*$
 , NONTERMINAL (9) // <definition_expression_factor>
 , NONTERMINAL (38) // <select_sara_5F_parser_27>
 , END_PRODUCTION
-// At index 374 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+// At index 353 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2A__2A_) // $**$
 , NONTERMINAL (9) // <definition_expression_factor>
 , NONTERMINAL (38) // <select_sara_5F_parser_27>
 , END_PRODUCTION
-// At index 378 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+// At index 357 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7C__7C_) // $||$
 , NONTERMINAL (9) // <definition_expression_factor>
 , NONTERMINAL (38) // <select_sara_5F_parser_27>
 , END_PRODUCTION
-// At index 382 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
+// At index 361 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
 , END_PRODUCTION
-// At index 383 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
+// At index 362 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (39) // <select_sara_5F_parser_28>
 , END_PRODUCTION
-// At index 389 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
+// At index 368 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
 , END_PRODUCTION
-// At index 390 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
+// At index 369 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_include) // $include$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_to) // $to$
@@ -2614,18 +2587,18 @@ static const int16_t gProductions_sara_grammar [] = {
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (40) // <select_sara_5F_parser_29>
 , END_PRODUCTION
-// At index 397 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
+// At index 376 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
 , END_PRODUCTION
-// At index 398 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
+// At index 377 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (41) // <select_sara_5F_parser_30>
 , END_PRODUCTION
-// At index 404 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
+// At index 383 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
 , END_PRODUCTION
-// At index 405 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
+// At index 384 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_exclude) // $exclude$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_to) // $to$
@@ -2633,15 +2606,15 @@ static const int16_t gProductions_sara_grammar [] = {
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (42) // <select_sara_5F_parser_31>
 , END_PRODUCTION
-// At index 412 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 391 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , NONTERMINAL (10) // <explicit_automaton>
 , END_PRODUCTION
-// At index 414 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 393 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 418 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 397 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3F_) // $?$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (44) // <select_sara_5F_parser_33>
@@ -2649,7 +2622,7 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 425 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 404 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__21_) // $!$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (45) // <select_sara_5F_parser_34>
@@ -2657,45 +2630,45 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 432 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 411 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_bool) // $bool$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , NONTERMINAL (2) // <io_bool_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , END_PRODUCTION
-// At index 437 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 416 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__40_) // $@$
 , NONTERMINAL (9) // <definition_expression_factor>
 , END_PRODUCTION
-// At index 440 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 419 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7E_) // $~$
 , NONTERMINAL (9) // <definition_expression_factor>
 , END_PRODUCTION
-// At index 443 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 422 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_nofirst) // $nofirst$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 448 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 427 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_nolast) // $nolast$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__28_) // $($
 , NONTERMINAL (5) // <definition_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 453 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 432 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_modalcompadd) // $modalcompadd$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , NONTERMINAL (7) // <modalcompadd_definition>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , END_PRODUCTION
-// At index 458 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 437 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_modalcompsub) // $modalcompsub$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , NONTERMINAL (8) // <modalcompsub_definition>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , END_PRODUCTION
-// At index 463 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+// At index 442 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_trans) // $trans$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , NONTERMINAL (2) // <io_bool_expression>
@@ -2703,79 +2676,79 @@ static const int16_t gProductions_sara_grammar [] = {
 , NONTERMINAL (2) // <io_bool_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , END_PRODUCTION
-// At index 470 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
+// At index 449 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
 , END_PRODUCTION
-// At index 471 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
+// At index 450 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (44) // <select_sara_5F_parser_33>
 , END_PRODUCTION
-// At index 475 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
+// At index 454 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
 , END_PRODUCTION
-// At index 476 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
+// At index 455 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (45) // <select_sara_5F_parser_34>
 , END_PRODUCTION
-// At index 480 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
+// At index 459 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
 , END_PRODUCTION
-// At index 481 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
+// At index 460 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (46) // <select_sara_5F_parser_35>
 , END_PRODUCTION
-// At index 485 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
+// At index 464 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
 , END_PRODUCTION
-// At index 486 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
+// At index 465 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (48) // <select_sara_5F_parser_37>
 , END_PRODUCTION
-// At index 489 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
+// At index 468 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
 , END_PRODUCTION
-// At index 490 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
+// At index 469 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (48) // <select_sara_5F_parser_37>
 , END_PRODUCTION
-// At index 494 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
+// At index 473 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
 , END_PRODUCTION
-// At index 495 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
+// At index 474 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (49) // <select_sara_5F_parser_38>
 , END_PRODUCTION
-// At index 499 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
+// At index 478 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
 , END_PRODUCTION
-// At index 500 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
+// At index 479 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (50) // <select_sara_5F_parser_39>
 , END_PRODUCTION
-// At index 504 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
+// At index 483 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
 , END_PRODUCTION
-// At index 505 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
+// At index 484 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (51) // <select_sara_5F_parser_40>
 , END_PRODUCTION
-// At index 509 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
+// At index 488 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
 , END_PRODUCTION
-// At index 510 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
+// At index 489 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_last) // $last$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (53) // <select_sara_5F_parser_42>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 515 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
+// At index 494 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
 , END_PRODUCTION
-// At index 516 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
+// At index 495 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (53) // <select_sara_5F_parser_42>
 , END_PRODUCTION
-// At index 520 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
+// At index 499 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
 , END_PRODUCTION
-// At index 521 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
+// At index 500 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (2) // <io_bool_expression>
@@ -2784,16 +2757,16 @@ static const int16_t gProductions_sara_grammar [] = {
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , NONTERMINAL (54) // <select_sara_5F_parser_43>
 , END_PRODUCTION
-// At index 529 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
+// At index 508 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
 , END_PRODUCTION
-// At index 530 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
+// At index 509 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
 , NONTERMINAL (2) // <io_bool_expression>
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_goto) // $goto$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (55) // <select_sara_5F_parser_44>
 , END_PRODUCTION
-// At index 536 : <>, in file '.ggs', line 0
+// At index 515 : <>, in file '.ggs', line 0
 , NONTERMINAL (0) // <start_symbol>
 , END_PRODUCTION
 } ;
@@ -2804,7 +2777,7 @@ static const int16_t gProductions_sara_grammar [] = {
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cProductionNameDescriptor gProductionNames_sara_grammar [140] = {
+static const cProductionNameDescriptor gProductionNames_sara_grammar [134] = {
  {"<start_symbol>", "sara_parser", 0}, // at index 0
  {"<component>", "sara_parser", 3}, // at index 1
  {"<component>", "sara_parser", 8}, // at index 2
@@ -2815,136 +2788,130 @@ static const cProductionNameDescriptor gProductionNames_sara_grammar [140] = {
  {"<component>", "sara_parser", 35}, // at index 7
  {"<component>", "sara_parser", 39}, // at index 8
  {"<component>", "sara_parser", 42}, // at index 9
- {"<component>", "sara_parser", 45}, // at index 10
- {"<component>", "sara_parser", 48}, // at index 11
- {"<component>", "sara_parser", 52}, // at index 12
- {"<component>", "sara_parser", 56}, // at index 13
- {"<component>", "sara_parser", 60}, // at index 14
- {"<component>", "sara_parser", 63}, // at index 15
- {"<component>", "sara_parser", 79}, // at index 16
- {"<component>", "sara_parser", 96}, // at index 17
- {"<component>", "sara_parser", 113}, // at index 18
- {"<io_bool_expression>", "sara_parser", 136}, // at index 19
- {"<io_and_expression>", "sara_parser", 139}, // at index 20
- {"<io_primary>", "sara_parser", 142}, // at index 21
- {"<io_primary>", "sara_parser", 146}, // at index 22
- {"<io_primary>", "sara_parser", 148}, // at index 23
- {"<io_primary>", "sara_parser", 151}, // at index 24
- {"<io_primary>", "sara_parser", 153}, // at index 25
- {"<io_primary>", "sara_parser", 155}, // at index 26
- {"<definition_expression>", "sara_parser", 168}, // at index 27
- {"<definition_expression_term>", "sara_parser", 171}, // at index 28
- {"<modalcompadd_definition>", "sara_parser", 174}, // at index 29
- {"<modalcompsub_definition>", "sara_parser", 181}, // at index 30
- {"<definition_expression_factor>", "sara_parser", 188}, // at index 31
- {"<definition_expression_factor>", "sara_parser", 190}, // at index 32
- {"<explicit_automaton>", "sara_parser", 203}, // at index 33
- {"<select_sara_5F_parser_0>", "sara_parser", 223}, // at index 34
- {"<select_sara_5F_parser_0>", "sara_parser", 224}, // at index 35
- {"<select_sara_5F_parser_1>", "sara_parser", 227}, // at index 36
- {"<select_sara_5F_parser_1>", "sara_parser", 228}, // at index 37
- {"<select_sara_5F_parser_2>", "sara_parser", 232}, // at index 38
- {"<select_sara_5F_parser_2>", "sara_parser", 233}, // at index 39
- {"<select_sara_5F_parser_3>", "sara_parser", 236}, // at index 40
- {"<select_sara_5F_parser_3>", "sara_parser", 237}, // at index 41
- {"<select_sara_5F_parser_4>", "sara_parser", 241}, // at index 42
- {"<select_sara_5F_parser_4>", "sara_parser", 242}, // at index 43
- {"<select_sara_5F_parser_5>", "sara_parser", 246}, // at index 44
- {"<select_sara_5F_parser_5>", "sara_parser", 247}, // at index 45
- {"<select_sara_5F_parser_6>", "sara_parser", 251}, // at index 46
- {"<select_sara_5F_parser_6>", "sara_parser", 252}, // at index 47
- {"<select_sara_5F_parser_7>", "sara_parser", 255}, // at index 48
- {"<select_sara_5F_parser_7>", "sara_parser", 256}, // at index 49
- {"<select_sara_5F_parser_8>", "sara_parser", 260}, // at index 50
- {"<select_sara_5F_parser_8>", "sara_parser", 261}, // at index 51
- {"<select_sara_5F_parser_9>", "sara_parser", 265}, // at index 52
- {"<select_sara_5F_parser_9>", "sara_parser", 266}, // at index 53
- {"<select_sara_5F_parser_10>", "sara_parser", 270}, // at index 54
- {"<select_sara_5F_parser_10>", "sara_parser", 271}, // at index 55
- {"<select_sara_5F_parser_11>", "sara_parser", 274}, // at index 56
- {"<select_sara_5F_parser_11>", "sara_parser", 275}, // at index 57
- {"<select_sara_5F_parser_12>", "sara_parser", 279}, // at index 58
- {"<select_sara_5F_parser_12>", "sara_parser", 280}, // at index 59
- {"<select_sara_5F_parser_13>", "sara_parser", 284}, // at index 60
- {"<select_sara_5F_parser_13>", "sara_parser", 285}, // at index 61
- {"<select_sara_5F_parser_14>", "sara_parser", 289}, // at index 62
- {"<select_sara_5F_parser_14>", "sara_parser", 290}, // at index 63
- {"<select_sara_5F_parser_15>", "sara_parser", 293}, // at index 64
- {"<select_sara_5F_parser_15>", "sara_parser", 294}, // at index 65
- {"<select_sara_5F_parser_16>", "sara_parser", 298}, // at index 66
- {"<select_sara_5F_parser_16>", "sara_parser", 299}, // at index 67
- {"<select_sara_5F_parser_17>", "sara_parser", 303}, // at index 68
- {"<select_sara_5F_parser_17>", "sara_parser", 304}, // at index 69
- {"<select_sara_5F_parser_18>", "sara_parser", 312}, // at index 70
- {"<select_sara_5F_parser_18>", "sara_parser", 313}, // at index 71
- {"<select_sara_5F_parser_19>", "sara_parser", 318}, // at index 72
- {"<select_sara_5F_parser_19>", "sara_parser", 319}, // at index 73
- {"<select_sara_5F_parser_20>", "sara_parser", 323}, // at index 74
- {"<select_sara_5F_parser_20>", "sara_parser", 324}, // at index 75
- {"<select_sara_5F_parser_20>", "sara_parser", 328}, // at index 76
- {"<select_sara_5F_parser_20>", "sara_parser", 332}, // at index 77
- {"<select_sara_5F_parser_20>", "sara_parser", 336}, // at index 78
- {"<select_sara_5F_parser_21>", "sara_parser", 340}, // at index 79
- {"<select_sara_5F_parser_21>", "sara_parser", 341}, // at index 80
- {"<select_sara_5F_parser_22>", "sara_parser", 345}, // at index 81
- {"<select_sara_5F_parser_22>", "sara_parser", 346}, // at index 82
- {"<select_sara_5F_parser_23>", "sara_parser", 350}, // at index 83
- {"<select_sara_5F_parser_23>", "sara_parser", 351}, // at index 84
- {"<select_sara_5F_parser_24>", "sara_parser", 354}, // at index 85
- {"<select_sara_5F_parser_24>", "sara_parser", 355}, // at index 86
- {"<select_sara_5F_parser_25>", "sara_parser", 359}, // at index 87
- {"<select_sara_5F_parser_25>", "sara_parser", 360}, // at index 88
- {"<select_sara_5F_parser_26>", "sara_parser", 364}, // at index 89
- {"<select_sara_5F_parser_26>", "sara_parser", 365}, // at index 90
- {"<select_sara_5F_parser_27>", "sara_parser", 369}, // at index 91
- {"<select_sara_5F_parser_27>", "sara_parser", 370}, // at index 92
- {"<select_sara_5F_parser_27>", "sara_parser", 374}, // at index 93
- {"<select_sara_5F_parser_27>", "sara_parser", 378}, // at index 94
- {"<select_sara_5F_parser_28>", "sara_parser", 382}, // at index 95
- {"<select_sara_5F_parser_28>", "sara_parser", 383}, // at index 96
- {"<select_sara_5F_parser_29>", "sara_parser", 389}, // at index 97
- {"<select_sara_5F_parser_29>", "sara_parser", 390}, // at index 98
- {"<select_sara_5F_parser_30>", "sara_parser", 397}, // at index 99
- {"<select_sara_5F_parser_30>", "sara_parser", 398}, // at index 100
- {"<select_sara_5F_parser_31>", "sara_parser", 404}, // at index 101
- {"<select_sara_5F_parser_31>", "sara_parser", 405}, // at index 102
- {"<select_sara_5F_parser_32>", "sara_parser", 412}, // at index 103
- {"<select_sara_5F_parser_32>", "sara_parser", 414}, // at index 104
- {"<select_sara_5F_parser_32>", "sara_parser", 418}, // at index 105
- {"<select_sara_5F_parser_32>", "sara_parser", 425}, // at index 106
- {"<select_sara_5F_parser_32>", "sara_parser", 432}, // at index 107
- {"<select_sara_5F_parser_32>", "sara_parser", 437}, // at index 108
- {"<select_sara_5F_parser_32>", "sara_parser", 440}, // at index 109
- {"<select_sara_5F_parser_32>", "sara_parser", 443}, // at index 110
- {"<select_sara_5F_parser_32>", "sara_parser", 448}, // at index 111
- {"<select_sara_5F_parser_32>", "sara_parser", 453}, // at index 112
- {"<select_sara_5F_parser_32>", "sara_parser", 458}, // at index 113
- {"<select_sara_5F_parser_32>", "sara_parser", 463}, // at index 114
- {"<select_sara_5F_parser_33>", "sara_parser", 470}, // at index 115
- {"<select_sara_5F_parser_33>", "sara_parser", 471}, // at index 116
- {"<select_sara_5F_parser_34>", "sara_parser", 475}, // at index 117
- {"<select_sara_5F_parser_34>", "sara_parser", 476}, // at index 118
- {"<select_sara_5F_parser_35>", "sara_parser", 480}, // at index 119
- {"<select_sara_5F_parser_35>", "sara_parser", 481}, // at index 120
- {"<select_sara_5F_parser_36>", "sara_parser", 485}, // at index 121
- {"<select_sara_5F_parser_36>", "sara_parser", 486}, // at index 122
- {"<select_sara_5F_parser_37>", "sara_parser", 489}, // at index 123
- {"<select_sara_5F_parser_37>", "sara_parser", 490}, // at index 124
- {"<select_sara_5F_parser_38>", "sara_parser", 494}, // at index 125
- {"<select_sara_5F_parser_38>", "sara_parser", 495}, // at index 126
- {"<select_sara_5F_parser_39>", "sara_parser", 499}, // at index 127
- {"<select_sara_5F_parser_39>", "sara_parser", 500}, // at index 128
- {"<select_sara_5F_parser_40>", "sara_parser", 504}, // at index 129
- {"<select_sara_5F_parser_40>", "sara_parser", 505}, // at index 130
- {"<select_sara_5F_parser_41>", "sara_parser", 509}, // at index 131
- {"<select_sara_5F_parser_41>", "sara_parser", 510}, // at index 132
- {"<select_sara_5F_parser_42>", "sara_parser", 515}, // at index 133
- {"<select_sara_5F_parser_42>", "sara_parser", 516}, // at index 134
- {"<select_sara_5F_parser_43>", "sara_parser", 520}, // at index 135
- {"<select_sara_5F_parser_43>", "sara_parser", 521}, // at index 136
- {"<select_sara_5F_parser_44>", "sara_parser", 529}, // at index 137
- {"<select_sara_5F_parser_44>", "sara_parser", 530}, // at index 138
- {"<>", "", 536} // at index 139
+ {"<component>", "sara_parser", 58}, // at index 10
+ {"<component>", "sara_parser", 75}, // at index 11
+ {"<component>", "sara_parser", 92}, // at index 12
+ {"<io_bool_expression>", "sara_parser", 115}, // at index 13
+ {"<io_and_expression>", "sara_parser", 118}, // at index 14
+ {"<io_primary>", "sara_parser", 121}, // at index 15
+ {"<io_primary>", "sara_parser", 125}, // at index 16
+ {"<io_primary>", "sara_parser", 127}, // at index 17
+ {"<io_primary>", "sara_parser", 130}, // at index 18
+ {"<io_primary>", "sara_parser", 132}, // at index 19
+ {"<io_primary>", "sara_parser", 134}, // at index 20
+ {"<definition_expression>", "sara_parser", 147}, // at index 21
+ {"<definition_expression_term>", "sara_parser", 150}, // at index 22
+ {"<modalcompadd_definition>", "sara_parser", 153}, // at index 23
+ {"<modalcompsub_definition>", "sara_parser", 160}, // at index 24
+ {"<definition_expression_factor>", "sara_parser", 167}, // at index 25
+ {"<definition_expression_factor>", "sara_parser", 169}, // at index 26
+ {"<explicit_automaton>", "sara_parser", 182}, // at index 27
+ {"<select_sara_5F_parser_0>", "sara_parser", 202}, // at index 28
+ {"<select_sara_5F_parser_0>", "sara_parser", 203}, // at index 29
+ {"<select_sara_5F_parser_1>", "sara_parser", 206}, // at index 30
+ {"<select_sara_5F_parser_1>", "sara_parser", 207}, // at index 31
+ {"<select_sara_5F_parser_2>", "sara_parser", 211}, // at index 32
+ {"<select_sara_5F_parser_2>", "sara_parser", 212}, // at index 33
+ {"<select_sara_5F_parser_3>", "sara_parser", 215}, // at index 34
+ {"<select_sara_5F_parser_3>", "sara_parser", 216}, // at index 35
+ {"<select_sara_5F_parser_4>", "sara_parser", 220}, // at index 36
+ {"<select_sara_5F_parser_4>", "sara_parser", 221}, // at index 37
+ {"<select_sara_5F_parser_5>", "sara_parser", 225}, // at index 38
+ {"<select_sara_5F_parser_5>", "sara_parser", 226}, // at index 39
+ {"<select_sara_5F_parser_6>", "sara_parser", 230}, // at index 40
+ {"<select_sara_5F_parser_6>", "sara_parser", 231}, // at index 41
+ {"<select_sara_5F_parser_7>", "sara_parser", 234}, // at index 42
+ {"<select_sara_5F_parser_7>", "sara_parser", 235}, // at index 43
+ {"<select_sara_5F_parser_8>", "sara_parser", 239}, // at index 44
+ {"<select_sara_5F_parser_8>", "sara_parser", 240}, // at index 45
+ {"<select_sara_5F_parser_9>", "sara_parser", 244}, // at index 46
+ {"<select_sara_5F_parser_9>", "sara_parser", 245}, // at index 47
+ {"<select_sara_5F_parser_10>", "sara_parser", 249}, // at index 48
+ {"<select_sara_5F_parser_10>", "sara_parser", 250}, // at index 49
+ {"<select_sara_5F_parser_11>", "sara_parser", 253}, // at index 50
+ {"<select_sara_5F_parser_11>", "sara_parser", 254}, // at index 51
+ {"<select_sara_5F_parser_12>", "sara_parser", 258}, // at index 52
+ {"<select_sara_5F_parser_12>", "sara_parser", 259}, // at index 53
+ {"<select_sara_5F_parser_13>", "sara_parser", 263}, // at index 54
+ {"<select_sara_5F_parser_13>", "sara_parser", 264}, // at index 55
+ {"<select_sara_5F_parser_14>", "sara_parser", 268}, // at index 56
+ {"<select_sara_5F_parser_14>", "sara_parser", 269}, // at index 57
+ {"<select_sara_5F_parser_15>", "sara_parser", 272}, // at index 58
+ {"<select_sara_5F_parser_15>", "sara_parser", 273}, // at index 59
+ {"<select_sara_5F_parser_16>", "sara_parser", 277}, // at index 60
+ {"<select_sara_5F_parser_16>", "sara_parser", 278}, // at index 61
+ {"<select_sara_5F_parser_17>", "sara_parser", 282}, // at index 62
+ {"<select_sara_5F_parser_17>", "sara_parser", 283}, // at index 63
+ {"<select_sara_5F_parser_18>", "sara_parser", 291}, // at index 64
+ {"<select_sara_5F_parser_18>", "sara_parser", 292}, // at index 65
+ {"<select_sara_5F_parser_19>", "sara_parser", 297}, // at index 66
+ {"<select_sara_5F_parser_19>", "sara_parser", 298}, // at index 67
+ {"<select_sara_5F_parser_20>", "sara_parser", 302}, // at index 68
+ {"<select_sara_5F_parser_20>", "sara_parser", 303}, // at index 69
+ {"<select_sara_5F_parser_20>", "sara_parser", 307}, // at index 70
+ {"<select_sara_5F_parser_20>", "sara_parser", 311}, // at index 71
+ {"<select_sara_5F_parser_20>", "sara_parser", 315}, // at index 72
+ {"<select_sara_5F_parser_21>", "sara_parser", 319}, // at index 73
+ {"<select_sara_5F_parser_21>", "sara_parser", 320}, // at index 74
+ {"<select_sara_5F_parser_22>", "sara_parser", 324}, // at index 75
+ {"<select_sara_5F_parser_22>", "sara_parser", 325}, // at index 76
+ {"<select_sara_5F_parser_23>", "sara_parser", 329}, // at index 77
+ {"<select_sara_5F_parser_23>", "sara_parser", 330}, // at index 78
+ {"<select_sara_5F_parser_24>", "sara_parser", 333}, // at index 79
+ {"<select_sara_5F_parser_24>", "sara_parser", 334}, // at index 80
+ {"<select_sara_5F_parser_25>", "sara_parser", 338}, // at index 81
+ {"<select_sara_5F_parser_25>", "sara_parser", 339}, // at index 82
+ {"<select_sara_5F_parser_26>", "sara_parser", 343}, // at index 83
+ {"<select_sara_5F_parser_26>", "sara_parser", 344}, // at index 84
+ {"<select_sara_5F_parser_27>", "sara_parser", 348}, // at index 85
+ {"<select_sara_5F_parser_27>", "sara_parser", 349}, // at index 86
+ {"<select_sara_5F_parser_27>", "sara_parser", 353}, // at index 87
+ {"<select_sara_5F_parser_27>", "sara_parser", 357}, // at index 88
+ {"<select_sara_5F_parser_28>", "sara_parser", 361}, // at index 89
+ {"<select_sara_5F_parser_28>", "sara_parser", 362}, // at index 90
+ {"<select_sara_5F_parser_29>", "sara_parser", 368}, // at index 91
+ {"<select_sara_5F_parser_29>", "sara_parser", 369}, // at index 92
+ {"<select_sara_5F_parser_30>", "sara_parser", 376}, // at index 93
+ {"<select_sara_5F_parser_30>", "sara_parser", 377}, // at index 94
+ {"<select_sara_5F_parser_31>", "sara_parser", 383}, // at index 95
+ {"<select_sara_5F_parser_31>", "sara_parser", 384}, // at index 96
+ {"<select_sara_5F_parser_32>", "sara_parser", 391}, // at index 97
+ {"<select_sara_5F_parser_32>", "sara_parser", 393}, // at index 98
+ {"<select_sara_5F_parser_32>", "sara_parser", 397}, // at index 99
+ {"<select_sara_5F_parser_32>", "sara_parser", 404}, // at index 100
+ {"<select_sara_5F_parser_32>", "sara_parser", 411}, // at index 101
+ {"<select_sara_5F_parser_32>", "sara_parser", 416}, // at index 102
+ {"<select_sara_5F_parser_32>", "sara_parser", 419}, // at index 103
+ {"<select_sara_5F_parser_32>", "sara_parser", 422}, // at index 104
+ {"<select_sara_5F_parser_32>", "sara_parser", 427}, // at index 105
+ {"<select_sara_5F_parser_32>", "sara_parser", 432}, // at index 106
+ {"<select_sara_5F_parser_32>", "sara_parser", 437}, // at index 107
+ {"<select_sara_5F_parser_32>", "sara_parser", 442}, // at index 108
+ {"<select_sara_5F_parser_33>", "sara_parser", 449}, // at index 109
+ {"<select_sara_5F_parser_33>", "sara_parser", 450}, // at index 110
+ {"<select_sara_5F_parser_34>", "sara_parser", 454}, // at index 111
+ {"<select_sara_5F_parser_34>", "sara_parser", 455}, // at index 112
+ {"<select_sara_5F_parser_35>", "sara_parser", 459}, // at index 113
+ {"<select_sara_5F_parser_35>", "sara_parser", 460}, // at index 114
+ {"<select_sara_5F_parser_36>", "sara_parser", 464}, // at index 115
+ {"<select_sara_5F_parser_36>", "sara_parser", 465}, // at index 116
+ {"<select_sara_5F_parser_37>", "sara_parser", 468}, // at index 117
+ {"<select_sara_5F_parser_37>", "sara_parser", 469}, // at index 118
+ {"<select_sara_5F_parser_38>", "sara_parser", 473}, // at index 119
+ {"<select_sara_5F_parser_38>", "sara_parser", 474}, // at index 120
+ {"<select_sara_5F_parser_39>", "sara_parser", 478}, // at index 121
+ {"<select_sara_5F_parser_39>", "sara_parser", 479}, // at index 122
+ {"<select_sara_5F_parser_40>", "sara_parser", 483}, // at index 123
+ {"<select_sara_5F_parser_40>", "sara_parser", 484}, // at index 124
+ {"<select_sara_5F_parser_41>", "sara_parser", 488}, // at index 125
+ {"<select_sara_5F_parser_41>", "sara_parser", 489}, // at index 126
+ {"<select_sara_5F_parser_42>", "sara_parser", 494}, // at index 127
+ {"<select_sara_5F_parser_42>", "sara_parser", 495}, // at index 128
+ {"<select_sara_5F_parser_43>", "sara_parser", 499}, // at index 129
+ {"<select_sara_5F_parser_43>", "sara_parser", 500}, // at index 130
+ {"<select_sara_5F_parser_44>", "sara_parser", 508}, // at index 131
+ {"<select_sara_5F_parser_44>", "sara_parser", 509}, // at index 132
+ {"<>", "", 515} // at index 133
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2953,7 +2920,7 @@ static const cProductionNameDescriptor gProductionNames_sara_grammar [140] = {
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int16_t gProductionIndexes_sara_grammar [140] = {
+static const int16_t gProductionIndexes_sara_grammar [134] = {
 0, // index 0 : <start_symbol>, in file 'sara_parser.ggs', line 11
 3, // index 1 : <component>, in file 'sara_parser.ggs', line 25
 8, // index 2 : <component>, in file 'sara_parser.ggs', line 46
@@ -2962,138 +2929,132 @@ static const int16_t gProductionIndexes_sara_grammar [140] = {
 25, // index 5 : <component>, in file 'sara_parser.ggs', line 111
 29, // index 6 : <component>, in file 'sara_parser.ggs', line 131
 35, // index 7 : <component>, in file 'sara_parser.ggs', line 157
-39, // index 8 : <component>, in file 'sara_parser.ggs', line 177
-42, // index 9 : <component>, in file 'sara_parser.ggs', line 187
-45, // index 10 : <component>, in file 'sara_parser.ggs', line 197
-48, // index 11 : <component>, in file 'sara_parser.ggs', line 207
-52, // index 12 : <component>, in file 'sara_parser.ggs', line 218
-56, // index 13 : <component>, in file 'sara_parser.ggs', line 230
-60, // index 14 : <component>, in file 'sara_parser.ggs', line 242
-63, // index 15 : <component>, in file 'sara_parser.ggs', line 252
-79, // index 16 : <component>, in file 'sara_parser.ggs', line 321
-96, // index 17 : <component>, in file 'sara_parser.ggs', line 396
-113, // index 18 : <component>, in file 'sara_parser.ggs', line 469
-136, // index 19 : <io_bool_expression>, in file 'sara_parser.ggs', line 573
-139, // index 20 : <io_and_expression>, in file 'sara_parser.ggs', line 604
-142, // index 21 : <io_primary>, in file 'sara_parser.ggs', line 620
-146, // index 22 : <io_primary>, in file 'sara_parser.ggs', line 631
-148, // index 23 : <io_primary>, in file 'sara_parser.ggs', line 644
-151, // index 24 : <io_primary>, in file 'sara_parser.ggs', line 656
-153, // index 25 : <io_primary>, in file 'sara_parser.ggs', line 666
-155, // index 26 : <io_primary>, in file 'sara_parser.ggs', line 676
-168, // index 27 : <definition_expression>, in file 'sara_parser.ggs', line 753
-171, // index 28 : <definition_expression_term>, in file 'sara_parser.ggs', line 770
-174, // index 29 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 801
-181, // index 30 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 841
-188, // index 31 : <definition_expression_factor>, in file 'sara_parser.ggs', line 881
-190, // index 32 : <definition_expression_factor>, in file 'sara_parser.ggs', line 995
-203, // index 33 : <explicit_automaton>, in file 'sara_parser.ggs', line 1069
-223, // index 34 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
-224, // index 35 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
-227, // index 36 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
-228, // index 37 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
-232, // index 38 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
-233, // index 39 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
-236, // index 40 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
-237, // index 41 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
-241, // index 42 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
-242, // index 43 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
-246, // index 44 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
-247, // index 45 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
-251, // index 46 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
-252, // index 47 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
-255, // index 48 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
-256, // index 49 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
-260, // index 50 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
-261, // index 51 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
-265, // index 52 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
-266, // index 53 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
-270, // index 54 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
-271, // index 55 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
-274, // index 56 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
-275, // index 57 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
-279, // index 58 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
-280, // index 59 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
-284, // index 60 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
-285, // index 61 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
-289, // index 62 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
-290, // index 63 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
-293, // index 64 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
-294, // index 65 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
-298, // index 66 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
-299, // index 67 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
-303, // index 68 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
-304, // index 69 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
-312, // index 70 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
-313, // index 71 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
-318, // index 72 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
-319, // index 73 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
-323, // index 74 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
-324, // index 75 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
-328, // index 76 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
-332, // index 77 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
-336, // index 78 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
-340, // index 79 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
-341, // index 80 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
-345, // index 81 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
-346, // index 82 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
-350, // index 83 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
-351, // index 84 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
-354, // index 85 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
-355, // index 86 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
-359, // index 87 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
-360, // index 88 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
-364, // index 89 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
-365, // index 90 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
-369, // index 91 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
-370, // index 92 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
-374, // index 93 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
-378, // index 94 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
-382, // index 95 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
-383, // index 96 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
-389, // index 97 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
-390, // index 98 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
-397, // index 99 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
-398, // index 100 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
-404, // index 101 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
-405, // index 102 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
-412, // index 103 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-414, // index 104 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-418, // index 105 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-425, // index 106 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-432, // index 107 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-437, // index 108 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-440, // index 109 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-443, // index 110 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-448, // index 111 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-453, // index 112 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-458, // index 113 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-463, // index 114 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
-470, // index 115 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
-471, // index 116 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
-475, // index 117 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
-476, // index 118 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
-480, // index 119 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
-481, // index 120 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
-485, // index 121 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
-486, // index 122 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
-489, // index 123 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
-490, // index 124 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
-494, // index 125 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
-495, // index 126 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
-499, // index 127 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
-500, // index 128 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
-504, // index 129 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
-505, // index 130 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
-509, // index 131 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
-510, // index 132 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
-515, // index 133 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
-516, // index 134 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
-520, // index 135 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
-521, // index 136 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
-529, // index 137 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
-530, // index 138 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
-536 // index 139 : <>, in file '.ggs', line 0
+39, // index 8 : <component>, in file 'sara_parser.ggs', line 242
+42, // index 9 : <component>, in file 'sara_parser.ggs', line 252
+58, // index 10 : <component>, in file 'sara_parser.ggs', line 321
+75, // index 11 : <component>, in file 'sara_parser.ggs', line 396
+92, // index 12 : <component>, in file 'sara_parser.ggs', line 469
+115, // index 13 : <io_bool_expression>, in file 'sara_parser.ggs', line 573
+118, // index 14 : <io_and_expression>, in file 'sara_parser.ggs', line 604
+121, // index 15 : <io_primary>, in file 'sara_parser.ggs', line 620
+125, // index 16 : <io_primary>, in file 'sara_parser.ggs', line 631
+127, // index 17 : <io_primary>, in file 'sara_parser.ggs', line 644
+130, // index 18 : <io_primary>, in file 'sara_parser.ggs', line 656
+132, // index 19 : <io_primary>, in file 'sara_parser.ggs', line 666
+134, // index 20 : <io_primary>, in file 'sara_parser.ggs', line 676
+147, // index 21 : <definition_expression>, in file 'sara_parser.ggs', line 753
+150, // index 22 : <definition_expression_term>, in file 'sara_parser.ggs', line 770
+153, // index 23 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 801
+160, // index 24 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 841
+167, // index 25 : <definition_expression_factor>, in file 'sara_parser.ggs', line 881
+169, // index 26 : <definition_expression_factor>, in file 'sara_parser.ggs', line 995
+182, // index 27 : <explicit_automaton>, in file 'sara_parser.ggs', line 1069
+202, // index 28 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
+203, // index 29 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
+206, // index 30 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
+207, // index 31 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 263
+211, // index 32 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
+212, // index 33 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 275
+215, // index 34 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
+216, // index 35 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 277
+220, // index 36 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
+221, // index 37 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 290
+225, // index 38 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
+226, // index 39 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 333
+230, // index 40 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
+231, // index 41 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 345
+234, // index 42 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
+235, // index 43 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 347
+239, // index 44 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
+240, // index 45 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 360
+244, // index 46 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
+245, // index 47 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 408
+249, // index 48 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
+250, // index 49 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 420
+253, // index 50 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
+254, // index 51 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 422
+258, // index 52 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
+259, // index 53 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 435
+263, // index 54 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
+264, // index 55 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 486
+268, // index 56 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
+269, // index 57 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 502
+272, // index 58 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
+273, // index 59 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 504
+277, // index 60 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
+278, // index 61 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 521
+282, // index 62 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
+283, // index 63 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 538
+291, // index 64 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
+292, // index 65 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 542
+297, // index 66 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
+298, // index 67 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 545
+302, // index 68 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+303, // index 69 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+307, // index 70 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+311, // index 71 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+315, // index 72 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 578
+319, // index 73 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
+320, // index 74 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 609
+324, // index 75 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
+325, // index 76 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 690
+329, // index 77 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
+330, // index 78 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 707
+333, // index 79 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
+334, // index 80 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 709
+338, // index 81 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
+339, // index 82 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 727
+343, // index 83 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
+344, // index 84 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 758
+348, // index 85 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+349, // index 86 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+353, // index 87 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+357, // index 88 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 775
+361, // index 89 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
+362, // index 90 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 808
+368, // index 91 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
+369, // index 92 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 818
+376, // index 93 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
+377, // index 94 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 848
+383, // index 95 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
+384, // index 96 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 858
+391, // index 97 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+393, // index 98 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+397, // index 99 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+404, // index 100 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+411, // index 101 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+416, // index 102 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+419, // index 103 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+422, // index 104 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+427, // index 105 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+432, // index 106 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+437, // index 107 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+442, // index 108 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 885
+449, // index 109 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
+450, // index 110 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 895
+454, // index 111 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
+455, // index 112 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 912
+459, // index 113 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
+460, // index 114 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 1009
+464, // index 115 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
+465, // index 116 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 1026
+468, // index 117 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
+469, // index 118 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 1028
+473, // index 119 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
+474, // index 120 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 1046
+478, // index 121 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
+479, // index 122 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 1079
+483, // index 123 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
+484, // index 124 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 1090
+488, // index 125 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
+489, // index 126 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 1102
+494, // index 127 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
+495, // index 128 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 1105
+499, // index 129 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
+500, // index 130 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 1118
+508, // index 131 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
+509, // index 132 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 1133
+515 // index 133 : <>, in file '.ggs', line 0
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3105,61 +3066,61 @@ static const int16_t gProductionIndexes_sara_grammar [140] = {
 static const int16_t gFirstProductionIndexes_sara_grammar [58] = {
 0, // at 0 : <start_symbol>
 1, // at 1 : <component>
-19, // at 2 : <io_bool_expression>
-20, // at 3 : <io_and_expression>
-21, // at 4 : <io_primary>
-27, // at 5 : <definition_expression>
-28, // at 6 : <definition_expression_term>
-29, // at 7 : <modalcompadd_definition>
-30, // at 8 : <modalcompsub_definition>
-31, // at 9 : <definition_expression_factor>
-33, // at 10 : <explicit_automaton>
-34, // at 11 : <select_sara_5F_parser_0>
-36, // at 12 : <select_sara_5F_parser_1>
-38, // at 13 : <select_sara_5F_parser_2>
-40, // at 14 : <select_sara_5F_parser_3>
-42, // at 15 : <select_sara_5F_parser_4>
-44, // at 16 : <select_sara_5F_parser_5>
-46, // at 17 : <select_sara_5F_parser_6>
-48, // at 18 : <select_sara_5F_parser_7>
-50, // at 19 : <select_sara_5F_parser_8>
-52, // at 20 : <select_sara_5F_parser_9>
-54, // at 21 : <select_sara_5F_parser_10>
-56, // at 22 : <select_sara_5F_parser_11>
-58, // at 23 : <select_sara_5F_parser_12>
-60, // at 24 : <select_sara_5F_parser_13>
-62, // at 25 : <select_sara_5F_parser_14>
-64, // at 26 : <select_sara_5F_parser_15>
-66, // at 27 : <select_sara_5F_parser_16>
-68, // at 28 : <select_sara_5F_parser_17>
-70, // at 29 : <select_sara_5F_parser_18>
-72, // at 30 : <select_sara_5F_parser_19>
-74, // at 31 : <select_sara_5F_parser_20>
-79, // at 32 : <select_sara_5F_parser_21>
-81, // at 33 : <select_sara_5F_parser_22>
-83, // at 34 : <select_sara_5F_parser_23>
-85, // at 35 : <select_sara_5F_parser_24>
-87, // at 36 : <select_sara_5F_parser_25>
-89, // at 37 : <select_sara_5F_parser_26>
-91, // at 38 : <select_sara_5F_parser_27>
-95, // at 39 : <select_sara_5F_parser_28>
-97, // at 40 : <select_sara_5F_parser_29>
-99, // at 41 : <select_sara_5F_parser_30>
-101, // at 42 : <select_sara_5F_parser_31>
-103, // at 43 : <select_sara_5F_parser_32>
-115, // at 44 : <select_sara_5F_parser_33>
-117, // at 45 : <select_sara_5F_parser_34>
-119, // at 46 : <select_sara_5F_parser_35>
-121, // at 47 : <select_sara_5F_parser_36>
-123, // at 48 : <select_sara_5F_parser_37>
-125, // at 49 : <select_sara_5F_parser_38>
-127, // at 50 : <select_sara_5F_parser_39>
-129, // at 51 : <select_sara_5F_parser_40>
-131, // at 52 : <select_sara_5F_parser_41>
-133, // at 53 : <select_sara_5F_parser_42>
-135, // at 54 : <select_sara_5F_parser_43>
-137, // at 55 : <select_sara_5F_parser_44>
-139, // at 56 : <>
+13, // at 2 : <io_bool_expression>
+14, // at 3 : <io_and_expression>
+15, // at 4 : <io_primary>
+21, // at 5 : <definition_expression>
+22, // at 6 : <definition_expression_term>
+23, // at 7 : <modalcompadd_definition>
+24, // at 8 : <modalcompsub_definition>
+25, // at 9 : <definition_expression_factor>
+27, // at 10 : <explicit_automaton>
+28, // at 11 : <select_sara_5F_parser_0>
+30, // at 12 : <select_sara_5F_parser_1>
+32, // at 13 : <select_sara_5F_parser_2>
+34, // at 14 : <select_sara_5F_parser_3>
+36, // at 15 : <select_sara_5F_parser_4>
+38, // at 16 : <select_sara_5F_parser_5>
+40, // at 17 : <select_sara_5F_parser_6>
+42, // at 18 : <select_sara_5F_parser_7>
+44, // at 19 : <select_sara_5F_parser_8>
+46, // at 20 : <select_sara_5F_parser_9>
+48, // at 21 : <select_sara_5F_parser_10>
+50, // at 22 : <select_sara_5F_parser_11>
+52, // at 23 : <select_sara_5F_parser_12>
+54, // at 24 : <select_sara_5F_parser_13>
+56, // at 25 : <select_sara_5F_parser_14>
+58, // at 26 : <select_sara_5F_parser_15>
+60, // at 27 : <select_sara_5F_parser_16>
+62, // at 28 : <select_sara_5F_parser_17>
+64, // at 29 : <select_sara_5F_parser_18>
+66, // at 30 : <select_sara_5F_parser_19>
+68, // at 31 : <select_sara_5F_parser_20>
+73, // at 32 : <select_sara_5F_parser_21>
+75, // at 33 : <select_sara_5F_parser_22>
+77, // at 34 : <select_sara_5F_parser_23>
+79, // at 35 : <select_sara_5F_parser_24>
+81, // at 36 : <select_sara_5F_parser_25>
+83, // at 37 : <select_sara_5F_parser_26>
+85, // at 38 : <select_sara_5F_parser_27>
+89, // at 39 : <select_sara_5F_parser_28>
+91, // at 40 : <select_sara_5F_parser_29>
+93, // at 41 : <select_sara_5F_parser_30>
+95, // at 42 : <select_sara_5F_parser_31>
+97, // at 43 : <select_sara_5F_parser_32>
+109, // at 44 : <select_sara_5F_parser_33>
+111, // at 45 : <select_sara_5F_parser_34>
+113, // at 46 : <select_sara_5F_parser_35>
+115, // at 47 : <select_sara_5F_parser_36>
+117, // at 48 : <select_sara_5F_parser_37>
+119, // at 49 : <select_sara_5F_parser_38>
+121, // at 50 : <select_sara_5F_parser_39>
+123, // at 51 : <select_sara_5F_parser_40>
+125, // at 52 : <select_sara_5F_parser_41>
+127, // at 53 : <select_sara_5F_parser_42>
+129, // at 54 : <select_sara_5F_parser_43>
+131, // at 55 : <select_sara_5F_parser_44>
+133, // at 56 : <>
 0} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3179,23 +3140,17 @@ C_Lexique_sara_5F_scanner::kToken_last, -1, // Choice 4
 C_Lexique_sara_5F_scanner::kToken_check, -1, // Choice 5
 C_Lexique_sara_5F_scanner::kToken_checkidentical, -1, // Choice 6
 C_Lexique_sara_5F_scanner::kToken_checkbool, -1, // Choice 7
-C_Lexique_sara_5F_scanner::kToken_use_5F_and, -1, // Choice 8
-C_Lexique_sara_5F_scanner::kToken_use_5F_ite, -1, // Choice 9
-C_Lexique_sara_5F_scanner::kToken_use_5F_and_5F_ite, -1, // Choice 10
-C_Lexique_sara_5F_scanner::kToken_and_5F_cache, -1, // Choice 11
-C_Lexique_sara_5F_scanner::kToken_ite_5F_cache, -1, // Choice 12
-C_Lexique_sara_5F_scanner::kToken_map, -1, // Choice 13
-C_Lexique_sara_5F_scanner::kToken_bdd, -1, // Choice 14
-C_Lexique_sara_5F_scanner::kToken_machineIdf, -1, // Choice 15
-C_Lexique_sara_5F_scanner::kToken_modalcompadd, -1, // Choice 16
-C_Lexique_sara_5F_scanner::kToken_modalcompsub, -1, // Choice 17
-C_Lexique_sara_5F_scanner::kToken_scenario, -1, // Choice 18
+C_Lexique_sara_5F_scanner::kToken_bdd, -1, // Choice 8
+C_Lexique_sara_5F_scanner::kToken_machineIdf, -1, // Choice 9
+C_Lexique_sara_5F_scanner::kToken_modalcompadd, -1, // Choice 10
+C_Lexique_sara_5F_scanner::kToken_modalcompsub, -1, // Choice 11
+C_Lexique_sara_5F_scanner::kToken_scenario, -1, // Choice 12
   -1,
-// At index 38 : <io_bool_expression> only one production, no choice
+// At index 26 : <io_bool_expression> only one production, no choice
   -1,
-// At index 39 : <io_and_expression> only one production, no choice
+// At index 27 : <io_and_expression> only one production, no choice
   -1,
-// At index 40 : <io_primary>
+// At index 28 : <io_primary>
 C_Lexique_sara_5F_scanner::kToken__28_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
 C_Lexique_sara_5F_scanner::kToken__7E_, -1, // Choice 3
@@ -3203,155 +3158,155 @@ C_Lexique_sara_5F_scanner::kToken_false, -1, // Choice 4
 C_Lexique_sara_5F_scanner::kToken_true, -1, // Choice 5
 C_Lexique_sara_5F_scanner::kToken_machineIdf, -1, // Choice 6
   -1,
-// At index 53 : <definition_expression> only one production, no choice
+// At index 41 : <definition_expression> only one production, no choice
   -1,
-// At index 54 : <definition_expression_term> only one production, no choice
+// At index 42 : <definition_expression_term> only one production, no choice
   -1,
-// At index 55 : <modalcompadd_definition> only one production, no choice
+// At index 43 : <modalcompadd_definition> only one production, no choice
   -1,
-// At index 56 : <modalcompsub_definition> only one production, no choice
+// At index 44 : <modalcompsub_definition> only one production, no choice
   -1,
-// At index 57 : <definition_expression_factor>
+// At index 45 : <definition_expression_factor>
 C_Lexique_sara_5F_scanner::kToken_trans, C_Lexique_sara_5F_scanner::kToken__28_, C_Lexique_sara_5F_scanner::kToken_modalcompadd, C_Lexique_sara_5F_scanner::kToken_modalcompsub, C_Lexique_sara_5F_scanner::kToken__7E_, C_Lexique_sara_5F_scanner::kToken__3F_, C_Lexique_sara_5F_scanner::kToken__21_, C_Lexique_sara_5F_scanner::kToken_bool, C_Lexique_sara_5F_scanner::kToken__40_, C_Lexique_sara_5F_scanner::kToken_nofirst, C_Lexique_sara_5F_scanner::kToken_nolast, C_Lexique_sara_5F_scanner::kToken_auto, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_machineIdf, -1, // Choice 2
   -1,
-// At index 73 : <explicit_automaton> only one production, no choice
+// At index 61 : <explicit_automaton> only one production, no choice
   -1,
 //---- Added non terminal symbols from 'select' and 'repeat' instructions
-// At index 74 : <select_sara_5F_parser_0>
+// At index 62 : <select_sara_5F_parser_0>
 C_Lexique_sara_5F_scanner::kToken_, -1, // Choice 1
-C_Lexique_sara_5F_scanner::kToken_state, C_Lexique_sara_5F_scanner::kToken_machineIdf, C_Lexique_sara_5F_scanner::kToken_trans, C_Lexique_sara_5F_scanner::kToken_first, C_Lexique_sara_5F_scanner::kToken_last, C_Lexique_sara_5F_scanner::kToken_check, C_Lexique_sara_5F_scanner::kToken_checkidentical, C_Lexique_sara_5F_scanner::kToken_checkbool, C_Lexique_sara_5F_scanner::kToken_use_5F_and, C_Lexique_sara_5F_scanner::kToken_use_5F_ite, C_Lexique_sara_5F_scanner::kToken_use_5F_and_5F_ite, C_Lexique_sara_5F_scanner::kToken_and_5F_cache, C_Lexique_sara_5F_scanner::kToken_ite_5F_cache, C_Lexique_sara_5F_scanner::kToken_map, C_Lexique_sara_5F_scanner::kToken_bdd, C_Lexique_sara_5F_scanner::kToken_modalcompadd, C_Lexique_sara_5F_scanner::kToken_modalcompsub, C_Lexique_sara_5F_scanner::kToken_scenario, -1, // Choice 2
+C_Lexique_sara_5F_scanner::kToken_state, C_Lexique_sara_5F_scanner::kToken_machineIdf, C_Lexique_sara_5F_scanner::kToken_trans, C_Lexique_sara_5F_scanner::kToken_first, C_Lexique_sara_5F_scanner::kToken_last, C_Lexique_sara_5F_scanner::kToken_check, C_Lexique_sara_5F_scanner::kToken_checkidentical, C_Lexique_sara_5F_scanner::kToken_checkbool, C_Lexique_sara_5F_scanner::kToken_bdd, C_Lexique_sara_5F_scanner::kToken_modalcompadd, C_Lexique_sara_5F_scanner::kToken_modalcompsub, C_Lexique_sara_5F_scanner::kToken_scenario, -1, // Choice 2
   -1,
-// At index 96 : <select_sara_5F_parser_1>
+// At index 78 : <select_sara_5F_parser_1>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 101 : <select_sara_5F_parser_2>
+// At index 83 : <select_sara_5F_parser_2>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 106 : <select_sara_5F_parser_3>
+// At index 88 : <select_sara_5F_parser_3>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 111 : <select_sara_5F_parser_4>
+// At index 93 : <select_sara_5F_parser_4>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 116 : <select_sara_5F_parser_5>
+// At index 98 : <select_sara_5F_parser_5>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 121 : <select_sara_5F_parser_6>
+// At index 103 : <select_sara_5F_parser_6>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 126 : <select_sara_5F_parser_7>
+// At index 108 : <select_sara_5F_parser_7>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 131 : <select_sara_5F_parser_8>
+// At index 113 : <select_sara_5F_parser_8>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 136 : <select_sara_5F_parser_9>
+// At index 118 : <select_sara_5F_parser_9>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 141 : <select_sara_5F_parser_10>
+// At index 123 : <select_sara_5F_parser_10>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 146 : <select_sara_5F_parser_11>
+// At index 128 : <select_sara_5F_parser_11>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 151 : <select_sara_5F_parser_12>
+// At index 133 : <select_sara_5F_parser_12>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 156 : <select_sara_5F_parser_13>
+// At index 138 : <select_sara_5F_parser_13>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 161 : <select_sara_5F_parser_14>
+// At index 143 : <select_sara_5F_parser_14>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 166 : <select_sara_5F_parser_15>
+// At index 148 : <select_sara_5F_parser_15>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 171 : <select_sara_5F_parser_16>
+// At index 153 : <select_sara_5F_parser_16>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 176 : <select_sara_5F_parser_17>
+// At index 158 : <select_sara_5F_parser_17>
 C_Lexique_sara_5F_scanner::kToken__7D_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_literal_5F_string, -1, // Choice 2
   -1,
-// At index 181 : <select_sara_5F_parser_18>
+// At index 163 : <select_sara_5F_parser_18>
 C_Lexique_sara_5F_scanner::kToken__3B_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__3A_, -1, // Choice 2
   -1,
-// At index 186 : <select_sara_5F_parser_19>
+// At index 168 : <select_sara_5F_parser_19>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__3A_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 192 : <select_sara_5F_parser_20>
+// At index 174 : <select_sara_5F_parser_20>
 C_Lexique_sara_5F_scanner::kToken__29_, C_Lexique_sara_5F_scanner::kToken__7B_, C_Lexique_sara_5F_scanner::kToken__7D_, C_Lexique_sara_5F_scanner::kToken_to, C_Lexique_sara_5F_scanner::kToken_goto, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__7C_, -1, // Choice 2
 C_Lexique_sara_5F_scanner::kToken__5E_, -1, // Choice 3
 C_Lexique_sara_5F_scanner::kToken__2D__3E_, -1, // Choice 4
 C_Lexique_sara_5F_scanner::kToken__3D_, -1, // Choice 5
   -1,
-// At index 207 : <select_sara_5F_parser_21>
+// At index 189 : <select_sara_5F_parser_21>
 C_Lexique_sara_5F_scanner::kToken__29_, C_Lexique_sara_5F_scanner::kToken__7B_, C_Lexique_sara_5F_scanner::kToken__7D_, C_Lexique_sara_5F_scanner::kToken__7C_, C_Lexique_sara_5F_scanner::kToken__5E_, C_Lexique_sara_5F_scanner::kToken__2D__3E_, C_Lexique_sara_5F_scanner::kToken__3D_, C_Lexique_sara_5F_scanner::kToken_to, C_Lexique_sara_5F_scanner::kToken_goto, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__26_, -1, // Choice 2
   -1,
-// At index 220 : <select_sara_5F_parser_22>
+// At index 202 : <select_sara_5F_parser_22>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 225 : <select_sara_5F_parser_23>
+// At index 207 : <select_sara_5F_parser_23>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 230 : <select_sara_5F_parser_24>
+// At index 212 : <select_sara_5F_parser_24>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 235 : <select_sara_5F_parser_25>
+// At index 217 : <select_sara_5F_parser_25>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 240 : <select_sara_5F_parser_26>
+// At index 222 : <select_sara_5F_parser_26>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2B_, -1, // Choice 2
   -1,
-// At index 246 : <select_sara_5F_parser_27>
+// At index 228 : <select_sara_5F_parser_27>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__29_, C_Lexique_sara_5F_scanner::kToken__2B_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2A_, -1, // Choice 2
 C_Lexique_sara_5F_scanner::kToken__2A__2A_, -1, // Choice 3
 C_Lexique_sara_5F_scanner::kToken__7C__7C_, -1, // Choice 4
   -1,
-// At index 257 : <select_sara_5F_parser_28>
+// At index 239 : <select_sara_5F_parser_28>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__7D_, C_Lexique_sara_5F_scanner::kToken_include, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 264 : <select_sara_5F_parser_29>
+// At index 246 : <select_sara_5F_parser_29>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__7D_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_include, -1, // Choice 2
   -1,
-// At index 270 : <select_sara_5F_parser_30>
+// At index 252 : <select_sara_5F_parser_30>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__7D_, C_Lexique_sara_5F_scanner::kToken_exclude, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 277 : <select_sara_5F_parser_31>
+// At index 259 : <select_sara_5F_parser_31>
 C_Lexique_sara_5F_scanner::kToken__3B_, C_Lexique_sara_5F_scanner::kToken__7D_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_exclude, -1, // Choice 2
   -1,
-// At index 283 : <select_sara_5F_parser_32>
+// At index 265 : <select_sara_5F_parser_32>
 C_Lexique_sara_5F_scanner::kToken_auto, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__28_, -1, // Choice 2
 C_Lexique_sara_5F_scanner::kToken__3F_, -1, // Choice 3
@@ -3365,55 +3320,55 @@ C_Lexique_sara_5F_scanner::kToken_modalcompadd, -1, // Choice 10
 C_Lexique_sara_5F_scanner::kToken_modalcompsub, -1, // Choice 11
 C_Lexique_sara_5F_scanner::kToken_trans, -1, // Choice 12
   -1,
-// At index 308 : <select_sara_5F_parser_33>
+// At index 290 : <select_sara_5F_parser_33>
 C_Lexique_sara_5F_scanner::kToken__28_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 313 : <select_sara_5F_parser_34>
+// At index 295 : <select_sara_5F_parser_34>
 C_Lexique_sara_5F_scanner::kToken__28_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 318 : <select_sara_5F_parser_35>
+// At index 300 : <select_sara_5F_parser_35>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 323 : <select_sara_5F_parser_36>
+// At index 305 : <select_sara_5F_parser_36>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 328 : <select_sara_5F_parser_37>
+// At index 310 : <select_sara_5F_parser_37>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 333 : <select_sara_5F_parser_38>
+// At index 315 : <select_sara_5F_parser_38>
 C_Lexique_sara_5F_scanner::kToken__29_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 338 : <select_sara_5F_parser_39>
+// At index 320 : <select_sara_5F_parser_39>
 C_Lexique_sara_5F_scanner::kToken__3B_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 343 : <select_sara_5F_parser_40>
+// At index 325 : <select_sara_5F_parser_40>
 C_Lexique_sara_5F_scanner::kToken__3B_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 348 : <select_sara_5F_parser_41>
+// At index 330 : <select_sara_5F_parser_41>
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_last, -1, // Choice 2
   -1,
-// At index 353 : <select_sara_5F_parser_42>
+// At index 335 : <select_sara_5F_parser_42>
 C_Lexique_sara_5F_scanner::kToken__3B_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken__2C_, -1, // Choice 2
   -1,
-// At index 358 : <select_sara_5F_parser_43>
+// At index 340 : <select_sara_5F_parser_43>
 C_Lexique_sara_5F_scanner::kToken__7D_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_identifier, -1, // Choice 2
   -1,
-// At index 363 : <select_sara_5F_parser_44>
+// At index 345 : <select_sara_5F_parser_44>
 C_Lexique_sara_5F_scanner::kToken__7D_, -1, // Choice 1
 C_Lexique_sara_5F_scanner::kToken_machineIdf, C_Lexique_sara_5F_scanner::kToken__28_, C_Lexique_sara_5F_scanner::kToken_identifier, C_Lexique_sara_5F_scanner::kToken__7E_, C_Lexique_sara_5F_scanner::kToken_false, C_Lexique_sara_5F_scanner::kToken_true, -1, // Choice 2
   -1,
-// At index 373 : <> only one production, no choice
+// At index 355 : <> only one production, no choice
   -1,
 0} ;
 
@@ -3426,61 +3381,61 @@ C_Lexique_sara_5F_scanner::kToken_machineIdf, C_Lexique_sara_5F_scanner::kToken_
 static const int16_t gDecisionIndexes_sara_grammar [58] = {
 0, // at 0 : <start_symbol>
 1, // at 1 : <component>
-38, // at 2 : <io_bool_expression>
-39, // at 3 : <io_and_expression>
-40, // at 4 : <io_primary>
-53, // at 5 : <definition_expression>
-54, // at 6 : <definition_expression_term>
-55, // at 7 : <modalcompadd_definition>
-56, // at 8 : <modalcompsub_definition>
-57, // at 9 : <definition_expression_factor>
-73, // at 10 : <explicit_automaton>
-74, // at 11 : <select_sara_5F_parser_0>
-96, // at 12 : <select_sara_5F_parser_1>
-101, // at 13 : <select_sara_5F_parser_2>
-106, // at 14 : <select_sara_5F_parser_3>
-111, // at 15 : <select_sara_5F_parser_4>
-116, // at 16 : <select_sara_5F_parser_5>
-121, // at 17 : <select_sara_5F_parser_6>
-126, // at 18 : <select_sara_5F_parser_7>
-131, // at 19 : <select_sara_5F_parser_8>
-136, // at 20 : <select_sara_5F_parser_9>
-141, // at 21 : <select_sara_5F_parser_10>
-146, // at 22 : <select_sara_5F_parser_11>
-151, // at 23 : <select_sara_5F_parser_12>
-156, // at 24 : <select_sara_5F_parser_13>
-161, // at 25 : <select_sara_5F_parser_14>
-166, // at 26 : <select_sara_5F_parser_15>
-171, // at 27 : <select_sara_5F_parser_16>
-176, // at 28 : <select_sara_5F_parser_17>
-181, // at 29 : <select_sara_5F_parser_18>
-186, // at 30 : <select_sara_5F_parser_19>
-192, // at 31 : <select_sara_5F_parser_20>
-207, // at 32 : <select_sara_5F_parser_21>
-220, // at 33 : <select_sara_5F_parser_22>
-225, // at 34 : <select_sara_5F_parser_23>
-230, // at 35 : <select_sara_5F_parser_24>
-235, // at 36 : <select_sara_5F_parser_25>
-240, // at 37 : <select_sara_5F_parser_26>
-246, // at 38 : <select_sara_5F_parser_27>
-257, // at 39 : <select_sara_5F_parser_28>
-264, // at 40 : <select_sara_5F_parser_29>
-270, // at 41 : <select_sara_5F_parser_30>
-277, // at 42 : <select_sara_5F_parser_31>
-283, // at 43 : <select_sara_5F_parser_32>
-308, // at 44 : <select_sara_5F_parser_33>
-313, // at 45 : <select_sara_5F_parser_34>
-318, // at 46 : <select_sara_5F_parser_35>
-323, // at 47 : <select_sara_5F_parser_36>
-328, // at 48 : <select_sara_5F_parser_37>
-333, // at 49 : <select_sara_5F_parser_38>
-338, // at 50 : <select_sara_5F_parser_39>
-343, // at 51 : <select_sara_5F_parser_40>
-348, // at 52 : <select_sara_5F_parser_41>
-353, // at 53 : <select_sara_5F_parser_42>
-358, // at 54 : <select_sara_5F_parser_43>
-363, // at 55 : <select_sara_5F_parser_44>
-373, // at 56 : <>
+26, // at 2 : <io_bool_expression>
+27, // at 3 : <io_and_expression>
+28, // at 4 : <io_primary>
+41, // at 5 : <definition_expression>
+42, // at 6 : <definition_expression_term>
+43, // at 7 : <modalcompadd_definition>
+44, // at 8 : <modalcompsub_definition>
+45, // at 9 : <definition_expression_factor>
+61, // at 10 : <explicit_automaton>
+62, // at 11 : <select_sara_5F_parser_0>
+78, // at 12 : <select_sara_5F_parser_1>
+83, // at 13 : <select_sara_5F_parser_2>
+88, // at 14 : <select_sara_5F_parser_3>
+93, // at 15 : <select_sara_5F_parser_4>
+98, // at 16 : <select_sara_5F_parser_5>
+103, // at 17 : <select_sara_5F_parser_6>
+108, // at 18 : <select_sara_5F_parser_7>
+113, // at 19 : <select_sara_5F_parser_8>
+118, // at 20 : <select_sara_5F_parser_9>
+123, // at 21 : <select_sara_5F_parser_10>
+128, // at 22 : <select_sara_5F_parser_11>
+133, // at 23 : <select_sara_5F_parser_12>
+138, // at 24 : <select_sara_5F_parser_13>
+143, // at 25 : <select_sara_5F_parser_14>
+148, // at 26 : <select_sara_5F_parser_15>
+153, // at 27 : <select_sara_5F_parser_16>
+158, // at 28 : <select_sara_5F_parser_17>
+163, // at 29 : <select_sara_5F_parser_18>
+168, // at 30 : <select_sara_5F_parser_19>
+174, // at 31 : <select_sara_5F_parser_20>
+189, // at 32 : <select_sara_5F_parser_21>
+202, // at 33 : <select_sara_5F_parser_22>
+207, // at 34 : <select_sara_5F_parser_23>
+212, // at 35 : <select_sara_5F_parser_24>
+217, // at 36 : <select_sara_5F_parser_25>
+222, // at 37 : <select_sara_5F_parser_26>
+228, // at 38 : <select_sara_5F_parser_27>
+239, // at 39 : <select_sara_5F_parser_28>
+246, // at 40 : <select_sara_5F_parser_29>
+252, // at 41 : <select_sara_5F_parser_30>
+259, // at 42 : <select_sara_5F_parser_31>
+265, // at 43 : <select_sara_5F_parser_32>
+290, // at 44 : <select_sara_5F_parser_33>
+295, // at 45 : <select_sara_5F_parser_34>
+300, // at 46 : <select_sara_5F_parser_35>
+305, // at 47 : <select_sara_5F_parser_36>
+310, // at 48 : <select_sara_5F_parser_37>
+315, // at 49 : <select_sara_5F_parser_38>
+320, // at 50 : <select_sara_5F_parser_39>
+325, // at 51 : <select_sara_5F_parser_40>
+330, // at 52 : <select_sara_5F_parser_41>
+335, // at 53 : <select_sara_5F_parser_42>
+340, // at 54 : <select_sara_5F_parser_43>
+345, // at 55 : <select_sara_5F_parser_44>
+355, // at 56 : <>
 0} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3517,7 +3472,7 @@ void cGrammar_sara_5F_grammar::performOnlySyntaxAnalysis (C_Compiler * inCompile
   macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_sara_grammar, gProductionNames_sara_grammar, gProductionIndexes_sara_grammar,
-                                    gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 536) ;
+                                    gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 515) ;
   }
   macroDetachSharedObject (scanner) ;
 }
@@ -3542,7 +3497,7 @@ void cGrammar_sara_5F_grammar::_performSourceFileParsing_ (C_Compiler * inCompil
     macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, filePath COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_sara_grammar, gProductionNames_sara_grammar, gProductionIndexes_sara_grammar,
-                                                      gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 536) ;
+                                                      gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 515) ;
       if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
         cGrammar_sara_5F_grammar grammar ;
         grammar.nt_start_5F_symbol_ (scanner) ;
@@ -3575,7 +3530,7 @@ void cGrammar_sara_5F_grammar::_performSourceStringParsing_ (C_Compiler * inComp
     C_Lexique_sara_5F_scanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_sara_grammar, gProductionNames_sara_grammar, gProductionIndexes_sara_grammar,
-                                                    gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 536) ;
+                                                    gFirstProductionIndexes_sara_grammar, gDecision_sara_grammar, gDecisionIndexes_sara_grammar, 515) ;
     if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
       cGrammar_sara_5F_grammar grammar ;
       grammar.nt_start_5F_symbol_ (scanner) ;
@@ -3628,24 +3583,6 @@ void cGrammar_sara_5F_grammar::nt_component_parse (C_Lexique_sara_5F_scanner * i
   case 12 :
     rule_sara_5F_parser_component_i12_parse(inLexique) ;
     break ;
-  case 13 :
-    rule_sara_5F_parser_component_i13_parse(inLexique) ;
-    break ;
-  case 14 :
-    rule_sara_5F_parser_component_i14_parse(inLexique) ;
-    break ;
-  case 15 :
-    rule_sara_5F_parser_component_i15_parse(inLexique) ;
-    break ;
-  case 16 :
-    rule_sara_5F_parser_component_i16_parse(inLexique) ;
-    break ;
-  case 17 :
-    rule_sara_5F_parser_component_i17_parse(inLexique) ;
-    break ;
-  case 18 :
-    rule_sara_5F_parser_component_i18_parse(inLexique) ;
-    break ;
   default :
     break ;
   }
@@ -3690,24 +3627,6 @@ void cGrammar_sara_5F_grammar::nt_component_ (GALGAS_semanticContext & parameter
   case 12 :
     rule_sara_5F_parser_component_i12_(parameter_1, inLexique) ;
     break ;
-  case 13 :
-    rule_sara_5F_parser_component_i13_(parameter_1, inLexique) ;
-    break ;
-  case 14 :
-    rule_sara_5F_parser_component_i14_(parameter_1, inLexique) ;
-    break ;
-  case 15 :
-    rule_sara_5F_parser_component_i15_(parameter_1, inLexique) ;
-    break ;
-  case 16 :
-    rule_sara_5F_parser_component_i16_(parameter_1, inLexique) ;
-    break ;
-  case 17 :
-    rule_sara_5F_parser_component_i17_(parameter_1, inLexique) ;
-    break ;
-  case 18 :
-    rule_sara_5F_parser_component_i18_(parameter_1, inLexique) ;
-    break ;
   default :
     break ;
   }
@@ -3720,14 +3639,14 @@ void cGrammar_sara_5F_grammar::nt_component_ (GALGAS_semanticContext & parameter
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_io_5F_bool_5F_expression_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_io_5F_bool_5F_expression_i19_parse(inLexique) ;
+  rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_io_5F_bool_5F_expression_ (const GALGAS_semanticContext parameter_1,
                                 GALGAS_M_5F_variablesMap & parameter_2,
                                 GALGAS_AC_5F_boolExpression & parameter_3,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_io_5F_bool_5F_expression_i19_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  rule_sara_5F_parser_io_5F_bool_5F_expression_i13_(parameter_1, parameter_2, parameter_3, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3737,14 +3656,14 @@ void cGrammar_sara_5F_grammar::nt_io_5F_bool_5F_expression_ (const GALGAS_semant
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_io_5F_and_5F_expression_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_io_5F_and_5F_expression_i20_parse(inLexique) ;
+  rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_io_5F_and_5F_expression_ (const GALGAS_semanticContext parameter_1,
                                 GALGAS_M_5F_variablesMap & parameter_2,
                                 GALGAS_AC_5F_boolExpression & parameter_3,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_io_5F_and_5F_expression_i20_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  rule_sara_5F_parser_io_5F_and_5F_expression_i14_(parameter_1, parameter_2, parameter_3, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3756,22 +3675,22 @@ void cGrammar_sara_5F_grammar::nt_io_5F_and_5F_expression_ (const GALGAS_semanti
 void cGrammar_sara_5F_grammar::nt_io_5F_primary_parse (C_Lexique_sara_5F_scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 1 :
-    rule_sara_5F_parser_io_5F_primary_i21_parse(inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i15_parse(inLexique) ;
     break ;
   case 2 :
-    rule_sara_5F_parser_io_5F_primary_i22_parse(inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i16_parse(inLexique) ;
     break ;
   case 3 :
-    rule_sara_5F_parser_io_5F_primary_i23_parse(inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i17_parse(inLexique) ;
     break ;
   case 4 :
-    rule_sara_5F_parser_io_5F_primary_i24_parse(inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i18_parse(inLexique) ;
     break ;
   case 5 :
-    rule_sara_5F_parser_io_5F_primary_i25_parse(inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i19_parse(inLexique) ;
     break ;
   case 6 :
-    rule_sara_5F_parser_io_5F_primary_i26_parse(inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i20_parse(inLexique) ;
     break ;
   default :
     break ;
@@ -3784,22 +3703,22 @@ void cGrammar_sara_5F_grammar::nt_io_5F_primary_ (const GALGAS_semanticContext p
                                 C_Lexique_sara_5F_scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 1 :
-    rule_sara_5F_parser_io_5F_primary_i21_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i15_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   case 2 :
-    rule_sara_5F_parser_io_5F_primary_i22_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i16_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   case 3 :
-    rule_sara_5F_parser_io_5F_primary_i23_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i17_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   case 4 :
-    rule_sara_5F_parser_io_5F_primary_i24_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i18_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   case 5 :
-    rule_sara_5F_parser_io_5F_primary_i25_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i19_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   case 6 :
-    rule_sara_5F_parser_io_5F_primary_i26_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_io_5F_primary_i20_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   default :
     break ;
@@ -3813,14 +3732,14 @@ void cGrammar_sara_5F_grammar::nt_io_5F_primary_ (const GALGAS_semanticContext p
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_definition_5F_expression_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_definition_5F_expression_i27_parse(inLexique) ;
+  rule_sara_5F_parser_definition_5F_expression_i21_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_definition_5F_expression_ (const GALGAS_semanticContext parameter_1,
                                 GALGAS_M_5F_variablesMap & parameter_2,
                                 GALGAS_AC_5F_machineDefinition & parameter_3,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_definition_5F_expression_i27_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  rule_sara_5F_parser_definition_5F_expression_i21_(parameter_1, parameter_2, parameter_3, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3830,14 +3749,14 @@ void cGrammar_sara_5F_grammar::nt_definition_5F_expression_ (const GALGAS_semant
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_definition_5F_expression_5F_term_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_definition_5F_expression_5F_term_i28_parse(inLexique) ;
+  rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_definition_5F_expression_5F_term_ (const GALGAS_semanticContext parameter_1,
                                 GALGAS_M_5F_variablesMap & parameter_2,
                                 GALGAS_AC_5F_machineDefinition & parameter_3,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_definition_5F_expression_5F_term_i28_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  rule_sara_5F_parser_definition_5F_expression_5F_term_i22_(parameter_1, parameter_2, parameter_3, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3847,7 +3766,7 @@ void cGrammar_sara_5F_grammar::nt_definition_5F_expression_5F_term_ (const GALGA
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_modalcompadd_5F_definition_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_modalcompadd_5F_definition_i29_parse(inLexique) ;
+  rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_modalcompadd_5F_definition_ (const GALGAS_semanticContext parameter_1,
@@ -3855,7 +3774,7 @@ void cGrammar_sara_5F_grammar::nt_modalcompadd_5F_definition_ (const GALGAS_sema
                                 GALGAS_M_5F_modesMap & parameter_3,
                                 GALGAS_ListForModes & parameter_4,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_modalcompadd_5F_definition_i29_(parameter_1, parameter_2, parameter_3, parameter_4, inLexique) ;
+  rule_sara_5F_parser_modalcompadd_5F_definition_i23_(parameter_1, parameter_2, parameter_3, parameter_4, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3865,7 +3784,7 @@ void cGrammar_sara_5F_grammar::nt_modalcompadd_5F_definition_ (const GALGAS_sema
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_modalcompsub_5F_definition_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_modalcompsub_5F_definition_i30_parse(inLexique) ;
+  rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_modalcompsub_5F_definition_ (const GALGAS_semanticContext parameter_1,
@@ -3873,7 +3792,7 @@ void cGrammar_sara_5F_grammar::nt_modalcompsub_5F_definition_ (const GALGAS_sema
                                 GALGAS_M_5F_modesMap & parameter_3,
                                 GALGAS_ListForModes & parameter_4,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_modalcompsub_5F_definition_i30_(parameter_1, parameter_2, parameter_3, parameter_4, inLexique) ;
+  rule_sara_5F_parser_modalcompsub_5F_definition_i24_(parameter_1, parameter_2, parameter_3, parameter_4, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3885,10 +3804,10 @@ void cGrammar_sara_5F_grammar::nt_modalcompsub_5F_definition_ (const GALGAS_sema
 void cGrammar_sara_5F_grammar::nt_definition_5F_expression_5F_factor_parse (C_Lexique_sara_5F_scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 1 :
-    rule_sara_5F_parser_definition_5F_expression_5F_factor_i31_parse(inLexique) ;
+    rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse(inLexique) ;
     break ;
   case 2 :
-    rule_sara_5F_parser_definition_5F_expression_5F_factor_i32_parse(inLexique) ;
+    rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse(inLexique) ;
     break ;
   default :
     break ;
@@ -3901,10 +3820,10 @@ void cGrammar_sara_5F_grammar::nt_definition_5F_expression_5F_factor_ (const GAL
                                 C_Lexique_sara_5F_scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 1 :
-    rule_sara_5F_parser_definition_5F_expression_5F_factor_i31_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   case 2 :
-    rule_sara_5F_parser_definition_5F_expression_5F_factor_i32_(parameter_1, parameter_2, parameter_3, inLexique) ;
+    rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_(parameter_1, parameter_2, parameter_3, inLexique) ;
     break ;
   default :
     break ;
@@ -3918,14 +3837,14 @@ void cGrammar_sara_5F_grammar::nt_definition_5F_expression_5F_factor_ (const GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cGrammar_sara_5F_grammar::nt_explicit_5F_automaton_parse (C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_explicit_5F_automaton_i33_parse(inLexique) ;
+  rule_sara_5F_parser_explicit_5F_automaton_i27_parse(inLexique) ;
 }
 
 void cGrammar_sara_5F_grammar::nt_explicit_5F_automaton_ (const GALGAS_semanticContext parameter_1,
                                 GALGAS_M_5F_variablesMap & parameter_2,
                                 GALGAS_AC_5F_machineDefinition & parameter_3,
                                 C_Lexique_sara_5F_scanner * inLexique) {
-  rule_sara_5F_parser_explicit_5F_automaton_i33_(parameter_1, parameter_2, parameter_3, inLexique) ;
+  rule_sara_5F_parser_explicit_5F_automaton_i27_(parameter_1, parameter_2, parameter_3, inLexique) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

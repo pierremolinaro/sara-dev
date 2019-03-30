@@ -22,8 +22,9 @@ list keyWordList style keyWords error message "the '%K' key word"{
  "auto", "state", "first", "last", "goto", "true", "false",
  "nofirst", "nolast", "modalcompadd", "exclude", "modalcompsub", "include",
  "to", "scenario", "trans", "display",
- "ite_cache", "and_cache", "map", "bdd", "bool",
- "use_and", "use_ite", "use_and_ite", "check", "checkbool", "checkidentical" }
+# "ite_cache", "and_cache", "use_and", "use_ite", "use_and_ite", 
+ "bdd", "bool", "map",
+ "check", "checkbool", "checkidentical" }
 
 rule 'a'->'z' | 'A'->'Z' {
   repeat

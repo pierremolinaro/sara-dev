@@ -85,14 +85,9 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
    kToken_scenario,
    kToken_trans,
    kToken_display,
-   kToken_ite_5F_cache,
-   kToken_and_5F_cache,
-   kToken_map,
    kToken_bdd,
    kToken_bool,
-   kToken_use_5F_and,
-   kToken_use_5F_ite,
-   kToken_use_5F_and_5F_ite,
+   kToken_map,
    kToken_check,
    kToken_checkbool,
    kToken_checkidentical,
@@ -149,7 +144,7 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 54 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 49 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -4421,339 +4416,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioCompon
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @typeUse_5F_AND class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_typeUse_5F_AND : public GALGAS_AC_5F_job {
-//--- Constructor
-  public : GALGAS_typeUse_5F_AND (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeUse_5F_AND constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeUse_5F_AND * ptr (void) const { return (const cPtr_typeUse_5F_AND *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeUse_5F_AND (const cPtr_typeUse_5F_AND * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeUse_5F_AND extractObject (const GALGAS_object & inObject,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeUse_5F_AND constructor_new (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeUse_5F_AND & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeUse_5F_AND class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeUse_5F_AND ;
-
-#include "separateHeaderFor_typeUse_5F_AND.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @typeUse_5F_ITE class                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_typeUse_5F_ITE : public GALGAS_AC_5F_job {
-//--- Constructor
-  public : GALGAS_typeUse_5F_ITE (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeUse_5F_ITE constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeUse_5F_ITE * ptr (void) const { return (const cPtr_typeUse_5F_ITE *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeUse_5F_ITE (const cPtr_typeUse_5F_ITE * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeUse_5F_ITE extractObject (const GALGAS_object & inObject,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeUse_5F_ITE constructor_new (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeUse_5F_ITE & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeUse_5F_ITE class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeUse_5F_ITE ;
-
-#include "separateHeaderFor_typeUse_5F_ITE.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @typeUse_5F_AND_5F_ITE class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_typeUse_5F_AND_5F_ITE : public GALGAS_AC_5F_job {
-//--- Constructor
-  public : GALGAS_typeUse_5F_AND_5F_ITE (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeUse_5F_AND_5F_ITE constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeUse_5F_AND_5F_ITE * ptr (void) const { return (const cPtr_typeUse_5F_AND_5F_ITE *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeUse_5F_AND_5F_ITE (const cPtr_typeUse_5F_AND_5F_ITE * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeUse_5F_AND_5F_ITE extractObject (const GALGAS_object & inObject,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeUse_5F_AND_5F_ITE constructor_new (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeUse_5F_AND_5F_ITE & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeUse_5F_AND_5F_ITE class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeUse_5F_AND_5F_ITE ;
-
-#include "separateHeaderFor_typeUse_5F_AND_5F_ITE.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @typeResize_5F_AND_5F_cache class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_typeResize_5F_AND_5F_cache : public GALGAS_AC_5F_job {
-//--- Constructor
-  public : GALGAS_typeResize_5F_AND_5F_cache (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeResize_5F_AND_5F_cache constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeResize_5F_AND_5F_cache * ptr (void) const { return (const cPtr_typeResize_5F_AND_5F_cache *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeResize_5F_AND_5F_cache (const cPtr_typeResize_5F_AND_5F_cache * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeResize_5F_AND_5F_cache extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeResize_5F_AND_5F_cache constructor_new (const class GALGAS_luint & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeResize_5F_AND_5F_cache & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mNewSize (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeResize_5F_AND_5F_cache class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeResize_5F_AND_5F_cache ;
-
-#include "separateHeaderFor_typeResize_5F_AND_5F_cache.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @typeResize_5F_ITE_5F_cache class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_typeResize_5F_ITE_5F_cache : public GALGAS_AC_5F_job {
-//--- Constructor
-  public : GALGAS_typeResize_5F_ITE_5F_cache (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeResize_5F_ITE_5F_cache constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeResize_5F_ITE_5F_cache * ptr (void) const { return (const cPtr_typeResize_5F_ITE_5F_cache *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeResize_5F_ITE_5F_cache (const cPtr_typeResize_5F_ITE_5F_cache * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeResize_5F_ITE_5F_cache extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeResize_5F_ITE_5F_cache constructor_new (const class GALGAS_luint & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeResize_5F_ITE_5F_cache & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mNewSize (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeResize_5F_ITE_5F_cache class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeResize_5F_ITE_5F_cache ;
-
-#include "separateHeaderFor_typeResize_5F_ITE_5F_cache.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @typeResizeMap class                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_typeResizeMap : public GALGAS_AC_5F_job {
-//--- Constructor
-  public : GALGAS_typeResizeMap (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeResizeMap constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_typeResizeMap * ptr (void) const { return (const cPtr_typeResizeMap *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_typeResizeMap (const cPtr_typeResizeMap * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeResizeMap extractObject (const GALGAS_object & inObject,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeResizeMap constructor_new (const class GALGAS_luint & inOperand0
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeResizeMap & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mNewSize (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeResizeMap class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeResizeMap ;
-
-#include "separateHeaderFor_typeResizeMap.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
 //                                             @typeDisplayBDDstats class                                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5513,142 +5175,112 @@ class cParser_sara_5F_parser {
 
   protected : void rule_sara_5F_parser_component_i12_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_component_i13_ (GALGAS_semanticContext & ioArgument0,
-                                                       C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i13_parse (C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i14_ (GALGAS_semanticContext & ioArgument0,
-                                                       C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i14_parse (C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i15_ (GALGAS_semanticContext & ioArgument0,
-                                                       C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i15_parse (C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i16_ (GALGAS_semanticContext & ioArgument0,
-                                                       C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i16_parse (C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i17_ (GALGAS_semanticContext & ioArgument0,
-                                                       C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i17_parse (C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i18_ (GALGAS_semanticContext & ioArgument0,
-                                                       C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_component_i18_parse (C_Lexique_sara_5F_scanner * inLexique) ;
-
-  protected : void rule_sara_5F_parser_io_5F_bool_5F_expression_i19_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_ (const GALGAS_semanticContext constinArgument0,
                                                                       GALGAS_M_5F_variablesMap & ioArgument1,
                                                                       GALGAS_AC_5F_boolExpression & outArgument2,
                                                                       C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_bool_5F_expression_i19_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_and_5F_expression_i20_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_and_5F_expression_i14_ (const GALGAS_semanticContext constinArgument0,
                                                                      GALGAS_M_5F_variablesMap & ioArgument1,
                                                                      GALGAS_AC_5F_boolExpression & outArgument2,
                                                                      C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_and_5F_expression_i20_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i21_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_primary_i15_ (const GALGAS_semanticContext constinArgument0,
                                                            GALGAS_M_5F_variablesMap & ioArgument1,
                                                            GALGAS_AC_5F_boolExpression & outArgument2,
                                                            C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i21_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_primary_i15_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i22_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_primary_i16_ (const GALGAS_semanticContext constinArgument0,
                                                            GALGAS_M_5F_variablesMap & ioArgument1,
                                                            GALGAS_AC_5F_boolExpression & outArgument2,
                                                            C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i22_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_primary_i16_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i23_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_primary_i17_ (const GALGAS_semanticContext constinArgument0,
                                                            GALGAS_M_5F_variablesMap & ioArgument1,
                                                            GALGAS_AC_5F_boolExpression & outArgument2,
                                                            C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i23_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_primary_i17_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i24_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_primary_i18_ (const GALGAS_semanticContext constinArgument0,
                                                            GALGAS_M_5F_variablesMap & ioArgument1,
                                                            GALGAS_AC_5F_boolExpression & outArgument2,
                                                            C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i24_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_primary_i18_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i25_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_primary_i19_ (const GALGAS_semanticContext constinArgument0,
                                                            GALGAS_M_5F_variablesMap & ioArgument1,
                                                            GALGAS_AC_5F_boolExpression & outArgument2,
                                                            C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i25_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_primary_i19_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i26_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_io_5F_primary_i20_ (const GALGAS_semanticContext constinArgument0,
                                                            GALGAS_M_5F_variablesMap & ioArgument1,
                                                            GALGAS_AC_5F_boolExpression & outArgument2,
                                                            C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_io_5F_primary_i26_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_io_5F_primary_i20_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_i27_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_definition_5F_expression_i21_ (const GALGAS_semanticContext constinArgument0,
                                                                       GALGAS_M_5F_variablesMap & ioArgument1,
                                                                       GALGAS_AC_5F_machineDefinition & outArgument2,
                                                                       C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_i27_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_definition_5F_expression_i21_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_5F_term_i28_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_ (const GALGAS_semanticContext constinArgument0,
                                                                               GALGAS_M_5F_variablesMap & ioArgument1,
                                                                               GALGAS_AC_5F_machineDefinition & outArgument2,
                                                                               C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_5F_term_i28_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_modalcompadd_5F_definition_i29_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_modalcompadd_5F_definition_i23_ (const GALGAS_semanticContext constinArgument0,
                                                                         GALGAS_M_5F_variablesMap & ioArgument1,
                                                                         GALGAS_M_5F_modesMap & outArgument2,
                                                                         GALGAS_ListForModes & outArgument3,
                                                                         C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_modalcompadd_5F_definition_i29_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_modalcompsub_5F_definition_i30_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_modalcompsub_5F_definition_i24_ (const GALGAS_semanticContext constinArgument0,
                                                                         GALGAS_M_5F_variablesMap & ioArgument1,
                                                                         GALGAS_M_5F_modesMap & outArgument2,
                                                                         GALGAS_ListForModes & outArgument3,
                                                                         C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_modalcompsub_5F_definition_i30_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i31_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_ (const GALGAS_semanticContext constinArgument0,
                                                                                 GALGAS_M_5F_variablesMap & ioArgument1,
                                                                                 GALGAS_AC_5F_machineDefinition & outArgument2,
                                                                                 C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i31_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i32_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_ (const GALGAS_semanticContext constinArgument0,
                                                                                 GALGAS_M_5F_variablesMap & ioArgument1,
                                                                                 GALGAS_AC_5F_machineDefinition & outArgument2,
                                                                                 C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i32_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_explicit_5F_automaton_i33_ (const GALGAS_semanticContext constinArgument0,
+  protected : void rule_sara_5F_parser_explicit_5F_automaton_i27_ (const GALGAS_semanticContext constinArgument0,
                                                                    GALGAS_M_5F_variablesMap & ioArgument1,
                                                                    GALGAS_AC_5F_machineDefinition & outArgument2,
                                                                    C_Lexique_sara_5F_scanner * inLexique) ;
 
-  protected : void rule_sara_5F_parser_explicit_5F_automaton_i33_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected : void rule_sara_5F_parser_explicit_5F_automaton_i27_parse (C_Lexique_sara_5F_scanner * inLexique) ;
 
 
 
