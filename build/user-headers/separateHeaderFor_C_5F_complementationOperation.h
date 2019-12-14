@@ -32,6 +32,7 @@ class cPtr_C_5F_complementationOperation : public cPtr_AC_5F_machineDefinition {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMOperand (GALGAS_AC_5F_machineDefinition inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

@@ -32,7 +32,9 @@ class cPtr_C_5F_equalExpression : public cPtr_AC_5F_boolExpression {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

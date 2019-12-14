@@ -34,7 +34,9 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mSourceStateExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMSourceStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mTargetStateExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMTargetStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

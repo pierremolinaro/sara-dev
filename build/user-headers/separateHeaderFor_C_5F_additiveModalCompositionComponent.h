@@ -34,7 +34,9 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_M_5F_modesMap getter_mModeMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMModeMap (GALGAS_M_5F_modesMap inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_ListForModes getter_mInclusionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInclusionList (GALGAS_ListForModes inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

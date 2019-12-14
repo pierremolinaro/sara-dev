@@ -14,6 +14,8 @@ build/**
 *.o
 *.dep
 *.exe
+makefile-macosx/sara
+makefile-macosx/sara-debug
 makefile-x86linux32-on-macosx/sara
 makefile-x86linux32-on-macosx/sara-debug
 makefile-x86linux64-on-macosx/sara

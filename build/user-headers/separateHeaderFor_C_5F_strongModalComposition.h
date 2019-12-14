@@ -36,8 +36,11 @@ class cPtr_C_5F_strongModalComposition : public cPtr_AC_5F_machineDefinition {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mLeftOperand (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMLeftOperand (GALGAS_AC_5F_machineDefinition inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mErrorLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMErrorLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mRightOperand (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMRightOperand (GALGAS_AC_5F_machineDefinition inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
