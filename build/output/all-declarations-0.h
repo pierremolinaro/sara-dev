@@ -1,31 +1,31 @@
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               LEXIQUE sara_5F_scanner                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//LEXIQUE sara_5F_scanner
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                    E X T E R N    R O U T I N E S                                                                   *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                    E X T E R N    R O U T I N E S                                             
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                    E X T E R N    F U N C T I O N S                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                    E X T E R N    F U N C T I O N S                                           
+//----------------------------------------------------------------------------------------------------------------------
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                       T O K E N    C L A S S                                                                        *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                       T O K E N    C L A S S                                                  
+//----------------------------------------------------------------------------------------------------------------------
 
 class cTokenFor_sara_5F_scanner : public cToken {
   public : C_String mLexicalAttribute_identifierString ;
@@ -34,9 +34,9 @@ class cTokenFor_sara_5F_scanner : public cToken {
   public : cTokenFor_sara_5F_scanner (void) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                     S C A N N E R    C L A S S                                                                      *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//                     S C A N N E R    C L A S S                                                
+//----------------------------------------------------------------------------------------------------------------------
 
 class C_Lexique_sara_5F_scanner : public C_Lexique {
 //--- Constructors
@@ -157,19 +157,19 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
   protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @M_variablesMap map                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_variablesMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_variablesMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_M_5F_variablesMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -178,7 +178,7 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_M_5F_variablesMap (const GALGAS_M_5F_variablesMap & inSource) ;
   public : GALGAS_M_5F_variablesMap & operator = (const GALGAS_M_5F_variablesMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -230,6 +230,11 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_M_5F_variablesMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -242,9 +247,9 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_M_5F_variablesMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_M_5F_variablesMap : public cGenericAbstractEnumerator {
   public : cEnumerator_M_5F_variablesMap (const GALGAS_M_5F_variablesMap & inEnumeratedObject,
@@ -257,15 +262,15 @@ class cEnumerator_M_5F_variablesMap : public cGenericAbstractEnumerator {
   public : class GALGAS_M_5F_variablesMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Class for element of '@M_variablesMap' map                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@M_variablesMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_variablesMap : public cMapElement {
 //--- Map attributes
@@ -289,11 +294,11 @@ class cMapElement_M_5F_variablesMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @M_5F_variablesMap_2D_element struct                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_5F_variablesMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -350,29 +355,31 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_M_5F_variablesMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @M_stateMap map                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_stateMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_stateMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_M_5F_stateMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -381,7 +388,7 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_M_5F_stateMap (const GALGAS_M_5F_stateMap & inSource) ;
   public : GALGAS_M_5F_stateMap & operator = (const GALGAS_M_5F_stateMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -438,6 +445,11 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_M_5F_stateMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -450,9 +462,9 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_M_5F_stateMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_M_5F_stateMap : public cGenericAbstractEnumerator {
   public : cEnumerator_M_5F_stateMap (const GALGAS_M_5F_stateMap & inEnumeratedObject,
@@ -465,15 +477,15 @@ class cEnumerator_M_5F_stateMap : public cGenericAbstractEnumerator {
   public : class GALGAS_M_5F_stateMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Class for element of '@M_stateMap' map                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@M_stateMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_stateMap : public cMapElement {
 //--- Map attributes
@@ -497,11 +509,11 @@ class cMapElement_M_5F_stateMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @M_5F_stateMap_2D_element struct                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_5F_stateMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -558,21 +570,23 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_M_5F_stateMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @L_translationVector list                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_translationVector list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -674,6 +688,8 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -682,9 +698,9 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_translationVector class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_translationVector : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_translationVector (const GALGAS_L_5F_translationVector & inEnumeratedObject,
@@ -696,15 +712,15 @@ class cEnumerator_L_5F_translationVector : public cGenericAbstractEnumerator {
   public : class GALGAS_L_5F_translationVector_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_translationVector ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @L_5F_translationVector_2D_element struct                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_translationVector_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -755,21 +771,23 @@ class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTargetSlot (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_translationVector_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_translationVector_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @AC_5F_boolExpression class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @AC_5F_boolExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_AC_5F_boolExpression : public AC_GALGAS_class {
 //--- Constructor
@@ -801,23 +819,25 @@ class GALGAS_AC_5F_boolExpression : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_AC_5F_boolExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_boolExpression ;
 
 #include "separateHeaderFor_AC_5F_boolExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_andExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_andExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -864,23 +884,25 @@ class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_andExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_andExpression ;
 
 #include "separateHeaderFor_C_5F_andExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_orExpression class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_orExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -927,23 +949,25 @@ class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_orExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_orExpression ;
 
 #include "separateHeaderFor_C_5F_orExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_xorExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_xorExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -990,23 +1014,25 @@ class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_xorExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_xorExpression ;
 
 #include "separateHeaderFor_C_5F_xorExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @C_5F_impliesExpression class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_impliesExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -1053,23 +1079,25 @@ class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_impliesExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_impliesExpression ;
 
 #include "separateHeaderFor_C_5F_impliesExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @C_5F_equalExpression class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_equalExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -1116,23 +1144,25 @@ class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_equalExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_equalExpression ;
 
 #include "separateHeaderFor_C_5F_equalExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_notExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_notExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -1173,23 +1203,25 @@ class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_notExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_notExpression ;
 
 #include "separateHeaderFor_C_5F_notExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @C_5F_VariableExpression class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_VariableExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -1233,23 +1265,25 @@ class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mInputVarIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_VariableExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_VariableExpression ;
 
 #include "separateHeaderFor_C_5F_VariableExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @C_5F_trueExpression class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_trueExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -1287,23 +1321,25 @@ class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_trueExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_trueExpression ;
 
 #include "separateHeaderFor_C_5F_trueExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @C_5F_falseExpression class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_falseExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -1341,23 +1377,25 @@ class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_falseExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_falseExpression ;
 
 #include "separateHeaderFor_C_5F_falseExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @L_transitionDefinition list                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_transitionDefinition list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1495,6 +1533,8 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1503,9 +1543,9 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_transitionDefinition class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_transitionDefinition : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_transitionDefinition (const GALGAS_L_5F_transitionDefinition & inEnumeratedObject,
@@ -1519,15 +1559,15 @@ class cEnumerator_L_5F_transitionDefinition : public cGenericAbstractEnumerator 
   public : class GALGAS_L_5F_transitionDefinition_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_transitionDefinition ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    @L_5F_transitionDefinition_2D_element struct                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_transitionDefinition_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1587,21 +1627,23 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTargetStateIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_transitionDefinition_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_transitionDefinition_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @L_stateDefinition list                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_stateDefinition list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1757,6 +1799,8 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1765,9 +1809,9 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_stateDefinition class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_stateDefinition : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_stateDefinition (const GALGAS_L_5F_stateDefinition & inEnumeratedObject,
@@ -1782,15 +1826,15 @@ class cEnumerator_L_5F_stateDefinition : public cGenericAbstractEnumerator {
   public : class GALGAS_L_5F_stateDefinition_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_stateDefinition ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       @L_5F_stateDefinition_2D_element struct                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_stateDefinition_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1856,21 +1900,23 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_L_5F_transitionDefinition getter_mTransitionsList (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_stateDefinition_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_stateDefinition_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @L_statesDefinitionList list                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_statesDefinitionList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1990,6 +2036,8 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -1998,9 +2046,9 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_statesDefinitionList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_statesDefinitionList : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_statesDefinitionList (const GALGAS_L_5F_statesDefinitionList & inEnumeratedObject,
@@ -2013,15 +2061,15 @@ class cEnumerator_L_5F_statesDefinitionList : public cGenericAbstractEnumerator 
   public : class GALGAS_L_5F_statesDefinitionList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_statesDefinitionList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    @L_5F_statesDefinitionList_2D_element struct                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_statesDefinitionList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -2078,21 +2126,23 @@ class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mStateLocation (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_statesDefinitionList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_statesDefinitionList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @AC_5F_machineDefinition class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @AC_5F_machineDefinition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_AC_5F_machineDefinition : public AC_GALGAS_class {
 //--- Constructor
@@ -2124,31 +2174,33 @@ class GALGAS_AC_5F_machineDefinition : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_AC_5F_machineDefinition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_machineDefinition ;
 
 #include "separateHeaderFor_AC_5F_machineDefinition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @M_modesMap map                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_modesMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_modesMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_M_5F_modesMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -2157,7 +2209,7 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_M_5F_modesMap (const GALGAS_M_5F_modesMap & inSource) ;
   public : GALGAS_M_5F_modesMap & operator = (const GALGAS_M_5F_modesMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2221,6 +2273,12 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1,
+                                                     class GALGAS_AC_5F_machineDefinition & outOperand2) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_M_5F_modesMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -2233,9 +2291,9 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_M_5F_modesMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_M_5F_modesMap : public cGenericAbstractEnumerator {
   public : cEnumerator_M_5F_modesMap (const GALGAS_M_5F_modesMap & inEnumeratedObject,
@@ -2249,15 +2307,15 @@ class cEnumerator_M_5F_modesMap : public cGenericAbstractEnumerator {
   public : class GALGAS_M_5F_modesMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Class for element of '@M_modesMap' map                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@M_modesMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_modesMap : public cMapElement {
 //--- Map attributes
@@ -2283,11 +2341,11 @@ class cMapElement_M_5F_modesMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @M_5F_modesMap_2D_element struct                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_5F_modesMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -2347,21 +2405,23 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mModeDefinition (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_M_5F_modesMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @ListForModes list                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @ListForModes list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_ListForModes : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -2481,6 +2541,8 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -2489,9 +2551,9 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
  
 } ; // End of GALGAS_ListForModes class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_ListForModes : public cGenericAbstractEnumerator {
   public : cEnumerator_ListForModes (const GALGAS_ListForModes & inEnumeratedObject,
@@ -2504,15 +2566,15 @@ class cEnumerator_ListForModes : public cGenericAbstractEnumerator {
   public : class GALGAS_ListForModes_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ListForModes ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @ListForModes_2D_element struct                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @ListForModes_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -2569,21 +2631,23 @@ class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTargetMode (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_ListForModes_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ListForModes_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  @C_5F_substractiveModalCompositionComponent class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_substractiveModalCompositionComponent class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -2633,23 +2697,25 @@ class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_ma
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_modesMap getter_mModeMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_substractiveModalCompositionComponent class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_substractiveModalCompositionComponent ;
 
 #include "separateHeaderFor_C_5F_substractiveModalCompositionComponent.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    @C_5F_additiveModalCompositionComponent class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_additiveModalCompositionComponent class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -2699,23 +2765,25 @@ class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machin
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_modesMap getter_mModeMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_additiveModalCompositionComponent class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_additiveModalCompositionComponent ;
 
 #include "separateHeaderFor_C_5F_additiveModalCompositionComponent.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @C_5F_trans class                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_trans class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -2762,23 +2830,25 @@ class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mTargetStateExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_trans class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_trans ;
 
 #include "separateHeaderFor_C_5F_trans.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_importMachine class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_importMachine class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -2828,23 +2898,25 @@ class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_L_5F_translationVector getter_mTranslationVector (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_importMachine class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importMachine ;
 
 #include "separateHeaderFor_C_5F_importMachine.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       @C_5F_explicitAutomatonDefinition class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_explicitAutomatonDefinition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -2912,23 +2984,25 @@ class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefin
   public : VIRTUAL_IN_DEBUG class GALGAS_L_5F_statesDefinitionList getter_mTerminalStatesDefinitionList (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_explicitAutomatonDefinition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_explicitAutomatonDefinition ;
 
 #include "separateHeaderFor_C_5F_explicitAutomatonDefinition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @C_5F_boolToSeqExpression class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_boolToSeqExpression class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -2969,23 +3043,25 @@ class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_boolExpression getter_mExpression (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_boolToSeqExpression class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_boolToSeqExpression ;
 
 #include "separateHeaderFor_C_5F_boolToSeqExpression.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @C_5F_existsDefinition class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_existsDefinition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3038,23 +3114,25 @@ class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTotalVariableCount (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_existsDefinition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_existsDefinition ;
 
 #include "separateHeaderFor_C_5F_existsDefinition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @C_5F_forallDefinition class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_forallDefinition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3107,23 +3185,25 @@ class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTotalVariableCount (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_forallDefinition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_forallDefinition ;
 
 #include "separateHeaderFor_C_5F_forallDefinition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @C_5F_parallelComposition class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_parallelComposition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3170,23 +3250,25 @@ class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mRightOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_parallelComposition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_parallelComposition ;
 
 #include "separateHeaderFor_C_5F_parallelComposition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_orComposition class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_orComposition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3233,23 +3315,25 @@ class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mRightOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_orComposition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_orComposition ;
 
 #include "separateHeaderFor_C_5F_orComposition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @C_5F_strongModalComposition class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_strongModalComposition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3302,23 +3386,25 @@ class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mRightOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_strongModalComposition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_strongModalComposition ;
 
 #include "separateHeaderFor_C_5F_strongModalComposition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @C_5F_weakModalComposition class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_weakModalComposition class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3371,23 +3457,25 @@ class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mRightOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_weakModalComposition class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_weakModalComposition ;
 
 #include "separateHeaderFor_C_5F_weakModalComposition.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @C_5F_fullSaturationOperation class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_fullSaturationOperation class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3428,23 +3516,25 @@ class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinitio
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_fullSaturationOperation class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_fullSaturationOperation ;
 
 #include "separateHeaderFor_C_5F_fullSaturationOperation.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @C_5F_complementationOperation class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_complementationOperation class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3485,23 +3575,25 @@ class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefiniti
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_complementationOperation class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_complementationOperation ;
 
 #include "separateHeaderFor_C_5F_complementationOperation.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @C_5F_suppressTerminalStatesOperation class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_suppressTerminalStatesOperation class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3542,23 +3634,25 @@ class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineD
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_suppressTerminalStatesOperation class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation ;
 
 #include "separateHeaderFor_C_5F_suppressTerminalStatesOperation.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @C_5F_suppressInitialStatesOperation class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_suppressInitialStatesOperation class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDefinition {
 //--- Constructor
@@ -3599,23 +3693,25 @@ class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDe
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_suppressInitialStatesOperation class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_suppressInitialStatesOperation ;
 
 #include "separateHeaderFor_C_5F_suppressInitialStatesOperation.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @AC_5F_job class                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @AC_5F_job class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_AC_5F_job : public AC_GALGAS_class {
 //--- Constructor
@@ -3647,23 +3743,25 @@ class GALGAS_AC_5F_job : public AC_GALGAS_class {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_AC_5F_job class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_job ;
 
 #include "separateHeaderFor_AC_5F_job.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @C_5F_machineDisplayStates class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDisplayStates class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -3707,23 +3805,25 @@ class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineDisplayStates class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayStates ;
 
 #include "separateHeaderFor_C_5F_machineDisplayStates.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       @C_5F_machineDisplayInitialStates class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDisplayInitialStates class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -3767,23 +3867,25 @@ class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineDisplayInitialStates class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayInitialStates ;
 
 #include "separateHeaderFor_C_5F_machineDisplayInitialStates.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @C_5F_machineDisplayTerminalStates class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDisplayTerminalStates class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -3827,23 +3929,25 @@ class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineDisplayTerminalStates class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTerminalStates ;
 
 #include "separateHeaderFor_C_5F_machineDisplayTerminalStates.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @C_5F_machineDisplayTransitions class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDisplayTransitions class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -3887,23 +3991,25 @@ class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineDisplayTransitions class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTransitions ;
 
 #include "separateHeaderFor_C_5F_machineDisplayTransitions.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @C_5F_machineCheckIdentical class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineCheckIdentical class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -3953,23 +4059,25 @@ class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mMachineIndex_32_ (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineCheckIdentical class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheckIdentical ;
 
 #include "separateHeaderFor_C_5F_machineCheckIdentical.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @L_inputConfigurationForScenario list                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_inputConfigurationForScenario list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4071,6 +4179,8 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -4079,9 +4189,9 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_inputConfigurationForScenario class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_inputConfigurationForScenario : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_inputConfigurationForScenario (const GALGAS_L_5F_inputConfigurationForScenario & inEnumeratedObject,
@@ -4093,15 +4203,15 @@ class cEnumerator_L_5F_inputConfigurationForScenario : public cGenericAbstractEn
   public : class GALGAS_L_5F_inputConfigurationForScenario_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputConfigurationForScenario ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                @L_5F_inputConfigurationForScenario_2D_element struct                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_inputConfigurationForScenario_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4152,21 +4262,23 @@ class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_ro
   public : VIRTUAL_IN_DEBUG class GALGAS_luint getter_mInputValue (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_inputConfigurationForScenario_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputConfigurationForScenario_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @L_inputScenario list                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_inputScenario list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4268,6 +4380,8 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -4276,9 +4390,9 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_inputScenario class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_inputScenario : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_inputScenario (const GALGAS_L_5F_inputScenario & inEnumeratedObject,
@@ -4290,15 +4404,15 @@ class cEnumerator_L_5F_inputScenario : public cGenericAbstractEnumerator {
   public : class GALGAS_L_5F_inputScenario_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @L_5F_inputScenario_2D_element struct                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_inputScenario_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4349,21 +4463,23 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_L_5F_inputConfigurationForScenario getter_mInputConfiguration (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_inputScenario_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @L_scenarioList list                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_scenarioList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4483,6 +4599,8 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
                                                                                     COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -4491,9 +4609,9 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_scenarioList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_scenarioList : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_scenarioList (const GALGAS_L_5F_scenarioList & inEnumeratedObject,
@@ -4506,15 +4624,15 @@ class cEnumerator_L_5F_scenarioList : public cGenericAbstractEnumerator {
   public : class GALGAS_L_5F_scenarioList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @L_5F_scenarioList_2D_element struct                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_scenarioList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4571,21 +4689,23 @@ class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mScenarioTitle (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_scenarioList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @C_5F_scenarioComponent class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_scenarioComponent class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -4653,23 +4773,25 @@ class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_scenarioComponent class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
 
 #include "separateHeaderFor_C_5F_scenarioComponent.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @typeDisplayBDDstats class                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @typeDisplayBDDstats class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -4707,23 +4829,25 @@ class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
 
 //--------------------------------- Getters
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_typeDisplayBDDstats class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats ;
 
 #include "separateHeaderFor_typeDisplayBDDstats.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @L_jobList list                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_jobList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_jobList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4825,6 +4949,8 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
@@ -4833,9 +4959,9 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_L_5F_jobList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
   public : cEnumerator_L_5F_jobList (const GALGAS_L_5F_jobList & inEnumeratedObject,
@@ -4847,15 +4973,15 @@ class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
   public : class GALGAS_L_5F_jobList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @L_5F_jobList_2D_element struct                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @L_5F_jobList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4903,29 +5029,31 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_AC_5F_job getter_mComponent (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_L_5F_jobList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @M_machinesMap map                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_machinesMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_machinesMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_M_5F_machinesMap_searchKey ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -4934,7 +5062,7 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_M_5F_machinesMap (const GALGAS_M_5F_machinesMap & inSource) ;
   public : GALGAS_M_5F_machinesMap & operator = (const GALGAS_M_5F_machinesMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5043,6 +5171,15 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
+                                                     class GALGAS_uint & outOperand1,
+                                                     class GALGAS_uint & outOperand2,
+                                                     class GALGAS_uint & outOperand3,
+                                                     class GALGAS_M_5F_variablesMap & outOperand4,
+                                                     class GALGAS_stringlist & outOperand5) const ;
+
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
   public : VIRTUAL_IN_DEBUG cMapElement_M_5F_machinesMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
@@ -5055,9 +5192,9 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_M_5F_machinesMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_M_5F_machinesMap : public cGenericAbstractEnumerator {
   public : cEnumerator_M_5F_machinesMap (const GALGAS_M_5F_machinesMap & inEnumeratedObject,
@@ -5074,15 +5211,15 @@ class cEnumerator_M_5F_machinesMap : public cGenericAbstractEnumerator {
   public : class GALGAS_M_5F_machinesMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Class for element of '@M_machinesMap' map                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@M_machinesMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_machinesMap : public cMapElement {
 //--- Map attributes
@@ -5114,11 +5251,11 @@ class cMapElement_M_5F_machinesMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @M_5F_machinesMap_2D_element struct                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @M_5F_machinesMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -5199,21 +5336,23 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_M_5F_machinesMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @semanticContext struct                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @semanticContext struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_semanticContext : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -5270,21 +5409,23 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_machinesMap getter_machinesMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_semanticContext class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Parser class 'sara_parser' declaration                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Parser class 'sara_parser' declaration
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cParser_sara_5F_parser {
 //--- Virtual destructor
@@ -5634,11 +5775,11 @@ class cParser_sara_5F_parser {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @C_5F_importBoolMachine class                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_importBoolMachine class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
 //--- Constructor
@@ -5694,23 +5835,25 @@ class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
   public : VIRTUAL_IN_DEBUG class GALGAS_L_5F_translationVector getter_mTranslationVector (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_importBoolMachine class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importBoolMachine ;
 
 #include "separateHeaderFor_C_5F_importBoolMachine.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @C_5F_machineCheck class                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineCheck class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -5760,23 +5903,25 @@ class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineCheck class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheck ;
 
 #include "separateHeaderFor_C_5F_machineCheck.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @C_5F_machineComponent class                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineComponent class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -5853,23 +5998,25 @@ class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineComponent class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineComponent ;
 
 #include "separateHeaderFor_C_5F_machineComponent.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    @C_5F_machineDefinedByAdditiveModalComp class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDefinedByAdditiveModalComp class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -5949,23 +6096,25 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineDefinedByAdditiveModalComp class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp ;
 
 #include "separateHeaderFor_C_5F_machineDefinedByAdditiveModalComp.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  @C_5F_machineDefinedBySubstractiveModalComp class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDefinedBySubstractiveModalComp class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_job {
 //--- Constructor
@@ -6045,23 +6194,25 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_jo
   public : VIRTUAL_IN_DEBUG class GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
 
 
+//--------------------------------- Optional Methods
+
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
 } ; // End of GALGAS_C_5F_machineDefinedBySubstractiveModalComp class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedBySubstractiveModalComp ;
 
 #include "separateHeaderFor_C_5F_machineDefinedBySubstractiveModalComp.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            Routine 'performComputations'                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'performComputations'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_performComputations (const class GALGAS_L_5F_jobList constinArgument0,
                                   class C_Compiler * inCompiler

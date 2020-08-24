@@ -6502,7 +6502,8 @@
       GCC_OPTIMIZATION_LEVEL = 0 ;
       GCC_PREPROCESSOR_DEFINITIONS = () ;
       INFOPLIST_FILE = "Info.plist";
-      PRODUCT_NAME = "CocoaSara" ;
+      PRODUCT_NAME = "CocoaSara";
+      PRODUCT_BUNDLE_IDENTIFIER = "fr.irccyn.sara";
     };
     name = Default;
   };
