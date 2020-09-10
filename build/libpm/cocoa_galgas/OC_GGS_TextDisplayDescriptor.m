@@ -4,7 +4,11 @@
 //
 //  Copyright (C) 2011, ..., 2016 Pierre Molinaro.
 //
+<<<<<<< HEAD
 //  e-mail : pierre@pcmolinaro.name
+=======
+//  e-mail : pcmolinaro@free.fr
+>>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
 //
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 //  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
@@ -387,6 +391,47 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
+=======
+
+/*- (void) shiftRightRangeEX: (NSValue *) inRangeValue {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSAttributedString * spaceString = self.spaceAttributedString ;
+  const NSRange selectedRange = [inRangeValue rangeValue] ;
+  //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
+  NSMutableAttributedString * mutableSourceString = [mTextView textStorage] ;
+  NSString * sourceString = [mutableSourceString string] ;
+  const NSRange lineRange = [sourceString lineRangeForRange:selectedRange] ;
+  //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
+  NSInteger insertedCharsCount = 0 ;
+  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+  const BOOL selectionBeginsAtFirstColumn = currentLineRange.location == selectedRange.location ;
+  do {
+    //NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
+    [mutableSourceString insertAttributedString:spaceString atIndex:currentLineRange.location] ;
+    insertedCharsCount += [spaceString length] ;
+    if (currentLineRange.location > 0) {
+      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
+    }
+  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//--- Update selected range
+  const NSRange newSelectedRange = selectionBeginsAtFirstColumn
+    ? NSMakeRange (selectedRange.location, selectedRange.length + (NSUInteger) insertedCharsCount)
+    : NSMakeRange (selectedRange.location + (NSUInteger) insertedCharsCount, selectedRange.length)
+  ;
+  [mTextView setSelectedRange:newSelectedRange] ;
+//--- Register undo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (shiftLeftRange:)
+    object:[NSValue valueWithRange:newSelectedRange]
+  ] ;
+} */
+
+//----------------------------------------------------------------------------------------------------------------------
+>>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
 
 - (void) shiftRightAction {
   #ifdef DEBUG_MESSAGES

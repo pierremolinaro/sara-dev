@@ -94,7 +94,16 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         (__bridge CFArrayRef) pathsToWatch,
         kFSEventStreamEventIdSinceNow,
         latency,
+<<<<<<< HEAD
         creationFlags
+=======
+        kFSEventStreamCreateFlagNoDefer
+        | kFSEventStreamCreateFlagUseCFTypes
+        | kFSEventStreamCreateFlagWatchRoot
+        | kFSEventStreamCreateFlagFileEvents
+        | kFSEventStreamCreateFlagMarkSelf // §§
+        | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
+>>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
       ) ;
       FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetMain(), kCFRunLoopDefaultMode);
       FSEventStreamStart (mFSEventStream) ;
