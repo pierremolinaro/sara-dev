@@ -6,11 +6,7 @@
 //
 //  Copyright (C) 2009, ..., 2016 Pierre Molinaro.
 //
-<<<<<<< HEAD
 //  e-mail : pierre@pcmolinaro.name
-=======
-//  e-mail : pcmolinaro@free.fr
->>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
 //
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 //  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
@@ -43,11 +39,6 @@
 //  S C A N N E R    A C T I O N S                                                               
 //
 //----------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
-
-//--- Predefined scanner actions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_actions
->>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
 
 void scanner_routine_multiplyUInt (C_Lexique & inLexique,
                                   const uint32_t inFactor,

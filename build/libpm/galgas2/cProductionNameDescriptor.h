@@ -7,11 +7,7 @@
 //
 //  Copyright (C) 1996, ..., 2010 Pierre Molinaro.
 //
-<<<<<<< HEAD
 //  e-mail : pierre@pcmolinaro.name
-=======
-//  e-mail : pcmolinaro@free.fr
->>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
 //
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 //  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)

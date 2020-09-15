@@ -35,7 +35,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
 
   - (void) callbackMethodForPath: (NSString *) inPath
            flag: (FSEventStreamEventFlags) inEventFlag {
-    NSLog (@"path '%@' flag:%X", inPath, inEventFlag) ; // §
+   // NSLog (@"path '%@' flag:%X", inPath, inEventFlag) ; // §
     for (OC_GGS_DocumentData * document in mDocuments) {
       if ([document.fileURL.path isEqualToString: inPath]) {
         [document fileDidChangeInFileSystem] ;
@@ -94,16 +94,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         (__bridge CFArrayRef) pathsToWatch,
         kFSEventStreamEventIdSinceNow,
         latency,
-<<<<<<< HEAD
         creationFlags
-=======
-        kFSEventStreamCreateFlagNoDefer
-        | kFSEventStreamCreateFlagUseCFTypes
-        | kFSEventStreamCreateFlagWatchRoot
-        | kFSEventStreamCreateFlagFileEvents
-        | kFSEventStreamCreateFlagMarkSelf // §§
-        | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
->>>>>>> 8223fa130c181cb7834a8b952dd08acb77eb40ea
       ) ;
       FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetMain(), kCFRunLoopDefaultMode);
       FSEventStreamStart (mFSEventStream) ;
