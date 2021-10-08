@@ -2481,13 +2481,13 @@ typeComparisonResult GALGAS_AC_5F_boolExpression::objectCompare (const GALGAS_AC
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_AC_5F_boolExpression::GALGAS_AC_5F_boolExpression (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_AC_5F_boolExpression::GALGAS_AC_5F_boolExpression (const cPtr_AC_5F_boolExpression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_AC_5F_boolExpression) ;
 }
 
@@ -5874,13 +5874,13 @@ typeComparisonResult GALGAS_AC_5F_machineDefinition::objectCompare (const GALGAS
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_AC_5F_machineDefinition::GALGAS_AC_5F_machineDefinition (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_AC_5F_machineDefinition::GALGAS_AC_5F_machineDefinition (const cPtr_AC_5F_machineDefinition * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_AC_5F_machineDefinition) ;
 }
 
@@ -10317,13 +10317,13 @@ typeComparisonResult GALGAS_AC_5F_job::objectCompare (const GALGAS_AC_5F_job & i
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_AC_5F_job::GALGAS_AC_5F_job (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_AC_5F_job::GALGAS_AC_5F_job (const cPtr_AC_5F_job * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_AC_5F_job) ;
 }
 

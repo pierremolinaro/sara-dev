@@ -25,52 +25,52 @@ list @L_translationVector {
   @uint mTargetSlot
 }
 
-abstract class @AC_boolExpression %generatedInSeparateFile {
+abstract shared class @AC_boolExpression %generatedInSeparateFile {
 }
 
-class @C_importBoolMachine : @AC_boolExpression {
+shared class @C_importBoolMachine : @AC_boolExpression {
   @uint mIndexOfImportedMachine
   @location mErrorLocation
   @L_translationVector mTranslationVector
 }
 
-class @C_andExpression : @AC_boolExpression {
+shared class @C_andExpression : @AC_boolExpression {
   @AC_boolExpression mLeftExpression
   @AC_boolExpression mRightExpression
 }
   
-class @C_orExpression : @AC_boolExpression {
+shared class @C_orExpression : @AC_boolExpression {
   @AC_boolExpression mLeftExpression
   @AC_boolExpression mRightExpression
 }
   
-class @C_xorExpression : @AC_boolExpression {
+shared class @C_xorExpression : @AC_boolExpression {
   @AC_boolExpression mLeftExpression
   @AC_boolExpression mRightExpression
 }
   
-class @C_impliesExpression : @AC_boolExpression  {
+shared class @C_impliesExpression : @AC_boolExpression  {
   @AC_boolExpression mLeftExpression
   @AC_boolExpression mRightExpression
 }
   
-class @C_equalExpression : @AC_boolExpression {
+shared class @C_equalExpression : @AC_boolExpression {
   @AC_boolExpression mLeftExpression
   @AC_boolExpression mRightExpression
 }
   
-class @C_notExpression : @AC_boolExpression {
+shared class @C_notExpression : @AC_boolExpression {
   @AC_boolExpression mExpression
 }
     
-class @C_VariableExpression : @AC_boolExpression {
+shared class @C_VariableExpression : @AC_boolExpression {
   @uint mInputVarIndex
 }
 
-class @C_trueExpression : @AC_boolExpression {
+shared class @C_trueExpression : @AC_boolExpression {
 }
 
-class @C_falseExpression : @AC_boolExpression {
+shared class @C_falseExpression : @AC_boolExpression {
 }
 
 #---------------------------------------------------------------------------*
@@ -97,7 +97,7 @@ list @L_statesDefinitionList {
 
 #---------------------------------------------------------------------------*
 
-abstract class @AC_machineDefinition %generatedInSeparateFile {
+abstract shared class @AC_machineDefinition %generatedInSeparateFile {
 }
 
 map @M_modesMap {
@@ -112,27 +112,27 @@ list @ListForModes {
   @uint mTargetMode
 }
 
-class @C_substractiveModalCompositionComponent : @AC_machineDefinition {
+shared class @C_substractiveModalCompositionComponent : @AC_machineDefinition {
   @M_modesMap mModeMap
   @ListForModes mExclusionList
 }
 
-class @C_additiveModalCompositionComponent : @AC_machineDefinition {
+shared class @C_additiveModalCompositionComponent : @AC_machineDefinition {
   @M_modesMap mModeMap
   @ListForModes mInclusionList
 }
 
-class @C_trans : @AC_machineDefinition {
+shared class @C_trans : @AC_machineDefinition {
   @AC_boolExpression mSourceStateExpression
   @AC_boolExpression mTargetStateExpression
 }
   
-class @C_importMachine : @AC_machineDefinition {
+shared class @C_importMachine : @AC_machineDefinition {
   @uint mIndexOfImportedMachine
   @L_translationVector mTranslationVector
 }
 
-class @C_explicitAutomatonDefinition : @AC_machineDefinition {
+shared class @C_explicitAutomatonDefinition : @AC_machineDefinition {
   @M_stateMap mStatesMap
   @L_statesDefinitionList mInitialStatesDefinitionList
   @L_statesDefinitionList mTerminalStatesDefinitionList
@@ -140,93 +140,93 @@ class @C_explicitAutomatonDefinition : @AC_machineDefinition {
   @location mEndOfDefinition
 }
 
- class @C_boolToSeqExpression : @AC_machineDefinition {
+ shared class @C_boolToSeqExpression : @AC_machineDefinition {
    @AC_boolExpression mExpression
  }
   
-class @C_existsDefinition : @AC_machineDefinition {
+shared class @C_existsDefinition : @AC_machineDefinition {
   @uint mPreviousVariableCount
   @uint mTotalVariableCount
   @AC_machineDefinition mOperand
 }
 
-class @C_forallDefinition : @AC_machineDefinition {
+shared class @C_forallDefinition : @AC_machineDefinition {
   @uint mPreviousVariableCount
   @uint mTotalVariableCount
   @AC_machineDefinition mOperand
 }
 
-class @C_parallelComposition : @AC_machineDefinition {
+shared class @C_parallelComposition : @AC_machineDefinition {
   @AC_machineDefinition mLeftOperand
   @AC_machineDefinition mRightOperand
 }
 
-class @C_orComposition : @AC_machineDefinition {
+shared class @C_orComposition : @AC_machineDefinition {
   @AC_machineDefinition mLeftOperand
   @AC_machineDefinition mRightOperand
 }
 
-class @C_strongModalComposition : @AC_machineDefinition {
-  @AC_machineDefinition mLeftOperand
-  @location mErrorLocation
-  @AC_machineDefinition mRightOperand
-}
-
-class @C_weakModalComposition : @AC_machineDefinition {
+shared class @C_strongModalComposition : @AC_machineDefinition {
   @AC_machineDefinition mLeftOperand
   @location mErrorLocation
   @AC_machineDefinition mRightOperand
 }
 
-class @C_fullSaturationOperation : @AC_machineDefinition {
+shared class @C_weakModalComposition : @AC_machineDefinition {
+  @AC_machineDefinition mLeftOperand
+  @location mErrorLocation
+  @AC_machineDefinition mRightOperand
+}
+
+shared class @C_fullSaturationOperation : @AC_machineDefinition {
   @AC_machineDefinition mOperand
 }
 
-class @C_complementationOperation : @AC_machineDefinition {
+shared class @C_complementationOperation : @AC_machineDefinition {
   @AC_machineDefinition mOperand
 }
 
-class @C_suppressTerminalStatesOperation : @AC_machineDefinition {
+shared class @C_suppressTerminalStatesOperation : @AC_machineDefinition {
   @AC_machineDefinition mOperand
 }
 
-class @C_suppressInitialStatesOperation : @AC_machineDefinition {
+shared class @C_suppressInitialStatesOperation : @AC_machineDefinition {
   @AC_machineDefinition mOperand
 }
 
 #---------------------------------------------------------------------------*
 
-abstract class @AC_job %generatedInSeparateFile {
+abstract shared class @AC_job %generatedInSeparateFile {
 }
  
-class @C_machineDisplayStates : @AC_job {
+shared class @C_machineDisplayStates : @AC_job {
   @uint mMachineIndex
 }
 
-class @C_machineDisplayInitialStates : @AC_job {
+shared class @C_machineDisplayInitialStates : @AC_job {
   @uint mMachineIndex
 }
 
-class @C_machineDisplayTerminalStates : @AC_job {
+shared class @C_machineDisplayTerminalStates : @AC_job {
   @uint mMachineIndex
 }
 
-class @C_machineDisplayTransitions : @AC_job {
+shared class @C_machineDisplayTransitions : @AC_job {
   @uint mMachineIndex
 }
 
-class @C_machineCheck : @AC_job {
+shared class @C_machineCheck : @AC_job {
   @uint mMachineIndex
   @bool mCheckMachineIsBoolean
 }
 
 
-class @C_machineCheckIdentical : @AC_job {
+shared class @C_machineCheckIdentical : @AC_job {
   @uint mMachineIndex1
   @uint mMachineIndex2
 }
 
-class @C_machineComponent : @AC_job {
+shared class @C_machineComponent : @AC_job {
   @lstring mMachineName
   @uint mMachineIndex
   @uint mInputVariableCount
@@ -236,7 +236,7 @@ class @C_machineComponent : @AC_job {
   @AC_machineDefinition mDefinition
 }
 
-class @C_machineDefinedByAdditiveModalComp : @AC_job {
+shared class @C_machineDefinedByAdditiveModalComp : @AC_job {
   @lstring mMachineName
   @uint mMachineIndex
   @uint mInputVariableCount
@@ -246,7 +246,7 @@ class @C_machineDefinedByAdditiveModalComp : @AC_job {
   @ListForModes mInclusionList
 }
 
-class @C_machineDefinedBySubstractiveModalComp : @AC_job {
+shared class @C_machineDefinedBySubstractiveModalComp : @AC_job {
   @lstring mMachineName
   @uint mMachineIndex
   @uint mInputVariableCount
@@ -269,7 +269,7 @@ list @L_scenarioList {
   @L_inputScenario mInputScenario
 }
 
-class @C_scenarioComponent : @AC_job {
+shared class @C_scenarioComponent : @AC_job {
   @uint mMachineIndex
   @uint mInputVariableCount
   @uint mInputAndInternalVariableCount
@@ -298,7 +298,7 @@ class @C_scenarioComponent : @AC_job {
 #  @luint mNewSize
 #}
 
-class @typeDisplayBDDstats : @AC_job {
+shared class @typeDisplayBDDstats : @AC_job {
 }
 
 #---------------------------------------------------------------------------*
