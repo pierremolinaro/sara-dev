@@ -21,29 +21,29 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
-  public : GALGAS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
+  public: GALGAS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
+  public: GALGAS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
 
 //--- Constructor
-  public : cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
-                            const GALGAS_AC_5F_boolExpression & in_mTargetStateExpression
-                            COMMA_LOCATION_ARGS) ;
+  public: cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
+                           const GALGAS_AC_5F_boolExpression & in_mTargetStateExpression
+                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mSourceStateExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMSourceStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
-  public : VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mTargetStateExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMTargetStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mSourceStateExpression (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMSourceStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mTargetStateExpression (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMTargetStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const ;
 
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
 } ;
 
