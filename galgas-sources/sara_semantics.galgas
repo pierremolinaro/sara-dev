@@ -7,13 +7,13 @@
 
 
 map @M_variablesMap {
-  @uint mIndex
+  public var @uint mIndex
   insert insertKey error message "the '%K' variable has been already declared"
   search searchKey error message "the '%K' variable is not declared"
 }
 
 map @M_stateMap {
-  @uint mIndex
+  public var @uint mIndex
   insert insertKey error message "the '%K' state has been already declared"
   insert defineState error message "the '%K' state has been already defined"
   search searchKey error message "the '%K' state is not declared"
@@ -22,259 +22,259 @@ map @M_stateMap {
 #---------------------------------------------------------------------------*
 
 list @L_translationVector {
-  @uint mTargetSlot
+  public var @uint mTargetSlot
 }
 
-abstract shared class @AC_boolExpression %generatedInSeparateFile {
+abstract refclass @AC_boolExpression %generatedInSeparateFile {
 }
 
-shared class @C_importBoolMachine : @AC_boolExpression {
-  @uint mIndexOfImportedMachine
-  @location mErrorLocation
-  @L_translationVector mTranslationVector
+refclass @C_importBoolMachine : @AC_boolExpression {
+  public var @uint mIndexOfImportedMachine
+  public var @location mErrorLocation
+  public var @L_translationVector mTranslationVector
 }
 
-shared class @C_andExpression : @AC_boolExpression {
-  @AC_boolExpression mLeftExpression
-  @AC_boolExpression mRightExpression
+refclass @C_andExpression : @AC_boolExpression {
+  public var @AC_boolExpression mLeftExpression
+  public var @AC_boolExpression mRightExpression
 }
   
-shared class @C_orExpression : @AC_boolExpression {
-  @AC_boolExpression mLeftExpression
-  @AC_boolExpression mRightExpression
+refclass @C_orExpression : @AC_boolExpression {
+  public var @AC_boolExpression mLeftExpression
+  public var @AC_boolExpression mRightExpression
 }
   
-shared class @C_xorExpression : @AC_boolExpression {
-  @AC_boolExpression mLeftExpression
-  @AC_boolExpression mRightExpression
+refclass @C_xorExpression : @AC_boolExpression {
+  public var @AC_boolExpression mLeftExpression
+  public var @AC_boolExpression mRightExpression
 }
   
-shared class @C_impliesExpression : @AC_boolExpression  {
-  @AC_boolExpression mLeftExpression
-  @AC_boolExpression mRightExpression
+refclass @C_impliesExpression : @AC_boolExpression  {
+  public var @AC_boolExpression mLeftExpression
+  public var @AC_boolExpression mRightExpression
 }
   
-shared class @C_equalExpression : @AC_boolExpression {
-  @AC_boolExpression mLeftExpression
-  @AC_boolExpression mRightExpression
+refclass @C_equalExpression : @AC_boolExpression {
+  public var @AC_boolExpression mLeftExpression
+  public var @AC_boolExpression mRightExpression
 }
   
-shared class @C_notExpression : @AC_boolExpression {
-  @AC_boolExpression mExpression
+refclass @C_notExpression : @AC_boolExpression {
+  public var @AC_boolExpression mExpression
 }
     
-shared class @C_VariableExpression : @AC_boolExpression {
-  @uint mInputVarIndex
+refclass @C_VariableExpression : @AC_boolExpression {
+  public var @uint mInputVarIndex
 }
 
-shared class @C_trueExpression : @AC_boolExpression {
+refclass @C_trueExpression : @AC_boolExpression {
 }
 
-shared class @C_falseExpression : @AC_boolExpression {
+refclass @C_falseExpression : @AC_boolExpression {
 }
 
 #---------------------------------------------------------------------------*
 
 list @L_transitionDefinition {
-  @AC_boolExpression mActionExpression
-  @location mEndOfExpression
-  @uint mTargetStateIndex
+  public var @AC_boolExpression mActionExpression
+  public var @location mEndOfExpression
+  public var @uint mTargetStateIndex
 }
 
 list @L_stateDefinition {
-  @uint mStateIndex
-  @AC_boolExpression mStateExpression
-  @location mEndOfStateExpression
-  @L_transitionDefinition mTransitionsList
+  public var @uint mStateIndex
+  public var @AC_boolExpression mStateExpression
+  public var @location mEndOfStateExpression
+  public var @L_transitionDefinition mTransitionsList
 }
 
 #---------------------------------------------------------------------------*
 
 list @L_statesDefinitionList {
-  @uint mStateIndex
-  @location mStateLocation
+  public var @uint mStateIndex
+  public var @location mStateLocation
 }
 
 #---------------------------------------------------------------------------*
 
-abstract shared class @AC_machineDefinition %generatedInSeparateFile {
+abstract refclass @AC_machineDefinition %generatedInSeparateFile {
 }
 
 map @M_modesMap {
-  @uint mIndex
-  @AC_machineDefinition mModeDefinition
+  public var @uint mIndex
+  public var @AC_machineDefinition mModeDefinition
   insert insertKey error message "the '%K' mode has been already declared"
   search searchKey error message "the '%K' mode is not declared"
 }
 
 list @ListForModes {
-  @uint mSourceMode
-  @uint mTargetMode
+  public var @uint mSourceMode
+  public var @uint mTargetMode
 }
 
-shared class @C_substractiveModalCompositionComponent : @AC_machineDefinition {
-  @M_modesMap mModeMap
-  @ListForModes mExclusionList
+refclass @C_substractiveModalCompositionComponent : @AC_machineDefinition {
+  public var @M_modesMap mModeMap
+  public var @ListForModes mExclusionList
 }
 
-shared class @C_additiveModalCompositionComponent : @AC_machineDefinition {
-  @M_modesMap mModeMap
-  @ListForModes mInclusionList
+refclass @C_additiveModalCompositionComponent : @AC_machineDefinition {
+  public var @M_modesMap mModeMap
+  public var @ListForModes mInclusionList
 }
 
-shared class @C_trans : @AC_machineDefinition {
-  @AC_boolExpression mSourceStateExpression
-  @AC_boolExpression mTargetStateExpression
+refclass @C_trans : @AC_machineDefinition {
+  public var @AC_boolExpression mSourceStateExpression
+  public var @AC_boolExpression mTargetStateExpression
 }
   
-shared class @C_importMachine : @AC_machineDefinition {
-  @uint mIndexOfImportedMachine
-  @L_translationVector mTranslationVector
+refclass @C_importMachine : @AC_machineDefinition {
+  public var @uint mIndexOfImportedMachine
+  public var @L_translationVector mTranslationVector
 }
 
-shared class @C_explicitAutomatonDefinition : @AC_machineDefinition {
-  @M_stateMap mStatesMap
-  @L_statesDefinitionList mInitialStatesDefinitionList
-  @L_statesDefinitionList mTerminalStatesDefinitionList
-  @L_stateDefinition mStateDefinitionList
-  @location mEndOfDefinition
+refclass @C_explicitAutomatonDefinition : @AC_machineDefinition {
+  public var @M_stateMap mStatesMap
+  public var @L_statesDefinitionList mInitialStatesDefinitionList
+  public var @L_statesDefinitionList mTerminalStatesDefinitionList
+  public var @L_stateDefinition mStateDefinitionList
+  public var @location mEndOfDefinition
 }
 
- shared class @C_boolToSeqExpression : @AC_machineDefinition {
-   @AC_boolExpression mExpression
+ refclass @C_boolToSeqExpression : @AC_machineDefinition {
+   public var @AC_boolExpression mExpression
  }
   
-shared class @C_existsDefinition : @AC_machineDefinition {
-  @uint mPreviousVariableCount
-  @uint mTotalVariableCount
-  @AC_machineDefinition mOperand
+refclass @C_existsDefinition : @AC_machineDefinition {
+  public var @uint mPreviousVariableCount
+  public var @uint mTotalVariableCount
+  public var @AC_machineDefinition mOperand
 }
 
-shared class @C_forallDefinition : @AC_machineDefinition {
-  @uint mPreviousVariableCount
-  @uint mTotalVariableCount
-  @AC_machineDefinition mOperand
+refclass @C_forallDefinition : @AC_machineDefinition {
+  public var @uint mPreviousVariableCount
+  public var @uint mTotalVariableCount
+  public var @AC_machineDefinition mOperand
 }
 
-shared class @C_parallelComposition : @AC_machineDefinition {
-  @AC_machineDefinition mLeftOperand
-  @AC_machineDefinition mRightOperand
+refclass @C_parallelComposition : @AC_machineDefinition {
+  public var @AC_machineDefinition mLeftOperand
+  public var @AC_machineDefinition mRightOperand
 }
 
-shared class @C_orComposition : @AC_machineDefinition {
-  @AC_machineDefinition mLeftOperand
-  @AC_machineDefinition mRightOperand
+refclass @C_orComposition : @AC_machineDefinition {
+  public var @AC_machineDefinition mLeftOperand
+  public var @AC_machineDefinition mRightOperand
 }
 
-shared class @C_strongModalComposition : @AC_machineDefinition {
-  @AC_machineDefinition mLeftOperand
-  @location mErrorLocation
-  @AC_machineDefinition mRightOperand
+refclass @C_strongModalComposition : @AC_machineDefinition {
+  public var @AC_machineDefinition mLeftOperand
+  public var @location mErrorLocation
+  public var @AC_machineDefinition mRightOperand
 }
 
-shared class @C_weakModalComposition : @AC_machineDefinition {
-  @AC_machineDefinition mLeftOperand
-  @location mErrorLocation
-  @AC_machineDefinition mRightOperand
+refclass @C_weakModalComposition : @AC_machineDefinition {
+  public var @AC_machineDefinition mLeftOperand
+  public var @location mErrorLocation
+  public var @AC_machineDefinition mRightOperand
 }
 
-shared class @C_fullSaturationOperation : @AC_machineDefinition {
-  @AC_machineDefinition mOperand
+refclass @C_fullSaturationOperation : @AC_machineDefinition {
+  public var @AC_machineDefinition mOperand
 }
 
-shared class @C_complementationOperation : @AC_machineDefinition {
-  @AC_machineDefinition mOperand
+refclass @C_complementationOperation : @AC_machineDefinition {
+  public var @AC_machineDefinition mOperand
 }
 
-shared class @C_suppressTerminalStatesOperation : @AC_machineDefinition {
-  @AC_machineDefinition mOperand
+refclass @C_suppressTerminalStatesOperation : @AC_machineDefinition {
+  public var @AC_machineDefinition mOperand
 }
 
-shared class @C_suppressInitialStatesOperation : @AC_machineDefinition {
-  @AC_machineDefinition mOperand
+refclass @C_suppressInitialStatesOperation : @AC_machineDefinition {
+  public var @AC_machineDefinition mOperand
 }
 
 #---------------------------------------------------------------------------*
 
-abstract shared class @AC_job %generatedInSeparateFile {
+abstract refclass @AC_job %generatedInSeparateFile {
 }
  
-shared class @C_machineDisplayStates : @AC_job {
-  @uint mMachineIndex
+refclass @C_machineDisplayStates : @AC_job {
+  public var @uint mMachineIndex
 }
 
-shared class @C_machineDisplayInitialStates : @AC_job {
-  @uint mMachineIndex
+refclass @C_machineDisplayInitialStates : @AC_job {
+  public var @uint mMachineIndex
 }
 
-shared class @C_machineDisplayTerminalStates : @AC_job {
-  @uint mMachineIndex
+refclass @C_machineDisplayTerminalStates : @AC_job {
+  public var @uint mMachineIndex
 }
 
-shared class @C_machineDisplayTransitions : @AC_job {
-  @uint mMachineIndex
+refclass @C_machineDisplayTransitions : @AC_job {
+  public var @uint mMachineIndex
 }
 
-shared class @C_machineCheck : @AC_job {
-  @uint mMachineIndex
-  @bool mCheckMachineIsBoolean
+refclass @C_machineCheck : @AC_job {
+  public var @uint mMachineIndex
+  public var @bool mCheckMachineIsBoolean
 }
 
 
-shared class @C_machineCheckIdentical : @AC_job {
-  @uint mMachineIndex1
-  @uint mMachineIndex2
+refclass @C_machineCheckIdentical : @AC_job {
+  public var @uint mMachineIndex1
+  public var @uint mMachineIndex2
 }
 
-shared class @C_machineComponent : @AC_job {
-  @lstring mMachineName
-  @uint mMachineIndex
-  @uint mInputVariableCount
-  @uint mInputAndInternalVariableCount
-  @M_variablesMap mVariablesMap
-  @stringlist mNameList
-  @AC_machineDefinition mDefinition
+refclass @C_machineComponent : @AC_job {
+  public var @lstring mMachineName
+  public var @uint mMachineIndex
+  public var @uint mInputVariableCount
+  public var @uint mInputAndInternalVariableCount
+  public var @M_variablesMap mVariablesMap
+  public var @stringlist mNameList
+  public var @AC_machineDefinition mDefinition
 }
 
-shared class @C_machineDefinedByAdditiveModalComp : @AC_job {
-  @lstring mMachineName
-  @uint mMachineIndex
-  @uint mInputVariableCount
-  @uint mInputAndInternalVariableCount
-  @M_variablesMap mVariablesMap
-  @M_modesMap mModeMap
-  @ListForModes mInclusionList
+refclass @C_machineDefinedByAdditiveModalComp : @AC_job {
+  public var @lstring mMachineName
+  public var @uint mMachineIndex
+  public var @uint mInputVariableCount
+  public var @uint mInputAndInternalVariableCount
+  public var @M_variablesMap mVariablesMap
+  public var @M_modesMap mModeMap
+  public var @ListForModes mInclusionList
 }
 
-shared class @C_machineDefinedBySubstractiveModalComp : @AC_job {
-  @lstring mMachineName
-  @uint mMachineIndex
-  @uint mInputVariableCount
-  @uint mInputAndInternalVariableCount
-  @M_variablesMap mVariablesMap
-  @M_modesMap mModeMap
-  @ListForModes mExclusionList
+refclass @C_machineDefinedBySubstractiveModalComp : @AC_job {
+  public var @lstring mMachineName
+  public var @uint mMachineIndex
+  public var @uint mInputVariableCount
+  public var @uint mInputAndInternalVariableCount
+  public var @M_variablesMap mVariablesMap
+  public var @M_modesMap mModeMap
+  public var @ListForModes mExclusionList
 }
 
 list @L_inputConfigurationForScenario {
-  @luint mInputValue
+  public var @luint mInputValue
 }
 
 list @L_inputScenario {
-  @L_inputConfigurationForScenario mInputConfiguration
+  public var @L_inputConfigurationForScenario mInputConfiguration
 }
 
 list @L_scenarioList {
-  @lstring mScenarioTitle
-  @L_inputScenario mInputScenario
+  public var @lstring mScenarioTitle
+  public var @L_inputScenario mInputScenario
 }
 
-shared class @C_scenarioComponent : @AC_job {
-  @uint mMachineIndex
-  @uint mInputVariableCount
-  @uint mInputAndInternalVariableCount
-  @M_variablesMap mVariablesMap
-  @L_scenarioList mScenarioList
+refclass @C_scenarioComponent : @AC_job {
+  public var @uint mMachineIndex
+  public var @uint mInputVariableCount
+  public var @uint mInputAndInternalVariableCount
+  public var @M_variablesMap mVariablesMap
+  public var @L_scenarioList mScenarioList
 }
 
 #class @typeUse_AND : @AC_job {
@@ -298,23 +298,23 @@ shared class @C_scenarioComponent : @AC_job {
 #  @luint mNewSize
 #}
 
-shared class @typeDisplayBDDstats : @AC_job {
+refclass @typeDisplayBDDstats : @AC_job {
 }
 
 #---------------------------------------------------------------------------*
 
 list @L_jobList {
-  @AC_job mComponent
+  public var @AC_job mComponent
 }
 
 #---------------------------------------------------------------------------*
 
 map @M_machinesMap {
-  @uint mIndex
-  @uint mInputVariableCount
-  @uint mInputAndInternalVariableCount
-  @M_variablesMap mVariablesMap
-  @stringlist mNameList
+  public var @uint mIndex
+  public var @uint mInputVariableCount
+  public var @uint mInputAndInternalVariableCount
+  public var @M_variablesMap mVariablesMap
+  public var @stringlist mNameList
   insert insertKey error message "the '%K' machine has been already declared"
   search searchKey error message "the '%K' machine is not defined"
   remove removeKey error message "the '%K' machine is not defined"
@@ -323,8 +323,8 @@ map @M_machinesMap {
 #---------------------------------------------------------------------------*
 
 struct @semanticContext {
-  @L_jobList componentsMap
-  @M_machinesMap machinesMap
+  public var @L_jobList componentsMap
+  public var @M_machinesMap machinesMap
 }
 
 #---------------------------------------------------------------------------*

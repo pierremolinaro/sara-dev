@@ -18,7 +18,7 @@ class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {
                                      const uint32_t inBDDslotOffset) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_uint mProperty_mIndexOfImportedMachine ;
   public: GALGAS_location mProperty_mErrorLocation ;
   public: GALGAS_L_5F_translationVector mProperty_mTranslationVector ;
@@ -33,12 +33,6 @@ class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mIndexOfImportedMachine (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMIndexOfImportedMachine (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_location getter_mErrorLocation (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMErrorLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_L_5F_translationVector getter_mTranslationVector (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMTranslationVector (GALGAS_L_5F_translationVector inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

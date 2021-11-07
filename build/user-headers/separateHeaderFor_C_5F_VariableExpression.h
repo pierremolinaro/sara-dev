@@ -18,7 +18,7 @@ class cPtr_C_5F_VariableExpression : public cPtr_AC_5F_boolExpression {
                                      const uint32_t inBDDslotOffset) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_uint mProperty_mInputVarIndex ;
 
 //--- Constructor
@@ -29,8 +29,6 @@ class cPtr_C_5F_VariableExpression : public cPtr_AC_5F_boolExpression {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputVarIndex (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMInputVarIndex (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

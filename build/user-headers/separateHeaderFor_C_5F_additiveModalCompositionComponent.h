@@ -20,7 +20,7 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
                                                C_BDD & outAccessibilityRelationBDD) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_M_5F_modesMap mProperty_mModeMap ;
   public: GALGAS_ListForModes mProperty_mInclusionList ;
 
@@ -33,10 +33,6 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_M_5F_modesMap getter_mModeMap (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMModeMap (GALGAS_M_5F_modesMap inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_ListForModes getter_mInclusionList (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMInclusionList (GALGAS_ListForModes inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

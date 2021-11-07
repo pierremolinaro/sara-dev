@@ -65,7 +65,8 @@ computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
-  return ~ mProperty_mExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mExpression.ptr () ;
+  return ~ p->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -75,8 +76,10 @@ computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
-  return mProperty_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-      & mProperty_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_AC_5F_boolExpression *) mProperty_mRightExpression.ptr () ;
+  return p->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+      & q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -86,8 +89,10 @@ computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
-  return mProperty_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-      | mProperty_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
+  auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_AC_5F_boolExpression *) mProperty_mRightExpression.ptr () ;
+  return p->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+      | q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -97,8 +102,10 @@ computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
-  return mProperty_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-     .notEqualTo (mProperty_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
+  auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_AC_5F_boolExpression *) mProperty_mRightExpression.ptr () ;
+  return p->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+     .notEqualTo (q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -108,8 +115,10 @@ computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
-  return mProperty_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-    .implies (mProperty_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
+  auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_AC_5F_boolExpression *) mProperty_mRightExpression.ptr () ;
+  return p->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+    .implies (q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -119,8 +128,10 @@ computeBDD (C_Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
-  return mProperty_mLeftExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
-     .equalTo (mProperty_mRightExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
+  auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
+  auto q = (const cPtr_AC_5F_boolExpression *) mProperty_mRightExpression.ptr () ;
+  return p->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)
+     .equalTo (q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inBDDslotOffset)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -209,10 +220,8 @@ routine_performComputations (const GALGAS_L_5F_jobList inComponentMap,
     cEnumerator_L_5F_jobList currentComponent (inComponentMap, kENUMERATION_UP) ;
     while (currentComponent.hasCurrentObject ()) {
       C_saraMachine system ;
-      currentComponent.current_mComponent (HERE).ptr ()->compute (inCompiler, 
-                                                saraSystemArray,
-                                                displayBDDvaluesCount,
-                                                displayBDDvalues) ;
+      auto p = (const cPtr_AC_5F_job *) currentComponent.current_mComponent (HERE).ptr () ;
+      p->compute (inCompiler, saraSystemArray, displayBDDvaluesCount, displayBDDvalues) ;
       fflush (stdout) ;
       currentComponent.gotoNextObject () ;
     }
@@ -246,7 +255,8 @@ compute (C_Compiler * inCompiler,
     currentVar.gotoNextObject () ;
   }
 //--- Compute automaton from definition expression
-  mProperty_mDefinition.ptr ()->computeFromExpression (inCompiler,
+  auto p = (const cPtr_AC_5F_machineDefinition *) mProperty_mDefinition.ptr () ;
+  p->computeFromExpression (inCompiler,
                                          ioSaraSystemArray,
                                          variableCount,
                                          machine.mInitialStatesBDD,
@@ -862,7 +872,8 @@ computeFromExpression (C_Compiler * inCompiler,
   //--- Get state index
     const int32_t stateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Enter state configuration
-    stateExpressionBDD (stateIndex COMMA_HERE) = currentDefinition.current_mStateExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+    auto ptr = (const cPtr_AC_5F_boolExpression *) currentDefinition.current_mStateExpression (HERE).ptr () ;
+    stateExpressionBDD (stateIndex COMMA_HERE) = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
   //--- Check state configuration is not empty
     if (stateExpressionBDD (stateIndex COMMA_HERE).isFalse ()) {
       C_String errorMessage ;
@@ -958,7 +969,8 @@ computeFromExpression (C_Compiler * inCompiler,
     C_BDD transitionsTargetBDD ;
     cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kENUMERATION_UP) ;
     while (currentTransition.hasCurrentObject ()) {
-      const C_BDD actionBDD = currentTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
+      auto ptr = (const cPtr_AC_5F_boolExpression *) currentTransition.current_mActionExpression (HERE).ptr () ;
+      const C_BDD actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
       const int32_t targetStateIndex = (int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () ;
       const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
@@ -980,7 +992,8 @@ computeFromExpression (C_Compiler * inCompiler,
     cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kENUMERATION_UP) ;
     while (currentTransition.hasCurrentObject ()) {
     //--- Compute action BDD
-      const C_BDD actionBDD = currentTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+      auto ptr = (const cPtr_AC_5F_boolExpression *) currentTransition.current_mActionExpression (HERE).ptr () ;
+      const C_BDD actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
     //--- Check action does not intersect with state input expression
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         C_String errorMessage ;
@@ -992,7 +1005,8 @@ computeFromExpression (C_Compiler * inCompiler,
       testedTransition.gotoIndex (currentTransition.index () + 1) ;
       while (testedTransition.hasCurrentObject ()) {
       //--- Compute action BDD
-        const C_BDD testedActionBDD = testedTransition.current_mActionExpression (HERE).ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+        auto q = (const cPtr_AC_5F_boolExpression *) testedTransition.current_mActionExpression (HERE).ptr () ;
+        const C_BDD testedActionBDD = q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           C_String errorMessage ;
@@ -1064,7 +1078,8 @@ void cPtr_C_5F_parallelComposition::computeFromExpression (C_Compiler * inCompil
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mProperty_mLeftOperand.ptr ()->computeFromExpression (inCompiler,
+  auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
+  left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1074,7 +1089,8 @@ void cPtr_C_5F_parallelComposition::computeFromExpression (C_Compiler * inCompil
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mProperty_mRightOperand.ptr ()->computeFromExpression (inCompiler,
+  auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
+  right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1099,7 +1115,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mProperty_mLeftOperand.ptr ()->computeFromExpression (inCompiler,
+  auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
+  left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1109,7 +1126,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mProperty_mRightOperand.ptr ()->computeFromExpression (inCompiler,
+  auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
+  right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1157,7 +1175,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mProperty_mLeftOperand.ptr ()->computeFromExpression (inCompiler,
+  auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
+  left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1167,7 +1186,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mProperty_mRightOperand.ptr ()->computeFromExpression (inCompiler,
+  auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
+  right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1201,7 +1221,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD leftInitialStatesBDD ;
   C_BDD leftTerminalStatesBDD ;
   C_BDD leftAccessibilityRelationBDD ;
-  mProperty_mLeftOperand.ptr ()->computeFromExpression (inCompiler,
+  auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
+  left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
                                           inVariablesCount,
                                           leftInitialStatesBDD,
@@ -1211,7 +1232,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD rightInitialStatesBDD ;
   C_BDD rightTerminalStatesBDD ;
   C_BDD rightAccessibilityRelationBDD ;
-  mProperty_mRightOperand.ptr ()->computeFromExpression (inCompiler,
+  auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
+  right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
                                            inVariablesCount,
                                            rightInitialStatesBDD,
@@ -1287,7 +1309,8 @@ computeFromExpression (C_Compiler * inCompiler,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  outInitialStatesBDD = mProperty_mExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+  auto ptr = (const cPtr_AC_5F_boolExpression *) mProperty_mExpression.ptr () ;
+  outInitialStatesBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
   outTerminalStatesBDD = outInitialStatesBDD ;
   outAccessibilityRelationBDD = outInitialStatesBDD & outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 }
@@ -1307,7 +1330,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
   C_BDD accessibilityRelationBDD ;
-  mProperty_mOperand.ptr ()->computeFromExpression (inCompiler,
+  auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
+  ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
                                       totalVariableCount,
                                       initialStatesBDD,
@@ -1347,7 +1371,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
   C_BDD accessibilityRelationBDD ;
-  mProperty_mOperand.ptr ()->computeFromExpression (inCompiler,
+  auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
+  ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
                                       totalVariableCount,
                                       initialStatesBDD,
@@ -1381,7 +1406,8 @@ computeFromExpression (C_Compiler * inCompiler,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  mProperty_mOperand.ptr ()->computeFromExpression (inCompiler,
+  auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
+  ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
@@ -1398,7 +1424,8 @@ computeFromExpression (C_Compiler * inCompiler,
                        C_BDD & outInitialStatesBDD,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
-  mProperty_mOperand.ptr ()->computeFromExpression (inCompiler,
+  auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
+  ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
@@ -1417,7 +1444,8 @@ computeFromExpression (C_Compiler * inCompiler,
                        C_BDD & outTerminalStatesBDD,
                        C_BDD & outAccessibilityRelationBDD) const {
 //--- Compute operand
-  mProperty_mOperand.ptr ()->computeFromExpression (inCompiler,
+  auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
+  ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       outInitialStatesBDD,
@@ -1442,7 +1470,8 @@ computeFromExpression (C_Compiler * inCompiler,
   C_BDD initialStatesBDD ;
   C_BDD terminalStatesBDD ;
   C_BDD accessibilityRelationBDD ;
-  mProperty_mOperand.ptr ()->computeFromExpression (inCompiler,
+  auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
+  ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
                                       inVariablesCount,
                                       initialStatesBDD,
@@ -1515,7 +1544,8 @@ computeFromExpression (C_Compiler * inCompiler,
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
+      auto ptr = (const cPtr_AC_5F_machineDefinition *) currentMode.current_mModeDefinition (HERE).ptr () ;
+      ptr->computeFromExpression (inCompiler,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1655,7 +1685,8 @@ computeFromExpression (C_Compiler * inCompiler,
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
+      auto ptr = (const cPtr_AC_5F_machineDefinition *) currentMode.current_mModeDefinition (HERE).ptr () ;
+      ptr->computeFromExpression (inCompiler,
                                                               inSaraSystemArray,
                                                               inVariablesCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -1794,8 +1825,10 @@ computeFromExpression (C_Compiler * inCompiler,
                        C_BDD & outAccessibilityRelationBDD) const {
   outInitialStatesBDD = C_BDD () ;
   outTerminalStatesBDD = C_BDD () ;
-  outAccessibilityRelationBDD = mProperty_mSourceStateExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0)
-        & mProperty_mTargetStateExpression.ptr ()->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
+  auto source = (const cPtr_AC_5F_boolExpression *) mProperty_mSourceStateExpression.ptr () ;
+  auto target = (const cPtr_AC_5F_boolExpression *) mProperty_mTargetStateExpression.ptr () ;
+  outAccessibilityRelationBDD = source->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0)
+        & target->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1859,7 +1892,8 @@ compute (C_Compiler * inCompiler,
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
+      auto ptr = (const cPtr_AC_5F_machineDefinition *) currentMode.current_mModeDefinition (HERE).ptr () ;
+      ptr->computeFromExpression (inCompiler,
                                                               ioSaraSystemArray,
                                                               variableCount,
                                                               initialStatesArray (index COMMA_HERE),
@@ -2102,7 +2136,8 @@ compute (C_Compiler * inCompiler,
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
       // printf ("INDEX %ld\n", index) ; fflush (stdout) ;
-      currentMode.current_mModeDefinition (HERE).ptr ()->computeFromExpression (inCompiler,
+      auto ptr = (const cPtr_AC_5F_machineDefinition *) currentMode.current_mModeDefinition (HERE).ptr () ;
+      ptr->computeFromExpression (inCompiler,
                                                               ioSaraSystemArray,
                                                               variableCount,
                                                               initialStatesArray (index COMMA_HERE),

@@ -9,7 +9,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_AC_5F_job : public acPtr_class {
+class cPtr_AC_5F_job : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public : virtual void compute (C_Compiler * inCompiler,
@@ -18,7 +18,7 @@ class cPtr_AC_5F_job : public acPtr_class {
                                  const bool inDisplayBDDvalues) const = 0 ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_AC_5F_job (LOCATION_ARGS) ;

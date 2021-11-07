@@ -18,7 +18,7 @@ class cPtr_typeDisplayBDDstats : public cPtr_AC_5F_job {
                                  const bool inDisplayBDDvalues) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_typeDisplayBDDstats (LOCATION_ARGS) ;

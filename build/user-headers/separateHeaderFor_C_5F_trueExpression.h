@@ -18,7 +18,7 @@ class cPtr_C_5F_trueExpression : public cPtr_AC_5F_boolExpression {
                                      const uint32_t inBDDslotOffset) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_C_5F_trueExpression (LOCATION_ARGS) ;

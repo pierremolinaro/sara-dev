@@ -20,7 +20,7 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
                                                C_BDD & outAccessibilityRelationBDD) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
 //--- Constructor
@@ -31,8 +31,6 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mOperand (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMOperand (GALGAS_AC_5F_machineDefinition inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

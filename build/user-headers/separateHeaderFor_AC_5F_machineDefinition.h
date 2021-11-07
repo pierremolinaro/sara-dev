@@ -9,7 +9,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_AC_5F_machineDefinition : public acPtr_class {
+class cPtr_AC_5F_machineDefinition : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (C_Compiler * inCompiler,
@@ -20,7 +20,7 @@ class cPtr_AC_5F_machineDefinition : public acPtr_class {
                                                C_BDD & outAccessibilityRelationBDD) const = 0 ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_AC_5F_machineDefinition (LOCATION_ARGS) ;

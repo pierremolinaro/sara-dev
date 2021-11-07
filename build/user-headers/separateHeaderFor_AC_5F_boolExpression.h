@@ -9,7 +9,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_AC_5F_boolExpression : public acPtr_class {
+class cPtr_AC_5F_boolExpression : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public : virtual C_BDD computeBDD (C_Compiler * inCompiler,
@@ -18,7 +18,7 @@ class cPtr_AC_5F_boolExpression : public acPtr_class {
                                      const uint32_t inBDDslotOffset) const = 0 ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
 
 //--- Constructor
   public: cPtr_AC_5F_boolExpression (LOCATION_ARGS) ;

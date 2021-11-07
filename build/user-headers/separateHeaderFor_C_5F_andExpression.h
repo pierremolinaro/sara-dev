@@ -18,7 +18,7 @@ class cPtr_C_5F_andExpression : public cPtr_AC_5F_boolExpression {
                                      const uint32_t inBDDslotOffset) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_AC_5F_boolExpression mProperty_mLeftExpression ;
   public: GALGAS_AC_5F_boolExpression mProperty_mRightExpression ;
 
@@ -31,10 +31,6 @@ class cPtr_C_5F_andExpression : public cPtr_AC_5F_boolExpression {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mLeftExpression (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mRightExpression (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

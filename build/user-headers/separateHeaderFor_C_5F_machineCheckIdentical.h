@@ -18,7 +18,7 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
                                  const bool inDisplayBDDvalues) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_uint mProperty_mMachineIndex_31_ ;
   public: GALGAS_uint mProperty_mMachineIndex_32_ ;
 
@@ -31,10 +31,6 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mMachineIndex_31_ (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex_31_ (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mMachineIndex_32_ (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex_32_ (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

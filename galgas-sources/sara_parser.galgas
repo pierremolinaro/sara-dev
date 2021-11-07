@@ -17,7 +17,7 @@ rule <start_symbol> {
     <component> !?semanticContext
   while
   end
-  performComputations ( ![semanticContext componentsMap] )
+  performComputations ( !semanticContext.componentsMap )
 }
  
 #---------------------------------------------------------------------------*
@@ -30,14 +30,14 @@ rule <component>
 #--- Machine name
   $state$
   $display$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
+  var @uint machineIndex
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineDisplayStates. new { !machineIndex}
+  var @AC_job job = @C_machineDisplayStates. new { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -51,14 +51,14 @@ rule <component>
 #--- Machine name
   $trans$
   $display$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
+  var @uint machineIndex
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineDisplayTransitions.new { !machineIndex}
+  var @AC_job job = @C_machineDisplayTransitions.new { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -73,14 +73,14 @@ rule <component>
   $first$
   $state$
   $display$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
+  var @uint machineIndex
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineDisplayInitialStates. new { !machineIndex}
+  var @AC_job job = @C_machineDisplayInitialStates. new { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -95,14 +95,14 @@ rule <component>
   $last$
   $state$
   $display$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
+  var @uint machineIndex
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineDisplayTerminalStates. new { !machineIndex}
+  var @AC_job job = @C_machineDisplayTerminalStates. new { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -115,14 +115,14 @@ rule <component>
   var stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $check$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
+  var @uint machineIndex
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineCheck. new { !machineIndex !false}
+  var @AC_job job = @C_machineCheck. new { !machineIndex !false}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -135,20 +135,20 @@ rule <component>
   var stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $checkidentical$
-  @lstring machineName1
+  var @lstring machineName1
   $machineIdf$ ? machineName1
   $,$
-  @lstring machineName2
+  var @lstring machineName2
   $machineIdf$ ? machineName2
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex1
-  [[ioSemanticContext machinesMap] searchKey !machineName1 ?machineIndex1 ?* ?* ?* ?*]
+  var @uint machineIndex1
+  [ioSemanticContext.machinesMap searchKey !machineName1 ?machineIndex1 ?* ?* ?* ?*]
 #--- Insert machine into machine map
-  @uint machineIndex2
-  [[ioSemanticContext machinesMap] searchKey !machineName2 ?machineIndex2 ?* ?* ?* ?*]
+  var @uint machineIndex2
+  [ioSemanticContext.machinesMap searchKey !machineName2 ?machineIndex2 ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineCheckIdentical. new { !machineIndex1 !machineIndex2}
+  var @AC_job job = @C_machineCheckIdentical. new { !machineIndex1 !machineIndex2}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -161,14 +161,14 @@ rule <component>
   var stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $checkbool$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $;$
 #--- Insert machine into machine map
-  @uint machineIndex
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?* ?* ?* ?*]
+  var @uint machineIndex
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?* ?* ?* ?*]
 #--- Insert into component map
-  @AC_job job = @C_machineCheck. new { !machineIndex !true}
+  var @AC_job job = @C_machineCheck. new { !machineIndex !true}
   ioSemanticContext.componentsMap += !job
 }
 
@@ -243,7 +243,7 @@ rule <component>
   ?!@semanticContext ioSemanticContext {
   $bdd$
   $;$
-  @AC_job job = @typeDisplayBDDstats. new
+  var @AC_job job = @typeDisplayBDDstats. new
   ioSemanticContext.componentsMap += !job
 }
 
@@ -256,26 +256,26 @@ rule <component>
   var stateDefinitionList =@L_stateDefinition.emptyList{}
   var nameList =@stringlist.emptyList{}
 #--- Machine name
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $($
 #--- Parse input variables
   repeat
-    @lstring inputVarName
+    var @lstring inputVarName
     $identifier$ ? inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
     nameList += !inputVarName.string
   while
     $,$
   end
-  @uint inputVariablesCount = [variablesMap count]
+  var @uint inputVariablesCount = [variablesMap count]
   $)$
 #--- Parse internal variables
   $($
   select
   or
     repeat
-      @lstring outputVarName
+      var @lstring outputVarName
       $identifier$ ? outputVarName
       [!?variablesMap insertKey !outputVarName ![variablesMap count]]
       nameList += !outputVarName.string
@@ -284,11 +284,11 @@ rule <component>
     end
   end
   $)$
-  @uint inputAndInternalVariablesCount = [variablesMap count]
+  var @uint inputAndInternalVariablesCount = [variablesMap count]
 #--- Parse output variables
   $($
   repeat
-    @lstring outputVarName
+    var @lstring outputVarName
     $identifier$ ? outputVarName
     [!?variablesMap insertKey !outputVarName ![variablesMap count]]
     nameList += !outputVarName.string
@@ -298,10 +298,10 @@ rule <component>
   $)$
   $:=$
 #--- Machine definition
-  @AC_machineDefinition definition
+  var @AC_machineDefinition definition
   <definition_expression> !ioSemanticContext !?variablesMap ?definition
 #--- Insert machine into machine map
-  let @uint machineIndex = [[ioSemanticContext machinesMap] count]
+  let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey
     !machineName
     !machineIndex
@@ -311,7 +311,7 @@ rule <component>
     !nameList
   ]
 #--- Insert into component map
-  @AC_job machine = @C_machineComponent. new { !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList !definition}
+  var @AC_job machine = @C_machineComponent. new { !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList !definition}
   ioSemanticContext.componentsMap += !machine
   $;$
 }
@@ -326,26 +326,26 @@ rule <component>
   var nameList =@stringlist.emptyList{}
 #--- Machine name
   $modalcompadd$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $($
 #--- Parse input variables
   repeat
-    @lstring inputVarName
+    var @lstring inputVarName
     $identifier$ ? inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
     nameList += !inputVarName.string
   while
     $,$
   end
-  @uint inputVariablesCount = [variablesMap count]
+  var @uint inputVariablesCount = [variablesMap count]
   $)$
 #--- Parse internal variables
   $($
   select
   or
     repeat
-      @lstring outputVarName
+      var @lstring outputVarName
       $identifier$ ? outputVarName
       [!?variablesMap insertKey !outputVarName ![variablesMap count]]
       nameList += !outputVarName.string
@@ -354,11 +354,11 @@ rule <component>
     end
   end
   $)$
-  @uint inputAndInternalVariablesCount = [variablesMap count]
+  var @uint inputAndInternalVariablesCount = [variablesMap count]
 #--- Parse output variables
   $($
   repeat
-    @lstring outputVarName
+    var @lstring outputVarName
     $identifier$ ? outputVarName
     [!?variablesMap insertKey !outputVarName ![variablesMap count]]
     nameList += !outputVarName.string
@@ -368,18 +368,18 @@ rule <component>
   $)$
   $:=$
 #--- Machine definition
-  @M_modesMap modeMap
-  @ListForModes inclusionList
+  var @M_modesMap modeMap
+  var @ListForModes inclusionList
   <modalcompadd_definition>
     !ioSemanticContext
     !?variablesMap
     ?modeMap
     ?inclusionList
 #--- Insert machine into machine map
-  let @uint machineIndex = [[ioSemanticContext machinesMap] count]
+  let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
 #--- Insert into component map
-  @AC_job machine = @C_machineDefinedByAdditiveModalComp. new {
+  var @AC_job machine = @C_machineDefinedByAdditiveModalComp. new {
    !machineName
    !machineIndex
    !inputVariablesCount
@@ -401,26 +401,26 @@ rule <component>
   var nameList =@stringlist.emptyList{}
 #--- Machine name
   $modalcompsub$
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
   $($
 #--- Parse input variables
   repeat
-    @lstring inputVarName
+    var @lstring inputVarName
     $identifier$ ? inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
     nameList += !inputVarName.string
   while
     $,$
   end
-  @uint inputVariablesCount = [variablesMap count]
+  var @uint inputVariablesCount = [variablesMap count]
   $)$
 #--- Parse internal variables
   $($
   select
   or
     repeat
-      @lstring outputVarName
+      var @lstring outputVarName
       $identifier$ ? outputVarName
       [!?variablesMap insertKey !outputVarName ![variablesMap count]]
       nameList += !outputVarName.string
@@ -429,11 +429,11 @@ rule <component>
     end
   end
   $)$
-  @uint inputAndInternalVariablesCount = [variablesMap count]
+  var @uint inputAndInternalVariablesCount = [variablesMap count]
 #--- Parse output variables
   $($
   repeat
-    @lstring outputVarName
+    var @lstring outputVarName
     $identifier$ ? outputVarName
     [!?variablesMap insertKey !outputVarName ![variablesMap count]]
     nameList += !outputVarName.string
@@ -443,18 +443,18 @@ rule <component>
   $)$
   $:=$
 #--- Machine definition
-  @M_modesMap modeMap
-  @ListForModes exclusionList
+  var @M_modesMap modeMap
+  var @ListForModes exclusionList
   <modalcompsub_definition>
     !ioSemanticContext
     !?variablesMap
     ?modeMap
     ?exclusionList
 #--- Insert machine into machine map
-  let @uint machineIndex = [[ioSemanticContext machinesMap] count]
+  let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
 #--- Insert into component map
-  @AC_job machine = @C_machineDefinedBySubstractiveModalComp. new {
+  var @AC_job machine = @C_machineDefinedBySubstractiveModalComp. new {
    !machineName
    !machineIndex
    !inputVariablesCount
@@ -473,24 +473,24 @@ rule <component>
   var statesMap =@M_stateMap.emptyMap{}
   var stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
-  @lstring machineName
+  var @lstring machineName
   $machineIdf$ ? machineName
 #--- Search machine from machine map
-  @uint machineIndex
-  @uint inputVariablesCountFromDefinition
-  @uint inputAndInternalVariablesCountFromDefinition
-  @M_variablesMap variablesMapFromDefinition
-  [[ioSemanticContext machinesMap] searchKey !machineName ?machineIndex ?inputVariablesCountFromDefinition ?inputAndInternalVariablesCountFromDefinition ?variablesMapFromDefinition ?*]
+  var @uint machineIndex
+  var @uint inputVariablesCountFromDefinition
+  var @uint inputAndInternalVariablesCountFromDefinition
+  var @M_variablesMap variablesMapFromDefinition
+  [ioSemanticContext.machinesMap searchKey !machineName ?machineIndex ?inputVariablesCountFromDefinition ?inputAndInternalVariablesCountFromDefinition ?variablesMapFromDefinition ?*]
 #--- Parse input variables
   $($
   repeat
-    @lstring inputVarName
+    var @lstring inputVarName
     $identifier$ ? inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
   while
     $,$
   end
-  @uint inputVariablesCount = [variablesMap count]
+  var @uint inputVariablesCount = [variablesMap count]
   $)$
 #--- Check correct number of input variables
   if inputVariablesCountFromDefinition != inputVariablesCount then
@@ -502,7 +502,7 @@ rule <component>
   select
   or
     repeat
-      @lstring outputVarName
+      var @lstring outputVarName
       $identifier$ ? outputVarName
       [!?variablesMap insertKey !outputVarName ![variablesMap count]]
     while
@@ -511,7 +511,7 @@ rule <component>
   end
   $)$
 #--- Check correct number of internal variables
-  @uint inputAndInternalVariablesCount = [variablesMap count]
+  var @uint inputAndInternalVariablesCount = [variablesMap count]
   if inputAndInternalVariablesCountFromDefinition != inputAndInternalVariablesCount then
     error @location.here : "This declaration names " + [inputAndInternalVariablesCount string]
       + " input and internal variable(s), but machine definition names " + [inputAndInternalVariablesCountFromDefinition string] + " input and internal variable(s)"
@@ -519,7 +519,7 @@ rule <component>
 #--- Parse output variables
   $($
   repeat
-    @lstring outputVarName
+    var @lstring outputVarName
     $identifier$ ? outputVarName
     [!?variablesMap insertKey !outputVarName ![variablesMap count]]
   while
@@ -527,8 +527,8 @@ rule <component>
   end
   $)$
 #--- Check correct number of internal variables
-  @uint outputVariablesCount = [variablesMap count]
-  @uint outputVariablesCountFromDefinition = [variablesMapFromDefinition count]
+  var @uint outputVariablesCount = [variablesMap count]
+  var @uint outputVariablesCountFromDefinition = [variablesMapFromDefinition count]
   if outputVariablesCountFromDefinition != outputVariablesCount then
     error @location.here : "This declaration names " + [outputVariablesCount string]
       + " variables, but machine definition names " + [outputVariablesCountFromDefinition string] + " variables"
@@ -536,16 +536,16 @@ rule <component>
   ${$
   var scenarioList =@L_scenarioList.emptyList{}
   repeat
-    @lstring scenarioTitle
+    var @lstring scenarioTitle
     $literal_string$ ? scenarioTitle
     var inputScenario =@L_inputScenario.emptyList{}
     repeat
       $:$
       var inputConfigurationForScenario =@L_inputConfigurationForScenario.emptyList{}
       repeat
-       @luint v
+       var @luint v
        $literal_integer$  ? v
-       if [v uint] > 1 then
+       if v.uint > 1 then
          error v : "this value is not a  binary digit"
        end
        inputConfigurationForScenario += !v
@@ -564,7 +564,7 @@ rule <component>
   end
   $}$
 #--- Insert job into job list
-  @AC_job machine = @C_scenarioComponent. new { !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !scenarioList}
+  var @AC_job machine = @C_scenarioComponent. new { !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !scenarioList}
   ioSemanticContext.componentsMap += !machine
 }
 
@@ -578,22 +578,22 @@ rule <io_bool_expression>
   repeat
   while
     $|$
-    @AC_boolExpression rightExpression
+    var @AC_boolExpression rightExpression
     <io_and_expression> !inSemanticContext !?ioVarMap ?rightExpression
     outExpression = @C_orExpression. new { ! outExpression ! rightExpression}
   while
     $^$
-    @AC_boolExpression rightExpression
+    var @AC_boolExpression rightExpression
     <io_and_expression> !inSemanticContext !?ioVarMap ?rightExpression
     outExpression = @C_xorExpression. new { ! outExpression ! rightExpression}
   while
     $->$
-    @AC_boolExpression rightExpression
+    var @AC_boolExpression rightExpression
     <io_and_expression> !inSemanticContext !?ioVarMap ?rightExpression
     outExpression = @C_impliesExpression. new { ! outExpression ! rightExpression}
   while
     $=$
-    @AC_boolExpression rightExpression
+    var @AC_boolExpression rightExpression
     <io_and_expression> !inSemanticContext !?ioVarMap ?rightExpression
     outExpression = @C_equalExpression. new { ! outExpression ! rightExpression}
   end
@@ -609,7 +609,7 @@ rule <io_and_expression>
   repeat
   while
     $&$
-    @AC_boolExpression rightExpression
+    var @AC_boolExpression rightExpression
     <io_primary> !inSemanticContext !?ioVarMap ?rightExpression
     outExpression = @C_andExpression. new { ! outExpression !rightExpression}
   end
@@ -632,9 +632,9 @@ rule <io_primary>
   ?let @semanticContext unused inSemanticContext
   ?!@M_variablesMap ioVarMap
   !@AC_boolExpression outExpression {
-  @lstring inputVarName
+  var @lstring inputVarName
   $identifier$ ? inputVarName
-  @uint inputVarIndex
+  var @uint inputVarIndex
   [ioVarMap searchKey!inputVarName ?inputVarIndex]
   outExpression = @C_VariableExpression. new { !inputVarIndex}
 }
@@ -646,7 +646,7 @@ rule <io_primary>
   ?!@M_variablesMap ioVarMap
   !@AC_boolExpression outExpression {
   $~$
-  @AC_boolExpression expression
+  var @AC_boolExpression expression
   <io_primary> !inSemanticContext !?ioVarMap ? expression
   outExpression = @C_notExpression. new { ! expression}
 }
@@ -677,27 +677,27 @@ rule <io_primary>
   ?let @semanticContext inSemanticContext
   ?!@M_variablesMap ioVarMap
   !@AC_boolExpression outExpression {
-  @lstring machineIdentifier
+  var @lstring machineIdentifier
   $machineIdf$ ? machineIdentifier
-  @uint machineInputVariableCount
-  @uint machineInputAndInternalVariableCount
-  @M_variablesMap machineVariablesMap
-  @uint indexOfImportedMachine
-  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap ?*]
+  var @uint machineInputVariableCount
+  var @uint machineInputAndInternalVariableCount
+  var @M_variablesMap machineVariablesMap
+  var @uint indexOfImportedMachine
+  [inSemanticContext.machinesMap searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap ?*]
   var translationVector =@L_translationVector.emptyList{}
 #--- Parse input variables
   $($
   repeat
-    @lstring inputVar
+    var @lstring inputVar
     $identifier$ ? inputVar
-    @uint inputVarIndex
+    var @uint inputVarIndex
     [ioVarMap searchKey !inputVar ?inputVarIndex]
     translationVector += !inputVarIndex
   while
     $,$
   end
   $)$
-  @uint inputVariablesCount = [translationVector length]
+  var @uint inputVariablesCount = [translationVector length]
   if inputVariablesCount != machineInputVariableCount then
     error @location.here : "The '$" + machineIdentifier + "' machine defines " + [machineInputVariableCount string]
     + " input variable(s), but this operand defines " + [inputVariablesCount string] + " input variable(s)"
@@ -707,9 +707,9 @@ rule <io_primary>
   select
   or
     repeat
-      @lstring internalVar
+      var @lstring internalVar
       $identifier$ ? internalVar
-      @uint internalVarIndex
+      var @uint internalVarIndex
       [ioVarMap searchKey !internalVar ?internalVarIndex]
       translationVector += ! internalVarIndex
     while
@@ -717,32 +717,32 @@ rule <io_primary>
     end
   end
   $)$
-  @uint inputAndInternalVariablesCount = [translationVector length]
+  var @uint inputAndInternalVariablesCount = [translationVector length]
   if inputAndInternalVariablesCount != machineInputAndInternalVariableCount then
-    error @location.here : "The '$" + [machineIdentifier string] + "' machine defines " + [machineInputAndInternalVariableCount string]
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputAndInternalVariableCount string]
     + " input and internal variable(s), but this operand defines " + [inputAndInternalVariablesCount string] + " input and internal variable(s)"
   end
 #--- Parse output variables
   $($
   repeat
-    @lstring outputVar
+    var @lstring outputVar
     $identifier$ ? outputVar
-    @uint outputVarIndex
+    var @uint outputVarIndex
     [ioVarMap searchKey !outputVar ?outputVarIndex]
     translationVector += !outputVarIndex
   while
     $,$
   end
   $)$
-  @uint allVariablesCount = [translationVector length]
-  @uint machineAllVariablesCount = [machineVariablesMap count]
+  var @uint allVariablesCount = [translationVector length]
+  var @uint machineAllVariablesCount = [machineVariablesMap count]
   if allVariablesCount != machineAllVariablesCount then
-    error @location.here : "The '$" + [machineIdentifier string] + "' machine defines " + [machineAllVariablesCount string]
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineAllVariablesCount string]
     + " variables, but this operand defines " + [allVariablesCount string] + " variables"
   end
   outExpression = @C_importBoolMachine. new {
     !indexOfImportedMachine
-    ![machineIdentifier location]
+    !machineIdentifier.location
     !translationVector}
 }
 
@@ -758,8 +758,8 @@ rule <definition_expression>
   repeat
   while
     $+$
-    @AC_machineDefinition leftOperand = outDefinition
-    @AC_machineDefinition rightOperand
+    var @AC_machineDefinition leftOperand = outDefinition
+    var @AC_machineDefinition rightOperand
     <definition_expression_term> !inSemanticContext !? variablesMap ?rightOperand
     outDefinition = @C_orComposition. new { !leftOperand !rightOperand}
   end
@@ -775,22 +775,22 @@ rule <definition_expression_term>
   repeat
   while
     $*$
-    @location errorLocation = @location.here
-    @AC_machineDefinition leftOperand = outDefinition
-    @AC_machineDefinition rightOperand
+    var @location errorLocation = @location.here
+    var @AC_machineDefinition leftOperand = outDefinition
+    var @AC_machineDefinition rightOperand
     <definition_expression_factor> !inSemanticContext !? variablesMap ?rightOperand
     outDefinition = @C_strongModalComposition. new { !leftOperand !errorLocation !rightOperand}
   while
     $**$
-    @location errorLocation = @location.here
-    @AC_machineDefinition leftOperand = outDefinition
-    @AC_machineDefinition rightOperand
+    var @location errorLocation = @location.here
+    var @AC_machineDefinition leftOperand = outDefinition
+    var @AC_machineDefinition rightOperand
     <definition_expression_factor> !inSemanticContext !? variablesMap ?rightOperand
     outDefinition = @C_weakModalComposition. new { !leftOperand !errorLocation !rightOperand}
   while
     $||$
-    @AC_machineDefinition leftOperand = outDefinition
-    @AC_machineDefinition rightOperand
+    var @AC_machineDefinition leftOperand = outDefinition
+    var @AC_machineDefinition rightOperand
     <definition_expression_factor> !inSemanticContext !? variablesMap ?rightOperand
     outDefinition = @C_parallelComposition. new { !leftOperand !rightOperand}
   end
@@ -806,10 +806,10 @@ rule <modalcompadd_definition>
   outModeMap = @M_modesMap. emptyMap
   outInclusionList = @ListForModes. emptyList
   repeat
-    @lstring modeName
+    var @lstring modeName
     $identifier$ ? modeName
     $:$
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression> !inSemanticContext !?variablesMap ?def
     [!?outModeMap insertKey !modeName ![outModeMap count] !def]
     $;$
@@ -818,14 +818,14 @@ rule <modalcompadd_definition>
   repeat
   while
     $include$
-    @lstring sourceModeName
+    var @lstring sourceModeName
     $identifier$ ? sourceModeName
-    @uint sourceModeIndex
+    var @uint sourceModeIndex
     [outModeMap searchKey !sourceModeName ?sourceModeIndex ?*]
     $to$
-    @lstring targetModeName
+    var @lstring targetModeName
     $identifier$ ? targetModeName
-    @uint targetModeIndex
+    var @uint targetModeIndex
     [outModeMap searchKey !targetModeName ?targetModeIndex ?*]
     $;$
     if sourceModeIndex == targetModeIndex then
@@ -846,10 +846,10 @@ rule <modalcompsub_definition>
   outModeMap = @M_modesMap. emptyMap
   outExclusionList = @ListForModes. emptyList
   repeat
-    @lstring modeName
+    var @lstring modeName
     $identifier$ ? modeName
     $:$
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression> !inSemanticContext !?variablesMap ?def
     [!?outModeMap insertKey !modeName ![outModeMap count] !def]
     $;$
@@ -858,14 +858,14 @@ rule <modalcompsub_definition>
   repeat
   while
     $exclude$
-    @lstring sourceModeName
+    var @lstring sourceModeName
     $identifier$ ? sourceModeName
-    @uint sourceModeIndex
+    var @uint sourceModeIndex
     [outModeMap searchKey !sourceModeName ?sourceModeIndex ?*]
     $to$
-    @lstring targetModeName
+    var @lstring targetModeName
     $identifier$ ? targetModeName
-    @uint targetModeIndex
+    var @uint targetModeIndex
     [outModeMap searchKey !targetModeName ?targetModeIndex ?*]
     $;$
     if sourceModeIndex == targetModeIndex then
@@ -889,75 +889,75 @@ rule <definition_expression_factor>
     <definition_expression> !inSemanticContext !? variablesMap ?outDefinition
     $)$
   or
-    @M_variablesMap extendedVariablesMap = variablesMap
-    @uint previousVariableCount = [extendedVariablesMap count]
+    var @M_variablesMap extendedVariablesMap = variablesMap
+    var @uint previousVariableCount = [extendedVariablesMap count]
     $?$
     repeat
-      @lstring variableName
+      var @lstring variableName
       $identifier$ ? variableName
       [!?extendedVariablesMap insertKey !variableName ![extendedVariablesMap count]]
     while
       $,$
     end
-    @uint actualVariableCount = [extendedVariablesMap count]
+    var @uint actualVariableCount = [extendedVariablesMap count]
     $($
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression> !inSemanticContext !?extendedVariablesMap ?def
     $)$
     outDefinition = @C_existsDefinition. new { !previousVariableCount !actualVariableCount !def}
   or
-    @M_variablesMap extendedVariablesMap = variablesMap
-    @uint previousVariableCount = [extendedVariablesMap count]
+    var @M_variablesMap extendedVariablesMap = variablesMap
+    var @uint previousVariableCount = [extendedVariablesMap count]
     $!$
     repeat
-      @lstring variableName
+      var @lstring variableName
       $identifier$ ? variableName
       [!?extendedVariablesMap insertKey !variableName ![extendedVariablesMap count]]
     while
       $,$
     end
-    @uint actualVariableCount = [extendedVariablesMap count]
+    var @uint actualVariableCount = [extendedVariablesMap count]
     $($
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression> !inSemanticContext !?extendedVariablesMap ?def
     $)$
     outDefinition = @C_forallDefinition. new { !previousVariableCount !actualVariableCount !def}
   or
     $bool$
     ${$
-    @AC_boolExpression def
+    var @AC_boolExpression def
     <io_bool_expression> !inSemanticContext !?variablesMap ?def
     outDefinition = @C_boolToSeqExpression. new { !def}
     $}$
   or
     $@$
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression_factor> !inSemanticContext !? variablesMap ?def
     outDefinition = @C_fullSaturationOperation. new { !def}
   or
     $~$
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression_factor> !inSemanticContext !? variablesMap ?def
     outDefinition = @C_complementationOperation. new { !def}
   or
     $nofirst$
     $($
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression> !inSemanticContext !? variablesMap ?def
     outDefinition = @C_suppressInitialStatesOperation. new { !def}
     $)$
   or
     $nolast$
     $($
-    @AC_machineDefinition def
+    var @AC_machineDefinition def
     <definition_expression> !inSemanticContext !? variablesMap ?def
     outDefinition = @C_suppressTerminalStatesOperation. new { !def}
     $)$
   or
     $modalcompadd$
     ${$
-    @M_modesMap modeMap
-    @ListForModes inclusionList
+    var @M_modesMap modeMap
+    var @ListForModes inclusionList
     <modalcompadd_definition>
       !inSemanticContext
       !?variablesMap
@@ -968,8 +968,8 @@ rule <definition_expression_factor>
   or
     $modalcompsub$
     ${$
-    @M_modesMap modeMap
-    @ListForModes exclusionList
+    var @M_modesMap modeMap
+    var @ListForModes exclusionList
     <modalcompsub_definition>
       !inSemanticContext
       !?variablesMap
@@ -980,10 +980,10 @@ rule <definition_expression_factor>
   or
     $trans$
     ${$
-    @AC_boolExpression sourceExpression
+    var @AC_boolExpression sourceExpression
     <io_bool_expression> !inSemanticContext !?variablesMap ?sourceExpression
     $to$
-    @AC_boolExpression targetExpression
+    var @AC_boolExpression targetExpression
     <io_bool_expression> !inSemanticContext !?variablesMap ?targetExpression
     $}$
     outDefinition = @C_trans. new { !sourceExpression !targetExpression}
@@ -996,29 +996,29 @@ rule <definition_expression_factor>
   ?let @semanticContext inSemanticContext
   ?!@M_variablesMap ioVarMap
   !@AC_machineDefinition outDefinition {
-  @lstring machineIdentifier
+  var @lstring machineIdentifier
   $machineIdf$ ? machineIdentifier
-  @uint machineInputVariableCount
-  @uint machineInputAndInternalVariableCount
-  @M_variablesMap machineVariablesMap
-  @uint indexOfImportedMachine
-  [[inSemanticContext machinesMap] searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap ?*]
+  var @uint machineInputVariableCount
+  var @uint machineInputAndInternalVariableCount
+  var @M_variablesMap machineVariablesMap
+  var @uint indexOfImportedMachine
+  [inSemanticContext.machinesMap searchKey !machineIdentifier ?indexOfImportedMachine ?machineInputVariableCount ?machineInputAndInternalVariableCount ?machineVariablesMap ?*]
   var translationVector =@L_translationVector.emptyList{}
 #--- Parse input variables
   $($
   repeat
-    @lstring inputVar
+    var @lstring inputVar
     $identifier$ ? inputVar
-    @uint inputVarIndex
+    var @uint inputVarIndex
     [ioVarMap searchKey !inputVar ?inputVarIndex]
     translationVector += !inputVarIndex
   while
     $,$
   end
   $)$
-  @uint inputVariablesCount = [translationVector length]
+  var @uint inputVariablesCount = [translationVector length]
   if inputVariablesCount != machineInputVariableCount then
-    error @location.here : "The '$" + [machineIdentifier string] + "' machine defines " + [machineInputVariableCount string]
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputVariableCount string]
     + " input variable(s), but this operand defines " + [inputVariablesCount string] + " input variable(s)"
   end
 #--- Parse internal variables
@@ -1026,9 +1026,9 @@ rule <definition_expression_factor>
   select
   or
     repeat
-      @lstring internalVar
+      var @lstring internalVar
       $identifier$ ? internalVar
-      @uint internalVarIndex
+      var @uint internalVarIndex
       [ioVarMap searchKey !internalVar ?internalVarIndex]
       translationVector += ! internalVarIndex
     while
@@ -1036,27 +1036,27 @@ rule <definition_expression_factor>
     end
   end
   $)$
-  @uint inputAndInternalVariablesCount = [translationVector length]
+  var @uint inputAndInternalVariablesCount = [translationVector length]
   if inputAndInternalVariablesCount != machineInputAndInternalVariableCount then
-    error @location.here : "The '$" + [machineIdentifier string] + "' machine defines " + [machineInputAndInternalVariableCount string]
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputAndInternalVariableCount string]
     + " input and internal variable(s), but this operand defines " + [inputAndInternalVariablesCount string] + " input and internal variable(s)"
   end
 #--- Parse output variables
   $($
   repeat
-    @lstring outputVar
+    var @lstring outputVar
     $identifier$ ? outputVar
-    @uint outputVarIndex
+    var @uint outputVarIndex
     [ioVarMap searchKey !outputVar ?outputVarIndex]
     translationVector += !outputVarIndex
   while
     $,$
   end
   $)$
-  @uint allVariablesCount = [translationVector length]
-  @uint machineAllVariablesCount = [machineVariablesMap count]
+  var @uint allVariablesCount = [translationVector length]
+  var @uint machineAllVariablesCount = [machineVariablesMap count]
   if allVariablesCount != machineAllVariablesCount then
-    error @location.here : "The '$" + [machineIdentifier string] + "' machine defines " + [machineAllVariablesCount string]
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineAllVariablesCount string]
     + " variables, but this operand defines " + [allVariablesCount string] + " variables"
   end
   outDefinition = @C_importMachine. new { !indexOfImportedMachine !translationVector}
@@ -1077,7 +1077,7 @@ rule <explicit_automaton>
 #--- States declaration
   $state$
   repeat
-    @lstring stateName
+    var @lstring stateName
     $identifier$ ? stateName
     [!?statesMap insertKey !stateName ![statesMap count]]
   while
@@ -1088,9 +1088,9 @@ rule <explicit_automaton>
   var initialStatesDefinitionList =@L_statesDefinitionList.emptyList{}
   $first$
   repeat
-    @lstring initialState
+    var @lstring initialState
     $identifier$ ? initialState
-    @uint initialStateIndex
+    var @uint initialStateIndex
     [statesMap searchKey !initialState ?initialStateIndex]
     initialStatesDefinitionList += !initialStateIndex !@location.here
   while
@@ -1103,9 +1103,9 @@ rule <explicit_automaton>
   or
     $last$
     repeat
-      @lstring terminalState
+      var @lstring terminalState
       $identifier$ ? terminalState
-      @uint terminalStateIndex
+      var @uint terminalStateIndex
       [statesMap searchKey !terminalState ?terminalStateIndex]
       terminalStatesDefinitionList += ! terminalStateIndex !@location.here
     while
@@ -1117,28 +1117,28 @@ rule <explicit_automaton>
   var stateDefinitionMap =@M_stateMap.emptyMap{}
   repeat
   #--- Current state
-    @lstring stateName
+    var @lstring stateName
     $identifier$ ? stateName
-    @uint stateIndex
+    var @uint stateIndex
     [statesMap searchKey !stateName ?stateIndex]
     [!?stateDefinitionMap defineState !stateName ![stateDefinitionMap count]]
     $:$
   #--- State input expression
-    @AC_boolExpression stateExpression
+    var @AC_boolExpression stateExpression
     <io_bool_expression> !inSemanticContext !?variablesMap ?stateExpression
-    @location endOfStateExpression = @location.here
+    var @location endOfStateExpression = @location.here
     ${$
   #--- Parse state transition
     var transitionsList =@L_transitionDefinition.emptyList{}
     repeat
     while
-      @AC_boolExpression transitionInputExpression
+      var @AC_boolExpression transitionInputExpression
       <io_bool_expression> !inSemanticContext !?variablesMap ?transitionInputExpression
-      @location endOfExpression = @location.here
+      var @location endOfExpression = @location.here
       $goto$
-      @lstring targetStateName
+      var @lstring targetStateName
       $identifier$ ? targetStateName
-      @uint targetStateIndex
+      var @uint targetStateIndex
       [statesMap searchKey !targetStateName ?targetStateIndex]
       transitionsList += !transitionInputExpression !endOfExpression !targetStateIndex
       $;$
@@ -1149,8 +1149,8 @@ rule <explicit_automaton>
   while
   end
 #--- Check all states are defined
-  for () in  statesMap do
-    if not [stateDefinitionMap hasKey ![lkey string]] then
+  for (lkey *) in  statesMap do
+    if not [stateDefinitionMap hasKey !lkey.string] then
       error @location.here : "'" + lkey + "' state is not described"
     end
   end

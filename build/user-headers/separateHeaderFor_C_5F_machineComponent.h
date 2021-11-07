@@ -18,7 +18,7 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
                                  const bool inDisplayBDDvalues) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_lstring mProperty_mMachineName ;
   public: GALGAS_uint mProperty_mMachineIndex ;
   public: GALGAS_uint mProperty_mInputVariableCount ;
@@ -41,20 +41,6 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_lstring getter_mMachineName (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMMachineName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mMachineIndex (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputVariableCount (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_uint getter_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (GALGAS_uint inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_M_5F_variablesMap getter_mVariablesMap (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (GALGAS_M_5F_variablesMap inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_stringlist getter_mNameList (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMNameList (GALGAS_stringlist inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_machineDefinition getter_mDefinition (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMDefinition (GALGAS_AC_5F_machineDefinition inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;

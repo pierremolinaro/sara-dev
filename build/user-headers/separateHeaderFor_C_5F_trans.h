@@ -20,7 +20,7 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
                                                C_BDD & outAccessibilityRelationBDD) const ;
 
 //--- END OF USER ZONE 2
-//--- Attributes
+//--- Properties
   public: GALGAS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
   public: GALGAS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
 
@@ -33,10 +33,6 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
   public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mSourceStateExpression (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMSourceStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
-  public: VIRTUAL_IN_DEBUG GALGAS_AC_5F_boolExpression getter_mTargetStateExpression (LOCATION_ARGS) const ;
-  public: VIRTUAL_IN_DEBUG void setter_setMTargetStateExpression (GALGAS_AC_5F_boolExpression inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public: virtual void description (C_String & ioString,
                                     const int32_t inIndentation) const ;
