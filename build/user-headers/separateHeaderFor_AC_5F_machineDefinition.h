@@ -10,6 +10,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_AC_5F_machineDefinition : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (C_Compiler * inCompiler,

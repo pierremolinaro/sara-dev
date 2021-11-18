@@ -10,6 +10,9 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_parallelComposition : public cPtr_AC_5F_machineDefinition {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (C_Compiler * inCompiler,
