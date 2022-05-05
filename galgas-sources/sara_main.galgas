@@ -8,5 +8,5 @@ case . "sara"
 message "an '.sara' source file"
 grammar sara_grammar
 ?sourceFilePath:@lstring inSourceFile {
-  grammar sara_grammar in inSourceFile
+  grammar sara_grammar () in inSourceFile
 }
