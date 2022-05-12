@@ -821,11 +821,6 @@ class GALGAS_AC_5F_boolExpression : public AC_GALGAS_reference_class {
 //--------------------------------- Default constructor
   public: GALGAS_AC_5F_boolExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_AC_5F_boolExpression (const class cPtr_AC_5F_boolExpression * inSourcePtr) ;
 
@@ -922,6 +917,134 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_boolExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @C_5F_importBoolMachine reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_importBoolMachine (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_importBoolMachine constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_importBoolMachine (const class cPtr_C_5F_importBoolMachine * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_uint readProperty_mIndexOfImportedMachine (void) const ;
+
+  public: class GALGAS_location readProperty_mErrorLocation (void) const ;
+
+  public: class GALGAS_L_5F_translationVector readProperty_mTranslationVector (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_importBoolMachine extractObject (const GALGAS_object & inObject,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_importBoolMachine constructor_new (const class GALGAS_uint & inOperand0,
+                                                                      const class GALGAS_location & inOperand1,
+                                                                      const class GALGAS_L_5F_translationVector & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMErrorLocation (class GALGAS_location inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMIndexOfImportedMachine (class GALGAS_uint inArgument0
+                                                                   COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMTranslationVector (class GALGAS_L_5F_translationVector inArgument0
+                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_importBoolMachine class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importBoolMachine ;
+
+#include "separateHeaderFor_C_5F_importBoolMachine.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_importBoolMachine_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_importBoolMachine_2D_weak : public GALGAS_AC_5F_boolExpression_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_importBoolMachine_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_importBoolMachine_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_C_5F_importBoolMachine_2D_weak (const class GALGAS_C_5F_importBoolMachine & inSource) ;
+
+  public: GALGAS_C_5F_importBoolMachine_2D_weak & operator = (const class GALGAS_C_5F_importBoolMachine & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_C_5F_importBoolMachine bang_C_5F_importBoolMachine_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_importBoolMachine_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_importBoolMachine_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_importBoolMachine_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importBoolMachine_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @C_5F_andExpression reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -930,11 +1053,6 @@ class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_andExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_andExpression (const class cPtr_C_5F_andExpression * inSourcePtr) ;
 
@@ -1054,11 +1172,6 @@ class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_orExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_orExpression (const class cPtr_C_5F_orExpression * inSourcePtr) ;
 
@@ -1178,11 +1291,6 @@ class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_xorExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_xorExpression (const class cPtr_C_5F_xorExpression * inSourcePtr) ;
 
@@ -1302,11 +1410,6 @@ class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_impliesExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_impliesExpression (const class cPtr_C_5F_impliesExpression * inSourcePtr) ;
 
@@ -1426,11 +1529,6 @@ class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_equalExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_equalExpression (const class cPtr_C_5F_equalExpression * inSourcePtr) ;
 
@@ -1550,11 +1648,6 @@ class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_notExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_notExpression (const class cPtr_C_5F_notExpression * inSourcePtr) ;
 
@@ -1671,11 +1764,6 @@ class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_VariableExpression constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_VariableExpression (const class cPtr_C_5F_VariableExpression * inSourcePtr) ;
 
@@ -1792,11 +1880,6 @@ class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_trueExpression constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_trueExpression (const class cPtr_C_5F_trueExpression * inSourcePtr) ;
 
@@ -1907,11 +1990,6 @@ class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_falseExpression constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_falseExpression (const class cPtr_C_5F_falseExpression * inSourcePtr) ;
 
@@ -2814,11 +2892,6 @@ class GALGAS_AC_5F_machineDefinition : public AC_GALGAS_reference_class {
 //--------------------------------- Default constructor
   public: GALGAS_AC_5F_machineDefinition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_AC_5F_machineDefinition (const class cPtr_AC_5F_machineDefinition * inSourcePtr) ;
 
@@ -3408,11 +3481,6 @@ class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_ma
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_substractiveModalCompositionComponent constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_substractiveModalCompositionComponent (const class cPtr_C_5F_substractiveModalCompositionComponent * inSourcePtr) ;
 
@@ -3535,11 +3603,6 @@ class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machin
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_additiveModalCompositionComponent constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_additiveModalCompositionComponent (const class cPtr_C_5F_additiveModalCompositionComponent * inSourcePtr) ;
 
@@ -3659,11 +3722,6 @@ class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_trans (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_trans (const class cPtr_C_5F_trans * inSourcePtr) ;
 
@@ -3786,11 +3844,6 @@ class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_importMachine constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_importMachine (const class cPtr_C_5F_importMachine * inSourcePtr) ;
 
@@ -3913,11 +3966,6 @@ class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefin
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_explicitAutomatonDefinition constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_explicitAutomatonDefinition (const class cPtr_C_5F_explicitAutomatonDefinition * inSourcePtr) ;
 
@@ -4055,11 +4103,6 @@ class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_boolToSeqExpression (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_boolToSeqExpression (const class cPtr_C_5F_boolToSeqExpression * inSourcePtr) ;
 
@@ -4173,11 +4216,6 @@ class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_existsDefinition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_existsDefinition (const class cPtr_C_5F_existsDefinition * inSourcePtr) ;
 
@@ -4303,11 +4341,6 @@ class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_forallDefinition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_forallDefinition (const class cPtr_C_5F_forallDefinition * inSourcePtr) ;
 
@@ -4433,11 +4466,6 @@ class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_parallelComposition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_parallelComposition (const class cPtr_C_5F_parallelComposition * inSourcePtr) ;
 
@@ -4557,11 +4585,6 @@ class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_orComposition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_orComposition (const class cPtr_C_5F_orComposition * inSourcePtr) ;
 
@@ -4681,11 +4704,6 @@ class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_strongModalComposition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_strongModalComposition (const class cPtr_C_5F_strongModalComposition * inSourcePtr) ;
 
@@ -4811,11 +4829,6 @@ class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_weakModalComposition (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_weakModalComposition (const class cPtr_C_5F_weakModalComposition * inSourcePtr) ;
 
@@ -4941,11 +4954,6 @@ class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinitio
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_fullSaturationOperation (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_fullSaturationOperation (const class cPtr_C_5F_fullSaturationOperation * inSourcePtr) ;
 
@@ -5059,11 +5067,6 @@ class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefiniti
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_complementationOperation (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_complementationOperation (const class cPtr_C_5F_complementationOperation * inSourcePtr) ;
 
@@ -5177,11 +5180,6 @@ class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineD
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_suppressTerminalStatesOperation (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_suppressTerminalStatesOperation (const class cPtr_C_5F_suppressTerminalStatesOperation * inSourcePtr) ;
 
@@ -5295,11 +5293,6 @@ class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDe
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_suppressInitialStatesOperation (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_suppressInitialStatesOperation (const class cPtr_C_5F_suppressInitialStatesOperation * inSourcePtr) ;
 
@@ -5413,11 +5406,6 @@ class GALGAS_AC_5F_job : public AC_GALGAS_reference_class {
 //--------------------------------- Default constructor
   public: GALGAS_AC_5F_job (void) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_AC_5F_job (const class cPtr_AC_5F_job * inSourcePtr) ;
 
@@ -5525,11 +5513,6 @@ class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_machineDisplayStates constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_machineDisplayStates (const class cPtr_C_5F_machineDisplayStates * inSourcePtr) ;
 
@@ -5646,11 +5629,6 @@ class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_machineDisplayInitialStates constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_machineDisplayInitialStates (const class cPtr_C_5F_machineDisplayInitialStates * inSourcePtr) ;
 
@@ -5767,11 +5745,6 @@ class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_machineDisplayTerminalStates constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_machineDisplayTerminalStates (const class cPtr_C_5F_machineDisplayTerminalStates * inSourcePtr) ;
 
@@ -5888,11 +5861,6 @@ class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_machineDisplayTransitions constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_machineDisplayTransitions (const class cPtr_C_5F_machineDisplayTransitions * inSourcePtr) ;
 
@@ -5998,6 +5966,128 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplay
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @C_5F_machineCheck reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineCheck (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineCheck constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_machineCheck (const class cPtr_C_5F_machineCheck * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
+
+  public: class GALGAS_bool readProperty_mCheckMachineIsBoolean (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineCheck extractObject (const GALGAS_object & inObject,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineCheck constructor_new (const class GALGAS_uint & inOperand0,
+                                                                 const class GALGAS_bool & inOperand1
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheck & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMCheckMachineIsBoolean (class GALGAS_bool inArgument0
+                                                                  COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineCheck class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheck ;
+
+#include "separateHeaderFor_C_5F_machineCheck.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineCheck_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineCheck_2D_weak : public GALGAS_AC_5F_job_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineCheck_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineCheck_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_C_5F_machineCheck_2D_weak (const class GALGAS_C_5F_machineCheck & inSource) ;
+
+  public: GALGAS_C_5F_machineCheck_2D_weak & operator = (const class GALGAS_C_5F_machineCheck & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_C_5F_machineCheck bang_C_5F_machineCheck_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineCheck_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineCheck_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheck_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineCheck_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheck_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @C_5F_machineCheckIdentical reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -6009,11 +6099,6 @@ class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_machineCheckIdentical constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_machineCheckIdentical (const class cPtr_C_5F_machineCheckIdentical * inSourcePtr) ;
 
@@ -6122,6 +6207,459 @@ class GALGAS_C_5F_machineCheckIdentical_2D_weak : public GALGAS_AC_5F_job_2D_wea
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheckIdentical_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineComponent reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineComponent (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_machineComponent (const class cPtr_C_5F_machineComponent * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mMachineName (void) const ;
+
+  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputVariableCount (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+
+  public: class GALGAS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+
+  public: class GALGAS_stringlist readProperty_mNameList (void) const ;
+
+  public: class GALGAS_AC_5F_machineDefinition readProperty_mDefinition (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineComponent extractObject (const GALGAS_object & inObject,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineComponent constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_uint & inOperand1,
+                                                                     const class GALGAS_uint & inOperand2,
+                                                                     const class GALGAS_uint & inOperand3,
+                                                                     const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                     const class GALGAS_stringlist & inOperand5,
+                                                                     const class GALGAS_AC_5F_machineDefinition & inOperand6
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineComponent & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMDefinition (class GALGAS_AC_5F_machineDefinition inArgument0
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (class GALGAS_uint inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineName (class GALGAS_lstring inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMNameList (class GALGAS_stringlist inArgument0
+                                                     COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (class GALGAS_M_5F_variablesMap inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineComponent class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineComponent ;
+
+#include "separateHeaderFor_C_5F_machineComponent.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineComponent_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineComponent_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineComponent_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_C_5F_machineComponent_2D_weak (const class GALGAS_C_5F_machineComponent & inSource) ;
+
+  public: GALGAS_C_5F_machineComponent_2D_weak & operator = (const class GALGAS_C_5F_machineComponent & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_C_5F_machineComponent bang_C_5F_machineComponent_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineComponent_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineComponent_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineComponent_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineComponent_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineComponent_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDefinedByAdditiveModalComp reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineDefinedByAdditiveModalComp (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineDefinedByAdditiveModalComp constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_machineDefinedByAdditiveModalComp (const class cPtr_C_5F_machineDefinedByAdditiveModalComp * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mMachineName (void) const ;
+
+  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputVariableCount (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+
+  public: class GALGAS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+
+  public: class GALGAS_M_5F_modesMap readProperty_mModeMap (void) const ;
+
+  public: class GALGAS_ListForModes readProperty_mInclusionList (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineDefinedByAdditiveModalComp extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineDefinedByAdditiveModalComp constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                      const class GALGAS_uint & inOperand1,
+                                                                                      const class GALGAS_uint & inOperand2,
+                                                                                      const class GALGAS_uint & inOperand3,
+                                                                                      const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                      const class GALGAS_M_5F_modesMap & inOperand5,
+                                                                                      const class GALGAS_ListForModes & inOperand6
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMInclusionList (class GALGAS_ListForModes inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (class GALGAS_uint inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineName (class GALGAS_lstring inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMModeMap (class GALGAS_M_5F_modesMap inArgument0
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (class GALGAS_M_5F_variablesMap inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineDefinedByAdditiveModalComp class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp ;
+
+#include "separateHeaderFor_C_5F_machineDefinedByAdditiveModalComp.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDefinedByAdditiveModalComp_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak : public GALGAS_AC_5F_job_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak (const class GALGAS_C_5F_machineDefinedByAdditiveModalComp & inSource) ;
+
+  public: GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak & operator = (const class GALGAS_C_5F_machineDefinedByAdditiveModalComp & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_C_5F_machineDefinedByAdditiveModalComp bang_C_5F_machineDefinedByAdditiveModalComp_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDefinedBySubstractiveModalComp reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineDefinedBySubstractiveModalComp (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineDefinedBySubstractiveModalComp constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_machineDefinedBySubstractiveModalComp (const class cPtr_C_5F_machineDefinedBySubstractiveModalComp * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_lstring readProperty_mMachineName (void) const ;
+
+  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputVariableCount (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+
+  public: class GALGAS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+
+  public: class GALGAS_M_5F_modesMap readProperty_mModeMap (void) const ;
+
+  public: class GALGAS_ListForModes readProperty_mExclusionList (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineDefinedBySubstractiveModalComp extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineDefinedBySubstractiveModalComp constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                          const class GALGAS_uint & inOperand1,
+                                                                                          const class GALGAS_uint & inOperand2,
+                                                                                          const class GALGAS_uint & inOperand3,
+                                                                                          const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                          const class GALGAS_M_5F_modesMap & inOperand5,
+                                                                                          const class GALGAS_ListForModes & inOperand6
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMExclusionList (class GALGAS_ListForModes inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (class GALGAS_uint inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineName (class GALGAS_lstring inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMModeMap (class GALGAS_M_5F_modesMap inArgument0
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (class GALGAS_M_5F_variablesMap inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineDefinedBySubstractiveModalComp class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedBySubstractiveModalComp ;
+
+#include "separateHeaderFor_C_5F_machineDefinedBySubstractiveModalComp.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_machineDefinedBySubstractiveModalComp_2D_weak weak reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak : public GALGAS_AC_5F_job_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak (const class GALGAS_C_5F_machineDefinedBySubstractiveModalComp & inSource) ;
+
+  public: GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak & operator = (const class GALGAS_C_5F_machineDefinedBySubstractiveModalComp & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_C_5F_machineDefinedBySubstractiveModalComp bang_C_5F_machineDefinedBySubstractiveModalComp_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak constructor_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -6787,11 +7325,6 @@ class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
 //--------------------------------- Default GALGAS constructor
   public: static GALGAS_C_5F_scenarioComponent constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
 //--------------------------------- Constructor from pointer
   public: GALGAS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
 
@@ -6918,323 +7451,4 @@ class GALGAS_C_5F_scenarioComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @typeDisplayBDDstats reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
-//--------------------------------- Default constructor
-  public: GALGAS_typeDisplayBDDstats (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_typeDisplayBDDstats constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Embedded object pointer
- public: inline acStrongPtr_class * embeddedObjectPtr (void) const {
-   return (acStrongPtr_class *) mObjectPtr ;
- }
-  
-//--------------------------------- Constructor from pointer
-  public: GALGAS_typeDisplayBDDstats (const class cPtr_typeDisplayBDDstats * inSourcePtr) ;
-
-//--------------------------------- Property read access
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_typeDisplayBDDstats extractObject (const GALGAS_object & inObject,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_typeDisplayBDDstats constructor_new (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeDisplayBDDstats class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats ;
-
-#include "separateHeaderFor_typeDisplayBDDstats.h"
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @typeDisplayBDDstats_2D_weak weak reference class
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_typeDisplayBDDstats_2D_weak : public GALGAS_AC_5F_job_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_typeDisplayBDDstats_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_typeDisplayBDDstats_2D_weak constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_typeDisplayBDDstats_2D_weak (const class GALGAS_typeDisplayBDDstats & inSource) ;
-
-  public: GALGAS_typeDisplayBDDstats_2D_weak & operator = (const class GALGAS_typeDisplayBDDstats & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_typeDisplayBDDstats bang_typeDisplayBDDstats_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_typeDisplayBDDstats_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_typeDisplayBDDstats_2D_weak constructor_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeDisplayBDDstats_2D_weak class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats_2D_weak ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @L_jobList list
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_L_5F_jobList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GALGAS_L_5F_jobList (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GALGAS_L_5F_jobList (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_AC_5F_job & in_mComponent
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_L_5F_jobList extractObject (const GALGAS_object & inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_L_5F_jobList constructor_emptyList (LOCATION_ARGS) ;
-
-  public: static class GALGAS_L_5F_jobList constructor_listWithValue (const class GALGAS_AC_5F_job & inOperand0
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_jobList inOperand,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_AC_5F_job & inOperand0
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_L_5F_jobList add_operation (const GALGAS_L_5F_jobList & inOperand,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_jobList_2D_element inArgument0,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_AC_5F_job constinArgument0,
-                                                      class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_AC_5F_job & outArgument0,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_AC_5F_job & outArgument0,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_AC_5F_job & outArgument0,
-                                                      class GALGAS_uint constinArgument1,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMComponentAtIndex (class GALGAS_AC_5F_job constinArgument0,
-                                                             class GALGAS_uint constinArgument1,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_AC_5F_job & outArgument0,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_AC_5F_job & outArgument0,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_AC_5F_job getter_mComponentAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_jobList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_jobList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_jobList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_L_5F_jobList ;
- 
-} ; // End of GALGAS_L_5F_jobList class
-
-//----------------------------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//----------------------------------------------------------------------------------------------------------------------
-
-class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
-  public: cEnumerator_L_5F_jobList (const GALGAS_L_5F_jobList & inEnumeratedObject,
-                                    const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_L_5F_jobList_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-// Phase 1: @L_5F_jobList_2D_element struct
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_AC_5F_job mProperty_mComponent ;
-  public: inline GALGAS_AC_5F_job readProperty_mComponent (void) const {
-    return mProperty_mComponent ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public: VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_L_5F_jobList_2D_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMComponent (const GALGAS_AC_5F_job & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mComponent = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_L_5F_jobList_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_L_5F_jobList_2D_element (const GALGAS_AC_5F_job & in_mComponent) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_L_5F_jobList_2D_element extractObject (const GALGAS_object & inObject,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_L_5F_jobList_2D_element constructor_new (const class GALGAS_AC_5F_job & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_jobList_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_L_5F_jobList_2D_element class
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList_2D_element ;
 

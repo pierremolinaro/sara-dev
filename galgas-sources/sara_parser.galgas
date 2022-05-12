@@ -24,9 +24,6 @@ rule <start_symbol> {
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $state$
   $display$
@@ -43,9 +40,6 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $trans$
   $display$
@@ -62,9 +56,6 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $first$
   $state$
@@ -82,9 +73,6 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $last$
   $state$
@@ -102,9 +90,6 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $check$
   $machineIdf$ ?let machineName
@@ -120,9 +105,6 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $checkidentical$
   $machineIdf$ ?let machineName1
@@ -142,9 +124,6 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  let variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $checkbool$
   $machineIdf$ ?let machineName
@@ -236,8 +215,6 @@ rule <component>
 rule <component>
   ?!@semanticContext ioSemanticContext {
   var variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
   var nameList =@stringlist.emptyList{}
 #--- Machine name
   $machineIdf$ ?let machineName
@@ -300,8 +277,6 @@ rule <component>
 rule <component>
   ?!@semanticContext ioSemanticContext {
   var variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
   var nameList =@stringlist.emptyList{}
 #--- Machine name
   $modalcompadd$
@@ -369,8 +344,6 @@ rule <component>
 rule <component>
   ?!@semanticContext ioSemanticContext {
   var variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
   var nameList =@stringlist.emptyList{}
 #--- Machine name
   $modalcompsub$
@@ -433,12 +406,9 @@ rule <component>
   $;$
 }
 #---------------------------------------------------------------------------*
-rule <component>
-  ?!@semanticContext ioSemanticContext {
+rule <component> ?!@semanticContext ioSemanticContext {
   $scenario$
   var variablesMap =@M_variablesMap.emptyMap{}
-  let statesMap =@M_stateMap.emptyMap{}
-  let stateDefinitionList =@L_stateDefinition.emptyList{}
 #--- Machine name
   $machineIdf$ ?let machineName
 #--- Search machine from machine map
