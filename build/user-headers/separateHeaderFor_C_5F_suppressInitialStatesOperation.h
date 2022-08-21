@@ -11,8 +11,6 @@
 
 class cPtr_C_5F_suppressInitialStatesOperation : public cPtr_AC_5F_machineDefinition {
 
-//----------------------------------------------------------------------------------------------------------------------
-
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (C_Compiler * inCompiler,
@@ -20,7 +18,7 @@ class cPtr_C_5F_suppressInitialStatesOperation : public cPtr_AC_5F_machineDefini
                                                const uint32_t inVariablesCount,
                                                C_BDD & outInitialStatesBDD,
                                                C_BDD & outTerminalStatesBDD,
-                                               C_BDD & outAccessibilityRelationBDD) const ;
+                                               C_BDD & outAccessibilityRelationBDD) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties
@@ -31,16 +29,16 @@ class cPtr_C_5F_suppressInitialStatesOperation : public cPtr_AC_5F_machineDefini
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
   public: virtual void description (C_String & ioString,
-                                    const int32_t inIndentation) const ;
+                                    const int32_t inIndentation) const override ;
 
-  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
 
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
 
 } ;
 

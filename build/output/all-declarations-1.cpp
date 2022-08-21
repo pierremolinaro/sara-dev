@@ -2136,7 +2136,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
         inCompiler->acceptTerminal (C_Lexique_sara_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("sara_parser.galgas", 474)) ;
         enumGalgasBool test_12 = kBoolTrue ;
         if (kBoolTrue == test_12) {
-          test_12 = GALGAS_bool (kIsStrictSup, var_v_14097.readProperty_uint ().objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+          test_12 = GALGAS_bool (kIsStrictSup, var_v_14097.readProperty_uint ().objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
           if (kBoolTrue == test_12) {
             TC_Array <C_FixItDescription> fixItArray13 ;
             inCompiler->emitSemanticError (var_v_14097.readProperty_location (), GALGAS_string ("this value is not a  binary digit"), fixItArray13  COMMA_SOURCE_FILE ("sara_parser.galgas", 476)) ;
@@ -9097,7 +9097,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         message << ".\n" ;
         ggs_printMessage (message COMMA_HERE) ;
       }
-    }catch (const ::std:: exception & e) {
+    }catch (const ::std::exception & e) {
       F_default_display_exception (e) ;
       returnCode = 1 ; // Error code
     }catch (...) {
