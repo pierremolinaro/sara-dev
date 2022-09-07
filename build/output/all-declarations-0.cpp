@@ -1036,11 +1036,116 @@ C_String C_Lexique_sara_5F_scanner::getCurrentTokenString (const cToken * inToke
 
 void C_Lexique_sara_5F_scanner::internalParseLexicalToken (cTokenFor_sara_5F_scanner & token) {
   bool loop = true ;
-    token.mLexicalAttribute_identifierString.setLengthToZero () ;
-    token.mLexicalAttribute_ulongValue = 0 ;
-    mTokenStartLocation = mCurrentLocation ;
-    try{
-      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+  token.mLexicalAttribute_identifierString.setLengthToZero () ;
+  token.mLexicalAttribute_ulongValue = 0 ;
+  mTokenStartLocation = mCurrentLocation ;
+  try{
+    if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
+      do {
+        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
+        if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = search_into_keyWordList (token.mLexicalAttribute_identifierString) ;
+      }
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = kToken_identifier ;
+      }
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C__7C_, 2, true)) {
+      token.mTokenCode = kToken__7C__7C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A__3D_, 2, true)) {
+      token.mTokenCode = kToken__3A__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2D__3E_, 2, true)) {
+      token.mTokenCode = kToken__2D__3E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A__2A_, 2, true)) {
+      token.mTokenCode = kToken__2A__2A_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7E_, 1, true)) {
+      token.mTokenCode = kToken__7E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7D_, 1, true)) {
+      token.mTokenCode = kToken__7D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C_, 1, true)) {
+      token.mTokenCode = kToken__7C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7B_, 1, true)) {
+      token.mTokenCode = kToken__7B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__5E_, 1, true)) {
+      token.mTokenCode = kToken__5E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__40_, 1, true)) {
+      token.mTokenCode = kToken__40_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3F_, 1, true)) {
+      token.mTokenCode = kToken__3F_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3D_, 1, true)) {
+      token.mTokenCode = kToken__3D_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3B_, 1, true)) {
+      token.mTokenCode = kToken__3B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A_, 1, true)) {
+      token.mTokenCode = kToken__3A_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2C_, 1, true)) {
+      token.mTokenCode = kToken__2C_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2B_, 1, true)) {
+      token.mTokenCode = kToken__2B_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A_, 1, true)) {
+      token.mTokenCode = kToken__2A_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__29_, 1, true)) {
+      token.mTokenCode = kToken__29_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__28_, 1, true)) {
+      token.mTokenCode = kToken__28_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__26_, 1, true)) {
+      token.mTokenCode = kToken__26_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__21_, 1, true)) {
+      token.mTokenCode = kToken__21_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+      do {
+        if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
+          if (testForInputUTF32Char (TO_UNICODE ('n'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, TO_UNICODE ('\n')) ;
+          }else if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, TO_UNICODE ('\\')) ;
+          }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, TO_UNICODE ('\"')) ;
+          }else{
+            lexicalError (gLexicalMessage_sara_5F_scanner_incorrectCharInString COMMA_LINE_AND_SOURCE_FILE) ;
+          }
+        }else if (testForInputUTF32Char (TO_UNICODE (' ')) || testForInputUTF32Char (TO_UNICODE ('!')) || testForInputUTF32CharRange (TO_UNICODE ('#'), TO_UNICODE ('~'))) {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
+        token.mTokenCode = kToken_literal_5F_string ;
+        enterToken (token) ;
+      }else{
+        lexicalError (gLexicalMessage_sara_5F_scanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+    }else if (testForInputUTF32Char (TO_UNICODE ('$'))) {
+      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
           if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
@@ -1049,144 +1154,39 @@ void C_Lexique_sara_5F_scanner::internalParseLexicalToken (cTokenFor_sara_5F_sca
           }
         }while (loop) ;
         loop = true ;
-        if (token.mTokenCode == -1) {
-          token.mTokenCode = search_into_keyWordList (token.mLexicalAttribute_identifierString) ;
-        }
-        if (token.mTokenCode == -1) {
-          token.mTokenCode = kToken_identifier ;
-        }
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C__7C_, 2, true)) {
-        token.mTokenCode = kToken__7C__7C_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A__3D_, 2, true)) {
-        token.mTokenCode = kToken__3A__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2D__3E_, 2, true)) {
-        token.mTokenCode = kToken__2D__3E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A__2A_, 2, true)) {
-        token.mTokenCode = kToken__2A__2A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7E_, 1, true)) {
-        token.mTokenCode = kToken__7E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7D_, 1, true)) {
-        token.mTokenCode = kToken__7D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C_, 1, true)) {
-        token.mTokenCode = kToken__7C_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7B_, 1, true)) {
-        token.mTokenCode = kToken__7B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__5E_, 1, true)) {
-        token.mTokenCode = kToken__5E_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__40_, 1, true)) {
-        token.mTokenCode = kToken__40_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3F_, 1, true)) {
-        token.mTokenCode = kToken__3F_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3D_, 1, true)) {
-        token.mTokenCode = kToken__3D_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3B_, 1, true)) {
-        token.mTokenCode = kToken__3B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A_, 1, true)) {
-        token.mTokenCode = kToken__3A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2C_, 1, true)) {
-        token.mTokenCode = kToken__2C_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2B_, 1, true)) {
-        token.mTokenCode = kToken__2B_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A_, 1, true)) {
-        token.mTokenCode = kToken__2A_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__29_, 1, true)) {
-        token.mTokenCode = kToken__29_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__28_, 1, true)) {
-        token.mTokenCode = kToken__28_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__26_, 1, true)) {
-        token.mTokenCode = kToken__26_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__21_, 1, true)) {
-        token.mTokenCode = kToken__21_ ;
-        enterToken (token) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-        do {
-          if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-            if (testForInputUTF32Char (TO_UNICODE ('n'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, TO_UNICODE ('\n')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('\\'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, TO_UNICODE ('\\')) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, TO_UNICODE ('\"')) ;
-            }else{
-              lexicalError (gLexicalMessage_sara_5F_scanner_incorrectCharInString COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (TO_UNICODE (' ')) || testForInputUTF32Char (TO_UNICODE ('!')) || testForInputUTF32CharRange (TO_UNICODE ('#'), TO_UNICODE ('~'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
-          token.mTokenCode = kToken_literal_5F_string ;
-          enterToken (token) ;
+      }else{
+        lexicalError (gLexicalMessage_sara_5F_scanner_incorrectMachineNameBeginning COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+      token.mTokenCode = kToken_machineIdf ;
+      enterToken (token) ;
+    }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+      ::scanner_routine_enterDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_ulongValue, gLexicalMessage_sara_5F_scanner_decimalNumberTooLarge, gLexicalMessage_sara_5F_scanner_internalError) ;
+      do {
+        if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          ::scanner_routine_enterDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_ulongValue, gLexicalMessage_sara_5F_scanner_decimalNumberTooLarge, gLexicalMessage_sara_5F_scanner_internalError) ;
+        }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
         }else{
-          lexicalError (gLexicalMessage_sara_5F_scanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
+          loop = false ;
         }
-      }else if (testForInputUTF32Char (TO_UNICODE ('$'))) {
-        if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
-          do {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            }else{
-              loop = false ;
-            }
-          }while (loop) ;
-          loop = true ;
+      }while (loop) ;
+      loop = true ;
+      token.mTokenCode = kToken_literal_5F_integer ;
+      enterToken (token) ;
+    }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
+    }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
+      do {
+        if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32CharRange (TO_UNICODE ('\v'), TO_UNICODE (65533))) {
         }else{
-          lexicalError (gLexicalMessage_sara_5F_scanner_incorrectMachineNameBeginning COMMA_LINE_AND_SOURCE_FILE) ;
+          loop = false ;
         }
-        token.mTokenCode = kToken_machineIdf ;
-        enterToken (token) ;
-      }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-        ::scanner_routine_enterDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_ulongValue, gLexicalMessage_sara_5F_scanner_decimalNumberTooLarge, gLexicalMessage_sara_5F_scanner_internalError) ;
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            ::scanner_routine_enterDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_ulongValue, gLexicalMessage_sara_5F_scanner_decimalNumberTooLarge, gLexicalMessage_sara_5F_scanner_internalError) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        token.mTokenCode = kToken_literal_5F_integer ;
-        enterToken (token) ;
-      }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
-      }else if (testForInputUTF32Char (TO_UNICODE ('#'))) {
-        do {
-          if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE ('\t')) || testForInputUTF32CharRange (TO_UNICODE ('\v'), TO_UNICODE (65533))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        if (testForInputUTF32Char (TO_UNICODE ('\n'))) {
-        }else{
-          lexicalError (gLexicalMessage_sara_5F_scanner_incorrectEndOfComment COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-        enterDroppedTerminal (kToken_comment) ;
-      }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+      }while (loop) ;
+      loop = true ;
+      if (testForInputUTF32Char (TO_UNICODE ('\n'))) {
+      }else{
+        lexicalError (gLexicalMessage_sara_5F_scanner_incorrectEndOfComment COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+      enterDroppedTerminal (kToken_comment) ;
+    }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
       token.mTokenCode = kToken_ ; // Empty string code
     }else{ // Unknown input character
       unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
