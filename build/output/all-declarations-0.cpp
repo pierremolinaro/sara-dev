@@ -178,7 +178,7 @@ static const char * gSyntaxErrorMessage_sara_5F_scanner__26_ = "the '&' delimito
 static const char * gSyntaxErrorMessage_sara_5F_scanner__7E_ = "the '~' delimitor" ;
 
 //--- Syntax error message for terminal '$?$' :
-static const char * gSyntaxErrorMessage_sara_5F_scanner__3F_ = "the '\?' delimitor" ;
+static const char * gSyntaxErrorMessage_sara_5F_scanner__3F_ = "the '?' delimitor" ;
 
 //--- Syntax error message for terminal '$!$' :
 static const char * gSyntaxErrorMessage_sara_5F_scanner__21_ = "the '!' delimitor" ;
@@ -945,7 +945,7 @@ C_String C_Lexique_sara_5F_scanner::getCurrentTokenString (const cToken * inToke
       break ;
     case kToken__3F_:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("\?") ;
+      s.appendCString ("?") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken__21_:
@@ -1316,7 +1316,7 @@ GALGAS_stringlist C_Lexique_sara_5F_scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("->") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("&") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("~") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("\?") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("?") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("!") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("|") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("||") COMMA_THERE) ;
@@ -1356,7 +1356,7 @@ static void getKeywordsForIdentifier_sara_5F_scanner (const C_String & inIdentif
     ioList.appendObject (":") ;
     ioList.appendObject (";") ;
     ioList.appendObject ("=") ;
-    ioList.appendObject ("\?") ;
+    ioList.appendObject ("?") ;
     ioList.appendObject ("@") ;
     ioList.appendObject ("^") ;
     ioList.appendObject ("{") ;

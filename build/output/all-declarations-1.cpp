@@ -1205,12 +1205,12 @@ GALGAS_semanticContext GALGAS_semanticContext::constructor_default (UNUSED_LOCAT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_L_5F_jobList & inOperand0,
-                                                                const GALGAS_M_5F_machinesMap & inOperand1 
+GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_L_5F_jobList & in_componentsMap,
+                                                                const GALGAS_M_5F_machinesMap & in_machinesMap 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_semanticContext result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_semanticContext (inOperand0, inOperand1) ;
+  if (in_componentsMap.isValid () && in_machinesMap.isValid ()) {
+    result = GALGAS_semanticContext (in_componentsMap, in_machinesMap) ;
   }
   return result ;
 }
@@ -3630,11 +3630,11 @@ GALGAS_L_5F_translationVector_2D_element GALGAS_L_5F_translationVector_2D_elemen
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_translationVector_2D_element GALGAS_L_5F_translationVector_2D_element::constructor_new (const GALGAS_uint & inOperand0 
+GALGAS_L_5F_translationVector_2D_element GALGAS_L_5F_translationVector_2D_element::constructor_new (const GALGAS_uint & in_mTargetSlot 
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_translationVector_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_L_5F_translationVector_2D_element (inOperand0) ;
+  if (in_mTargetSlot.isValid ()) {
+    result = GALGAS_L_5F_translationVector_2D_element (in_mTargetSlot) ;
   }
   return result ;
 }
@@ -3742,13 +3742,13 @@ mProperty_mTargetStateIndex (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_transitionDefinition_2D_element GALGAS_L_5F_transitionDefinition_2D_element::constructor_new (const GALGAS_AC_5F_boolExpression & inOperand0,
-                                                                                                          const GALGAS_location & inOperand1,
-                                                                                                          const GALGAS_uint & inOperand2 
+GALGAS_L_5F_transitionDefinition_2D_element GALGAS_L_5F_transitionDefinition_2D_element::constructor_new (const GALGAS_AC_5F_boolExpression & in_mActionExpression,
+                                                                                                          const GALGAS_location & in_mEndOfExpression,
+                                                                                                          const GALGAS_uint & in_mTargetStateIndex 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_transitionDefinition_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_L_5F_transitionDefinition_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_mActionExpression.isValid () && in_mEndOfExpression.isValid () && in_mTargetStateIndex.isValid ()) {
+    result = GALGAS_L_5F_transitionDefinition_2D_element (in_mActionExpression, in_mEndOfExpression, in_mTargetStateIndex) ;
   }
   return result ;
 }
@@ -3871,14 +3871,14 @@ mProperty_mTransitionsList (inOperand3) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_stateDefinition_2D_element GALGAS_L_5F_stateDefinition_2D_element::constructor_new (const GALGAS_uint & inOperand0,
-                                                                                                const GALGAS_AC_5F_boolExpression & inOperand1,
-                                                                                                const GALGAS_location & inOperand2,
-                                                                                                const GALGAS_L_5F_transitionDefinition & inOperand3 
+GALGAS_L_5F_stateDefinition_2D_element GALGAS_L_5F_stateDefinition_2D_element::constructor_new (const GALGAS_uint & in_mStateIndex,
+                                                                                                const GALGAS_AC_5F_boolExpression & in_mStateExpression,
+                                                                                                const GALGAS_location & in_mEndOfStateExpression,
+                                                                                                const GALGAS_L_5F_transitionDefinition & in_mTransitionsList 
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_stateDefinition_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_L_5F_stateDefinition_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (in_mStateIndex.isValid () && in_mStateExpression.isValid () && in_mEndOfStateExpression.isValid () && in_mTransitionsList.isValid ()) {
+    result = GALGAS_L_5F_stateDefinition_2D_element (in_mStateIndex, in_mStateExpression, in_mEndOfStateExpression, in_mTransitionsList) ;
   }
   return result ;
 }
@@ -4008,12 +4008,12 @@ GALGAS_L_5F_statesDefinitionList_2D_element GALGAS_L_5F_statesDefinitionList_2D_
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_statesDefinitionList_2D_element GALGAS_L_5F_statesDefinitionList_2D_element::constructor_new (const GALGAS_uint & inOperand0,
-                                                                                                          const GALGAS_location & inOperand1 
+GALGAS_L_5F_statesDefinitionList_2D_element GALGAS_L_5F_statesDefinitionList_2D_element::constructor_new (const GALGAS_uint & in_mStateIndex,
+                                                                                                          const GALGAS_location & in_mStateLocation 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_statesDefinitionList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_L_5F_statesDefinitionList_2D_element (inOperand0, inOperand1) ;
+  if (in_mStateIndex.isValid () && in_mStateLocation.isValid ()) {
+    result = GALGAS_L_5F_statesDefinitionList_2D_element (in_mStateIndex, in_mStateLocation) ;
   }
   return result ;
 }
@@ -4131,12 +4131,12 @@ GALGAS_ListForModes_2D_element GALGAS_ListForModes_2D_element::constructor_defau
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_ListForModes_2D_element GALGAS_ListForModes_2D_element::constructor_new (const GALGAS_uint & inOperand0,
-                                                                                const GALGAS_uint & inOperand1 
+GALGAS_ListForModes_2D_element GALGAS_ListForModes_2D_element::constructor_new (const GALGAS_uint & in_mSourceMode,
+                                                                                const GALGAS_uint & in_mTargetMode 
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_ListForModes_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_ListForModes_2D_element (inOperand0, inOperand1) ;
+  if (in_mSourceMode.isValid () && in_mTargetMode.isValid ()) {
+    result = GALGAS_ListForModes_2D_element (in_mSourceMode, in_mTargetMode) ;
   }
   return result ;
 }
@@ -4250,11 +4250,11 @@ GALGAS_L_5F_inputConfigurationForScenario_2D_element GALGAS_L_5F_inputConfigurat
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_inputConfigurationForScenario_2D_element GALGAS_L_5F_inputConfigurationForScenario_2D_element::constructor_new (const GALGAS_luint & inOperand0 
+GALGAS_L_5F_inputConfigurationForScenario_2D_element GALGAS_L_5F_inputConfigurationForScenario_2D_element::constructor_new (const GALGAS_luint & in_mInputValue 
                                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_inputConfigurationForScenario_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_L_5F_inputConfigurationForScenario_2D_element (inOperand0) ;
+  if (in_mInputValue.isValid ()) {
+    result = GALGAS_L_5F_inputConfigurationForScenario_2D_element (in_mInputValue) ;
   }
   return result ;
 }
@@ -4362,11 +4362,11 @@ GALGAS_L_5F_inputScenario_2D_element GALGAS_L_5F_inputScenario_2D_element::const
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_inputScenario_2D_element GALGAS_L_5F_inputScenario_2D_element::constructor_new (const GALGAS_L_5F_inputConfigurationForScenario & inOperand0 
+GALGAS_L_5F_inputScenario_2D_element GALGAS_L_5F_inputScenario_2D_element::constructor_new (const GALGAS_L_5F_inputConfigurationForScenario & in_mInputConfiguration 
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_inputScenario_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_L_5F_inputScenario_2D_element (inOperand0) ;
+  if (in_mInputConfiguration.isValid ()) {
+    result = GALGAS_L_5F_inputScenario_2D_element (in_mInputConfiguration) ;
   }
   return result ;
 }
@@ -4468,11 +4468,11 @@ mProperty_mComponent (inOperand0) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_jobList_2D_element GALGAS_L_5F_jobList_2D_element::constructor_new (const GALGAS_AC_5F_job & inOperand0 
+GALGAS_L_5F_jobList_2D_element GALGAS_L_5F_jobList_2D_element::constructor_new (const GALGAS_AC_5F_job & in_mComponent 
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_jobList_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_L_5F_jobList_2D_element (inOperand0) ;
+  if (in_mComponent.isValid ()) {
+    result = GALGAS_L_5F_jobList_2D_element (in_mComponent) ;
   }
   return result ;
 }
@@ -7911,12 +7911,12 @@ GALGAS_M_5F_variablesMap_2D_element GALGAS_M_5F_variablesMap_2D_element::constru
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_M_5F_variablesMap_2D_element GALGAS_M_5F_variablesMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_uint & inOperand1 
+GALGAS_M_5F_variablesMap_2D_element GALGAS_M_5F_variablesMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                                          const GALGAS_uint & in_mIndex 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_M_5F_variablesMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_M_5F_variablesMap_2D_element (inOperand0, inOperand1) ;
+  if (in_lkey.isValid () && in_mIndex.isValid ()) {
+    result = GALGAS_M_5F_variablesMap_2D_element (in_lkey, in_mIndex) ;
   }
   return result ;
 }
@@ -8034,12 +8034,12 @@ GALGAS_M_5F_stateMap_2D_element GALGAS_M_5F_stateMap_2D_element::constructor_def
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_M_5F_stateMap_2D_element GALGAS_M_5F_stateMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                  const GALGAS_uint & inOperand1 
+GALGAS_M_5F_stateMap_2D_element GALGAS_M_5F_stateMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                                  const GALGAS_uint & in_mIndex 
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_M_5F_stateMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_M_5F_stateMap_2D_element (inOperand0, inOperand1) ;
+  if (in_lkey.isValid () && in_mIndex.isValid ()) {
+    result = GALGAS_M_5F_stateMap_2D_element (in_lkey, in_mIndex) ;
   }
   return result ;
 }
@@ -8153,13 +8153,13 @@ mProperty_mModeDefinition (inOperand2) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_M_5F_modesMap_2D_element GALGAS_M_5F_modesMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                  const GALGAS_uint & inOperand1,
-                                                                                  const GALGAS_AC_5F_machineDefinition & inOperand2 
+GALGAS_M_5F_modesMap_2D_element GALGAS_M_5F_modesMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                                  const GALGAS_uint & in_mIndex,
+                                                                                  const GALGAS_AC_5F_machineDefinition & in_mModeDefinition 
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_M_5F_modesMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_M_5F_modesMap_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (in_lkey.isValid () && in_mIndex.isValid () && in_mModeDefinition.isValid ()) {
+    result = GALGAS_M_5F_modesMap_2D_element (in_lkey, in_mIndex, in_mModeDefinition) ;
   }
   return result ;
 }
@@ -8283,12 +8283,12 @@ GALGAS_L_5F_scenarioList_2D_element GALGAS_L_5F_scenarioList_2D_element::constru
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_L_5F_scenarioList_2D_element GALGAS_L_5F_scenarioList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_L_5F_inputScenario & inOperand1 
+GALGAS_L_5F_scenarioList_2D_element GALGAS_L_5F_scenarioList_2D_element::constructor_new (const GALGAS_lstring & in_mScenarioTitle,
+                                                                                          const GALGAS_L_5F_inputScenario & in_mInputScenario 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_L_5F_scenarioList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_L_5F_scenarioList_2D_element (inOperand0, inOperand1) ;
+  if (in_mScenarioTitle.isValid () && in_mInputScenario.isValid ()) {
+    result = GALGAS_L_5F_scenarioList_2D_element (in_mScenarioTitle, in_mInputScenario) ;
   }
   return result ;
 }
@@ -8422,16 +8422,16 @@ GALGAS_M_5F_machinesMap_2D_element GALGAS_M_5F_machinesMap_2D_element::construct
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_M_5F_machinesMap_2D_element GALGAS_M_5F_machinesMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                        const GALGAS_uint & inOperand1,
-                                                                                        const GALGAS_uint & inOperand2,
-                                                                                        const GALGAS_uint & inOperand3,
-                                                                                        const GALGAS_M_5F_variablesMap & inOperand4,
-                                                                                        const GALGAS_stringlist & inOperand5 
+GALGAS_M_5F_machinesMap_2D_element GALGAS_M_5F_machinesMap_2D_element::constructor_new (const GALGAS_lstring & in_lkey,
+                                                                                        const GALGAS_uint & in_mIndex,
+                                                                                        const GALGAS_uint & in_mInputVariableCount,
+                                                                                        const GALGAS_uint & in_mInputAndInternalVariableCount,
+                                                                                        const GALGAS_M_5F_variablesMap & in_mVariablesMap,
+                                                                                        const GALGAS_stringlist & in_mNameList 
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_M_5F_machinesMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid ()) {
-    result = GALGAS_M_5F_machinesMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
+  if (in_lkey.isValid () && in_mIndex.isValid () && in_mInputVariableCount.isValid () && in_mInputAndInternalVariableCount.isValid () && in_mVariablesMap.isValid () && in_mNameList.isValid ()) {
+    result = GALGAS_M_5F_machinesMap_2D_element (in_lkey, in_mIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mNameList) ;
   }
   return result ;
 }
