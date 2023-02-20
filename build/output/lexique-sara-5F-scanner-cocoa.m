@@ -156,7 +156,7 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
     mTokenCode = sara_scanner_1__5E_ ;
   }else if (scanningOk && [self testForInputString:@"@" advance:YES]) {
     mTokenCode = sara_scanner_1__40_ ;
-  }else if (scanningOk && [self testForInputString:@"?" advance:YES]) {
+  }else if (scanningOk && [self testForInputString:@"\?" advance:YES]) {
     mTokenCode = sara_scanner_1__3F_ ;
   }else if (scanningOk && [self testForInputString:@"=" advance:YES]) {
     mTokenCode = sara_scanner_1__3D_ ;
