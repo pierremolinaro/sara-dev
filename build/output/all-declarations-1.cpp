@@ -287,7 +287,7 @@ mObject (inElement.mProperty_mComponent) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_jobList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -679,7 +679,8 @@ mProperty_mNameList (in_mNameList) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_machinesMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mInputVariableCount.isValid () && mProperty_mInputAndInternalVariableCount.isValid () && mProperty_mVariablesMap.isValid () && mProperty_mNameList.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mInputVariableCount.isValid () && mProperty_mInputAndInternalVariableCount.isValid () && mProperty_mVariablesMap.isValid () && mProperty_mNameList.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

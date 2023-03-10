@@ -1497,7 +1497,8 @@ mProperty_mIndex (in_mIndex) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_variablesMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1768,7 +1769,8 @@ mProperty_mIndex (in_mIndex) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_stateMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2088,7 +2090,7 @@ mObject (inElement.mProperty_mTargetSlot) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_translationVector::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5304,7 +5306,7 @@ mObject (inElement.mProperty_mActionExpression, inElement.mProperty_mEndOfExpres
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_transitionDefinition::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5853,7 +5855,7 @@ mObject (inElement.mProperty_mStateIndex, inElement.mProperty_mStateExpression, 
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_stateDefinition::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6461,7 +6463,7 @@ mObject (inElement.mProperty_mStateIndex, inElement.mProperty_mStateLocation) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_statesDefinitionList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7107,7 +7109,8 @@ mProperty_mModeDefinition (in_mModeDefinition) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_modesMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mModeDefinition.isValid () ;
+  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mModeDefinition.isValid () ; */
+  return mProperty_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7465,7 +7468,7 @@ mObject (inElement.mProperty_mSourceMode, inElement.mProperty_mTargetMode) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_ListForModes::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14811,7 +14814,7 @@ mObject (inElement.mProperty_mInputValue) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_inputConfigurationForScenario::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15228,7 +15231,7 @@ mObject (inElement.mProperty_mInputConfiguration) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_inputScenario::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -15647,7 +15650,7 @@ mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario)
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_L_5F_scenarioList::isValid (void) const {
-  return mObject.isValid () ;
+  return true ; // return mObject.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
