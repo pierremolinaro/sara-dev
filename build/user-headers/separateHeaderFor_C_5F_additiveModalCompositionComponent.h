@@ -11,6 +11,9 @@
 
 class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDefinition {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (C_Compiler * inCompiler,

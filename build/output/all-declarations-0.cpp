@@ -42,14 +42,6 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//                 I N D E X I N G    D I R E C T O R Y                                          
-//----------------------------------------------------------------------------------------------------------------------
-
-C_String C_Lexique_sara_5F_scanner::indexingDirectory (void) const {
-  return "" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
 //                        Lexical error message list                                             
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1716,7 +1708,7 @@ bool GALGAS_M_5F_variablesMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@M_variablesMap type
+//     @M_variablesMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2004,7 +1996,7 @@ bool GALGAS_M_5F_stateMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@M_stateMap type
+//     @M_stateMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2421,7 +2413,7 @@ GALGAS_uint cEnumerator_L_5F_translationVector::current_mTargetSlot (LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_translationVector type
+//     @L_translationVector generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2466,6 +2458,14 @@ GALGAS_L_5F_translationVector GALGAS_L_5F_translationVector::extractObject (cons
 // @AC_5F_boolExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_AC_5F_boolExpression::objectCompare (const GALGAS_AC_5F_boolExpression & inOperand) const {
@@ -2478,7 +2478,7 @@ typeComparisonResult GALGAS_AC_5F_boolExpression::objectCompare (const GALGAS_AC
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -2507,7 +2507,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@AC_boolExpression type
+//     @AC_boolExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2618,7 +2618,7 @@ GALGAS_AC_5F_boolExpression GALGAS_AC_5F_boolExpression_2D_weak::bang_AC_5F_bool
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@AC_boolExpression-weak type
+//     @AC_boolExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2729,7 +2729,7 @@ GALGAS_C_5F_importBoolMachine GALGAS_C_5F_importBoolMachine_2D_weak::bang_C_5F_i
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_importBoolMachine-weak type
+//     @C_importBoolMachine-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -2774,6 +2774,16 @@ GALGAS_C_5F_importBoolMachine_2D_weak GALGAS_C_5F_importBoolMachine_2D_weak::ext
 // @C_5F_andExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_andExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_andExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_andExpression * p = (const cPtr_C_5F_andExpression *) inOperandPtr ;
@@ -2800,7 +2810,7 @@ typeComparisonResult GALGAS_C_5F_andExpression::objectCompare (const GALGAS_C_5F
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -2914,7 +2924,7 @@ acPtr_class * cPtr_C_5F_andExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_andExpression type
+//     @C_andExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3025,7 +3035,7 @@ GALGAS_C_5F_andExpression GALGAS_C_5F_andExpression_2D_weak::bang_C_5F_andExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_andExpression-weak type
+//     @C_andExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3070,6 +3080,16 @@ GALGAS_C_5F_andExpression_2D_weak GALGAS_C_5F_andExpression_2D_weak::extractObje
 // @C_5F_orExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_orExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_orExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_orExpression * p = (const cPtr_C_5F_orExpression *) inOperandPtr ;
@@ -3096,7 +3116,7 @@ typeComparisonResult GALGAS_C_5F_orExpression::objectCompare (const GALGAS_C_5F_
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -3210,7 +3230,7 @@ acPtr_class * cPtr_C_5F_orExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_orExpression type
+//     @C_orExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3321,7 +3341,7 @@ GALGAS_C_5F_orExpression GALGAS_C_5F_orExpression_2D_weak::bang_C_5F_orExpressio
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_orExpression-weak type
+//     @C_orExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3366,6 +3386,16 @@ GALGAS_C_5F_orExpression_2D_weak GALGAS_C_5F_orExpression_2D_weak::extractObject
 // @C_5F_xorExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_xorExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_xorExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_xorExpression * p = (const cPtr_C_5F_xorExpression *) inOperandPtr ;
@@ -3392,7 +3422,7 @@ typeComparisonResult GALGAS_C_5F_xorExpression::objectCompare (const GALGAS_C_5F
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -3506,7 +3536,7 @@ acPtr_class * cPtr_C_5F_xorExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_xorExpression type
+//     @C_xorExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3617,7 +3647,7 @@ GALGAS_C_5F_xorExpression GALGAS_C_5F_xorExpression_2D_weak::bang_C_5F_xorExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_xorExpression-weak type
+//     @C_xorExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3662,6 +3692,16 @@ GALGAS_C_5F_xorExpression_2D_weak GALGAS_C_5F_xorExpression_2D_weak::extractObje
 // @C_5F_impliesExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_impliesExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_impliesExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_impliesExpression * p = (const cPtr_C_5F_impliesExpression *) inOperandPtr ;
@@ -3688,7 +3728,7 @@ typeComparisonResult GALGAS_C_5F_impliesExpression::objectCompare (const GALGAS_
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -3802,7 +3842,7 @@ acPtr_class * cPtr_C_5F_impliesExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_impliesExpression type
+//     @C_impliesExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3913,7 +3953,7 @@ GALGAS_C_5F_impliesExpression GALGAS_C_5F_impliesExpression_2D_weak::bang_C_5F_i
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_impliesExpression-weak type
+//     @C_impliesExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -3958,6 +3998,16 @@ GALGAS_C_5F_impliesExpression_2D_weak GALGAS_C_5F_impliesExpression_2D_weak::ext
 // @C_5F_equalExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_equalExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_equalExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_equalExpression * p = (const cPtr_C_5F_equalExpression *) inOperandPtr ;
@@ -3984,7 +4034,7 @@ typeComparisonResult GALGAS_C_5F_equalExpression::objectCompare (const GALGAS_C_
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4098,7 +4148,7 @@ acPtr_class * cPtr_C_5F_equalExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_equalExpression type
+//     @C_equalExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4209,7 +4259,7 @@ GALGAS_C_5F_equalExpression GALGAS_C_5F_equalExpression_2D_weak::bang_C_5F_equal
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_equalExpression-weak type
+//     @C_equalExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4254,6 +4304,15 @@ GALGAS_C_5F_equalExpression_2D_weak GALGAS_C_5F_equalExpression_2D_weak::extract
 // @C_5F_notExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_notExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_notExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_notExpression * p = (const cPtr_C_5F_notExpression *) inOperandPtr ;
@@ -4277,7 +4336,7 @@ typeComparisonResult GALGAS_C_5F_notExpression::objectCompare (const GALGAS_C_5F
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4363,7 +4422,7 @@ acPtr_class * cPtr_C_5F_notExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_notExpression type
+//     @C_notExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4474,7 +4533,7 @@ GALGAS_C_5F_notExpression GALGAS_C_5F_notExpression_2D_weak::bang_C_5F_notExpres
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_notExpression-weak type
+//     @C_notExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4519,6 +4578,15 @@ GALGAS_C_5F_notExpression_2D_weak GALGAS_C_5F_notExpression_2D_weak::extractObje
 // @C_5F_VariableExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_VariableExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mInputVarIndex.printNonNullClassInstanceProperties ("mInputVarIndex") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_VariableExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_VariableExpression * p = (const cPtr_C_5F_VariableExpression *) inOperandPtr ;
@@ -4542,7 +4610,7 @@ typeComparisonResult GALGAS_C_5F_VariableExpression::objectCompare (const GALGAS
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4635,7 +4703,7 @@ acPtr_class * cPtr_C_5F_VariableExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_VariableExpression type
+//     @C_VariableExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4746,7 +4814,7 @@ GALGAS_C_5F_VariableExpression GALGAS_C_5F_VariableExpression_2D_weak::bang_C_5F
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_VariableExpression-weak type
+//     @C_VariableExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4791,6 +4859,14 @@ GALGAS_C_5F_VariableExpression_2D_weak GALGAS_C_5F_VariableExpression_2D_weak::e
 // @C_5F_trueExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_trueExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_trueExpression::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -4808,7 +4884,7 @@ typeComparisonResult GALGAS_C_5F_trueExpression::objectCompare (const GALGAS_C_5
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -4870,7 +4946,7 @@ acPtr_class * cPtr_C_5F_trueExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_trueExpression type
+//     @C_trueExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -4981,7 +5057,7 @@ GALGAS_C_5F_trueExpression GALGAS_C_5F_trueExpression_2D_weak::bang_C_5F_trueExp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_trueExpression-weak type
+//     @C_trueExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5026,6 +5102,14 @@ GALGAS_C_5F_trueExpression_2D_weak GALGAS_C_5F_trueExpression_2D_weak::extractOb
 // @C_5F_falseExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_falseExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_falseExpression::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
   return kOperandEqual ;
 }
@@ -5043,7 +5127,7 @@ typeComparisonResult GALGAS_C_5F_falseExpression::objectCompare (const GALGAS_C_
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -5105,7 +5189,7 @@ acPtr_class * cPtr_C_5F_falseExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_falseExpression type
+//     @C_falseExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5216,7 +5300,7 @@ GALGAS_C_5F_falseExpression GALGAS_C_5F_falseExpression_2D_weak::bang_C_5F_false
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_falseExpression-weak type
+//     @C_falseExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -5763,7 +5847,7 @@ GALGAS_uint cEnumerator_L_5F_transitionDefinition::current_mTargetStateIndex (LO
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_transitionDefinition type
+//     @L_transitionDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6375,7 +6459,7 @@ GALGAS_L_5F_transitionDefinition cEnumerator_L_5F_stateDefinition::current_mTran
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_stateDefinition type
+//     @L_stateDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6857,7 +6941,7 @@ GALGAS_location cEnumerator_L_5F_statesDefinitionList::current_mStateLocation (L
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_statesDefinitionList type
+//     @L_statesDefinitionList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -6902,6 +6986,14 @@ GALGAS_L_5F_statesDefinitionList GALGAS_L_5F_statesDefinitionList::extractObject
 // @AC_5F_machineDefinition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_AC_5F_machineDefinition::objectCompare (const GALGAS_AC_5F_machineDefinition & inOperand) const {
@@ -6914,7 +7006,7 @@ typeComparisonResult GALGAS_AC_5F_machineDefinition::objectCompare (const GALGAS
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -6943,7 +7035,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@AC_machineDefinition type
+//     @AC_machineDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7054,7 +7146,7 @@ GALGAS_AC_5F_machineDefinition GALGAS_AC_5F_machineDefinition_2D_weak::bang_AC_5
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@AC_machineDefinition-weak type
+//     @AC_machineDefinition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7380,7 +7472,7 @@ bool GALGAS_M_5F_modesMap::optional_searchKey (const GALGAS_string & inKey,
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@M_modesMap type
+//     @M_modesMap generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7862,7 +7954,7 @@ GALGAS_uint cEnumerator_ListForModes::current_mTargetMode (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@ListForModes type
+//     @ListForModes generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -7907,6 +7999,16 @@ GALGAS_ListForModes GALGAS_ListForModes::extractObject (const GALGAS_object & in
 // @C_5F_substractiveModalCompositionComponent reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_substractiveModalCompositionComponent::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mModeMap.printNonNullClassInstanceProperties ("mModeMap") ;
+    mProperty_mExclusionList.printNonNullClassInstanceProperties ("mExclusionList") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_substractiveModalCompositionComponent::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_substractiveModalCompositionComponent * p = (const cPtr_C_5F_substractiveModalCompositionComponent *) inOperandPtr ;
@@ -7933,7 +8035,7 @@ typeComparisonResult GALGAS_C_5F_substractiveModalCompositionComponent::objectCo
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8055,7 +8157,7 @@ acPtr_class * cPtr_C_5F_substractiveModalCompositionComponent::duplicate (LOCATI
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_substractiveModalCompositionComponent type
+//     @C_substractiveModalCompositionComponent generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8166,7 +8268,7 @@ GALGAS_C_5F_substractiveModalCompositionComponent GALGAS_C_5F_substractiveModalC
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_substractiveModalCompositionComponent-weak type
+//     @C_substractiveModalCompositionComponent-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8211,6 +8313,16 @@ GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak GALGAS_C_5F_substracti
 // @C_5F_additiveModalCompositionComponent reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_additiveModalCompositionComponent::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mModeMap.printNonNullClassInstanceProperties ("mModeMap") ;
+    mProperty_mInclusionList.printNonNullClassInstanceProperties ("mInclusionList") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_additiveModalCompositionComponent::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_additiveModalCompositionComponent * p = (const cPtr_C_5F_additiveModalCompositionComponent *) inOperandPtr ;
@@ -8237,7 +8349,7 @@ typeComparisonResult GALGAS_C_5F_additiveModalCompositionComponent::objectCompar
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8359,7 +8471,7 @@ acPtr_class * cPtr_C_5F_additiveModalCompositionComponent::duplicate (LOCATION_A
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_additiveModalCompositionComponent type
+//     @C_additiveModalCompositionComponent generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8470,7 +8582,7 @@ GALGAS_C_5F_additiveModalCompositionComponent GALGAS_C_5F_additiveModalCompositi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_additiveModalCompositionComponent-weak type
+//     @C_additiveModalCompositionComponent-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8515,6 +8627,16 @@ GALGAS_C_5F_additiveModalCompositionComponent_2D_weak GALGAS_C_5F_additiveModalC
 // @C_5F_trans reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_trans::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mSourceStateExpression.printNonNullClassInstanceProperties ("mSourceStateExpression") ;
+    mProperty_mTargetStateExpression.printNonNullClassInstanceProperties ("mTargetStateExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_trans::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_trans * p = (const cPtr_C_5F_trans *) inOperandPtr ;
@@ -8541,7 +8663,7 @@ typeComparisonResult GALGAS_C_5F_trans::objectCompare (const GALGAS_C_5F_trans &
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8655,7 +8777,7 @@ acPtr_class * cPtr_C_5F_trans::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_trans type
+//     @C_trans generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8766,7 +8888,7 @@ GALGAS_C_5F_trans GALGAS_C_5F_trans_2D_weak::bang_C_5F_trans_2D_weak (C_Compiler
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_trans-weak type
+//     @C_trans-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -8811,6 +8933,16 @@ GALGAS_C_5F_trans_2D_weak GALGAS_C_5F_trans_2D_weak::extractObject (const GALGAS
 // @C_5F_importMachine reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_importMachine::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mIndexOfImportedMachine.printNonNullClassInstanceProperties ("mIndexOfImportedMachine") ;
+    mProperty_mTranslationVector.printNonNullClassInstanceProperties ("mTranslationVector") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_importMachine::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_importMachine * p = (const cPtr_C_5F_importMachine *) inOperandPtr ;
@@ -8837,7 +8969,7 @@ typeComparisonResult GALGAS_C_5F_importMachine::objectCompare (const GALGAS_C_5F
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -8959,7 +9091,7 @@ acPtr_class * cPtr_C_5F_importMachine::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_importMachine type
+//     @C_importMachine generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9070,7 +9202,7 @@ GALGAS_C_5F_importMachine GALGAS_C_5F_importMachine_2D_weak::bang_C_5F_importMac
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_importMachine-weak type
+//     @C_importMachine-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9115,6 +9247,19 @@ GALGAS_C_5F_importMachine_2D_weak GALGAS_C_5F_importMachine_2D_weak::extractObje
 // @C_5F_explicitAutomatonDefinition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_explicitAutomatonDefinition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mStatesMap.printNonNullClassInstanceProperties ("mStatesMap") ;
+    mProperty_mInitialStatesDefinitionList.printNonNullClassInstanceProperties ("mInitialStatesDefinitionList") ;
+    mProperty_mTerminalStatesDefinitionList.printNonNullClassInstanceProperties ("mTerminalStatesDefinitionList") ;
+    mProperty_mStateDefinitionList.printNonNullClassInstanceProperties ("mStateDefinitionList") ;
+    mProperty_mEndOfDefinition.printNonNullClassInstanceProperties ("mEndOfDefinition") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_explicitAutomatonDefinition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_explicitAutomatonDefinition * p = (const cPtr_C_5F_explicitAutomatonDefinition *) inOperandPtr ;
@@ -9150,7 +9295,7 @@ typeComparisonResult GALGAS_C_5F_explicitAutomatonDefinition::objectCompare (con
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9359,7 +9504,7 @@ acPtr_class * cPtr_C_5F_explicitAutomatonDefinition::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_explicitAutomatonDefinition type
+//     @C_explicitAutomatonDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9470,7 +9615,7 @@ GALGAS_C_5F_explicitAutomatonDefinition GALGAS_C_5F_explicitAutomatonDefinition_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_explicitAutomatonDefinition-weak type
+//     @C_explicitAutomatonDefinition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9515,6 +9660,15 @@ GALGAS_C_5F_explicitAutomatonDefinition_2D_weak GALGAS_C_5F_explicitAutomatonDef
 // @C_5F_boolToSeqExpression reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_boolToSeqExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_boolToSeqExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_boolToSeqExpression * p = (const cPtr_C_5F_boolToSeqExpression *) inOperandPtr ;
@@ -9538,7 +9692,7 @@ typeComparisonResult GALGAS_C_5F_boolToSeqExpression::objectCompare (const GALGA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9624,7 +9778,7 @@ acPtr_class * cPtr_C_5F_boolToSeqExpression::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_boolToSeqExpression type
+//     @C_boolToSeqExpression generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9735,7 +9889,7 @@ GALGAS_C_5F_boolToSeqExpression GALGAS_C_5F_boolToSeqExpression_2D_weak::bang_C_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_boolToSeqExpression-weak type
+//     @C_boolToSeqExpression-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -9780,6 +9934,17 @@ GALGAS_C_5F_boolToSeqExpression_2D_weak GALGAS_C_5F_boolToSeqExpression_2D_weak:
 // @C_5F_existsDefinition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_existsDefinition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mPreviousVariableCount.printNonNullClassInstanceProperties ("mPreviousVariableCount") ;
+    mProperty_mTotalVariableCount.printNonNullClassInstanceProperties ("mTotalVariableCount") ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_existsDefinition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_existsDefinition * p = (const cPtr_C_5F_existsDefinition *) inOperandPtr ;
@@ -9809,7 +9974,7 @@ typeComparisonResult GALGAS_C_5F_existsDefinition::objectCompare (const GALGAS_C
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9951,7 +10116,7 @@ acPtr_class * cPtr_C_5F_existsDefinition::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_existsDefinition type
+//     @C_existsDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10062,7 +10227,7 @@ GALGAS_C_5F_existsDefinition GALGAS_C_5F_existsDefinition_2D_weak::bang_C_5F_exi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_existsDefinition-weak type
+//     @C_existsDefinition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10107,6 +10272,17 @@ GALGAS_C_5F_existsDefinition_2D_weak GALGAS_C_5F_existsDefinition_2D_weak::extra
 // @C_5F_forallDefinition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_forallDefinition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mPreviousVariableCount.printNonNullClassInstanceProperties ("mPreviousVariableCount") ;
+    mProperty_mTotalVariableCount.printNonNullClassInstanceProperties ("mTotalVariableCount") ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_forallDefinition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_forallDefinition * p = (const cPtr_C_5F_forallDefinition *) inOperandPtr ;
@@ -10136,7 +10312,7 @@ typeComparisonResult GALGAS_C_5F_forallDefinition::objectCompare (const GALGAS_C
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -10278,7 +10454,7 @@ acPtr_class * cPtr_C_5F_forallDefinition::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_forallDefinition type
+//     @C_forallDefinition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10389,7 +10565,7 @@ GALGAS_C_5F_forallDefinition GALGAS_C_5F_forallDefinition_2D_weak::bang_C_5F_for
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_forallDefinition-weak type
+//     @C_forallDefinition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10434,6 +10610,16 @@ GALGAS_C_5F_forallDefinition_2D_weak GALGAS_C_5F_forallDefinition_2D_weak::extra
 // @C_5F_parallelComposition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_parallelComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_parallelComposition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_parallelComposition * p = (const cPtr_C_5F_parallelComposition *) inOperandPtr ;
@@ -10460,7 +10646,7 @@ typeComparisonResult GALGAS_C_5F_parallelComposition::objectCompare (const GALGA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -10574,7 +10760,7 @@ acPtr_class * cPtr_C_5F_parallelComposition::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_parallelComposition type
+//     @C_parallelComposition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10685,7 +10871,7 @@ GALGAS_C_5F_parallelComposition GALGAS_C_5F_parallelComposition_2D_weak::bang_C_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_parallelComposition-weak type
+//     @C_parallelComposition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10730,6 +10916,16 @@ GALGAS_C_5F_parallelComposition_2D_weak GALGAS_C_5F_parallelComposition_2D_weak:
 // @C_5F_orComposition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_orComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_orComposition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_orComposition * p = (const cPtr_C_5F_orComposition *) inOperandPtr ;
@@ -10756,7 +10952,7 @@ typeComparisonResult GALGAS_C_5F_orComposition::objectCompare (const GALGAS_C_5F
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -10870,7 +11066,7 @@ acPtr_class * cPtr_C_5F_orComposition::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_orComposition type
+//     @C_orComposition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -10981,7 +11177,7 @@ GALGAS_C_5F_orComposition GALGAS_C_5F_orComposition_2D_weak::bang_C_5F_orComposi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_orComposition-weak type
+//     @C_orComposition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11026,6 +11222,17 @@ GALGAS_C_5F_orComposition_2D_weak GALGAS_C_5F_orComposition_2D_weak::extractObje
 // @C_5F_strongModalComposition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_strongModalComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_strongModalComposition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_strongModalComposition * p = (const cPtr_C_5F_strongModalComposition *) inOperandPtr ;
@@ -11055,7 +11262,7 @@ typeComparisonResult GALGAS_C_5F_strongModalComposition::objectCompare (const GA
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -11197,7 +11404,7 @@ acPtr_class * cPtr_C_5F_strongModalComposition::duplicate (LOCATION_ARGS) const 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_strongModalComposition type
+//     @C_strongModalComposition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11308,7 +11515,7 @@ GALGAS_C_5F_strongModalComposition GALGAS_C_5F_strongModalComposition_2D_weak::b
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_strongModalComposition-weak type
+//     @C_strongModalComposition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11353,6 +11560,17 @@ GALGAS_C_5F_strongModalComposition_2D_weak GALGAS_C_5F_strongModalComposition_2D
 // @C_5F_weakModalComposition reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_weakModalComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_weakModalComposition::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_weakModalComposition * p = (const cPtr_C_5F_weakModalComposition *) inOperandPtr ;
@@ -11382,7 +11600,7 @@ typeComparisonResult GALGAS_C_5F_weakModalComposition::objectCompare (const GALG
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -11524,7 +11742,7 @@ acPtr_class * cPtr_C_5F_weakModalComposition::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_weakModalComposition type
+//     @C_weakModalComposition generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11635,7 +11853,7 @@ GALGAS_C_5F_weakModalComposition GALGAS_C_5F_weakModalComposition_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_weakModalComposition-weak type
+//     @C_weakModalComposition-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11680,6 +11898,15 @@ GALGAS_C_5F_weakModalComposition_2D_weak GALGAS_C_5F_weakModalComposition_2D_wea
 // @C_5F_fullSaturationOperation reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_fullSaturationOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_fullSaturationOperation::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_fullSaturationOperation * p = (const cPtr_C_5F_fullSaturationOperation *) inOperandPtr ;
@@ -11703,7 +11930,7 @@ typeComparisonResult GALGAS_C_5F_fullSaturationOperation::objectCompare (const G
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -11789,7 +12016,7 @@ acPtr_class * cPtr_C_5F_fullSaturationOperation::duplicate (LOCATION_ARGS) const
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_fullSaturationOperation type
+//     @C_fullSaturationOperation generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11900,7 +12127,7 @@ GALGAS_C_5F_fullSaturationOperation GALGAS_C_5F_fullSaturationOperation_2D_weak:
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_fullSaturationOperation-weak type
+//     @C_fullSaturationOperation-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -11945,6 +12172,15 @@ GALGAS_C_5F_fullSaturationOperation_2D_weak GALGAS_C_5F_fullSaturationOperation_
 // @C_5F_complementationOperation reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_complementationOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_complementationOperation::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_complementationOperation * p = (const cPtr_C_5F_complementationOperation *) inOperandPtr ;
@@ -11968,7 +12204,7 @@ typeComparisonResult GALGAS_C_5F_complementationOperation::objectCompare (const 
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12054,7 +12290,7 @@ acPtr_class * cPtr_C_5F_complementationOperation::duplicate (LOCATION_ARGS) cons
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_complementationOperation type
+//     @C_complementationOperation generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12165,7 +12401,7 @@ GALGAS_C_5F_complementationOperation GALGAS_C_5F_complementationOperation_2D_wea
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_complementationOperation-weak type
+//     @C_complementationOperation-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12210,6 +12446,15 @@ GALGAS_C_5F_complementationOperation_2D_weak GALGAS_C_5F_complementationOperatio
 // @C_5F_suppressTerminalStatesOperation reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_suppressTerminalStatesOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_suppressTerminalStatesOperation::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_suppressTerminalStatesOperation * p = (const cPtr_C_5F_suppressTerminalStatesOperation *) inOperandPtr ;
@@ -12233,7 +12478,7 @@ typeComparisonResult GALGAS_C_5F_suppressTerminalStatesOperation::objectCompare 
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12319,7 +12564,7 @@ acPtr_class * cPtr_C_5F_suppressTerminalStatesOperation::duplicate (LOCATION_ARG
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_suppressTerminalStatesOperation type
+//     @C_suppressTerminalStatesOperation generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12430,7 +12675,7 @@ GALGAS_C_5F_suppressTerminalStatesOperation GALGAS_C_5F_suppressTerminalStatesOp
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_suppressTerminalStatesOperation-weak type
+//     @C_suppressTerminalStatesOperation-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12475,6 +12720,15 @@ GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak GALGAS_C_5F_suppressTerminal
 // @C_5F_suppressInitialStatesOperation reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_suppressInitialStatesOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_suppressInitialStatesOperation::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_suppressInitialStatesOperation * p = (const cPtr_C_5F_suppressInitialStatesOperation *) inOperandPtr ;
@@ -12498,7 +12752,7 @@ typeComparisonResult GALGAS_C_5F_suppressInitialStatesOperation::objectCompare (
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12584,7 +12838,7 @@ acPtr_class * cPtr_C_5F_suppressInitialStatesOperation::duplicate (LOCATION_ARGS
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_suppressInitialStatesOperation type
+//     @C_suppressInitialStatesOperation generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12695,7 +12949,7 @@ GALGAS_C_5F_suppressInitialStatesOperation GALGAS_C_5F_suppressInitialStatesOper
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_suppressInitialStatesOperation-weak type
+//     @C_suppressInitialStatesOperation-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12740,6 +12994,14 @@ GALGAS_C_5F_suppressInitialStatesOperation_2D_weak GALGAS_C_5F_suppressInitialSt
 // @AC_5F_job reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_AC_5F_job::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 
 
 typeComparisonResult GALGAS_AC_5F_job::objectCompare (const GALGAS_AC_5F_job & inOperand) const {
@@ -12752,7 +13014,7 @@ typeComparisonResult GALGAS_AC_5F_job::objectCompare (const GALGAS_AC_5F_job & i
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -12781,7 +13043,7 @@ acStrongPtr_class (THERE) {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@AC_job type
+//     @AC_job generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12892,7 +13154,7 @@ GALGAS_AC_5F_job GALGAS_AC_5F_job_2D_weak::bang_AC_5F_job_2D_weak (C_Compiler * 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@AC_job-weak type
+//     @AC_job-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -12937,6 +13199,15 @@ GALGAS_AC_5F_job_2D_weak GALGAS_AC_5F_job_2D_weak::extractObject (const GALGAS_o
 // @C_5F_machineDisplayStates reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayStates::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_machineDisplayStates::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_machineDisplayStates * p = (const cPtr_C_5F_machineDisplayStates *) inOperandPtr ;
@@ -12960,7 +13231,7 @@ typeComparisonResult GALGAS_C_5F_machineDisplayStates::objectCompare (const GALG
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13053,7 +13324,7 @@ acPtr_class * cPtr_C_5F_machineDisplayStates::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayStates type
+//     @C_machineDisplayStates generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13164,7 +13435,7 @@ GALGAS_C_5F_machineDisplayStates GALGAS_C_5F_machineDisplayStates_2D_weak::bang_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayStates-weak type
+//     @C_machineDisplayStates-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13209,6 +13480,15 @@ GALGAS_C_5F_machineDisplayStates_2D_weak GALGAS_C_5F_machineDisplayStates_2D_wea
 // @C_5F_machineDisplayInitialStates reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayInitialStates::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_machineDisplayInitialStates::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_machineDisplayInitialStates * p = (const cPtr_C_5F_machineDisplayInitialStates *) inOperandPtr ;
@@ -13232,7 +13512,7 @@ typeComparisonResult GALGAS_C_5F_machineDisplayInitialStates::objectCompare (con
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13325,7 +13605,7 @@ acPtr_class * cPtr_C_5F_machineDisplayInitialStates::duplicate (LOCATION_ARGS) c
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayInitialStates type
+//     @C_machineDisplayInitialStates generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13436,7 +13716,7 @@ GALGAS_C_5F_machineDisplayInitialStates GALGAS_C_5F_machineDisplayInitialStates_
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayInitialStates-weak type
+//     @C_machineDisplayInitialStates-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13481,6 +13761,15 @@ GALGAS_C_5F_machineDisplayInitialStates_2D_weak GALGAS_C_5F_machineDisplayInitia
 // @C_5F_machineDisplayTerminalStates reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayTerminalStates::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_machineDisplayTerminalStates::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_machineDisplayTerminalStates * p = (const cPtr_C_5F_machineDisplayTerminalStates *) inOperandPtr ;
@@ -13504,7 +13793,7 @@ typeComparisonResult GALGAS_C_5F_machineDisplayTerminalStates::objectCompare (co
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13597,7 +13886,7 @@ acPtr_class * cPtr_C_5F_machineDisplayTerminalStates::duplicate (LOCATION_ARGS) 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayTerminalStates type
+//     @C_machineDisplayTerminalStates generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13708,7 +13997,7 @@ GALGAS_C_5F_machineDisplayTerminalStates GALGAS_C_5F_machineDisplayTerminalState
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayTerminalStates-weak type
+//     @C_machineDisplayTerminalStates-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13753,6 +14042,15 @@ GALGAS_C_5F_machineDisplayTerminalStates_2D_weak GALGAS_C_5F_machineDisplayTermi
 // @C_5F_machineDisplayTransitions reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayTransitions::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_machineDisplayTransitions::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_machineDisplayTransitions * p = (const cPtr_C_5F_machineDisplayTransitions *) inOperandPtr ;
@@ -13776,7 +14074,7 @@ typeComparisonResult GALGAS_C_5F_machineDisplayTransitions::objectCompare (const
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -13869,7 +14167,7 @@ acPtr_class * cPtr_C_5F_machineDisplayTransitions::duplicate (LOCATION_ARGS) con
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayTransitions type
+//     @C_machineDisplayTransitions generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -13980,7 +14278,7 @@ GALGAS_C_5F_machineDisplayTransitions GALGAS_C_5F_machineDisplayTransitions_2D_w
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDisplayTransitions-weak type
+//     @C_machineDisplayTransitions-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14091,7 +14389,7 @@ GALGAS_C_5F_machineCheck GALGAS_C_5F_machineCheck_2D_weak::bang_C_5F_machineChec
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineCheck-weak type
+//     @C_machineCheck-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14136,6 +14434,16 @@ GALGAS_C_5F_machineCheck_2D_weak GALGAS_C_5F_machineCheck_2D_weak::extractObject
 // @C_5F_machineCheckIdentical reference class
 //----------------------------------------------------------------------------------------------------------------------
 
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineCheckIdentical::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex_31_.printNonNullClassInstanceProperties ("mMachineIndex1") ;
+    mProperty_mMachineIndex_32_.printNonNullClassInstanceProperties ("mMachineIndex2") ;
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
 typeComparisonResult cPtr_C_5F_machineCheckIdentical::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_C_5F_machineCheckIdentical * p = (const cPtr_C_5F_machineCheckIdentical *) inOperandPtr ;
@@ -14162,7 +14470,7 @@ typeComparisonResult GALGAS_C_5F_machineCheckIdentical::objectCompare (const GAL
     }else if (myObjectPtr > operandObjectPtr) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+      result = kOperandEqual ; // mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -14284,7 +14592,7 @@ acPtr_class * cPtr_C_5F_machineCheckIdentical::duplicate (LOCATION_ARGS) const {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineCheckIdentical type
+//     @C_machineCheckIdentical generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14395,7 +14703,7 @@ GALGAS_C_5F_machineCheckIdentical GALGAS_C_5F_machineCheckIdentical_2D_weak::ban
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineCheckIdentical-weak type
+//     @C_machineCheckIdentical-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14506,7 +14814,7 @@ GALGAS_C_5F_machineComponent GALGAS_C_5F_machineComponent_2D_weak::bang_C_5F_mac
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineComponent-weak type
+//     @C_machineComponent-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14617,7 +14925,7 @@ GALGAS_C_5F_machineDefinedByAdditiveModalComp GALGAS_C_5F_machineDefinedByAdditi
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDefinedByAdditiveModalComp-weak type
+//     @C_machineDefinedByAdditiveModalComp-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -14728,7 +15036,7 @@ GALGAS_C_5F_machineDefinedBySubstractiveModalComp GALGAS_C_5F_machineDefinedBySu
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@C_machineDefinedBySubstractiveModalComp-weak type
+//     @C_machineDefinedBySubstractiveModalComp-weak generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15145,7 +15453,7 @@ GALGAS_luint cEnumerator_L_5F_inputConfigurationForScenario::current_mInputValue
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_inputConfigurationForScenario type
+//     @L_inputConfigurationForScenario generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -15562,7 +15870,7 @@ GALGAS_L_5F_inputConfigurationForScenario cEnumerator_L_5F_inputScenario::curren
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_inputScenario type
+//     @L_inputScenario generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16044,7 +16352,7 @@ GALGAS_L_5F_inputScenario cEnumerator_L_5F_scenarioList::current_mInputScenario 
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//@L_scenarioList type
+//     @L_scenarioList generic code implementation
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -16080,406 +16388,6 @@ GALGAS_L_5F_scenarioList GALGAS_L_5F_scenarioList::extractObject (const GALGAS_o
       result = *p ;
     }else{
       inCompiler->castError ("L_scenarioList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-// @C_5F_scenarioComponent reference class
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult cPtr_C_5F_scenarioComponent::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_C_5F_scenarioComponent * p = (const cPtr_C_5F_scenarioComponent *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mMachineIndex.objectCompare (p->mProperty_mMachineIndex) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mInputVariableCount.objectCompare (p->mProperty_mInputVariableCount) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mInputAndInternalVariableCount.objectCompare (p->mProperty_mInputAndInternalVariableCount) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mVariablesMap.objectCompare (p->mProperty_mVariablesMap) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mScenarioList.objectCompare (p->mProperty_mScenarioList) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-typeComparisonResult GALGAS_C_5F_scenarioComponent::objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent::GALGAS_C_5F_scenarioComponent (void) :
-GALGAS_AC_5F_job () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent GALGAS_C_5F_scenarioComponent::constructor_default (LOCATION_ARGS) {
-  return GALGAS_C_5F_scenarioComponent::constructor_new (GALGAS_uint::constructor_default (HERE),
-                                                         GALGAS_uint::constructor_default (HERE),
-                                                         GALGAS_uint::constructor_default (HERE),
-                                                         GALGAS_M_5F_variablesMap::constructor_emptyMap (HERE),
-                                                         GALGAS_L_5F_scenarioList::constructor_emptyList (HERE)
-                                                         COMMA_THERE) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent::GALGAS_C_5F_scenarioComponent (const cPtr_C_5F_scenarioComponent * inSourcePtr) :
-GALGAS_AC_5F_job (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_scenarioComponent) ;
-}
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent GALGAS_C_5F_scenarioComponent::constructor_new (const GALGAS_uint & inAttribute_mMachineIndex,
-                                                                              const GALGAS_uint & inAttribute_mInputVariableCount,
-                                                                              const GALGAS_uint & inAttribute_mInputAndInternalVariableCount,
-                                                                              const GALGAS_M_5F_variablesMap & inAttribute_mVariablesMap,
-                                                                              const GALGAS_L_5F_scenarioList & inAttribute_mScenarioList
-                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_C_5F_scenarioComponent result ;
-  if (inAttribute_mMachineIndex.isValid () && inAttribute_mInputVariableCount.isValid () && inAttribute_mInputAndInternalVariableCount.isValid () && inAttribute_mVariablesMap.isValid () && inAttribute_mScenarioList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_C_5F_scenarioComponent (inAttribute_mMachineIndex, inAttribute_mInputVariableCount, inAttribute_mInputAndInternalVariableCount, inAttribute_mVariablesMap, inAttribute_mScenarioList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_C_5F_scenarioComponent::setter_setMMachineIndex (GALGAS_uint inValue
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mMachineIndex = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_C_5F_scenarioComponent::setter_setMInputVariableCount (GALGAS_uint inValue
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mInputVariableCount = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_C_5F_scenarioComponent::setter_setMInputAndInternalVariableCount (GALGAS_uint inValue
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mInputAndInternalVariableCount = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_C_5F_scenarioComponent::setter_setMVariablesMap (GALGAS_M_5F_variablesMap inValue
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mVariablesMap = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void GALGAS_C_5F_scenarioComponent::setter_setMScenarioList (GALGAS_L_5F_scenarioList inValue
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mScenarioList = inValue ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_C_5F_scenarioComponent::readProperty_mMachineIndex (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_uint () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mMachineIndex ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_C_5F_scenarioComponent::readProperty_mInputVariableCount (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_uint () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mInputVariableCount ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_C_5F_scenarioComponent::readProperty_mInputAndInternalVariableCount (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_uint () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mInputAndInternalVariableCount ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_M_5F_variablesMap GALGAS_C_5F_scenarioComponent::readProperty_mVariablesMap (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_M_5F_variablesMap () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mVariablesMap ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_L_5F_scenarioList GALGAS_C_5F_scenarioComponent::readProperty_mScenarioList (void) const {
-  if (NULL == mObjectPtr) {
-    return GALGAS_L_5F_scenarioList () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mScenarioList ;
-  }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//Pointer class for @C_scenarioComponent class
-//----------------------------------------------------------------------------------------------------------------------
-
-cPtr_C_5F_scenarioComponent::cPtr_C_5F_scenarioComponent (const GALGAS_uint & in_mMachineIndex,
-                                                          const GALGAS_uint & in_mInputVariableCount,
-                                                          const GALGAS_uint & in_mInputAndInternalVariableCount,
-                                                          const GALGAS_M_5F_variablesMap & in_mVariablesMap,
-                                                          const GALGAS_L_5F_scenarioList & in_mScenarioList
-                                                          COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
-mProperty_mMachineIndex (in_mMachineIndex),
-mProperty_mInputVariableCount (in_mInputVariableCount),
-mProperty_mInputAndInternalVariableCount (in_mInputAndInternalVariableCount),
-mProperty_mVariablesMap (in_mVariablesMap),
-mProperty_mScenarioList (in_mScenarioList) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_C_5F_scenarioComponent::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
-}
-
-void cPtr_C_5F_scenarioComponent::description (C_String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString << "[@C_scenarioComponent:" ;
-  mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mScenarioList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_C_5F_scenarioComponent::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_C_5F_scenarioComponent (mProperty_mMachineIndex, mProperty_mInputVariableCount, mProperty_mInputAndInternalVariableCount, mProperty_mVariablesMap, mProperty_mScenarioList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@C_scenarioComponent type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_C_5F_scenarioComponent ("C_scenarioComponent",
-                                               & kTypeDescriptor_GALGAS_AC_5F_job) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_C_5F_scenarioComponent::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_C_5F_scenarioComponent::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_C_5F_scenarioComponent (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent GALGAS_C_5F_scenarioComponent::extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_C_5F_scenarioComponent result ;
-  const GALGAS_C_5F_scenarioComponent * p = (const GALGAS_C_5F_scenarioComponent *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_C_5F_scenarioComponent *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("C_scenarioComponent", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-typeComparisonResult GALGAS_C_5F_scenarioComponent_2D_weak::objectCompare (const GALGAS_C_5F_scenarioComponent_2D_weak & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent_2D_weak::GALGAS_C_5F_scenarioComponent_2D_weak (void) :
-GALGAS_AC_5F_job_2D_weak () {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent_2D_weak & GALGAS_C_5F_scenarioComponent_2D_weak::operator = (const GALGAS_C_5F_scenarioComponent & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = NULL ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != NULL) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent_2D_weak::GALGAS_C_5F_scenarioComponent_2D_weak (const GALGAS_C_5F_scenarioComponent & inSource) :
-GALGAS_AC_5F_job_2D_weak (inSource) {
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent_2D_weak GALGAS_C_5F_scenarioComponent_2D_weak::constructor_nil (LOCATION_ARGS) {
-  GALGAS_C_5F_scenarioComponent_2D_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent GALGAS_C_5F_scenarioComponent_2D_weak::bang_C_5F_scenarioComponent_2D_weak (C_Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GALGAS_C_5F_scenarioComponent result ;
-  if (mProxyPtr != NULL) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == NULL) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_C_5F_scenarioComponent) ;
-      result = GALGAS_C_5F_scenarioComponent ((cPtr_C_5F_scenarioComponent *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//@C_scenarioComponent-weak type
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2D_weak ("C_scenarioComponent-weak",
-                                                       & kTypeDescriptor_GALGAS_AC_5F_job_2D_weak) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GALGAS_C_5F_scenarioComponent_2D_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2D_weak ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GALGAS_C_5F_scenarioComponent_2D_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_C_5F_scenarioComponent_2D_weak (*this)) ;
-  }
-  return result ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_C_5F_scenarioComponent_2D_weak GALGAS_C_5F_scenarioComponent_2D_weak::extractObject (const GALGAS_object & inObject,
-                                                                                            C_Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_C_5F_scenarioComponent_2D_weak result ;
-  const GALGAS_C_5F_scenarioComponent_2D_weak * p = (const GALGAS_C_5F_scenarioComponent_2D_weak *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_C_5F_scenarioComponent_2D_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("C_scenarioComponent-weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

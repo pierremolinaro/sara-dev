@@ -11,6 +11,9 @@
 
 class cPtr_AC_5F_boolExpression : public acStrongPtr_class {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- START OF USER ZONE 2
 
   public : virtual C_BDD computeBDD (C_Compiler * inCompiler,

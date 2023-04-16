@@ -11,6 +11,9 @@
 
 class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
 
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 //--- START OF USER ZONE 2
 
   public : virtual void compute (C_Compiler * inCompiler,
