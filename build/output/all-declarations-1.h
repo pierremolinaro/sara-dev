@@ -509,6 +509,11 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
                                                      const class GALGAS_stringlist & inOperand5,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GALGAS_M_5F_machinesMap add_operation (const GALGAS_M_5F_machinesMap & inOperand,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
@@ -1615,4 +1620,14 @@ extern C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCo
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'print'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_print (const class GALGAS_string constinArgument0,
+                    class C_Compiler * inCompiler
+                    COMMA_LOCATION_ARGS) ;
 

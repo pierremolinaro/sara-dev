@@ -1489,7 +1489,6 @@ mProperty_mIndex (in_mIndex) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_variablesMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -1580,6 +1579,20 @@ void GALGAS_M_5F_variablesMap::addAssign_operation (const GALGAS_lstring & inKey
   const char * kInsertErrorMessage = "@M_5F_variablesMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::add_operation (const GALGAS_M_5F_variablesMap & inOperand,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_M_5F_variablesMap result = *this ;
+  cEnumerator_M_5F_variablesMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1761,7 +1774,6 @@ mProperty_mIndex (in_mIndex) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_stateMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -1852,6 +1864,20 @@ void GALGAS_M_5F_stateMap::addAssign_operation (const GALGAS_lstring & inKey,
   const char * kInsertErrorMessage = "@M_5F_stateMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::add_operation (const GALGAS_M_5F_stateMap & inOperand,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_M_5F_stateMap result = *this ;
+  cEnumerator_M_5F_stateMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7201,7 +7227,6 @@ mProperty_mModeDefinition (in_mModeDefinition) {
 //----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_M_5F_modesMap::isValid (void) const {
-  /* return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mModeDefinition.isValid () ; */
   return mProperty_lkey.isValid () ;
 }
 
@@ -7300,6 +7325,20 @@ void GALGAS_M_5F_modesMap::addAssign_operation (const GALGAS_lstring & inKey,
   const char * kInsertErrorMessage = "@M_5F_modesMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::add_operation (const GALGAS_M_5F_modesMap & inOperand,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_M_5F_modesMap result = *this ;
+  cEnumerator_M_5F_modesMap enumerator (inOperand, kENUMERATION_UP) ;
+  while (enumerator.hasCurrentObject ()) {
+    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mModeDefinition (HERE), inCompiler COMMA_THERE) ;
+    enumerator.gotoNextObject () ;
+  }
+  return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
