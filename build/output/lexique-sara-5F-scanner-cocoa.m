@@ -106,20 +106,19 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
 //----------------------------------------------------------------------------------------------------------------------
 
 - (BOOL) internalParseLexicalTokenForLexicalColoring {
-  BOOL loop = YES ;
   BOOL scanningOk = YES ;
   [mLexicalAttribute_identifierString setString:@""] ;
   mLexicalAttribute_ulongValue = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+    BOOL loop1346 = YES ;
     do {
       scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, mPreviousChar) ;
       if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
       }else{
-        loop = NO ;
+        loop1346 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop1346 && scanningOk) ;
     if (mTokenCode == 0) {
       mTokenCode = search_into_sara_5F_scanner_keyWordList (mLexicalAttribute_identifierString) ;
     }
@@ -169,6 +168,7 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
   }else if (scanningOk && [self testForInputString:@"!" advance:YES]) {
     mTokenCode = sara_scanner_1__21_ ;
   }else if (scanningOk && ([self testForInputChar:34])) {
+    BOOL loop2175 = YES ;
     do {
       if (scanningOk && ([self testForInputChar:92])) {
         if (scanningOk && ([self testForInputChar:110])) {
@@ -183,10 +183,9 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
       }else if (scanningOk && ([self testForInputChar:32] || [self testForInputChar:33] || [self testForInputFromChar:35 toChar:126])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, mPreviousChar) ;
       }else{
-        loop = NO ;
+        loop2175 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop2175 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:34])) {
       mTokenCode = sara_scanner_1_literal_5F_string ;
     }else{
@@ -194,39 +193,39 @@ static NSInteger search_into_sara_5F_scanner_keyWordList (NSString * inSearchedS
     }
   }else if (scanningOk && ([self testForInputChar:36])) {
     if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95])) {
+      BOOL loop2981 = YES ;
       do {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, mPreviousChar) ;
         if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
         }else{
-          loop = NO ;
+          loop2981 = NO ;
         }
-      }while (loop && scanningOk) ;
-      loop = YES ;
+      }while (loop2981 && scanningOk) ;
     }else{
       scanningOk = NO ;
     }
     mTokenCode = sara_scanner_1_machineIdf ;
   }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
     scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
+    BOOL loop3545 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterDigitIntoUInt (& scanningOk, mPreviousChar, & mLexicalAttribute_ulongValue) ;
       }else if (scanningOk && ([self testForInputChar:95])) {
       }else{
-        loop = NO ;
+        loop3545 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop3545 && scanningOk) ;
     mTokenCode = sara_scanner_1_literal_5F_integer ;
   }else if (scanningOk && ([self testForInputFromChar:1 toChar:32])) {
   }else if (scanningOk && ([self testForInputChar:35])) {
+    BOOL loop3973 = YES ;
     do {
       if (scanningOk && ([self testForInputFromChar:1 toChar:9] || [self testForInputFromChar:11 toChar:65533])) {
       }else{
-        loop = NO ;
+        loop3973 = NO ;
       }
-    }while (loop && scanningOk) ;
-    loop = YES ;
+    }while (loop3973 && scanningOk) ;
     if (scanningOk && ([self testForInputChar:10])) {
     }else{
       scanningOk = NO ;
