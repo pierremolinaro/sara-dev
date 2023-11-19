@@ -114,10 +114,10 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
    kToken__2A__2A_} ;
 
 //--- Key words table 'keyWordList'
-  public: static int16_t search_into_keyWordList (const C_String & inSearchedString) ;
+  public: static int32_t search_into_keyWordList (const C_String & inSearchedString) ;
 
 //--- Key words table 'delimitorsList'
-  public: static int16_t search_into_delimitorsList (const C_String & inSearchedString) ;
+  public: static int32_t search_into_delimitorsList (const C_String & inSearchedString) ;
   
 
 //--- Assign from attribute
@@ -137,10 +137,10 @@ class C_Lexique_sara_5F_scanner : public C_Lexique {
   protected: virtual bool parseLexicalToken (void) override ;
 
 //--- Get terminal message
-  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const override ;
+  protected: virtual C_String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int16_t terminalVocabularyCount (void) const override { return 49 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 49 ; }
 
 //--- Get Token String
   public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -7322,4 +7322,88 @@ class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
 //----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2D_element ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @C_5F_scenarioComponent reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_scenarioComponent (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public: static GALGAS_C_5F_scenarioComponent constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputVariableCount (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+
+  public: class GALGAS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+
+  public: class GALGAS_L_5F_scenarioList readProperty_mScenarioList (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_scenarioComponent extractObject (const GALGAS_object & inObject,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_scenarioComponent constructor_new (const class GALGAS_uint & inOperand0,
+                                                                      const class GALGAS_uint & inOperand1,
+                                                                      const class GALGAS_uint & inOperand2,
+                                                                      const class GALGAS_M_5F_variablesMap & inOperand3,
+                                                                      const class GALGAS_L_5F_scenarioList & inOperand4
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (class GALGAS_uint inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMScenarioList (class GALGAS_L_5F_scenarioList inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (class GALGAS_M_5F_variablesMap inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_C_5F_scenarioComponent class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
+
+#include "separateHeaderFor_C_5F_scenarioComponent.h"
 
