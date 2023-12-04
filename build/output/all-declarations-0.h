@@ -659,7 +659,7 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_translationVector_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_uint constinArgument0,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -2148,7 +2148,9 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_transitionDefinition_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_AC_5F_boolExpression constinArgument0,
+                                               class GALGAS_location constinArgument1,
+                                               class GALGAS_uint constinArgument2,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -2415,7 +2417,10 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_stateDefinition_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_uint constinArgument0,
+                                               class GALGAS_AC_5F_boolExpression constinArgument1,
+                                               class GALGAS_location constinArgument2,
+                                               class GALGAS_L_5F_transitionDefinition constinArgument3,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -2703,7 +2708,8 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_statesDefinitionList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_uint constinArgument0,
+                                               class GALGAS_location constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -3294,7 +3300,8 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_ListForModes_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_uint constinArgument0,
+                                               class GALGAS_uint constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -6721,7 +6728,7 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_inputConfigurationForScenario_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_luint constinArgument0,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -6928,7 +6935,7 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_inputScenario_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_inputConfigurationForScenario constinArgument0,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -7138,7 +7145,8 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_L_5F_scenarioList_2D_element inArgument0,
+  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
+                                               class GALGAS_L_5F_inputScenario constinArgument1,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

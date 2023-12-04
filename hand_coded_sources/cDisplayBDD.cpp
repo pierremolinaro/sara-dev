@@ -45,7 +45,7 @@ cDisplayBDD::~cDisplayBDD (void) {
 //-----------------------------------------------------------------------------*
 
 void cDisplayBDD::vider (void) {
-  aTab.free () ;
+  aTab.removeAll () ;
   macroMyDeleteArray (aDimensions) ;
   aNombreChaines = 0 ;
 }
@@ -60,7 +60,7 @@ void cDisplayBDD::allouer (const uint32_t nombreChaines) {
   if (aDimensions != NULL) {
     aNombreChaines = nombreChaines ;
   }else{
-    aTab.free () ;
+    aTab.removeAll () ;
     macroMyDeleteArray (aDimensions) ;
   }
 }

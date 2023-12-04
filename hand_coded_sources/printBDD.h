@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "utilities/M_machine.h"
-#include "collections/TC_Array.h"
+#include "generic-arraies/TC_Array.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*

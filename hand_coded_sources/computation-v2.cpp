@@ -21,7 +21,7 @@
 #include "sara_parser.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
-#include "collections/TC_Array.h"
+#include "generic-arraies/TC_Array.h"
 #include "utilities/MF_MemoryControl.h"
 #include "time/C_Timer.h"
 #include "cDisplayBDD.h"

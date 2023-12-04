@@ -482,35 +482,27 @@ void GALGAS_L_5F_jobList::makeAttributesFromObjects (capCollectionElement & outA
 void GALGAS_L_5F_jobList::addAssign_operation (const GALGAS_AC_5F_job & inOperand0
                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inOperand0.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_L_5F_jobList (inOperand0 COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{ // Destroy receiver
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_jobList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_L_5F_jobList::setter_append (GALGAS_L_5F_jobList_2D_element inElement,
+void GALGAS_L_5F_jobList::setter_append (const GALGAS_AC_5F_job inOperand0,
                                          C_Compiler * /* inCompiler */
                                          COMMA_LOCATION_ARGS) {
   if (isValid ()) {
-    if (inElement.isValid ()) {
-      cCollectionElement * p = nullptr ;
-      macroMyNew (p, cCollectionElement_L_5F_jobList (inElement COMMA_THERE)) ;
-      capCollectionElement attributes ;
-      attributes.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      appendObject (attributes) ;
-    }else{
-      drop () ;
-    }
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_jobList (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -9787,11 +9779,11 @@ C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ("s
 #include "project_header.h"
 #include "command_line_interface/F_mainForLIBPM.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "utilities/F_DisplayException.h"
+#include "command_line_interface/C_builtin_CLI_Options.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/F_verbose_output.h"
 #include "galgas2/cLexiqueIntrospection.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
+#include "utilities/F_DisplayException.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 //
