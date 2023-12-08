@@ -8,15 +8,15 @@
 
 map @M_variablesMap {
   public var @uint mIndex
-  insert insertKey error message "the '%K' variable has been already declared"
-  search searchKey error message "the '%K' variable is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' variable has been already declared"
+  %searchMethod searchKey %errorMessage "the '%K' variable is not declared"
 }
 
 map @M_stateMap {
   public var @uint mIndex
-  insert insertKey error message "the '%K' state has been already declared"
-  insert defineState error message "the '%K' state has been already defined"
-  search searchKey error message "the '%K' state is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' state has been already declared"
+  %insertSetter defineState %errorMessage "the '%K' state has been already defined"
+  %searchMethod searchKey %errorMessage "the '%K' state is not declared"
 }
 
 #---------------------------------------------------------------------------*
@@ -103,8 +103,8 @@ abstract refclass @AC_machineDefinition %generatedInSeparateFile {
 map @M_modesMap {
   public var @uint mIndex
   public var @AC_machineDefinition mModeDefinition
-  insert insertKey error message "the '%K' mode has been already declared"
-  search searchKey error message "the '%K' mode is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' mode has been already declared"
+  %searchMethod searchKey %errorMessage "the '%K' mode is not declared"
 }
 
 list @ListForModes {
@@ -315,9 +315,9 @@ map @M_machinesMap {
   public var @uint mInputAndInternalVariableCount
   public var @M_variablesMap mVariablesMap
   public var @stringlist mNameList
-  insert insertKey error message "the '%K' machine has been already declared"
-  search searchKey error message "the '%K' machine is not defined"
-  remove removeKey error message "the '%K' machine is not defined"
+  %insertSetter insertKey %errorMessage "the '%K' machine has been already declared"
+  %searchMethod searchKey %errorMessage "the '%K' machine is not defined"
+  %removeSetter removeKey %errorMessage "the '%K' machine is not defined"
 }
 
 #---------------------------------------------------------------------------*

@@ -10,6 +10,87 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @C_5F_scenarioComponent reference class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_scenarioComponent (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
+
+//--------------------------------- Property read access
+  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputVariableCount (void) const ;
+
+  public: class GALGAS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+
+  public: class GALGAS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+
+  public: class GALGAS_L_5F_scenarioList readProperty_mScenarioList (void) const ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_scenarioComponent extractObject (const GALGAS_object & inObject,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public: static class GALGAS_C_5F_scenarioComponent constructor_new (const class GALGAS_uint & inOperand0,
+                                                                      const class GALGAS_uint & inOperand1,
+                                                                      const class GALGAS_uint & inOperand2,
+                                                                      const class GALGAS_M_5F_variablesMap & inOperand3,
+                                                                      const class GALGAS_L_5F_scenarioList & inOperand4
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const ;
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (class GALGAS_uint inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMScenarioList (class GALGAS_L_5F_scenarioList inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (class GALGAS_M_5F_variablesMap inArgument0
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_C_5F_scenarioComponent class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
+
+#include "separateHeaderFor_C_5F_scenarioComponent.h"
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @C_5F_scenarioComponent_2D_weak weak reference class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -17,9 +98,6 @@
 class GALGAS_C_5F_scenarioComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 //--------------------------------- Default constructor
   public: GALGAS_C_5F_scenarioComponent_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_C_5F_scenarioComponent_2D_weak constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Constructor and assignment from strong reference
   public: GALGAS_C_5F_scenarioComponent_2D_weak (const class GALGAS_C_5F_scenarioComponent & inSource) ;
@@ -74,9 +152,6 @@ class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
 //--------------------------------- Default constructor
   public: GALGAS_typeDisplayBDDstats (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_typeDisplayBDDstats constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Constructor from pointer
   public: GALGAS_typeDisplayBDDstats (const class cPtr_typeDisplayBDDstats * inSourcePtr) ;
 
@@ -127,9 +202,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats
 class GALGAS_typeDisplayBDDstats_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 //--------------------------------- Default constructor
   public: GALGAS_typeDisplayBDDstats_2D_weak (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_typeDisplayBDDstats_2D_weak constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Constructor and assignment from strong reference
   public: GALGAS_typeDisplayBDDstats_2D_weak (const class GALGAS_typeDisplayBDDstats & inSource) ;
@@ -350,7 +422,8 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public: static class GALGAS_L_5F_jobList_2D_element constructor_new (const class GALGAS_AC_5F_job & inOperand0
+  public: static class GALGAS_L_5F_jobList_2D_element constructor_new (const class GALGAS_AC_5F_job & inOperand0,
+                                                                       class C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -635,9 +708,6 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_M_5F_machinesMap_2D_element constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Default constructor
   public: GALGAS_M_5F_machinesMap_2D_element (void) ;
 
@@ -693,7 +763,8 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
                                                                            const class GALGAS_uint & inOperand2,
                                                                            const class GALGAS_uint & inOperand3,
                                                                            const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                           const class GALGAS_stringlist & inOperand5
+                                                                           const class GALGAS_stringlist & inOperand5,
+                                                                           class C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -743,9 +814,6 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--------------------------------- Default GALGAS constructor
-  public: static GALGAS_semanticContext constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Default constructor
   public: GALGAS_semanticContext (void) ;
 
@@ -777,7 +845,8 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public: static class GALGAS_semanticContext constructor_new (const class GALGAS_L_5F_jobList & inOperand0,
-                                                               const class GALGAS_M_5F_machinesMap & inOperand1
+                                                               const class GALGAS_M_5F_machinesMap & inOperand1,
+                                                               class C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -1506,6 +1575,26 @@ class cGrammar_sara_5F_grammar : public cParser_sara_5F_parser {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'println'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_println (const class GALGAS_string constinArgument0,
+                      class C_Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'print'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_print (const class GALGAS_string constinArgument0,
+                    class C_Compiler * inCompiler
+                    COMMA_LOCATION_ARGS) ;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -1536,14 +1625,4 @@ extern C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCo
 //----------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'print'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_print (const class GALGAS_string constinArgument0,
-                    class C_Compiler * inCompiler
-                    COMMA_LOCATION_ARGS) ;
 
