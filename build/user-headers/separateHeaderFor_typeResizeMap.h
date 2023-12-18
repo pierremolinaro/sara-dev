@@ -12,7 +12,7 @@
 class cPtr_typeResizeMap : public cPtr_AC_5F_job {
 //--- START OF USER ZONE 2
 
-  public : virtual void compute (C_Compiler * inCompiler,
+  public : virtual void compute (Compiler * inCompiler,
                                  TC_Array <C_saraMachine> & ioSaraSystemArray,
                                  const bool inDisplayBDDvaluesCount,
                                  const bool inDisplayBDDvalues) const ;
@@ -31,7 +31,7 @@ class cPtr_typeResizeMap : public cPtr_AC_5F_job {
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_luint getter_mNewSize (LOCATION_ARGS) const ;
 //--- Description
-  public : virtual void description (C_String & ioString,
+  public : virtual void description (String & ioString,
                                      const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;

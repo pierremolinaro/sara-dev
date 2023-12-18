@@ -3,11 +3,11 @@
 #include "C_saraMachine.h"
 
 //--- END OF USER ZONE 1
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 2: pointer class for @C_parallelComposition class
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_parallelComposition : public cPtr_AC_5F_machineDefinition {
 
@@ -16,7 +16,7 @@ class cPtr_C_5F_parallelComposition : public cPtr_AC_5F_machineDefinition {
   #endif
 //--- START OF USER ZONE 2
 
-  public : virtual void computeFromExpression (C_Compiler * inCompiler,
+  public : virtual void computeFromExpression (Compiler * inCompiler,
                                                const TC_Array <C_saraMachine> & inSaraSystemArray,
                                                const uint32_t inVariablesCount,
                                                C_BDD & outInitialStatesBDD,
@@ -38,7 +38,7 @@ class cPtr_C_5F_parallelComposition : public cPtr_AC_5F_machineDefinition {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;

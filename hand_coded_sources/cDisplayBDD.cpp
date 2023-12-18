@@ -68,7 +68,7 @@ void cDisplayBDD::allouer (const uint32_t nombreChaines) {
 //-----------------------------------------------------------------------------*
 
 void cDisplayBDD::defineVariableName (const uint32_t indice,
-                                        const C_String & chaine,
+                                        const String & chaine,
                                         const uint32_t dimensions) {
   if (indice < aNombreChaines) {
     aDimensions [indice] = dimensions ;
@@ -97,7 +97,7 @@ obtenirDimension (const uint32_t indice) const {
 
 void cDisplayBDD::ecrire (const uint32_t indice,
                             AC_OutputStream & inStream) const {
-  inStream << aTab ((int32_t) indice COMMA_HERE) ;
+  inStream.addString (aTab ((int32_t) indice COMMA_HERE)) ;
 }
 
 //-----------------------------------------------------------------------------*

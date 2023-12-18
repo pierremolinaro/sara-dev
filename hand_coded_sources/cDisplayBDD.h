@@ -26,7 +26,7 @@
 
 #include "utilities/M_machine.h"
 #include "generic-arraies/TC_UniqueArray.h"
-#include "strings/C_String.h"
+#include "strings/String-class.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -37,9 +37,9 @@ class AC_OutputStream ;
 class cDisplayBDD {
 //--- Attributs
   protected : uint32_t aNombreChaines ;
-  protected : TC_UniqueArray <C_String> aTab ;
+  protected : TC_UniqueArray <String> aTab ;
   protected : uint32_t * aDimensions ;
-  
+
 //--- Constructeur et destructeur
   public : cDisplayBDD (const uint32_t nombreChaines) ;
   public : virtual ~cDisplayBDD (void) ;
@@ -58,7 +58,7 @@ class cDisplayBDD {
 
 //--- Definir une chaine
   public : void defineVariableName (const uint32_t indice,
-                                    const C_String & chaine,
+                                    const String & chaine,
                                     const uint32_t dimensions) ;
 
 //--- Obtenir la longueur d'une chaine

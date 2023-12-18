@@ -48,14 +48,14 @@ ecrireLigneBDD (AC_OutputStream & inStream,
   for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
     const int32_t lg = ::sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
     const int32_t espaces = 1 + lg - (int32_t) inVariablesNames.obtenirDimension (i) ;
-    inStream.appendSpaces (espaces) ;
+    inStream.addSpaces (espaces) ;
     for (int32_t k=(int32_t) inVariablesNames.obtenirDimension (i) ; k>0 ; k--) {
-      inStream << cStringWithCharacter (chaineAffichage (indiceBDD + k - 1 COMMA_HERE)) ;
+      inStream.addChar (chaineAffichage (indiceBDD + k - 1 COMMA_HERE)) ;
     }
     indiceBDD += inVariablesNames.obtenirDimension (i) ;
   }
 //--- Fin
-  inStream << "\n" ;
+  inStream.addString ("\n") ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -120,14 +120,14 @@ void printBDDWithVariables (const C_BDD & inBDD,
   for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
     const int32_t lg = ::sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
     const int32_t espaces = 1 + lg - inVariablesNames.longueur (i) ;
-    inStream.appendSpaces (espaces) ;
+    inStream.addSpaces (espaces) ;
     inVariablesNames.ecrire (i, inStream) ;
   }
-  inStream << "\n" ;
+  inStream.addString ("\n") ;
 //--- Ecrire le BDD
   const uint32_t bddValue = inBDD.integerValue () ;
   if (bddValue == 0) {
-    inStream << "(false)\n" ;
+    inStream.addString ("(false)\n") ;
   }else if (bddValue == 1) {
     TC_Array <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
     ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
@@ -146,15 +146,15 @@ static void printBDDline (const TC_Array <char> & inDisplayString,
                           const TC_Array <int32_t> & inNameLengthArray,
                           const int32_t inLeadingSpacesCount) {
   for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
-    co << " " ;
+    gCout.addString (" ") ;
   }
   for (int32_t i=0 ; i<inDisplayString.count () ; i++) {
     for (int32_t c=0 ; c<inNameLengthArray (i COMMA_HERE) ; c++) {
-      co << " " ;
+      gCout.addString (" ") ;
     }
-    co << cStringWithCharacter (inDisplayString (i COMMA_HERE)) ;
+    gCout.addChar (inDisplayString (i COMMA_HERE)) ;
   }
-  co << "\n" ;
+  gCout.addString ("\n") ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -208,23 +208,24 @@ internalPrintBDD (const uint32_t inValue,
 
 //-----------------------------------------------------------------------------*
 
-static void printBDDHeader (const TC_Array <C_String> & inVariablesNames,
+static void printBDDHeader (const TC_Array <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) {
 //--- Imprimer les variables
   for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
-    co << " " ;
+    gCout.addString (" ") ;
   }
   for (int32_t i=0 ; i<inVariableCount ; i++) {
-    co << " " << inVariablesNames (i COMMA_HERE) ;
+    gCout.addString (" ") ;
+    gCout.addString (inVariablesNames (i COMMA_HERE)) ;
   }
-  co << "\n" ;
+  gCout.addString ("\n") ;
 }
 
 //-----------------------------------------------------------------------------*
 
 static void printBDDwithoutHeader (const C_BDD & inBDD,
-                                   const TC_Array <C_String> & inVariablesNames,
+                                   const TC_Array <String> & inVariablesNames,
                                    const int32_t inVariableCount,
                                    const int32_t inLeadingSpacesCount) {
 //--- Compute header size
@@ -236,9 +237,9 @@ static void printBDDwithoutHeader (const C_BDD & inBDD,
 //--- Print BDD
   if (BDDValue == 0) {
     for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
-      co << " " ;
+      gCout.addString (" ") ;
     }
-    co << " (false)\n" ;
+    gCout.addString (" (false)\n") ;
   }else if (BDDValue == 1) {
     TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
     printBDDline (displayString, nameLengthArray, inLeadingSpacesCount) ;
@@ -246,15 +247,15 @@ static void printBDDwithoutHeader (const C_BDD & inBDD,
     const uint32_t nodeIndex = nodeIndexForRoot (BDDValue COMMA_HERE) ;
     const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inVariableCount) {
-      co << "** ERROR in "
-         << __FILE__
-         << " at line %"
-         << cStringWithSigned (__LINE__)
-         << ": BDD variable ("
-         << cStringWithSigned (var)
-         << ") is greater than variable count ("
-         << cStringWithSigned (inVariableCount)
-         << ") **\n" ;
+      gCout.addString ("** ERROR in ") ;
+      gCout.addString (__FILE__) ;
+      gCout.addString (" at line %") ;
+      gCout.addSigned (__LINE__);
+      gCout.addString (": BDD variable (") ;
+      gCout.addSigned (var);
+      gCout.addString (") is greater than variable count (") ;
+      gCout.addSigned (inVariableCount);
+      gCout.addString (") **\n") ;
     }else{
       TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
       internalPrintBDD (BDDValue, displayString, nameLengthArray, (uint32_t) (inVariableCount - 1), inLeadingSpacesCount) ;
@@ -265,7 +266,7 @@ static void printBDDwithoutHeader (const C_BDD & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDD (const C_BDD & inBDD,
-               const TC_Array <C_String> & inVariablesNames,
+               const TC_Array <String> & inVariablesNames,
                const int32_t inVariableCount,
                const int32_t inLeadingSpacesCount) {
 //--- Print header
@@ -277,7 +278,7 @@ void printBDD (const C_BDD & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDD (const C_BDD & inBDD,
-               const TC_Array <C_String> & inVariablesNames,
+               const TC_Array <String> & inVariablesNames,
                const int32_t inLeadingSpacesCount) {
   printBDD (inBDD, inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
 }
@@ -285,7 +286,7 @@ void printBDD (const C_BDD & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDDWithoutHeader (const C_BDD & inBDD,
-                            const TC_Array <C_String> & inVariablesNames,
+                            const TC_Array <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) {
 //--- Compute header size
@@ -296,9 +297,9 @@ void printBDDWithoutHeader (const C_BDD & inBDD,
 //--- Print BDD
   if (inBDD.integerValue() == 0) {
     for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
-      co << " " ;
+      gCout.addString (" ") ;
     }
-    co << " (false)\n" ;
+    gCout.addString (" (false)\n") ;
   }else if (inBDD.integerValue() == 1) {
     TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
     printBDDline (displayString, nameLengthArray, inLeadingSpacesCount) ;
@@ -306,15 +307,15 @@ void printBDDWithoutHeader (const C_BDD & inBDD,
     const uint32_t nodeIndex = nodeIndexForRoot (inBDD.integerValue() COMMA_HERE) ;
     const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inVariableCount) {
-      co << "** ERROR in "
-         << __FILE__
-         << " at line %"
-         << cStringWithSigned (__LINE__)
-         << ": BDD variable ("
-         << cStringWithSigned (var)
-         << ") is greater than variable count ("
-         << cStringWithSigned (inVariableCount)
-         << ") **\n" ;
+      gCout.addString ("** ERROR in ") ;
+      gCout.addString (__FILE__) ;
+      gCout.addString (" at line %") ;
+      gCout.addSigned (__LINE__);
+      gCout.addString (": BDD variable (") ;
+      gCout.addSigned (var);
+      gCout.addString (") is greater than variable count (") ;
+      gCout.addSigned (inVariableCount);
+      gCout.addString (") **\n") ;
     }else{
       TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
       internalPrintBDD (inBDD.integerValue(), displayString, nameLengthArray, (uint32_t) (inVariableCount - 1), inLeadingSpacesCount) ;

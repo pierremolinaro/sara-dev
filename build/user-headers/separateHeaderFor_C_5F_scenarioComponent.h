@@ -3,11 +3,11 @@
 #include "C_saraMachine.h"
 
 //--- END OF USER ZONE 1
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 2: pointer class for @C_scenarioComponent class
 //
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
 
@@ -16,7 +16,7 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
   #endif
 //--- START OF USER ZONE 2
 
-  public : virtual void compute (C_Compiler * inCompiler,
+  public : virtual void compute (Compiler * inCompiler,
                                  TC_Array <C_saraMachine> & ioSaraSystemArray,
                                  const bool inDisplayBDDvaluesCount,
                                  const bool inDisplayBDDvalues) const override ;
@@ -42,7 +42,7 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
 
 //--- Attribute accessors
 //--- Description
-  public: virtual void description (C_String & ioString,
+  public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
   public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const override ;
