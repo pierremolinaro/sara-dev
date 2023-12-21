@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------*
 
 case . "sara"
-%errorMessage "a '.sara' source file"
+message"a '.sara' source file"
 %useGrammar sara_grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar sara_grammar () in inSourceFile
