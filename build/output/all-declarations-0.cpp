@@ -1352,7 +1352,7 @@ String C_Lexique_sara_5F_scanner::getCurrentTokenString (const cToken * inTokenP
 
 void C_Lexique_sara_5F_scanner::internalParseLexicalToken (cTokenFor_sara_5F_scanner & token) {
   bool loop = true ;
-  token.mLexicalAttribute_identifierString.setLengthToZero () ;
+  token.mLexicalAttribute_identifierString.removeAllKeepingCapacity () ;
   token.mLexicalAttribute_ulongValue = 0 ;
   mTokenStartLocation = mCurrentLocation ;
   try{
@@ -1540,7 +1540,6 @@ void C_Lexique_sara_5F_scanner::enterToken (cTokenFor_sara_5F_scanner & ioToken)
   cTokenFor_sara_5F_scanner * ptr = nullptr ;
   macroMyNew (ptr, cTokenFor_sara_5F_scanner ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
-  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;

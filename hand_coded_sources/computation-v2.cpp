@@ -207,10 +207,9 @@ void swap (C_saraMachine & ioOperand1,
 
 //---------------------------------------------------------------------------*
 
-void
-routine_performComputations (const GALGAS_L_5F_jobList inComponentMap,
-                             Compiler * inCompiler
-                             COMMA_UNUSED_LOCATION_ARGS) {
+void routine_performComputations_3F_ (const GALGAS_L_5F_jobList inComponentMap,
+                                      Compiler * inCompiler
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
     TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options

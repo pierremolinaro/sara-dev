@@ -1190,7 +1190,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_start_5F_symbol_i0_ (C_Lexique_
     }
   }
   {
-  routine_performComputations (var_semanticContext_535.readProperty_componentsMap (), inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 20)) ;
+  routine_performComputations_3F_ (var_semanticContext_535.readProperty_componentsMap (), inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 20)) ;
   }
 }
 
@@ -6435,7 +6435,7 @@ GALGAS_C_5F_machineDefinedBySubstractiveModalComp GALGAS_C_5F_machineDefinedBySu
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 
-#include "files/C_FileManager.h"
+#include "files/FileManager.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7792,7 +7792,7 @@ void cGrammar_sara_5F_grammar::nt_start_5F_symbol_ (C_Lexique_sara_5F_scanner * 
 
 void cGrammar_sara_5F_grammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_sara_5F_scanner * scanner = NULL ;
+  C_Lexique_sara_5F_scanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
@@ -7809,7 +7809,7 @@ void cGrammar_sara_5F_grammar::performIndexing (Compiler * inCompiler,
 
 void cGrammar_sara_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_sara_5F_scanner * scanner = NULL ;
+  C_Lexique_sara_5F_scanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
@@ -7819,7 +7819,7 @@ void cGrammar_sara_5F_grammar::performOnlyLexicalAnalysis (Compiler * inCompiler
 
 void cGrammar_sara_5F_grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
-  C_Lexique_sara_5F_scanner * scanner = NULL ;
+  C_Lexique_sara_5F_scanner * scanner = nullptr ;
   macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_sara_grammar, gProductionNames_sara_grammar, gProductionIndexes_sara_grammar,
@@ -7840,11 +7840,11 @@ void cGrammar_sara_5F_grammar::_performSourceFileParsing_ (Compiler * inCompiler
   if (inFilePath.isValid ()) {
     const GALGAS_string filePathAsString = inFilePath.readProperty_string () ;
     String filePath = filePathAsString.stringValue () ;
-    if (! C_FileManager::isAbsolutePath (filePath)) {
+    if (! FileManager::isAbsolutePath (filePath)) {
       filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;
     }
-    if (C_FileManager::fileExistsAtPath (filePath)) {
-    C_Lexique_sara_5F_scanner * scanner = NULL ;
+    if (FileManager::fileExistsAtPath (filePath)) {
+    C_Lexique_sara_5F_scanner * scanner = nullptr ;
     macroMyNew (scanner, C_Lexique_sara_5F_scanner (inCompiler, filePath COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_sara_grammar, gProductionNames_sara_grammar, gProductionIndexes_sara_grammar,
