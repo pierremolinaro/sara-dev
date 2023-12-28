@@ -23,7 +23,6 @@
 #include "galgas2/C_galgas_io.h"
 #include "generic-arraies/TC_Array.h"
 #include "utilities/MF_MemoryControl.h"
-#include "time/C_Timer.h"
 #include "cDisplayBDD.h"
 #include "printBDD.h"
 #include "sara_cli_options.h"
