@@ -10,6 +10,57 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @typeDisplayBDDstats reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GALGAS_typeDisplayBDDstats (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GALGAS_typeDisplayBDDstats (const class cPtr_typeDisplayBDDstats * inSourcePtr) ;
+
+//--------------------------------- Property read access
+//-- Start of type generic part
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_typeDisplayBDDstats extractObject (const GALGAS_object & inObject,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_typeDisplayBDDstats class_func_new (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_typeDisplayBDDstats class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats ;
+
+#include "separateHeaderFor_typeDisplayBDDstats.h"
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @typeDisplayBDDstats_2D_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -26,7 +77,7 @@ class GALGAS_typeDisplayBDDstats_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 //--------------------------------- Bang operator
   public: GALGAS_typeDisplayBDDstats bang_typeDisplayBDDstats_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -36,8 +87,8 @@ class GALGAS_typeDisplayBDDstats_2D_weak : public GALGAS_AC_5F_job_2D_weak {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_typeDisplayBDDstats_2D_weak constructor_nil (LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_typeDisplayBDDstats_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats_2D_weak & inOperand) const ;
@@ -79,7 +130,7 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
                                                  const class GALGAS_AC_5F_job & in_mComponent
                                                  COMMA_LOCATION_ARGS) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -89,11 +140,11 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_L_5F_jobList constructor_emptyList (LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_L_5F_jobList class_func_emptyList (LOCATION_ARGS) ;
 
-  public: static class GALGAS_L_5F_jobList constructor_listWithValue (const class GALGAS_AC_5F_job & inOperand0
-                                                                      COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_L_5F_jobList class_func_listWithValue (const class GALGAS_AC_5F_job & inOperand0
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_jobList inOperand,
@@ -226,7 +277,7 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_jobList_2D_element (const GALGAS_AC_5F_job & in_mComponent) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -236,10 +287,10 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_L_5F_jobList_2D_element constructor_new (const class GALGAS_AC_5F_job & inOperand0,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_L_5F_jobList_2D_element class_func_new (const class GALGAS_AC_5F_job & inOperand0,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -288,7 +339,7 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
   public: GALGAS_M_5F_machinesMap (const GALGAS_M_5F_machinesMap & inSource) ;
   public: GALGAS_M_5F_machinesMap & operator = (const GALGAS_M_5F_machinesMap & inSource) ;
   
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -298,11 +349,11 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_M_5F_machinesMap constructor_emptyMap (LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_M_5F_machinesMap class_func_emptyMap (LOCATION_ARGS) ;
 
-  public: static class GALGAS_M_5F_machinesMap constructor_mapWithMapToOverride (const class GALGAS_M_5F_machinesMap & inOperand0
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static class GALGAS_M_5F_machinesMap class_func_mapWithMapToOverride (const class GALGAS_M_5F_machinesMap & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -562,7 +613,7 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
                                               const GALGAS_M_5F_variablesMap & in_mVariablesMap,
                                               const GALGAS_stringlist & in_mNameList) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -572,15 +623,15 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_M_5F_machinesMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                           const class GALGAS_uint & inOperand1,
-                                                                           const class GALGAS_uint & inOperand2,
-                                                                           const class GALGAS_uint & inOperand3,
-                                                                           const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                           const class GALGAS_stringlist & inOperand5,
-                                                                           class Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_M_5F_machinesMap_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
+                                                                          const class GALGAS_uint & inOperand1,
+                                                                          const class GALGAS_uint & inOperand2,
+                                                                          const class GALGAS_uint & inOperand3,
+                                                                          const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                          const class GALGAS_stringlist & inOperand5,
+                                                                          class Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -648,7 +699,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public: GALGAS_semanticContext (const GALGAS_L_5F_jobList & in_componentsMap,
                                   const GALGAS_M_5F_machinesMap & in_machinesMap) ;
 
-//-- Start of generic part --*
+//-- Start of type generic part
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -658,11 +709,11 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS constructors
-  public: static class GALGAS_semanticContext constructor_new (const class GALGAS_L_5F_jobList & inOperand0,
-                                                               const class GALGAS_M_5F_machinesMap & inOperand1,
-                                                               class Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_semanticContext class_func_new (const class GALGAS_L_5F_jobList & inOperand0,
+                                                              const class GALGAS_M_5F_machinesMap & inOperand1,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -701,422 +752,422 @@ class cParser_sara_5F_parser {
 
 //--- Non terminal declarations
   protected: virtual void nt_component_ (class GALGAS_semanticContext & ioArgument0,
-                                         class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                         class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_component_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_component_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_component_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_component_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_ (const class GALGAS_semanticContext constinArgument0,
                                                         class GALGAS_M_5F_variablesMap & ioArgument1,
                                                         class GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                        class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                        class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_definition_5F_expression_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_definition_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_5F_factor_ (const class GALGAS_semanticContext constinArgument0,
                                                                   class GALGAS_M_5F_variablesMap & ioArgument1,
                                                                   class GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                  class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                                  class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_5F_factor_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_definition_5F_expression_5F_factor_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_5F_factor_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_definition_5F_expression_5F_factor_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_5F_term_ (const class GALGAS_semanticContext constinArgument0,
                                                                 class GALGAS_M_5F_variablesMap & ioArgument1,
                                                                 class GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                                class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_5F_term_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_definition_5F_expression_5F_term_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_5F_term_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_definition_5F_expression_5F_term_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_explicit_5F_automaton_ (const class GALGAS_semanticContext constinArgument0,
                                                      class GALGAS_M_5F_variablesMap & ioArgument1,
                                                      class GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                     class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                     class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_explicit_5F_automaton_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_explicit_5F_automaton_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_explicit_5F_automaton_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_explicit_5F_automaton_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_and_5F_expression_ (const class GALGAS_semanticContext constinArgument0,
                                                        class GALGAS_M_5F_variablesMap & ioArgument1,
                                                        class GALGAS_AC_5F_boolExpression & outArgument2,
-                                                       class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                       class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_and_5F_expression_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_io_5F_and_5F_expression_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_and_5F_expression_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_io_5F_and_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_bool_5F_expression_ (const class GALGAS_semanticContext constinArgument0,
                                                         class GALGAS_M_5F_variablesMap & ioArgument1,
                                                         class GALGAS_AC_5F_boolExpression & outArgument2,
-                                                        class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                        class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_bool_5F_expression_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_io_5F_bool_5F_expression_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_bool_5F_expression_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_io_5F_bool_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_primary_ (const class GALGAS_semanticContext constinArgument0,
                                              class GALGAS_M_5F_variablesMap & ioArgument1,
                                              class GALGAS_AC_5F_boolExpression & outArgument2,
-                                             class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                             class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_primary_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_io_5F_primary_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_primary_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_io_5F_primary_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_modalcompadd_5F_definition_ (const class GALGAS_semanticContext constinArgument0,
                                                           class GALGAS_M_5F_variablesMap & ioArgument1,
                                                           class GALGAS_M_5F_modesMap & outArgument2,
                                                           class GALGAS_ListForModes & outArgument3,
-                                                          class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                          class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_modalcompadd_5F_definition_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_modalcompadd_5F_definition_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_modalcompadd_5F_definition_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_modalcompadd_5F_definition_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_modalcompsub_5F_definition_ (const class GALGAS_semanticContext constinArgument0,
                                                           class GALGAS_M_5F_variablesMap & ioArgument1,
                                                           class GALGAS_M_5F_modesMap & outArgument2,
                                                           class GALGAS_ListForModes & outArgument3,
-                                                          class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+                                                          class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_modalcompsub_5F_definition_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_modalcompsub_5F_definition_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_modalcompsub_5F_definition_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_modalcompsub_5F_definition_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_start_5F_symbol_ (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_start_5F_symbol_ (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_start_5F_symbol_parse (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_start_5F_symbol_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_start_5F_symbol_indexing (class C_Lexique_sara_5F_scanner * inLexique) = 0 ;
+  protected: virtual void nt_start_5F_symbol_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
 
 //--- Rule declarations
-  protected: void rule_sara_5F_parser_start_5F_symbol_i0_ (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_start_5F_symbol_i0_ (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_start_5F_symbol_i0_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_start_5F_symbol_i0_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_start_5F_symbol_i0_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_start_5F_symbol_i0_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i1_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i1_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i1_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i1_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i1_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i2_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i2_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i2_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i2_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i2_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i3_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i3_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i3_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i3_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i3_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i4_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i4_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i4_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i4_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i4_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i5_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i5_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i5_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i5_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i5_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i6_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i6_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i6_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i6_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i6_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i7_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i7_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i7_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i7_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i7_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i8_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i8_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i8_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i8_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i8_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i9_ (GALGAS_semanticContext & ioArgument0,
-                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i9_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i9_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i9_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i9_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i10_ (GALGAS_semanticContext & ioArgument0,
-                                                      C_Lexique_sara_5F_scanner * inLexique) ;
+                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i10_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i10_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i10_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i10_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i11_ (GALGAS_semanticContext & ioArgument0,
-                                                      C_Lexique_sara_5F_scanner * inLexique) ;
+                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i11_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i11_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i11_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i11_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i12_ (GALGAS_semanticContext & ioArgument0,
-                                                      C_Lexique_sara_5F_scanner * inLexique) ;
+                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i12_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i12_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i12_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_component_i12_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_ (const GALGAS_semanticContext constinArgument0,
                                                                      GALGAS_M_5F_variablesMap & ioArgument1,
                                                                      GALGAS_AC_5F_boolExpression & outArgument2,
-                                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_ (const GALGAS_semanticContext constinArgument0,
                                                                     GALGAS_M_5F_variablesMap & ioArgument1,
                                                                     GALGAS_AC_5F_boolExpression & outArgument2,
-                                                                    C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                    Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_primary_i15_ (const GALGAS_semanticContext constinArgument0,
                                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                                          C_Lexique_sara_5F_scanner * inLexique) ;
+                                                          Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i15_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i15_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i15_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i15_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_primary_i16_ (const GALGAS_semanticContext constinArgument0,
                                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                                          C_Lexique_sara_5F_scanner * inLexique) ;
+                                                          Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i16_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i16_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i16_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i16_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_primary_i17_ (const GALGAS_semanticContext constinArgument0,
                                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                                          C_Lexique_sara_5F_scanner * inLexique) ;
+                                                          Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i17_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i17_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i17_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i17_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_primary_i18_ (const GALGAS_semanticContext constinArgument0,
                                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                                          C_Lexique_sara_5F_scanner * inLexique) ;
+                                                          Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i18_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i18_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i18_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i18_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_primary_i19_ (const GALGAS_semanticContext constinArgument0,
                                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                                          C_Lexique_sara_5F_scanner * inLexique) ;
+                                                          Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i19_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i19_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i19_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i19_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_io_5F_primary_i20_ (const GALGAS_semanticContext constinArgument0,
                                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                                          C_Lexique_sara_5F_scanner * inLexique) ;
+                                                          Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i20_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i20_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i20_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_io_5F_primary_i20_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_definition_5F_expression_i21_ (const GALGAS_semanticContext constinArgument0,
                                                                      GALGAS_M_5F_variablesMap & ioArgument1,
                                                                      GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                     C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_i21_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_i21_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_i21_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_i21_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_ (const GALGAS_semanticContext constinArgument0,
                                                                              GALGAS_M_5F_variablesMap & ioArgument1,
                                                                              GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                             C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                             Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_ (const GALGAS_semanticContext constinArgument0,
                                                                        GALGAS_M_5F_variablesMap & ioArgument1,
                                                                        GALGAS_M_5F_modesMap & outArgument2,
                                                                        GALGAS_ListForModes & outArgument3,
-                                                                       C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                       Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_ (const GALGAS_semanticContext constinArgument0,
                                                                        GALGAS_M_5F_variablesMap & ioArgument1,
                                                                        GALGAS_M_5F_modesMap & outArgument2,
                                                                        GALGAS_ListForModes & outArgument3,
-                                                                       C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                       Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_ (const GALGAS_semanticContext constinArgument0,
                                                                                GALGAS_M_5F_variablesMap & ioArgument1,
                                                                                GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                               C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                               Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_ (const GALGAS_semanticContext constinArgument0,
                                                                                GALGAS_M_5F_variablesMap & ioArgument1,
                                                                                GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                               C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                               Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_ (const GALGAS_semanticContext constinArgument0,
                                                                   GALGAS_M_5F_variablesMap & ioArgument1,
                                                                   GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                                  C_Lexique_sara_5F_scanner * inLexique) ;
+                                                                  Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_parse (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_parse (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_indexing (C_Lexique_sara_5F_scanner * inLexique) ;
+  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
 
 
 //--- Select methods
-  protected: virtual int32_t select_sara_5F_parser_0 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_0 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_1 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_1 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_2 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_2 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_3 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_3 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_4 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_4 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_5 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_5 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_6 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_6 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_7 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_7 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_8 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_8 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_9 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_9 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_10 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_10 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_11 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_11 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_12 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_12 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_13 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_13 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_14 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_14 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_15 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_15 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_16 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_16 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_17 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_17 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_18 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_18 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_19 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_19 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_20 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_20 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_21 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_21 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_22 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_22 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_23 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_23 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_24 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_24 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_25 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_25 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_26 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_26 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_27 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_27 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_28 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_28 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_29 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_29 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_30 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_30 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_31 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_31 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_32 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_32 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_33 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_33 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_34 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_34 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_35 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_35 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_36 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_36 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_37 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_37 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_38 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_38 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_39 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_39 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_40 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_40 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_41 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_41 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_42 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_42 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_43 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_43 (Lexique_sara_5F_scanner *) = 0 ;
 
-  protected: virtual int32_t select_sara_5F_parser_44 (C_Lexique_sara_5F_scanner *) = 0 ;
+  protected: virtual int32_t select_sara_5F_parser_44 (Lexique_sara_5F_scanner *) = 0 ;
 
 
 } ;
@@ -1138,143 +1189,143 @@ void routine_performComputations_3F_ (const class GALGAS_L_5F_jobList constinArg
 class cGrammar_sara_5F_grammar : public cParser_sara_5F_parser {
 //------------------------------------- 'component' non terminal
 //--- 'parse' label
-  public: virtual void nt_component_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_component_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_component_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_component_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_component_ (GALGAS_semanticContext & ioArgument0,
-                                      C_Lexique_sara_5F_scanner * inCompiler) ;
+                                      Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'definition_expression' non terminal
 //--- 'parse' label
-  public: virtual void nt_definition_5F_expression_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_definition_5F_expression_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_definition_5F_expression_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_definition_5F_expression_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_definition_5F_expression_ (const GALGAS_semanticContext inArgument0,
                                                      GALGAS_M_5F_variablesMap & ioArgument1,
                                                      GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                     C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                     Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'definition_expression_factor' non terminal
 //--- 'parse' label
-  public: virtual void nt_definition_5F_expression_5F_factor_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_definition_5F_expression_5F_factor_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_definition_5F_expression_5F_factor_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_definition_5F_expression_5F_factor_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_definition_5F_expression_5F_factor_ (const GALGAS_semanticContext inArgument0,
                                                                GALGAS_M_5F_variablesMap & ioArgument1,
                                                                GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                               C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                               Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'definition_expression_term' non terminal
 //--- 'parse' label
-  public: virtual void nt_definition_5F_expression_5F_term_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_definition_5F_expression_5F_term_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_definition_5F_expression_5F_term_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_definition_5F_expression_5F_term_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_definition_5F_expression_5F_term_ (const GALGAS_semanticContext inArgument0,
                                                              GALGAS_M_5F_variablesMap & ioArgument1,
                                                              GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                             C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                             Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'explicit_automaton' non terminal
 //--- 'parse' label
-  public: virtual void nt_explicit_5F_automaton_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_explicit_5F_automaton_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_explicit_5F_automaton_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_explicit_5F_automaton_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_explicit_5F_automaton_ (const GALGAS_semanticContext inArgument0,
                                                   GALGAS_M_5F_variablesMap & ioArgument1,
                                                   GALGAS_AC_5F_machineDefinition & outArgument2,
-                                                  C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                  Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'io_and_expression' non terminal
 //--- 'parse' label
-  public: virtual void nt_io_5F_and_5F_expression_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_io_5F_and_5F_expression_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_io_5F_and_5F_expression_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_io_5F_and_5F_expression_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_io_5F_and_5F_expression_ (const GALGAS_semanticContext inArgument0,
                                                     GALGAS_M_5F_variablesMap & ioArgument1,
                                                     GALGAS_AC_5F_boolExpression & outArgument2,
-                                                    C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                    Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'io_bool_expression' non terminal
 //--- 'parse' label
-  public: virtual void nt_io_5F_bool_5F_expression_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_io_5F_bool_5F_expression_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_io_5F_bool_5F_expression_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_io_5F_bool_5F_expression_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_io_5F_bool_5F_expression_ (const GALGAS_semanticContext inArgument0,
                                                      GALGAS_M_5F_variablesMap & ioArgument1,
                                                      GALGAS_AC_5F_boolExpression & outArgument2,
-                                                     C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                     Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'io_primary' non terminal
 //--- 'parse' label
-  public: virtual void nt_io_5F_primary_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_io_5F_primary_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_io_5F_primary_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_io_5F_primary_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_io_5F_primary_ (const GALGAS_semanticContext inArgument0,
                                           GALGAS_M_5F_variablesMap & ioArgument1,
                                           GALGAS_AC_5F_boolExpression & outArgument2,
-                                          C_Lexique_sara_5F_scanner * inCompiler) ;
+                                          Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'modalcompadd_definition' non terminal
 //--- 'parse' label
-  public: virtual void nt_modalcompadd_5F_definition_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_modalcompadd_5F_definition_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_modalcompadd_5F_definition_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_modalcompadd_5F_definition_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_modalcompadd_5F_definition_ (const GALGAS_semanticContext inArgument0,
                                                        GALGAS_M_5F_variablesMap & ioArgument1,
                                                        GALGAS_M_5F_modesMap & outArgument2,
                                                        GALGAS_ListForModes & outArgument3,
-                                                       C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                       Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'modalcompsub_definition' non terminal
 //--- 'parse' label
-  public: virtual void nt_modalcompsub_5F_definition_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_modalcompsub_5F_definition_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_modalcompsub_5F_definition_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_modalcompsub_5F_definition_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
   public: virtual void nt_modalcompsub_5F_definition_ (const GALGAS_semanticContext inArgument0,
                                                        GALGAS_M_5F_variablesMap & ioArgument1,
                                                        GALGAS_M_5F_modesMap & outArgument2,
                                                        GALGAS_ListForModes & outArgument3,
-                                                       C_Lexique_sara_5F_scanner * inCompiler) ;
+                                                       Lexique_sara_5F_scanner * inCompiler) ;
 
 //------------------------------------- 'start_symbol' non terminal
 //--- 'parse' label
-  public: virtual void nt_start_5F_symbol_parse (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_start_5F_symbol_parse (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- indexing
-  public: virtual void nt_start_5F_symbol_indexing (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_start_5F_symbol_indexing (Lexique_sara_5F_scanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_start_5F_symbol_ (C_Lexique_sara_5F_scanner * inCompiler) ;
+  public: virtual void nt_start_5F_symbol_ (Lexique_sara_5F_scanner * inCompiler) ;
 
 //--- Start symbol
   public: static void _performSourceFileParsing_ (Compiler * inCompiler,
@@ -1298,95 +1349,95 @@ class cGrammar_sara_5F_grammar : public cParser_sara_5F_parser {
   public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
                                                  const String & inSourceFilePath) ;
 
-  public: virtual int32_t select_sara_5F_parser_0 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_0 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_1 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_1 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_2 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_2 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_3 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_3 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_4 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_4 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_5 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_5 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_6 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_6 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_7 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_7 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_8 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_8 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_9 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_9 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_10 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_10 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_11 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_11 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_12 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_12 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_13 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_13 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_14 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_14 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_15 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_15 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_16 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_16 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_17 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_17 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_18 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_18 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_19 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_19 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_20 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_20 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_21 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_21 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_22 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_22 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_23 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_23 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_24 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_24 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_25 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_25 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_26 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_26 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_27 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_27 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_28 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_28 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_29 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_29 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_30 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_30 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_31 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_31 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_32 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_32 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_33 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_33 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_34 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_34 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_35 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_35 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_36 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_36 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_37 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_37 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_38 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_38 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_39 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_39 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_40 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_40 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_41 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_41 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_42 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_42 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_43 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_43 (Lexique_sara_5F_scanner *) ;
 
-  public: virtual int32_t select_sara_5F_parser_44 (C_Lexique_sara_5F_scanner *) ;
+  public: virtual int32_t select_sara_5F_parser_44 (Lexique_sara_5F_scanner *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------

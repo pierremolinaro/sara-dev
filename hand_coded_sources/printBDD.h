@@ -24,20 +24,20 @@
 
 //-----------------------------------------------------------------------------*
 
-#include "utilities/M_machine.h"
-#include "generic-arraies/TC_Array.h"
-#include "strings/String-class.h"
+#include "M_machine.h"
+#include "TC_Array.h"
+#include "String-class.h"
 
 //-----------------------------------------------------------------------------*
 
-class AC_OutputStream ;
+class AbstractOutputStream ;
 class cDisplayBDD ;
 class C_BDD ;
 
 //-----------------------------------------------------------------------------*
 
 void printBDDWithVariables (const C_BDD & inBDD,
-                            AC_OutputStream & inStream,
+                            AbstractOutputStream & inStream,
                             const uint32_t inVariableCount,
                             const cDisplayBDD & inVariablesNames) ;
 

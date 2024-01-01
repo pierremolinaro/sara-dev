@@ -20,8 +20,8 @@
 //-----------------------------------------------------------------------------*
 
 #include "cDisplayBDD.h"
-#include "streams/AC_OutputStream.h"
-#include "utilities/MF_MemoryControl.h"
+#include "AbstractOutputStream.h"
+#include "MF_MemoryControl.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -96,7 +96,7 @@ obtenirDimension (const uint32_t indice) const {
 //-----------------------------------------------------------------------------*
 
 void cDisplayBDD::ecrire (const uint32_t indice,
-                            AC_OutputStream & inStream) const {
+                            AbstractOutputStream & inStream) const {
   inStream.addString (aTab ((int32_t) indice COMMA_HERE)) ;
 }
 

@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------*
 
 #include "sara_parser.h"
-#include "galgas2/Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "generic-arraies/TC_Array.h"
-#include "utilities/MF_MemoryControl.h"
+#include "Compiler.h"
+#include "C_galgas_io.h"
+#include "TC_Array.h"
+#include "MF_MemoryControl.h"
 #include "cDisplayBDD.h"
 #include "printBDD.h"
 #include "sara_cli_options.h"

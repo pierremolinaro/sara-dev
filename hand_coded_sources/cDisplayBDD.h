@@ -24,13 +24,13 @@
 
 //-----------------------------------------------------------------------------*
 
-#include "utilities/M_machine.h"
-#include "generic-arraies/TC_UniqueArray.h"
-#include "strings/String-class.h"
+#include "M_machine.h"
+#include "TC_UniqueArray.h"
+#include "String-class.h"
 
 //-----------------------------------------------------------------------------*
 
-class AC_OutputStream ;
+class AbstractOutputStream ;
 
 //-----------------------------------------------------------------------------*
 
@@ -69,7 +69,7 @@ class cDisplayBDD {
 
 //--- Ecrire une chaine
   public : void ecrire (const uint32_t indice,
-                        AC_OutputStream & inStream) const ;
+                        AbstractOutputStream & inStream) const ;
 
 //--- Interdire la duplication
   private : cDisplayBDD (cDisplayBDD &) ;

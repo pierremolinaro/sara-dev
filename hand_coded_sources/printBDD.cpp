@@ -21,10 +21,10 @@
 
 #include "printBDD.h"
 #include "cDisplayBDD.h"
-#include "streams/AC_OutputStream.h"
-#include "utilities/MF_MemoryControl.h"
-#include "bdd/C_BDD.h"
-#include "bdd/C_BDD-node.h"
+#include "AbstractOutputStream.h"
+#include "MF_MemoryControl.h"
+#include "C_BDD.h"
+#include "C_BDD-node.h"
 
 //---------------------------------------------------------------------------*
 
@@ -40,7 +40,7 @@ static inline int32_t sup (const int32_t inA,
 //-----------------------------------------------------------------------------*
 
 static void
-ecrireLigneBDD (AC_OutputStream & inStream,
+ecrireLigneBDD (AbstractOutputStream & inStream,
                 TC_Array <char> & chaineAffichage,
                 const cDisplayBDD & inVariablesNames) {
 //--- Ecriture des valeurs booleennes
@@ -61,7 +61,7 @@ ecrireLigneBDD (AC_OutputStream & inStream,
 //-----------------------------------------------------------------------------*
 
 static void
-ecrireBDDinterne (AC_OutputStream & inStream,
+ecrireBDDinterne (AbstractOutputStream & inStream,
                   const uint32_t inValue,
                   TC_Array <char> & chaineAffichage,
                   uint32_t numeroVariable,
@@ -113,7 +113,7 @@ ecrireBDDinterne (AC_OutputStream & inStream,
 //-----------------------------------------------------------------------------*
 
 void printBDDWithVariables (const C_BDD & inBDD,
-                            AC_OutputStream & inStream,
+                            AbstractOutputStream & inStream,
                             const uint32_t inVariableCount,
                             const cDisplayBDD & inVariablesNames) {
 //--- Imprimer les variables
