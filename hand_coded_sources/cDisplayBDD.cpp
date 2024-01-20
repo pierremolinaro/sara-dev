@@ -97,7 +97,7 @@ obtenirDimension (const uint32_t indice) const {
 
 void cDisplayBDD::ecrire (const uint32_t indice,
                             AbstractOutputStream & inStream) const {
-  inStream.addString (aTab ((int32_t) indice COMMA_HERE)) ;
+  inStream.appendString (aTab ((int32_t) indice COMMA_HERE)) ;
 }
 
 //-----------------------------------------------------------------------------*

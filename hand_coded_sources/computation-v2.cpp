@@ -233,9 +233,9 @@ compute (Compiler * inCompiler,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
-  gCout.addString ("------------------ Computations for '") ;
-  gCout.addString (mProperty_mMachineName.mProperty_string.stringValue()) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Computations for '") ;
+  gCout.appendString (mProperty_mMachineName.mProperty_string.stringValue()) ;
+  gCout.appendString ("' machine\n") ;
   C_saraMachine machine ;
   machine.mMachineName = mProperty_mMachineName.mProperty_string.stringValue () ;
 //--- Build input variables array names
@@ -290,72 +290,72 @@ compute (Compiler * inCompiler,
 //--- Print messages
   const int32_t outputVariablesCount = (int32_t) (variableCount - inputAndInternalVariablesCount) ;
   const int32_t internalVariablesCount = (int32_t)  (inputAndInternalVariablesCount - inputVariablesCount) ;
-  gCout.addString ("  ") ;
-  gCout.addSigned (inputVariablesCount);
-  gCout.addString (" input variable") ;
-  gCout.addString ((inputVariablesCount > 1) ? "s" : "");
-  gCout.addString (", ") ;
-  gCout.addSigned (internalVariablesCount);
-  gCout.addString (" internal variable") ;
-  gCout.addString ((internalVariablesCount > 1) ? "s" : "");
-  gCout.addString (", ") ;
-  gCout.addSigned (outputVariablesCount);
-  gCout.addString (" output variable") ;
-  gCout.addString ((outputVariablesCount > 1) ? "s" : "");
-  gCout.addString (";\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendSigned (inputVariablesCount);
+  gCout.appendString (" input variable") ;
+  gCout.appendString ((inputVariablesCount > 1) ? "s" : "");
+  gCout.appendString (", ") ;
+  gCout.appendSigned (internalVariablesCount);
+  gCout.appendString (" internal variable") ;
+  gCout.appendString ((internalVariablesCount > 1) ? "s" : "");
+  gCout.appendString (", ") ;
+  gCout.appendSigned (outputVariablesCount);
+  gCout.appendString (" output variable") ;
+  gCout.appendString ((outputVariablesCount > 1) ? "s" : "");
+  gCout.appendString (";\n") ;
   uint64_t n = machine.mInitialStatesBDD.valueCount64 (variableCount) ;
   uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" initial state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" initial state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mInitialStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mTerminalStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" terminal state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" terminal state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTerminalStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mAccessibleStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" reachable state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" reachable state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mAccessibleStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mTransitionRelationBDD.valueCount64 (variableCount + variableCount) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (").\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTransitionRelationBDD, transitionsVariableNameArray, 3) ;
   }
@@ -367,15 +367,15 @@ compute (Compiler * inCompiler,
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
   n = transitionsWithSourceEqualTarget.valueCount64 (variableCount + variableCount) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" with target equals source (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" with target equals source (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (").\n") ;
   if (inDisplayBDDvalues) {
     printBDD (transitionsWithSourceEqualTarget, transitionsVariableNameArray, 3) ;
   }
@@ -383,15 +383,15 @@ compute (Compiler * inCompiler,
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount64 (variableCount + variableCount) ;
   nodes = t.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" to other states (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" to other states (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (").\n") ;
   if (inDisplayBDDvalues) {
     printBDD (t, transitionsVariableNameArray, 3) ;
   }
@@ -413,86 +413,86 @@ compute (Compiler * /* inCompiler */,
   const int32_t machineIndex2 = (int32_t) mProperty_mMachineIndex_32_.uintValue () ;
   const C_saraMachine & machine1 = ioSaraSystemArray (machineIndex1 COMMA_HERE) ;
   const C_saraMachine & machine2 = ioSaraSystemArray (machineIndex2 COMMA_HERE) ;
-  gCout.addString ("------------------ Checking '") ;
-  gCout.addString (machine1.mMachineName);
-  gCout.addString ("' and '") ;
-  gCout.addString (machine2.mMachineName) ;
-  gCout.addString ("' machines identical\n") ;
+  gCout.appendString ("------------------ Checking '") ;
+  gCout.appendString (machine1.mMachineName);
+  gCout.appendString ("' and '") ;
+  gCout.appendString (machine2.mMachineName) ;
+  gCout.appendString ("' machines identical\n") ;
   bool ok = true ;
 //--- Check that input variable count are the same
   if (machine1.mInputVariablesCount == machine2.mInputVariablesCount) {
-    gCout.addString ("  Same input variable count (") ;
-    gCout.addUnsigned (machine1.mInputVariablesCount);
-    gCout.addString (") ;\n") ;
+    gCout.appendString ("  Same input variable count (") ;
+    gCout.appendUnsigned (machine1.mInputVariablesCount);
+    gCout.appendString (") ;\n") ;
   }else{
     ok = false ;
-    gCout.addString ("  Error: first machine has ") ;
-    gCout.addUnsigned (machine1.mInputVariablesCount);
-    gCout.addString (" input variable") ;
-    gCout.addString ((machine1.mInputVariablesCount > 1) ? "s" : "");
-    gCout.addString (", second one ") ;
-    gCout.addSigned (machine2.mInputVariablesCount);
-    gCout.addString (" ;\n") ;
+    gCout.appendString ("  Error: first machine has ") ;
+    gCout.appendUnsigned (machine1.mInputVariablesCount);
+    gCout.appendString (" input variable") ;
+    gCout.appendString ((machine1.mInputVariablesCount > 1) ? "s" : "");
+    gCout.appendString (", second one ") ;
+    gCout.appendSigned (machine2.mInputVariablesCount);
+    gCout.appendString (" ;\n") ;
   }
 //--- Check that all variable count are the same
   const int32_t internalAndOutputVariableCount1 = (int32_t) machine1.mNamesArray.count () - (int32_t) machine1.mInputVariablesCount ;
   const int32_t internalAndOutputVariableCount2 = (int32_t) machine2.mNamesArray.count () - (int32_t) machine2.mInputVariablesCount ;
   if (internalAndOutputVariableCount1 == internalAndOutputVariableCount2) {
-    gCout.addString ("  Same internal and output variable count (") ;
-    gCout.addSigned (internalAndOutputVariableCount1);
-    gCout.addString (");\n") ;
+    gCout.appendString ("  Same internal and output variable count (") ;
+    gCout.appendSigned (internalAndOutputVariableCount1);
+    gCout.appendString (");\n") ;
   }else{
     ok = false ;
-    gCout.addString ("  Error: first machine has ") ;
-    gCout.addSigned (internalAndOutputVariableCount1);
-    gCout.addString (" internal and output variable") ;
-    gCout.addString ((internalAndOutputVariableCount1 > 1) ? "s" : "");
-    gCout.addString (", second one ") ;
-    gCout.addSigned (internalAndOutputVariableCount2);
-    gCout.addString (" ;\n") ;
+    gCout.appendString ("  Error: first machine has ") ;
+    gCout.appendSigned (internalAndOutputVariableCount1);
+    gCout.appendString (" internal and output variable") ;
+    gCout.appendString ((internalAndOutputVariableCount1 > 1) ? "s" : "");
+    gCout.appendString (", second one ") ;
+    gCout.appendSigned (internalAndOutputVariableCount2);
+    gCout.appendString (" ;\n") ;
   }
 //--- Check initial states are identical
   bool identical = ok ;
   if (ok) {
     if (machine2.mInitialStatesBDD == (machine1.mInitialStatesBDD)) {
-      gCout.addString ("  Same initial states;\n") ;
+      gCout.appendString ("  Same initial states;\n") ;
     }else{
       identical = false ;
-      gCout.addString ("  Error: initial states are different;\n") ;
+      gCout.appendString ("  Error: initial states are different;\n") ;
     }
   }
 //--- Check terminal states are identical
   if (ok) {
     if (machine2.mTerminalStatesBDD == (machine1.mTerminalStatesBDD)) {
-      gCout.addString ("  Same terminal states;\n") ;
+      gCout.appendString ("  Same terminal states;\n") ;
     }else{
       identical = false ;
-      gCout.addString ("  Error: terminal states are different;\n") ;
+      gCout.appendString ("  Error: terminal states are different;\n") ;
     }
   }
 //--- Check transitions are identical
   if (ok) {
     if (machine2.mTransitionRelationBDD == (machine1.mTransitionRelationBDD)) {
-      gCout.addString ("  Same transitions;\n") ;
+      gCout.appendString ("  Same transitions;\n") ;
     }else{
       identical = false ;
-      gCout.addString ("  Error: transitions are different;\n") ;
+      gCout.appendString ("  Error: transitions are different;\n") ;
     }
   }
 //--- Check accessible states are identical
   if (ok) {
     if (machine2.mAccessibleStatesBDD == (machine1.mAccessibleStatesBDD)) {
-      gCout.addString ("  Same accessible states;\n") ;
+      gCout.appendString ("  Same accessible states;\n") ;
     }else{
       identical = false ;
-      gCout.addString ("  Error: accessible states are different;\n") ;
+      gCout.appendString ("  Error: accessible states are different;\n") ;
     }
   }
 //--- Conclusion
   if (identical) {
-    gCout.addString ("  Machines are identical.\n") ;
+    gCout.appendString ("  Machines are identical.\n") ;
   }else{
-    gCout.addString ("  Machines are different.\n") ;
+    gCout.appendString ("  Machines are different.\n") ;
   }
 }
 
@@ -506,9 +506,9 @@ compute (Compiler * /* inCompiler */,
 //--- Get machine index
   const int32_t machineIndex = (int32_t) mProperty_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  gCout.addString ("------------------ States of '") ;
-  gCout.addString (machine.mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ States of '") ;
+  gCout.appendString (machine.mMachineName) ;
+  gCout.appendString ("' machine\n") ;
   cDisplayBDD machineDisplay ((uint32_t) machine.mNamesArray.count ()) ;
   for (int32_t i=0 ; i<machine.mNamesArray.count () ; i++) {
     machineDisplay.defineVariableName ((uint32_t) i, machine.mNamesArray (i COMMA_HERE), 1) ;
@@ -526,9 +526,9 @@ compute (Compiler * /* inCompiler */,
 //--- Get machine index
   const int32_t machineIndex = (int32_t) mProperty_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  gCout.addString ("------------------ First states of '") ;
-  gCout.addString (machine.mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ First states of '") ;
+  gCout.appendString (machine.mMachineName) ;
+  gCout.appendString ("' machine\n") ;
   cDisplayBDD machineDisplay ((uint32_t) machine.mNamesArray.count ()) ;
   for (int32_t i=0 ; i<machine.mNamesArray.count () ; i++) {
     machineDisplay.defineVariableName ((uint32_t) i, machine.mNamesArray (i COMMA_HERE), 1) ;
@@ -546,9 +546,9 @@ compute (Compiler * /* inCompiler */,
 //--- Get machine index
   const int32_t machineIndex = (int32_t) mProperty_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  gCout.addString ("------------------ Last states of '") ;
-  gCout.addString (machine.mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Last states of '") ;
+  gCout.appendString (machine.mMachineName) ;
+  gCout.appendString ("' machine\n") ;
   cDisplayBDD machineDisplay ((uint32_t) machine.mNamesArray.count ()) ;
   for (int32_t i=0 ; i<machine.mNamesArray.count () ; i++) {
     machineDisplay.defineVariableName ((uint32_t) i, machine.mNamesArray (i COMMA_HERE), 1) ;
@@ -565,9 +565,9 @@ void cPtr_C_5F_machineDisplayTransitions::compute (Compiler * /* inCompiler */,
 //--- Get machine index
   const int32_t machineIndex = (int32_t) mProperty_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  gCout.addString ("------------------ Transitions (old) of '") ;
-  gCout.addString (machine.mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Transitions (old) of '") ;
+  gCout.appendString (machine.mMachineName) ;
+  gCout.appendString ("' machine\n") ;
   const uint32_t variableCount = (uint32_t) machine.mNamesArray.count () ;
   cDisplayBDD machineDisplayOld (variableCount + variableCount) ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
@@ -575,9 +575,9 @@ void cPtr_C_5F_machineDisplayTransitions::compute (Compiler * /* inCompiler */,
     machineDisplayOld.defineVariableName (i + variableCount, machine.mNamesArray ((int32_t) i COMMA_HERE), 1) ;
   }
   printBDDWithVariables (machine.mTransitionRelationBDD, gCout, variableCount + variableCount, machineDisplayOld) ;
-  gCout.addString ("------------------ Transitions (new) of '") ;
-  gCout.addString (machine.mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Transitions (new) of '") ;
+  gCout.appendString (machine.mMachineName) ;
+  gCout.appendString ("' machine\n") ;
   uint32_t * substitutionArray = NULL ;
   macroMyNewPODArray (substitutionArray, uint32_t, variableCount + variableCount) ;
   for (uint32_t i=0 ; i < variableCount ; i++) {
@@ -604,20 +604,20 @@ compute (Compiler * /* inCompiler */,
 //--- Get machine index
   const int32_t machineIndex = (int32_t) mProperty_mMachineIndex.uintValue () ;
   const C_saraMachine & machine = ioSaraSystemArray (machineIndex COMMA_HERE) ;
-  gCout.addString ("------------------ Checkings for '") ;
-  gCout.addString (machine.mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Checkings for '") ;
+  gCout.appendString (machine.mMachineName) ;
+  gCout.appendString ("' machine\n") ;
 //--- Checking input configuration is full
   const C_BDD notHandledInputConfigurations = ~ machine.mInitialStatesBDD.existsOnBitsAfterNumber (machine.mInputVariablesCount) ;
   if (notHandledInputConfigurations.isFalse ()) {
-    gCout.addString ("  All input configurations are handled;\n") ;
+    gCout.appendString ("  All input configurations are handled;\n") ;
   }else{
     const uint64_t n = notHandledInputConfigurations.valueCount64 (machine.mInputVariablesCount) ;
-    gCout.addString ("  ") ;
-    gCout.addUnsigned (n);
-    gCout.addString (" missing input configuration") ;
-    gCout.addString ((n > 1) ? "s" : "");
-    gCout.addString (":\n") ;
+    gCout.appendString ("  ") ;
+    gCout.appendUnsigned (n);
+    gCout.appendString (" missing input configuration") ;
+    gCout.appendString ((n > 1) ? "s" : "");
+    gCout.appendString (":\n") ;
     printBDD (notHandledInputConfigurations, machine.mNamesArray, (int32_t) machine.mInputVariablesCount, 3) ;
   }
 //--- Checking input configuration is not ambiguous
@@ -640,14 +640,14 @@ compute (Compiler * /* inCompiler */,
   }
   const C_BDD ambiguousInput = (machine.mInitialStatesBDD & sTranslatedInputConfiguration & ~ sEqualSprimeConstraint).existsOnBitsAfterNumber (variableCount) ;
   if (ambiguousInput.isFalse ()) {
-    gCout.addString ("  No ambiguous input configuration;\n") ;
+    gCout.appendString ("  No ambiguous input configuration;\n") ;
   }else{
     const uint64_t n = ambiguousInput.valueCount64 (variableCount) ;
-    gCout.addString ("  ") ;
-    gCout.addUnsigned (n);
-    gCout.addString (" ambiguous input configuration") ;
-    gCout.addString ((n > 1) ? "s" : "");
-    gCout.addString (":\n") ;
+    gCout.appendString ("  ") ;
+    gCout.appendUnsigned (n);
+    gCout.appendString (" ambiguous input configuration") ;
+    gCout.appendString ((n > 1) ? "s" : "");
+    gCout.appendString (":\n") ;
     printBDD (ambiguousInput, machine.mNamesArray, 3) ;
   }
 //--- Checking transition determinism
@@ -669,14 +669,14 @@ compute (Compiler * /* inCompiler */,
   }
   const C_BDD ambiguousTransitions = (machine.mTransitionRelationBDD & translatedTransitions & ePrimeEqualsEsecondConstraint & ~ sPrimeEqualsSsecondConstraint).existsOnBitsAfterNumber ( (variableCount + variableCount)) ;
   if (ambiguousTransitions.isFalse ()) {
-    gCout.addString ("  No ambiguous transition;\n") ;
+    gCout.appendString ("  No ambiguous transition;\n") ;
   }else{
     const uint64_t n = ambiguousTransitions.valueCount64 ( (variableCount+variableCount)) ;
-    gCout.addString ("  ") ;
-    gCout.addUnsigned (n);
-    gCout.addString (" ambiguous transition") ;
-    gCout.addString ((n > 1) ? "s" : "");
-    gCout.addString (":\n") ;
+    gCout.appendString ("  ") ;
+    gCout.appendUnsigned (n);
+    gCout.appendString (" ambiguous transition") ;
+    gCout.appendString ((n > 1) ? "s" : "");
+    gCout.appendString (":\n") ;
     TC_Array <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
     for (int32_t i=0 ; i<(int32_t)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
@@ -688,14 +688,14 @@ compute (Compiler * /* inCompiler */,
 //  incomplete states and inputs (e, s, e') = (e, s) is a state & ! s' (e, s, e', s') is not a transition
   const C_BDD incompleteStatesAndInput = machine.mAccessibleStatesBDD & (~ machine.mTransitionRelationBDD).forallOnBitsAfterNumber ( (variableCount+machine.mInputVariablesCount)) ;
   if (incompleteStatesAndInput.isFalse ()) {
-    gCout.addString ("  No incomplete state;\n") ;
+    gCout.appendString ("  No incomplete state;\n") ;
   }else{
     const uint64_t n = incompleteStatesAndInput.valueCount64 ( (variableCount+machine.mInputVariablesCount)) ;
-    gCout.addString ("  ") ;
-    gCout.addUnsigned (n);
-    gCout.addString (" incomplete state") ;
-    gCout.addString ((n > 1) ? "s" : "");
-    gCout.addString (":\n") ;
+    gCout.appendString ("  ") ;
+    gCout.appendUnsigned (n);
+    gCout.appendString (" incomplete state") ;
+    gCout.appendString ((n > 1) ? "s" : "");
+    gCout.appendString (":\n") ;
     TC_Array <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
     for (int32_t i=0 ; i<(int32_t)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
@@ -710,30 +710,30 @@ compute (Compiler * /* inCompiler */,
   const C_BDD notStableStates = machine.mAccessibleStatesBDD & ~ stableStates ;
 //--- End of added by PM on june 27, 2005 (for version 0.1.3)
   if (notStableStates.isFalse ()) {
-    gCout.addString ("  All states are stable;\n") ;
+    gCout.appendString ("  All states are stable;\n") ;
   }else{
     const uint64_t n = notStableStates.valueCount64 (variableCount) ;
-    gCout.addString ("  ") ;
-    gCout.addUnsigned (n);
-    gCout.addString (" instable state") ;
-    gCout.addString ((n > 1) ? "s" : "");
-    gCout.addString (":\n") ;
+    gCout.appendString ("  ") ;
+    gCout.appendUnsigned (n);
+    gCout.appendString (" instable state") ;
+    gCout.appendString ((n > 1) ? "s" : "");
+    gCout.appendString (":\n") ;
     printBDD (notStableStates, machine.mNamesArray, (int32_t) variableCount, 3) ;
   }
 //--- Check machine is combinatory ? (added by PM on october 13th, 2005)
   if (mProperty_mCheckMachineIsBoolean.boolValue ()) {
     bool ok = true ;
     if (machine.mInitialStatesBDD != ( machine.mTerminalStatesBDD)) {
-      gCout.addString ("  checkbool error: this machine is not combinatory (initial states != terminal states).\n") ;
+      gCout.appendString ("  checkbool error: this machine is not combinatory (initial states != terminal states).\n") ;
       ok = false ;
     }
     const C_BDD boolAccessibilityRelationBDD =  machine.mInitialStatesBDD & machine.mInitialStatesBDD.translate (variableCount, variableCount) ;
     if (boolAccessibilityRelationBDD != (machine.mTransitionRelationBDD)) {
-      gCout.addString ("  checkbool error: this machine is not combinatory (transitions != initial states x initial states).\n") ;
+      gCout.appendString ("  checkbool error: this machine is not combinatory (transitions != initial states x initial states).\n") ;
       ok = false ;
     }
     if (ok) {
-      gCout.addString ("  Machine is combinatory.\n") ;
+      gCout.appendString ("  Machine is combinatory.\n") ;
     }
   }
 }
@@ -745,7 +745,7 @@ compute (Compiler * /* inCompiler */,
          TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  gCout.addString ("------------------ bdd: print BDD package statistics.\n") ;
+  gCout.appendString ("------------------ bdd: print BDD package statistics.\n") ;
   C_BDD::printBDDpackageOperationsSummary (gCout) ;
 }
 
@@ -759,10 +759,10 @@ compute (Compiler * /* inCompiler */,
 //  /* C_Timer duree ;
 //    C_BDD::setHashMapSize ( mNewSize.uintValue ()) ;
 //    duree.stopTimer () ;
-//    gCout.addString ("------------------ map "
-//      .addUnsigned (mNewSize.uintValue ())
+//    gCout.appendString ("------------------ map "
+//      .appendUnsigned (mNewSize.uintValue ())
 //       += ": BDD unique table resized to "
-//      .addSigned (C_BDD::getHashMapEntriesCount ())
+//      .appendSigned (C_BDD::getHashMapEntriesCount ())
 //       += " (done in "
 //       += duree
 //       += ").\n\n") ; */
@@ -778,10 +778,10 @@ compute (Compiler * /* inCompiler */,
 //  /* C_Timer duree ;
 //    C_BDD::setANDcacheSize ((int32_t) mNewSize.uintValue ()) ;
 //    duree.stopTimer () ;
-//    gCout.addString ("------------------ and_cache "
-//      .addUnsigned (mNewSize.uintValue ())
+//    gCout.appendString ("------------------ and_cache "
+//      .appendUnsigned (mNewSize.uintValue ())
 //       += ": AND cache resized to "
-//      .addSigned (C_BDD::getANDcacheEntriesCount ())
+//      .appendSigned (C_BDD::getANDcacheEntriesCount ())
 //       += " (done in "
 //       += duree
 //       += ").\n\n") ; */
@@ -797,10 +797,10 @@ compute (Compiler * /* inCompiler */,
 //  /* C_Timer duree ;
 //    C_BDD::setITEcacheSize ((int32_t) mNewSize.uintValue ()) ;
 //    duree.stopTimer () ;
-//    gCout.addString ("------------------ ite_cache "
-//      .addUnsigned (mNewSize.uintValue ())
+//    gCout.appendString ("------------------ ite_cache "
+//      .appendUnsigned (mNewSize.uintValue ())
 //       += ": ITE cache resized to "
-//      .addSigned (C_BDD::getITEcacheEntriesCount ())
+//      .appendSigned (C_BDD::getITEcacheEntriesCount ())
 //       += " (done in "
 //       += duree
 //       += ").\n\n") ;  */
@@ -814,7 +814,7 @@ compute (Compiler * /* inCompiler */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
-//      gCout.addString ("------------------ use_and: ITE is now computed from AND.\n\n") ; */
+//      gCout.appendString ("------------------ use_and: ITE is now computed from AND.\n\n") ; */
 //}
 
 //-----------------------------------------------------------------------------*
@@ -825,7 +825,7 @@ compute (Compiler * /* inCompiler */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
-//    gCout.addString ("------------------ use_ite: AND is now computed from ITE.\n\n") ; */
+//    gCout.appendString ("------------------ use_ite: AND is now computed from ITE.\n\n") ; */
 //}
 
 //-----------------------------------------------------------------------------*
@@ -836,7 +836,7 @@ compute (Compiler * /* inCompiler */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
-//    gCout.addString ("------------------ use_and_ite: AND and ITE are now computed independantly.\n\n") ; */
+//    gCout.appendString ("------------------ use_and_ite: AND and ITE are now computed independantly.\n\n") ; */
 //}
 
 //-----------------------------------------------------------------------------*
@@ -846,9 +846,9 @@ compute (Compiler * /* inCompiler */,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
-  gCout.addString ("------------------ Scenarios for '") ;
-  gCout.addString (ioSaraSystemArray ( (int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mMachineName) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Scenarios for '") ;
+  gCout.appendString (ioSaraSystemArray ( (int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mMachineName) ;
+  gCout.appendString ("' machine\n") ;
 //--- Initial state BDD
   const C_BDD initialStateBDD = ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mInitialStatesBDD ;
 //--- transitions BDD
@@ -859,9 +859,9 @@ compute (Compiler * /* inCompiler */,
   cEnumerator_L_5F_scenarioList scenario (mProperty_mScenarioList, kENUMERATION_UP) ;
   while (scenario.hasCurrentObject ()) {
   //--- Print scenario title
-    gCout.addString ("Scenario '") ;
-    gCout.addString (scenario.current_mScenarioTitle (HERE).mProperty_string.stringValue()) ;
-    gCout.addString ("':\n") ;
+    gCout.appendString ("Scenario '") ;
+    gCout.appendString (scenario.current_mScenarioTitle (HERE).mProperty_string.stringValue()) ;
+    gCout.appendString ("':\n") ;
   //--- Build initial configuration
     cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (HERE), kENUMERATION_UP) ;
     uint64_t initialConfiguration = 0 ;
@@ -908,11 +908,11 @@ compute (Compiler * /* inCompiler */,
     }
     macroMyDeletePODArray (substitutionVector) ;
     if (valuesCount == 0) {
-      gCout.addString ("*** ERROR: dead state.\n") ;
+      gCout.appendString ("*** ERROR: dead state.\n") ;
     }else if (valuesCount > 1) {
-      gCout.addString ("*** ERROR: ambiguous transition (") ;
-      gCout.addUnsigned (valuesCount) ;
-      gCout.addString (" states).\n") ;
+      gCout.appendString ("*** ERROR: ambiguous transition (") ;
+      gCout.appendUnsigned (valuesCount) ;
+      gCout.appendString (" states).\n") ;
     }
     scenario.gotoNextObject () ;
   }
@@ -952,9 +952,9 @@ computeFromExpression (Compiler * inCompiler,
   //--- Check state configuration is not empty
     if (stateExpressionBDD (stateIndex COMMA_HERE).isFalse ()) {
       String errorMessage ;
-      errorMessage.addString ("input configuration for state '") ;
-      errorMessage.addString (stateNameArray (stateIndex COMMA_HERE)) ;
-      errorMessage.addString ("' is empty") ;
+      errorMessage.appendString ("input configuration for state '") ;
+      errorMessage.appendString (stateNameArray (stateIndex COMMA_HERE)) ;
+      errorMessage.appendString ("' is empty") ;
       inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
     }
   //--- Go to next state definition
@@ -969,11 +969,11 @@ computeFromExpression (Compiler * inCompiler,
       if (! (stateExpressionBDD ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
            & stateExpressionBDD ((int32_t) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)).isFalse ()) {
         String errorMessage ;
-        errorMessage.addString ("expression for state '") ;
-        errorMessage.addString (stateNameArray ((int32_t) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
-        errorMessage.addString ("' intersects expression for state '") ;
-        errorMessage.addString (stateNameArray ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
-        errorMessage.addString ("'") ;
+        errorMessage.appendString ("expression for state '") ;
+        errorMessage.appendString (stateNameArray ((int32_t) testedState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
+        errorMessage.appendString ("' intersects expression for state '") ;
+        errorMessage.appendString (stateNameArray ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
+        errorMessage.appendString ("'") ;
         inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
       testedState.gotoNextObject () ;
@@ -1003,11 +1003,11 @@ computeFromExpression (Compiler * inCompiler,
         & stateExpressionBDD ((int32_t) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (! intersection.isFalse ()) {
         String errorMessage ;
-        errorMessage.addString ("initial state '") ;
-        errorMessage.addString (stateNameArray ((int32_t) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
-        errorMessage.addString ("' intersects previous initial state '") ;
-        errorMessage.addString (stateNameArray ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
-        errorMessage.addString ("'") ;
+        errorMessage.appendString ("initial state '") ;
+        errorMessage.appendString (stateNameArray ((int32_t) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
+        errorMessage.appendString ("' intersects previous initial state '") ;
+        errorMessage.appendString (stateNameArray ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
+        errorMessage.appendString ("'") ;
         inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
       testedInitialState.gotoNextObject () ;
@@ -1072,7 +1072,7 @@ computeFromExpression (Compiler * inCompiler,
     //--- Check action does not intersect with state input expression
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         String errorMessage ;
-        errorMessage.addString ("this action intersects with current state input configuration") ;
+        errorMessage.appendString ("this action intersects with current state input configuration") ;
         inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
@@ -1085,9 +1085,9 @@ computeFromExpression (Compiler * inCompiler,
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           String errorMessage ;
-          errorMessage.addString ("this action intersects with #") ;
-          errorMessage.addSigned (transitionIndex) ;
-          errorMessage.addString (" previous action") ;
+          errorMessage.appendString ("this action intersects with #") ;
+          errorMessage.appendSigned (transitionIndex) ;
+          errorMessage.appendString (" previous action") ;
           inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
         }
         testedTransition.gotoNextObject () ;
@@ -1096,7 +1096,7 @@ computeFromExpression (Compiler * inCompiler,
       const C_BDD x = actionBDD & stateExpressionBDD ((int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (x.isFalse ()) {
         String errorMessage ;
-        errorMessage.addString ("this transition is not compatible with configuration of target state") ;
+        errorMessage.appendString ("this transition is not compatible with configuration of target state") ;
         inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Goto next transition
@@ -1128,9 +1128,9 @@ computeFromExpression (Compiler * inCompiler,
     const C_BDD intersection = stateExpressionBDD (i COMMA_HERE) & accessibleStatesBDD ;
     if (intersection.isFalse()) {
       String errorMessage ;
-      errorMessage.addString ("state '") ;
-      errorMessage.addString (stateNameArray (i COMMA_HERE)) ;
-      errorMessage.addString ("' is not accessible") ;
+      errorMessage.appendString ("state '") ;
+      errorMessage.appendString (stateNameArray (i COMMA_HERE)) ;
+      errorMessage.appendString ("' is not accessible") ;
       inCompiler->semanticErrorAtLocation (mProperty_mEndOfDefinition, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
     }
   }
@@ -1276,7 +1276,7 @@ computeFromExpression (Compiler * inCompiler,
   const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
   if (! intersection.isFalse ()) {
     String errorMessage ;
-    errorMessage.addString ("operands transitions intersects, strong modal composition is not valid") ;
+    errorMessage.appendString ("operands transitions intersects, strong modal composition is not valid") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
@@ -1338,7 +1338,7 @@ computeFromExpression (Compiler * inCompiler,
 //--- Check that only states in intersection are accessible
   if (intersection != (leftAccessiblesStates)) {
     String errorMessage ;
-    errorMessage.addString ("left operand does not respect weak modal composition") ;
+    errorMessage.appendString ("left operand does not respect weak modal composition") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
@@ -1354,21 +1354,21 @@ computeFromExpression (Compiler * inCompiler,
 //--- Check that only states in intersection are accessible
   if (intersection != (rightAccessiblesStates)) {
     String errorMessage ;
-    errorMessage.addString ("right operand does not respect weak modal composition") ;
+    errorMessage.appendString ("right operand does not respect weak modal composition") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD) == (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     String errorMessage ;
-    errorMessage.addString ("initial states are not compatible with weak modal composition") ;
+    errorMessage.appendString ("initial states are not compatible with weak modal composition") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD) == (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     String errorMessage ;
-    errorMessage.addString ("terminal states are not compatible with weak modal composition") ;
+    errorMessage.appendString ("terminal states are not compatible with weak modal composition") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
@@ -1662,11 +1662,11 @@ computeFromExpression (Compiler * inCompiler,
     //--- Check that only states in intersection are accessible
       if (intersection != (leftAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
@@ -1684,22 +1684,22 @@ computeFromExpression (Compiler * inCompiler,
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
       if (intersection != (rightAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("initial states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("initial states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
@@ -1707,11 +1707,11 @@ computeFromExpression (Compiler * inCompiler,
       const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("terminal states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("terminal states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
@@ -1805,11 +1805,11 @@ computeFromExpression (Compiler * inCompiler,
     //--- Check that only states in intersection are accessible
       if (intersection != (leftAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
@@ -1827,22 +1827,22 @@ computeFromExpression (Compiler * inCompiler,
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
       if (intersection != (rightAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("initial states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("initial states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
@@ -1850,11 +1850,11 @@ computeFromExpression (Compiler * inCompiler,
       const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("terminal states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("terminal states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
@@ -1942,9 +1942,9 @@ compute (Compiler * inCompiler,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
-  gCout.addString ("------------------ Computations for '") ;
-  gCout.addString (mProperty_mMachineName.mProperty_string.stringValue ()) ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Computations for '") ;
+  gCout.appendString (mProperty_mMachineName.mProperty_string.stringValue ()) ;
+  gCout.appendString ("' machine\n") ;
   C_saraMachine machine ;
   machine.mMachineName = mProperty_mMachineName.mProperty_string.stringValue () ;
 //--- Build input variables array names
@@ -2016,11 +2016,11 @@ compute (Compiler * inCompiler,
     //--- Check that only states in intersection are accessible
       if (intersection != (leftAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
@@ -2038,22 +2038,22 @@ compute (Compiler * inCompiler,
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
       if (intersection != (rightAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("initial states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("initial states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
@@ -2061,11 +2061,11 @@ compute (Compiler * inCompiler,
       const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("terminal states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("terminal states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
@@ -2127,69 +2127,69 @@ compute (Compiler * inCompiler,
   const int32_t internalVariablesCount = (int32_t) (inputAndInternalVariablesCount - inputVariablesCount) ;
   uint64_t n = machine.mInitialStatesBDD.valueCount64 (variableCount) ;
   uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addSigned (inputVariablesCount);
-  gCout.addString (" input variable") ;
-  gCout.addString ((inputVariablesCount > 1) ? "s" : "");
-  gCout.addString (", ") ;
-  gCout.addSigned (internalVariablesCount);
-  gCout.addString (" internal variable") ;
-  gCout.addString ((internalVariablesCount > 1) ? "s" : "");
-  gCout.addString (", ") ;
-  gCout.addSigned (outputVariablesCount) ;
-  gCout.addString (" output variable") ;
-  gCout.addString ((outputVariablesCount > 1) ? "s" : "") ;
-  gCout.addString (";\n" "  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" initial state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendSigned (inputVariablesCount);
+  gCout.appendString (" input variable") ;
+  gCout.appendString ((inputVariablesCount > 1) ? "s" : "");
+  gCout.appendString (", ") ;
+  gCout.appendSigned (internalVariablesCount);
+  gCout.appendString (" internal variable") ;
+  gCout.appendString ((internalVariablesCount > 1) ? "s" : "");
+  gCout.appendString (", ") ;
+  gCout.appendSigned (outputVariablesCount) ;
+  gCout.appendString (" output variable") ;
+  gCout.appendString ((outputVariablesCount > 1) ? "s" : "") ;
+  gCout.appendString (";\n" "  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" initial state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mInitialStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mTerminalStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n);
-  gCout.addString (" terminal state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n);
+  gCout.appendString (" terminal state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTerminalStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mAccessibleStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" accessible state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (";\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" accessible state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (";\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mAccessibleStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mTransitionRelationBDD.valueCount64 ( (variableCount + variableCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (").\n") ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
@@ -2198,28 +2198,28 @@ compute (Compiler * inCompiler,
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variableCount + variableCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" with target equals source (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" with target equals source (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (").\n") ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount64 ( (variableCount + variableCount)) ;
   nodes = t.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" to other states (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" to other states (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (").\n") ;
   if (inDisplayBDDvalues) {
     printBDD (t, transitionsVariableNameArray, 3) ;
   }
@@ -2236,9 +2236,9 @@ compute (Compiler * inCompiler,
          TC_Array <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
-  gCout.addString ("------------------ Computations for '") ;
-  gCout.addString (mProperty_mMachineName.mProperty_string.stringValue ()) ; ;
-  gCout.addString ("' machine\n") ;
+  gCout.appendString ("------------------ Computations for '") ;
+  gCout.appendString (mProperty_mMachineName.mProperty_string.stringValue ()) ; ;
+  gCout.appendString ("' machine\n") ;
   C_saraMachine machine ;
   machine.mMachineName = mProperty_mMachineName.mProperty_string.stringValue () ;
 //--- Build input variables array names
@@ -2311,11 +2311,11 @@ compute (Compiler * inCompiler,
     //--- Check that only states in intersection are accessible
       if (intersection != (leftAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
@@ -2333,22 +2333,22 @@ compute (Compiler * inCompiler,
       //printf ("Check that only states in intersection are accessible\n") ; fflush (stdout) ;
       if (intersection != (rightAccessiblesStates)) {
         String errorMessage ;
-        errorMessage.addString ("accessibility of '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode does not respect weak modal composition with '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
-        errorMessage.addString ("' mode") ;
+        errorMessage.appendString ("accessibility of '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
+        errorMessage.appendString ("' mode") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
       if (! initialStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("initial states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ; ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("initial states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ; ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
@@ -2356,11 +2356,11 @@ compute (Compiler * inCompiler,
       const bool terminalStatesAreCompatible = (intersection & terminalStatesArray (mode COMMA_HERE)) == (intersection & terminalStatesArray (testedMode COMMA_HERE)) ;
       if (! terminalStatesAreCompatible) {
         String errorMessage ;
-        errorMessage.addString ("terminal states of '") ;
-        errorMessage.addString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ; ;
-        errorMessage.addString ("' and '") ;
-        errorMessage.addString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
-        errorMessage.addString ("' modes are not compatible with weak modal composition") ;
+        errorMessage.appendString ("terminal states of '") ;
+        errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ; ;
+        errorMessage.appendString ("' and '") ;
+        errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
+        errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
         inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
       }
     }
@@ -2429,72 +2429,72 @@ compute (Compiler * inCompiler,
 //--- Print messages
   const int32_t outputVariablesCount = (int32_t) (variableCount - inputAndInternalVariablesCount) ;
   const int32_t internalVariablesCount = (int32_t) (inputAndInternalVariablesCount - inputVariablesCount) ;
-  gCout.addString ("  ") ;
-  gCout.addSigned (inputVariablesCount) ;
-  gCout.addString (" input variable") ;
-  gCout.addString ((inputVariablesCount > 1) ? "s" : "");
-  gCout.addString (", ") ;
-  gCout.addSigned (internalVariablesCount) ;
-  gCout.addString (" internal variable") ;
-  gCout.addString ((internalVariablesCount > 1) ? "s" : "");
-  gCout.addString (", ") ;
-  gCout.addSigned (outputVariablesCount) ;
-  gCout.addString (" output variable") ;
-  gCout.addString ((outputVariablesCount > 1) ? "s" : "") ;
-  gCout.addString (";\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendSigned (inputVariablesCount) ;
+  gCout.appendString (" input variable") ;
+  gCout.appendString ((inputVariablesCount > 1) ? "s" : "");
+  gCout.appendString (", ") ;
+  gCout.appendSigned (internalVariablesCount) ;
+  gCout.appendString (" internal variable") ;
+  gCout.appendString ((internalVariablesCount > 1) ? "s" : "");
+  gCout.appendString (", ") ;
+  gCout.appendSigned (outputVariablesCount) ;
+  gCout.appendString (" output variable") ;
+  gCout.appendString ((outputVariablesCount > 1) ? "s" : "") ;
+  gCout.appendString (";\n") ;
   uint64_t n = machine.mInitialStatesBDD.valueCount64 (variableCount) ;
   uint32_t nodes = machine.mInitialStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" initial state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" initial state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mInitialStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mTerminalStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mTerminalStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" terminal state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" terminal state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mTerminalStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mAccessibleStatesBDD.valueCount64 (variableCount) ;
   nodes = machine.mAccessibleStatesBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" accessible state") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (");\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" accessible state") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (");\n") ;
   if (inDisplayBDDvalues) {
     printBDD (machine.mAccessibleStatesBDD, machine.mNamesArray, 3) ;
   }
   n = machine.mTransitionRelationBDD.valueCount64 ( (variableCount + variableCount)) ;
   nodes = machine.mTransitionRelationBDD.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (").\n") ;
 //--- Restrict transitions to target == source
   C_BDD constraint = ~ C_BDD () ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
@@ -2503,28 +2503,28 @@ compute (Compiler * inCompiler,
   const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variableCount + variableCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" with target equals source (") ;
-  gCout.addUnsigned (nodes) ;
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "") ;
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" with target equals source (") ;
+  gCout.appendUnsigned (nodes) ;
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "") ;
+  gCout.appendString (").\n") ;
 //--- Display transitions from states to different states
   const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount64 ( (variableCount + variableCount)) ;
   nodes = t.getBDDnodesCount () ;
-  gCout.addString ("  ") ;
-  gCout.addUnsigned (n) ;
-  gCout.addString (" transition") ;
-  gCout.addString ((n > 1) ? "s" : "");
-  gCout.addString (" to other states (") ;
-  gCout.addUnsigned (nodes);
-  gCout.addString (" BDD node") ;
-  gCout.addString ((nodes > 1) ? "s" : "");
-  gCout.addString (").\n") ;
+  gCout.appendString ("  ") ;
+  gCout.appendUnsigned (n) ;
+  gCout.appendString (" transition") ;
+  gCout.appendString ((n > 1) ? "s" : "");
+  gCout.appendString (" to other states (") ;
+  gCout.appendUnsigned (nodes);
+  gCout.appendString (" BDD node") ;
+  gCout.appendString ((nodes > 1) ? "s" : "");
+  gCout.appendString (").\n") ;
   if (inDisplayBDDvalues) {
     printBDD (t, transitionsVariableNameArray, 3) ;
   }

@@ -366,7 +366,7 @@ class Lexique_sara_5F_scanner : public Lexique {
   public: uint32_t attributeValue_ulongValue (void) const ;
 
 
-//--- Indexing keys
+//--- indexing keys
 
 //--- Parse lexical token
   protected: void internalParseLexicalToken (cTokenFor_sara_5F_scanner & token) ;

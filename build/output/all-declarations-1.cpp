@@ -78,7 +78,7 @@ const C_galgas_type_descriptor * cPtr_typeDisplayBDDstats::classDescriptor (void
 
 void cPtr_typeDisplayBDDstats::description (String & ioString,
                                             const int32_t /* inIndentation */) const {
-  ioString.addString ("[@typeDisplayBDDstats]") ;
+  ioString.appendString ("[@typeDisplayBDDstats]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -301,9 +301,9 @@ cCollectionElement * cCollectionElement_L_5F_jobList::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cCollectionElement_L_5F_jobList::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mComponent" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendString ("mComponent" ":") ;
   mObject.mProperty_mComponent.description (ioString, inIndentation) ;
 }
 
@@ -684,25 +684,25 @@ cMapElement * cMapElement_M_5F_machinesMap::copy (void) {
 //--------------------------------------------------------------------------------------------------
 
 void cMapElement_M_5F_machinesMap::description (String & ioString, const int32_t inIndentation) const {
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mIndex" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendString ("mIndex" ":") ;
   mProperty_mIndex.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mInputVariableCount" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendString ("mInputVariableCount" ":") ;
   mProperty_mInputVariableCount.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mInputAndInternalVariableCount" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendString ("mInputAndInternalVariableCount" ":") ;
   mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mVariablesMap" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendString ("mVariablesMap" ":") ;
   mProperty_mVariablesMap.description (ioString, inIndentation) ;
-  ioString.addNL () ;
-  ioString.addStringMultiple ("| ", inIndentation) ;
-  ioString.addString ("mNameList" ":") ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendString ("mNameList" ":") ;
   mProperty_mNameList.description (ioString, inIndentation) ;
 }
 
@@ -1243,15 +1243,15 @@ void GALGAS_semanticContext::drop (void) {
 
 void GALGAS_semanticContext::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @semanticContext:") ;
+  ioString.appendString ("<struct @semanticContext:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_componentsMap.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_machinesMap.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4193,13 +4193,13 @@ void GALGAS_L_5F_translationVector_2D_element::drop (void) {
 
 void GALGAS_L_5F_translationVector_2D_element::description (String & ioString,
                                                             const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_translationVector-element:") ;
+  ioString.appendString ("<struct @L_translationVector-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mTargetSlot.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4315,17 +4315,17 @@ void GALGAS_L_5F_transitionDefinition_2D_element::drop (void) {
 
 void GALGAS_L_5F_transitionDefinition_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_transitionDefinition-element:") ;
+  ioString.appendString ("<struct @L_transitionDefinition-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mActionExpression.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mEndOfExpression.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTargetStateIndex.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4449,19 +4449,19 @@ void GALGAS_L_5F_stateDefinition_2D_element::drop (void) {
 
 void GALGAS_L_5F_stateDefinition_2D_element::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_stateDefinition-element:") ;
+  ioString.appendString ("<struct @L_stateDefinition-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mStateIndex.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mStateExpression.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mEndOfStateExpression.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTransitionsList.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4569,15 +4569,15 @@ void GALGAS_L_5F_statesDefinitionList_2D_element::drop (void) {
 
 void GALGAS_L_5F_statesDefinitionList_2D_element::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_statesDefinitionList-element:") ;
+  ioString.appendString ("<struct @L_statesDefinitionList-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mStateIndex.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mStateLocation.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4685,15 +4685,15 @@ void GALGAS_ListForModes_2D_element::drop (void) {
 
 void GALGAS_ListForModes_2D_element::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @ListForModes-element:") ;
+  ioString.appendString ("<struct @ListForModes-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mSourceMode.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mTargetMode.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4793,13 +4793,13 @@ void GALGAS_L_5F_inputConfigurationForScenario_2D_element::drop (void) {
 
 void GALGAS_L_5F_inputConfigurationForScenario_2D_element::description (String & ioString,
                                                                         const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_inputConfigurationForScenario-element:") ;
+  ioString.appendString ("<struct @L_inputConfigurationForScenario-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mInputValue.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4899,13 +4899,13 @@ void GALGAS_L_5F_inputScenario_2D_element::drop (void) {
 
 void GALGAS_L_5F_inputScenario_2D_element::description (String & ioString,
                                                         const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_inputScenario-element:") ;
+  ioString.appendString ("<struct @L_inputScenario-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mInputConfiguration.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5005,13 +5005,13 @@ void GALGAS_L_5F_jobList_2D_element::drop (void) {
 
 void GALGAS_L_5F_jobList_2D_element::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_jobList-element:") ;
+  ioString.appendString ("<struct @L_jobList-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mComponent.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5222,13 +5222,13 @@ const C_galgas_type_descriptor * cPtr_C_5F_importBoolMachine::classDescriptor (v
 
 void cPtr_C_5F_importBoolMachine::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.addString ("[@C_importBoolMachine:") ;
+  ioString.appendString ("[@C_importBoolMachine:") ;
   mProperty_mIndexOfImportedMachine.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mErrorLocation.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mTranslationVector.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5418,11 +5418,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineCheck::classDescriptor (void) 
 
 void cPtr_C_5F_machineCheck::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.addString ("[@C_machineCheck:") ;
+  ioString.appendString ("[@C_machineCheck:") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mCheckMachineIsBoolean.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5762,21 +5762,21 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineComponent::classDescriptor (vo
 
 void cPtr_C_5F_machineComponent::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.addString ("[@C_machineComponent:") ;
+  ioString.appendString ("[@C_machineComponent:") ;
   mProperty_mMachineName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mNameList.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mDefinition.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6116,21 +6116,21 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineDefinedByAdditiveModalComp::cl
 
 void cPtr_C_5F_machineDefinedByAdditiveModalComp::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString.addString ("[@C_machineDefinedByAdditiveModalComp:") ;
+  ioString.appendString ("[@C_machineDefinedByAdditiveModalComp:") ;
   mProperty_mMachineName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mModeMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInclusionList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6470,21 +6470,21 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineDefinedBySubstractiveModalComp
 
 void cPtr_C_5F_machineDefinedBySubstractiveModalComp::description (String & ioString,
                                                                    const int32_t inIndentation) const {
-  ioString.addString ("[@C_machineDefinedBySubstractiveModalComp:") ;
+  ioString.appendString ("[@C_machineDefinedBySubstractiveModalComp:") ;
   mProperty_mMachineName.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mModeMap.description (ioString, inIndentation+1) ;
-  ioString.addString (", ") ;
+  ioString.appendString (", ") ;
   mProperty_mExclusionList.description (ioString, inIndentation+1) ;
-  ioString.addString ("]") ;
+  ioString.appendString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7959,18 +7959,18 @@ void cGrammar_sara_5F_grammar::_performSourceFileParsing_ (Compiler * inCompiler
         }
       }else{
         String message ;
-        message.addString ("the '") ;
-        message.addString (filePath) ;
-        message.addString ("' file exists, but cannot be read") ;
+        message.appendString ("the '") ;
+        message.appendString (filePath) ;
+        message.appendString ("' file exists, but cannot be read") ;
         const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
         inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       macroDetachSharedObject (scanner) ;
     }else{
       String message ;
-      message.addString ("the '") ;
-      message.addString (filePath) ;
-      message.addString ("' file does not exist") ;
+      message.appendString ("the '") ;
+      message.appendString (filePath) ;
+      message.appendString ("' file does not exist") ;
       const GALGAS_location errorLocation (inFilePath.readProperty_location ()) ;
       inCompiler->semanticErrorAtLocation (errorLocation, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }
@@ -8930,15 +8930,15 @@ void GALGAS__32_lstringlist_2D_element::drop (void) {
 
 void GALGAS__32_lstringlist_2D_element::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.addString ("<struct @2lstringlist-element:") ;
+  ioString.appendString ("<struct @2lstringlist-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mValue_30_.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mValue_31_.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9046,15 +9046,15 @@ void GALGAS_M_5F_variablesMap_2D_element::drop (void) {
 
 void GALGAS_M_5F_variablesMap_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString.addString ("<struct @M_variablesMap-element:") ;
+  ioString.appendString ("<struct @M_variablesMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mIndex.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9162,15 +9162,15 @@ void GALGAS_M_5F_stateMap_2D_element::drop (void) {
 
 void GALGAS_M_5F_stateMap_2D_element::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.addString ("<struct @M_stateMap-element:") ;
+  ioString.appendString ("<struct @M_stateMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mIndex.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9286,17 +9286,17 @@ void GALGAS_M_5F_modesMap_2D_element::drop (void) {
 
 void GALGAS_M_5F_modesMap_2D_element::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.addString ("<struct @M_modesMap-element:") ;
+  ioString.appendString ("<struct @M_modesMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mModeDefinition.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9404,15 +9404,15 @@ void GALGAS_L_5F_scenarioList_2D_element::drop (void) {
 
 void GALGAS_L_5F_scenarioList_2D_element::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString.addString ("<struct @L_scenarioList-element:") ;
+  ioString.appendString ("<struct @L_scenarioList-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_mScenarioTitle.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mInputScenario.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9552,23 +9552,23 @@ void GALGAS_M_5F_machinesMap_2D_element::drop (void) {
 
 void GALGAS_M_5F_machinesMap_2D_element::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString.addString ("<struct @M_machinesMap-element:") ;
+  ioString.appendString ("<struct @M_machinesMap-element:") ;
   if (! isValid ()) {
-    ioString.addString (" not built") ;
+    ioString.appendString (" not built") ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mIndex.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-    ioString.addString (", ") ;
+    ioString.appendString (", ") ;
     mProperty_mNameList.description (ioString, inIndentation+1) ;
   }
-  ioString.addString (">") ;
+  ioString.appendString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9668,7 +9668,7 @@ C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ("s
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
-  gCout.addString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
+  gCout.appendString ("Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9746,7 +9746,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
   String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
   if (executionModeOptionErrorMessage.length () > 0) {
-    gCout.addString (executionModeOptionErrorMessage) ;
+    gCout.appendString (executionModeOptionErrorMessage) ;
     returnCode = 1 ;
   }else{
   //--- Common lexique object
@@ -9781,7 +9781,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             break ;
           }
         }else{
-          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
+          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString ()) ;
           r = 1 ;
         }
         if (r != 0) {
@@ -9809,23 +9809,23 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         String message ;
         if (totalWarningCount () == 0) {
-          message.addString ("No warning") ;
+          message.appendString ("No warning") ;
         }else if (totalWarningCount () == 1) {
-          message.addString ("1 warning") ;
+          message.appendString ("1 warning") ;
         }else{
-          message.addSigned (totalWarningCount ()) ;
-          message.addString (" warnings") ;
+          message.appendSigned (totalWarningCount ()) ;
+          message.appendString (" warnings") ;
         }
-        message.addString (", ") ;
+        message.appendString (", ") ;
         if (totalErrorCount () == 0) {
-          message.addString ("no error") ;
+          message.appendString ("no error") ;
         }else if (totalErrorCount () == 1) {
-          message.addString ("1 error") ;
+          message.appendString ("1 error") ;
         }else{
-          message.addSigned (totalErrorCount ()) ;
-          message.addString (" errors") ;
+          message.appendSigned (totalErrorCount ()) ;
+          message.appendString (" errors") ;
         }
-        message.addString (".\n") ;
+        message.appendString (".\n") ;
         ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const ::std::exception & e) {
