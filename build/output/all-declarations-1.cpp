@@ -9619,17 +9619,17 @@ GALGAS_M_5F_machinesMap_2D_element GALGAS_M_5F_machinesMap_2D_element::extractOb
 //
 //--------------------------------------------------------------------------------------------------
 
-C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ("sara_cli_options",
-                                         "displayBDDvalues",
-                                         118,
-                                         "display-bdd-values",
-                                         "displays values for every BDD") ;
-
 C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ("sara_cli_options",
                                          "displayBDDvaluesCount",
                                          99,
                                          "display-bdd-values-count",
                                          "displays values count for every BDD") ;
+
+C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ("sara_cli_options",
+                                         "displayBDDvalues",
+                                         118,
+                                         "display-bdd-values",
+                                         "displays values for every BDD") ;
 
 //--------------------------------------------------------------------------------------------------
 //
