@@ -70,11 +70,11 @@ cCollectionElement * cCollectionElement__32_lstringlist::copy (void) {
 void cCollectionElement__32_lstringlist::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mValue0" ":") ;
+  ioString.appendCString ("mValue0" ":") ;
   mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mValue1" ":") ;
+  ioString.appendCString ("mValue1" ":") ;
   mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
 }
 
@@ -598,143 +598,123 @@ String Lexique_sara_5F_scanner::getMessageForTerminal (const int32_t inTerminalI
 //                      U N I C O D E    S T R I N G S                                           
 //--------------------------------------------------------------------------------------------------
 
-//--- Unicode string for '$_21_$'
-static const utf32 kUnicodeString_sara_5F_scanner__21_ [] = {
+//--- Unicode string for '$!$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__21_ = {
   TO_UNICODE ('!'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_26_$'
-static const utf32 kUnicodeString_sara_5F_scanner__26_ [] = {
+//--- Unicode string for '$&$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__26_ = {
   TO_UNICODE ('&'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_28_$'
-static const utf32 kUnicodeString_sara_5F_scanner__28_ [] = {
+//--- Unicode string for '$($'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__28_ = {
   TO_UNICODE ('('),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_29_$'
-static const utf32 kUnicodeString_sara_5F_scanner__29_ [] = {
+//--- Unicode string for '$)$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__29_ = {
   TO_UNICODE (')'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2A_$'
-static const utf32 kUnicodeString_sara_5F_scanner__2A_ [] = {
+//--- Unicode string for '$*$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__2A_ = {
   TO_UNICODE ('*'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2A__2A_$'
-static const utf32 kUnicodeString_sara_5F_scanner__2A__2A_ [] = {
+//--- Unicode string for '$**$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__2A__2A_ = {
   TO_UNICODE ('*'),
   TO_UNICODE ('*'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2B_$'
-static const utf32 kUnicodeString_sara_5F_scanner__2B_ [] = {
+//--- Unicode string for '$+$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__2B_ = {
   TO_UNICODE ('+'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2C_$'
-static const utf32 kUnicodeString_sara_5F_scanner__2C_ [] = {
+//--- Unicode string for '$,$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__2C_ = {
   TO_UNICODE (','),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_2D__3E_$'
-static const utf32 kUnicodeString_sara_5F_scanner__2D__3E_ [] = {
+//--- Unicode string for '$->$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__2D__3E_ = {
   TO_UNICODE ('-'),
   TO_UNICODE ('>'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3A_$'
-static const utf32 kUnicodeString_sara_5F_scanner__3A_ [] = {
+//--- Unicode string for '$:$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__3A_ = {
   TO_UNICODE (':'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3A__3D_$'
-static const utf32 kUnicodeString_sara_5F_scanner__3A__3D_ [] = {
+//--- Unicode string for '$:=$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__3A__3D_ = {
   TO_UNICODE (':'),
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3B_$'
-static const utf32 kUnicodeString_sara_5F_scanner__3B_ [] = {
+//--- Unicode string for '$;$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__3B_ = {
   TO_UNICODE (';'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3D_$'
-static const utf32 kUnicodeString_sara_5F_scanner__3D_ [] = {
+//--- Unicode string for '$=$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__3D_ = {
   TO_UNICODE ('='),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_3F_$'
-static const utf32 kUnicodeString_sara_5F_scanner__3F_ [] = {
+//--- Unicode string for '$?$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__3F_ = {
   TO_UNICODE ('\?'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_40_$'
-static const utf32 kUnicodeString_sara_5F_scanner__40_ [] = {
+//--- Unicode string for '$@$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__40_ = {
   TO_UNICODE ('@'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_5E_$'
-static const utf32 kUnicodeString_sara_5F_scanner__5E_ [] = {
+//--- Unicode string for '$^$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__5E_ = {
   TO_UNICODE ('^'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$auto$'
-static const utf32 kUnicodeString_sara_5F_scanner_auto [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_auto = {
   TO_UNICODE ('a'),
   TO_UNICODE ('u'),
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$bdd$'
-static const utf32 kUnicodeString_sara_5F_scanner_bdd [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_bdd = {
   TO_UNICODE ('b'),
   TO_UNICODE ('d'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$bool$'
-static const utf32 kUnicodeString_sara_5F_scanner_bool [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_bool = {
   TO_UNICODE ('b'),
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$check$'
-static const utf32 kUnicodeString_sara_5F_scanner_check [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_check = {
   TO_UNICODE ('c'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
   TO_UNICODE ('c'),
   TO_UNICODE ('k'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$checkbool$'
-static const utf32 kUnicodeString_sara_5F_scanner_checkbool [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_checkbool = {
   TO_UNICODE ('c'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -744,11 +724,10 @@ static const utf32 kUnicodeString_sara_5F_scanner_checkbool [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('o'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$checkidentical$'
-static const utf32 kUnicodeString_sara_5F_scanner_checkidentical [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_checkidentical = {
   TO_UNICODE ('c'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
@@ -763,11 +742,10 @@ static const utf32 kUnicodeString_sara_5F_scanner_checkidentical [] = {
   TO_UNICODE ('c'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$display$'
-static const utf32 kUnicodeString_sara_5F_scanner_display [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_display = {
   TO_UNICODE ('d'),
   TO_UNICODE ('i'),
   TO_UNICODE ('s'),
@@ -775,11 +753,10 @@ static const utf32 kUnicodeString_sara_5F_scanner_display [] = {
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('y'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$exclude$'
-static const utf32 kUnicodeString_sara_5F_scanner_exclude [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_exclude = {
   TO_UNICODE ('e'),
   TO_UNICODE ('x'),
   TO_UNICODE ('c'),
@@ -787,40 +764,36 @@ static const utf32 kUnicodeString_sara_5F_scanner_exclude [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$false$'
-static const utf32 kUnicodeString_sara_5F_scanner_false [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_false = {
   TO_UNICODE ('f'),
   TO_UNICODE ('a'),
   TO_UNICODE ('l'),
   TO_UNICODE ('s'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$first$'
-static const utf32 kUnicodeString_sara_5F_scanner_first [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_first = {
   TO_UNICODE ('f'),
   TO_UNICODE ('i'),
   TO_UNICODE ('r'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$goto$'
-static const utf32 kUnicodeString_sara_5F_scanner_goto [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_goto = {
   TO_UNICODE ('g'),
   TO_UNICODE ('o'),
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$include$'
-static const utf32 kUnicodeString_sara_5F_scanner_include [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_include = {
   TO_UNICODE ('i'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
@@ -828,28 +801,25 @@ static const utf32 kUnicodeString_sara_5F_scanner_include [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('d'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$last$'
-static const utf32 kUnicodeString_sara_5F_scanner_last [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_last = {
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$map$'
-static const utf32 kUnicodeString_sara_5F_scanner_map [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_map = {
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$modalcompadd$'
-static const utf32 kUnicodeString_sara_5F_scanner_modalcompadd [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_modalcompadd = {
   TO_UNICODE ('m'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -862,11 +832,10 @@ static const utf32 kUnicodeString_sara_5F_scanner_modalcompadd [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('d'),
   TO_UNICODE ('d'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$modalcompsub$'
-static const utf32 kUnicodeString_sara_5F_scanner_modalcompsub [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_modalcompsub = {
   TO_UNICODE ('m'),
   TO_UNICODE ('o'),
   TO_UNICODE ('d'),
@@ -879,11 +848,10 @@ static const utf32 kUnicodeString_sara_5F_scanner_modalcompsub [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('u'),
   TO_UNICODE ('b'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$nofirst$'
-static const utf32 kUnicodeString_sara_5F_scanner_nofirst [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_nofirst = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('f'),
@@ -891,22 +859,20 @@ static const utf32 kUnicodeString_sara_5F_scanner_nofirst [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$nolast$'
-static const utf32 kUnicodeString_sara_5F_scanner_nolast [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_nolast = {
   TO_UNICODE ('n'),
   TO_UNICODE ('o'),
   TO_UNICODE ('l'),
   TO_UNICODE ('a'),
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$scenario$'
-static const utf32 kUnicodeString_sara_5F_scanner_scenario [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_scenario = {
   TO_UNICODE ('s'),
   TO_UNICODE ('c'),
   TO_UNICODE ('e'),
@@ -915,74 +881,64 @@ static const utf32 kUnicodeString_sara_5F_scanner_scenario [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('i'),
   TO_UNICODE ('o'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$state$'
-static const utf32 kUnicodeString_sara_5F_scanner_state [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_state = {
   TO_UNICODE ('s'),
   TO_UNICODE ('t'),
   TO_UNICODE ('a'),
   TO_UNICODE ('t'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$to$'
-static const utf32 kUnicodeString_sara_5F_scanner_to [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_to = {
   TO_UNICODE ('t'),
   TO_UNICODE ('o'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$trans$'
-static const utf32 kUnicodeString_sara_5F_scanner_trans [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_trans = {
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('a'),
   TO_UNICODE ('n'),
   TO_UNICODE ('s'),
-  TO_UNICODE (0)
 } ;
 
 //--- Unicode string for '$true$'
-static const utf32 kUnicodeString_sara_5F_scanner_true [] = {
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner_true = {
   TO_UNICODE ('t'),
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7B_$'
-static const utf32 kUnicodeString_sara_5F_scanner__7B_ [] = {
+//--- Unicode string for '${$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__7B_ = {
   TO_UNICODE ('{'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7C_$'
-static const utf32 kUnicodeString_sara_5F_scanner__7C_ [] = {
+//--- Unicode string for '$|$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__7C_ = {
   TO_UNICODE ('|'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7C__7C_$'
-static const utf32 kUnicodeString_sara_5F_scanner__7C__7C_ [] = {
+//--- Unicode string for '$||$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__7C__7C_ = {
   TO_UNICODE ('|'),
   TO_UNICODE ('|'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7D_$'
-static const utf32 kUnicodeString_sara_5F_scanner__7D_ [] = {
+//--- Unicode string for '$}$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__7D_ = {
   TO_UNICODE ('}'),
-  TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$_7E_$'
-static const utf32 kUnicodeString_sara_5F_scanner__7E_ [] = {
+//--- Unicode string for '$~$'
+static const std::initializer_list <utf32> kUnicodeString_sara_5F_scanner__7E_ = {
   TO_UNICODE ('~'),
-  TO_UNICODE (0)
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -992,27 +948,27 @@ static const utf32 kUnicodeString_sara_5F_scanner__7E_ [] = {
 static const int32_t ktable_size_sara_5F_scanner_delimitorsList = 21 ;
 
 static const C_unicode_lexique_table_entry ktable_for_sara_5F_scanner_delimitorsList [ktable_size_sara_5F_scanner_delimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__21_, 1, Lexique_sara_5F_scanner::kToken__21_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__26_, 1, Lexique_sara_5F_scanner::kToken__26_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__28_, 1, Lexique_sara_5F_scanner::kToken__28_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__29_, 1, Lexique_sara_5F_scanner::kToken__29_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2A_, 1, Lexique_sara_5F_scanner::kToken__2A_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2B_, 1, Lexique_sara_5F_scanner::kToken__2B_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2C_, 1, Lexique_sara_5F_scanner::kToken__2C_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3A_, 1, Lexique_sara_5F_scanner::kToken__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3B_, 1, Lexique_sara_5F_scanner::kToken__3B_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3D_, 1, Lexique_sara_5F_scanner::kToken__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3F_, 1, Lexique_sara_5F_scanner::kToken__3F_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__40_, 1, Lexique_sara_5F_scanner::kToken__40_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__5E_, 1, Lexique_sara_5F_scanner::kToken__5E_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7B_, 1, Lexique_sara_5F_scanner::kToken__7B_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7C_, 1, Lexique_sara_5F_scanner::kToken__7C_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7D_, 1, Lexique_sara_5F_scanner::kToken__7D_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7E_, 1, Lexique_sara_5F_scanner::kToken__7E_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2A__2A_, 2, Lexique_sara_5F_scanner::kToken__2A__2A_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2D__3E_, 2, Lexique_sara_5F_scanner::kToken__2D__3E_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3A__3D_, 2, Lexique_sara_5F_scanner::kToken__3A__3D_),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7C__7C_, 2, Lexique_sara_5F_scanner::kToken__7C__7C_)
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__21_, Lexique_sara_5F_scanner::kToken__21_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__26_, Lexique_sara_5F_scanner::kToken__26_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__28_, Lexique_sara_5F_scanner::kToken__28_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__29_, Lexique_sara_5F_scanner::kToken__29_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2A_, Lexique_sara_5F_scanner::kToken__2A_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2B_, Lexique_sara_5F_scanner::kToken__2B_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2C_, Lexique_sara_5F_scanner::kToken__2C_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3A_, Lexique_sara_5F_scanner::kToken__3A_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3B_, Lexique_sara_5F_scanner::kToken__3B_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3D_, Lexique_sara_5F_scanner::kToken__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3F_, Lexique_sara_5F_scanner::kToken__3F_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__40_, Lexique_sara_5F_scanner::kToken__40_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__5E_, Lexique_sara_5F_scanner::kToken__5E_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7B_, Lexique_sara_5F_scanner::kToken__7B_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7C_, Lexique_sara_5F_scanner::kToken__7C_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7D_, Lexique_sara_5F_scanner::kToken__7D_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7E_, Lexique_sara_5F_scanner::kToken__7E_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2A__2A_, Lexique_sara_5F_scanner::kToken__2A__2A_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__2D__3E_, Lexique_sara_5F_scanner::kToken__2D__3E_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__3A__3D_, Lexique_sara_5F_scanner::kToken__3A__3D_),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner__7C__7C_, Lexique_sara_5F_scanner::kToken__7C__7C_)
 } ;
 
 int32_t Lexique_sara_5F_scanner::search_into_delimitorsList (const String & inSearchedString) {
@@ -1026,29 +982,29 @@ int32_t Lexique_sara_5F_scanner::search_into_delimitorsList (const String & inSe
 static const int32_t ktable_size_sara_5F_scanner_keyWordList = 23 ;
 
 static const C_unicode_lexique_table_entry ktable_for_sara_5F_scanner_keyWordList [ktable_size_sara_5F_scanner_keyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_to, 2, Lexique_sara_5F_scanner::kToken_to),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_bdd, 3, Lexique_sara_5F_scanner::kToken_bdd),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_map, 3, Lexique_sara_5F_scanner::kToken_map),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_auto, 4, Lexique_sara_5F_scanner::kToken_auto),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_bool, 4, Lexique_sara_5F_scanner::kToken_bool),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_goto, 4, Lexique_sara_5F_scanner::kToken_goto),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_last, 4, Lexique_sara_5F_scanner::kToken_last),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_true, 4, Lexique_sara_5F_scanner::kToken_true),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_check, 5, Lexique_sara_5F_scanner::kToken_check),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_false, 5, Lexique_sara_5F_scanner::kToken_false),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_first, 5, Lexique_sara_5F_scanner::kToken_first),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_state, 5, Lexique_sara_5F_scanner::kToken_state),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_trans, 5, Lexique_sara_5F_scanner::kToken_trans),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_nolast, 6, Lexique_sara_5F_scanner::kToken_nolast),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_display, 7, Lexique_sara_5F_scanner::kToken_display),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_exclude, 7, Lexique_sara_5F_scanner::kToken_exclude),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_include, 7, Lexique_sara_5F_scanner::kToken_include),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_nofirst, 7, Lexique_sara_5F_scanner::kToken_nofirst),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_scenario, 8, Lexique_sara_5F_scanner::kToken_scenario),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_checkbool, 9, Lexique_sara_5F_scanner::kToken_checkbool),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_modalcompadd, 12, Lexique_sara_5F_scanner::kToken_modalcompadd),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_modalcompsub, 12, Lexique_sara_5F_scanner::kToken_modalcompsub),
-  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_checkidentical, 14, Lexique_sara_5F_scanner::kToken_checkidentical)
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_to, Lexique_sara_5F_scanner::kToken_to),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_bdd, Lexique_sara_5F_scanner::kToken_bdd),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_map, Lexique_sara_5F_scanner::kToken_map),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_auto, Lexique_sara_5F_scanner::kToken_auto),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_bool, Lexique_sara_5F_scanner::kToken_bool),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_goto, Lexique_sara_5F_scanner::kToken_goto),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_last, Lexique_sara_5F_scanner::kToken_last),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_true, Lexique_sara_5F_scanner::kToken_true),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_check, Lexique_sara_5F_scanner::kToken_check),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_false, Lexique_sara_5F_scanner::kToken_false),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_first, Lexique_sara_5F_scanner::kToken_first),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_state, Lexique_sara_5F_scanner::kToken_state),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_trans, Lexique_sara_5F_scanner::kToken_trans),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_nolast, Lexique_sara_5F_scanner::kToken_nolast),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_display, Lexique_sara_5F_scanner::kToken_display),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_exclude, Lexique_sara_5F_scanner::kToken_exclude),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_include, Lexique_sara_5F_scanner::kToken_include),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_nofirst, Lexique_sara_5F_scanner::kToken_nofirst),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_scenario, Lexique_sara_5F_scanner::kToken_scenario),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_checkbool, Lexique_sara_5F_scanner::kToken_checkbool),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_modalcompadd, Lexique_sara_5F_scanner::kToken_modalcompadd),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_modalcompsub, Lexique_sara_5F_scanner::kToken_modalcompsub),
+  C_unicode_lexique_table_entry (kUnicodeString_sara_5F_scanner_checkidentical, Lexique_sara_5F_scanner::kToken_checkidentical)
 } ;
 
 int32_t Lexique_sara_5F_scanner::search_into_keyWordList (const String & inSearchedString) {
@@ -1064,264 +1020,264 @@ String Lexique_sara_5F_scanner::getCurrentTokenString (const cToken * inTokenPtr
   const cTokenFor_sara_5F_scanner * ptr = (const cTokenFor_sara_5F_scanner *) inTokenPtr ;
   String s ;
   if (ptr == nullptr) {
-    s.appendString ("$$") ;
+    s.appendCString ("$$") ;
   }else{
     switch (ptr->mTokenCode) {
     case kToken_:
-      s.appendString ("$$") ;
+      s.appendCString ("$$") ;
       break ;
     case kToken_identifier:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("identifier") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("identifier") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_identifierString) ;
       break ;
     case kToken_literal_5F_string:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("literal_string") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("literal_string") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_identifierString) ;
       break ;
     case kToken_machineIdf:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("machineIdf") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("machineIdf") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_identifierString) ;
       break ;
     case kToken_literal_5F_integer:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("literal_integer") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendUnicodeChar (TO_UNICODE (' ') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("literal_integer") ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendChar (TO_UNICODE (' ')) ;
       s.appendUnsigned (ptr->mLexicalAttribute_ulongValue) ;
       break ;
     case kToken_comment:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("comment") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("comment") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_auto:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("auto") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("auto") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_state:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("state") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("state") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_first:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("first") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("first") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_last:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("last") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("last") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_goto:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("goto") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("goto") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_true:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("true") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("true") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_false:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("false") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("false") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_nofirst:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("nofirst") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("nofirst") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_nolast:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("nolast") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("nolast") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_modalcompadd:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("modalcompadd") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("modalcompadd") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_exclude:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("exclude") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("exclude") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_modalcompsub:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("modalcompsub") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("modalcompsub") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_include:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("include") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("include") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_to:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("to") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("to") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_scenario:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("scenario") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("scenario") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_trans:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("trans") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("trans") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_display:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("display") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("display") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_bdd:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("bdd") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("bdd") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_bool:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("bool") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("bool") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_map:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("map") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("map") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_check:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("check") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("check") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_checkbool:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("checkbool") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("checkbool") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken_checkidentical:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("checkidentical") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("checkidentical") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2C_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (",") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (",") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3B_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (";") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (";") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3A_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (":") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (":") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7B_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("{") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("{") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("}") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("}") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2D__3E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("->") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("->") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__26_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("&") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("&") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("~") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("~") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3F_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("\?") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("\?") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__21_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("!") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("!") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7C_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("|") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("|") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__7C__7C_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("||") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("||") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2B_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("+") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("+") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__28_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("(") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("(") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__29_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (")") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (")") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3A__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString (":=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString (":=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__5E_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("^") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("^") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__3D_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("=") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("=") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2A_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("*") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("*") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__40_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("@") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("@") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     case kToken__2A__2A_:
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendString ("**") ;
-      s.appendUnicodeChar (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendChar (TO_UNICODE ('$')) ;
+      s.appendCString ("**") ;
+      s.appendChar (TO_UNICODE ('$')) ;
       break ;
     default:
       break ;
@@ -1371,67 +1327,67 @@ void Lexique_sara_5F_scanner::internalParseLexicalToken (cTokenFor_sara_5F_scann
         token.mTokenCode = kToken_identifier ;
       }
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C__7C_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C__7C_, true)) {
       token.mTokenCode = kToken__7C__7C_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A__3D_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A__3D_, true)) {
       token.mTokenCode = kToken__3A__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2D__3E_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2D__3E_, true)) {
       token.mTokenCode = kToken__2D__3E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A__2A_, 2, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A__2A_, true)) {
       token.mTokenCode = kToken__2A__2A_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7E_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7E_, true)) {
       token.mTokenCode = kToken__7E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7D_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7D_, true)) {
       token.mTokenCode = kToken__7D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7C_, true)) {
       token.mTokenCode = kToken__7C_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7B_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__7B_, true)) {
       token.mTokenCode = kToken__7B_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__5E_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__5E_, true)) {
       token.mTokenCode = kToken__5E_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__40_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__40_, true)) {
       token.mTokenCode = kToken__40_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3F_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3F_, true)) {
       token.mTokenCode = kToken__3F_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3D_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3D_, true)) {
       token.mTokenCode = kToken__3D_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3B_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3B_, true)) {
       token.mTokenCode = kToken__3B_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__3A_, true)) {
       token.mTokenCode = kToken__3A_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2C_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2C_, true)) {
       token.mTokenCode = kToken__2C_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2B_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2B_, true)) {
       token.mTokenCode = kToken__2B_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__2A_, true)) {
       token.mTokenCode = kToken__2A_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__29_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__29_, true)) {
       token.mTokenCode = kToken__29_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__28_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__28_, true)) {
       token.mTokenCode = kToken__28_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__26_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__26_, true)) {
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__21_, 1, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_sara_5F_scanner__21_, true)) {
       token.mTokenCode = kToken__21_ ;
       enterToken (token) ;
     }else if (testForInputUTF32Char (TO_UNICODE ('\"'))) {
@@ -1827,7 +1783,7 @@ cMapElement * cMapElement_M_5F_variablesMap::copy (void) {
 void cMapElement_M_5F_variablesMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mIndex" ":") ;
+  ioString.appendCString ("mIndex" ":") ;
   mProperty_mIndex.description (ioString, inIndentation) ;
 }
 
@@ -2111,7 +2067,7 @@ cMapElement * cMapElement_M_5F_stateMap::copy (void) {
 void cMapElement_M_5F_stateMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mIndex" ":") ;
+  ioString.appendCString ("mIndex" ":") ;
   mProperty_mIndex.description (ioString, inIndentation) ;
 }
 
@@ -2444,7 +2400,7 @@ cCollectionElement * cCollectionElement_L_5F_translationVector::copy (void) {
 void cCollectionElement_L_5F_translationVector::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetSlot" ":") ;
+  ioString.appendCString ("mTargetSlot" ":") ;
   mObject.mProperty_mTargetSlot.description (ioString, inIndentation) ;
 }
 
@@ -3240,11 +3196,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_andExpression::classDescriptor (void)
 
 void cPtr_C_5F_andExpression::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@C_andExpression:") ;
+  ioString.appendCString ("[@C_andExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3544,11 +3500,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_orExpression::classDescriptor (void) 
 
 void cPtr_C_5F_orExpression::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendString ("[@C_orExpression:") ;
+  ioString.appendCString ("[@C_orExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3848,11 +3804,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_xorExpression::classDescriptor (void)
 
 void cPtr_C_5F_xorExpression::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@C_xorExpression:") ;
+  ioString.appendCString ("[@C_xorExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4152,11 +4108,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_impliesExpression::classDescriptor (v
 
 void cPtr_C_5F_impliesExpression::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.appendString ("[@C_impliesExpression:") ;
+  ioString.appendCString ("[@C_impliesExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4456,11 +4412,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_equalExpression::classDescriptor (voi
 
 void cPtr_C_5F_equalExpression::description (String & ioString,
                                              const int32_t inIndentation) const {
-  ioString.appendString ("[@C_equalExpression:") ;
+  ioString.appendCString ("[@C_equalExpression:") ;
   mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4730,9 +4686,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_notExpression::classDescriptor (void)
 
 void cPtr_C_5F_notExpression::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@C_notExpression:") ;
+  ioString.appendCString ("[@C_notExpression:") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5002,9 +4958,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_VariableExpression::classDescriptor (
 
 void cPtr_C_5F_VariableExpression::description (String & ioString,
                                                 const int32_t inIndentation) const {
-  ioString.appendString ("[@C_VariableExpression:") ;
+  ioString.appendCString ("[@C_VariableExpression:") ;
   mProperty_mInputVarIndex.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5239,7 +5195,7 @@ const C_galgas_type_descriptor * cPtr_C_5F_trueExpression::classDescriptor (void
 
 void cPtr_C_5F_trueExpression::description (String & ioString,
                                             const int32_t /* inIndentation */) const {
-  ioString.appendString ("[@C_trueExpression]") ;
+  ioString.appendCString ("[@C_trueExpression]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5474,7 +5430,7 @@ const C_galgas_type_descriptor * cPtr_C_5F_falseExpression::classDescriptor (voi
 
 void cPtr_C_5F_falseExpression::description (String & ioString,
                                              const int32_t /* inIndentation */) const {
-  ioString.appendString ("[@C_falseExpression]") ;
+  ioString.appendCString ("[@C_falseExpression]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5703,15 +5659,15 @@ cCollectionElement * cCollectionElement_L_5F_transitionDefinition::copy (void) {
 void cCollectionElement_L_5F_transitionDefinition::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mActionExpression" ":") ;
+  ioString.appendCString ("mActionExpression" ":") ;
   mObject.mProperty_mActionExpression.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mEndOfExpression" ":") ;
+  ioString.appendCString ("mEndOfExpression" ":") ;
   mObject.mProperty_mEndOfExpression.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetStateIndex" ":") ;
+  ioString.appendCString ("mTargetStateIndex" ":") ;
   mObject.mProperty_mTargetStateIndex.description (ioString, inIndentation) ;
 }
 
@@ -6245,19 +6201,19 @@ cCollectionElement * cCollectionElement_L_5F_stateDefinition::copy (void) {
 void cCollectionElement_L_5F_stateDefinition::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mStateIndex" ":") ;
+  ioString.appendCString ("mStateIndex" ":") ;
   mObject.mProperty_mStateIndex.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mStateExpression" ":") ;
+  ioString.appendCString ("mStateExpression" ":") ;
   mObject.mProperty_mStateExpression.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mEndOfStateExpression" ":") ;
+  ioString.appendCString ("mEndOfStateExpression" ":") ;
   mObject.mProperty_mEndOfStateExpression.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTransitionsList" ":") ;
+  ioString.appendCString ("mTransitionsList" ":") ;
   mObject.mProperty_mTransitionsList.description (ioString, inIndentation) ;
 }
 
@@ -6847,11 +6803,11 @@ cCollectionElement * cCollectionElement_L_5F_statesDefinitionList::copy (void) {
 void cCollectionElement_L_5F_statesDefinitionList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mStateIndex" ":") ;
+  ioString.appendCString ("mStateIndex" ":") ;
   mObject.mProperty_mStateIndex.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mStateLocation" ":") ;
+  ioString.appendCString ("mStateLocation" ":") ;
   mObject.mProperty_mStateLocation.description (ioString, inIndentation) ;
 }
 
@@ -7491,11 +7447,11 @@ cMapElement * cMapElement_M_5F_modesMap::copy (void) {
 void cMapElement_M_5F_modesMap::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mIndex" ":") ;
+  ioString.appendCString ("mIndex" ":") ;
   mProperty_mIndex.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mModeDefinition" ":") ;
+  ioString.appendCString ("mModeDefinition" ":") ;
   mProperty_mModeDefinition.description (ioString, inIndentation) ;
 }
 
@@ -7862,11 +7818,11 @@ cCollectionElement * cCollectionElement_ListForModes::copy (void) {
 void cCollectionElement_ListForModes::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mSourceMode" ":") ;
+  ioString.appendCString ("mSourceMode" ":") ;
   mObject.mProperty_mSourceMode.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mTargetMode" ":") ;
+  ioString.appendCString ("mTargetMode" ":") ;
   mObject.mProperty_mTargetMode.description (ioString, inIndentation) ;
 }
 
@@ -8409,11 +8365,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_substractiveModalCompositionComponent
 
 void cPtr_C_5F_substractiveModalCompositionComponent::description (String & ioString,
                                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@C_substractiveModalCompositionComponent:") ;
+  ioString.appendCString ("[@C_substractiveModalCompositionComponent:") ;
   mProperty_mModeMap.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mExclusionList.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8713,11 +8669,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_additiveModalCompositionComponent::cl
 
 void cPtr_C_5F_additiveModalCompositionComponent::description (String & ioString,
                                                                const int32_t inIndentation) const {
-  ioString.appendString ("[@C_additiveModalCompositionComponent:") ;
+  ioString.appendCString ("[@C_additiveModalCompositionComponent:") ;
   mProperty_mModeMap.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mInclusionList.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9017,11 +8973,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_trans::classDescriptor (void) const {
 
 void cPtr_C_5F_trans::description (String & ioString,
                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@C_trans:") ;
+  ioString.appendCString ("[@C_trans:") ;
   mProperty_mSourceStateExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mTargetStateExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9321,11 +9277,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_importMachine::classDescriptor (void)
 
 void cPtr_C_5F_importMachine::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@C_importMachine:") ;
+  ioString.appendCString ("[@C_importMachine:") ;
   mProperty_mIndexOfImportedMachine.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mTranslationVector.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9715,17 +9671,17 @@ const C_galgas_type_descriptor * cPtr_C_5F_explicitAutomatonDefinition::classDes
 
 void cPtr_C_5F_explicitAutomatonDefinition::description (String & ioString,
                                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@C_explicitAutomatonDefinition:") ;
+  ioString.appendCString ("[@C_explicitAutomatonDefinition:") ;
   mProperty_mStatesMap.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mInitialStatesDefinitionList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mTerminalStatesDefinitionList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mStateDefinitionList.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mEndOfDefinition.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9995,9 +9951,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_boolToSeqExpression::classDescriptor 
 
 void cPtr_C_5F_boolToSeqExpression::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.appendString ("[@C_boolToSeqExpression:") ;
+  ioString.appendCString ("[@C_boolToSeqExpression:") ;
   mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10327,13 +10283,13 @@ const C_galgas_type_descriptor * cPtr_C_5F_existsDefinition::classDescriptor (vo
 
 void cPtr_C_5F_existsDefinition::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@C_existsDefinition:") ;
+  ioString.appendCString ("[@C_existsDefinition:") ;
   mProperty_mPreviousVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mTotalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10663,13 +10619,13 @@ const C_galgas_type_descriptor * cPtr_C_5F_forallDefinition::classDescriptor (vo
 
 void cPtr_C_5F_forallDefinition::description (String & ioString,
                                               const int32_t inIndentation) const {
-  ioString.appendString ("[@C_forallDefinition:") ;
+  ioString.appendCString ("[@C_forallDefinition:") ;
   mProperty_mPreviousVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mTotalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10969,11 +10925,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_parallelComposition::classDescriptor 
 
 void cPtr_C_5F_parallelComposition::description (String & ioString,
                                                  const int32_t inIndentation) const {
-  ioString.appendString ("[@C_parallelComposition:") ;
+  ioString.appendCString ("[@C_parallelComposition:") ;
   mProperty_mLeftOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11273,11 +11229,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_orComposition::classDescriptor (void)
 
 void cPtr_C_5F_orComposition::description (String & ioString,
                                            const int32_t inIndentation) const {
-  ioString.appendString ("[@C_orComposition:") ;
+  ioString.appendCString ("[@C_orComposition:") ;
   mProperty_mLeftOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11607,13 +11563,13 @@ const C_galgas_type_descriptor * cPtr_C_5F_strongModalComposition::classDescript
 
 void cPtr_C_5F_strongModalComposition::description (String & ioString,
                                                     const int32_t inIndentation) const {
-  ioString.appendString ("[@C_strongModalComposition:") ;
+  ioString.appendCString ("[@C_strongModalComposition:") ;
   mProperty_mLeftOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mErrorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11943,13 +11899,13 @@ const C_galgas_type_descriptor * cPtr_C_5F_weakModalComposition::classDescriptor
 
 void cPtr_C_5F_weakModalComposition::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.appendString ("[@C_weakModalComposition:") ;
+  ioString.appendCString ("[@C_weakModalComposition:") ;
   mProperty_mLeftOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mErrorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mRightOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12219,9 +12175,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_fullSaturationOperation::classDescrip
 
 void cPtr_C_5F_fullSaturationOperation::description (String & ioString,
                                                      const int32_t inIndentation) const {
-  ioString.appendString ("[@C_fullSaturationOperation:") ;
+  ioString.appendCString ("[@C_fullSaturationOperation:") ;
   mProperty_mOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12491,9 +12447,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_complementationOperation::classDescri
 
 void cPtr_C_5F_complementationOperation::description (String & ioString,
                                                       const int32_t inIndentation) const {
-  ioString.appendString ("[@C_complementationOperation:") ;
+  ioString.appendCString ("[@C_complementationOperation:") ;
   mProperty_mOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12763,9 +12719,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_suppressTerminalStatesOperation::clas
 
 void cPtr_C_5F_suppressTerminalStatesOperation::description (String & ioString,
                                                              const int32_t inIndentation) const {
-  ioString.appendString ("[@C_suppressTerminalStatesOperation:") ;
+  ioString.appendCString ("[@C_suppressTerminalStatesOperation:") ;
   mProperty_mOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13035,9 +12991,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_suppressInitialStatesOperation::class
 
 void cPtr_C_5F_suppressInitialStatesOperation::description (String & ioString,
                                                             const int32_t inIndentation) const {
-  ioString.appendString ("[@C_suppressInitialStatesOperation:") ;
+  ioString.appendCString ("[@C_suppressInitialStatesOperation:") ;
   mProperty_mOperand.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13510,9 +13466,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineDisplayStates::classDescriptor
 
 void cPtr_C_5F_machineDisplayStates::description (String & ioString,
                                                   const int32_t inIndentation) const {
-  ioString.appendString ("[@C_machineDisplayStates:") ;
+  ioString.appendCString ("[@C_machineDisplayStates:") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13782,9 +13738,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineDisplayInitialStates::classDes
 
 void cPtr_C_5F_machineDisplayInitialStates::description (String & ioString,
                                                          const int32_t inIndentation) const {
-  ioString.appendString ("[@C_machineDisplayInitialStates:") ;
+  ioString.appendCString ("[@C_machineDisplayInitialStates:") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14054,9 +14010,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineDisplayTerminalStates::classDe
 
 void cPtr_C_5F_machineDisplayTerminalStates::description (String & ioString,
                                                           const int32_t inIndentation) const {
-  ioString.appendString ("[@C_machineDisplayTerminalStates:") ;
+  ioString.appendCString ("[@C_machineDisplayTerminalStates:") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14326,9 +14282,9 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineDisplayTransitions::classDescr
 
 void cPtr_C_5F_machineDisplayTransitions::description (String & ioString,
                                                        const int32_t inIndentation) const {
-  ioString.appendString ("[@C_machineDisplayTransitions:") ;
+  ioString.appendCString ("[@C_machineDisplayTransitions:") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14738,11 +14694,11 @@ const C_galgas_type_descriptor * cPtr_C_5F_machineCheckIdentical::classDescripto
 
 void cPtr_C_5F_machineCheckIdentical::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendString ("[@C_machineCheckIdentical:") ;
+  ioString.appendCString ("[@C_machineCheckIdentical:") ;
   mProperty_mMachineIndex_31_.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mMachineIndex_32_.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15297,7 +15253,7 @@ cCollectionElement * cCollectionElement_L_5F_inputConfigurationForScenario::copy
 void cCollectionElement_L_5F_inputConfigurationForScenario::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mInputValue" ":") ;
+  ioString.appendCString ("mInputValue" ":") ;
   mObject.mProperty_mInputValue.description (ioString, inIndentation) ;
 }
 
@@ -15705,7 +15661,7 @@ cCollectionElement * cCollectionElement_L_5F_inputScenario::copy (void) {
 void cCollectionElement_L_5F_inputScenario::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mInputConfiguration" ":") ;
+  ioString.appendCString ("mInputConfiguration" ":") ;
   mObject.mProperty_mInputConfiguration.description (ioString, inIndentation) ;
 }
 
@@ -16115,11 +16071,11 @@ cCollectionElement * cCollectionElement_L_5F_scenarioList::copy (void) {
 void cCollectionElement_L_5F_scenarioList::description (String & ioString, const int32_t inIndentation) const {
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mScenarioTitle" ":") ;
+  ioString.appendCString ("mScenarioTitle" ":") ;
   mObject.mProperty_mScenarioTitle.description (ioString, inIndentation) ;
   ioString.appendNewLine () ;
   ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendString ("mInputScenario" ":") ;
+  ioString.appendCString ("mInputScenario" ":") ;
   mObject.mProperty_mInputScenario.description (ioString, inIndentation) ;
 }
 
@@ -16752,17 +16708,17 @@ const C_galgas_type_descriptor * cPtr_C_5F_scenarioComponent::classDescriptor (v
 
 void cPtr_C_5F_scenarioComponent::description (String & ioString,
                                                const int32_t inIndentation) const {
-  ioString.appendString ("[@C_scenarioComponent:") ;
+  ioString.appendCString ("[@C_scenarioComponent:") ;
   mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-  ioString.appendString (", ") ;
+  ioString.appendCString (", ") ;
   mProperty_mScenarioList.description (ioString, inIndentation+1) ;
-  ioString.appendString ("]") ;
+  ioString.appendCString ("]") ;
 }
 
 //--------------------------------------------------------------------------------------------------
