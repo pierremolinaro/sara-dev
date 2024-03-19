@@ -32,31 +32,31 @@
 
 class AbstractOutputStream ;
 class cDisplayBDD ;
-class C_BDD ;
+class BinaryDecisionDiagram ;
 
 //-----------------------------------------------------------------------------*
 
-void printBDDWithVariables (const C_BDD & inBDD,
+void printBDDWithVariables (const BinaryDecisionDiagram & inBDD,
                             AbstractOutputStream & inStream,
                             const uint32_t inVariableCount,
                             const cDisplayBDD & inVariablesNames) ;
 
 //-----------------------------------------------------------------------------*
 
-void printBDD (const C_BDD & inBDD,
+void printBDD (const BinaryDecisionDiagram & inBDD,
                const TC_Array <String> & inVariablesNames,
                const int32_t inVariableCount,
                const int32_t inLeadingSpacesCount) ;
 
 //-----------------------------------------------------------------------------*
 
-void printBDD (const C_BDD & inBDD,
+void printBDD (const BinaryDecisionDiagram & inBDD,
                const TC_Array <String> & inVariablesNames,
                const int32_t inLeadingSpacesCount) ;
 
 //-----------------------------------------------------------------------------*
 
-void printBDDWithoutHeader (const C_BDD & inBDD,
+void printBDDWithoutHeader (const BinaryDecisionDiagram & inBDD,
                             const TC_Array <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) ;

@@ -19,9 +19,9 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
   public : virtual void computeFromExpression (Compiler * inCompiler,
                                                const TC_Array <C_saraMachine> & inSaraSystemArray,
                                                const uint32_t inVariablesCount,
-                                               C_BDD & outInitialStatesBDD,
-                                               C_BDD & outTerminalStatesBDD,
-                                               C_BDD & outAccessibilityRelationBDD) const override ;
+                                               BinaryDecisionDiagram & outInitialStatesBDD,
+                                               BinaryDecisionDiagram & outTerminalStatesBDD,
+                                               BinaryDecisionDiagram & outAccessibilityRelationBDD) const override ;
 
 //--- END OF USER ZONE 2
 //--- Properties

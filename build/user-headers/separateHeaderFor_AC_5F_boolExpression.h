@@ -16,7 +16,7 @@ class cPtr_AC_5F_boolExpression : public acStrongPtr_class {
   #endif
 //--- START OF USER ZONE 2
 
-  public : virtual C_BDD computeBDD (Compiler * inCompiler,
+  public : virtual BinaryDecisionDiagram computeBDD (Compiler * inCompiler,
                                      const TC_Array <C_saraMachine> & inSaraSystemArray,
                                      const uint32_t inVariablesCount,
                                      const uint32_t inBDDslotOffset) const = 0 ;

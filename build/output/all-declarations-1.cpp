@@ -9619,13 +9619,13 @@ GALGAS_M_5F_machinesMap_2D_element GALGAS_M_5F_machinesMap_2D_element::extractOb
 //
 //--------------------------------------------------------------------------------------------------
 
-C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ("sara_cli_options",
+BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ("sara_cli_options",
                                          "displayBDDvaluesCount",
                                          99,
                                          "display-bdd-values-count",
                                          "displays values count for every BDD") ;
 
-C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ("sara_cli_options",
+BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ("sara_cli_options",
                                          "displayBDDvalues",
                                          118,
                                          "display-bdd-values",
@@ -9654,17 +9654,15 @@ C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ("sara_c
 
 #include "project_header.h"
 #include "F_mainForLIBPM.h"
-#include "F_Analyze_CLI_Options.h"
-#include "C_builtin_CLI_Options.h"
+#include "analyzeCommandLineOptions.h"
+#include "builtin-command-line-options.h"
 #include "C_galgas_CLI_Options.h"
 #include "F_verbose_output.h"
 #include "cLexiqueIntrospection.h"
 #include "F_DisplayException.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //                      print_tool_help_message                                                  
-//
 //--------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
@@ -9735,11 +9733,11 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
   TC_UniqueArray <String> sourceFilesArray ;
-  F_Analyze_CLI_Options (inArgc, inArgv,
-                         sourceFilesArray,
-                         kSourceFileExtensions,
-                         kSourceFileHelpMessages,
-                         print_tool_help_message) ;
+  analyzeCommandLineOptions (inArgc, inArgv,
+                             sourceFilesArray,
+                             kSourceFileExtensions,
+                             kSourceFileHelpMessages,
+                             print_tool_help_message) ;
 //---
   int returnCode = 0 ; // No error
 //--- Set Execution mode

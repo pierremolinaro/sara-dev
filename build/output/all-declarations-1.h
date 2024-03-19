@@ -1468,9 +1468,9 @@ void routine_print_3F_ (const class GALGAS_string constinArgument0,
 //
 //--------------------------------------------------------------------------------------------------
 
-extern C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ;
+extern BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvaluesCount ;
 
-extern C_BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ;
+extern BoolCommandLineOption gOption_sara_5F_cli_5F_options_displayBDDvalues ;
 
 //--------------------------------------------------------------------------------------------------
 //

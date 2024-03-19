@@ -3,7 +3,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "C_BDD.h"
+#include "BinaryDecisionDiagram.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -13,10 +13,10 @@ class C_saraMachine {
   public : uint32_t mInputVariablesCount ;
   public : uint32_t mInputAndInternalVariablesCount ;
   public : TC_Array <String> mNamesArray ;
-  public : C_BDD mInitialStatesBDD ;
-  public : C_BDD mTerminalStatesBDD ;
-  public : C_BDD mTransitionRelationBDD ;
-  public : C_BDD mAccessibleStatesBDD ;
+  public : BinaryDecisionDiagram mInitialStatesBDD ;
+  public : BinaryDecisionDiagram mTerminalStatesBDD ;
+  public : BinaryDecisionDiagram mTransitionRelationBDD ;
+  public : BinaryDecisionDiagram mAccessibleStatesBDD ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

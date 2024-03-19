@@ -29,37 +29,37 @@
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_VariableExpression::
+BinaryDecisionDiagram cPtr_C_5F_VariableExpression::
 computeBDD (Compiler * /* inCompiler */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
             const uint32_t /* inVariablesCount */,
             const uint32_t inBDDslotOffset) const {
-  return C_BDD ( (mProperty_mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
+  return BinaryDecisionDiagram ( (mProperty_mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_trueExpression::
+BinaryDecisionDiagram cPtr_C_5F_trueExpression::
 computeBDD (Compiler * /* inCompiler */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
             const uint32_t /* inVariablesCount */,
             const uint32_t /* inBDDslotOffset */) const {
-  return ~ C_BDD () ;
+  return ~ BinaryDecisionDiagram () ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_falseExpression::
+BinaryDecisionDiagram cPtr_C_5F_falseExpression::
 computeBDD (Compiler * /* inCompiler */,
             const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
             const uint32_t /* inVariablesCount */,
             const uint32_t /* inBDDslotOffset */) const {
-  return C_BDD () ;
+  return BinaryDecisionDiagram () ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_notExpression::
+BinaryDecisionDiagram cPtr_C_5F_notExpression::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
@@ -70,7 +70,7 @@ computeBDD (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_andExpression::
+BinaryDecisionDiagram cPtr_C_5F_andExpression::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
@@ -83,7 +83,7 @@ computeBDD (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_orExpression::
+BinaryDecisionDiagram cPtr_C_5F_orExpression::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
@@ -96,7 +96,7 @@ computeBDD (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_xorExpression::
+BinaryDecisionDiagram cPtr_C_5F_xorExpression::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
@@ -109,7 +109,7 @@ computeBDD (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_impliesExpression::
+BinaryDecisionDiagram cPtr_C_5F_impliesExpression::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
@@ -122,7 +122,7 @@ computeBDD (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_equalExpression::
+BinaryDecisionDiagram cPtr_C_5F_equalExpression::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
@@ -135,7 +135,7 @@ computeBDD (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-C_BDD cPtr_C_5F_importBoolMachine::
+BinaryDecisionDiagram cPtr_C_5F_importBoolMachine::
 computeBDD (Compiler * inCompiler,
             const TC_Array <C_saraMachine> & inSaraSystemArray,
             const uint32_t /* inVariablesCount */,
@@ -143,15 +143,15 @@ computeBDD (Compiler * inCompiler,
 //--- Get index of imported machine
   const int32_t indexOfImportedMachine = (int32_t) mProperty_mIndexOfImportedMachine.uintValue () ;
 //--- Check that imported machine is actually boolean
-  const C_BDD initialStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mInitialStatesBDD ;
-  const C_BDD terminalStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTerminalStatesBDD ;
-  const C_BDD transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
+  const BinaryDecisionDiagram initialStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mInitialStatesBDD ;
+  const BinaryDecisionDiagram terminalStatesOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTerminalStatesBDD ;
+  const BinaryDecisionDiagram transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
   if (initialStatesOfImportedMachine != (terminalStatesOfImportedMachine)) {
     String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
   const uint32_t importedMachineVariableCount =  mProperty_mTranslationVector.count () ;
-  const C_BDD boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
+  const BinaryDecisionDiagram boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
   if (boolAccessibilityRelationBDD != (transitionsOfImportedMachine)) {
     String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
@@ -167,7 +167,7 @@ computeBDD (Compiler * inCompiler,
     index ++ ;
   }
 //--- Translate initial state BDD
-  const C_BDD initialStatesBDD = initialStatesOfImportedMachine.substitution (statesSubstitutionArray, importedMachineVariableCount COMMA_HERE) ;
+  const BinaryDecisionDiagram initialStatesBDD = initialStatesOfImportedMachine.substitution (statesSubstitutionArray, importedMachineVariableCount COMMA_HERE) ;
 //---
   macroMyDeletePODArray (statesSubstitutionArray) ;
 //--- Return initial states
@@ -269,11 +269,11 @@ compute (Compiler * inCompiler,
     substitutionArray [i] = variableCount + i ;
     substitutionArray [variableCount + i] = i ;
   }
-  C_BDD newlyAccessibleStates ;
+  BinaryDecisionDiagram newlyAccessibleStates ;
   do{
     machine.mAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, variableCount + variableCount COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray, variableCount + variableCount COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
   }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
@@ -360,11 +360,11 @@ compute (Compiler * inCompiler,
     printBDD (machine.mTransitionRelationBDD, transitionsVariableNameArray, 3) ;
   }
 //--- Restrict transitions to target == source
-  C_BDD constraint = ~ C_BDD () ;
+  BinaryDecisionDiagram constraint = ~ BinaryDecisionDiagram () ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
-    constraint &= C_BDD ( i, false).equalTo (C_BDD ((variableCount + i), false)) ;
+    constraint &= BinaryDecisionDiagram ( i, false).equalTo (BinaryDecisionDiagram ((variableCount + i), false)) ;
   }
-  const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
+  const BinaryDecisionDiagram transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
   n = transitionsWithSourceEqualTarget.valueCount64 (variableCount + variableCount) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   gCout.appendString ("  ") ;
@@ -380,7 +380,7 @@ compute (Compiler * inCompiler,
     printBDD (transitionsWithSourceEqualTarget, transitionsVariableNameArray, 3) ;
   }
 //--- Display transitions from states to different states
-  const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
+  const BinaryDecisionDiagram t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount64 (variableCount + variableCount) ;
   nodes = t.getBDDnodesCount () ;
   gCout.appendString ("  ") ;
@@ -398,7 +398,7 @@ compute (Compiler * inCompiler,
 //--- Enter result in machines array
   ioSaraSystemArray.appendObject (machine) ;
 //--- Mark and sweep unused BDD nodes
-  C_BDD::markAndSweepUnusedNodes () ;
+  BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -584,7 +584,7 @@ void cPtr_C_5F_machineDisplayTransitions::compute (Compiler * /* inCompiler */,
     substitutionArray [i] = i + i ;
     substitutionArray [variableCount + i] = i + i + 1 ;
   }
-  const C_BDD x = machine.mTransitionRelationBDD.substitution (substitutionArray, variableCount + variableCount COMMA_HERE) ;
+  const BinaryDecisionDiagram x = machine.mTransitionRelationBDD.substitution (substitutionArray, variableCount + variableCount COMMA_HERE) ;
   macroMyDeletePODArray (substitutionArray) ;
   cDisplayBDD machineDisplay (variableCount + variableCount) ;
   for (uint32_t i=0 ; i < variableCount ; i++) {
@@ -608,7 +608,7 @@ compute (Compiler * /* inCompiler */,
   gCout.appendString (machine.mMachineName) ;
   gCout.appendString ("' machine\n") ;
 //--- Checking input configuration is full
-  const C_BDD notHandledInputConfigurations = ~ machine.mInitialStatesBDD.existsOnBitsAfterNumber (machine.mInputVariablesCount) ;
+  const BinaryDecisionDiagram notHandledInputConfigurations = ~ machine.mInitialStatesBDD.existsOnBitsAfterNumber (machine.mInputVariablesCount) ;
   if (notHandledInputConfigurations.isFalse ()) {
     gCout.appendString ("  All input configurations are handled;\n") ;
   }else{
@@ -632,13 +632,13 @@ compute (Compiler * /* inCompiler */,
   for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
     substitutionVector [i + machine.mInputVariablesCount] = (i + variableCount) ;
   }
-  const C_BDD sTranslatedInputConfiguration = machine.mInitialStatesBDD.substitution (substitutionVector, variableCount COMMA_HERE) ;
+  const BinaryDecisionDiagram sTranslatedInputConfiguration = machine.mInitialStatesBDD.substitution (substitutionVector, variableCount COMMA_HERE) ;
   macroMyDeletePODArray (substitutionVector) ;
-  C_BDD sEqualSprimeConstraint = ~ C_BDD () ;
+  BinaryDecisionDiagram sEqualSprimeConstraint = ~ BinaryDecisionDiagram () ;
   for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
-    sEqualSprimeConstraint &= C_BDD (i + machine.mInputVariablesCount, false).equalTo (C_BDD ( (variableCount + i), false)) ;
+    sEqualSprimeConstraint &= BinaryDecisionDiagram (i + machine.mInputVariablesCount, false).equalTo (BinaryDecisionDiagram ( (variableCount + i), false)) ;
   }
-  const C_BDD ambiguousInput = (machine.mInitialStatesBDD & sTranslatedInputConfiguration & ~ sEqualSprimeConstraint).existsOnBitsAfterNumber (variableCount) ;
+  const BinaryDecisionDiagram ambiguousInput = (machine.mInitialStatesBDD & sTranslatedInputConfiguration & ~ sEqualSprimeConstraint).existsOnBitsAfterNumber (variableCount) ;
   if (ambiguousInput.isFalse ()) {
     gCout.appendString ("  No ambiguous input configuration;\n") ;
   }else{
@@ -657,17 +657,17 @@ compute (Compiler * /* inCompiler */,
     substitutionVector [i] = i ;
     substitutionVector [i+variableCount] =  (i+variableCount+variableCount) ;
   }
-  const C_BDD translatedTransitions = machine.mTransitionRelationBDD.substitution (substitutionVector,  (variableCount+variableCount) COMMA_HERE) ;
+  const BinaryDecisionDiagram translatedTransitions = machine.mTransitionRelationBDD.substitution (substitutionVector,  (variableCount+variableCount) COMMA_HERE) ;
   macroMyDeletePODArray (substitutionVector) ;
-  C_BDD ePrimeEqualsEsecondConstraint = ~ C_BDD () ;
+  BinaryDecisionDiagram ePrimeEqualsEsecondConstraint = ~ BinaryDecisionDiagram () ;
   for (uint32_t i=0 ; i<machine.mInputVariablesCount ; i++) {
-    ePrimeEqualsEsecondConstraint &= C_BDD ( (i+variableCount), false).equalTo (C_BDD ( (i + variableCount + variableCount), false)) ;
+    ePrimeEqualsEsecondConstraint &= BinaryDecisionDiagram ( (i+variableCount), false).equalTo (BinaryDecisionDiagram ( (i + variableCount + variableCount), false)) ;
   }
-  C_BDD sPrimeEqualsSsecondConstraint = ~ C_BDD () ;
+  BinaryDecisionDiagram sPrimeEqualsSsecondConstraint = ~ BinaryDecisionDiagram () ;
   for (uint32_t i=0 ; i<outputVariablesCount ; i++) {
-    sPrimeEqualsSsecondConstraint &= C_BDD ( (i+variableCount+machine.mInputVariablesCount), false).equalTo (C_BDD ( (i+variableCount+variableCount+machine.mInputVariablesCount), false)) ;
+    sPrimeEqualsSsecondConstraint &= BinaryDecisionDiagram ( (i+variableCount+machine.mInputVariablesCount), false).equalTo (BinaryDecisionDiagram ( (i+variableCount+variableCount+machine.mInputVariablesCount), false)) ;
   }
-  const C_BDD ambiguousTransitions = (machine.mTransitionRelationBDD & translatedTransitions & ePrimeEqualsEsecondConstraint & ~ sPrimeEqualsSsecondConstraint).existsOnBitsAfterNumber ( (variableCount + variableCount)) ;
+  const BinaryDecisionDiagram ambiguousTransitions = (machine.mTransitionRelationBDD & translatedTransitions & ePrimeEqualsEsecondConstraint & ~ sPrimeEqualsSsecondConstraint).existsOnBitsAfterNumber ( (variableCount + variableCount)) ;
   if (ambiguousTransitions.isFalse ()) {
     gCout.appendString ("  No ambiguous transition;\n") ;
   }else{
@@ -686,7 +686,7 @@ compute (Compiler * /* inCompiler */,
   }
 //--- Check that all states accepts all input configurations
 //  incomplete states and inputs (e, s, e') = (e, s) is a state & ! s' (e, s, e', s') is not a transition
-  const C_BDD incompleteStatesAndInput = machine.mAccessibleStatesBDD & (~ machine.mTransitionRelationBDD).forallOnBitsAfterNumber ( (variableCount+machine.mInputVariablesCount)) ;
+  const BinaryDecisionDiagram incompleteStatesAndInput = machine.mAccessibleStatesBDD & (~ machine.mTransitionRelationBDD).forallOnBitsAfterNumber ( (variableCount+machine.mInputVariablesCount)) ;
   if (incompleteStatesAndInput.isFalse ()) {
     gCout.appendString ("  No incomplete state;\n") ;
   }else{
@@ -704,10 +704,10 @@ compute (Compiler * /* inCompiler */,
     printBDD (incompleteStatesAndInput, transitionsVariableNameArray, (int32_t) (variableCount+machine.mInputVariablesCount), 3) ;
   }
 //--- Check all states are stable (added by PM on june 27, 2005, for version 0.1.3)
-  const C_BDD equalInputConstraint = C_BDD::varCompareVar (0, variableCount, C_BDD::kEqual, variableCount) ;
-  const C_BDD stableTransitions = machine.mTransitionRelationBDD & equalInputConstraint ;
-  const C_BDD stableStates = stableTransitions.existsOnBitsAfterNumber (variableCount) ;
-  const C_BDD notStableStates = machine.mAccessibleStatesBDD & ~ stableStates ;
+  const BinaryDecisionDiagram equalInputConstraint = BinaryDecisionDiagram::varCompareVar (0, variableCount, BinaryDecisionDiagram::kEqual, variableCount) ;
+  const BinaryDecisionDiagram stableTransitions = machine.mTransitionRelationBDD & equalInputConstraint ;
+  const BinaryDecisionDiagram stableStates = stableTransitions.existsOnBitsAfterNumber (variableCount) ;
+  const BinaryDecisionDiagram notStableStates = machine.mAccessibleStatesBDD & ~ stableStates ;
 //--- End of added by PM on june 27, 2005 (for version 0.1.3)
   if (notStableStates.isFalse ()) {
     gCout.appendString ("  All states are stable;\n") ;
@@ -727,7 +727,7 @@ compute (Compiler * /* inCompiler */,
       gCout.appendString ("  checkbool error: this machine is not combinatory (initial states != terminal states).\n") ;
       ok = false ;
     }
-    const C_BDD boolAccessibilityRelationBDD =  machine.mInitialStatesBDD & machine.mInitialStatesBDD.translate (variableCount, variableCount) ;
+    const BinaryDecisionDiagram boolAccessibilityRelationBDD =  machine.mInitialStatesBDD & machine.mInitialStatesBDD.translate (variableCount, variableCount) ;
     if (boolAccessibilityRelationBDD != (machine.mTransitionRelationBDD)) {
       gCout.appendString ("  checkbool error: this machine is not combinatory (transitions != initial states x initial states).\n") ;
       ok = false ;
@@ -746,7 +746,7 @@ compute (Compiler * /* inCompiler */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   gCout.appendString ("------------------ bdd: print BDD package statistics.\n") ;
-  C_BDD::printBDDpackageOperationsSummary (gCout) ;
+  BinaryDecisionDiagram::printBDDpackageOperationsSummary (gCout) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -757,12 +757,12 @@ compute (Compiler * /* inCompiler */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_Timer duree ;
-//    C_BDD::setHashMapSize ( mNewSize.uintValue ()) ;
+//    BinaryDecisionDiagram::setHashMapSize ( mNewSize.uintValue ()) ;
 //    duree.stopTimer () ;
 //    gCout.appendString ("------------------ map "
 //      .appendUnsigned (mNewSize.uintValue ())
 //       += ": BDD unique table resized to "
-//      .appendSigned (C_BDD::getHashMapEntriesCount ())
+//      .appendSigned (BinaryDecisionDiagram::getHashMapEntriesCount ())
 //       += " (done in "
 //       += duree
 //       += ").\n\n") ; */
@@ -776,12 +776,12 @@ compute (Compiler * /* inCompiler */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_Timer duree ;
-//    C_BDD::setANDcacheSize ((int32_t) mNewSize.uintValue ()) ;
+//    BinaryDecisionDiagram::setANDcacheSize ((int32_t) mNewSize.uintValue ()) ;
 //    duree.stopTimer () ;
 //    gCout.appendString ("------------------ and_cache "
 //      .appendUnsigned (mNewSize.uintValue ())
 //       += ": AND cache resized to "
-//      .appendSigned (C_BDD::getANDcacheEntriesCount ())
+//      .appendSigned (BinaryDecisionDiagram::getANDcacheEntriesCount ())
 //       += " (done in "
 //       += duree
 //       += ").\n\n") ; */
@@ -795,12 +795,12 @@ compute (Compiler * /* inCompiler */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_Timer duree ;
-//    C_BDD::setITEcacheSize ((int32_t) mNewSize.uintValue ()) ;
+//    BinaryDecisionDiagram::setITEcacheSize ((int32_t) mNewSize.uintValue ()) ;
 //    duree.stopTimer () ;
 //    gCout.appendString ("------------------ ite_cache "
 //      .appendUnsigned (mNewSize.uintValue ())
 //       += ": ITE cache resized to "
-//      .appendSigned (C_BDD::getITEcacheEntriesCount ())
+//      .appendSigned (BinaryDecisionDiagram::getITEcacheEntriesCount ())
 //       += " (done in "
 //       += duree
 //       += ").\n\n") ;  */
@@ -813,7 +813,7 @@ compute (Compiler * /* inCompiler */,
 //         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
-//  /* C_BDD::setComputingMode (C_BDD::ITE_COMPUTED_FROM_AND) ;
+//  /* BinaryDecisionDiagram::setComputingMode (BinaryDecisionDiagram::ITE_COMPUTED_FROM_AND) ;
 //      gCout.appendString ("------------------ use_and: ITE is now computed from AND.\n\n") ; */
 //}
 
@@ -824,7 +824,7 @@ compute (Compiler * /* inCompiler */,
 //         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
-//  /* C_BDD::setComputingMode (C_BDD::AND_COMPUTED_FROM_ITE) ;
+//  /* BinaryDecisionDiagram::setComputingMode (BinaryDecisionDiagram::AND_COMPUTED_FROM_ITE) ;
 //    gCout.appendString ("------------------ use_ite: AND is now computed from ITE.\n\n") ; */
 //}
 
@@ -835,7 +835,7 @@ compute (Compiler * /* inCompiler */,
 //         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
-//  /* C_BDD::setComputingMode (C_BDD::ITE_and_AND_ARE_INDEPENDANT) ;
+//  /* BinaryDecisionDiagram::setComputingMode (BinaryDecisionDiagram::ITE_and_AND_ARE_INDEPENDANT) ;
 //    gCout.appendString ("------------------ use_and_ite: AND and ITE are now computed independantly.\n\n") ; */
 //}
 
@@ -850,9 +850,9 @@ compute (Compiler * /* inCompiler */,
   gCout.appendString (ioSaraSystemArray ( (int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mMachineName) ;
   gCout.appendString ("' machine\n") ;
 //--- Initial state BDD
-  const C_BDD initialStateBDD = ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mInitialStatesBDD ;
+  const BinaryDecisionDiagram initialStateBDD = ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mInitialStatesBDD ;
 //--- transitions BDD
-  const C_BDD transitionsBDD = ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mTransitionRelationBDD ;
+  const BinaryDecisionDiagram transitionsBDD = ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mTransitionRelationBDD ;
 //--- variables count
   const uint32_t variableCount = (uint32_t) ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
@@ -872,8 +872,8 @@ compute (Compiler * /* inCompiler */,
       shift ++ ;
       vv.gotoNextObject () ;
     }
-    const C_BDD initialInputConfigurationBDD = C_BDD::varCompareConst (0, shift, C_BDD::kEqual, initialConfiguration) ;
-    C_BDD currentState = initialInputConfigurationBDD & initialStateBDD ;
+    const BinaryDecisionDiagram initialInputConfigurationBDD = BinaryDecisionDiagram::varCompareConst (0, shift, BinaryDecisionDiagram::kEqual, initialConfiguration) ;
+    BinaryDecisionDiagram currentState = initialInputConfigurationBDD & initialStateBDD ;
   //--- Build substitution vector
     uint32_t * substitutionVector = NULL ;
     macroMyNewPODArray (substitutionVector, uint32_t, variableCount + variableCount) ;
@@ -896,8 +896,8 @@ compute (Compiler * /* inCompiler */,
         shift ++ ;
         v.gotoNextObject () ;
       }
-      const C_BDD inputConfigurationBDD = C_BDD::varCompareConst (variableCount, shift, C_BDD::kEqual, inputConfiguration) ;
-      const C_BDD newState = currentState & transitionsBDD & inputConfigurationBDD ;
+      const BinaryDecisionDiagram inputConfigurationBDD = BinaryDecisionDiagram::varCompareConst (variableCount, shift, BinaryDecisionDiagram::kEqual, inputConfiguration) ;
+      const BinaryDecisionDiagram newState = currentState & transitionsBDD & inputConfigurationBDD ;
       currentState = newState.substitution (substitutionVector,  (variableCount + variableCount) COMMA_HERE) ;
       currentState = currentState.existsOnBitsAfterNumber (variableCount) ;
     //--- Display current configuration
@@ -924,9 +924,9 @@ void cPtr_C_5F_explicitAutomatonDefinition::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Build state array names
   TC_Array <String> stateNameArray ((int32_t) mProperty_mStatesMap.count () COMMA_HERE) ;
   cEnumerator_M_5F_stateMap currentState (mProperty_mStatesMap, kENUMERATION_UP) ;
@@ -941,7 +941,7 @@ computeFromExpression (Compiler * inCompiler,
 //    Slots n .. n+p-1 are assigned to outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  TC_Array <C_BDD> stateExpressionBDD ((int32_t) mProperty_mStatesMap.count (), C_BDD () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> stateExpressionBDD ((int32_t) mProperty_mStatesMap.count (), BinaryDecisionDiagram () COMMA_HERE) ;
   cEnumerator_L_5F_stateDefinition currentDefinition (mProperty_mStateDefinitionList, kENUMERATION_UP) ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get state index
@@ -999,7 +999,7 @@ computeFromExpression (Compiler * inCompiler,
     cEnumerator_L_5F_statesDefinitionList testedInitialState (mProperty_mInitialStatesDefinitionList, kENUMERATION_UP) ;
     testedInitialState.gotoIndex (currentInitialState.index () + 1) ;
     while (testedInitialState.hasCurrentObject ()) {
-      const C_BDD intersection = stateExpressionBDD ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
+      const BinaryDecisionDiagram intersection = stateExpressionBDD ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
         & stateExpressionBDD ((int32_t) testedInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (! intersection.isFalse ()) {
         String errorMessage ;
@@ -1035,19 +1035,19 @@ computeFromExpression (Compiler * inCompiler,
 //    Slots 2n+p .. 2n+2p-1 are assigned to s outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  outAccessibilityRelationBDD = C_BDD () ;
+  outAccessibilityRelationBDD = BinaryDecisionDiagram () ;
   currentDefinition.rewind () ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get current state index
     const int32_t currentStateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Accumulate transitions targets for each transition
-    C_BDD transitionsTargetBDD ;
+    BinaryDecisionDiagram transitionsTargetBDD ;
     cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kENUMERATION_UP) ;
     while (currentTransition.hasCurrentObject ()) {
       auto ptr = (const cPtr_AC_5F_boolExpression *) currentTransition.current_mActionExpression (HERE).ptr () ;
-      const C_BDD actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
+      const BinaryDecisionDiagram actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
       const int32_t targetStateIndex = (int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () ;
-      const C_BDD targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
+      const BinaryDecisionDiagram targetStateBDD = stateExpressionBDD (targetStateIndex COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
       transitionsTargetBDD |= actionBDD & targetStateBDD ;
       currentTransition.gotoNextObject () ;
     }
@@ -1068,7 +1068,7 @@ computeFromExpression (Compiler * inCompiler,
     while (currentTransition.hasCurrentObject ()) {
     //--- Compute action BDD
       auto ptr = (const cPtr_AC_5F_boolExpression *) currentTransition.current_mActionExpression (HERE).ptr () ;
-      const C_BDD actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+      const BinaryDecisionDiagram actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
     //--- Check action does not intersect with state input expression
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         String errorMessage ;
@@ -1081,7 +1081,7 @@ computeFromExpression (Compiler * inCompiler,
       while (testedTransition.hasCurrentObject ()) {
       //--- Compute action BDD
         auto q = (const cPtr_AC_5F_boolExpression *) testedTransition.current_mActionExpression (HERE).ptr () ;
-        const C_BDD testedActionBDD = q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
+        const BinaryDecisionDiagram testedActionBDD = q->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
       //--- Check action does not intersect with state input expression
         if (! (testedActionBDD & actionBDD).isFalse ()) {
           String errorMessage ;
@@ -1093,7 +1093,7 @@ computeFromExpression (Compiler * inCompiler,
         testedTransition.gotoNextObject () ;
       }
     //--- Check that action is compatible input configuration of target state
-      const C_BDD x = actionBDD & stateExpressionBDD ((int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () COMMA_HERE) ;
+      const BinaryDecisionDiagram x = actionBDD & stateExpressionBDD ((int32_t) currentTransition.current_mTargetStateIndex (HERE).uintValue () COMMA_HERE) ;
       if (x.isFalse ()) {
         String errorMessage ;
         errorMessage.appendString ("this transition is not compatible with configuration of target state") ;
@@ -1113,19 +1113,19 @@ computeFromExpression (Compiler * inCompiler,
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
-  C_BDD accessibleStatesBDD ;
-  C_BDD newlyAccessibleStates ;
+  BinaryDecisionDiagram accessibleStatesBDD ;
+  BinaryDecisionDiagram newlyAccessibleStates ;
   do{
     accessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= outInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & outAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & outAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
   }while (accessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
 
 //--- At least, check that every state is accessible
   for (int32_t i=0 ; i<stateExpressionBDD.count () ; i++) {
-    const C_BDD intersection = stateExpressionBDD (i COMMA_HERE) & accessibleStatesBDD ;
+    const BinaryDecisionDiagram intersection = stateExpressionBDD (i COMMA_HERE) & accessibleStatesBDD ;
     if (intersection.isFalse()) {
       String errorMessage ;
       errorMessage.appendString ("state '") ;
@@ -1136,9 +1136,9 @@ computeFromExpression (Compiler * inCompiler,
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
   for (int32_t i=0 ; i<stateExpressionBDD.count () ; i++) {
-    const C_BDD stateExpression = stateExpressionBDD (i COMMA_HERE) ;
-    const C_BDD translatedStateExpression = stateExpression.translate (inVariablesCount, inVariablesCount) ;
-    const C_BDD allStateToStateTransitions = stateExpression & translatedStateExpression ;
+    const BinaryDecisionDiagram stateExpression = stateExpressionBDD (i COMMA_HERE) ;
+    const BinaryDecisionDiagram translatedStateExpression = stateExpression.translate (inVariablesCount, inVariablesCount) ;
+    const BinaryDecisionDiagram allStateToStateTransitions = stateExpression & translatedStateExpression ;
     outAccessibilityRelationBDD |= allStateToStateTransitions ;
   }
 }
@@ -1148,13 +1148,13 @@ computeFromExpression (Compiler * inCompiler,
 void cPtr_C_5F_parallelComposition::computeFromExpression (Compiler * inCompiler,
                                                            const TC_Array <C_saraMachine> & inSaraSystemArray,
                                                            const uint32_t inVariablesCount,
-                                                           C_BDD & outInitialStatesBDD,
-                                                           C_BDD & outTerminalStatesBDD,
-                                                           C_BDD & outAccessibilityRelationBDD) const {
+                                                           BinaryDecisionDiagram & outInitialStatesBDD,
+                                                           BinaryDecisionDiagram & outTerminalStatesBDD,
+                                                           BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
+  BinaryDecisionDiagram leftInitialStatesBDD ;
+  BinaryDecisionDiagram leftTerminalStatesBDD ;
+  BinaryDecisionDiagram leftAccessibilityRelationBDD ;
   auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
   left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
@@ -1163,9 +1163,9 @@ void cPtr_C_5F_parallelComposition::computeFromExpression (Compiler * inCompiler
                                           leftTerminalStatesBDD,
                                           leftAccessibilityRelationBDD) ;
 //--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
+  BinaryDecisionDiagram rightInitialStatesBDD ;
+  BinaryDecisionDiagram rightTerminalStatesBDD ;
+  BinaryDecisionDiagram rightAccessibilityRelationBDD ;
   auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
   right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
@@ -1185,13 +1185,13 @@ void cPtr_C_5F_orComposition::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
+  BinaryDecisionDiagram leftInitialStatesBDD ;
+  BinaryDecisionDiagram leftTerminalStatesBDD ;
+  BinaryDecisionDiagram leftAccessibilityRelationBDD ;
   auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
   left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
@@ -1200,9 +1200,9 @@ computeFromExpression (Compiler * inCompiler,
                                           leftTerminalStatesBDD,
                                           leftAccessibilityRelationBDD) ;
 //--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
+  BinaryDecisionDiagram rightInitialStatesBDD ;
+  BinaryDecisionDiagram rightTerminalStatesBDD ;
+  BinaryDecisionDiagram rightAccessibilityRelationBDD ;
   auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
   right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
@@ -1218,8 +1218,8 @@ computeFromExpression (Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-static C_BDD accessibleStates (const C_BDD & inInitialState,
-                               const C_BDD & inAccessibilityRelation,
+static BinaryDecisionDiagram accessibleStates (const BinaryDecisionDiagram & inInitialState,
+                               const BinaryDecisionDiagram & inAccessibilityRelation,
                                const uint32_t inVariablesCount) {
   uint32_t * substitutionArray = NULL ;
   macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
@@ -1227,12 +1227,12 @@ static C_BDD accessibleStates (const C_BDD & inInitialState,
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
-  C_BDD accessibleStates ;
-  C_BDD newlyAccessibleStates ;
+  BinaryDecisionDiagram accessibleStates ;
+  BinaryDecisionDiagram newlyAccessibleStates ;
   do{
     accessibleStates = newlyAccessibleStates ;
     newlyAccessibleStates |= inInitialState ;
-    const C_BDD x = (newlyAccessibleStates & inAccessibilityRelation).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & inAccessibilityRelation).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
   }while (accessibleStates != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
@@ -1245,13 +1245,13 @@ void cPtr_C_5F_strongModalComposition::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
+  BinaryDecisionDiagram leftInitialStatesBDD ;
+  BinaryDecisionDiagram leftTerminalStatesBDD ;
+  BinaryDecisionDiagram leftAccessibilityRelationBDD ;
   auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
   left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
@@ -1260,9 +1260,9 @@ computeFromExpression (Compiler * inCompiler,
                                           leftTerminalStatesBDD,
                                           leftAccessibilityRelationBDD) ;
 //--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
+  BinaryDecisionDiagram rightInitialStatesBDD ;
+  BinaryDecisionDiagram rightTerminalStatesBDD ;
+  BinaryDecisionDiagram rightAccessibilityRelationBDD ;
   auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
   right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
@@ -1271,9 +1271,9 @@ computeFromExpression (Compiler * inCompiler,
                                            rightTerminalStatesBDD,
                                            rightAccessibilityRelationBDD) ;
 //--- Check if modal composition is valid
-  const C_BDD leftAccessibleStatesBDD = accessibleStates (leftInitialStatesBDD, leftAccessibilityRelationBDD, inVariablesCount) ;
-  const C_BDD rightAccessibleStatesBDD = accessibleStates (rightInitialStatesBDD, rightAccessibilityRelationBDD, inVariablesCount) ;
-  const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
+  const BinaryDecisionDiagram leftAccessibleStatesBDD = accessibleStates (leftInitialStatesBDD, leftAccessibilityRelationBDD, inVariablesCount) ;
+  const BinaryDecisionDiagram rightAccessibleStatesBDD = accessibleStates (rightInitialStatesBDD, rightAccessibilityRelationBDD, inVariablesCount) ;
+  const BinaryDecisionDiagram intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
   if (! intersection.isFalse ()) {
     String errorMessage ;
     errorMessage.appendString ("operands transitions intersects, strong modal composition is not valid") ;
@@ -1291,13 +1291,13 @@ void cPtr_C_5F_weakModalComposition::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute left operand
-  C_BDD leftInitialStatesBDD ;
-  C_BDD leftTerminalStatesBDD ;
-  C_BDD leftAccessibilityRelationBDD ;
+  BinaryDecisionDiagram leftInitialStatesBDD ;
+  BinaryDecisionDiagram leftTerminalStatesBDD ;
+  BinaryDecisionDiagram leftAccessibilityRelationBDD ;
   auto left = (const cPtr_AC_5F_machineDefinition *) mProperty_mLeftOperand.ptr () ;
   left->computeFromExpression (inCompiler,
                                           inSaraSystemArray,
@@ -1306,9 +1306,9 @@ computeFromExpression (Compiler * inCompiler,
                                           leftTerminalStatesBDD,
                                           leftAccessibilityRelationBDD) ;
 //--- Compute right operand
-  C_BDD rightInitialStatesBDD ;
-  C_BDD rightTerminalStatesBDD ;
-  C_BDD rightAccessibilityRelationBDD ;
+  BinaryDecisionDiagram rightInitialStatesBDD ;
+  BinaryDecisionDiagram rightTerminalStatesBDD ;
+  BinaryDecisionDiagram rightAccessibilityRelationBDD ;
   auto right = (const cPtr_AC_5F_machineDefinition *) mProperty_mRightOperand.ptr () ;
   right->computeFromExpression (inCompiler,
                                            inSaraSystemArray,
@@ -1317,22 +1317,22 @@ computeFromExpression (Compiler * inCompiler,
                                            rightTerminalStatesBDD,
                                            rightAccessibilityRelationBDD) ;
 //--- compute intersection
-  const C_BDD leftAccessibleStatesBDD = accessibleStates (leftInitialStatesBDD, leftAccessibilityRelationBDD, inVariablesCount) ;
-  const C_BDD rightAccessibleStatesBDD = accessibleStates (rightInitialStatesBDD, rightAccessibilityRelationBDD, inVariablesCount) ;
-  const C_BDD intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
+  const BinaryDecisionDiagram leftAccessibleStatesBDD = accessibleStates (leftInitialStatesBDD, leftAccessibilityRelationBDD, inVariablesCount) ;
+  const BinaryDecisionDiagram rightAccessibleStatesBDD = accessibleStates (rightInitialStatesBDD, rightAccessibilityRelationBDD, inVariablesCount) ;
+  const BinaryDecisionDiagram intersection = leftAccessibleStatesBDD & rightAccessibleStatesBDD ;
 //--- Compute in left operand accessible states from intersection
-  C_BDD leftAccessiblesStates ;
+  BinaryDecisionDiagram leftAccessiblesStates ;
   uint32_t * substitutionArray = NULL ;
   macroMyNewPODArray (substitutionArray, uint32_t, inVariablesCount + inVariablesCount) ;
   for (uint32_t i=0 ; i<inVariablesCount ; i++) {
     substitutionArray [i] =  (inVariablesCount + i) ;
     substitutionArray [inVariablesCount + i] = i ;
   }
-  C_BDD newlyAccessibleStates ;
+  BinaryDecisionDiagram newlyAccessibleStates ;
   do{
     leftAccessiblesStates = newlyAccessibleStates ;
     newlyAccessibleStates |= intersection ;
-    const C_BDD x = (newlyAccessibleStates & leftAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & leftAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
   }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
 //--- Check that only states in intersection are accessible
@@ -1342,12 +1342,12 @@ computeFromExpression (Compiler * inCompiler,
     inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
-  C_BDD rightAccessiblesStates ;
-  newlyAccessibleStates = C_BDD () ;
+  BinaryDecisionDiagram rightAccessiblesStates ;
+  newlyAccessibleStates = BinaryDecisionDiagram () ;
   do{
     rightAccessiblesStates = newlyAccessibleStates ;
     newlyAccessibleStates |= intersection ;
-    const C_BDD x = (newlyAccessibleStates & rightAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & rightAccessibilityRelationBDD).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
   }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
@@ -1383,9 +1383,9 @@ void cPtr_C_5F_boolToSeqExpression::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
   auto ptr = (const cPtr_AC_5F_boolExpression *) mProperty_mExpression.ptr () ;
   outInitialStatesBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0) ;
   outTerminalStatesBDD = outInitialStatesBDD ;
@@ -1398,15 +1398,15 @@ void cPtr_C_5F_existsDefinition::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t /* inVariablesCount */,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
   const uint32_t previousVariableCount =  mProperty_mPreviousVariableCount.uintValue () ;
   const uint32_t totalVariableCount =  mProperty_mTotalVariableCount.uintValue () ;
 //--- Compute operand
-  C_BDD initialStatesBDD ;
-  C_BDD terminalStatesBDD ;
-  C_BDD accessibilityRelationBDD ;
+  BinaryDecisionDiagram initialStatesBDD ;
+  BinaryDecisionDiagram terminalStatesBDD ;
+  BinaryDecisionDiagram accessibilityRelationBDD ;
   auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
   ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
@@ -1439,15 +1439,15 @@ void cPtr_C_5F_forallDefinition::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t /* inVariablesCount */,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
   const uint32_t previousVariableCount =  mProperty_mPreviousVariableCount.uintValue () ;
   const uint32_t totalVariableCount =  mProperty_mTotalVariableCount.uintValue () ;
 //--- Compute operand
-  C_BDD initialStatesBDD ;
-  C_BDD terminalStatesBDD ;
-  C_BDD accessibilityRelationBDD ;
+  BinaryDecisionDiagram initialStatesBDD ;
+  BinaryDecisionDiagram terminalStatesBDD ;
+  BinaryDecisionDiagram accessibilityRelationBDD ;
   auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
   ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
@@ -1480,9 +1480,9 @@ void cPtr_C_5F_suppressInitialStatesOperation::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
   auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
   ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
@@ -1490,7 +1490,7 @@ computeFromExpression (Compiler * inCompiler,
                                       outInitialStatesBDD,
                                       outTerminalStatesBDD,
                                       outAccessibilityRelationBDD) ;
-  outInitialStatesBDD = C_BDD () ;
+  outInitialStatesBDD = BinaryDecisionDiagram () ;
 }
 //---------------------------------------------------------------------------*
 
@@ -1498,9 +1498,9 @@ void cPtr_C_5F_suppressTerminalStatesOperation::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
   auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
   ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
@@ -1508,7 +1508,7 @@ computeFromExpression (Compiler * inCompiler,
                                       outInitialStatesBDD,
                                       outTerminalStatesBDD,
                                       outAccessibilityRelationBDD) ;
-  outTerminalStatesBDD = C_BDD () ;
+  outTerminalStatesBDD = BinaryDecisionDiagram () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1517,9 +1517,9 @@ void cPtr_C_5F_fullSaturationOperation::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute operand
   auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
   ptr->computeFromExpression (inCompiler,
@@ -1529,7 +1529,7 @@ computeFromExpression (Compiler * inCompiler,
                                       outTerminalStatesBDD,
                                       outAccessibilityRelationBDD) ;
 //--- translate initial state BDD by inVariablesCount slots
-  const C_BDD translatedInitialStates = outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
+  const BinaryDecisionDiagram translatedInitialStates = outInitialStatesBDD.translate (inVariablesCount, inVariablesCount) ;
 //--- Add transitions from terminal states to initial states
   outAccessibilityRelationBDD |= outTerminalStatesBDD & translatedInitialStates ;
 }
@@ -1540,13 +1540,13 @@ void cPtr_C_5F_complementationOperation::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute operand
-  C_BDD initialStatesBDD ;
-  C_BDD terminalStatesBDD ;
-  C_BDD accessibilityRelationBDD ;
+  BinaryDecisionDiagram initialStatesBDD ;
+  BinaryDecisionDiagram terminalStatesBDD ;
+  BinaryDecisionDiagram accessibilityRelationBDD ;
   auto ptr = (const cPtr_AC_5F_machineDefinition *) mProperty_mOperand.ptr () ;
   ptr->computeFromExpression (inCompiler,
                                       inSaraSystemArray,
@@ -1566,9 +1566,9 @@ void cPtr_C_5F_importMachine::
 computeFromExpression (Compiler * /* inCompiler */,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Get index of imported machine
   const int32_t indexOfImportedMachine = (int32_t) mProperty_mIndexOfImportedMachine.uintValue () ;
 //--- Construct substitution arraies
@@ -1606,15 +1606,15 @@ void cPtr_C_5F_additiveModalCompositionComponent::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
   {int32_t index = 0 ;
@@ -1648,14 +1648,14 @@ computeFromExpression (Compiler * inCompiler,
     for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
-      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+      const BinaryDecisionDiagram intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
-      C_BDD leftAccessiblesStates ;
-      C_BDD newlyAccessibleStates ;
+      BinaryDecisionDiagram leftAccessiblesStates ;
+      BinaryDecisionDiagram newlyAccessibleStates ;
       do{
         leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
       }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
@@ -1671,13 +1671,13 @@ computeFromExpression (Compiler * inCompiler,
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
-      C_BDD rightAccessiblesStates ;
-      newlyAccessibleStates = C_BDD () ;
+      BinaryDecisionDiagram rightAccessiblesStates ;
+      newlyAccessibleStates = BinaryDecisionDiagram () ;
       do{
         // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
       }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
@@ -1733,9 +1733,9 @@ computeFromExpression (Compiler * inCompiler,
     const int32_t sourceMode = (int32_t) currentInclusion.current_mSourceMode (HERE).uintValue () ;
     const int32_t targetMode = (int32_t) currentInclusion.current_mTargetMode (HERE).uintValue () ;
   //--- translate initial state BDD by inVariablesCount slots
-    const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
+    const BinaryDecisionDiagram translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
   //--- Transitions to from terminal states to initial states
-    const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+    const BinaryDecisionDiagram transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
   //--- Add transitions from terminal states to initial states
     outAccessibilityRelationBDD |= transitions ;
   //--- Next inclusion
@@ -1749,15 +1749,15 @@ void cPtr_C_5F_substractiveModalCompositionComponent::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
   {int32_t index = 0 ;
@@ -1791,14 +1791,14 @@ computeFromExpression (Compiler * inCompiler,
     for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
-      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+      const BinaryDecisionDiagram intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
-      C_BDD leftAccessiblesStates ;
-      C_BDD newlyAccessibleStates ;
+      BinaryDecisionDiagram leftAccessiblesStates ;
+      BinaryDecisionDiagram newlyAccessibleStates ;
       do{
         leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
       }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
@@ -1814,13 +1814,13 @@ computeFromExpression (Compiler * inCompiler,
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
-      C_BDD rightAccessiblesStates ;
-      newlyAccessibleStates = C_BDD () ;
+      BinaryDecisionDiagram rightAccessiblesStates ;
+      newlyAccessibleStates = BinaryDecisionDiagram () ;
       do{
         // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (inVariablesCount + inVariablesCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (inVariablesCount) ;
       }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
@@ -1884,9 +1884,9 @@ computeFromExpression (Compiler * inCompiler,
       //--- If accepted, add transition
         if (isAccepted) {
         //--- translate initial state BDD by inVariablesCount slots
-          const C_BDD translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
+          const BinaryDecisionDiagram translatedInitialStates = initialStatesArray (targetMode COMMA_HERE).translate (inVariablesCount, inVariablesCount) ;
         //--- Transitions to from terminal states to initial states
-          const C_BDD transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
+          const BinaryDecisionDiagram transitions = terminalStatesArray (sourceMode COMMA_HERE) & translatedInitialStates ;
         //--- Add transitions from terminal states to initial states
           outAccessibilityRelationBDD |= transitions ;
         }
@@ -1901,11 +1901,11 @@ void cPtr_C_5F_trans::
 computeFromExpression (Compiler * inCompiler,
                        const TC_Array <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
-                       C_BDD & outInitialStatesBDD,
-                       C_BDD & outTerminalStatesBDD,
-                       C_BDD & outAccessibilityRelationBDD) const {
-  outInitialStatesBDD = C_BDD () ;
-  outTerminalStatesBDD = C_BDD () ;
+                       BinaryDecisionDiagram & outInitialStatesBDD,
+                       BinaryDecisionDiagram & outTerminalStatesBDD,
+                       BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
+  outInitialStatesBDD = BinaryDecisionDiagram () ;
+  outTerminalStatesBDD = BinaryDecisionDiagram () ;
   auto source = (const cPtr_AC_5F_boolExpression *) mProperty_mSourceStateExpression.ptr () ;
   auto target = (const cPtr_AC_5F_boolExpression *) mProperty_mTargetStateExpression.ptr () ;
   outAccessibilityRelationBDD = source->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, 0)
@@ -1915,22 +1915,22 @@ computeFromExpression (Compiler * inCompiler,
 //---------------------------------------------------------------------------*
 
 static void
-addFilteredTransitions (C_BDD & ioAcculmulatedTransitions,
-                        const C_BDD & inSourceAccessibilityRelation,
-                        const C_BDD & inSourceTerminalStates,
+addFilteredTransitions (BinaryDecisionDiagram & ioAcculmulatedTransitions,
+                        const BinaryDecisionDiagram & inSourceAccessibilityRelation,
+                        const BinaryDecisionDiagram & inSourceTerminalStates,
                         const int32_t inVariablesCount,
                         const int32_t inInputVariablesCount,
-                        const C_BDD & inTargetInitialStates) {
+                        const BinaryDecisionDiagram & inTargetInitialStates) {
 //--- Transitions from terminal states
-   const C_BDD transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
+   const BinaryDecisionDiagram transitionsFromTerminalStates = inSourceAccessibilityRelation & inSourceTerminalStates ;
 //--- Filter theses transitions by eliminating target internal and output variables
-   const C_BDD filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((uint32_t) (inVariablesCount + inInputVariablesCount)) ;
+   const BinaryDecisionDiagram filteredTransitionsFromTerminalStates = transitionsFromTerminalStates.existsOnBitsAfterNumber ((uint32_t) (inVariablesCount + inInputVariablesCount)) ;
 //--- translate initial state BDD by variableCount slots
-   const C_BDD translatedInitialStates = inTargetInitialStates.translate ((uint32_t) inVariablesCount, (uint32_t) inVariablesCount) ;
+   const BinaryDecisionDiagram translatedInitialStates = inTargetInitialStates.translate ((uint32_t) inVariablesCount, (uint32_t) inVariablesCount) ;
 //--- Transitions to from terminal states to initial states
-   const C_BDD transitions = inSourceTerminalStates & translatedInitialStates ;
+   const BinaryDecisionDiagram transitions = inSourceTerminalStates & translatedInitialStates ;
 //--- Eliminate from theses transitions all the transitions that raise an ambiguity
-   const C_BDD transitionsToAdd = transitions & ~ filteredTransitionsFromTerminalStates ;
+   const BinaryDecisionDiagram transitionsToAdd = transitions & ~ filteredTransitionsFromTerminalStates ;
 //--- Add transitions from terminal states to initial states
    ioAcculmulatedTransitions |= transitionsToAdd ;
 }
@@ -1965,10 +1965,10 @@ compute (Compiler * inCompiler,
   }
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
   {int32_t index = 0 ;
@@ -2002,14 +2002,14 @@ compute (Compiler * inCompiler,
     for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
     //--- compute intersection
-      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+      const BinaryDecisionDiagram intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
-      C_BDD leftAccessiblesStates ;
-      C_BDD newlyAccessibleStates ;
+      BinaryDecisionDiagram leftAccessiblesStates ;
+      BinaryDecisionDiagram newlyAccessibleStates ;
       do{
         leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
@@ -2025,13 +2025,13 @@ compute (Compiler * inCompiler,
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
-      C_BDD rightAccessiblesStates ;
-      newlyAccessibleStates = C_BDD () ;
+      BinaryDecisionDiagram rightAccessiblesStates ;
+      newlyAccessibleStates = BinaryDecisionDiagram () ;
       do{
         // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
@@ -2104,11 +2104,11 @@ compute (Compiler * inCompiler,
     substitutionArray [i] =  (variableCount + i) ;
     substitutionArray [variableCount + i] = i ;
   }
-  C_BDD newlyAccessibleStates ;
+  BinaryDecisionDiagram newlyAccessibleStates ;
   do{
     machine.mAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
   }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
@@ -2191,11 +2191,11 @@ compute (Compiler * inCompiler,
   gCout.appendString ((nodes > 1) ? "s" : "") ;
   gCout.appendString (").\n") ;
 //--- Restrict transitions to target == source
-  C_BDD constraint = ~ C_BDD () ;
+  BinaryDecisionDiagram constraint = ~ BinaryDecisionDiagram () ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
-    constraint &= C_BDD ( i, false).equalTo (C_BDD ( (variableCount + i), false)) ;
+    constraint &= BinaryDecisionDiagram ( i, false).equalTo (BinaryDecisionDiagram ( (variableCount + i), false)) ;
   }
-  const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
+  const BinaryDecisionDiagram transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variableCount + variableCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   gCout.appendString ("  ") ;
@@ -2208,7 +2208,7 @@ compute (Compiler * inCompiler,
   gCout.appendString ((nodes > 1) ? "s" : "") ;
   gCout.appendString (").\n") ;
 //--- Display transitions from states to different states
-  const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
+  const BinaryDecisionDiagram t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount64 ( (variableCount + variableCount)) ;
   nodes = t.getBDDnodesCount () ;
   gCout.appendString ("  ") ;
@@ -2226,7 +2226,7 @@ compute (Compiler * inCompiler,
 //--- Enter result in machines array
   ioSaraSystemArray.appendObject (machine) ;
 //--- Mark and sweep unused BDD nodes
-  C_BDD::markAndSweepUnusedNodes () ;
+  BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2260,10 +2260,10 @@ compute (Compiler * inCompiler,
 //----------- Compute automaton from definition expression
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <C_BDD> initialStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> terminalStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibleStatesArray (modeCount, C_BDD () COMMA_HERE) ;
-  TC_Array <C_BDD> accessibilityRelationStatesArray (modeCount, C_BDD () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
   {int32_t index = 0 ;
@@ -2297,14 +2297,14 @@ compute (Compiler * inCompiler,
     for (int32_t testedMode=mode+1 ; testedMode<modeCount ; testedMode++) {
       // printf ("mode %ld testedMode %ld\n", mode, testedMode) ; fflush (stdout) ;
      //--- compute intersection
-      const C_BDD intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
+      const BinaryDecisionDiagram intersection = accessibleStatesArray (mode COMMA_HERE) & accessibleStatesArray (testedMode COMMA_HERE) ;
     //--- Compute in left operand accessible states from intersection
-      C_BDD leftAccessiblesStates ;
-      C_BDD newlyAccessibleStates ;
+      BinaryDecisionDiagram leftAccessiblesStates ;
+      BinaryDecisionDiagram newlyAccessibleStates ;
       do{
         leftAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (mode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (leftAccessiblesStates != (newlyAccessibleStates)) ;
       // printf ("fin intersection\n") ; fflush (stdout) ;
@@ -2320,13 +2320,13 @@ compute (Compiler * inCompiler,
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
-      C_BDD rightAccessiblesStates ;
-      newlyAccessibleStates = C_BDD () ;
+      BinaryDecisionDiagram rightAccessiblesStates ;
+      newlyAccessibleStates = BinaryDecisionDiagram () ;
       do{
         // printf ("calcul...\n") ; fflush (stdout) ;
         rightAccessiblesStates = newlyAccessibleStates ;
         newlyAccessibleStates |= intersection ;
-        const C_BDD x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+        const BinaryDecisionDiagram x = (newlyAccessibleStates & accessibilityRelationStatesArray (testedMode COMMA_HERE)).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
         newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
       }while (rightAccessiblesStates != (newlyAccessibleStates)) ;
     //--- Check that only states in intersection are accessible
@@ -2408,11 +2408,11 @@ compute (Compiler * inCompiler,
     substitutionArray [i] =  (variableCount + i) ;
     substitutionArray [variableCount + i] = i ;
   }
-  C_BDD newlyAccessibleStates ;
+  BinaryDecisionDiagram newlyAccessibleStates ;
   do{
     machine.mAccessibleStatesBDD = newlyAccessibleStates ;
     newlyAccessibleStates |= machine.mInitialStatesBDD ;
-    const C_BDD x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
+    const BinaryDecisionDiagram x = (newlyAccessibleStates & machine.mTransitionRelationBDD).substitution (substitutionArray,  (variableCount + variableCount) COMMA_HERE) ;
     newlyAccessibleStates |= x.existsOnBitsAfterNumber (variableCount) ;
   }while (machine.mAccessibleStatesBDD != (newlyAccessibleStates)) ;
   macroMyDeletePODArray (substitutionArray) ;
@@ -2496,11 +2496,11 @@ compute (Compiler * inCompiler,
   gCout.appendString ((nodes > 1) ? "s" : "") ;
   gCout.appendString (").\n") ;
 //--- Restrict transitions to target == source
-  C_BDD constraint = ~ C_BDD () ;
+  BinaryDecisionDiagram constraint = ~ BinaryDecisionDiagram () ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
-    constraint &= C_BDD (i, false).equalTo (C_BDD ( (variableCount + i), false)) ;
+    constraint &= BinaryDecisionDiagram (i, false).equalTo (BinaryDecisionDiagram ( (variableCount + i), false)) ;
   }
-  const C_BDD transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
+  const BinaryDecisionDiagram transitionsWithSourceEqualTarget = machine.mTransitionRelationBDD & constraint ;
   n = transitionsWithSourceEqualTarget.valueCount64 ( (variableCount + variableCount)) ;
   nodes = transitionsWithSourceEqualTarget.getBDDnodesCount () ;
   gCout.appendString ("  ") ;
@@ -2513,7 +2513,7 @@ compute (Compiler * inCompiler,
   gCout.appendString ((nodes > 1) ? "s" : "") ;
   gCout.appendString (").\n") ;
 //--- Display transitions from states to different states
-  const C_BDD t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
+  const BinaryDecisionDiagram t = machine.mTransitionRelationBDD & ~ transitionsWithSourceEqualTarget ;
   n = t.valueCount64 ( (variableCount + variableCount)) ;
   nodes = t.getBDDnodesCount () ;
   gCout.appendString ("  ") ;
@@ -2531,7 +2531,7 @@ compute (Compiler * inCompiler,
 //--- Enter result in machines array
   ioSaraSystemArray.appendObject (machine) ;
 //--- Mark and sweep unused BDD nodes
-  C_BDD::markAndSweepUnusedNodes () ;
+  BinaryDecisionDiagram::markAndSweepUnusedNodes () ;
 }
 
 //---------------------------------------------------------------------------*

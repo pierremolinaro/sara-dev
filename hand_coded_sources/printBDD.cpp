@@ -23,8 +23,8 @@
 #include "cDisplayBDD.h"
 #include "AbstractOutputStream.h"
 #include "MF_MemoryControl.h"
-#include "C_BDD.h"
-#include "C_BDD-node.h"
+#include "BinaryDecisionDiagram.h"
+#include "BinaryDecisionDiagram-node.h"
 
 //---------------------------------------------------------------------------*
 
@@ -112,7 +112,7 @@ ecrireBDDinterne (AbstractOutputStream & inStream,
 
 //-----------------------------------------------------------------------------*
 
-void printBDDWithVariables (const C_BDD & inBDD,
+void printBDDWithVariables (const BinaryDecisionDiagram & inBDD,
                             AbstractOutputStream & inStream,
                             const uint32_t inVariableCount,
                             const cDisplayBDD & inVariablesNames) {
@@ -224,7 +224,7 @@ static void printBDDHeader (const TC_Array <String> & inVariablesNames,
 
 //-----------------------------------------------------------------------------*
 
-static void printBDDwithoutHeader (const C_BDD & inBDD,
+static void printBDDwithoutHeader (const BinaryDecisionDiagram & inBDD,
                                    const TC_Array <String> & inVariablesNames,
                                    const int32_t inVariableCount,
                                    const int32_t inLeadingSpacesCount) {
@@ -265,7 +265,7 @@ static void printBDDwithoutHeader (const C_BDD & inBDD,
 
 //-----------------------------------------------------------------------------*
 
-void printBDD (const C_BDD & inBDD,
+void printBDD (const BinaryDecisionDiagram & inBDD,
                const TC_Array <String> & inVariablesNames,
                const int32_t inVariableCount,
                const int32_t inLeadingSpacesCount) {
@@ -277,7 +277,7 @@ void printBDD (const C_BDD & inBDD,
 
 //-----------------------------------------------------------------------------*
 
-void printBDD (const C_BDD & inBDD,
+void printBDD (const BinaryDecisionDiagram & inBDD,
                const TC_Array <String> & inVariablesNames,
                const int32_t inLeadingSpacesCount) {
   printBDD (inBDD, inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
@@ -285,7 +285,7 @@ void printBDD (const C_BDD & inBDD,
 
 //-----------------------------------------------------------------------------*
 
-void printBDDWithoutHeader (const C_BDD & inBDD,
+void printBDDWithoutHeader (const BinaryDecisionDiagram & inBDD,
                             const TC_Array <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) {

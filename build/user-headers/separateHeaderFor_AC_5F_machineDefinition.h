@@ -19,9 +19,9 @@ class cPtr_AC_5F_machineDefinition : public acStrongPtr_class {
   public : virtual void computeFromExpression (Compiler * inCompiler,
                                                const TC_Array <C_saraMachine> & inSaraSystemArray,
                                                const uint32_t inVariablesCount,
-                                               C_BDD & outInitialStatesBDD,
-                                               C_BDD & outTerminalStatesBDD,
-                                               C_BDD & outAccessibilityRelationBDD) const = 0 ;
+                                               BinaryDecisionDiagram & outInitialStatesBDD,
+                                               BinaryDecisionDiagram & outTerminalStatesBDD,
+                                               BinaryDecisionDiagram & outAccessibilityRelationBDD) const = 0 ;
 
 //--- END OF USER ZONE 2
 //--- Properties
