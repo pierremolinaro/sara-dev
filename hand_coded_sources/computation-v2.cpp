@@ -20,7 +20,7 @@
 
 #include "sara_parser.h"
 #include "Compiler.h"
-#include "C_galgas_io.h"
+//#include "C_galgas_io.h"
 #include "TC_Array.h"
 #include "MF_MemoryControl.h"
 #include "cDisplayBDD.h"
@@ -148,18 +148,18 @@ computeBDD (Compiler * inCompiler,
   const BinaryDecisionDiagram transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
   if (initialStatesOfImportedMachine != (terminalStatesOfImportedMachine)) {
     String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
   const uint32_t importedMachineVariableCount =  mProperty_mTranslationVector.count () ;
   const BinaryDecisionDiagram boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
   if (boolAccessibilityRelationBDD != (transitionsOfImportedMachine)) {
     String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
 //--- Construct substitution arraies
   uint32_t * statesSubstitutionArray = NULL ;
   macroMyNewPODArray (statesSubstitutionArray, uint32_t, importedMachineVariableCount) ;
-  cEnumerator_L_5F_translationVector e (mProperty_mTranslationVector, kENUMERATION_UP) ;
+  cEnumerator_L_5F_translationVector e (mProperty_mTranslationVector, EnumerationOrder::up) ;
   int32_t index = 0 ;
   while (e.hasCurrentObject ()) {
     statesSubstitutionArray [index] =  e.current_mTargetSlot (HERE).uintValue () ;
@@ -215,7 +215,7 @@ void routine_performComputations_3F_ (const GALGAS_L_5F_jobList inComponentMap,
     const bool displayBDDvaluesCount = gOption_sara_5F_cli_5F_options_displayBDDvaluesCount.mValue ;
     const bool displayBDDvalues = gOption_sara_5F_cli_5F_options_displayBDDvalues.mValue ;
   //--- Loop for each component
-    cEnumerator_L_5F_jobList currentComponent (inComponentMap, kENUMERATION_UP) ;
+    cEnumerator_L_5F_jobList currentComponent (inComponentMap, EnumerationOrder::up) ;
     while (currentComponent.hasCurrentObject ()) {
       C_saraMachine system ;
       auto p = (const cPtr_AC_5F_job *) currentComponent.current_mComponent (HERE).ptr () ;
@@ -247,7 +247,7 @@ compute (Compiler * inCompiler,
   { TC_Array <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  cEnumerator_stringlist currentVar (mProperty_mNameList, kENUMERATION_UP) ;
+  cEnumerator_stringlist currentVar (mProperty_mNameList, EnumerationOrder::up) ;
   int32_t index = 0 ;
   while (currentVar.hasCurrentObject ()) {
     machine.mNamesArray (index COMMA_HERE) = currentVar.current_mValue (HERE).stringValue () ;
@@ -856,17 +856,17 @@ compute (Compiler * /* inCompiler */,
 //--- variables count
   const uint32_t variableCount = (uint32_t) ioSaraSystemArray ((int32_t) mProperty_mMachineIndex.uintValue () COMMA_HERE).mNamesArray.count () ;
 //--- Loop throuhgt all scenarios
-  cEnumerator_L_5F_scenarioList scenario (mProperty_mScenarioList, kENUMERATION_UP) ;
+  cEnumerator_L_5F_scenarioList scenario (mProperty_mScenarioList, EnumerationOrder::up) ;
   while (scenario.hasCurrentObject ()) {
   //--- Print scenario title
     gCout.appendString ("Scenario '") ;
     gCout.appendString (scenario.current_mScenarioTitle (HERE).mProperty_string.stringValue()) ;
     gCout.appendString ("':\n") ;
   //--- Build initial configuration
-    cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (HERE), kENUMERATION_UP) ;
+    cEnumerator_L_5F_inputScenario currentInput (scenario.current_mInputScenario (HERE), EnumerationOrder::up) ;
     uint64_t initialConfiguration = 0 ;
     uint32_t shift = 0 ;
-    cEnumerator_L_5F_inputConfigurationForScenario vv (currentInput.current_mInputConfiguration (HERE), kENUMERATION_UP) ;
+    cEnumerator_L_5F_inputConfigurationForScenario vv (currentInput.current_mInputConfiguration (HERE), EnumerationOrder::up) ;
     while (vv.hasCurrentObject ()) {
       initialConfiguration += ((uint64_t) vv.current_mInputValue (HERE).mProperty_uint.uintValue ()) << shift ;
       shift ++ ;
@@ -890,7 +890,7 @@ compute (Compiler * /* inCompiler */,
     //--- Parse new input configuration
       uint64_t inputConfiguration = 0 ;
       shift = 0 ;
-      cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), kENUMERATION_UP) ;
+      cEnumerator_L_5F_inputConfigurationForScenario v (currentInput.current_mInputConfiguration (HERE), EnumerationOrder::up) ;
       while (v.hasCurrentObject ()) {
         inputConfiguration += ((uint64_t) v.current_mInputValue (HERE).mProperty_uint.uintValue ()) << shift ;
         shift ++ ;
@@ -929,7 +929,7 @@ computeFromExpression (Compiler * inCompiler,
                        BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Build state array names
   TC_Array <String> stateNameArray ((int32_t) mProperty_mStatesMap.count () COMMA_HERE) ;
-  cEnumerator_M_5F_stateMap currentState (mProperty_mStatesMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_stateMap currentState (mProperty_mStatesMap, EnumerationOrder::up) ;
   while (currentState.hasCurrentObject ()) {
     stateNameArray.appendObject (currentState.current_lkey (HERE).mProperty_string.stringValue ()) ;
     currentState.gotoNextObject () ;
@@ -942,7 +942,7 @@ computeFromExpression (Compiler * inCompiler,
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
   TC_Array <BinaryDecisionDiagram> stateExpressionBDD ((int32_t) mProperty_mStatesMap.count (), BinaryDecisionDiagram () COMMA_HERE) ;
-  cEnumerator_L_5F_stateDefinition currentDefinition (mProperty_mStateDefinitionList, kENUMERATION_UP) ;
+  cEnumerator_L_5F_stateDefinition currentDefinition (mProperty_mStateDefinitionList, EnumerationOrder::up) ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get state index
     const int32_t stateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
@@ -955,7 +955,7 @@ computeFromExpression (Compiler * inCompiler,
       errorMessage.appendString ("input configuration for state '") ;
       errorMessage.appendString (stateNameArray (stateIndex COMMA_HERE)) ;
       errorMessage.appendString ("' is empty") ;
-      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
     }
   //--- Go to next state definition
     currentDefinition.gotoNextObject () ;
@@ -963,7 +963,7 @@ computeFromExpression (Compiler * inCompiler,
 //----------------------------------------------------------------------- Check that states are disjoined
   currentDefinition.rewind () ;
   while (currentDefinition.hasCurrentObject ()) {
-    cEnumerator_L_5F_stateDefinition testedState (mProperty_mStateDefinitionList, kENUMERATION_UP) ;
+    cEnumerator_L_5F_stateDefinition testedState (mProperty_mStateDefinitionList, EnumerationOrder::up) ;
     testedState.gotoIndex (currentDefinition.index () + 1) ;
     while (testedState.hasCurrentObject ()) {
       if (! (stateExpressionBDD ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)
@@ -974,7 +974,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' intersects expression for state '") ;
         errorMessage.appendString (stateNameArray ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
         errorMessage.appendString ("'") ;
-        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
       testedState.gotoNextObject () ;
     }
@@ -987,7 +987,7 @@ computeFromExpression (Compiler * inCompiler,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Compute BDD initial states
-  cEnumerator_L_5F_statesDefinitionList currentInitialState (mProperty_mInitialStatesDefinitionList, kENUMERATION_UP) ;
+  cEnumerator_L_5F_statesDefinitionList currentInitialState (mProperty_mInitialStatesDefinitionList, EnumerationOrder::up) ;
   while (currentInitialState.hasCurrentObject ()) {
     // printf ("INIT : %ld\n", currentInitialState->mStateIndex.uintValue ()) ;
     outInitialStatesBDD |= stateExpressionBDD ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
@@ -996,7 +996,7 @@ computeFromExpression (Compiler * inCompiler,
 //--- Check initial states are disjoined
   currentInitialState.rewind () ;
   while (currentInitialState.hasCurrentObject ()) {
-    cEnumerator_L_5F_statesDefinitionList testedInitialState (mProperty_mInitialStatesDefinitionList, kENUMERATION_UP) ;
+    cEnumerator_L_5F_statesDefinitionList testedInitialState (mProperty_mInitialStatesDefinitionList, EnumerationOrder::up) ;
     testedInitialState.gotoIndex (currentInitialState.index () + 1) ;
     while (testedInitialState.hasCurrentObject ()) {
       const BinaryDecisionDiagram intersection = stateExpressionBDD ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)
@@ -1008,7 +1008,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' intersects previous initial state '") ;
         errorMessage.appendString (stateNameArray ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
         errorMessage.appendString ("'") ;
-        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
       testedInitialState.gotoNextObject () ;
     }
@@ -1020,7 +1020,7 @@ computeFromExpression (Compiler * inCompiler,
 //    Slots 0 .. n-1 are assigned to inputs
 //    Slots n .. n+p-1 are assigned to outputs
 //--- Compute BDD initial states
-  cEnumerator_L_5F_statesDefinitionList currentTerminalState (mProperty_mTerminalStatesDefinitionList, kENUMERATION_UP) ;
+  cEnumerator_L_5F_statesDefinitionList currentTerminalState (mProperty_mTerminalStatesDefinitionList, EnumerationOrder::up) ;
   while (currentTerminalState.hasCurrentObject ()) {
     outTerminalStatesBDD |= stateExpressionBDD ((int32_t) currentTerminalState.current_mStateIndex (HERE).uintValue () COMMA_HERE) ;
     currentTerminalState.gotoNextObject () ;
@@ -1042,7 +1042,7 @@ computeFromExpression (Compiler * inCompiler,
     const int32_t currentStateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Accumulate transitions targets for each transition
     BinaryDecisionDiagram transitionsTargetBDD ;
-    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kENUMERATION_UP) ;
+    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), EnumerationOrder::up) ;
     while (currentTransition.hasCurrentObject ()) {
       auto ptr = (const cPtr_AC_5F_boolExpression *) currentTransition.current_mActionExpression (HERE).ptr () ;
       const BinaryDecisionDiagram actionBDD = ptr->computeBDD (inCompiler, inSaraSystemArray, inVariablesCount, inVariablesCount) ;
@@ -1064,7 +1064,7 @@ computeFromExpression (Compiler * inCompiler,
     const int32_t stateIndex = (int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () ;
   //--- Check that action does not intersect with state input expression
     int32_t transitionIndex = 0 ;
-    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), kENUMERATION_UP) ;
+    cEnumerator_L_5F_transitionDefinition currentTransition (currentDefinition.current_mTransitionsList (HERE), EnumerationOrder::up) ;
     while (currentTransition.hasCurrentObject ()) {
     //--- Compute action BDD
       auto ptr = (const cPtr_AC_5F_boolExpression *) currentTransition.current_mActionExpression (HERE).ptr () ;
@@ -1073,10 +1073,10 @@ computeFromExpression (Compiler * inCompiler,
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         String errorMessage ;
         errorMessage.appendString ("this action intersects with current state input configuration") ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
-      cEnumerator_L_5F_transitionDefinition testedTransition (currentDefinition.current_mTransitionsList (HERE), kENUMERATION_UP) ;
+      cEnumerator_L_5F_transitionDefinition testedTransition (currentDefinition.current_mTransitionsList (HERE), EnumerationOrder::up) ;
       testedTransition.gotoIndex (currentTransition.index () + 1) ;
       while (testedTransition.hasCurrentObject ()) {
       //--- Compute action BDD
@@ -1088,7 +1088,7 @@ computeFromExpression (Compiler * inCompiler,
           errorMessage.appendString ("this action intersects with #") ;
           errorMessage.appendSigned (transitionIndex) ;
           errorMessage.appendString (" previous action") ;
-          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
         }
         testedTransition.gotoNextObject () ;
       }
@@ -1097,7 +1097,7 @@ computeFromExpression (Compiler * inCompiler,
       if (x.isFalse ()) {
         String errorMessage ;
         errorMessage.appendString ("this transition is not compatible with configuration of target state") ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Goto next transition
       currentTransition.gotoNextObject () ;
@@ -1131,7 +1131,7 @@ computeFromExpression (Compiler * inCompiler,
       errorMessage.appendString ("state '") ;
       errorMessage.appendString (stateNameArray (i COMMA_HERE)) ;
       errorMessage.appendString ("' is not accessible") ;
-      inCompiler->semanticErrorAtLocation (mProperty_mEndOfDefinition, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (mProperty_mEndOfDefinition, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
@@ -1277,7 +1277,7 @@ computeFromExpression (Compiler * inCompiler,
   if (! intersection.isFalse ()) {
     String errorMessage ;
     errorMessage.appendString ("operands transitions intersects, strong modal composition is not valid") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1339,7 +1339,7 @@ computeFromExpression (Compiler * inCompiler,
   if (intersection != (leftAccessiblesStates)) {
     String errorMessage ;
     errorMessage.appendString ("left operand does not respect weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
   BinaryDecisionDiagram rightAccessiblesStates ;
@@ -1355,21 +1355,21 @@ computeFromExpression (Compiler * inCompiler,
   if (intersection != (rightAccessiblesStates)) {
     String errorMessage ;
     errorMessage.appendString ("right operand does not respect weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD) == (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     String errorMessage ;
     errorMessage.appendString ("initial states are not compatible with weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD) == (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     String errorMessage ;
     errorMessage.appendString ("terminal states are not compatible with weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1577,7 +1577,7 @@ computeFromExpression (Compiler * /* inCompiler */,
   macroMyNewPODArray (statesSubstitutionArray, uint32_t, importedMachineVariableCount) ;
   uint32_t * transitionsSubstitutionArray = NULL ;
   macroMyNewPODArray (transitionsSubstitutionArray, uint32_t, importedMachineVariableCount + importedMachineVariableCount) ;
-  cEnumerator_L_5F_translationVector p (mProperty_mTranslationVector, kENUMERATION_UP) ;
+  cEnumerator_L_5F_translationVector p (mProperty_mTranslationVector, EnumerationOrder::up) ;
   uint32_t index = 0 ;
   while (p.hasCurrentObject ()) {
     statesSubstitutionArray [index] =  p.current_mTargetSlot (HERE).uintValue () ;
@@ -1616,7 +1616,7 @@ computeFromExpression (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
-  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
@@ -1667,7 +1667,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1689,7 +1689,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1700,7 +1700,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1712,7 +1712,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -1728,7 +1728,7 @@ computeFromExpression (Compiler * inCompiler,
     outAccessibilityRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
   }
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
-  cEnumerator_ListForModes currentInclusion (mProperty_mInclusionList, kENUMERATION_UP) ;
+  cEnumerator_ListForModes currentInclusion (mProperty_mInclusionList, EnumerationOrder::up) ;
   while (currentInclusion.hasCurrentObject ()) {
     const int32_t sourceMode = (int32_t) currentInclusion.current_mSourceMode (HERE).uintValue () ;
     const int32_t targetMode = (int32_t) currentInclusion.current_mTargetMode (HERE).uintValue () ;
@@ -1759,7 +1759,7 @@ computeFromExpression (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
-  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
@@ -1810,7 +1810,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1832,7 +1832,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1843,7 +1843,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1855,7 +1855,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -1876,7 +1876,7 @@ computeFromExpression (Compiler * inCompiler,
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
-        cEnumerator_ListForModes currentExclusion (mProperty_mExclusionList, kENUMERATION_UP) ;
+        cEnumerator_ListForModes currentExclusion (mProperty_mExclusionList, EnumerationOrder::up) ;
         while ((currentExclusion.hasCurrentObject ()) && isAccepted) {
           isAccepted = (sourceMode != (int32_t) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (int32_t) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
           currentExclusion.gotoNextObject () ;
@@ -1956,7 +1956,7 @@ compute (Compiler * inCompiler,
   { TC_Array <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  cEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap, EnumerationOrder::up) ;
   int32_t idx = 0 ;
   while (currentVar.hasCurrentObject ()) {
     machine.mNamesArray (idx COMMA_HERE) = currentVar.current_lkey (HERE).mProperty_string.stringValue () ;
@@ -1970,7 +1970,7 @@ compute (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
-  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
@@ -2021,7 +2021,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2043,7 +2043,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2054,7 +2054,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2066,7 +2066,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -2082,7 +2082,7 @@ compute (Compiler * inCompiler,
     machine.mTransitionRelationBDD |= accessibilityRelationStatesArray (mode COMMA_HERE) ;
   }
 //--- Add to accessibility relation transition from terminal states to initial state (if accepted)
-  cEnumerator_ListForModes currentInclusion (mProperty_mInclusionList, kENUMERATION_UP) ;
+  cEnumerator_ListForModes currentInclusion (mProperty_mInclusionList, EnumerationOrder::up) ;
   while (currentInclusion.hasCurrentObject ()) {
     const int32_t sourceMode = (int32_t) currentInclusion.current_mSourceMode (HERE).uintValue () ;
     const int32_t targetMode = (int32_t) currentInclusion.current_mTargetMode (HERE).uintValue () ;
@@ -2250,7 +2250,7 @@ compute (Compiler * inCompiler,
   { TC_Array <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  cEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap, EnumerationOrder::up) ;
   int32_t idx = 0 ;
   while (currentVar.hasCurrentObject ()) {
     machine.mNamesArray (idx COMMA_HERE) = currentVar.current_lkey (HERE).mProperty_string.stringValue () ;
@@ -2265,7 +2265,7 @@ compute (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
-  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, kENUMERATION_UP) ;
+  cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
       modeNamesArray (index COMMA_HERE) = currentMode.current_lkey (HERE) ;
@@ -2316,7 +2316,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2338,7 +2338,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2349,7 +2349,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2361,7 +2361,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -2382,7 +2382,7 @@ compute (Compiler * inCompiler,
       if (sourceMode != targetMode) {
       //--- Is theses transitions accepted ?
         bool isAccepted = true ;
-        cEnumerator_ListForModes currentExclusion (mProperty_mExclusionList, kENUMERATION_UP) ;
+        cEnumerator_ListForModes currentExclusion (mProperty_mExclusionList, EnumerationOrder::up) ;
         while ((currentExclusion.hasCurrentObject ()) && isAccepted) {
           isAccepted = (sourceMode != (int32_t) currentExclusion.current_mSourceMode (HERE).uintValue ()) || (targetMode != (int32_t) currentExclusion.current_mTargetMode (HERE).uintValue ()) ;
           currentExclusion.gotoNextObject () ;

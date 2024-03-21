@@ -148,7 +148,7 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 class cEnumerator__32_lstringlist : public cGenericAbstractEnumerator {
   public: cEnumerator__32_lstringlist (const GALGAS__32_lstringlist & inEnumeratedObject,
-                                       const typeEnumerationOrder inOrder) ;
+                                       const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mValue_30_ (LOCATION_ARGS) const ;
@@ -222,7 +222,7 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS__32_lstringlist_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS__32_lstringlist_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -490,7 +490,7 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
 
 class cEnumerator_M_5F_variablesMap : public cGenericAbstractEnumerator {
   public: cEnumerator_M_5F_variablesMap (const GALGAS_M_5F_variablesMap & inEnumeratedObject,
-                                         const typeEnumerationOrder inOrder) ;
+                                         const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -519,7 +519,7 @@ class cMapElement_M_5F_variablesMap : public cMapElement {
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -592,7 +592,7 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_M_5F_variablesMap_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_M_5F_variablesMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -719,7 +719,7 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
 
 class cEnumerator_M_5F_stateMap : public cGenericAbstractEnumerator {
   public: cEnumerator_M_5F_stateMap (const GALGAS_M_5F_stateMap & inEnumeratedObject,
-                                     const typeEnumerationOrder inOrder) ;
+                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -748,7 +748,7 @@ class cMapElement_M_5F_stateMap : public cMapElement {
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -821,7 +821,7 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_M_5F_stateMap_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_M_5F_stateMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -964,7 +964,7 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_translationVector : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_translationVector (const GALGAS_L_5F_translationVector & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) ;
+                                              const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_uint current_mTargetSlot (LOCATION_ARGS) const ;
@@ -1026,7 +1026,7 @@ class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_translationVector_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_translationVector_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1072,7 +1072,7 @@ class GALGAS_AC_5F_boolExpression : public AC_GALGAS_reference_class {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_AC_5F_boolExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_AC_5F_boolExpression & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1127,7 +1127,7 @@ class GALGAS_AC_5F_boolExpression_2D_weak : public AC_GALGAS_weak_reference {
   public: static class GALGAS_AC_5F_boolExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_AC_5F_boolExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_AC_5F_boolExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1185,7 +1185,7 @@ class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMErrorLocation (class GALGAS_location inArgument0
@@ -1249,7 +1249,7 @@ class GALGAS_C_5F_importBoolMachine_2D_weak : public GALGAS_AC_5F_boolExpression
   public: static class GALGAS_C_5F_importBoolMachine_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_importBoolMachine_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1304,7 +1304,7 @@ class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_andExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_andExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -1365,7 +1365,7 @@ class GALGAS_C_5F_andExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
   public: static class GALGAS_C_5F_andExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_andExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_andExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1420,7 +1420,7 @@ class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_orExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_orExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -1481,7 +1481,7 @@ class GALGAS_C_5F_orExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_w
   public: static class GALGAS_C_5F_orExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_orExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_orExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1536,7 +1536,7 @@ class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_xorExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_xorExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -1597,7 +1597,7 @@ class GALGAS_C_5F_xorExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
   public: static class GALGAS_C_5F_xorExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_xorExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_xorExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1652,7 +1652,7 @@ class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_impliesExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_impliesExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -1713,7 +1713,7 @@ class GALGAS_C_5F_impliesExpression_2D_weak : public GALGAS_AC_5F_boolExpression
   public: static class GALGAS_C_5F_impliesExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_impliesExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_impliesExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1768,7 +1768,7 @@ class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_equalExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_equalExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -1829,7 +1829,7 @@ class GALGAS_C_5F_equalExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2
   public: static class GALGAS_C_5F_equalExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_equalExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_equalExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1881,7 +1881,7 @@ class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_notExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_notExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -1939,7 +1939,7 @@ class GALGAS_C_5F_notExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
   public: static class GALGAS_C_5F_notExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_notExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_notExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1991,7 +1991,7 @@ class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_VariableExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_VariableExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMInputVarIndex (class GALGAS_uint inArgument0
@@ -2049,7 +2049,7 @@ class GALGAS_C_5F_VariableExpression_2D_weak : public GALGAS_AC_5F_boolExpressio
   public: static class GALGAS_C_5F_VariableExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_VariableExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_VariableExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2098,7 +2098,7 @@ class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
   public: static class GALGAS_C_5F_trueExpression class_func_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_trueExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_trueExpression & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2153,7 +2153,7 @@ class GALGAS_C_5F_trueExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D
   public: static class GALGAS_C_5F_trueExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_trueExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_trueExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2202,7 +2202,7 @@ class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
   public: static class GALGAS_C_5F_falseExpression class_func_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_falseExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_falseExpression & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2257,7 +2257,7 @@ class GALGAS_C_5F_falseExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2
   public: static class GALGAS_C_5F_falseExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_falseExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_falseExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2438,7 +2438,7 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_transitionDefinition : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_transitionDefinition (const GALGAS_L_5F_transitionDefinition & inEnumeratedObject,
-                                                 const typeEnumerationOrder inOrder) ;
+                                                 const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_AC_5F_boolExpression current_mActionExpression (LOCATION_ARGS) const ;
@@ -2524,7 +2524,7 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_transitionDefinition_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_transitionDefinition_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2724,7 +2724,7 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_stateDefinition : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_stateDefinition (const GALGAS_L_5F_stateDefinition & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) ;
+                                            const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_uint current_mStateIndex (LOCATION_ARGS) const ;
@@ -2822,7 +2822,7 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_stateDefinition_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_stateDefinition_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -2984,7 +2984,7 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_statesDefinitionList : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_statesDefinitionList (const GALGAS_L_5F_statesDefinitionList & inEnumeratedObject,
-                                                 const typeEnumerationOrder inOrder) ;
+                                                 const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_uint current_mStateIndex (LOCATION_ARGS) const ;
@@ -3058,7 +3058,7 @@ class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_statesDefinitionList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_statesDefinitionList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3104,7 +3104,7 @@ class GALGAS_AC_5F_machineDefinition : public AC_GALGAS_reference_class {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_AC_5F_machineDefinition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_AC_5F_machineDefinition & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3159,7 +3159,7 @@ class GALGAS_AC_5F_machineDefinition_2D_weak : public AC_GALGAS_weak_reference {
   public: static class GALGAS_AC_5F_machineDefinition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_AC_5F_machineDefinition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_AC_5F_machineDefinition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3294,7 +3294,7 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
 
 class cEnumerator_M_5F_modesMap : public cGenericAbstractEnumerator {
   public: cEnumerator_M_5F_modesMap (const GALGAS_M_5F_modesMap & inEnumeratedObject,
-                                     const typeEnumerationOrder inOrder) ;
+                                     const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -3326,7 +3326,7 @@ class cMapElement_M_5F_modesMap : public cMapElement {
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -3410,7 +3410,7 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_M_5F_modesMap_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_M_5F_modesMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3572,7 +3572,7 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
 
 class cEnumerator_ListForModes : public cGenericAbstractEnumerator {
   public: cEnumerator_ListForModes (const GALGAS_ListForModes & inEnumeratedObject,
-                                    const typeEnumerationOrder inOrder) ;
+                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_uint current_mSourceMode (LOCATION_ARGS) const ;
@@ -3646,7 +3646,7 @@ class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_ListForModes_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_ListForModes_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3701,7 +3701,7 @@ class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_ma
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_substractiveModalCompositionComponent & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_substractiveModalCompositionComponent & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMExclusionList (class GALGAS_ListForModes inArgument0
@@ -3762,7 +3762,7 @@ class GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak : public GALGAS_
   public: static class GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3817,7 +3817,7 @@ class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machin
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_additiveModalCompositionComponent & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_additiveModalCompositionComponent & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMInclusionList (class GALGAS_ListForModes inArgument0
@@ -3878,7 +3878,7 @@ class GALGAS_C_5F_additiveModalCompositionComponent_2D_weak : public GALGAS_AC_5
   public: static class GALGAS_C_5F_additiveModalCompositionComponent_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_additiveModalCompositionComponent_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_additiveModalCompositionComponent_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3933,7 +3933,7 @@ class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_trans & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_trans & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMSourceStateExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -3994,7 +3994,7 @@ class GALGAS_C_5F_trans_2D_weak : public GALGAS_AC_5F_machineDefinition_2D_weak 
   public: static class GALGAS_C_5F_trans_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_trans_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_trans_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4049,7 +4049,7 @@ class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_importMachine & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_importMachine & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMIndexOfImportedMachine (class GALGAS_uint inArgument0
@@ -4110,7 +4110,7 @@ class GALGAS_C_5F_importMachine_2D_weak : public GALGAS_AC_5F_machineDefinition_
   public: static class GALGAS_C_5F_importMachine_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_importMachine_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_importMachine_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4174,7 +4174,7 @@ class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefin
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_explicitAutomatonDefinition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_explicitAutomatonDefinition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMEndOfDefinition (class GALGAS_location inArgument0
@@ -4244,7 +4244,7 @@ class GALGAS_C_5F_explicitAutomatonDefinition_2D_weak : public GALGAS_AC_5F_mach
   public: static class GALGAS_C_5F_explicitAutomatonDefinition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_explicitAutomatonDefinition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_explicitAutomatonDefinition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4296,7 +4296,7 @@ class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_boolToSeqExpression & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_boolToSeqExpression & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_AC_5F_boolExpression inArgument0
@@ -4354,7 +4354,7 @@ class GALGAS_C_5F_boolToSeqExpression_2D_weak : public GALGAS_AC_5F_machineDefin
   public: static class GALGAS_C_5F_boolToSeqExpression_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_boolToSeqExpression_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_boolToSeqExpression_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4412,7 +4412,7 @@ class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_existsDefinition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_existsDefinition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -4476,7 +4476,7 @@ class GALGAS_C_5F_existsDefinition_2D_weak : public GALGAS_AC_5F_machineDefiniti
   public: static class GALGAS_C_5F_existsDefinition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_existsDefinition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_existsDefinition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4534,7 +4534,7 @@ class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_forallDefinition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_forallDefinition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -4598,7 +4598,7 @@ class GALGAS_C_5F_forallDefinition_2D_weak : public GALGAS_AC_5F_machineDefiniti
   public: static class GALGAS_C_5F_forallDefinition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_forallDefinition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_forallDefinition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4653,7 +4653,7 @@ class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_parallelComposition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_parallelComposition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -4714,7 +4714,7 @@ class GALGAS_C_5F_parallelComposition_2D_weak : public GALGAS_AC_5F_machineDefin
   public: static class GALGAS_C_5F_parallelComposition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_parallelComposition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_parallelComposition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4769,7 +4769,7 @@ class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_orComposition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_orComposition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMLeftOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -4830,7 +4830,7 @@ class GALGAS_C_5F_orComposition_2D_weak : public GALGAS_AC_5F_machineDefinition_
   public: static class GALGAS_C_5F_orComposition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_orComposition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_orComposition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4888,7 +4888,7 @@ class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_strongModalComposition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_strongModalComposition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMErrorLocation (class GALGAS_location inArgument0
@@ -4952,7 +4952,7 @@ class GALGAS_C_5F_strongModalComposition_2D_weak : public GALGAS_AC_5F_machineDe
   public: static class GALGAS_C_5F_strongModalComposition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_strongModalComposition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_strongModalComposition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5010,7 +5010,7 @@ class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_weakModalComposition & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_weakModalComposition & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMErrorLocation (class GALGAS_location inArgument0
@@ -5074,7 +5074,7 @@ class GALGAS_C_5F_weakModalComposition_2D_weak : public GALGAS_AC_5F_machineDefi
   public: static class GALGAS_C_5F_weakModalComposition_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_weakModalComposition_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_weakModalComposition_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5126,7 +5126,7 @@ class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinitio
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_fullSaturationOperation & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_fullSaturationOperation & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -5184,7 +5184,7 @@ class GALGAS_C_5F_fullSaturationOperation_2D_weak : public GALGAS_AC_5F_machineD
   public: static class GALGAS_C_5F_fullSaturationOperation_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_fullSaturationOperation_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_fullSaturationOperation_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5236,7 +5236,7 @@ class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefiniti
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_complementationOperation & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_complementationOperation & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -5294,7 +5294,7 @@ class GALGAS_C_5F_complementationOperation_2D_weak : public GALGAS_AC_5F_machine
   public: static class GALGAS_C_5F_complementationOperation_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_complementationOperation_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_complementationOperation_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5346,7 +5346,7 @@ class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineD
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_suppressTerminalStatesOperation & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_suppressTerminalStatesOperation & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -5404,7 +5404,7 @@ class GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak : public GALGAS_AC_5F_
   public: static class GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5456,7 +5456,7 @@ class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDe
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_suppressInitialStatesOperation & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_suppressInitialStatesOperation & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMOperand (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -5514,7 +5514,7 @@ class GALGAS_C_5F_suppressInitialStatesOperation_2D_weak : public GALGAS_AC_5F_m
   public: static class GALGAS_C_5F_suppressInitialStatesOperation_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_suppressInitialStatesOperation_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_suppressInitialStatesOperation_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5560,7 +5560,7 @@ class GALGAS_AC_5F_job : public AC_GALGAS_reference_class {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_AC_5F_job & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_AC_5F_job & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5615,7 +5615,7 @@ class GALGAS_AC_5F_job_2D_weak : public AC_GALGAS_weak_reference {
   public: static class GALGAS_AC_5F_job_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_AC_5F_job_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_AC_5F_job_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5667,7 +5667,7 @@ class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayStates & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayStates & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
@@ -5725,7 +5725,7 @@ class GALGAS_C_5F_machineDisplayStates_2D_weak : public GALGAS_AC_5F_job_2D_weak
   public: static class GALGAS_C_5F_machineDisplayStates_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayStates_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayStates_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5777,7 +5777,7 @@ class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayInitialStates & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayInitialStates & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
@@ -5835,7 +5835,7 @@ class GALGAS_C_5F_machineDisplayInitialStates_2D_weak : public GALGAS_AC_5F_job_
   public: static class GALGAS_C_5F_machineDisplayInitialStates_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayInitialStates_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayInitialStates_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5887,7 +5887,7 @@ class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTerminalStates & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTerminalStates & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
@@ -5945,7 +5945,7 @@ class GALGAS_C_5F_machineDisplayTerminalStates_2D_weak : public GALGAS_AC_5F_job
   public: static class GALGAS_C_5F_machineDisplayTerminalStates_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTerminalStates_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTerminalStates_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5997,7 +5997,7 @@ class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTransitions & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTransitions & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
@@ -6055,7 +6055,7 @@ class GALGAS_C_5F_machineDisplayTransitions_2D_weak : public GALGAS_AC_5F_job_2D
   public: static class GALGAS_C_5F_machineDisplayTransitions_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTransitions_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDisplayTransitions_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6110,7 +6110,7 @@ class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheck & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineCheck & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMCheckMachineIsBoolean (class GALGAS_bool inArgument0
@@ -6171,7 +6171,7 @@ class GALGAS_C_5F_machineCheck_2D_weak : public GALGAS_AC_5F_job_2D_weak {
   public: static class GALGAS_C_5F_machineCheck_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheck_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineCheck_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6226,7 +6226,7 @@ class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheckIdentical & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineCheckIdentical & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex_31_ (class GALGAS_uint inArgument0
@@ -6287,7 +6287,7 @@ class GALGAS_C_5F_machineCheckIdentical_2D_weak : public GALGAS_AC_5F_job_2D_wea
   public: static class GALGAS_C_5F_machineCheckIdentical_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineCheckIdentical_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineCheckIdentical_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6357,7 +6357,7 @@ class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineComponent & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineComponent & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMDefinition (class GALGAS_AC_5F_machineDefinition inArgument0
@@ -6433,7 +6433,7 @@ class GALGAS_C_5F_machineComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
   public: static class GALGAS_C_5F_machineComponent_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineComponent_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineComponent_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6503,7 +6503,7 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMInclusionList (class GALGAS_ListForModes inArgument0
@@ -6579,7 +6579,7 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak : public GALGAS_AC_5
   public: static class GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6649,7 +6649,7 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_jo
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMExclusionList (class GALGAS_ListForModes inArgument0
@@ -6725,7 +6725,7 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak : public GALGAS_
   public: static class GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6868,7 +6868,7 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_inputConfigurationForScenario : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_inputConfigurationForScenario (const GALGAS_L_5F_inputConfigurationForScenario & inEnumeratedObject,
-                                                          const typeEnumerationOrder inOrder) ;
+                                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_luint current_mInputValue (LOCATION_ARGS) const ;
@@ -6930,7 +6930,7 @@ class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_ro
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_inputConfigurationForScenario_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_inputConfigurationForScenario_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -7073,7 +7073,7 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_inputScenario : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_inputScenario (const GALGAS_L_5F_inputScenario & inEnumeratedObject,
-                                          const typeEnumerationOrder inOrder) ;
+                                          const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_L_5F_inputConfigurationForScenario current_mInputConfiguration (LOCATION_ARGS) const ;
@@ -7135,7 +7135,7 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_inputScenario_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_inputScenario_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -7297,7 +7297,7 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_scenarioList : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_scenarioList (const GALGAS_L_5F_scenarioList & inEnumeratedObject,
-                                         const typeEnumerationOrder inOrder) ;
+                                         const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_mScenarioTitle (LOCATION_ARGS) const ;
@@ -7371,7 +7371,7 @@ class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_scenarioList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_scenarioList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -7435,7 +7435,7 @@ class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const ;
 
 //--------------------------------- Setters
   public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
@@ -7472,57 +7472,4 @@ class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
 
 #include "separateHeaderFor_C_5F_scenarioComponent.h"
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @C_5F_scenarioComponent_2D_weak weak reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_C_5F_scenarioComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
-//--------------------------------- Default constructor
-  public: GALGAS_C_5F_scenarioComponent_2D_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GALGAS_C_5F_scenarioComponent_2D_weak (const class GALGAS_C_5F_scenarioComponent & inSource) ;
-
-  public: GALGAS_C_5F_scenarioComponent_2D_weak & operator = (const class GALGAS_C_5F_scenarioComponent & inSource) ;
-
-//--------------------------------- Bang operator
-  public: GALGAS_C_5F_scenarioComponent bang_C_5F_scenarioComponent_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_C_5F_scenarioComponent_2D_weak extractObject (const GALGAS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_C_5F_scenarioComponent_2D_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent_2D_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_C_5F_scenarioComponent_2D_weak class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2D_weak ;
 

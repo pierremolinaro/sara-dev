@@ -10,6 +10,59 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @C_5F_scenarioComponent_2D_weak weak reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_C_5F_scenarioComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
+//--------------------------------- Default constructor
+  public: GALGAS_C_5F_scenarioComponent_2D_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GALGAS_C_5F_scenarioComponent_2D_weak (const class GALGAS_C_5F_scenarioComponent & inSource) ;
+
+  public: GALGAS_C_5F_scenarioComponent_2D_weak & operator = (const class GALGAS_C_5F_scenarioComponent & inSource) ;
+
+//--------------------------------- Bang operator
+  public: GALGAS_C_5F_scenarioComponent bang_C_5F_scenarioComponent_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_C_5F_scenarioComponent_2D_weak extractObject (const GALGAS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GALGAS_C_5F_scenarioComponent_2D_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent_2D_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_C_5F_scenarioComponent_2D_weak class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2D_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @typeDisplayBDDstats reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -36,7 +89,7 @@ class GALGAS_typeDisplayBDDstats : public GALGAS_AC_5F_job {
   public: static class GALGAS_typeDisplayBDDstats class_func_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -91,7 +144,7 @@ class GALGAS_typeDisplayBDDstats_2D_weak : public GALGAS_AC_5F_job_2D_weak {
   public: static class GALGAS_typeDisplayBDDstats_2D_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats_2D_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_typeDisplayBDDstats_2D_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -234,7 +287,7 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
 
 class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
   public: cEnumerator_L_5F_jobList (const GALGAS_L_5F_jobList & inEnumeratedObject,
-                                    const typeEnumerationOrder inOrder) ;
+                                    const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
@@ -296,7 +349,7 @@ class GALGAS_L_5F_jobList_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_L_5F_jobList_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_L_5F_jobList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -479,7 +532,7 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
 
 class cEnumerator_M_5F_machinesMap : public cGenericAbstractEnumerator {
   public: cEnumerator_M_5F_machinesMap (const GALGAS_M_5F_machinesMap & inEnumeratedObject,
-                                        const typeEnumerationOrder inOrder) ;
+                                        const EnumerationOrder inOrder) ;
 
 //--- Current element access
   public: class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -520,7 +573,7 @@ class cMapElement_M_5F_machinesMap : public cMapElement {
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
@@ -637,7 +690,7 @@ class GALGAS_M_5F_machinesMap_2D_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_M_5F_machinesMap_2D_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_M_5F_machinesMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -719,7 +772,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_semanticContext & inOperand) const ;
+  public: ComparisonResult objectCompare (const GALGAS_semanticContext & inOperand) const ;
 
 //--------------------------------- Setters
 
