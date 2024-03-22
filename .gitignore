@@ -10,7 +10,10 @@
 xcode-project/build/**
 */xcuserdata/**
 */xcshareddata/**
-build/**
+build/cli-objects
+build/indexes
+build/helpers
+
 *.o
 *.dep
 *.exe
