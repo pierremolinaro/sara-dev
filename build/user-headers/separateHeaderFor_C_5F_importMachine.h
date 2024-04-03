@@ -28,6 +28,10 @@ class cPtr_C_5F_importMachine : public cPtr_AC_5F_machineDefinition {
   public: GALGAS_uint mProperty_mIndexOfImportedMachine ;
   public: GALGAS_L_5F_translationVector mProperty_mTranslationVector ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_importMachine (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_importMachine (const GALGAS_uint & in_mIndexOfImportedMachine,
                                    const GALGAS_L_5F_translationVector & in_mTranslationVector

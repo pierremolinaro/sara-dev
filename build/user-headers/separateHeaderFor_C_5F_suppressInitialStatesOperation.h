@@ -27,6 +27,10 @@ class cPtr_C_5F_suppressInitialStatesOperation : public cPtr_AC_5F_machineDefini
 //--- Properties
   public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_suppressInitialStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_suppressInitialStatesOperation (const GALGAS_AC_5F_machineDefinition & in_mOperand
                                                     COMMA_LOCATION_ARGS) ;

@@ -26,6 +26,10 @@ class cPtr_C_5F_orExpression : public cPtr_AC_5F_boolExpression {
   public: GALGAS_AC_5F_boolExpression mProperty_mLeftExpression ;
   public: GALGAS_AC_5F_boolExpression mProperty_mRightExpression ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_orExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_orExpression (const GALGAS_AC_5F_boolExpression & in_mLeftExpression,
                                   const GALGAS_AC_5F_boolExpression & in_mRightExpression

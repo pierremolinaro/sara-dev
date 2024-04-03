@@ -29,6 +29,10 @@ class cPtr_C_5F_forallDefinition : public cPtr_AC_5F_machineDefinition {
   public: GALGAS_uint mProperty_mTotalVariableCount ;
   public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_forallDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_forallDefinition (const GALGAS_uint & in_mPreviousVariableCount,
                                       const GALGAS_uint & in_mTotalVariableCount,

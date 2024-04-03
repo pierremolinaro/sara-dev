@@ -28,6 +28,10 @@ class cPtr_C_5F_parallelComposition : public cPtr_AC_5F_machineDefinition {
   public: GALGAS_AC_5F_machineDefinition mProperty_mLeftOperand ;
   public: GALGAS_AC_5F_machineDefinition mProperty_mRightOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_parallelComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_parallelComposition (const GALGAS_AC_5F_machineDefinition & in_mLeftOperand,
                                          const GALGAS_AC_5F_machineDefinition & in_mRightOperand

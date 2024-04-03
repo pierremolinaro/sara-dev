@@ -28,6 +28,10 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
   public: GALGAS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
   public: GALGAS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_trans (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
                            const GALGAS_AC_5F_boolExpression & in_mTargetStateExpression

@@ -31,6 +31,10 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
   public: GALGAS_stringlist mProperty_mNameList ;
   public: GALGAS_AC_5F_machineDefinition mProperty_mDefinition ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_machineComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_machineComponent (const GALGAS_lstring & in_mMachineName,
                                       const GALGAS_uint & in_mMachineIndex,

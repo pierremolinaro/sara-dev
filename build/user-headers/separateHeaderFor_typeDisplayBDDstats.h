@@ -24,6 +24,10 @@ class cPtr_typeDisplayBDDstats : public cPtr_AC_5F_job {
 //--- END OF USER ZONE 2
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_typeDisplayBDDstats (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_typeDisplayBDDstats (LOCATION_ARGS) ;
 

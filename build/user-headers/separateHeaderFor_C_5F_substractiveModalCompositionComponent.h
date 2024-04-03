@@ -28,6 +28,10 @@ class cPtr_C_5F_substractiveModalCompositionComponent : public cPtr_AC_5F_machin
   public: GALGAS_M_5F_modesMap mProperty_mModeMap ;
   public: GALGAS_ListForModes mProperty_mExclusionList ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_substractiveModalCompositionComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_substractiveModalCompositionComponent (const GALGAS_M_5F_modesMap & in_mModeMap,
                                                            const GALGAS_ListForModes & in_mExclusionList

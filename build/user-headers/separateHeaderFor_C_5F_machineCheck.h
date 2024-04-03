@@ -26,6 +26,10 @@ class cPtr_C_5F_machineCheck : public cPtr_AC_5F_job {
   public: GALGAS_uint mProperty_mMachineIndex ;
   public: GALGAS_bool mProperty_mCheckMachineIsBoolean ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_machineCheck (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_machineCheck (const GALGAS_uint & in_mMachineIndex,
                                   const GALGAS_bool & in_mCheckMachineIsBoolean

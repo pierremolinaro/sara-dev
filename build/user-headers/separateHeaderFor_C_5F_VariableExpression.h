@@ -25,6 +25,10 @@ class cPtr_C_5F_VariableExpression : public cPtr_AC_5F_boolExpression {
 //--- Properties
   public: GALGAS_uint mProperty_mInputVarIndex ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_VariableExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_VariableExpression (const GALGAS_uint & in_mInputVarIndex
                                         COMMA_LOCATION_ARGS) ;

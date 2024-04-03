@@ -27,6 +27,10 @@ class cPtr_C_5F_complementationOperation : public cPtr_AC_5F_machineDefinition {
 //--- Properties
   public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_complementationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_complementationOperation (const GALGAS_AC_5F_machineDefinition & in_mOperand
                                               COMMA_LOCATION_ARGS) ;

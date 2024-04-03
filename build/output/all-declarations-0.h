@@ -28,6 +28,8 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -195,14 +197,23 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
     mProperty_mValue_31_ = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS__32_lstringlist_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS__32_lstringlist_2D_element (const GALGAS_lstring & in_mValue_30_,
                                              const GALGAS_lstring & in_mValue_31_) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS__32_lstringlist_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -413,6 +424,8 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
   
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -565,14 +578,23 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
     mProperty_mIndex = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_M_5F_variablesMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_M_5F_variablesMap_2D_element (const GALGAS_lstring & in_lkey,
                                                const GALGAS_uint & in_mIndex) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_M_5F_variablesMap_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_uint & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -636,6 +658,8 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
   public: GALGAS_M_5F_stateMap & operator = (const GALGAS_M_5F_stateMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -794,14 +818,23 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
     mProperty_mIndex = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_M_5F_stateMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_M_5F_stateMap_2D_element (const GALGAS_lstring & in_lkey,
                                            const GALGAS_uint & in_mIndex) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_M_5F_stateMap_2D_element init_28__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                   const class GALGAS_uint & inOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -861,6 +894,8 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1001,13 +1036,21 @@ class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
     mProperty_mTargetSlot = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_L_5F_translationVector_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_translationVector_2D_element (const GALGAS_uint & in_mTargetSlot) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_L_5F_translationVector_2D_element init_28__29_ (const class GALGAS_uint & inOperand0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1063,6 +1106,10 @@ class GALGAS_AC_5F_boolExpression : public AC_GALGAS_reference_class {
 //--------------------------------- Property read access
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_AC_5F_boolExpression init_28__29_ (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1114,6 +1161,8 @@ class GALGAS_AC_5F_boolExpression_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_AC_5F_boolExpression bang_AC_5F_boolExpression_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1169,6 +1218,13 @@ class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_L_5F_translationVector readProperty_mTranslationVector (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_importBoolMachine init_28__2C__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                     const class GALGAS_location & inOperand1,
+                                                                     const class GALGAS_L_5F_translationVector & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1237,6 +1293,8 @@ class GALGAS_C_5F_importBoolMachine_2D_weak : public GALGAS_AC_5F_boolExpression
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1289,6 +1347,12 @@ class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_AC_5F_boolExpression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_andExpression init_28__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                             const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1353,6 +1417,8 @@ class GALGAS_C_5F_andExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1405,6 +1471,12 @@ class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_AC_5F_boolExpression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_orExpression init_28__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                            const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1469,6 +1541,8 @@ class GALGAS_C_5F_orExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_w
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1521,6 +1595,12 @@ class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_AC_5F_boolExpression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_xorExpression init_28__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                             const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1585,6 +1665,8 @@ class GALGAS_C_5F_xorExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1637,6 +1719,12 @@ class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_AC_5F_boolExpression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_impliesExpression init_28__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                 const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1701,6 +1789,8 @@ class GALGAS_C_5F_impliesExpression_2D_weak : public GALGAS_AC_5F_boolExpression
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1753,6 +1843,12 @@ class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_AC_5F_boolExpression readProperty_mRightExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_equalExpression init_28__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                               const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1817,6 +1913,8 @@ class GALGAS_C_5F_equalExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1867,6 +1965,11 @@ class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_AC_5F_boolExpression readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_notExpression init_28__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1927,6 +2030,8 @@ class GALGAS_C_5F_notExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -1977,6 +2082,11 @@ class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
   public: class GALGAS_uint readProperty_mInputVarIndex (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_VariableExpression init_28__29_ (const class GALGAS_uint & inOperand0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2037,6 +2147,8 @@ class GALGAS_C_5F_VariableExpression_2D_weak : public GALGAS_AC_5F_boolExpressio
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2085,6 +2197,10 @@ class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_trueExpression init_28__29_ (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2141,6 +2257,8 @@ class GALGAS_C_5F_trueExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2189,6 +2307,10 @@ class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_falseExpression init_28__29_ (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2245,6 +2367,8 @@ class GALGAS_C_5F_falseExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -2299,6 +2423,8 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2495,8 +2621,11 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
     mProperty_mTargetStateIndex = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_L_5F_transitionDefinition_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_transitionDefinition_2D_element (const GALGAS_AC_5F_boolExpression & in_mActionExpression,
@@ -2504,6 +2633,13 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
                                                        const GALGAS_uint & in_mTargetStateIndex) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_L_5F_transitionDefinition_2D_element init_28__2C__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                                                   const class GALGAS_location & inOperand1,
+                                                                                   const class GALGAS_uint & inOperand2,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2567,6 +2703,8 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2791,8 +2929,11 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
     mProperty_mTransitionsList = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_L_5F_stateDefinition_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_stateDefinition_2D_element (const GALGAS_uint & in_mStateIndex,
@@ -2801,6 +2942,14 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
                                                   const GALGAS_L_5F_transitionDefinition & in_mTransitionsList) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_L_5F_stateDefinition_2D_element init_28__2C__2C__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                                  const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                                                  const class GALGAS_location & inOperand2,
+                                                                                  const class GALGAS_L_5F_transitionDefinition & inOperand3,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -2863,6 +3012,8 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3031,14 +3182,23 @@ class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
     mProperty_mStateLocation = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_L_5F_statesDefinitionList_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_statesDefinitionList_2D_element (const GALGAS_uint & in_mStateIndex,
                                                        const GALGAS_location & in_mStateLocation) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_L_5F_statesDefinitionList_2D_element init_28__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                               const class GALGAS_location & inOperand1,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3095,6 +3255,10 @@ class GALGAS_AC_5F_machineDefinition : public AC_GALGAS_reference_class {
 //--------------------------------- Property read access
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+  public: static GALGAS_AC_5F_machineDefinition init_28__29_ (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3146,6 +3310,8 @@ class GALGAS_AC_5F_machineDefinition_2D_weak : public AC_GALGAS_weak_reference {
   public: GALGAS_AC_5F_machineDefinition bang_AC_5F_machineDefinition_2D_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3203,6 +3369,8 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
   public: GALGAS_M_5F_modesMap & operator = (const GALGAS_M_5F_modesMap & inSource) ;
   
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3381,8 +3549,11 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
     mProperty_mModeDefinition = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_M_5F_modesMap_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_M_5F_modesMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3390,6 +3561,13 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
                                            const GALGAS_AC_5F_machineDefinition & in_mModeDefinition) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_M_5F_modesMap_2D_element init_28__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_uint & inOperand1,
+                                                                       const class GALGAS_AC_5F_machineDefinition & inOperand2,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3451,6 +3629,8 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3619,14 +3799,23 @@ class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
     mProperty_mTargetMode = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_ListForModes_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_ListForModes_2D_element (const GALGAS_uint & in_mSourceMode,
                                           const GALGAS_uint & in_mTargetMode) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_ListForModes_2D_element init_28__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                  const class GALGAS_uint & inOperand1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3686,6 +3875,12 @@ class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_ma
   public: class GALGAS_ListForModes readProperty_mExclusionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_substractiveModalCompositionComponent init_28__2C__29_ (const class GALGAS_M_5F_modesMap & inOperand0,
+                                                                                     const class GALGAS_ListForModes & inOperand1,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3750,6 +3945,8 @@ class GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak : public GALGAS_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3802,6 +3999,12 @@ class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machin
   public: class GALGAS_ListForModes readProperty_mInclusionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_additiveModalCompositionComponent init_28__2C__29_ (const class GALGAS_M_5F_modesMap & inOperand0,
+                                                                                 const class GALGAS_ListForModes & inOperand1,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3866,6 +4069,8 @@ class GALGAS_C_5F_additiveModalCompositionComponent_2D_weak : public GALGAS_AC_5
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -3918,6 +4123,12 @@ class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_boolExpression readProperty_mTargetStateExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_trans init_28__2C__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                     const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -3982,6 +4193,8 @@ class GALGAS_C_5F_trans_2D_weak : public GALGAS_AC_5F_machineDefinition_2D_weak 
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4034,6 +4247,12 @@ class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_L_5F_translationVector readProperty_mTranslationVector (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_importMachine init_28__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                             const class GALGAS_L_5F_translationVector & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4098,6 +4317,8 @@ class GALGAS_C_5F_importMachine_2D_weak : public GALGAS_AC_5F_machineDefinition_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4156,6 +4377,15 @@ class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefin
   public: class GALGAS_location readProperty_mEndOfDefinition (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_explicitAutomatonDefinition init_28__2C__2C__2C__2C__29_ (const class GALGAS_M_5F_stateMap & inOperand0,
+                                                                                       const class GALGAS_L_5F_statesDefinitionList & inOperand1,
+                                                                                       const class GALGAS_L_5F_statesDefinitionList & inOperand2,
+                                                                                       const class GALGAS_L_5F_stateDefinition & inOperand3,
+                                                                                       const class GALGAS_location & inOperand4,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4232,6 +4462,8 @@ class GALGAS_C_5F_explicitAutomatonDefinition_2D_weak : public GALGAS_AC_5F_mach
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4282,6 +4514,11 @@ class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_boolExpression readProperty_mExpression (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_boolToSeqExpression init_28__29_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4342,6 +4579,8 @@ class GALGAS_C_5F_boolToSeqExpression_2D_weak : public GALGAS_AC_5F_machineDefin
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4396,6 +4635,13 @@ class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_machineDefinition readProperty_mOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_existsDefinition init_28__2C__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                    const class GALGAS_uint & inOperand1,
+                                                                    const class GALGAS_AC_5F_machineDefinition & inOperand2,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4464,6 +4710,8 @@ class GALGAS_C_5F_existsDefinition_2D_weak : public GALGAS_AC_5F_machineDefiniti
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4518,6 +4766,13 @@ class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_machineDefinition readProperty_mOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_forallDefinition init_28__2C__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                    const class GALGAS_uint & inOperand1,
+                                                                    const class GALGAS_AC_5F_machineDefinition & inOperand2,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4586,6 +4841,8 @@ class GALGAS_C_5F_forallDefinition_2D_weak : public GALGAS_AC_5F_machineDefiniti
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4638,6 +4895,12 @@ class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_machineDefinition readProperty_mRightOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_parallelComposition init_28__2C__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                   const class GALGAS_AC_5F_machineDefinition & inOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4702,6 +4965,8 @@ class GALGAS_C_5F_parallelComposition_2D_weak : public GALGAS_AC_5F_machineDefin
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4754,6 +5019,12 @@ class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_machineDefinition readProperty_mRightOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_orComposition init_28__2C__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                             const class GALGAS_AC_5F_machineDefinition & inOperand1,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4818,6 +5089,8 @@ class GALGAS_C_5F_orComposition_2D_weak : public GALGAS_AC_5F_machineDefinition_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4872,6 +5145,13 @@ class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition
   public: class GALGAS_AC_5F_machineDefinition readProperty_mRightOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_strongModalComposition init_28__2C__2C__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                          const class GALGAS_location & inOperand1,
+                                                                          const class GALGAS_AC_5F_machineDefinition & inOperand2,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -4940,6 +5220,8 @@ class GALGAS_C_5F_strongModalComposition_2D_weak : public GALGAS_AC_5F_machineDe
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -4994,6 +5276,13 @@ class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
   public: class GALGAS_AC_5F_machineDefinition readProperty_mRightOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_weakModalComposition init_28__2C__2C__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                        const class GALGAS_location & inOperand1,
+                                                                        const class GALGAS_AC_5F_machineDefinition & inOperand2,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5062,6 +5351,8 @@ class GALGAS_C_5F_weakModalComposition_2D_weak : public GALGAS_AC_5F_machineDefi
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5112,6 +5403,11 @@ class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinitio
   public: class GALGAS_AC_5F_machineDefinition readProperty_mOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_fullSaturationOperation init_28__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5172,6 +5468,8 @@ class GALGAS_C_5F_fullSaturationOperation_2D_weak : public GALGAS_AC_5F_machineD
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5222,6 +5520,11 @@ class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefiniti
   public: class GALGAS_AC_5F_machineDefinition readProperty_mOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_complementationOperation init_28__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5282,6 +5585,8 @@ class GALGAS_C_5F_complementationOperation_2D_weak : public GALGAS_AC_5F_machine
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5332,6 +5637,11 @@ class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineD
   public: class GALGAS_AC_5F_machineDefinition readProperty_mOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_suppressTerminalStatesOperation init_28__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5392,6 +5702,8 @@ class GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak : public GALGAS_AC_5F_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5442,6 +5754,11 @@ class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDe
   public: class GALGAS_AC_5F_machineDefinition readProperty_mOperand (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_suppressInitialStatesOperation init_28__29_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5502,6 +5819,8 @@ class GALGAS_C_5F_suppressInitialStatesOperation_2D_weak : public GALGAS_AC_5F_m
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5550,6 +5869,10 @@ class GALGAS_AC_5F_job : public AC_GALGAS_reference_class {
 
 //--------------------------------- Property read access
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_AC_5F_job init_28__29_ (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5603,6 +5926,8 @@ class GALGAS_AC_5F_job_2D_weak : public AC_GALGAS_weak_reference {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5653,6 +5978,11 @@ class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
   public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineDisplayStates init_28__29_ (const class GALGAS_uint & inOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5713,6 +6043,8 @@ class GALGAS_C_5F_machineDisplayStates_2D_weak : public GALGAS_AC_5F_job_2D_weak
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5763,6 +6095,11 @@ class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
   public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineDisplayInitialStates init_28__29_ (const class GALGAS_uint & inOperand0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5823,6 +6160,8 @@ class GALGAS_C_5F_machineDisplayInitialStates_2D_weak : public GALGAS_AC_5F_job_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5873,6 +6212,11 @@ class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
   public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineDisplayTerminalStates init_28__29_ (const class GALGAS_uint & inOperand0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -5933,6 +6277,8 @@ class GALGAS_C_5F_machineDisplayTerminalStates_2D_weak : public GALGAS_AC_5F_job
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -5983,6 +6329,11 @@ class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
   public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineDisplayTransitions init_28__29_ (const class GALGAS_uint & inOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6043,6 +6394,8 @@ class GALGAS_C_5F_machineDisplayTransitions_2D_weak : public GALGAS_AC_5F_job_2D
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6095,6 +6448,12 @@ class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
   public: class GALGAS_bool readProperty_mCheckMachineIsBoolean (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineCheck init_28__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                            const class GALGAS_bool & inOperand1,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6159,6 +6518,8 @@ class GALGAS_C_5F_machineCheck_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6211,6 +6572,12 @@ class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
   public: class GALGAS_uint readProperty_mMachineIndex_32_ (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineCheckIdentical init_28__2C__29_ (const class GALGAS_uint & inOperand0,
+                                                                     const class GALGAS_uint & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6275,6 +6642,8 @@ class GALGAS_C_5F_machineCheckIdentical_2D_weak : public GALGAS_AC_5F_job_2D_wea
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6337,6 +6706,17 @@ class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
   public: class GALGAS_AC_5F_machineDefinition readProperty_mDefinition (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineComponent init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                    const class GALGAS_uint & inOperand1,
+                                                                                    const class GALGAS_uint & inOperand2,
+                                                                                    const class GALGAS_uint & inOperand3,
+                                                                                    const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                    const class GALGAS_stringlist & inOperand5,
+                                                                                    const class GALGAS_AC_5F_machineDefinition & inOperand6,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6421,6 +6801,8 @@ class GALGAS_C_5F_machineComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6483,6 +6865,17 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
   public: class GALGAS_ListForModes readProperty_mInclusionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineDefinedByAdditiveModalComp init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                     const class GALGAS_uint & inOperand1,
+                                                                                                     const class GALGAS_uint & inOperand2,
+                                                                                                     const class GALGAS_uint & inOperand3,
+                                                                                                     const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                                     const class GALGAS_M_5F_modesMap & inOperand5,
+                                                                                                     const class GALGAS_ListForModes & inOperand6,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6567,6 +6960,8 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak : public GALGAS_AC_5
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6629,6 +7024,17 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_jo
   public: class GALGAS_ListForModes readProperty_mExclusionList (void) const ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_C_5F_machineDefinedBySubstractiveModalComp init_28__2C__2C__2C__2C__2C__2C__29_ (const class GALGAS_lstring & inOperand0,
+                                                                                                         const class GALGAS_uint & inOperand1,
+                                                                                                         const class GALGAS_uint & inOperand2,
+                                                                                                         const class GALGAS_uint & inOperand3,
+                                                                                                         const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                                                         const class GALGAS_M_5F_modesMap & inOperand5,
+                                                                                                         const class GALGAS_ListForModes & inOperand6,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6713,6 +7119,8 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak : public GALGAS_
 
 //-- Start of type generic part
 
+//--------------------------------- Initializers
+
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
@@ -6765,6 +7173,8 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6905,13 +7315,21 @@ class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_ro
     mProperty_mInputValue = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_L_5F_inputConfigurationForScenario_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_inputConfigurationForScenario_2D_element (const GALGAS_luint & in_mInputValue) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_L_5F_inputConfigurationForScenario_2D_element init_28__29_ (const class GALGAS_luint & inOperand0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -6970,6 +7388,8 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
                                                  COMMA_LOCATION_ARGS) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7110,13 +7530,21 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
     mProperty_mInputConfiguration = inValue ;
   }
 
-//--------------------------------- Virtual destructor (in debug mode)
+//--------------------------------- Virtual destructor
   public: virtual ~ GALGAS_L_5F_inputScenario_2D_element (void) ;
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GALGAS_L_5F_inputScenario_2D_element (const GALGAS_L_5F_inputConfigurationForScenario & in_mInputConfiguration) ;
 
 //-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GALGAS_L_5F_inputScenario_2D_element init_28__29_ (const class GALGAS_L_5F_inputConfigurationForScenario & inOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -7155,321 +7583,4 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario_2D_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @L_scenarioList list
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public: GALGAS_L_5F_scenarioList (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public: GALGAS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                 const class GALGAS_lstring & in_mScenarioTitle,
-                                                 const class GALGAS_L_5F_inputScenario & in_mInputScenario
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_L_5F_scenarioList extractObject (const GALGAS_object & inObject,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_L_5F_scenarioList class_func_emptyList (LOCATION_ARGS) ;
-
-  public: static class GALGAS_L_5F_scenarioList class_func_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_L_5F_inputScenario & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_L_5F_scenarioList inOperand,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                     const class GALGAS_L_5F_inputScenario & inOperand1
-                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: VIRTUAL_IN_DEBUG GALGAS_L_5F_scenarioList add_operation (const GALGAS_L_5F_scenarioList & inOperand,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_append (class GALGAS_lstring constinArgument0,
-                                               class GALGAS_L_5F_inputScenario constinArgument1,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
-                                                      class GALGAS_L_5F_inputScenario constinArgument1,
-                                                      class GALGAS_uint constinArgument2,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
-                                                 class GALGAS_L_5F_inputScenario & outArgument1,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
-                                                class GALGAS_L_5F_inputScenario & outArgument1,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
-                                                      class GALGAS_L_5F_inputScenario & outArgument1,
-                                                      class GALGAS_uint constinArgument2,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMInputScenarioAtIndex (class GALGAS_L_5F_inputScenario constinArgument0,
-                                                                 class GALGAS_uint constinArgument1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMScenarioTitleAtIndex (class GALGAS_lstring constinArgument0,
-                                                                 class GALGAS_uint constinArgument1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
-                                              class GALGAS_L_5F_inputScenario & outArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
-                                             class GALGAS_L_5F_inputScenario & outArgument1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_inputScenario getter_mInputScenarioAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mScenarioTitleAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_scenarioList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_scenarioList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG class GALGAS_L_5F_scenarioList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_L_5F_scenarioList ;
- 
-} ; // End of GALGAS_L_5F_scenarioList class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_L_5F_scenarioList : public cGenericAbstractEnumerator {
-  public: cEnumerator_L_5F_scenarioList (const GALGAS_L_5F_scenarioList & inEnumeratedObject,
-                                         const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GALGAS_lstring current_mScenarioTitle (LOCATION_ARGS) const ;
-  public: class GALGAS_L_5F_inputScenario current_mInputScenario (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GALGAS_L_5F_scenarioList_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @L_5F_scenarioList_2D_element struct
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_lstring mProperty_mScenarioTitle ;
-  public: inline GALGAS_lstring readProperty_mScenarioTitle (void) const {
-    return mProperty_mScenarioTitle ;
-  }
-
-  public: GALGAS_L_5F_inputScenario mProperty_mInputScenario ;
-  public: inline GALGAS_L_5F_inputScenario readProperty_mInputScenario (void) const {
-    return mProperty_mInputScenario ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_L_5F_scenarioList_2D_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMScenarioTitle (const GALGAS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mScenarioTitle = inValue ;
-  }
-
-  public: inline void setter_setMInputScenario (const GALGAS_L_5F_inputScenario & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInputScenario = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_L_5F_scenarioList_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_L_5F_scenarioList_2D_element (const GALGAS_lstring & in_mScenarioTitle,
-                                               const GALGAS_L_5F_inputScenario & in_mInputScenario) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_L_5F_scenarioList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_L_5F_scenarioList_2D_element class_func_new (const class GALGAS_lstring & inOperand0,
-                                                                           const class GALGAS_L_5F_inputScenario & inOperand1,
-                                                                           class Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_L_5F_scenarioList_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_L_5F_scenarioList_2D_element class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2D_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @C_5F_scenarioComponent reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GALGAS_C_5F_scenarioComponent : public GALGAS_AC_5F_job {
-//--------------------------------- Default constructor
-  public: GALGAS_C_5F_scenarioComponent (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GALGAS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
-
-//--------------------------------- Property read access
-  public: class GALGAS_uint readProperty_mMachineIndex (void) const ;
-
-  public: class GALGAS_uint readProperty_mInputVariableCount (void) const ;
-
-  public: class GALGAS_uint readProperty_mInputAndInternalVariableCount (void) const ;
-
-  public: class GALGAS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
-
-  public: class GALGAS_L_5F_scenarioList readProperty_mScenarioList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_C_5F_scenarioComponent extractObject (const GALGAS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_C_5F_scenarioComponent class_func_new (const class GALGAS_uint & inOperand0,
-                                                                     const class GALGAS_uint & inOperand1,
-                                                                     const class GALGAS_uint & inOperand2,
-                                                                     const class GALGAS_M_5F_variablesMap & inOperand3,
-                                                                     const class GALGAS_L_5F_scenarioList & inOperand4
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GALGAS_C_5F_scenarioComponent & inOperand) const ;
-
-//--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_setMInputAndInternalVariableCount (class GALGAS_uint inArgument0
-                                                                          COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMInputVariableCount (class GALGAS_uint inArgument0
-                                                               COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMMachineIndex (class GALGAS_uint inArgument0
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMScenarioList (class GALGAS_L_5F_scenarioList inArgument0
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_setMVariablesMap (class GALGAS_M_5F_variablesMap inArgument0
-                                                         COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_C_5F_scenarioComponent class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
-
-#include "separateHeaderFor_C_5F_scenarioComponent.h"
 

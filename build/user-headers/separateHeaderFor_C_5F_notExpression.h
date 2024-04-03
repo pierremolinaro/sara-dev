@@ -25,6 +25,10 @@ class cPtr_C_5F_notExpression : public cPtr_AC_5F_boolExpression {
 //--- Properties
   public: GALGAS_AC_5F_boolExpression mProperty_mExpression ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_notExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_notExpression (const GALGAS_AC_5F_boolExpression & in_mExpression
                                    COMMA_LOCATION_ARGS) ;

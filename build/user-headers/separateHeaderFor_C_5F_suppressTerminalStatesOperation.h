@@ -27,6 +27,10 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
 //--- Properties
   public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_suppressTerminalStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_suppressTerminalStatesOperation (const GALGAS_AC_5F_machineDefinition & in_mOperand
                                                      COMMA_LOCATION_ARGS) ;

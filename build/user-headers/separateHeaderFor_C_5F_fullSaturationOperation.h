@@ -27,6 +27,10 @@ class cPtr_C_5F_fullSaturationOperation : public cPtr_AC_5F_machineDefinition {
 //--- Properties
   public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_fullSaturationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_fullSaturationOperation (const GALGAS_AC_5F_machineDefinition & in_mOperand
                                              COMMA_LOCATION_ARGS) ;

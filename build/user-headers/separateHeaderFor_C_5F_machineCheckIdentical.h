@@ -26,6 +26,10 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
   public: GALGAS_uint mProperty_mMachineIndex_31_ ;
   public: GALGAS_uint mProperty_mMachineIndex_32_ ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_machineCheckIdentical (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_machineCheckIdentical (const GALGAS_uint & in_mMachineIndex_31_,
                                            const GALGAS_uint & in_mMachineIndex_32_

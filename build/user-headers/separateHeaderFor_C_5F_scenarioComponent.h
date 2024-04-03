@@ -29,6 +29,10 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
   public: GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
   public: GALGAS_L_5F_scenarioList mProperty_mScenarioList ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_scenarioComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_scenarioComponent (const GALGAS_uint & in_mMachineIndex,
                                        const GALGAS_uint & in_mInputVariableCount,

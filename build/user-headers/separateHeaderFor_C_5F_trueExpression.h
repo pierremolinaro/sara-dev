@@ -24,6 +24,10 @@ class cPtr_C_5F_trueExpression : public cPtr_AC_5F_boolExpression {
 //--- END OF USER ZONE 2
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_C_5F_trueExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_trueExpression (LOCATION_ARGS) ;
 

@@ -31,6 +31,10 @@ class cPtr_C_5F_machineDefinedByAdditiveModalComp : public cPtr_AC_5F_job {
   public: GALGAS_M_5F_modesMap mProperty_mModeMap ;
   public: GALGAS_ListForModes mProperty_mInclusionList ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_machineDefinedByAdditiveModalComp (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_machineDefinedByAdditiveModalComp (const GALGAS_lstring & in_mMachineName,
                                                        const GALGAS_uint & in_mMachineIndex,

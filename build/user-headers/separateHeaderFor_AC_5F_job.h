@@ -24,6 +24,10 @@ class cPtr_AC_5F_job : public acStrongPtr_class {
 //--- END OF USER ZONE 2
 //--- Properties
 
+
+//--- Default constructor
+  public: cPtr_AC_5F_job (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_AC_5F_job (LOCATION_ARGS) ;
 

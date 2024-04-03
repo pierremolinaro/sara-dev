@@ -27,6 +27,10 @@ class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {
   public: GALGAS_location mProperty_mErrorLocation ;
   public: GALGAS_L_5F_translationVector mProperty_mTranslationVector ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_importBoolMachine (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_importBoolMachine (const GALGAS_uint & in_mIndexOfImportedMachine,
                                        const GALGAS_location & in_mErrorLocation,

@@ -31,6 +31,10 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
   public: GALGAS_L_5F_stateDefinition mProperty_mStateDefinitionList ;
   public: GALGAS_location mProperty_mEndOfDefinition ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_explicitAutomatonDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_explicitAutomatonDefinition (const GALGAS_M_5F_stateMap & in_mStatesMap,
                                                  const GALGAS_L_5F_statesDefinitionList & in_mInitialStatesDefinitionList,

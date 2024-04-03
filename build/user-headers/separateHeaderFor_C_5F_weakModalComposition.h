@@ -29,6 +29,10 @@ class cPtr_C_5F_weakModalComposition : public cPtr_AC_5F_machineDefinition {
   public: GALGAS_location mProperty_mErrorLocation ;
   public: GALGAS_AC_5F_machineDefinition mProperty_mRightOperand ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_weakModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_weakModalComposition (const GALGAS_AC_5F_machineDefinition & in_mLeftOperand,
                                           const GALGAS_location & in_mErrorLocation,

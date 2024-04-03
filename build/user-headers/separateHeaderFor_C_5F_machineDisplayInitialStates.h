@@ -25,6 +25,10 @@ class cPtr_C_5F_machineDisplayInitialStates : public cPtr_AC_5F_job {
 //--- Properties
   public: GALGAS_uint mProperty_mMachineIndex ;
 
+
+//--- Default constructor
+  public: cPtr_C_5F_machineDisplayInitialStates (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
 //--- Constructor
   public: cPtr_C_5F_machineDisplayInitialStates (const GALGAS_uint & in_mMachineIndex
                                                  COMMA_LOCATION_ARGS) ;
