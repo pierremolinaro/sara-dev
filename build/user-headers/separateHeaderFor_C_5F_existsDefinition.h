@@ -14,6 +14,14 @@ class cPtr_C_5F_existsDefinition : public cPtr_AC_5F_machineDefinition {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_existsDefinition_init_21__21__21_ (const class GALGAS_uint & inOperand0,
+                                                       const class GALGAS_uint & inOperand1,
+                                                       const class GALGAS_AC_5F_machineDefinition & inOperand2,
+                                                       Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (Compiler * inCompiler,

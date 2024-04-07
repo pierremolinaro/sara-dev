@@ -14,6 +14,16 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_explicitAutomatonDefinition_init_21__21__21__21__21_ (const class GALGAS_M_5F_stateMap & inOperand0,
+                                                                          const class GALGAS_L_5F_statesDefinitionList & inOperand1,
+                                                                          const class GALGAS_L_5F_statesDefinitionList & inOperand2,
+                                                                          const class GALGAS_L_5F_stateDefinition & inOperand3,
+                                                                          const class GALGAS_location & inOperand4,
+                                                                          Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (Compiler * inCompiler,

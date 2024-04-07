@@ -14,6 +14,18 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_machineComponent_init_21__21__21__21__21__21__21_ (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_uint & inOperand1,
+                                                                       const class GALGAS_uint & inOperand2,
+                                                                       const class GALGAS_uint & inOperand3,
+                                                                       const class GALGAS_M_5F_variablesMap & inOperand4,
+                                                                       const class GALGAS_stringlist & inOperand5,
+                                                                       const class GALGAS_AC_5F_machineDefinition & inOperand6,
+                                                                       Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void compute (Compiler * inCompiler,

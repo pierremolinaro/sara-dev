@@ -14,6 +14,13 @@ class cPtr_C_5F_impliesExpression : public cPtr_AC_5F_boolExpression {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_impliesExpression_init_21__21_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+                                                    const class GALGAS_AC_5F_boolExpression & inOperand1,
+                                                    Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual BinaryDecisionDiagram computeBDD (Compiler * inCompiler,

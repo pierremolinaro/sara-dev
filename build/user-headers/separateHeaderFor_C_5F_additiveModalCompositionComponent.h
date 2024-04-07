@@ -14,6 +14,13 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_additiveModalCompositionComponent_init_21__21_ (const class GALGAS_M_5F_modesMap & inOperand0,
+                                                                    const class GALGAS_ListForModes & inOperand1,
+                                                                    Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (Compiler * inCompiler,

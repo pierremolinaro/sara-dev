@@ -14,6 +14,12 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_suppressTerminalStatesOperation_init_21_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+                                                              Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (Compiler * inCompiler,

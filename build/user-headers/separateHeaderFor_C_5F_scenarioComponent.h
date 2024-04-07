@@ -14,6 +14,16 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_scenarioComponent_init_21__21__21__21__21_ (const class GALGAS_uint & inOperand0,
+                                                                const class GALGAS_uint & inOperand1,
+                                                                const class GALGAS_uint & inOperand2,
+                                                                const class GALGAS_M_5F_variablesMap & inOperand3,
+                                                                const class GALGAS_L_5F_scenarioList & inOperand4,
+                                                                Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void compute (Compiler * inCompiler,

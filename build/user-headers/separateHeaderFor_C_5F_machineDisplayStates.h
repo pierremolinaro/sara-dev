@@ -14,6 +14,12 @@ class cPtr_C_5F_machineDisplayStates : public cPtr_AC_5F_job {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_machineDisplayStates_init_21_ (const class GALGAS_uint & inOperand0,
+                                                   Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual void compute (Compiler * inCompiler,

@@ -14,6 +14,11 @@ class cPtr_C_5F_trueExpression : public cPtr_AC_5F_boolExpression {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
+
+//--------------------------------- Initializers
+  public: void C_5F_trueExpression_init (Compiler * inCompiler) ;
+
+
 //--- START OF USER ZONE 2
 
   public : virtual BinaryDecisionDiagram computeBDD (Compiler * inCompiler,
