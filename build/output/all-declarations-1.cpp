@@ -106,6 +106,25 @@ GALGAS_L_5F_scenarioList GALGAS_L_5F_scenarioList::class_func_emptyList (UNUSED_
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_L_5F_scenarioList GALGAS_L_5F_scenarioList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_scenarioList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_scenarioList::enterElement (const GALGAS_L_5F_scenarioList_2D_element & inValue,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_scenarioList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_L_5F_scenarioList GALGAS_L_5F_scenarioList::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                              const GALGAS_L_5F_inputScenario & inOperand1
                                                                              COMMA_LOCATION_ARGS) {
@@ -1277,6 +1296,25 @@ GALGAS_L_5F_jobList GALGAS_L_5F_jobList::class_func_emptyList (UNUSED_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_L_5F_jobList GALGAS_L_5F_jobList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_jobList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_jobList::enterElement (const GALGAS_L_5F_jobList_2D_element & inValue,
+                                        Compiler * /* inCompiler */
+                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_jobList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_L_5F_jobList GALGAS_L_5F_jobList::class_func_listWithValue (const GALGAS_AC_5F_job & inOperand0
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_L_5F_jobList result ;
@@ -1594,6 +1632,18 @@ GALGAS_L_5F_jobList GALGAS_L_5F_jobList::extractObject (const GALGAS_object & in
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_M_5F_machinesMap::cMapElement_M_5F_machinesMap (const GALGAS_M_5F_machinesMap_2D_element & inValue
+                                                            COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mIndex (inValue.mProperty_mIndex),
+mProperty_mInputVariableCount (inValue.mProperty_mInputVariableCount),
+mProperty_mInputAndInternalVariableCount (inValue.mProperty_mInputAndInternalVariableCount),
+mProperty_mVariablesMap (inValue.mProperty_mVariablesMap),
+mProperty_mNameList (inValue.mProperty_mNameList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_M_5F_machinesMap::cMapElement_M_5F_machinesMap (const GALGAS_lstring & inKey,
                                                             const GALGAS_uint & in_mIndex,
                                                             const GALGAS_uint & in_mInputVariableCount,
@@ -1692,6 +1742,14 @@ GALGAS_M_5F_machinesMap & GALGAS_M_5F_machinesMap::operator = (const GALGAS_M_5F
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_M_5F_machinesMap GALGAS_M_5F_machinesMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_M_5F_machinesMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_M_5F_machinesMap GALGAS_M_5F_machinesMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_M_5F_machinesMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -1714,6 +1772,21 @@ GALGAS_M_5F_machinesMap GALGAS_M_5F_machinesMap::getter_overriddenMap (Compiler 
   GALGAS_M_5F_machinesMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_M_5F_machinesMap::enterElement (const GALGAS_M_5F_machinesMap_2D_element & inValue,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  cMapElement_M_5F_machinesMap * p = nullptr ;
+  macroMyNew (p, cMapElement_M_5F_machinesMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@M_5F_machinesMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2261,13 +2334,15 @@ GALGAS_semanticContext GALGAS_semanticContext::extractObject (const GALGAS_objec
 //------------------------------------------------------------------------------------------------
 
 void cParser_sara_5F_parser::rule_sara_5F_parser_start_5F_symbol_i0_ (Lexique_sara_5F_scanner * inCompiler) {
-  GALGAS_semanticContext var_semanticContext_535 = GALGAS_semanticContext::init_21__21_ (GALGAS_L_5F_jobList::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 13)), GALGAS_M_5F_machinesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 14)), inCompiler COMMA_HERE) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  GALGAS_L_5F_jobList temp_0 = GALGAS_L_5F_jobList::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 13)) ;
+  GALGAS_M_5F_machinesMap temp_1 = GALGAS_M_5F_machinesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 14)) ;
+  GALGAS_semanticContext var_semanticContext_535 = GALGAS_semanticContext::init_21__21_ (temp_0, temp_1, inCompiler COMMA_HERE) ;
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     nt_component_ (var_semanticContext_535, inCompiler) ;
     if (select_sara_5F_parser_0 (inCompiler) == 2) {
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
   {
@@ -2607,13 +2682,15 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i8_indexing (Lexique_
 
 void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_ (GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                 Lexique_sara_5F_scanner * inCompiler) {
-  GALGAS_M_5F_variablesMap var_variablesMap_6320 = GALGAS_M_5F_variablesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 217)) ;
-  GALGAS_stringlist var_nameList_6360 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 218)) ;
+  GALGAS_M_5F_variablesMap temp_0 = GALGAS_M_5F_variablesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 217)) ;
+  GALGAS_M_5F_variablesMap var_variablesMap_6320 = temp_0 ;
+  GALGAS_stringlist temp_1 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 218)) ;
+  GALGAS_stringlist var_nameList_6360 = temp_1 ;
   GALGAS_lstring var_machineName_6424 = inCompiler->synthetizedAttribute_identifierString () ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_machineIdf COMMA_SOURCE_FILE ("sara_parser.galgas", 220)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 221)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     GALGAS_lstring var_inputVarName_6500 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 224)) ;
     {
@@ -2623,7 +2700,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_ (GALGAS_semanticC
     if (select_sara_5F_parser_1 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 228)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
   GALGAS_uint var_inputVariablesCount_6651 = var_variablesMap_6320.getter_count (SOURCE_FILE ("sara_parser.galgas", 230)) ;
@@ -2633,8 +2710,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_ (GALGAS_semanticC
   case 1: {
   } break ;
   case 2: {
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
+    bool repeatFlag_3 = true ;
+    while (repeatFlag_3) {
       GALGAS_lstring var_outputVarName_6785 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 237)) ;
       {
@@ -2644,7 +2721,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_ (GALGAS_semanticC
       if (select_sara_5F_parser_3 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 241)) ;
       }else{
-        repeatFlag_1 = false ;
+        repeatFlag_3 = false ;
       }
     }
   } break ;
@@ -2654,8 +2731,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_ (GALGAS_semanticC
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 244)) ;
   GALGAS_uint var_inputAndInternalVariablesCount_6961 = var_variablesMap_6320.getter_count (SOURCE_FILE ("sara_parser.galgas", 245)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 247)) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
+  bool repeatFlag_4 = true ;
+  while (repeatFlag_4) {
     GALGAS_lstring var_outputVarName_7080 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 249)) ;
     {
@@ -2665,7 +2742,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_ (GALGAS_semanticC
     if (select_sara_5F_parser_4 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 253)) ;
     }else{
-      repeatFlag_2 = false ;
+      repeatFlag_4 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 255)) ;
@@ -2786,14 +2863,16 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i9_indexing (Lexique_
 
 void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_ (GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                  Lexique_sara_5F_scanner * inCompiler) {
-  GALGAS_M_5F_variablesMap var_variablesMap_8011 = GALGAS_M_5F_variablesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 279)) ;
-  GALGAS_stringlist var_nameList_8051 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 280)) ;
+  GALGAS_M_5F_variablesMap temp_0 = GALGAS_M_5F_variablesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 279)) ;
+  GALGAS_M_5F_variablesMap var_variablesMap_8011 = temp_0 ;
+  GALGAS_stringlist temp_1 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 280)) ;
+  GALGAS_stringlist var_nameList_8051 = temp_1 ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_modalcompadd COMMA_SOURCE_FILE ("sara_parser.galgas", 282)) ;
   GALGAS_lstring var_machineName_8132 = inCompiler->synthetizedAttribute_identifierString () ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_machineIdf COMMA_SOURCE_FILE ("sara_parser.galgas", 283)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 284)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     GALGAS_lstring var_inputVarName_8208 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 287)) ;
     {
@@ -2803,7 +2882,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_ (GALGAS_semantic
     if (select_sara_5F_parser_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 291)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
   GALGAS_uint var_inputVariablesCount_8359 = var_variablesMap_8011.getter_count (SOURCE_FILE ("sara_parser.galgas", 293)) ;
@@ -2813,8 +2892,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_ (GALGAS_semantic
   case 1: {
   } break ;
   case 2: {
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
+    bool repeatFlag_3 = true ;
+    while (repeatFlag_3) {
       GALGAS_lstring var_outputVarName_8493 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 300)) ;
       {
@@ -2824,7 +2903,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_ (GALGAS_semantic
       if (select_sara_5F_parser_7 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 304)) ;
       }else{
-        repeatFlag_1 = false ;
+        repeatFlag_3 = false ;
       }
     }
   } break ;
@@ -2834,8 +2913,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_ (GALGAS_semantic
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 307)) ;
   GALGAS_uint var_inputAndInternalVariablesCount_8669 = var_variablesMap_8011.getter_count (SOURCE_FILE ("sara_parser.galgas", 308)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 310)) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
+  bool repeatFlag_4 = true ;
+  while (repeatFlag_4) {
     GALGAS_lstring var_outputVarName_8789 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 312)) ;
     {
@@ -2845,7 +2924,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_ (GALGAS_semantic
     if (select_sara_5F_parser_8 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 316)) ;
     }else{
-      repeatFlag_2 = false ;
+      repeatFlag_4 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 318)) ;
@@ -2969,14 +3048,16 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i10_indexing (Lexique
 
 void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_ (GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                  Lexique_sara_5F_scanner * inCompiler) {
-  GALGAS_M_5F_variablesMap var_variablesMap_9767 = GALGAS_M_5F_variablesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 346)) ;
-  GALGAS_stringlist var_nameList_9807 = GALGAS_stringlist::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 347)) ;
+  GALGAS_M_5F_variablesMap temp_0 = GALGAS_M_5F_variablesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 346)) ;
+  GALGAS_M_5F_variablesMap var_variablesMap_9767 = temp_0 ;
+  GALGAS_stringlist temp_1 = GALGAS_stringlist::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 347)) ;
+  GALGAS_stringlist var_nameList_9807 = temp_1 ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_modalcompsub COMMA_SOURCE_FILE ("sara_parser.galgas", 349)) ;
   GALGAS_lstring var_machineName_9888 = inCompiler->synthetizedAttribute_identifierString () ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_machineIdf COMMA_SOURCE_FILE ("sara_parser.galgas", 350)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 351)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     GALGAS_lstring var_inputVarName_9964 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 354)) ;
     {
@@ -2986,7 +3067,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_ (GALGAS_semantic
     if (select_sara_5F_parser_9 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 358)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
   GALGAS_uint var_inputVariablesCount_10115 = var_variablesMap_9767.getter_count (SOURCE_FILE ("sara_parser.galgas", 360)) ;
@@ -2996,8 +3077,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_ (GALGAS_semantic
   case 1: {
   } break ;
   case 2: {
-    bool repeatFlag_1 = true ;
-    while (repeatFlag_1) {
+    bool repeatFlag_3 = true ;
+    while (repeatFlag_3) {
       GALGAS_lstring var_outputVarName_10249 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 367)) ;
       {
@@ -3007,7 +3088,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_ (GALGAS_semantic
       if (select_sara_5F_parser_11 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 371)) ;
       }else{
-        repeatFlag_1 = false ;
+        repeatFlag_3 = false ;
       }
     }
   } break ;
@@ -3017,8 +3098,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_ (GALGAS_semantic
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 374)) ;
   GALGAS_uint var_inputAndInternalVariablesCount_10425 = var_variablesMap_9767.getter_count (SOURCE_FILE ("sara_parser.galgas", 375)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 377)) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
+  bool repeatFlag_4 = true ;
+  while (repeatFlag_4) {
     GALGAS_lstring var_outputVarName_10544 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 379)) ;
     {
@@ -3028,7 +3109,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_ (GALGAS_semantic
     if (select_sara_5F_parser_12 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 383)) ;
     }else{
-      repeatFlag_2 = false ;
+      repeatFlag_4 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 385)) ;
@@ -3153,7 +3234,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i11_indexing (Lexique
 void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semanticContext & ioArgument_ioSemanticContext,
                                                                  Lexique_sara_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_scenario COMMA_SOURCE_FILE ("sara_parser.galgas", 410)) ;
-  GALGAS_M_5F_variablesMap var_variablesMap_11535 = GALGAS_M_5F_variablesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 411)) ;
+  GALGAS_M_5F_variablesMap temp_0 = GALGAS_M_5F_variablesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 411)) ;
+  GALGAS_M_5F_variablesMap var_variablesMap_11535 = temp_0 ;
   GALGAS_lstring var_machineName_11607 = inCompiler->synthetizedAttribute_identifierString () ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_machineIdf COMMA_SOURCE_FILE ("sara_parser.galgas", 413)) ;
   GALGAS_uint var_machineIndex_11717 ;
@@ -3163,8 +3245,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
   GALGAS_stringlist joker_11851 ; // Joker input parameter
   ioArgument_ioSemanticContext.readProperty_machinesMap ().method_searchKey (var_machineName_11607, var_machineIndex_11717, var_inputVariablesCountFromDefinition_11735, var_inputAndInternalVariablesCountFromDefinition_11774, var_variablesMapFromDefinition_11824, joker_11851, inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 415)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 417)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     GALGAS_lstring var_inputVarName_11919 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 419)) ;
     {
@@ -3173,17 +3255,17 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
     if (select_sara_5F_parser_13 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 422)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_1 = false ;
     }
   }
   GALGAS_uint var_inputVariablesCount_12033 = var_variablesMap_11535.getter_count (SOURCE_FILE ("sara_parser.galgas", 424)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 425)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCountFromDefinition_11735.objectCompare (var_inputVariablesCount_12033)).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      TC_Array <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 428)), GALGAS_string ("This declaration names ").add_operation (var_inputVariablesCount_12033.getter_string (SOURCE_FILE ("sara_parser.galgas", 428)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 428)).add_operation (GALGAS_string (" input variable(s), but machine definition names "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 428)).add_operation (var_inputVariablesCountFromDefinition_11735.getter_string (SOURCE_FILE ("sara_parser.galgas", 429)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 429)).add_operation (GALGAS_string (" input variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 429)), fixItArray2  COMMA_SOURCE_FILE ("sara_parser.galgas", 428)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCountFromDefinition_11735.objectCompare (var_inputVariablesCount_12033)).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 428)), GALGAS_string ("This declaration names ").add_operation (var_inputVariablesCount_12033.getter_string (SOURCE_FILE ("sara_parser.galgas", 428)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 428)).add_operation (GALGAS_string (" input variable(s), but machine definition names "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 428)).add_operation (var_inputVariablesCountFromDefinition_11735.getter_string (SOURCE_FILE ("sara_parser.galgas", 429)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 429)).add_operation (GALGAS_string (" input variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 429)), fixItArray3  COMMA_SOURCE_FILE ("sara_parser.galgas", 428)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 432)) ;
@@ -3191,8 +3273,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
   case 1: {
   } break ;
   case 2: {
-    bool repeatFlag_3 = true ;
-    while (repeatFlag_3) {
+    bool repeatFlag_4 = true ;
+    while (repeatFlag_4) {
       GALGAS_lstring var_outputVarName_12497 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 436)) ;
       {
@@ -3201,7 +3283,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
       if (select_sara_5F_parser_15 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 439)) ;
       }else{
-        repeatFlag_3 = false ;
+        repeatFlag_4 = false ;
       }
     }
   } break ;
@@ -3210,17 +3292,17 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 442)) ;
   GALGAS_uint var_inputAndInternalVariablesCount_12681 = var_variablesMap_11535.getter_count (SOURCE_FILE ("sara_parser.galgas", 444)) ;
-  enumGalgasBool test_4 = kBoolTrue ;
-  if (kBoolTrue == test_4) {
-    test_4 = GALGAS_bool (ComparisonKind::notEqual, var_inputAndInternalVariablesCountFromDefinition_11774.objectCompare (var_inputAndInternalVariablesCount_12681)).boolEnum () ;
-    if (kBoolTrue == test_4) {
-      TC_Array <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 446)), GALGAS_string ("This declaration names ").add_operation (var_inputAndInternalVariablesCount_12681.getter_string (SOURCE_FILE ("sara_parser.galgas", 446)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 446)).add_operation (GALGAS_string (" input and internal variable(s), but machine definition names "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 446)).add_operation (var_inputAndInternalVariablesCountFromDefinition_11774.getter_string (SOURCE_FILE ("sara_parser.galgas", 447)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 447)).add_operation (GALGAS_string (" input and internal variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 447)), fixItArray5  COMMA_SOURCE_FILE ("sara_parser.galgas", 446)) ;
+  enumGalgasBool test_5 = kBoolTrue ;
+  if (kBoolTrue == test_5) {
+    test_5 = GALGAS_bool (ComparisonKind::notEqual, var_inputAndInternalVariablesCountFromDefinition_11774.objectCompare (var_inputAndInternalVariablesCount_12681)).boolEnum () ;
+    if (kBoolTrue == test_5) {
+      TC_Array <FixItDescription> fixItArray6 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 446)), GALGAS_string ("This declaration names ").add_operation (var_inputAndInternalVariablesCount_12681.getter_string (SOURCE_FILE ("sara_parser.galgas", 446)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 446)).add_operation (GALGAS_string (" input and internal variable(s), but machine definition names "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 446)).add_operation (var_inputAndInternalVariablesCountFromDefinition_11774.getter_string (SOURCE_FILE ("sara_parser.galgas", 447)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 447)).add_operation (GALGAS_string (" input and internal variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 447)), fixItArray6  COMMA_SOURCE_FILE ("sara_parser.galgas", 446)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 450)) ;
-  bool repeatFlag_6 = true ;
-  while (repeatFlag_6) {
+  bool repeatFlag_7 = true ;
+  while (repeatFlag_7) {
     GALGAS_lstring var_outputVarName_13155 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 452)) ;
     {
@@ -3229,69 +3311,72 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_component_i12_ (GALGAS_semantic
     if (select_sara_5F_parser_16 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 455)) ;
     }else{
-      repeatFlag_6 = false ;
+      repeatFlag_7 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 457)) ;
   GALGAS_uint var_outputVariablesCount_13325 = var_variablesMap_11535.getter_count (SOURCE_FILE ("sara_parser.galgas", 459)) ;
   GALGAS_uint var_outputVariablesCountFromDefinition_13381 = var_variablesMapFromDefinition_11824.getter_count (SOURCE_FILE ("sara_parser.galgas", 460)) ;
-  enumGalgasBool test_7 = kBoolTrue ;
-  if (kBoolTrue == test_7) {
-    test_7 = GALGAS_bool (ComparisonKind::notEqual, var_outputVariablesCountFromDefinition_13381.objectCompare (var_outputVariablesCount_13325)).boolEnum () ;
-    if (kBoolTrue == test_7) {
-      TC_Array <FixItDescription> fixItArray8 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 462)), GALGAS_string ("This declaration names ").add_operation (var_outputVariablesCount_13325.getter_string (SOURCE_FILE ("sara_parser.galgas", 462)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 462)).add_operation (GALGAS_string (" variables, but machine definition names "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 462)).add_operation (var_outputVariablesCountFromDefinition_13381.getter_string (SOURCE_FILE ("sara_parser.galgas", 463)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 463)).add_operation (GALGAS_string (" variables"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 463)), fixItArray8  COMMA_SOURCE_FILE ("sara_parser.galgas", 462)) ;
+  enumGalgasBool test_8 = kBoolTrue ;
+  if (kBoolTrue == test_8) {
+    test_8 = GALGAS_bool (ComparisonKind::notEqual, var_outputVariablesCountFromDefinition_13381.objectCompare (var_outputVariablesCount_13325)).boolEnum () ;
+    if (kBoolTrue == test_8) {
+      TC_Array <FixItDescription> fixItArray9 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 462)), GALGAS_string ("This declaration names ").add_operation (var_outputVariablesCount_13325.getter_string (SOURCE_FILE ("sara_parser.galgas", 462)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 462)).add_operation (GALGAS_string (" variables, but machine definition names "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 462)).add_operation (var_outputVariablesCountFromDefinition_13381.getter_string (SOURCE_FILE ("sara_parser.galgas", 463)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 463)).add_operation (GALGAS_string (" variables"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 463)), fixItArray9  COMMA_SOURCE_FILE ("sara_parser.galgas", 462)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__7B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 465)) ;
-  GALGAS_L_5F_scenarioList var_scenarioList_13738 = GALGAS_L_5F_scenarioList::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 466)) ;
-  bool repeatFlag_9 = true ;
-  while (repeatFlag_9) {
+  GALGAS_L_5F_scenarioList temp_10 = GALGAS_L_5F_scenarioList::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 466)) ;
+  GALGAS_L_5F_scenarioList var_scenarioList_13738 = temp_10 ;
+  bool repeatFlag_11 = true ;
+  while (repeatFlag_11) {
     GALGAS_lstring var_scenarioTitle_13808 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_literal_5F_string COMMA_SOURCE_FILE ("sara_parser.galgas", 468)) ;
-    GALGAS_L_5F_inputScenario var_inputScenario_13830 = GALGAS_L_5F_inputScenario::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 469)) ;
-    bool repeatFlag_10 = true ;
-    while (repeatFlag_10) {
+    GALGAS_L_5F_inputScenario temp_12 = GALGAS_L_5F_inputScenario::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 469)) ;
+    GALGAS_L_5F_inputScenario var_inputScenario_13830 = temp_12 ;
+    bool repeatFlag_13 = true ;
+    while (repeatFlag_13) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("sara_parser.galgas", 471)) ;
-      GALGAS_L_5F_inputConfigurationForScenario var_inputConfigurationForScenario_13897 = GALGAS_L_5F_inputConfigurationForScenario::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 472)) ;
-      bool repeatFlag_11 = true ;
-      while (repeatFlag_11) {
+      GALGAS_L_5F_inputConfigurationForScenario temp_14 = GALGAS_L_5F_inputConfigurationForScenario::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 472)) ;
+      GALGAS_L_5F_inputConfigurationForScenario var_inputConfigurationForScenario_13897 = temp_14 ;
+      bool repeatFlag_15 = true ;
+      while (repeatFlag_15) {
         GALGAS_luint var_v_14010 = inCompiler->synthetizedAttribute_ulongValue () ;
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_literal_5F_integer COMMA_SOURCE_FILE ("sara_parser.galgas", 474)) ;
-        enumGalgasBool test_12 = kBoolTrue ;
-        if (kBoolTrue == test_12) {
-          test_12 = GALGAS_bool (ComparisonKind::greaterThan, var_v_14010.readProperty_uint ().objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
-          if (kBoolTrue == test_12) {
-            TC_Array <FixItDescription> fixItArray13 ;
-            inCompiler->emitSemanticError (var_v_14010.readProperty_location (), GALGAS_string ("this value is not a  binary digit"), fixItArray13  COMMA_SOURCE_FILE ("sara_parser.galgas", 476)) ;
+        enumGalgasBool test_16 = kBoolTrue ;
+        if (kBoolTrue == test_16) {
+          test_16 = GALGAS_bool (ComparisonKind::greaterThan, var_v_14010.readProperty_uint ().objectCompare (GALGAS_uint (uint32_t (1U)))).boolEnum () ;
+          if (kBoolTrue == test_16) {
+            TC_Array <FixItDescription> fixItArray17 ;
+            inCompiler->emitSemanticError (var_v_14010.readProperty_location (), GALGAS_string ("this value is not a  binary digit"), fixItArray17  COMMA_SOURCE_FILE ("sara_parser.galgas", 476)) ;
           }
         }
         var_inputConfigurationForScenario_13897.addAssign_operation (var_v_14010  COMMA_SOURCE_FILE ("sara_parser.galgas", 478)) ;
         if (select_sara_5F_parser_19 (inCompiler) == 2) {
           inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 480)) ;
         }else{
-          repeatFlag_11 = false ;
+          repeatFlag_15 = false ;
         }
       }
-      enumGalgasBool test_14 = kBoolTrue ;
-      if (kBoolTrue == test_14) {
-        test_14 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCount_12033.objectCompare (var_inputConfigurationForScenario_13897.getter_count (SOURCE_FILE ("sara_parser.galgas", 482)))).boolEnum () ;
-        if (kBoolTrue == test_14) {
-          TC_Array <FixItDescription> fixItArray15 ;
-          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 483)), GALGAS_string ("this input configuration names ").add_operation (var_inputConfigurationForScenario_13897.getter_count (SOURCE_FILE ("sara_parser.galgas", 483)).getter_string (SOURCE_FILE ("sara_parser.galgas", 483)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 483)).add_operation (GALGAS_string (" input variable(s), instead of "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 483)).add_operation (var_inputVariablesCount_12033.getter_string (SOURCE_FILE ("sara_parser.galgas", 483)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 483)), fixItArray15  COMMA_SOURCE_FILE ("sara_parser.galgas", 483)) ;
+      enumGalgasBool test_18 = kBoolTrue ;
+      if (kBoolTrue == test_18) {
+        test_18 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCount_12033.objectCompare (var_inputConfigurationForScenario_13897.getter_count (SOURCE_FILE ("sara_parser.galgas", 482)))).boolEnum () ;
+        if (kBoolTrue == test_18) {
+          TC_Array <FixItDescription> fixItArray19 ;
+          inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 483)), GALGAS_string ("this input configuration names ").add_operation (var_inputConfigurationForScenario_13897.getter_count (SOURCE_FILE ("sara_parser.galgas", 483)).getter_string (SOURCE_FILE ("sara_parser.galgas", 483)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 483)).add_operation (GALGAS_string (" input variable(s), instead of "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 483)).add_operation (var_inputVariablesCount_12033.getter_string (SOURCE_FILE ("sara_parser.galgas", 483)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 483)), fixItArray19  COMMA_SOURCE_FILE ("sara_parser.galgas", 483)) ;
         }
       }
       var_inputScenario_13830.addAssign_operation (var_inputConfigurationForScenario_13897  COMMA_SOURCE_FILE ("sara_parser.galgas", 485)) ;
       if (select_sara_5F_parser_18 (inCompiler) == 2) {
       }else{
-        repeatFlag_10 = false ;
+        repeatFlag_13 = false ;
       }
     }
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 488)) ;
     var_scenarioList_13738.addAssign_operation (var_scenarioTitle_13808, var_inputScenario_13830  COMMA_SOURCE_FILE ("sara_parser.galgas", 489)) ;
     if (select_sara_5F_parser_17 (inCompiler) == 2) {
     }else{
-      repeatFlag_9 = false ;
+      repeatFlag_11 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__7D_ COMMA_SOURCE_FILE ("sara_parser.galgas", 492)) ;
@@ -3754,10 +3839,11 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_io_5F_primary_i20_ (const GALGA
   GALGAS_M_5F_variablesMap var_machineVariablesMap_18216 ;
   GALGAS_stringlist joker_18236 ; // Joker input parameter
   constinArgument_inSemanticContext.readProperty_machinesMap ().method_searchKey (var_machineIdentifier_18030, var_indexOfImportedMachine_18115, var_machineInputVariableCount_18143, var_machineInputAndInternalVariableCount_18174, var_machineVariablesMap_18216, joker_18236, inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 600)) ;
-  GALGAS_L_5F_translationVector var_translationVector_18246 = GALGAS_L_5F_translationVector::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 601)) ;
+  GALGAS_L_5F_translationVector temp_0 = GALGAS_L_5F_translationVector::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 601)) ;
+  GALGAS_L_5F_translationVector var_translationVector_18246 = temp_0 ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 603)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     GALGAS_lstring var_inputVar_18354 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 605)) ;
     GALGAS_uint var_inputVarIndex_18402 ;
@@ -3766,17 +3852,17 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_io_5F_primary_i20_ (const GALGA
     if (select_sara_5F_parser_22 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 609)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_1 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 611)) ;
   GALGAS_uint var_inputVariablesCount_18497 = var_translationVector_18246.getter_count (SOURCE_FILE ("sara_parser.galgas", 612)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCount_18497.objectCompare (var_machineInputVariableCount_18143)).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      TC_Array <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 614)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_18030.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (var_machineInputVariableCount_18143.getter_string (SOURCE_FILE ("sara_parser.galgas", 614)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (GALGAS_string (" input variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (var_inputVariablesCount_18497.getter_string (SOURCE_FILE ("sara_parser.galgas", 615)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 615)).add_operation (GALGAS_string (" input variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 615)), fixItArray2  COMMA_SOURCE_FILE ("sara_parser.galgas", 614)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCount_18497.objectCompare (var_machineInputVariableCount_18143)).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 614)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_18030.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (var_machineInputVariableCount_18143.getter_string (SOURCE_FILE ("sara_parser.galgas", 614)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (GALGAS_string (" input variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 614)).add_operation (var_inputVariablesCount_18497.getter_string (SOURCE_FILE ("sara_parser.galgas", 615)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 615)).add_operation (GALGAS_string (" input variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 615)), fixItArray3  COMMA_SOURCE_FILE ("sara_parser.galgas", 614)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 618)) ;
@@ -3784,8 +3870,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_io_5F_primary_i20_ (const GALGA
   case 1: {
   } break ;
   case 2: {
-    bool repeatFlag_3 = true ;
-    while (repeatFlag_3) {
+    bool repeatFlag_4 = true ;
+    while (repeatFlag_4) {
       GALGAS_lstring var_internalVar_18919 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 622)) ;
       GALGAS_uint var_internalVarIndex_18975 ;
@@ -3794,7 +3880,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_io_5F_primary_i20_ (const GALGA
       if (select_sara_5F_parser_24 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 626)) ;
       }else{
-        repeatFlag_3 = false ;
+        repeatFlag_4 = false ;
       }
     }
   } break ;
@@ -3803,17 +3889,17 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_io_5F_primary_i20_ (const GALGA
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 629)) ;
   GALGAS_uint var_inputAndInternalVariablesCount_19091 = var_translationVector_18246.getter_count (SOURCE_FILE ("sara_parser.galgas", 630)) ;
-  enumGalgasBool test_4 = kBoolTrue ;
-  if (kBoolTrue == test_4) {
-    test_4 = GALGAS_bool (ComparisonKind::notEqual, var_inputAndInternalVariablesCount_19091.objectCompare (var_machineInputAndInternalVariableCount_18174)).boolEnum () ;
-    if (kBoolTrue == test_4) {
-      TC_Array <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 632)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_18030.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (var_machineInputAndInternalVariableCount_18174.getter_string (SOURCE_FILE ("sara_parser.galgas", 632)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (GALGAS_string (" input and internal variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (var_inputAndInternalVariablesCount_19091.getter_string (SOURCE_FILE ("sara_parser.galgas", 633)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 633)).add_operation (GALGAS_string (" input and internal variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 633)), fixItArray5  COMMA_SOURCE_FILE ("sara_parser.galgas", 632)) ;
+  enumGalgasBool test_5 = kBoolTrue ;
+  if (kBoolTrue == test_5) {
+    test_5 = GALGAS_bool (ComparisonKind::notEqual, var_inputAndInternalVariablesCount_19091.objectCompare (var_machineInputAndInternalVariableCount_18174)).boolEnum () ;
+    if (kBoolTrue == test_5) {
+      TC_Array <FixItDescription> fixItArray6 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 632)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_18030.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (var_machineInputAndInternalVariableCount_18174.getter_string (SOURCE_FILE ("sara_parser.galgas", 632)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (GALGAS_string (" input and internal variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 632)).add_operation (var_inputAndInternalVariablesCount_19091.getter_string (SOURCE_FILE ("sara_parser.galgas", 633)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 633)).add_operation (GALGAS_string (" input and internal variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 633)), fixItArray6  COMMA_SOURCE_FILE ("sara_parser.galgas", 632)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 636)) ;
-  bool repeatFlag_6 = true ;
-  while (repeatFlag_6) {
+  bool repeatFlag_7 = true ;
+  while (repeatFlag_7) {
     GALGAS_lstring var_outputVar_19581 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 638)) ;
     GALGAS_uint var_outputVarIndex_19631 ;
@@ -3822,18 +3908,18 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_io_5F_primary_i20_ (const GALGA
     if (select_sara_5F_parser_25 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 642)) ;
     }else{
-      repeatFlag_6 = false ;
+      repeatFlag_7 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 644)) ;
   GALGAS_uint var_allVariablesCount_19728 = var_translationVector_18246.getter_count (SOURCE_FILE ("sara_parser.galgas", 645)) ;
   GALGAS_uint var_machineAllVariablesCount_19786 = var_machineVariablesMap_18216.getter_count (SOURCE_FILE ("sara_parser.galgas", 646)) ;
-  enumGalgasBool test_7 = kBoolTrue ;
-  if (kBoolTrue == test_7) {
-    test_7 = GALGAS_bool (ComparisonKind::notEqual, var_allVariablesCount_19728.objectCompare (var_machineAllVariablesCount_19786)).boolEnum () ;
-    if (kBoolTrue == test_7) {
-      TC_Array <FixItDescription> fixItArray8 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 648)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_18030.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (var_machineAllVariablesCount_19786.getter_string (SOURCE_FILE ("sara_parser.galgas", 648)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (GALGAS_string (" variables, but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (var_allVariablesCount_19728.getter_string (SOURCE_FILE ("sara_parser.galgas", 649)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 649)).add_operation (GALGAS_string (" variables"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 649)), fixItArray8  COMMA_SOURCE_FILE ("sara_parser.galgas", 648)) ;
+  enumGalgasBool test_8 = kBoolTrue ;
+  if (kBoolTrue == test_8) {
+    test_8 = GALGAS_bool (ComparisonKind::notEqual, var_allVariablesCount_19728.objectCompare (var_machineAllVariablesCount_19786)).boolEnum () ;
+    if (kBoolTrue == test_8) {
+      TC_Array <FixItDescription> fixItArray9 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 648)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_18030.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (var_machineAllVariablesCount_19786.getter_string (SOURCE_FILE ("sara_parser.galgas", 648)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (GALGAS_string (" variables, but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 648)).add_operation (var_allVariablesCount_19728.getter_string (SOURCE_FILE ("sara_parser.galgas", 649)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 649)).add_operation (GALGAS_string (" variables"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 649)), fixItArray9  COMMA_SOURCE_FILE ("sara_parser.galgas", 648)) ;
     }
   }
   outArgument_outExpression = GALGAS_C_5F_importBoolMachine::init_21__21__21_ (var_indexOfImportedMachine_18115, var_machineIdentifier_18030.readProperty_location (), var_translationVector_18246, inCompiler COMMA_HERE) ;
@@ -4090,10 +4176,12 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompadd_5F_definition_i23_
                                                                                   Lexique_sara_5F_scanner * inCompiler) {
   outArgument_outModeMap.drop () ; // Release 'out' argument
   outArgument_outInclusionList.drop () ; // Release 'out' argument
-  outArgument_outModeMap = GALGAS_M_5F_modesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 710)) ;
-  outArgument_outInclusionList = GALGAS_ListForModes::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 711)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  GALGAS_M_5F_modesMap temp_0 = GALGAS_M_5F_modesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 710)) ;
+  outArgument_outModeMap = temp_0 ;
+  GALGAS_ListForModes temp_1 = GALGAS_ListForModes::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 711)) ;
+  outArgument_outInclusionList = temp_1 ;
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     GALGAS_lstring var_modeName_22490 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 713)) ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("sara_parser.galgas", 714)) ;
@@ -4105,11 +4193,11 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompadd_5F_definition_i23_
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 717)) ;
     if (select_sara_5F_parser_28 (inCompiler) == 2) {
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
+  bool repeatFlag_3 = true ;
+  while (repeatFlag_3) {
     if (select_sara_5F_parser_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_include COMMA_SOURCE_FILE ("sara_parser.galgas", 722)) ;
       GALGAS_lstring var_sourceModeName_22717 = inCompiler->synthetizedAttribute_identifierString () ;
@@ -4124,19 +4212,19 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompadd_5F_definition_i23_
       GALGAS_AC_5F_machineDefinition joker_22908 ; // Joker input parameter
       outArgument_outModeMap.method_searchKey (var_targetModeName_22830, var_targetModeIndex_22892, joker_22908, inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 727)) ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 728)) ;
-      enumGalgasBool test_2 = kBoolTrue ;
-      if (kBoolTrue == test_2) {
-        test_2 = GALGAS_bool (ComparisonKind::equal, var_sourceModeIndex_22779.objectCompare (var_targetModeIndex_22892)).boolEnum () ;
-        if (kBoolTrue == test_2) {
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticWarning (var_targetModeName_22830.readProperty_location (), GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode"), fixItArray3  COMMA_SOURCE_FILE ("sara_parser.galgas", 730)) ;
+      enumGalgasBool test_4 = kBoolTrue ;
+      if (kBoolTrue == test_4) {
+        test_4 = GALGAS_bool (ComparisonKind::equal, var_sourceModeIndex_22779.objectCompare (var_targetModeIndex_22892)).boolEnum () ;
+        if (kBoolTrue == test_4) {
+          TC_Array <FixItDescription> fixItArray5 ;
+          inCompiler->emitSemanticWarning (var_targetModeName_22830.readProperty_location (), GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode"), fixItArray5  COMMA_SOURCE_FILE ("sara_parser.galgas", 730)) ;
         }
       }
-      if (kBoolFalse == test_2) {
+      if (kBoolFalse == test_4) {
         outArgument_outInclusionList.addAssign_operation (var_sourceModeIndex_22779, var_targetModeIndex_22892  COMMA_SOURCE_FILE ("sara_parser.galgas", 732)) ;
       }
     }else{
-      repeatFlag_1 = false ;
+      repeatFlag_3 = false ;
     }
   }
 }
@@ -4207,10 +4295,12 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompsub_5F_definition_i24_
                                                                                   Lexique_sara_5F_scanner * inCompiler) {
   outArgument_outModeMap.drop () ; // Release 'out' argument
   outArgument_outExclusionList.drop () ; // Release 'out' argument
-  outArgument_outModeMap = GALGAS_M_5F_modesMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 744)) ;
-  outArgument_outExclusionList = GALGAS_ListForModes::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 745)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  GALGAS_M_5F_modesMap temp_0 = GALGAS_M_5F_modesMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 744)) ;
+  outArgument_outModeMap = temp_0 ;
+  GALGAS_ListForModes temp_1 = GALGAS_ListForModes::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 745)) ;
+  outArgument_outExclusionList = temp_1 ;
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     GALGAS_lstring var_modeName_23555 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 747)) ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3A_ COMMA_SOURCE_FILE ("sara_parser.galgas", 748)) ;
@@ -4222,11 +4312,11 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompsub_5F_definition_i24_
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 751)) ;
     if (select_sara_5F_parser_30 (inCompiler) == 2) {
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
+  bool repeatFlag_3 = true ;
+  while (repeatFlag_3) {
     if (select_sara_5F_parser_31 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_exclude COMMA_SOURCE_FILE ("sara_parser.galgas", 756)) ;
       GALGAS_lstring var_sourceModeName_23782 = inCompiler->synthetizedAttribute_identifierString () ;
@@ -4241,19 +4331,19 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_modalcompsub_5F_definition_i24_
       GALGAS_AC_5F_machineDefinition joker_23973 ; // Joker input parameter
       outArgument_outModeMap.method_searchKey (var_targetModeName_23895, var_targetModeIndex_23957, joker_23973, inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 761)) ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 762)) ;
-      enumGalgasBool test_2 = kBoolTrue ;
-      if (kBoolTrue == test_2) {
-        test_2 = GALGAS_bool (ComparisonKind::equal, var_sourceModeIndex_23844.objectCompare (var_targetModeIndex_23957)).boolEnum () ;
-        if (kBoolTrue == test_2) {
-          TC_Array <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticWarning (var_targetModeName_23895.readProperty_location (), GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode"), fixItArray3  COMMA_SOURCE_FILE ("sara_parser.galgas", 764)) ;
+      enumGalgasBool test_4 = kBoolTrue ;
+      if (kBoolTrue == test_4) {
+        test_4 = GALGAS_bool (ComparisonKind::equal, var_sourceModeIndex_23844.objectCompare (var_targetModeIndex_23957)).boolEnum () ;
+        if (kBoolTrue == test_4) {
+          TC_Array <FixItDescription> fixItArray5 ;
+          inCompiler->emitSemanticWarning (var_targetModeName_23895.readProperty_location (), GALGAS_string ("unuseful include: 'modalcompadd' operator never adds transitions from terminal states to initial states of the same mode"), fixItArray5  COMMA_SOURCE_FILE ("sara_parser.galgas", 764)) ;
         }
       }
-      if (kBoolFalse == test_2) {
+      if (kBoolFalse == test_4) {
         outArgument_outExclusionList.addAssign_operation (var_sourceModeIndex_23844, var_targetModeIndex_23957  COMMA_SOURCE_FILE ("sara_parser.galgas", 766)) ;
       }
     }else{
-      repeatFlag_1 = false ;
+      repeatFlag_3 = false ;
     }
   }
 }
@@ -4651,10 +4741,11 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_definition_5F_expression_5F_fac
   GALGAS_M_5F_variablesMap var_machineVariablesMap_27831 ;
   GALGAS_stringlist joker_27851 ; // Joker input parameter
   constinArgument_inSemanticContext.readProperty_machinesMap ().method_searchKey (var_machineIdentifier_27645, var_indexOfImportedMachine_27730, var_machineInputVariableCount_27758, var_machineInputAndInternalVariableCount_27789, var_machineVariablesMap_27831, joker_27851, inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 877)) ;
-  GALGAS_L_5F_translationVector var_translationVector_27861 = GALGAS_L_5F_translationVector::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 878)) ;
+  GALGAS_L_5F_translationVector temp_0 = GALGAS_L_5F_translationVector::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 878)) ;
+  GALGAS_L_5F_translationVector var_translationVector_27861 = temp_0 ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 880)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     GALGAS_lstring var_inputVar_27969 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 882)) ;
     GALGAS_uint var_inputVarIndex_28017 ;
@@ -4663,17 +4754,17 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_definition_5F_expression_5F_fac
     if (select_sara_5F_parser_35 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 886)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_1 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 888)) ;
   GALGAS_uint var_inputVariablesCount_28112 = var_translationVector_27861.getter_count (SOURCE_FILE ("sara_parser.galgas", 889)) ;
-  enumGalgasBool test_1 = kBoolTrue ;
-  if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCount_28112.objectCompare (var_machineInputVariableCount_27758)).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      TC_Array <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 891)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_27645.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (var_machineInputVariableCount_27758.getter_string (SOURCE_FILE ("sara_parser.galgas", 891)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (GALGAS_string (" input variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (var_inputVariablesCount_28112.getter_string (SOURCE_FILE ("sara_parser.galgas", 892)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 892)).add_operation (GALGAS_string (" input variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 892)), fixItArray2  COMMA_SOURCE_FILE ("sara_parser.galgas", 891)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (ComparisonKind::notEqual, var_inputVariablesCount_28112.objectCompare (var_machineInputVariableCount_27758)).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 891)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_27645.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (var_machineInputVariableCount_27758.getter_string (SOURCE_FILE ("sara_parser.galgas", 891)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (GALGAS_string (" input variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 891)).add_operation (var_inputVariablesCount_28112.getter_string (SOURCE_FILE ("sara_parser.galgas", 892)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 892)).add_operation (GALGAS_string (" input variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 892)), fixItArray3  COMMA_SOURCE_FILE ("sara_parser.galgas", 891)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 895)) ;
@@ -4681,8 +4772,8 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_definition_5F_expression_5F_fac
   case 1: {
   } break ;
   case 2: {
-    bool repeatFlag_3 = true ;
-    while (repeatFlag_3) {
+    bool repeatFlag_4 = true ;
+    while (repeatFlag_4) {
       GALGAS_lstring var_internalVar_28541 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 899)) ;
       GALGAS_uint var_internalVarIndex_28597 ;
@@ -4691,7 +4782,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_definition_5F_expression_5F_fac
       if (select_sara_5F_parser_37 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 903)) ;
       }else{
-        repeatFlag_3 = false ;
+        repeatFlag_4 = false ;
       }
     }
   } break ;
@@ -4700,17 +4791,17 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_definition_5F_expression_5F_fac
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 906)) ;
   GALGAS_uint var_inputAndInternalVariablesCount_28713 = var_translationVector_27861.getter_count (SOURCE_FILE ("sara_parser.galgas", 907)) ;
-  enumGalgasBool test_4 = kBoolTrue ;
-  if (kBoolTrue == test_4) {
-    test_4 = GALGAS_bool (ComparisonKind::notEqual, var_inputAndInternalVariablesCount_28713.objectCompare (var_machineInputAndInternalVariableCount_27789)).boolEnum () ;
-    if (kBoolTrue == test_4) {
-      TC_Array <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 909)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_27645.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (var_machineInputAndInternalVariableCount_27789.getter_string (SOURCE_FILE ("sara_parser.galgas", 909)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (GALGAS_string (" input and internal variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (var_inputAndInternalVariablesCount_28713.getter_string (SOURCE_FILE ("sara_parser.galgas", 910)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 910)).add_operation (GALGAS_string (" input and internal variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 910)), fixItArray5  COMMA_SOURCE_FILE ("sara_parser.galgas", 909)) ;
+  enumGalgasBool test_5 = kBoolTrue ;
+  if (kBoolTrue == test_5) {
+    test_5 = GALGAS_bool (ComparisonKind::notEqual, var_inputAndInternalVariablesCount_28713.objectCompare (var_machineInputAndInternalVariableCount_27789)).boolEnum () ;
+    if (kBoolTrue == test_5) {
+      TC_Array <FixItDescription> fixItArray6 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 909)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_27645.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (var_machineInputAndInternalVariableCount_27789.getter_string (SOURCE_FILE ("sara_parser.galgas", 909)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (GALGAS_string (" input and internal variable(s), but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 909)).add_operation (var_inputAndInternalVariablesCount_28713.getter_string (SOURCE_FILE ("sara_parser.galgas", 910)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 910)).add_operation (GALGAS_string (" input and internal variable(s)"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 910)), fixItArray6  COMMA_SOURCE_FILE ("sara_parser.galgas", 909)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__28_ COMMA_SOURCE_FILE ("sara_parser.galgas", 913)) ;
-  bool repeatFlag_6 = true ;
-  while (repeatFlag_6) {
+  bool repeatFlag_7 = true ;
+  while (repeatFlag_7) {
     GALGAS_lstring var_outputVar_29203 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 915)) ;
     GALGAS_uint var_outputVarIndex_29253 ;
@@ -4719,18 +4810,18 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_definition_5F_expression_5F_fac
     if (select_sara_5F_parser_38 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 919)) ;
     }else{
-      repeatFlag_6 = false ;
+      repeatFlag_7 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__29_ COMMA_SOURCE_FILE ("sara_parser.galgas", 921)) ;
   GALGAS_uint var_allVariablesCount_29350 = var_translationVector_27861.getter_count (SOURCE_FILE ("sara_parser.galgas", 922)) ;
   GALGAS_uint var_machineAllVariablesCount_29408 = var_machineVariablesMap_27831.getter_count (SOURCE_FILE ("sara_parser.galgas", 923)) ;
-  enumGalgasBool test_7 = kBoolTrue ;
-  if (kBoolTrue == test_7) {
-    test_7 = GALGAS_bool (ComparisonKind::notEqual, var_allVariablesCount_29350.objectCompare (var_machineAllVariablesCount_29408)).boolEnum () ;
-    if (kBoolTrue == test_7) {
-      TC_Array <FixItDescription> fixItArray8 ;
-      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 925)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_27645.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (var_machineAllVariablesCount_29408.getter_string (SOURCE_FILE ("sara_parser.galgas", 925)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (GALGAS_string (" variables, but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (var_allVariablesCount_29350.getter_string (SOURCE_FILE ("sara_parser.galgas", 926)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 926)).add_operation (GALGAS_string (" variables"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 926)), fixItArray8  COMMA_SOURCE_FILE ("sara_parser.galgas", 925)) ;
+  enumGalgasBool test_8 = kBoolTrue ;
+  if (kBoolTrue == test_8) {
+    test_8 = GALGAS_bool (ComparisonKind::notEqual, var_allVariablesCount_29350.objectCompare (var_machineAllVariablesCount_29408)).boolEnum () ;
+    if (kBoolTrue == test_8) {
+      TC_Array <FixItDescription> fixItArray9 ;
+      inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 925)), GALGAS_string ("The '$").add_operation (var_machineIdentifier_27645.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (GALGAS_string ("' machine defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (var_machineAllVariablesCount_29408.getter_string (SOURCE_FILE ("sara_parser.galgas", 925)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (GALGAS_string (" variables, but this operand defines "), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 925)).add_operation (var_allVariablesCount_29350.getter_string (SOURCE_FILE ("sara_parser.galgas", 926)), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 926)).add_operation (GALGAS_string (" variables"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 926)), fixItArray9  COMMA_SOURCE_FILE ("sara_parser.galgas", 925)) ;
     }
   }
   outArgument_outDefinition = GALGAS_C_5F_importMachine::init_21__21_ (var_indexOfImportedMachine_27730, var_translationVector_27861, inCompiler COMMA_HERE) ;
@@ -4838,13 +4929,15 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
                                                                              GALGAS_AC_5F_machineDefinition & outArgument_outDefinition,
                                                                              Lexique_sara_5F_scanner * inCompiler) {
   outArgument_outDefinition.drop () ; // Release 'out' argument
-  GALGAS_M_5F_stateMap var_statesMap_30209 = GALGAS_M_5F_stateMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 939)) ;
-  GALGAS_L_5F_stateDefinition var_stateDefinitionList_30242 = GALGAS_L_5F_stateDefinition::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 940)) ;
+  GALGAS_M_5F_stateMap temp_0 = GALGAS_M_5F_stateMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 939)) ;
+  GALGAS_M_5F_stateMap var_statesMap_30209 = temp_0 ;
+  GALGAS_L_5F_stateDefinition temp_1 = GALGAS_L_5F_stateDefinition::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 940)) ;
+  GALGAS_L_5F_stateDefinition var_stateDefinitionList_30242 = temp_1 ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_auto COMMA_SOURCE_FILE ("sara_parser.galgas", 941)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__7B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 942)) ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_state COMMA_SOURCE_FILE ("sara_parser.galgas", 944)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     GALGAS_lstring var_stateName_30366 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 946)) ;
     {
@@ -4853,14 +4946,15 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
     if (select_sara_5F_parser_39 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 949)) ;
     }else{
-      repeatFlag_0 = false ;
+      repeatFlag_2 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 951)) ;
-  GALGAS_L_5F_statesDefinitionList var_initialStatesDefinitionList_30488 = GALGAS_L_5F_statesDefinitionList::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 953)) ;
+  GALGAS_L_5F_statesDefinitionList temp_3 = GALGAS_L_5F_statesDefinitionList::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 953)) ;
+  GALGAS_L_5F_statesDefinitionList var_initialStatesDefinitionList_30488 = temp_3 ;
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_first COMMA_SOURCE_FILE ("sara_parser.galgas", 954)) ;
-  bool repeatFlag_1 = true ;
-  while (repeatFlag_1) {
+  bool repeatFlag_4 = true ;
+  while (repeatFlag_4) {
     GALGAS_lstring var_initialState_30586 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 956)) ;
     GALGAS_uint var_initialStateIndex_30643 ;
@@ -4869,18 +4963,19 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
     if (select_sara_5F_parser_40 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 960)) ;
     }else{
-      repeatFlag_1 = false ;
+      repeatFlag_4 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 962)) ;
-  GALGAS_L_5F_statesDefinitionList var_terminalStatesDefinitionList_30787 = GALGAS_L_5F_statesDefinitionList::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 964)) ;
+  GALGAS_L_5F_statesDefinitionList temp_5 = GALGAS_L_5F_statesDefinitionList::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 964)) ;
+  GALGAS_L_5F_statesDefinitionList var_terminalStatesDefinitionList_30787 = temp_5 ;
   switch (select_sara_5F_parser_41 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_last COMMA_SOURCE_FILE ("sara_parser.galgas", 967)) ;
-    bool repeatFlag_2 = true ;
-    while (repeatFlag_2) {
+    bool repeatFlag_6 = true ;
+    while (repeatFlag_6) {
       GALGAS_lstring var_terminalState_30905 = inCompiler->synthetizedAttribute_identifierString () ;
       inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 969)) ;
       GALGAS_uint var_terminalStateIndex_30966 ;
@@ -4889,7 +4984,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
       if (select_sara_5F_parser_42 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__2C_ COMMA_SOURCE_FILE ("sara_parser.galgas", 973)) ;
       }else{
-        repeatFlag_2 = false ;
+        repeatFlag_6 = false ;
       }
     }
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 975)) ;
@@ -4897,9 +4992,10 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
   default:
     break ;
   }
-  GALGAS_M_5F_stateMap var_stateDefinitionMap_31138 = GALGAS_M_5F_stateMap::class_func_emptyMap (SOURCE_FILE ("sara_parser.galgas", 978)) ;
-  bool repeatFlag_3 = true ;
-  while (repeatFlag_3) {
+  GALGAS_M_5F_stateMap temp_7 = GALGAS_M_5F_stateMap::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 978)) ;
+  GALGAS_M_5F_stateMap var_stateDefinitionMap_31138 = temp_7 ;
+  bool repeatFlag_8 = true ;
+  while (repeatFlag_8) {
     GALGAS_lstring var_stateName_31226 = inCompiler->synthetizedAttribute_identifierString () ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken_identifier COMMA_SOURCE_FILE ("sara_parser.galgas", 981)) ;
     GALGAS_uint var_stateIndex_31277 ;
@@ -4912,9 +5008,10 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
     nt_io_5F_bool_5F_expression_ (constinArgument_inSemanticContext, ioArgument_variablesMap, var_stateExpression_31469, inCompiler) ;
     GALGAS_location var_endOfStateExpression_31503 = GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 987)) ;
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__7B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 988)) ;
-    GALGAS_L_5F_transitionDefinition var_transitionsList_31587 = GALGAS_L_5F_transitionDefinition::class_func_emptyList (SOURCE_FILE ("sara_parser.galgas", 990)) ;
-    bool repeatFlag_4 = true ;
-    while (repeatFlag_4) {
+    GALGAS_L_5F_transitionDefinition temp_9 = GALGAS_L_5F_transitionDefinition::init (inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 990)) ;
+    GALGAS_L_5F_transitionDefinition var_transitionsList_31587 = temp_9 ;
+    bool repeatFlag_10 = true ;
+    while (repeatFlag_10) {
       if (select_sara_5F_parser_44 (inCompiler) == 2) {
         GALGAS_AC_5F_boolExpression var_transitionInputExpression_31719 ;
         nt_io_5F_bool_5F_expression_ (constinArgument_inSemanticContext, ioArgument_variablesMap, var_transitionInputExpression_31719, inCompiler) ;
@@ -4927,24 +5024,24 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
         var_transitionsList_31587.addAssign_operation (var_transitionInputExpression_31719, var_endOfExpression_31765, var_targetStateIndex_31900  COMMA_SOURCE_FILE ("sara_parser.galgas", 998)) ;
         inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__3B_ COMMA_SOURCE_FILE ("sara_parser.galgas", 999)) ;
       }else{
-        repeatFlag_4 = false ;
+        repeatFlag_10 = false ;
       }
     }
     inCompiler->acceptTerminal (Lexique_sara_5F_scanner::kToken__7D_ COMMA_SOURCE_FILE ("sara_parser.galgas", 1001)) ;
     var_stateDefinitionList_30242.addAssign_operation (var_stateIndex_31277, var_stateExpression_31469, var_endOfStateExpression_31503, var_transitionsList_31587  COMMA_SOURCE_FILE ("sara_parser.galgas", 1002)) ;
     if (select_sara_5F_parser_43 (inCompiler) == 2) {
     }else{
-      repeatFlag_3 = false ;
+      repeatFlag_8 = false ;
     }
   }
   cEnumerator_M_5F_stateMap enumerator_32213 (var_statesMap_30209, EnumerationOrder::up) ;
   while (enumerator_32213.hasCurrentObject ()) {
-    enumGalgasBool test_5 = kBoolTrue ;
-    if (kBoolTrue == test_5) {
-      test_5 = var_stateDefinitionMap_31138.getter_hasKey (enumerator_32213.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("sara_parser.galgas", 1008)).operator_not (SOURCE_FILE ("sara_parser.galgas", 1008)).boolEnum () ;
-      if (kBoolTrue == test_5) {
-        TC_Array <FixItDescription> fixItArray6 ;
-        inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)), GALGAS_string ("'").add_operation (enumerator_32213.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)).add_operation (GALGAS_string ("' state is not described"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)), fixItArray6  COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)) ;
+    enumGalgasBool test_11 = kBoolTrue ;
+    if (kBoolTrue == test_11) {
+      test_11 = var_stateDefinitionMap_31138.getter_hasKey (enumerator_32213.current_lkey (HERE).readProperty_string () COMMA_SOURCE_FILE ("sara_parser.galgas", 1008)).operator_not (SOURCE_FILE ("sara_parser.galgas", 1008)).boolEnum () ;
+      if (kBoolTrue == test_11) {
+        TC_Array <FixItDescription> fixItArray12 ;
+        inCompiler->emitSemanticError (GALGAS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)), GALGAS_string ("'").add_operation (enumerator_32213.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)).add_operation (GALGAS_string ("' state is not described"), inCompiler COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)), fixItArray12  COMMA_SOURCE_FILE ("sara_parser.galgas", 1009)) ;
       }
     }
     enumerator_32213.gotoNextObject () ;

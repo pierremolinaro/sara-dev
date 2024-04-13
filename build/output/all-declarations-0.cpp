@@ -106,6 +106,25 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_emptyList (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS__32_lstringlist GALGAS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS__32_lstringlist (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS__32_lstringlist::enterElement (const GALGAS__32_lstringlist_2D_element & inValue,
+                                           Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS__32_lstringlist GALGAS__32_lstringlist::class_func_listWithValue (const GALGAS_lstring & inOperand0,
                                                                          const GALGAS_lstring & inOperand1
                                                                          COMMA_LOCATION_ARGS) {
@@ -1757,6 +1776,14 @@ String Lexique_sara_5F_scanner::styleNameForIndex (const uint32_t inStyleIndex) 
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_M_5F_variablesMap::cMapElement_M_5F_variablesMap (const GALGAS_M_5F_variablesMap_2D_element & inValue
+                                                              COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mIndex (inValue.mProperty_mIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_M_5F_variablesMap::cMapElement_M_5F_variablesMap (const GALGAS_lstring & inKey,
                                                               const GALGAS_uint & in_mIndex
                                                               COMMA_LOCATION_ARGS) :
@@ -1819,6 +1846,14 @@ GALGAS_M_5F_variablesMap & GALGAS_M_5F_variablesMap::operator = (const GALGAS_M_
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_M_5F_variablesMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_M_5F_variablesMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -1841,6 +1876,21 @@ GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::getter_overriddenMap (Compile
   GALGAS_M_5F_variablesMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_M_5F_variablesMap::enterElement (const GALGAS_M_5F_variablesMap_2D_element & inValue,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  cMapElement_M_5F_variablesMap * p = nullptr ;
+  macroMyNew (p, cMapElement_M_5F_variablesMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@M_5F_variablesMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2041,6 +2091,14 @@ GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::extractObject (const GALGAS_o
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_M_5F_stateMap::cMapElement_M_5F_stateMap (const GALGAS_M_5F_stateMap_2D_element & inValue
+                                                      COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mIndex (inValue.mProperty_mIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_M_5F_stateMap::cMapElement_M_5F_stateMap (const GALGAS_lstring & inKey,
                                                       const GALGAS_uint & in_mIndex
                                                       COMMA_LOCATION_ARGS) :
@@ -2103,6 +2161,14 @@ GALGAS_M_5F_stateMap & GALGAS_M_5F_stateMap::operator = (const GALGAS_M_5F_state
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_M_5F_stateMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_M_5F_stateMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -2125,6 +2191,21 @@ GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::getter_overriddenMap (Compiler * inCo
   GALGAS_M_5F_stateMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_M_5F_stateMap::enterElement (const GALGAS_M_5F_stateMap_2D_element & inValue,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  cMapElement_M_5F_stateMap * p = nullptr ;
+  macroMyNew (p, cMapElement_M_5F_stateMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@M_5F_stateMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2428,6 +2509,25 @@ AC_GALGAS_list (inSharedArray) {
 
 GALGAS_L_5F_translationVector GALGAS_L_5F_translationVector::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_L_5F_translationVector (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_L_5F_translationVector GALGAS_L_5F_translationVector::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_translationVector (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_translationVector::enterElement (const GALGAS_L_5F_translationVector_2D_element & inValue,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_translationVector (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5964,6 +6064,25 @@ GALGAS_L_5F_transitionDefinition GALGAS_L_5F_transitionDefinition::class_func_em
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_L_5F_transitionDefinition GALGAS_L_5F_transitionDefinition::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_transitionDefinition (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_transitionDefinition::enterElement (const GALGAS_L_5F_transitionDefinition_2D_element & inValue,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_transitionDefinition (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_L_5F_transitionDefinition GALGAS_L_5F_transitionDefinition::class_func_listWithValue (const GALGAS_AC_5F_boolExpression & inOperand0,
                                                                                              const GALGAS_location & inOperand1,
                                                                                              const GALGAS_uint & inOperand2
@@ -6506,6 +6625,25 @@ AC_GALGAS_list (inSharedArray) {
 
 GALGAS_L_5F_stateDefinition GALGAS_L_5F_stateDefinition::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_L_5F_stateDefinition (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_L_5F_stateDefinition GALGAS_L_5F_stateDefinition::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_stateDefinition (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_stateDefinition::enterElement (const GALGAS_L_5F_stateDefinition_2D_element & inValue,
+                                                Compiler * /* inCompiler */
+                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_stateDefinition (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7104,6 +7242,25 @@ GALGAS_L_5F_statesDefinitionList GALGAS_L_5F_statesDefinitionList::class_func_em
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_L_5F_statesDefinitionList GALGAS_L_5F_statesDefinitionList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_statesDefinitionList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_statesDefinitionList::enterElement (const GALGAS_L_5F_statesDefinitionList_2D_element & inValue,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_statesDefinitionList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_L_5F_statesDefinitionList GALGAS_L_5F_statesDefinitionList::class_func_listWithValue (const GALGAS_uint & inOperand0,
                                                                                              const GALGAS_location & inOperand1
                                                                                              COMMA_LOCATION_ARGS) {
@@ -7690,6 +7847,15 @@ GALGAS_AC_5F_machineDefinition_2D_weak GALGAS_AC_5F_machineDefinition_2D_weak::e
 
 //--------------------------------------------------------------------------------------------------
 
+cMapElement_M_5F_modesMap::cMapElement_M_5F_modesMap (const GALGAS_M_5F_modesMap_2D_element & inValue
+                                                      COMMA_LOCATION_ARGS) :
+cMapElement (inValue.mProperty_lkey COMMA_THERE),
+mProperty_mIndex (inValue.mProperty_mIndex),
+mProperty_mModeDefinition (inValue.mProperty_mModeDefinition) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cMapElement_M_5F_modesMap::cMapElement_M_5F_modesMap (const GALGAS_lstring & inKey,
                                                       const GALGAS_uint & in_mIndex,
                                                       const GALGAS_AC_5F_machineDefinition & in_mModeDefinition
@@ -7761,6 +7927,14 @@ GALGAS_M_5F_modesMap & GALGAS_M_5F_modesMap::operator = (const GALGAS_M_5F_modes
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GALGAS_M_5F_modesMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_M_5F_modesMap result ;
   result.makeNewEmptyMap (THERE) ;
@@ -7783,6 +7957,21 @@ GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::getter_overriddenMap (Compiler * inCo
   GALGAS_M_5F_modesMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_M_5F_modesMap::enterElement (const GALGAS_M_5F_modesMap_2D_element & inValue,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  cMapElement_M_5F_modesMap * p = nullptr ;
+  macroMyNew (p, cMapElement_M_5F_modesMap (inValue COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@M_5F_modesMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8121,6 +8310,25 @@ AC_GALGAS_list (inSharedArray) {
 
 GALGAS_ListForModes GALGAS_ListForModes::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_ListForModes (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_ListForModes GALGAS_ListForModes::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_ListForModes (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_ListForModes::enterElement (const GALGAS_ListForModes_2D_element & inValue,
+                                        Compiler * /* inCompiler */
+                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_ListForModes (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16205,6 +16413,25 @@ GALGAS_L_5F_inputConfigurationForScenario GALGAS_L_5F_inputConfigurationForScena
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_L_5F_inputConfigurationForScenario GALGAS_L_5F_inputConfigurationForScenario::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_inputConfigurationForScenario (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_inputConfigurationForScenario::enterElement (const GALGAS_L_5F_inputConfigurationForScenario_2D_element & inValue,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_inputConfigurationForScenario (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_L_5F_inputConfigurationForScenario GALGAS_L_5F_inputConfigurationForScenario::class_func_listWithValue (const GALGAS_luint & inOperand0
                                                                                                                COMMA_LOCATION_ARGS) {
   GALGAS_L_5F_inputConfigurationForScenario result ;
@@ -16609,6 +16836,25 @@ AC_GALGAS_list (inSharedArray) {
 
 GALGAS_L_5F_inputScenario GALGAS_L_5F_inputScenario::class_func_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_L_5F_inputScenario (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_L_5F_inputScenario GALGAS_L_5F_inputScenario::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_L_5F_inputScenario (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GALGAS_L_5F_inputScenario::enterElement (const GALGAS_L_5F_inputScenario_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_inputScenario (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
 }
 
 //--------------------------------------------------------------------------------------------------

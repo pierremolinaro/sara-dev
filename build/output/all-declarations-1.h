@@ -30,6 +30,8 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_L_5F_scenarioList init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -139,8 +141,13 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_L_5F_scenarioList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_L_5F_scenarioList ;
  
 } ; // End of GALGAS_L_5F_scenarioList class
@@ -521,6 +528,8 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_L_5F_jobList init (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -612,8 +621,13 @@ class GALGAS_L_5F_jobList : public AC_GALGAS_list {
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
 
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_L_5F_jobList_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_L_5F_jobList ;
  
 } ; // End of GALGAS_L_5F_jobList class
@@ -740,6 +754,8 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GALGAS_M_5F_machinesMap init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -867,8 +883,13 @@ class GALGAS_M_5F_machinesMap : public AC_GALGAS_map {
                                                                                              const GALGAS_string & inKey
                                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Friend
 
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GALGAS_M_5F_machinesMap_2D_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
   friend class cEnumerator_M_5F_machinesMap ;
  
 } ; // End of GALGAS_M_5F_machinesMap class
@@ -910,7 +931,10 @@ class cMapElement_M_5F_machinesMap : public cMapElement {
   public: GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
   public: GALGAS_stringlist mProperty_mNameList ;
 
-//--- Constructor
+//--- Constructors
+  public: cMapElement_M_5F_machinesMap (const GALGAS_M_5F_machinesMap_2D_element & inValue
+                                        COMMA_LOCATION_ARGS) ;
+ 
   public: cMapElement_M_5F_machinesMap (const GALGAS_lstring & inKey,
                                         const GALGAS_uint & in_mIndex,
                                         const GALGAS_uint & in_mInputVariableCount,
