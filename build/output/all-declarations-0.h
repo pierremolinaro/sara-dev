@@ -138,8 +138,6 @@ class GALGAS__32_lstringlist : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -250,8 +248,6 @@ class GALGAS__32_lstringlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -492,10 +488,9 @@ class GALGAS_M_5F_variablesMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_uint & outOperand1) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_M_5F_variablesMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -643,8 +638,6 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -654,6 +647,79 @@ class GALGAS_M_5F_variablesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: M_variablesMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_M_5F_variablesMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_M_5F_variablesMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_M_5F_variablesMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_M_5F_variablesMap_2D_element_3F_ (const GALGAS_M_5F_variablesMap_2D_element & inValue) ;
+  public: static GALGAS_M_5F_variablesMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_M_5F_variablesMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_M_5F_variablesMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_M_5F_variablesMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap_2D_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -743,10 +809,9 @@ class GALGAS_M_5F_stateMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_uint & outOperand1) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_M_5F_stateMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -894,8 +959,6 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -905,6 +968,79 @@ class GALGAS_M_5F_stateMap_2D_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: M_stateMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_M_5F_stateMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_M_5F_stateMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_M_5F_stateMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_M_5F_stateMap_2D_element_3F_ (const GALGAS_M_5F_stateMap_2D_element & inValue) ;
+  public: static GALGAS_M_5F_stateMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_M_5F_stateMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_M_5F_stateMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_M_5F_stateMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap_2D_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1018,8 +1154,6 @@ class GALGAS_L_5F_translationVector : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -1118,8 +1252,6 @@ class GALGAS_L_5F_translationVector_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1169,8 +1301,6 @@ class GALGAS_AC_5F_boolExpression : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1228,8 +1358,6 @@ class GALGAS_AC_5F_boolExpression_2D_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1299,8 +1427,6 @@ class GALGAS_C_5F_importBoolMachine : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1357,8 +1483,6 @@ class GALGAS_C_5F_importBoolMachine_2D_weak : public GALGAS_AC_5F_boolExpression
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1423,8 +1547,6 @@ class GALGAS_C_5F_andExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1481,8 +1603,6 @@ class GALGAS_C_5F_andExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1547,8 +1667,6 @@ class GALGAS_C_5F_orExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1605,8 +1723,6 @@ class GALGAS_C_5F_orExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_w
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1671,8 +1787,6 @@ class GALGAS_C_5F_xorExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1729,8 +1843,6 @@ class GALGAS_C_5F_xorExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1795,8 +1907,6 @@ class GALGAS_C_5F_impliesExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1853,8 +1963,6 @@ class GALGAS_C_5F_impliesExpression_2D_weak : public GALGAS_AC_5F_boolExpression
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -1919,8 +2027,6 @@ class GALGAS_C_5F_equalExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -1977,8 +2083,6 @@ class GALGAS_C_5F_equalExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2038,8 +2142,6 @@ class GALGAS_C_5F_notExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2096,8 +2198,6 @@ class GALGAS_C_5F_notExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2157,8 +2257,6 @@ class GALGAS_C_5F_VariableExpression : public GALGAS_AC_5F_boolExpression {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2216,8 +2314,6 @@ class GALGAS_C_5F_VariableExpression_2D_weak : public GALGAS_AC_5F_boolExpressio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2270,8 +2366,6 @@ class GALGAS_C_5F_trueExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2330,8 +2424,6 @@ class GALGAS_C_5F_trueExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2D
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -2384,8 +2476,6 @@ class GALGAS_C_5F_falseExpression : public GALGAS_AC_5F_boolExpression {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2443,8 +2533,6 @@ class GALGAS_C_5F_falseExpression_2D_weak : public GALGAS_AC_5F_boolExpression_2
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2606,8 +2694,6 @@ class GALGAS_L_5F_transitionDefinition : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -2731,8 +2817,6 @@ class GALGAS_L_5F_transitionDefinition_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -2913,8 +2997,6 @@ class GALGAS_L_5F_stateDefinition : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -3051,8 +3133,6 @@ class GALGAS_L_5F_stateDefinition_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3195,8 +3275,6 @@ class GALGAS_L_5F_statesDefinitionList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -3308,8 +3386,6 @@ class GALGAS_L_5F_statesDefinitionList_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3359,8 +3435,6 @@ class GALGAS_AC_5F_machineDefinition : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3418,8 +3492,6 @@ class GALGAS_AC_5F_machineDefinition_2D_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -3526,11 +3598,9 @@ class GALGAS_M_5F_modesMap : public AC_GALGAS_map {
 
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
-  public: VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                    class GALGAS_uint & outOperand1,
-                                                    class GALGAS_AC_5F_machineDefinition & outOperand2) const ;
+  public: VIRTUAL_IN_DEBUG class GALGAS_M_5F_modesMap_2D_element_3F_ readSubscript__3F_ (const class GALGAS_string & in0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -3693,8 +3763,6 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -3704,6 +3772,79 @@ class GALGAS_M_5F_modesMap_2D_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap_2D_element ;
+
+//--------------------------------------------------------------------------------------------------
+//
+// Phase 1: M_modesMap-element? optional
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_M_5F_modesMap_2D_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GALGAS_M_5F_modesMap_2D_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GALGAS_M_5F_modesMap_2D_element_3F_ (void) ;
+
+//--------------------------------- Dedicaced constructors
+  public: GALGAS_M_5F_modesMap_2D_element_3F_ (const GALGAS_M_5F_modesMap_2D_element & inValue) ;
+  public: static GALGAS_M_5F_modesMap_2D_element_3F_ init_nil (void) ;
+
+  public: bool isValuated (void) const ;
+  public: inline GALGAS_M_5F_modesMap_2D_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GALGAS_bool readProperty_isNil (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GALGAS_bool readProperty_isSome (void) const {
+    return GALGAS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GALGAS_M_5F_modesMap_2D_element_3F_ extractObject (const GALGAS_object & inObject,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GALGAS_M_5F_modesMap_2D_element_3F_ class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap_2D_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3836,8 +3977,6 @@ class GALGAS_ListForModes : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -3949,8 +4088,6 @@ class GALGAS_ListForModes_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4014,8 +4151,6 @@ class GALGAS_C_5F_substractiveModalCompositionComponent : public GALGAS_AC_5F_ma
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4072,8 +4207,6 @@ class GALGAS_C_5F_substractiveModalCompositionComponent_2D_weak : public GALGAS_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4138,8 +4271,6 @@ class GALGAS_C_5F_additiveModalCompositionComponent : public GALGAS_AC_5F_machin
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4196,8 +4327,6 @@ class GALGAS_C_5F_additiveModalCompositionComponent_2D_weak : public GALGAS_AC_5
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4262,8 +4391,6 @@ class GALGAS_C_5F_trans : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4320,8 +4447,6 @@ class GALGAS_C_5F_trans_2D_weak : public GALGAS_AC_5F_machineDefinition_2D_weak 
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4386,8 +4511,6 @@ class GALGAS_C_5F_importMachine : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4444,8 +4567,6 @@ class GALGAS_C_5F_importMachine_2D_weak : public GALGAS_AC_5F_machineDefinition_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4525,8 +4646,6 @@ class GALGAS_C_5F_explicitAutomatonDefinition : public GALGAS_AC_5F_machineDefin
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4583,8 +4702,6 @@ class GALGAS_C_5F_explicitAutomatonDefinition_2D_weak : public GALGAS_AC_5F_mach
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4644,8 +4761,6 @@ class GALGAS_C_5F_boolToSeqExpression : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4702,8 +4817,6 @@ class GALGAS_C_5F_boolToSeqExpression_2D_weak : public GALGAS_AC_5F_machineDefin
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4773,8 +4886,6 @@ class GALGAS_C_5F_existsDefinition : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4831,8 +4942,6 @@ class GALGAS_C_5F_existsDefinition_2D_weak : public GALGAS_AC_5F_machineDefiniti
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -4902,8 +5011,6 @@ class GALGAS_C_5F_forallDefinition : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -4960,8 +5067,6 @@ class GALGAS_C_5F_forallDefinition_2D_weak : public GALGAS_AC_5F_machineDefiniti
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5026,8 +5131,6 @@ class GALGAS_C_5F_parallelComposition : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5084,8 +5187,6 @@ class GALGAS_C_5F_parallelComposition_2D_weak : public GALGAS_AC_5F_machineDefin
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5150,8 +5251,6 @@ class GALGAS_C_5F_orComposition : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5208,8 +5307,6 @@ class GALGAS_C_5F_orComposition_2D_weak : public GALGAS_AC_5F_machineDefinition_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5279,8 +5376,6 @@ class GALGAS_C_5F_strongModalComposition : public GALGAS_AC_5F_machineDefinition
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5337,8 +5432,6 @@ class GALGAS_C_5F_strongModalComposition_2D_weak : public GALGAS_AC_5F_machineDe
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5408,8 +5501,6 @@ class GALGAS_C_5F_weakModalComposition : public GALGAS_AC_5F_machineDefinition {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5466,8 +5557,6 @@ class GALGAS_C_5F_weakModalComposition_2D_weak : public GALGAS_AC_5F_machineDefi
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5527,8 +5616,6 @@ class GALGAS_C_5F_fullSaturationOperation : public GALGAS_AC_5F_machineDefinitio
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5585,8 +5672,6 @@ class GALGAS_C_5F_fullSaturationOperation_2D_weak : public GALGAS_AC_5F_machineD
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5646,8 +5731,6 @@ class GALGAS_C_5F_complementationOperation : public GALGAS_AC_5F_machineDefiniti
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5704,8 +5787,6 @@ class GALGAS_C_5F_complementationOperation_2D_weak : public GALGAS_AC_5F_machine
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5765,8 +5846,6 @@ class GALGAS_C_5F_suppressTerminalStatesOperation : public GALGAS_AC_5F_machineD
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5823,8 +5902,6 @@ class GALGAS_C_5F_suppressTerminalStatesOperation_2D_weak : public GALGAS_AC_5F_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -5884,8 +5961,6 @@ class GALGAS_C_5F_suppressInitialStatesOperation : public GALGAS_AC_5F_machineDe
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5943,8 +6018,6 @@ class GALGAS_C_5F_suppressInitialStatesOperation_2D_weak : public GALGAS_AC_5F_m
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -5994,8 +6067,6 @@ class GALGAS_AC_5F_job : public AC_GALGAS_reference_class {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6053,8 +6124,6 @@ class GALGAS_AC_5F_job_2D_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6114,8 +6183,6 @@ class GALGAS_C_5F_machineDisplayStates : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6172,8 +6239,6 @@ class GALGAS_C_5F_machineDisplayStates_2D_weak : public GALGAS_AC_5F_job_2D_weak
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6233,8 +6298,6 @@ class GALGAS_C_5F_machineDisplayInitialStates : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6291,8 +6354,6 @@ class GALGAS_C_5F_machineDisplayInitialStates_2D_weak : public GALGAS_AC_5F_job_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6352,8 +6413,6 @@ class GALGAS_C_5F_machineDisplayTerminalStates : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6410,8 +6469,6 @@ class GALGAS_C_5F_machineDisplayTerminalStates_2D_weak : public GALGAS_AC_5F_job
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6471,8 +6528,6 @@ class GALGAS_C_5F_machineDisplayTransitions : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6529,8 +6584,6 @@ class GALGAS_C_5F_machineDisplayTransitions_2D_weak : public GALGAS_AC_5F_job_2D
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6595,8 +6648,6 @@ class GALGAS_C_5F_machineCheck : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6653,8 +6704,6 @@ class GALGAS_C_5F_machineCheck_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6719,8 +6768,6 @@ class GALGAS_C_5F_machineCheckIdentical : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6777,8 +6824,6 @@ class GALGAS_C_5F_machineCheckIdentical_2D_weak : public GALGAS_AC_5F_job_2D_wea
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -6868,8 +6913,6 @@ class GALGAS_C_5F_machineComponent : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -6926,8 +6969,6 @@ class GALGAS_C_5F_machineComponent_2D_weak : public GALGAS_AC_5F_job_2D_weak {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7017,8 +7058,6 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp : public GALGAS_AC_5F_job {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7075,8 +7114,6 @@ class GALGAS_C_5F_machineDefinedByAdditiveModalComp_2D_weak : public GALGAS_AC_5
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7166,8 +7203,6 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp : public GALGAS_AC_5F_jo
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
@@ -7224,8 +7259,6 @@ class GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2D_weak : public GALGAS_
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7349,8 +7382,6 @@ class GALGAS_L_5F_inputConfigurationForScenario : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -7448,8 +7479,6 @@ class GALGAS_L_5F_inputConfigurationForScenario_2D_element : public AC_GALGAS_ro
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7573,8 +7602,6 @@ class GALGAS_L_5F_inputScenario : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -7672,8 +7699,6 @@ class GALGAS_L_5F_inputScenario_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
@@ -7816,8 +7841,6 @@ class GALGAS_L_5F_scenarioList : public AC_GALGAS_list {
 
 //--------------------------------- Read subscripts
 
-//--------------------------------- Optional Methods
-
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
 
@@ -7928,8 +7951,6 @@ class GALGAS_L_5F_scenarioList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
 
 //--------------------------------- Read subscripts
-
-//--------------------------------- Optional Methods
 
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;

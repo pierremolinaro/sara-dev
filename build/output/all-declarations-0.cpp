@@ -1842,6 +1842,27 @@ GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::class_func_emptyMap (LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_M_5F_variablesMap_2D_element_3F_ GALGAS_M_5F_variablesMap
+::readSubscript__3F_ (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_M_5F_variablesMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_M_5F_variablesMap * p = (cMapElement_M_5F_variablesMap *) searchForKey (inKey) ;
+    if (nullptr == p) {
+      result = GALGAS_M_5F_variablesMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_M_5F_variablesMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mIndex = p->mProperty_mIndex ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_M_5F_variablesMap GALGAS_M_5F_variablesMap::class_func_mapWithMapToOverride (const GALGAS_M_5F_variablesMap & inMapToOverride
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_M_5F_variablesMap result ;
@@ -2013,21 +2034,6 @@ GALGAS_uint cEnumerator_M_5F_variablesMap::current_mIndex (LOCATION_ARGS) const 
 }
 
 //--------------------------------------------------------------------------------------------------
-
-bool GALGAS_M_5F_variablesMap::optional_searchKey (const GALGAS_string & inKey,
-                                                   GALGAS_uint & outArgument0) const {
-  const cMapElement_M_5F_variablesMap * p = (const cMapElement_M_5F_variablesMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_M_5F_variablesMap) ;
-    outArgument0 = p->mProperty_mIndex ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //     @M_variablesMap generic code implementation
 //
@@ -2141,6 +2147,27 @@ GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::init (Compiler * COMMA_LOCATION_ARGS)
 GALGAS_M_5F_stateMap GALGAS_M_5F_stateMap::class_func_emptyMap (LOCATION_ARGS) {
   GALGAS_M_5F_stateMap result ;
   result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_M_5F_stateMap_2D_element_3F_ GALGAS_M_5F_stateMap
+::readSubscript__3F_ (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_M_5F_stateMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_M_5F_stateMap * p = (cMapElement_M_5F_stateMap *) searchForKey (inKey) ;
+    if (nullptr == p) {
+      result = GALGAS_M_5F_stateMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_M_5F_stateMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mIndex = p->mProperty_mIndex ;
+      result = element ;
+    }
+  }
   return result ;
 }
 
@@ -2330,21 +2357,6 @@ GALGAS_uint cEnumerator_M_5F_stateMap::current_mIndex (LOCATION_ARGS) const {
   const cMapElement_M_5F_stateMap * p = (const cMapElement_M_5F_stateMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
   return p->mProperty_mIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_M_5F_stateMap::optional_searchKey (const GALGAS_string & inKey,
-                                               GALGAS_uint & outArgument0) const {
-  const cMapElement_M_5F_stateMap * p = (const cMapElement_M_5F_stateMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
-    outArgument0 = p->mProperty_mIndex ;
-  }else{
-    outArgument0.drop () ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7738,6 +7750,28 @@ GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::class_func_emptyMap (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+GALGAS_M_5F_modesMap_2D_element_3F_ GALGAS_M_5F_modesMap
+::readSubscript__3F_ (const class GALGAS_string & inKey,
+                            Compiler * /* inCompiler */
+                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_M_5F_modesMap_2D_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    cMapElement_M_5F_modesMap * p = (cMapElement_M_5F_modesMap *) searchForKey (inKey) ;
+    if (nullptr == p) {
+      result = GALGAS_M_5F_modesMap_2D_element_3F_::init_nil () ;
+    }else{
+      GALGAS_M_5F_modesMap_2D_element element ;
+      element.mProperty_lkey = p->mProperty_lkey ;
+      element.mProperty_mIndex = p->mProperty_mIndex ;
+      element.mProperty_mModeDefinition = p->mProperty_mModeDefinition ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GALGAS_M_5F_modesMap GALGAS_M_5F_modesMap::class_func_mapWithMapToOverride (const GALGAS_M_5F_modesMap & inMapToOverride
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_M_5F_modesMap result ;
@@ -7948,24 +7982,6 @@ GALGAS_AC_5F_machineDefinition cEnumerator_M_5F_modesMap::current_mModeDefinitio
   const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
   return p->mProperty_mModeDefinition ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GALGAS_M_5F_modesMap::optional_searchKey (const GALGAS_string & inKey,
-                                               GALGAS_uint & outArgument0,
-                                               GALGAS_AC_5F_machineDefinition & outArgument1) const {
-  const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) searchForKey (inKey) ;
-  const bool result = nullptr != p ;
-  if (result) {
-    macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
-    outArgument0 = p->mProperty_mIndex ;
-    outArgument1 = p->mProperty_mModeDefinition ;
-  }else{
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
