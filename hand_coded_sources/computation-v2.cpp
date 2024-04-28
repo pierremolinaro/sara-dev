@@ -206,7 +206,7 @@ void swap (C_saraMachine & ioOperand1,
 
 //---------------------------------------------------------------------------*
 
-void routine_performComputations_3F_ (const GALGAS_L_5F_jobList inComponentMap,
+void routine_performComputations_3F_ (const GGS_L_5F_jobList inComponentMap,
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
@@ -1615,7 +1615,7 @@ computeFromExpression (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
+  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -1758,7 +1758,7 @@ computeFromExpression (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
+  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -1969,7 +1969,7 @@ compute (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
+  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -2264,7 +2264,7 @@ compute (Compiler * inCompiler,
   TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
   TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GALGAS_lstring> modeNamesArray (modeCount, GALGAS_lstring () COMMA_HERE) ;
+  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   cEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap, EnumerationOrder::up) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {

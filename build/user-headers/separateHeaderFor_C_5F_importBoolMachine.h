@@ -16,9 +16,9 @@ class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_importBoolMachine_init_21__21__21_ (const class GALGAS_uint & inOperand0,
-                                                        const class GALGAS_location & inOperand1,
-                                                        const class GALGAS_L_5F_translationVector & inOperand2,
+  public: void C_5F_importBoolMachine_init_21__21__21_ (const class GGS_uint & inOperand0,
+                                                        const class GGS_location & inOperand1,
+                                                        const class GGS_L_5F_translationVector & inOperand2,
                                                         Compiler * inCompiler) ;
 
 
@@ -31,18 +31,18 @@ class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_uint mProperty_mIndexOfImportedMachine ;
-  public: GALGAS_location mProperty_mErrorLocation ;
-  public: GALGAS_L_5F_translationVector mProperty_mTranslationVector ;
+  public: GGS_uint mProperty_mIndexOfImportedMachine ;
+  public: GGS_location mProperty_mErrorLocation ;
+  public: GGS_L_5F_translationVector mProperty_mTranslationVector ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_importBoolMachine (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_importBoolMachine (const GALGAS_uint & in_mIndexOfImportedMachine,
-                                       const GALGAS_location & in_mErrorLocation,
-                                       const GALGAS_L_5F_translationVector & in_mTranslationVector
+  public: cPtr_C_5F_importBoolMachine (const GGS_uint & in_mIndexOfImportedMachine,
+                                       const GGS_location & in_mErrorLocation,
+                                       const GGS_L_5F_translationVector & in_mTranslationVector
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -16,9 +16,9 @@ class cPtr_C_5F_forallDefinition : public cPtr_AC_5F_machineDefinition {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_forallDefinition_init_21__21__21_ (const class GALGAS_uint & inOperand0,
-                                                       const class GALGAS_uint & inOperand1,
-                                                       const class GALGAS_AC_5F_machineDefinition & inOperand2,
+  public: void C_5F_forallDefinition_init_21__21__21_ (const class GGS_uint & inOperand0,
+                                                       const class GGS_uint & inOperand1,
+                                                       const class GGS_AC_5F_machineDefinition & inOperand2,
                                                        Compiler * inCompiler) ;
 
 
@@ -33,18 +33,18 @@ class cPtr_C_5F_forallDefinition : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_uint mProperty_mPreviousVariableCount ;
-  public: GALGAS_uint mProperty_mTotalVariableCount ;
-  public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
+  public: GGS_uint mProperty_mPreviousVariableCount ;
+  public: GGS_uint mProperty_mTotalVariableCount ;
+  public: GGS_AC_5F_machineDefinition mProperty_mOperand ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_forallDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_forallDefinition (const GALGAS_uint & in_mPreviousVariableCount,
-                                      const GALGAS_uint & in_mTotalVariableCount,
-                                      const GALGAS_AC_5F_machineDefinition & in_mOperand
+  public: cPtr_C_5F_forallDefinition (const GGS_uint & in_mPreviousVariableCount,
+                                      const GGS_uint & in_mTotalVariableCount,
+                                      const GGS_AC_5F_machineDefinition & in_mOperand
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

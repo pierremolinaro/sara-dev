@@ -16,11 +16,11 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_scenarioComponent_init_21__21__21__21__21_ (const class GALGAS_uint & inOperand0,
-                                                                const class GALGAS_uint & inOperand1,
-                                                                const class GALGAS_uint & inOperand2,
-                                                                const class GALGAS_M_5F_variablesMap & inOperand3,
-                                                                const class GALGAS_L_5F_scenarioList & inOperand4,
+  public: void C_5F_scenarioComponent_init_21__21__21__21__21_ (const class GGS_uint & inOperand0,
+                                                                const class GGS_uint & inOperand1,
+                                                                const class GGS_uint & inOperand2,
+                                                                const class GGS_M_5F_variablesMap & inOperand3,
+                                                                const class GGS_L_5F_scenarioList & inOperand4,
                                                                 Compiler * inCompiler) ;
 
 
@@ -33,22 +33,22 @@ class cPtr_C_5F_scenarioComponent : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_uint mProperty_mMachineIndex ;
-  public: GALGAS_uint mProperty_mInputVariableCount ;
-  public: GALGAS_uint mProperty_mInputAndInternalVariableCount ;
-  public: GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
-  public: GALGAS_L_5F_scenarioList mProperty_mScenarioList ;
+  public: GGS_uint mProperty_mMachineIndex ;
+  public: GGS_uint mProperty_mInputVariableCount ;
+  public: GGS_uint mProperty_mInputAndInternalVariableCount ;
+  public: GGS_M_5F_variablesMap mProperty_mVariablesMap ;
+  public: GGS_L_5F_scenarioList mProperty_mScenarioList ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_scenarioComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_scenarioComponent (const GALGAS_uint & in_mMachineIndex,
-                                       const GALGAS_uint & in_mInputVariableCount,
-                                       const GALGAS_uint & in_mInputAndInternalVariableCount,
-                                       const GALGAS_M_5F_variablesMap & in_mVariablesMap,
-                                       const GALGAS_L_5F_scenarioList & in_mScenarioList
+  public: cPtr_C_5F_scenarioComponent (const GGS_uint & in_mMachineIndex,
+                                       const GGS_uint & in_mInputVariableCount,
+                                       const GGS_uint & in_mInputAndInternalVariableCount,
+                                       const GGS_M_5F_variablesMap & in_mVariablesMap,
+                                       const GGS_L_5F_scenarioList & in_mScenarioList
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

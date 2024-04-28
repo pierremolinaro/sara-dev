@@ -16,8 +16,8 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_trans_init_21__21_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                        const class GALGAS_AC_5F_boolExpression & inOperand1,
+  public: void C_5F_trans_init_21__21_ (const class GGS_AC_5F_boolExpression & inOperand0,
+                                        const class GGS_AC_5F_boolExpression & inOperand1,
                                         Compiler * inCompiler) ;
 
 
@@ -32,16 +32,16 @@ class cPtr_C_5F_trans : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
-  public: GALGAS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
+  public: GGS_AC_5F_boolExpression mProperty_mSourceStateExpression ;
+  public: GGS_AC_5F_boolExpression mProperty_mTargetStateExpression ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_trans (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_trans (const GALGAS_AC_5F_boolExpression & in_mSourceStateExpression,
-                           const GALGAS_AC_5F_boolExpression & in_mTargetStateExpression
+  public: cPtr_C_5F_trans (const GGS_AC_5F_boolExpression & in_mSourceStateExpression,
+                           const GGS_AC_5F_boolExpression & in_mTargetStateExpression
                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -16,8 +16,8 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_machineCheckIdentical_init_21__21_ (const class GALGAS_uint & inOperand0,
-                                                        const class GALGAS_uint & inOperand1,
+  public: void C_5F_machineCheckIdentical_init_21__21_ (const class GGS_uint & inOperand0,
+                                                        const class GGS_uint & inOperand1,
                                                         Compiler * inCompiler) ;
 
 
@@ -30,16 +30,16 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_uint mProperty_mMachineIndex_31_ ;
-  public: GALGAS_uint mProperty_mMachineIndex_32_ ;
+  public: GGS_uint mProperty_mMachineIndex_31_ ;
+  public: GGS_uint mProperty_mMachineIndex_32_ ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_machineCheckIdentical (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_machineCheckIdentical (const GALGAS_uint & in_mMachineIndex_31_,
-                                           const GALGAS_uint & in_mMachineIndex_32_
+  public: cPtr_C_5F_machineCheckIdentical (const GGS_uint & in_mMachineIndex_31_,
+                                           const GGS_uint & in_mMachineIndex_32_
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

@@ -16,7 +16,7 @@ class cPtr_C_5F_boolToSeqExpression : public cPtr_AC_5F_machineDefinition {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_boolToSeqExpression_init_21_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
+  public: void C_5F_boolToSeqExpression_init_21_ (const class GGS_AC_5F_boolExpression & inOperand0,
                                                   Compiler * inCompiler) ;
 
 
@@ -31,14 +31,14 @@ class cPtr_C_5F_boolToSeqExpression : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_AC_5F_boolExpression mProperty_mExpression ;
+  public: GGS_AC_5F_boolExpression mProperty_mExpression ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_boolToSeqExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_boolToSeqExpression (const GALGAS_AC_5F_boolExpression & in_mExpression
+  public: cPtr_C_5F_boolToSeqExpression (const GGS_AC_5F_boolExpression & in_mExpression
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

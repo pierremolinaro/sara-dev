@@ -16,7 +16,7 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_suppressTerminalStatesOperation_init_21_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
+  public: void C_5F_suppressTerminalStatesOperation_init_21_ (const class GGS_AC_5F_machineDefinition & inOperand0,
                                                               Compiler * inCompiler) ;
 
 
@@ -31,14 +31,14 @@ class cPtr_C_5F_suppressTerminalStatesOperation : public cPtr_AC_5F_machineDefin
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_AC_5F_machineDefinition mProperty_mOperand ;
+  public: GGS_AC_5F_machineDefinition mProperty_mOperand ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_suppressTerminalStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_suppressTerminalStatesOperation (const GALGAS_AC_5F_machineDefinition & in_mOperand
+  public: cPtr_C_5F_suppressTerminalStatesOperation (const GGS_AC_5F_machineDefinition & in_mOperand
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

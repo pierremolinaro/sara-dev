@@ -16,8 +16,8 @@ class cPtr_C_5F_orExpression : public cPtr_AC_5F_boolExpression {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_orExpression_init_21__21_ (const class GALGAS_AC_5F_boolExpression & inOperand0,
-                                               const class GALGAS_AC_5F_boolExpression & inOperand1,
+  public: void C_5F_orExpression_init_21__21_ (const class GGS_AC_5F_boolExpression & inOperand0,
+                                               const class GGS_AC_5F_boolExpression & inOperand1,
                                                Compiler * inCompiler) ;
 
 
@@ -30,16 +30,16 @@ class cPtr_C_5F_orExpression : public cPtr_AC_5F_boolExpression {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_AC_5F_boolExpression mProperty_mLeftExpression ;
-  public: GALGAS_AC_5F_boolExpression mProperty_mRightExpression ;
+  public: GGS_AC_5F_boolExpression mProperty_mLeftExpression ;
+  public: GGS_AC_5F_boolExpression mProperty_mRightExpression ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_orExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_orExpression (const GALGAS_AC_5F_boolExpression & in_mLeftExpression,
-                                  const GALGAS_AC_5F_boolExpression & in_mRightExpression
+  public: cPtr_C_5F_orExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
+                                  const GGS_AC_5F_boolExpression & in_mRightExpression
                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

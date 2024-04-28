@@ -16,8 +16,8 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_additiveModalCompositionComponent_init_21__21_ (const class GALGAS_M_5F_modesMap & inOperand0,
-                                                                    const class GALGAS_ListForModes & inOperand1,
+  public: void C_5F_additiveModalCompositionComponent_init_21__21_ (const class GGS_M_5F_modesMap & inOperand0,
+                                                                    const class GGS_ListForModes & inOperand1,
                                                                     Compiler * inCompiler) ;
 
 
@@ -32,16 +32,16 @@ class cPtr_C_5F_additiveModalCompositionComponent : public cPtr_AC_5F_machineDef
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_M_5F_modesMap mProperty_mModeMap ;
-  public: GALGAS_ListForModes mProperty_mInclusionList ;
+  public: GGS_M_5F_modesMap mProperty_mModeMap ;
+  public: GGS_ListForModes mProperty_mInclusionList ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_additiveModalCompositionComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_additiveModalCompositionComponent (const GALGAS_M_5F_modesMap & in_mModeMap,
-                                                       const GALGAS_ListForModes & in_mInclusionList
+  public: cPtr_C_5F_additiveModalCompositionComponent (const GGS_M_5F_modesMap & in_mModeMap,
+                                                       const GGS_ListForModes & in_mInclusionList
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

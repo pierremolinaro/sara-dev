@@ -16,8 +16,8 @@ class cPtr_C_5F_orComposition : public cPtr_AC_5F_machineDefinition {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_orComposition_init_21__21_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
-                                                const class GALGAS_AC_5F_machineDefinition & inOperand1,
+  public: void C_5F_orComposition_init_21__21_ (const class GGS_AC_5F_machineDefinition & inOperand0,
+                                                const class GGS_AC_5F_machineDefinition & inOperand1,
                                                 Compiler * inCompiler) ;
 
 
@@ -32,16 +32,16 @@ class cPtr_C_5F_orComposition : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_AC_5F_machineDefinition mProperty_mLeftOperand ;
-  public: GALGAS_AC_5F_machineDefinition mProperty_mRightOperand ;
+  public: GGS_AC_5F_machineDefinition mProperty_mLeftOperand ;
+  public: GGS_AC_5F_machineDefinition mProperty_mRightOperand ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_orComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_orComposition (const GALGAS_AC_5F_machineDefinition & in_mLeftOperand,
-                                   const GALGAS_AC_5F_machineDefinition & in_mRightOperand
+  public: cPtr_C_5F_orComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
+                                   const GGS_AC_5F_machineDefinition & in_mRightOperand
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

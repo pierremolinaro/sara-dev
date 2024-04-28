@@ -16,9 +16,9 @@ class cPtr_C_5F_strongModalComposition : public cPtr_AC_5F_machineDefinition {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_strongModalComposition_init_21__21__21_ (const class GALGAS_AC_5F_machineDefinition & inOperand0,
-                                                             const class GALGAS_location & inOperand1,
-                                                             const class GALGAS_AC_5F_machineDefinition & inOperand2,
+  public: void C_5F_strongModalComposition_init_21__21__21_ (const class GGS_AC_5F_machineDefinition & inOperand0,
+                                                             const class GGS_location & inOperand1,
+                                                             const class GGS_AC_5F_machineDefinition & inOperand2,
                                                              Compiler * inCompiler) ;
 
 
@@ -33,18 +33,18 @@ class cPtr_C_5F_strongModalComposition : public cPtr_AC_5F_machineDefinition {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_AC_5F_machineDefinition mProperty_mLeftOperand ;
-  public: GALGAS_location mProperty_mErrorLocation ;
-  public: GALGAS_AC_5F_machineDefinition mProperty_mRightOperand ;
+  public: GGS_AC_5F_machineDefinition mProperty_mLeftOperand ;
+  public: GGS_location mProperty_mErrorLocation ;
+  public: GGS_AC_5F_machineDefinition mProperty_mRightOperand ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_strongModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_strongModalComposition (const GALGAS_AC_5F_machineDefinition & in_mLeftOperand,
-                                            const GALGAS_location & in_mErrorLocation,
-                                            const GALGAS_AC_5F_machineDefinition & in_mRightOperand
+  public: cPtr_C_5F_strongModalComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
+                                            const GGS_location & in_mErrorLocation,
+                                            const GGS_AC_5F_machineDefinition & in_mRightOperand
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

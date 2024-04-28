@@ -16,7 +16,7 @@ class cPtr_C_5F_machineDisplayTerminalStates : public cPtr_AC_5F_job {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_machineDisplayTerminalStates_init_21_ (const class GALGAS_uint & inOperand0,
+  public: void C_5F_machineDisplayTerminalStates_init_21_ (const class GGS_uint & inOperand0,
                                                            Compiler * inCompiler) ;
 
 
@@ -29,14 +29,14 @@ class cPtr_C_5F_machineDisplayTerminalStates : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_uint mProperty_mMachineIndex ;
+  public: GGS_uint mProperty_mMachineIndex ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_machineDisplayTerminalStates (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_machineDisplayTerminalStates (const GALGAS_uint & in_mMachineIndex
+  public: cPtr_C_5F_machineDisplayTerminalStates (const GGS_uint & in_mMachineIndex
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

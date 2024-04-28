@@ -16,11 +16,11 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_explicitAutomatonDefinition_init_21__21__21__21__21_ (const class GALGAS_M_5F_stateMap & inOperand0,
-                                                                          const class GALGAS_L_5F_statesDefinitionList & inOperand1,
-                                                                          const class GALGAS_L_5F_statesDefinitionList & inOperand2,
-                                                                          const class GALGAS_L_5F_stateDefinition & inOperand3,
-                                                                          const class GALGAS_location & inOperand4,
+  public: void C_5F_explicitAutomatonDefinition_init_21__21__21__21__21_ (const class GGS_M_5F_stateMap & inOperand0,
+                                                                          const class GGS_L_5F_statesDefinitionList & inOperand1,
+                                                                          const class GGS_L_5F_statesDefinitionList & inOperand2,
+                                                                          const class GGS_L_5F_stateDefinition & inOperand3,
+                                                                          const class GGS_location & inOperand4,
                                                                           Compiler * inCompiler) ;
 
 
@@ -35,22 +35,22 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_M_5F_stateMap mProperty_mStatesMap ;
-  public: GALGAS_L_5F_statesDefinitionList mProperty_mInitialStatesDefinitionList ;
-  public: GALGAS_L_5F_statesDefinitionList mProperty_mTerminalStatesDefinitionList ;
-  public: GALGAS_L_5F_stateDefinition mProperty_mStateDefinitionList ;
-  public: GALGAS_location mProperty_mEndOfDefinition ;
+  public: GGS_M_5F_stateMap mProperty_mStatesMap ;
+  public: GGS_L_5F_statesDefinitionList mProperty_mInitialStatesDefinitionList ;
+  public: GGS_L_5F_statesDefinitionList mProperty_mTerminalStatesDefinitionList ;
+  public: GGS_L_5F_stateDefinition mProperty_mStateDefinitionList ;
+  public: GGS_location mProperty_mEndOfDefinition ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_explicitAutomatonDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_explicitAutomatonDefinition (const GALGAS_M_5F_stateMap & in_mStatesMap,
-                                                 const GALGAS_L_5F_statesDefinitionList & in_mInitialStatesDefinitionList,
-                                                 const GALGAS_L_5F_statesDefinitionList & in_mTerminalStatesDefinitionList,
-                                                 const GALGAS_L_5F_stateDefinition & in_mStateDefinitionList,
-                                                 const GALGAS_location & in_mEndOfDefinition
+  public: cPtr_C_5F_explicitAutomatonDefinition (const GGS_M_5F_stateMap & in_mStatesMap,
+                                                 const GGS_L_5F_statesDefinitionList & in_mInitialStatesDefinitionList,
+                                                 const GGS_L_5F_statesDefinitionList & in_mTerminalStatesDefinitionList,
+                                                 const GGS_L_5F_stateDefinition & in_mStateDefinitionList,
+                                                 const GGS_location & in_mEndOfDefinition
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication

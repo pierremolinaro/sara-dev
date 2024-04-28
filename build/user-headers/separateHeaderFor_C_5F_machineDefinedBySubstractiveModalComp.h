@@ -16,13 +16,13 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
   #endif
 
 //--------------------------------- Initializers
-  public: void C_5F_machineDefinedBySubstractiveModalComp_init_21__21__21__21__21__21__21_ (const class GALGAS_lstring & inOperand0,
-                                                                                            const class GALGAS_uint & inOperand1,
-                                                                                            const class GALGAS_uint & inOperand2,
-                                                                                            const class GALGAS_uint & inOperand3,
-                                                                                            const class GALGAS_M_5F_variablesMap & inOperand4,
-                                                                                            const class GALGAS_M_5F_modesMap & inOperand5,
-                                                                                            const class GALGAS_ListForModes & inOperand6,
+  public: void C_5F_machineDefinedBySubstractiveModalComp_init_21__21__21__21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                            const class GGS_uint & inOperand1,
+                                                                                            const class GGS_uint & inOperand2,
+                                                                                            const class GGS_uint & inOperand3,
+                                                                                            const class GGS_M_5F_variablesMap & inOperand4,
+                                                                                            const class GGS_M_5F_modesMap & inOperand5,
+                                                                                            const class GGS_ListForModes & inOperand6,
                                                                                             Compiler * inCompiler) ;
 
 
@@ -35,26 +35,26 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GALGAS_lstring mProperty_mMachineName ;
-  public: GALGAS_uint mProperty_mMachineIndex ;
-  public: GALGAS_uint mProperty_mInputVariableCount ;
-  public: GALGAS_uint mProperty_mInputAndInternalVariableCount ;
-  public: GALGAS_M_5F_variablesMap mProperty_mVariablesMap ;
-  public: GALGAS_M_5F_modesMap mProperty_mModeMap ;
-  public: GALGAS_ListForModes mProperty_mExclusionList ;
+  public: GGS_lstring mProperty_mMachineName ;
+  public: GGS_uint mProperty_mMachineIndex ;
+  public: GGS_uint mProperty_mInputVariableCount ;
+  public: GGS_uint mProperty_mInputAndInternalVariableCount ;
+  public: GGS_M_5F_variablesMap mProperty_mVariablesMap ;
+  public: GGS_M_5F_modesMap mProperty_mModeMap ;
+  public: GGS_ListForModes mProperty_mExclusionList ;
 
 
 //--- Default constructor
   public: cPtr_C_5F_machineDefinedBySubstractiveModalComp (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_machineDefinedBySubstractiveModalComp (const GALGAS_lstring & in_mMachineName,
-                                                           const GALGAS_uint & in_mMachineIndex,
-                                                           const GALGAS_uint & in_mInputVariableCount,
-                                                           const GALGAS_uint & in_mInputAndInternalVariableCount,
-                                                           const GALGAS_M_5F_variablesMap & in_mVariablesMap,
-                                                           const GALGAS_M_5F_modesMap & in_mModeMap,
-                                                           const GALGAS_ListForModes & in_mExclusionList
+  public: cPtr_C_5F_machineDefinedBySubstractiveModalComp (const GGS_lstring & in_mMachineName,
+                                                           const GGS_uint & in_mMachineIndex,
+                                                           const GGS_uint & in_mInputVariableCount,
+                                                           const GGS_uint & in_mInputAndInternalVariableCount,
+                                                           const GGS_M_5F_variablesMap & in_mVariablesMap,
+                                                           const GGS_M_5F_modesMap & in_mModeMap,
+                                                           const GGS_ListForModes & in_mExclusionList
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
