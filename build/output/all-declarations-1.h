@@ -23,8 +23,43 @@ class GGS_C_5F_scenarioComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
 
   public: GGS_C_5F_scenarioComponent_2E_weak & operator = (const class GGS_C_5F_scenarioComponent & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_scenarioComponent_2E_weak init_nil (void) {
+    GGS_C_5F_scenarioComponent_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_scenarioComponent bang_C_5F_scenarioComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_scenarioComponent unwrappedValue (void) const {
+    GGS_C_5F_scenarioComponent result ;
+    if (isValid ()) {
+      const cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_scenarioComponent (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -133,8 +168,43 @@ class GGS_typeDisplayBDDstats_2E_weak : public GGS_AC_5F_job_2E_weak {
 
   public: GGS_typeDisplayBDDstats_2E_weak & operator = (const class GGS_typeDisplayBDDstats & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_typeDisplayBDDstats_2E_weak init_nil (void) {
+    GGS_typeDisplayBDDstats_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_typeDisplayBDDstats bang_typeDisplayBDDstats_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_typeDisplayBDDstats unwrappedValue (void) const {
+    GGS_typeDisplayBDDstats result ;
+    if (isValid ()) {
+      const cPtr_typeDisplayBDDstats * p = (cPtr_typeDisplayBDDstats *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_typeDisplayBDDstats (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -767,9 +837,15 @@ class GGS_M_5F_machinesMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_M_5F_machinesMap_2E_element_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_M_5F_machinesMap_2E_element_3F_ (const GGS_M_5F_machinesMap_2E_element & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_M_5F_machinesMap_2E_element_3F_ (const GGS_M_5F_machinesMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_M_5F_machinesMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_M_5F_machinesMap_2E_element unwrappedValue (void) const {

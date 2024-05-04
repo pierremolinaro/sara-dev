@@ -662,9 +662,15 @@ class GGS_M_5F_variablesMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_M_5F_variablesMap_2E_element_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_M_5F_variablesMap_2E_element_3F_ (const GGS_M_5F_variablesMap_2E_element & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_M_5F_variablesMap_2E_element_3F_ (const GGS_M_5F_variablesMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_M_5F_variablesMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_M_5F_variablesMap_2E_element unwrappedValue (void) const {
@@ -983,9 +989,15 @@ class GGS_M_5F_stateMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_M_5F_stateMap_2E_element_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_M_5F_stateMap_2E_element_3F_ (const GGS_M_5F_stateMap_2E_element & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_M_5F_stateMap_2E_element_3F_ (const GGS_M_5F_stateMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_M_5F_stateMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_M_5F_stateMap_2E_element unwrappedValue (void) const {
@@ -1329,8 +1341,43 @@ class GGS_AC_5F_boolExpression_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_AC_5F_boolExpression_2E_weak & operator = (const class GGS_AC_5F_boolExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_AC_5F_boolExpression_2E_weak init_nil (void) {
+    GGS_AC_5F_boolExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_AC_5F_boolExpression bang_AC_5F_boolExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_AC_5F_boolExpression unwrappedValue (void) const {
+    GGS_AC_5F_boolExpression result ;
+    if (isValid ()) {
+      const cPtr_AC_5F_boolExpression * p = (cPtr_AC_5F_boolExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_AC_5F_boolExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1454,8 +1501,43 @@ class GGS_C_5F_importBoolMachine_2E_weak : public GGS_AC_5F_boolExpression_2E_we
 
   public: GGS_C_5F_importBoolMachine_2E_weak & operator = (const class GGS_C_5F_importBoolMachine & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_importBoolMachine_2E_weak init_nil (void) {
+    GGS_C_5F_importBoolMachine_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_importBoolMachine bang_C_5F_importBoolMachine_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_importBoolMachine unwrappedValue (void) const {
+    GGS_C_5F_importBoolMachine result ;
+    if (isValid ()) {
+      const cPtr_C_5F_importBoolMachine * p = (cPtr_C_5F_importBoolMachine *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_importBoolMachine (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1574,8 +1656,43 @@ class GGS_C_5F_andExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 
   public: GGS_C_5F_andExpression_2E_weak & operator = (const class GGS_C_5F_andExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_andExpression_2E_weak init_nil (void) {
+    GGS_C_5F_andExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_andExpression bang_C_5F_andExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_andExpression unwrappedValue (void) const {
+    GGS_C_5F_andExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_andExpression * p = (cPtr_C_5F_andExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_andExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1694,8 +1811,43 @@ class GGS_C_5F_orExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 
   public: GGS_C_5F_orExpression_2E_weak & operator = (const class GGS_C_5F_orExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_orExpression_2E_weak init_nil (void) {
+    GGS_C_5F_orExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_orExpression bang_C_5F_orExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_orExpression unwrappedValue (void) const {
+    GGS_C_5F_orExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_orExpression * p = (cPtr_C_5F_orExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_orExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1814,8 +1966,43 @@ class GGS_C_5F_xorExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 
   public: GGS_C_5F_xorExpression_2E_weak & operator = (const class GGS_C_5F_xorExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_xorExpression_2E_weak init_nil (void) {
+    GGS_C_5F_xorExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_xorExpression bang_C_5F_xorExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_xorExpression unwrappedValue (void) const {
+    GGS_C_5F_xorExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_xorExpression * p = (cPtr_C_5F_xorExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_xorExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -1934,8 +2121,43 @@ class GGS_C_5F_impliesExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_we
 
   public: GGS_C_5F_impliesExpression_2E_weak & operator = (const class GGS_C_5F_impliesExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_impliesExpression_2E_weak init_nil (void) {
+    GGS_C_5F_impliesExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_impliesExpression bang_C_5F_impliesExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_impliesExpression unwrappedValue (void) const {
+    GGS_C_5F_impliesExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_impliesExpression * p = (cPtr_C_5F_impliesExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_impliesExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2054,8 +2276,43 @@ class GGS_C_5F_equalExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak
 
   public: GGS_C_5F_equalExpression_2E_weak & operator = (const class GGS_C_5F_equalExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_equalExpression_2E_weak init_nil (void) {
+    GGS_C_5F_equalExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_equalExpression bang_C_5F_equalExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_equalExpression unwrappedValue (void) const {
+    GGS_C_5F_equalExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_equalExpression * p = (cPtr_C_5F_equalExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_equalExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2169,8 +2426,43 @@ class GGS_C_5F_notExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 
   public: GGS_C_5F_notExpression_2E_weak & operator = (const class GGS_C_5F_notExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_notExpression_2E_weak init_nil (void) {
+    GGS_C_5F_notExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_notExpression bang_C_5F_notExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_notExpression unwrappedValue (void) const {
+    GGS_C_5F_notExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_notExpression * p = (cPtr_C_5F_notExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_notExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2284,8 +2576,43 @@ class GGS_C_5F_VariableExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_w
 
   public: GGS_C_5F_VariableExpression_2E_weak & operator = (const class GGS_C_5F_VariableExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_VariableExpression_2E_weak init_nil (void) {
+    GGS_C_5F_VariableExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_VariableExpression bang_C_5F_VariableExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_VariableExpression unwrappedValue (void) const {
+    GGS_C_5F_VariableExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_VariableExpression * p = (cPtr_C_5F_VariableExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_VariableExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2394,8 +2721,43 @@ class GGS_C_5F_trueExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak 
 
   public: GGS_C_5F_trueExpression_2E_weak & operator = (const class GGS_C_5F_trueExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_trueExpression_2E_weak init_nil (void) {
+    GGS_C_5F_trueExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_trueExpression bang_C_5F_trueExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_trueExpression unwrappedValue (void) const {
+    GGS_C_5F_trueExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_trueExpression * p = (cPtr_C_5F_trueExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_trueExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -2504,8 +2866,43 @@ class GGS_C_5F_falseExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak
 
   public: GGS_C_5F_falseExpression_2E_weak & operator = (const class GGS_C_5F_falseExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_falseExpression_2E_weak init_nil (void) {
+    GGS_C_5F_falseExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_falseExpression bang_C_5F_falseExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_falseExpression unwrappedValue (void) const {
+    GGS_C_5F_falseExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_falseExpression * p = (cPtr_C_5F_falseExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_falseExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3463,8 +3860,43 @@ class GGS_AC_5F_machineDefinition_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_AC_5F_machineDefinition_2E_weak & operator = (const class GGS_AC_5F_machineDefinition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_AC_5F_machineDefinition_2E_weak init_nil (void) {
+    GGS_AC_5F_machineDefinition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_AC_5F_machineDefinition bang_AC_5F_machineDefinition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_AC_5F_machineDefinition unwrappedValue (void) const {
+    GGS_AC_5F_machineDefinition result ;
+    if (isValid ()) {
+      const cPtr_AC_5F_machineDefinition * p = (cPtr_AC_5F_machineDefinition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_AC_5F_machineDefinition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -3787,9 +4219,15 @@ class GGS_M_5F_modesMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_M_5F_modesMap_2E_element_3F_ (void) ;
 
-//--------------------------------- Dedicaced constructors
-  public: GGS_M_5F_modesMap_2E_element_3F_ (const GGS_M_5F_modesMap_2E_element & inValue) ;
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_M_5F_modesMap_2E_element_3F_ (const GGS_M_5F_modesMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
   public: static GGS_M_5F_modesMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
   public: inline GGS_M_5F_modesMap_2E_element unwrappedValue (void) const {
@@ -4178,8 +4616,43 @@ class GGS_C_5F_substractiveModalCompositionComponent_2E_weak : public GGS_AC_5F_
 
   public: GGS_C_5F_substractiveModalCompositionComponent_2E_weak & operator = (const class GGS_C_5F_substractiveModalCompositionComponent & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_substractiveModalCompositionComponent_2E_weak init_nil (void) {
+    GGS_C_5F_substractiveModalCompositionComponent_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_substractiveModalCompositionComponent bang_C_5F_substractiveModalCompositionComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_substractiveModalCompositionComponent unwrappedValue (void) const {
+    GGS_C_5F_substractiveModalCompositionComponent result ;
+    if (isValid ()) {
+      const cPtr_C_5F_substractiveModalCompositionComponent * p = (cPtr_C_5F_substractiveModalCompositionComponent *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_substractiveModalCompositionComponent (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4298,8 +4771,43 @@ class GGS_C_5F_additiveModalCompositionComponent_2E_weak : public GGS_AC_5F_mach
 
   public: GGS_C_5F_additiveModalCompositionComponent_2E_weak & operator = (const class GGS_C_5F_additiveModalCompositionComponent & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_additiveModalCompositionComponent_2E_weak init_nil (void) {
+    GGS_C_5F_additiveModalCompositionComponent_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_additiveModalCompositionComponent bang_C_5F_additiveModalCompositionComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_additiveModalCompositionComponent unwrappedValue (void) const {
+    GGS_C_5F_additiveModalCompositionComponent result ;
+    if (isValid ()) {
+      const cPtr_C_5F_additiveModalCompositionComponent * p = (cPtr_C_5F_additiveModalCompositionComponent *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_additiveModalCompositionComponent (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4418,8 +4926,43 @@ class GGS_C_5F_trans_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
 
   public: GGS_C_5F_trans_2E_weak & operator = (const class GGS_C_5F_trans & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_trans_2E_weak init_nil (void) {
+    GGS_C_5F_trans_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_trans bang_C_5F_trans_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_trans unwrappedValue (void) const {
+    GGS_C_5F_trans result ;
+    if (isValid ()) {
+      const cPtr_C_5F_trans * p = (cPtr_C_5F_trans *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_trans (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4538,8 +5081,43 @@ class GGS_C_5F_importMachine_2E_weak : public GGS_AC_5F_machineDefinition_2E_wea
 
   public: GGS_C_5F_importMachine_2E_weak & operator = (const class GGS_C_5F_importMachine & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_importMachine_2E_weak init_nil (void) {
+    GGS_C_5F_importMachine_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_importMachine bang_C_5F_importMachine_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_importMachine unwrappedValue (void) const {
+    GGS_C_5F_importMachine result ;
+    if (isValid ()) {
+      const cPtr_C_5F_importMachine * p = (cPtr_C_5F_importMachine *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_importMachine (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4673,8 +5251,43 @@ class GGS_C_5F_explicitAutomatonDefinition_2E_weak : public GGS_AC_5F_machineDef
 
   public: GGS_C_5F_explicitAutomatonDefinition_2E_weak & operator = (const class GGS_C_5F_explicitAutomatonDefinition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_explicitAutomatonDefinition_2E_weak init_nil (void) {
+    GGS_C_5F_explicitAutomatonDefinition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_explicitAutomatonDefinition bang_C_5F_explicitAutomatonDefinition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_explicitAutomatonDefinition unwrappedValue (void) const {
+    GGS_C_5F_explicitAutomatonDefinition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_explicitAutomatonDefinition * p = (cPtr_C_5F_explicitAutomatonDefinition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_explicitAutomatonDefinition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4788,8 +5401,43 @@ class GGS_C_5F_boolToSeqExpression_2E_weak : public GGS_AC_5F_machineDefinition_
 
   public: GGS_C_5F_boolToSeqExpression_2E_weak & operator = (const class GGS_C_5F_boolToSeqExpression & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_boolToSeqExpression_2E_weak init_nil (void) {
+    GGS_C_5F_boolToSeqExpression_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_boolToSeqExpression bang_C_5F_boolToSeqExpression_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_boolToSeqExpression unwrappedValue (void) const {
+    GGS_C_5F_boolToSeqExpression result ;
+    if (isValid ()) {
+      const cPtr_C_5F_boolToSeqExpression * p = (cPtr_C_5F_boolToSeqExpression *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_boolToSeqExpression (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -4913,8 +5561,43 @@ class GGS_C_5F_existsDefinition_2E_weak : public GGS_AC_5F_machineDefinition_2E_
 
   public: GGS_C_5F_existsDefinition_2E_weak & operator = (const class GGS_C_5F_existsDefinition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_existsDefinition_2E_weak init_nil (void) {
+    GGS_C_5F_existsDefinition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_existsDefinition bang_C_5F_existsDefinition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_existsDefinition unwrappedValue (void) const {
+    GGS_C_5F_existsDefinition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_existsDefinition * p = (cPtr_C_5F_existsDefinition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_existsDefinition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5038,8 +5721,43 @@ class GGS_C_5F_forallDefinition_2E_weak : public GGS_AC_5F_machineDefinition_2E_
 
   public: GGS_C_5F_forallDefinition_2E_weak & operator = (const class GGS_C_5F_forallDefinition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_forallDefinition_2E_weak init_nil (void) {
+    GGS_C_5F_forallDefinition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_forallDefinition bang_C_5F_forallDefinition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_forallDefinition unwrappedValue (void) const {
+    GGS_C_5F_forallDefinition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_forallDefinition * p = (cPtr_C_5F_forallDefinition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_forallDefinition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5158,8 +5876,43 @@ class GGS_C_5F_parallelComposition_2E_weak : public GGS_AC_5F_machineDefinition_
 
   public: GGS_C_5F_parallelComposition_2E_weak & operator = (const class GGS_C_5F_parallelComposition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_parallelComposition_2E_weak init_nil (void) {
+    GGS_C_5F_parallelComposition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_parallelComposition bang_C_5F_parallelComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_parallelComposition unwrappedValue (void) const {
+    GGS_C_5F_parallelComposition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_parallelComposition * p = (cPtr_C_5F_parallelComposition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_parallelComposition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5278,8 +6031,43 @@ class GGS_C_5F_orComposition_2E_weak : public GGS_AC_5F_machineDefinition_2E_wea
 
   public: GGS_C_5F_orComposition_2E_weak & operator = (const class GGS_C_5F_orComposition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_orComposition_2E_weak init_nil (void) {
+    GGS_C_5F_orComposition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_orComposition bang_C_5F_orComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_orComposition unwrappedValue (void) const {
+    GGS_C_5F_orComposition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_orComposition * p = (cPtr_C_5F_orComposition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_orComposition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5403,8 +6191,43 @@ class GGS_C_5F_strongModalComposition_2E_weak : public GGS_AC_5F_machineDefiniti
 
   public: GGS_C_5F_strongModalComposition_2E_weak & operator = (const class GGS_C_5F_strongModalComposition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_strongModalComposition_2E_weak init_nil (void) {
+    GGS_C_5F_strongModalComposition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_strongModalComposition bang_C_5F_strongModalComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_strongModalComposition unwrappedValue (void) const {
+    GGS_C_5F_strongModalComposition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_strongModalComposition * p = (cPtr_C_5F_strongModalComposition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_strongModalComposition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5528,8 +6351,43 @@ class GGS_C_5F_weakModalComposition_2E_weak : public GGS_AC_5F_machineDefinition
 
   public: GGS_C_5F_weakModalComposition_2E_weak & operator = (const class GGS_C_5F_weakModalComposition & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_weakModalComposition_2E_weak init_nil (void) {
+    GGS_C_5F_weakModalComposition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_weakModalComposition bang_C_5F_weakModalComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_weakModalComposition unwrappedValue (void) const {
+    GGS_C_5F_weakModalComposition result ;
+    if (isValid ()) {
+      const cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_weakModalComposition (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5643,8 +6501,43 @@ class GGS_C_5F_fullSaturationOperation_2E_weak : public GGS_AC_5F_machineDefinit
 
   public: GGS_C_5F_fullSaturationOperation_2E_weak & operator = (const class GGS_C_5F_fullSaturationOperation & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_fullSaturationOperation_2E_weak init_nil (void) {
+    GGS_C_5F_fullSaturationOperation_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_fullSaturationOperation bang_C_5F_fullSaturationOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_fullSaturationOperation unwrappedValue (void) const {
+    GGS_C_5F_fullSaturationOperation result ;
+    if (isValid ()) {
+      const cPtr_C_5F_fullSaturationOperation * p = (cPtr_C_5F_fullSaturationOperation *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_fullSaturationOperation (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5758,8 +6651,43 @@ class GGS_C_5F_complementationOperation_2E_weak : public GGS_AC_5F_machineDefini
 
   public: GGS_C_5F_complementationOperation_2E_weak & operator = (const class GGS_C_5F_complementationOperation & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_complementationOperation_2E_weak init_nil (void) {
+    GGS_C_5F_complementationOperation_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_complementationOperation bang_C_5F_complementationOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_complementationOperation unwrappedValue (void) const {
+    GGS_C_5F_complementationOperation result ;
+    if (isValid ()) {
+      const cPtr_C_5F_complementationOperation * p = (cPtr_C_5F_complementationOperation *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_complementationOperation (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5873,8 +6801,43 @@ class GGS_C_5F_suppressTerminalStatesOperation_2E_weak : public GGS_AC_5F_machin
 
   public: GGS_C_5F_suppressTerminalStatesOperation_2E_weak & operator = (const class GGS_C_5F_suppressTerminalStatesOperation & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_suppressTerminalStatesOperation_2E_weak init_nil (void) {
+    GGS_C_5F_suppressTerminalStatesOperation_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_suppressTerminalStatesOperation bang_C_5F_suppressTerminalStatesOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_suppressTerminalStatesOperation unwrappedValue (void) const {
+    GGS_C_5F_suppressTerminalStatesOperation result ;
+    if (isValid ()) {
+      const cPtr_C_5F_suppressTerminalStatesOperation * p = (cPtr_C_5F_suppressTerminalStatesOperation *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_suppressTerminalStatesOperation (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -5988,8 +6951,43 @@ class GGS_C_5F_suppressInitialStatesOperation_2E_weak : public GGS_AC_5F_machine
 
   public: GGS_C_5F_suppressInitialStatesOperation_2E_weak & operator = (const class GGS_C_5F_suppressInitialStatesOperation & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_suppressInitialStatesOperation_2E_weak init_nil (void) {
+    GGS_C_5F_suppressInitialStatesOperation_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_suppressInitialStatesOperation bang_C_5F_suppressInitialStatesOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_suppressInitialStatesOperation unwrappedValue (void) const {
+    GGS_C_5F_suppressInitialStatesOperation result ;
+    if (isValid ()) {
+      const cPtr_C_5F_suppressInitialStatesOperation * p = (cPtr_C_5F_suppressInitialStatesOperation *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_suppressInitialStatesOperation (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6095,8 +7093,43 @@ class GGS_AC_5F_job_2E_weak : public AC_GALGAS_weak_reference {
 
   public: GGS_AC_5F_job_2E_weak & operator = (const class GGS_AC_5F_job & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_AC_5F_job_2E_weak init_nil (void) {
+    GGS_AC_5F_job_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_AC_5F_job bang_AC_5F_job_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_AC_5F_job unwrappedValue (void) const {
+    GGS_AC_5F_job result ;
+    if (isValid ()) {
+      const cPtr_AC_5F_job * p = (cPtr_AC_5F_job *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_AC_5F_job (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6210,8 +7243,43 @@ class GGS_C_5F_machineDisplayStates_2E_weak : public GGS_AC_5F_job_2E_weak {
 
   public: GGS_C_5F_machineDisplayStates_2E_weak & operator = (const class GGS_C_5F_machineDisplayStates & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineDisplayStates_2E_weak init_nil (void) {
+    GGS_C_5F_machineDisplayStates_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineDisplayStates bang_C_5F_machineDisplayStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineDisplayStates unwrappedValue (void) const {
+    GGS_C_5F_machineDisplayStates result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineDisplayStates * p = (cPtr_C_5F_machineDisplayStates *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineDisplayStates (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6325,8 +7393,43 @@ class GGS_C_5F_machineDisplayInitialStates_2E_weak : public GGS_AC_5F_job_2E_wea
 
   public: GGS_C_5F_machineDisplayInitialStates_2E_weak & operator = (const class GGS_C_5F_machineDisplayInitialStates & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineDisplayInitialStates_2E_weak init_nil (void) {
+    GGS_C_5F_machineDisplayInitialStates_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineDisplayInitialStates bang_C_5F_machineDisplayInitialStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineDisplayInitialStates unwrappedValue (void) const {
+    GGS_C_5F_machineDisplayInitialStates result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineDisplayInitialStates * p = (cPtr_C_5F_machineDisplayInitialStates *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineDisplayInitialStates (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6440,8 +7543,43 @@ class GGS_C_5F_machineDisplayTerminalStates_2E_weak : public GGS_AC_5F_job_2E_we
 
   public: GGS_C_5F_machineDisplayTerminalStates_2E_weak & operator = (const class GGS_C_5F_machineDisplayTerminalStates & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineDisplayTerminalStates_2E_weak init_nil (void) {
+    GGS_C_5F_machineDisplayTerminalStates_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineDisplayTerminalStates bang_C_5F_machineDisplayTerminalStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineDisplayTerminalStates unwrappedValue (void) const {
+    GGS_C_5F_machineDisplayTerminalStates result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineDisplayTerminalStates * p = (cPtr_C_5F_machineDisplayTerminalStates *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineDisplayTerminalStates (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6555,8 +7693,43 @@ class GGS_C_5F_machineDisplayTransitions_2E_weak : public GGS_AC_5F_job_2E_weak 
 
   public: GGS_C_5F_machineDisplayTransitions_2E_weak & operator = (const class GGS_C_5F_machineDisplayTransitions & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineDisplayTransitions_2E_weak init_nil (void) {
+    GGS_C_5F_machineDisplayTransitions_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineDisplayTransitions bang_C_5F_machineDisplayTransitions_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineDisplayTransitions unwrappedValue (void) const {
+    GGS_C_5F_machineDisplayTransitions result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineDisplayTransitions * p = (cPtr_C_5F_machineDisplayTransitions *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineDisplayTransitions (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6675,8 +7848,43 @@ class GGS_C_5F_machineCheck_2E_weak : public GGS_AC_5F_job_2E_weak {
 
   public: GGS_C_5F_machineCheck_2E_weak & operator = (const class GGS_C_5F_machineCheck & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineCheck_2E_weak init_nil (void) {
+    GGS_C_5F_machineCheck_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineCheck bang_C_5F_machineCheck_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineCheck unwrappedValue (void) const {
+    GGS_C_5F_machineCheck result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineCheck * p = (cPtr_C_5F_machineCheck *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineCheck (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6795,8 +8003,43 @@ class GGS_C_5F_machineCheckIdentical_2E_weak : public GGS_AC_5F_job_2E_weak {
 
   public: GGS_C_5F_machineCheckIdentical_2E_weak & operator = (const class GGS_C_5F_machineCheckIdentical & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineCheckIdentical_2E_weak init_nil (void) {
+    GGS_C_5F_machineCheckIdentical_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineCheckIdentical bang_C_5F_machineCheckIdentical_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineCheckIdentical unwrappedValue (void) const {
+    GGS_C_5F_machineCheckIdentical result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineCheckIdentical * p = (cPtr_C_5F_machineCheckIdentical *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineCheckIdentical (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -6940,8 +8183,43 @@ class GGS_C_5F_machineComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
 
   public: GGS_C_5F_machineComponent_2E_weak & operator = (const class GGS_C_5F_machineComponent & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineComponent_2E_weak init_nil (void) {
+    GGS_C_5F_machineComponent_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineComponent bang_C_5F_machineComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineComponent unwrappedValue (void) const {
+    GGS_C_5F_machineComponent result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineComponent * p = (cPtr_C_5F_machineComponent *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineComponent (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7085,8 +8363,43 @@ class GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak : public GGS_AC_5F_job_
 
   public: GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak & operator = (const class GGS_C_5F_machineDefinedByAdditiveModalComp & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak init_nil (void) {
+    GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineDefinedByAdditiveModalComp bang_C_5F_machineDefinedByAdditiveModalComp_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineDefinedByAdditiveModalComp unwrappedValue (void) const {
+    GGS_C_5F_machineDefinedByAdditiveModalComp result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineDefinedByAdditiveModalComp * p = (cPtr_C_5F_machineDefinedByAdditiveModalComp *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineDefinedByAdditiveModalComp (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
@@ -7230,8 +8543,43 @@ class GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak : public GGS_AC_5F_
 
   public: GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak & operator = (const class GGS_C_5F_machineDefinedBySubstractiveModalComp & inSource) ;
 
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak init_nil (void) {
+    GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
 //--------------------------------- Bang operator
   public: GGS_C_5F_machineDefinedBySubstractiveModalComp bang_C_5F_machineDefinedBySubstractiveModalComp_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: inline GGS_C_5F_machineDefinedBySubstractiveModalComp unwrappedValue (void) const {
+    GGS_C_5F_machineDefinedBySubstractiveModalComp result ;
+    if (isValid ()) {
+      const cPtr_C_5F_machineDefinedBySubstractiveModalComp * p = (cPtr_C_5F_machineDefinedBySubstractiveModalComp *) ptr () ;
+      if (nullptr != p) {
+        result = GGS_C_5F_machineDefinedBySubstractiveModalComp (p) ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
 
 //-- Start of type generic part
 
