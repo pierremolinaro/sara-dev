@@ -1459,7 +1459,8 @@ class GGS_C_5F_importBoolMachine : public GGS_AC_5F_boolExpression {
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_importBoolMachine class_func_new (const class GGS_uint & inOperand0,
                                                                   const class GGS_location & inOperand1,
-                                                                  const class GGS_L_5F_translationVector & inOperand2
+                                                                  const class GGS_L_5F_translationVector & inOperand2,
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1614,7 +1615,8 @@ class GGS_C_5F_andExpression : public GGS_AC_5F_boolExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_andExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
-                                                              const class GGS_AC_5F_boolExpression & inOperand1
+                                                              const class GGS_AC_5F_boolExpression & inOperand1,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1769,7 +1771,8 @@ class GGS_C_5F_orExpression : public GGS_AC_5F_boolExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_orExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
-                                                             const class GGS_AC_5F_boolExpression & inOperand1
+                                                             const class GGS_AC_5F_boolExpression & inOperand1,
+                                                             class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1924,7 +1927,8 @@ class GGS_C_5F_xorExpression : public GGS_AC_5F_boolExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_xorExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
-                                                              const class GGS_AC_5F_boolExpression & inOperand1
+                                                              const class GGS_AC_5F_boolExpression & inOperand1,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2079,7 +2083,8 @@ class GGS_C_5F_impliesExpression : public GGS_AC_5F_boolExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_impliesExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
-                                                                  const class GGS_AC_5F_boolExpression & inOperand1
+                                                                  const class GGS_AC_5F_boolExpression & inOperand1,
+                                                                  class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2234,7 +2239,8 @@ class GGS_C_5F_equalExpression : public GGS_AC_5F_boolExpression {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_equalExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
-                                                                const class GGS_AC_5F_boolExpression & inOperand1
+                                                                const class GGS_AC_5F_boolExpression & inOperand1,
+                                                                class Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2384,7 +2390,8 @@ class GGS_C_5F_notExpression : public GGS_AC_5F_boolExpression {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_notExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0
+  public: static class GGS_C_5F_notExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2534,7 +2541,8 @@ class GGS_C_5F_VariableExpression : public GGS_AC_5F_boolExpression {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_VariableExpression class_func_new (const class GGS_uint & inOperand0
+  public: static class GGS_C_5F_VariableExpression class_func_new (const class GGS_uint & inOperand0,
+                                                                   class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2680,7 +2688,8 @@ class GGS_C_5F_trueExpression : public GGS_AC_5F_boolExpression {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_trueExpression class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_C_5F_trueExpression class_func_new (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_C_5F_trueExpression & inOperand) const ;
@@ -2825,7 +2834,8 @@ class GGS_C_5F_falseExpression : public GGS_AC_5F_boolExpression {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_falseExpression class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_C_5F_falseExpression class_func_new (Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_C_5F_falseExpression & inOperand) const ;
@@ -4574,7 +4584,8 @@ class GGS_C_5F_substractiveModalCompositionComponent : public GGS_AC_5F_machineD
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_substractiveModalCompositionComponent class_func_new (const class GGS_M_5F_modesMap & inOperand0,
-                                                                                      const class GGS_ListForModes & inOperand1
+                                                                                      const class GGS_ListForModes & inOperand1,
+                                                                                      class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4729,7 +4740,8 @@ class GGS_C_5F_additiveModalCompositionComponent : public GGS_AC_5F_machineDefin
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_additiveModalCompositionComponent class_func_new (const class GGS_M_5F_modesMap & inOperand0,
-                                                                                  const class GGS_ListForModes & inOperand1
+                                                                                  const class GGS_ListForModes & inOperand1,
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4884,7 +4896,8 @@ class GGS_C_5F_trans : public GGS_AC_5F_machineDefinition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_trans class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
-                                                      const class GGS_AC_5F_boolExpression & inOperand1
+                                                      const class GGS_AC_5F_boolExpression & inOperand1,
+                                                      class Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5039,7 +5052,8 @@ class GGS_C_5F_importMachine : public GGS_AC_5F_machineDefinition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_importMachine class_func_new (const class GGS_uint & inOperand0,
-                                                              const class GGS_L_5F_translationVector & inOperand1
+                                                              const class GGS_L_5F_translationVector & inOperand1,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5209,7 +5223,8 @@ class GGS_C_5F_explicitAutomatonDefinition : public GGS_AC_5F_machineDefinition 
                                                                             const class GGS_L_5F_statesDefinitionList & inOperand1,
                                                                             const class GGS_L_5F_statesDefinitionList & inOperand2,
                                                                             const class GGS_L_5F_stateDefinition & inOperand3,
-                                                                            const class GGS_location & inOperand4
+                                                                            const class GGS_location & inOperand4,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5359,7 +5374,8 @@ class GGS_C_5F_boolToSeqExpression : public GGS_AC_5F_machineDefinition {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_boolToSeqExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0
+  public: static class GGS_C_5F_boolToSeqExpression class_func_new (const class GGS_AC_5F_boolExpression & inOperand0,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5519,7 +5535,8 @@ class GGS_C_5F_existsDefinition : public GGS_AC_5F_machineDefinition {
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_existsDefinition class_func_new (const class GGS_uint & inOperand0,
                                                                  const class GGS_uint & inOperand1,
-                                                                 const class GGS_AC_5F_machineDefinition & inOperand2
+                                                                 const class GGS_AC_5F_machineDefinition & inOperand2,
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5679,7 +5696,8 @@ class GGS_C_5F_forallDefinition : public GGS_AC_5F_machineDefinition {
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_forallDefinition class_func_new (const class GGS_uint & inOperand0,
                                                                  const class GGS_uint & inOperand1,
-                                                                 const class GGS_AC_5F_machineDefinition & inOperand2
+                                                                 const class GGS_AC_5F_machineDefinition & inOperand2,
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5834,7 +5852,8 @@ class GGS_C_5F_parallelComposition : public GGS_AC_5F_machineDefinition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_parallelComposition class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
-                                                                    const class GGS_AC_5F_machineDefinition & inOperand1
+                                                                    const class GGS_AC_5F_machineDefinition & inOperand1,
+                                                                    class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5989,7 +6008,8 @@ class GGS_C_5F_orComposition : public GGS_AC_5F_machineDefinition {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_orComposition class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
-                                                              const class GGS_AC_5F_machineDefinition & inOperand1
+                                                              const class GGS_AC_5F_machineDefinition & inOperand1,
+                                                              class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6149,7 +6169,8 @@ class GGS_C_5F_strongModalComposition : public GGS_AC_5F_machineDefinition {
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_strongModalComposition class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
                                                                        const class GGS_location & inOperand1,
-                                                                       const class GGS_AC_5F_machineDefinition & inOperand2
+                                                                       const class GGS_AC_5F_machineDefinition & inOperand2,
+                                                                       class Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6309,7 +6330,8 @@ class GGS_C_5F_weakModalComposition : public GGS_AC_5F_machineDefinition {
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_weakModalComposition class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
                                                                      const class GGS_location & inOperand1,
-                                                                     const class GGS_AC_5F_machineDefinition & inOperand2
+                                                                     const class GGS_AC_5F_machineDefinition & inOperand2,
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6459,7 +6481,8 @@ class GGS_C_5F_fullSaturationOperation : public GGS_AC_5F_machineDefinition {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_fullSaturationOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0
+  public: static class GGS_C_5F_fullSaturationOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
+                                                                        class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6609,7 +6632,8 @@ class GGS_C_5F_complementationOperation : public GGS_AC_5F_machineDefinition {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_complementationOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0
+  public: static class GGS_C_5F_complementationOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
+                                                                         class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6759,7 +6783,8 @@ class GGS_C_5F_suppressTerminalStatesOperation : public GGS_AC_5F_machineDefinit
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_suppressTerminalStatesOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0
+  public: static class GGS_C_5F_suppressTerminalStatesOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
+                                                                                class Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6909,7 +6934,8 @@ class GGS_C_5F_suppressInitialStatesOperation : public GGS_AC_5F_machineDefiniti
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_suppressInitialStatesOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0
+  public: static class GGS_C_5F_suppressInitialStatesOperation class_func_new (const class GGS_AC_5F_machineDefinition & inOperand0,
+                                                                               class Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7201,7 +7227,8 @@ class GGS_C_5F_machineDisplayStates : public GGS_AC_5F_job {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayStates class_func_new (const class GGS_uint & inOperand0
+  public: static class GGS_C_5F_machineDisplayStates class_func_new (const class GGS_uint & inOperand0,
+                                                                     class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7351,7 +7378,8 @@ class GGS_C_5F_machineDisplayInitialStates : public GGS_AC_5F_job {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayInitialStates class_func_new (const class GGS_uint & inOperand0
+  public: static class GGS_C_5F_machineDisplayInitialStates class_func_new (const class GGS_uint & inOperand0,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7501,7 +7529,8 @@ class GGS_C_5F_machineDisplayTerminalStates : public GGS_AC_5F_job {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayTerminalStates class_func_new (const class GGS_uint & inOperand0
+  public: static class GGS_C_5F_machineDisplayTerminalStates class_func_new (const class GGS_uint & inOperand0,
+                                                                             class Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7651,7 +7680,8 @@ class GGS_C_5F_machineDisplayTransitions : public GGS_AC_5F_job {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayTransitions class_func_new (const class GGS_uint & inOperand0
+  public: static class GGS_C_5F_machineDisplayTransitions class_func_new (const class GGS_uint & inOperand0,
+                                                                          class Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7806,7 +7836,8 @@ class GGS_C_5F_machineCheck : public GGS_AC_5F_job {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_machineCheck class_func_new (const class GGS_uint & inOperand0,
-                                                             const class GGS_bool & inOperand1
+                                                             const class GGS_bool & inOperand1,
+                                                             class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7961,7 +7992,8 @@ class GGS_C_5F_machineCheckIdentical : public GGS_AC_5F_job {
 
 //--------------------------------- GALGAS class functions
   public: static class GGS_C_5F_machineCheckIdentical class_func_new (const class GGS_uint & inOperand0,
-                                                                      const class GGS_uint & inOperand1
+                                                                      const class GGS_uint & inOperand1,
+                                                                      class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8141,7 +8173,8 @@ class GGS_C_5F_machineComponent : public GGS_AC_5F_job {
                                                                  const class GGS_uint & inOperand3,
                                                                  const class GGS_M_5F_variablesMap & inOperand4,
                                                                  const class GGS_stringlist & inOperand5,
-                                                                 const class GGS_AC_5F_machineDefinition & inOperand6
+                                                                 const class GGS_AC_5F_machineDefinition & inOperand6,
+                                                                 class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8321,7 +8354,8 @@ class GGS_C_5F_machineDefinedByAdditiveModalComp : public GGS_AC_5F_job {
                                                                                   const class GGS_uint & inOperand3,
                                                                                   const class GGS_M_5F_variablesMap & inOperand4,
                                                                                   const class GGS_M_5F_modesMap & inOperand5,
-                                                                                  const class GGS_ListForModes & inOperand6
+                                                                                  const class GGS_ListForModes & inOperand6,
+                                                                                  class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8501,7 +8535,8 @@ class GGS_C_5F_machineDefinedBySubstractiveModalComp : public GGS_AC_5F_job {
                                                                                       const class GGS_uint & inOperand3,
                                                                                       const class GGS_M_5F_variablesMap & inOperand4,
                                                                                       const class GGS_M_5F_modesMap & inOperand5,
-                                                                                      const class GGS_ListForModes & inOperand6
+                                                                                      const class GGS_ListForModes & inOperand6,
+                                                                                      class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -9309,84 +9344,4 @@ class GGS_L_5F_scenarioList_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-//
-// Phase 1: @C_5F_scenarioComponent reference class
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_scenarioComponent : public GGS_AC_5F_job {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_scenarioComponent (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_uint readProperty_mMachineIndex (void) const ;
-  public: void setProperty_mMachineIndex (const GGS_uint & inValue) ;
-
-  public: class GGS_uint readProperty_mInputVariableCount (void) const ;
-  public: void setProperty_mInputVariableCount (const GGS_uint & inValue) ;
-
-  public: class GGS_uint readProperty_mInputAndInternalVariableCount (void) const ;
-  public: void setProperty_mInputAndInternalVariableCount (const GGS_uint & inValue) ;
-
-  public: class GGS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
-  public: void setProperty_mVariablesMap (const GGS_M_5F_variablesMap & inValue) ;
-
-  public: class GGS_L_5F_scenarioList readProperty_mScenarioList (void) const ;
-  public: void setProperty_mScenarioList (const GGS_L_5F_scenarioList & inValue) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_C_5F_scenarioComponent init_21__21__21__21__21_ (const class GGS_uint & inOperand0,
-                                                                      const class GGS_uint & inOperand1,
-                                                                      const class GGS_uint & inOperand2,
-                                                                      const class GGS_M_5F_variablesMap & inOperand3,
-                                                                      const class GGS_L_5F_scenarioList & inOperand4,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_scenarioComponent extractObject (const GGS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_scenarioComponent class_func_new (const class GGS_uint & inOperand0,
-                                                                  const class GGS_uint & inOperand1,
-                                                                  const class GGS_uint & inOperand2,
-                                                                  const class GGS_M_5F_variablesMap & inOperand3,
-                                                                  const class GGS_L_5F_scenarioList & inOperand4
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_scenarioComponent & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GGS_C_5F_scenarioComponent class
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
-
-#include "separateHeaderFor_C_5F_scenarioComponent.h"
 

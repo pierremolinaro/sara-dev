@@ -41,11 +41,12 @@ class cPtr_C_5F_substractiveModalCompositionComponent : public cPtr_AC_5F_machin
 
 //--- Constructor
   public: cPtr_C_5F_substractiveModalCompositionComponent (const GGS_M_5F_modesMap & in_mModeMap,
-                                                           const GGS_ListForModes & in_mExclusionList
+                                                           const GGS_ListForModes & in_mExclusionList,
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

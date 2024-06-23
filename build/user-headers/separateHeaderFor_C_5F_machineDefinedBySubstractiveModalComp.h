@@ -54,11 +54,12 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
                                                            const GGS_uint & in_mInputAndInternalVariableCount,
                                                            const GGS_M_5F_variablesMap & in_mVariablesMap,
                                                            const GGS_M_5F_modesMap & in_mModeMap,
-                                                           const GGS_ListForModes & in_mExclusionList
+                                                           const GGS_ListForModes & in_mExclusionList,
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

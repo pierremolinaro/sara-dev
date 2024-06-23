@@ -39,11 +39,12 @@ class cPtr_C_5F_machineCheckIdentical : public cPtr_AC_5F_job {
 
 //--- Constructor
   public: cPtr_C_5F_machineCheckIdentical (const GGS_uint & in_mMachineIndex_31_,
-                                           const GGS_uint & in_mMachineIndex_32_
+                                           const GGS_uint & in_mMachineIndex_32_,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

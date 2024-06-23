@@ -38,11 +38,12 @@ class cPtr_C_5F_complementationOperation : public cPtr_AC_5F_machineDefinition {
   public: cPtr_C_5F_complementationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_complementationOperation (const GGS_AC_5F_machineDefinition & in_mOperand
+  public: cPtr_C_5F_complementationOperation (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

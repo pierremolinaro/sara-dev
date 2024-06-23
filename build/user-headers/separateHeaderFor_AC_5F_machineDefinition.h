@@ -32,11 +32,10 @@ class cPtr_AC_5F_machineDefinition : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_AC_5F_machineDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_AC_5F_machineDefinition (LOCATION_ARGS) ;
+  public: cPtr_AC_5F_machineDefinition (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description

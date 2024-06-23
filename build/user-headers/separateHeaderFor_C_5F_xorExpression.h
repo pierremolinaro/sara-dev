@@ -39,11 +39,12 @@ class cPtr_C_5F_xorExpression : public cPtr_AC_5F_boolExpression {
 
 //--- Constructor
   public: cPtr_C_5F_xorExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                   const GGS_AC_5F_boolExpression & in_mRightExpression
+                                   const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

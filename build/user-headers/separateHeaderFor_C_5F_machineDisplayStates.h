@@ -36,11 +36,12 @@ class cPtr_C_5F_machineDisplayStates : public cPtr_AC_5F_job {
   public: cPtr_C_5F_machineDisplayStates (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_machineDisplayStates (const GGS_uint & in_mMachineIndex
+  public: cPtr_C_5F_machineDisplayStates (const GGS_uint & in_mMachineIndex,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

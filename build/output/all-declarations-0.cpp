@@ -2803,20 +2803,6 @@ GGS_L_5F_translationVector GGS_L_5F_translationVector::extractObject (const GGS_
 // @AC_5F_boolExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_AC_5F_boolExpression::cPtr_AC_5F_boolExpression (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_AC_5F_boolExpression::objectCompare (const GGS_AC_5F_boolExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -2849,10 +2835,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @AC_boolExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_AC_5F_boolExpression::cPtr_AC_5F_boolExpression (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_AC_5F_boolExpression::cPtr_AC_5F_boolExpression (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3122,24 +3120,6 @@ GGS_C_5F_importBoolMachine_2E_weak GGS_C_5F_importBoolMachine_2E_weak::extractOb
 // @C_5F_andExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_andExpression::cPtr_C_5F_andExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_andExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_andExpression::objectCompare (const GGS_C_5F_andExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3196,10 +3176,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_andExpression GGS_C_5F_andExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                               const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                               const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_andExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_andExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_andExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3251,10 +3232,19 @@ void GGS_C_5F_andExpression::setProperty_mRightExpression (const GGS_AC_5F_boolE
 //Pointer class for @C_andExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_andExpression::cPtr_C_5F_andExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_andExpression::cPtr_C_5F_andExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                  const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                  const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -3278,12 +3268,22 @@ void cPtr_C_5F_andExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_andExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_andExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_andExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_andExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_andExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3442,24 +3442,6 @@ GGS_C_5F_andExpression_2E_weak GGS_C_5F_andExpression_2E_weak::extractObject (co
 // @C_5F_orExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_orExpression::cPtr_C_5F_orExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_orExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_orExpression::objectCompare (const GGS_C_5F_orExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3516,10 +3498,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_orExpression GGS_C_5F_orExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                             const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                             const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   GGS_C_5F_orExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_orExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_orExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3571,10 +3554,19 @@ void GGS_C_5F_orExpression::setProperty_mRightExpression (const GGS_AC_5F_boolEx
 //Pointer class for @C_orExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_orExpression::cPtr_C_5F_orExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_orExpression::cPtr_C_5F_orExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -3598,12 +3590,22 @@ void cPtr_C_5F_orExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_orExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_orExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_orExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_orExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_orExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3762,24 +3764,6 @@ GGS_C_5F_orExpression_2E_weak GGS_C_5F_orExpression_2E_weak::extractObject (cons
 // @C_5F_xorExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_xorExpression::cPtr_C_5F_xorExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_xorExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_xorExpression::objectCompare (const GGS_C_5F_xorExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -3836,10 +3820,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_xorExpression GGS_C_5F_xorExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                               const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                               const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_xorExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_xorExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_xorExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -3891,10 +3876,19 @@ void GGS_C_5F_xorExpression::setProperty_mRightExpression (const GGS_AC_5F_boolE
 //Pointer class for @C_xorExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_xorExpression::cPtr_C_5F_xorExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_xorExpression::cPtr_C_5F_xorExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                  const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                  const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -3918,12 +3912,22 @@ void cPtr_C_5F_xorExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_xorExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_xorExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_xorExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_xorExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_xorExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4082,24 +4086,6 @@ GGS_C_5F_xorExpression_2E_weak GGS_C_5F_xorExpression_2E_weak::extractObject (co
 // @C_5F_impliesExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_impliesExpression::cPtr_C_5F_impliesExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_impliesExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_impliesExpression::objectCompare (const GGS_C_5F_impliesExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4156,10 +4142,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_impliesExpression GGS_C_5F_impliesExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                                       const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                                       const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   GGS_C_5F_impliesExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_impliesExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_impliesExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -4211,10 +4198,19 @@ void GGS_C_5F_impliesExpression::setProperty_mRightExpression (const GGS_AC_5F_b
 //Pointer class for @C_impliesExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_impliesExpression::cPtr_C_5F_impliesExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_impliesExpression::cPtr_C_5F_impliesExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                          const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                          const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -4238,12 +4234,22 @@ void cPtr_C_5F_impliesExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_impliesExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_impliesExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_impliesExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_impliesExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_impliesExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4402,24 +4408,6 @@ GGS_C_5F_impliesExpression_2E_weak GGS_C_5F_impliesExpression_2E_weak::extractOb
 // @C_5F_equalExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_equalExpression::cPtr_C_5F_equalExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_equalExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_equalExpression::objectCompare (const GGS_C_5F_equalExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4476,10 +4464,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_equalExpression GGS_C_5F_equalExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                                   const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                                   const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GGS_C_5F_equalExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_equalExpression (in_mLeftExpression, in_mRightExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_equalExpression (in_mLeftExpression, in_mRightExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -4531,10 +4520,19 @@ void GGS_C_5F_equalExpression::setProperty_mRightExpression (const GGS_AC_5F_boo
 //Pointer class for @C_equalExpression class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_equalExpression::cPtr_C_5F_equalExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mLeftExpression (),
+mProperty_mRightExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_equalExpression::cPtr_C_5F_equalExpression (const GGS_AC_5F_boolExpression & in_mLeftExpression,
-                                                      const GGS_AC_5F_boolExpression & in_mRightExpression
+                                                      const GGS_AC_5F_boolExpression & in_mRightExpression,
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mLeftExpression (),
 mProperty_mRightExpression () {
   mProperty_mLeftExpression = in_mLeftExpression ;
@@ -4558,12 +4556,22 @@ void cPtr_C_5F_equalExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_equalExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_equalExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_equalExpression (mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_equalExpression (mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_equalExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
+    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -4722,22 +4730,6 @@ GGS_C_5F_equalExpression_2E_weak GGS_C_5F_equalExpression_2E_weak::extractObject
 // @C_5F_notExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_notExpression::cPtr_C_5F_notExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_notExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_notExpression::objectCompare (const GGS_C_5F_notExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -4790,10 +4782,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_notExpression GGS_C_5F_notExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mExpression
+GGS_C_5F_notExpression GGS_C_5F_notExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mExpression,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_notExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_notExpression (in_mExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_notExpression (in_mExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -4823,9 +4816,17 @@ void GGS_C_5F_notExpression::setProperty_mExpression (const GGS_AC_5F_boolExpres
 //Pointer class for @C_notExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_notExpression::cPtr_C_5F_notExpression (const GGS_AC_5F_boolExpression & in_mExpression
+cPtr_C_5F_notExpression::cPtr_C_5F_notExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_notExpression::cPtr_C_5F_notExpression (const GGS_AC_5F_boolExpression & in_mExpression,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mExpression () {
   mProperty_mExpression = in_mExpression ;
 }
@@ -4845,12 +4846,21 @@ void cPtr_C_5F_notExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_notExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_notExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_notExpression (mProperty_mExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_notExpression (mProperty_mExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_notExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5009,22 +5019,6 @@ GGS_C_5F_notExpression_2E_weak GGS_C_5F_notExpression_2E_weak::extractObject (co
 // @C_5F_VariableExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_VariableExpression::cPtr_C_5F_VariableExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
-mProperty_mInputVarIndex () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_VariableExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-    mProperty_mInputVarIndex.printNonNullClassInstanceProperties ("mInputVarIndex") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_VariableExpression::objectCompare (const GGS_C_5F_VariableExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5077,10 +5071,11 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_VariableExpression GGS_C_5F_VariableExpression::class_func_new (const GGS_uint & in_mInputVarIndex
+GGS_C_5F_VariableExpression GGS_C_5F_VariableExpression::class_func_new (const GGS_uint & in_mInputVarIndex,
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   GGS_C_5F_VariableExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_VariableExpression (in_mInputVarIndex COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_VariableExpression (in_mInputVarIndex,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -5110,9 +5105,17 @@ void GGS_C_5F_VariableExpression::setProperty_mInputVarIndex (const GGS_uint & i
 //Pointer class for @C_VariableExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_VariableExpression::cPtr_C_5F_VariableExpression (const GGS_uint & in_mInputVarIndex
+cPtr_C_5F_VariableExpression::cPtr_C_5F_VariableExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
+mProperty_mInputVarIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_VariableExpression::cPtr_C_5F_VariableExpression (const GGS_uint & in_mInputVarIndex,
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE),
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE),
 mProperty_mInputVarIndex () {
   mProperty_mInputVarIndex = in_mInputVarIndex ;
 }
@@ -5132,12 +5135,21 @@ void cPtr_C_5F_VariableExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_VariableExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_VariableExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_VariableExpression (mProperty_mInputVarIndex COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_VariableExpression (mProperty_mInputVarIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_VariableExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+    mProperty_mInputVarIndex.printNonNullClassInstanceProperties ("mInputVarIndex") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5296,20 +5308,6 @@ GGS_C_5F_VariableExpression_2E_weak GGS_C_5F_VariableExpression_2E_weak::extract
 // @C_5F_trueExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_trueExpression::cPtr_C_5F_trueExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_trueExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_trueExpression::objectCompare (const GGS_C_5F_trueExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5359,9 +5357,9 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_trueExpression GGS_C_5F_trueExpression::class_func_new (LOCATION_ARGS) {
+GGS_C_5F_trueExpression GGS_C_5F_trueExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   GGS_C_5F_trueExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_trueExpression (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_trueExpression (inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -5369,8 +5367,12 @@ GGS_C_5F_trueExpression GGS_C_5F_trueExpression::class_func_new (LOCATION_ARGS) 
 //Pointer class for @C_trueExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_trueExpression::cPtr_C_5F_trueExpression (LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_trueExpression::cPtr_C_5F_trueExpression (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5386,12 +5388,20 @@ void cPtr_C_5F_trueExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_trueExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_trueExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_trueExpression (THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_trueExpression (inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_trueExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5550,20 +5560,6 @@ GGS_C_5F_trueExpression_2E_weak GGS_C_5F_trueExpression_2E_weak::extractObject (
 // @C_5F_falseExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_falseExpression::cPtr_C_5F_falseExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_falseExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_falseExpression::objectCompare (const GGS_C_5F_falseExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -5613,9 +5609,9 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_falseExpression GGS_C_5F_falseExpression::class_func_new (LOCATION_ARGS) {
+GGS_C_5F_falseExpression GGS_C_5F_falseExpression::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
   GGS_C_5F_falseExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_falseExpression (THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_falseExpression (inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -5623,8 +5619,12 @@ GGS_C_5F_falseExpression GGS_C_5F_falseExpression::class_func_new (LOCATION_ARGS
 //Pointer class for @C_falseExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_falseExpression::cPtr_C_5F_falseExpression (LOCATION_ARGS) :
-cPtr_AC_5F_boolExpression (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_falseExpression::cPtr_C_5F_falseExpression (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_boolExpression (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5640,12 +5640,20 @@ void cPtr_C_5F_falseExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_falseExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_falseExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_falseExpression (THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_falseExpression (inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_falseExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_boolExpression::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -7415,20 +7423,6 @@ GGS_L_5F_statesDefinitionList GGS_L_5F_statesDefinitionList::extractObject (cons
 // @AC_5F_machineDefinition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_AC_5F_machineDefinition::cPtr_AC_5F_machineDefinition (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_AC_5F_machineDefinition::objectCompare (const GGS_AC_5F_machineDefinition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7461,10 +7455,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @AC_machineDefinition class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_AC_5F_machineDefinition::cPtr_AC_5F_machineDefinition (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_AC_5F_machineDefinition::cPtr_AC_5F_machineDefinition (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8456,24 +8462,6 @@ GGS_ListForModes GGS_ListForModes::extractObject (const GGS_object & inObject,
 // @C_5F_substractiveModalCompositionComponent reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_substractiveModalCompositionComponent::cPtr_C_5F_substractiveModalCompositionComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mModeMap (),
-mProperty_mExclusionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_substractiveModalCompositionComponent::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mModeMap.printNonNullClassInstanceProperties ("mModeMap") ;
-    mProperty_mExclusionList.printNonNullClassInstanceProperties ("mExclusionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_substractiveModalCompositionComponent::objectCompare (const GGS_C_5F_substractiveModalCompositionComponent & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8530,10 +8518,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_substractiveModalCompositionComponent GGS_C_5F_substractiveModalCompositionComponent::class_func_new (const GGS_M_5F_modesMap & in_mModeMap,
-                                                                                                               const GGS_ListForModes & in_mExclusionList
+                                                                                                               const GGS_ListForModes & in_mExclusionList,
+                                                                                                               Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_substractiveModalCompositionComponent result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_substractiveModalCompositionComponent (in_mModeMap, in_mExclusionList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_substractiveModalCompositionComponent (in_mModeMap, in_mExclusionList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8585,10 +8574,19 @@ void GGS_C_5F_substractiveModalCompositionComponent::setProperty_mExclusionList 
 //Pointer class for @C_substractiveModalCompositionComponent class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_substractiveModalCompositionComponent::cPtr_C_5F_substractiveModalCompositionComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mModeMap (),
+mProperty_mExclusionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_substractiveModalCompositionComponent::cPtr_C_5F_substractiveModalCompositionComponent (const GGS_M_5F_modesMap & in_mModeMap,
-                                                                                                  const GGS_ListForModes & in_mExclusionList
+                                                                                                  const GGS_ListForModes & in_mExclusionList,
+                                                                                                  Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mModeMap (),
 mProperty_mExclusionList () {
   mProperty_mModeMap = in_mModeMap ;
@@ -8612,12 +8610,22 @@ void cPtr_C_5F_substractiveModalCompositionComponent::description (String & ioSt
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_substractiveModalCompositionComponent::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_substractiveModalCompositionComponent::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_substractiveModalCompositionComponent (mProperty_mModeMap, mProperty_mExclusionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_substractiveModalCompositionComponent (mProperty_mModeMap, mProperty_mExclusionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_substractiveModalCompositionComponent::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mModeMap.printNonNullClassInstanceProperties ("mModeMap") ;
+    mProperty_mExclusionList.printNonNullClassInstanceProperties ("mExclusionList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -8776,24 +8784,6 @@ GGS_C_5F_substractiveModalCompositionComponent_2E_weak GGS_C_5F_substractiveModa
 // @C_5F_additiveModalCompositionComponent reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_additiveModalCompositionComponent::cPtr_C_5F_additiveModalCompositionComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mModeMap (),
-mProperty_mInclusionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_additiveModalCompositionComponent::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mModeMap.printNonNullClassInstanceProperties ("mModeMap") ;
-    mProperty_mInclusionList.printNonNullClassInstanceProperties ("mInclusionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_additiveModalCompositionComponent::objectCompare (const GGS_C_5F_additiveModalCompositionComponent & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -8850,10 +8840,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_additiveModalCompositionComponent GGS_C_5F_additiveModalCompositionComponent::class_func_new (const GGS_M_5F_modesMap & in_mModeMap,
-                                                                                                       const GGS_ListForModes & in_mInclusionList
+                                                                                                       const GGS_ListForModes & in_mInclusionList,
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) {
   GGS_C_5F_additiveModalCompositionComponent result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_additiveModalCompositionComponent (in_mModeMap, in_mInclusionList COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_additiveModalCompositionComponent (in_mModeMap, in_mInclusionList,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -8905,10 +8896,19 @@ void GGS_C_5F_additiveModalCompositionComponent::setProperty_mInclusionList (con
 //Pointer class for @C_additiveModalCompositionComponent class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_additiveModalCompositionComponent::cPtr_C_5F_additiveModalCompositionComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mModeMap (),
+mProperty_mInclusionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_additiveModalCompositionComponent::cPtr_C_5F_additiveModalCompositionComponent (const GGS_M_5F_modesMap & in_mModeMap,
-                                                                                          const GGS_ListForModes & in_mInclusionList
+                                                                                          const GGS_ListForModes & in_mInclusionList,
+                                                                                          Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mModeMap (),
 mProperty_mInclusionList () {
   mProperty_mModeMap = in_mModeMap ;
@@ -8932,12 +8932,22 @@ void cPtr_C_5F_additiveModalCompositionComponent::description (String & ioString
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_additiveModalCompositionComponent::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_additiveModalCompositionComponent::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_additiveModalCompositionComponent (mProperty_mModeMap, mProperty_mInclusionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_additiveModalCompositionComponent (mProperty_mModeMap, mProperty_mInclusionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_additiveModalCompositionComponent::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mModeMap.printNonNullClassInstanceProperties ("mModeMap") ;
+    mProperty_mInclusionList.printNonNullClassInstanceProperties ("mInclusionList") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9096,24 +9106,6 @@ GGS_C_5F_additiveModalCompositionComponent_2E_weak GGS_C_5F_additiveModalComposi
 // @C_5F_trans reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_trans::cPtr_C_5F_trans (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mSourceStateExpression (),
-mProperty_mTargetStateExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_trans::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mSourceStateExpression.printNonNullClassInstanceProperties ("mSourceStateExpression") ;
-    mProperty_mTargetStateExpression.printNonNullClassInstanceProperties ("mTargetStateExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_trans::objectCompare (const GGS_C_5F_trans & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9170,10 +9162,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_trans GGS_C_5F_trans::class_func_new (const GGS_AC_5F_boolExpression & in_mSourceStateExpression,
-                                               const GGS_AC_5F_boolExpression & in_mTargetStateExpression
+                                               const GGS_AC_5F_boolExpression & in_mTargetStateExpression,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_trans result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_trans (in_mSourceStateExpression, in_mTargetStateExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_trans (in_mSourceStateExpression, in_mTargetStateExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9225,10 +9218,19 @@ void GGS_C_5F_trans::setProperty_mTargetStateExpression (const GGS_AC_5F_boolExp
 //Pointer class for @C_trans class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_trans::cPtr_C_5F_trans (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mSourceStateExpression (),
+mProperty_mTargetStateExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_trans::cPtr_C_5F_trans (const GGS_AC_5F_boolExpression & in_mSourceStateExpression,
-                                  const GGS_AC_5F_boolExpression & in_mTargetStateExpression
+                                  const GGS_AC_5F_boolExpression & in_mTargetStateExpression,
+                                  Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mSourceStateExpression (),
 mProperty_mTargetStateExpression () {
   mProperty_mSourceStateExpression = in_mSourceStateExpression ;
@@ -9252,12 +9254,22 @@ void cPtr_C_5F_trans::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_trans::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_trans::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_trans (mProperty_mSourceStateExpression, mProperty_mTargetStateExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_trans (mProperty_mSourceStateExpression, mProperty_mTargetStateExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_trans::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mSourceStateExpression.printNonNullClassInstanceProperties ("mSourceStateExpression") ;
+    mProperty_mTargetStateExpression.printNonNullClassInstanceProperties ("mTargetStateExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9416,24 +9428,6 @@ GGS_C_5F_trans_2E_weak GGS_C_5F_trans_2E_weak::extractObject (const GGS_object &
 // @C_5F_importMachine reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_importMachine::cPtr_C_5F_importMachine (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mIndexOfImportedMachine (),
-mProperty_mTranslationVector () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_importMachine::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mIndexOfImportedMachine.printNonNullClassInstanceProperties ("mIndexOfImportedMachine") ;
-    mProperty_mTranslationVector.printNonNullClassInstanceProperties ("mTranslationVector") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_importMachine::objectCompare (const GGS_C_5F_importMachine & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9490,10 +9484,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_importMachine GGS_C_5F_importMachine::class_func_new (const GGS_uint & in_mIndexOfImportedMachine,
-                                                               const GGS_L_5F_translationVector & in_mTranslationVector
+                                                               const GGS_L_5F_translationVector & in_mTranslationVector,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_importMachine result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_importMachine (in_mIndexOfImportedMachine, in_mTranslationVector COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_importMachine (in_mIndexOfImportedMachine, in_mTranslationVector,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9545,10 +9540,19 @@ void GGS_C_5F_importMachine::setProperty_mTranslationVector (const GGS_L_5F_tran
 //Pointer class for @C_importMachine class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_importMachine::cPtr_C_5F_importMachine (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mIndexOfImportedMachine (),
+mProperty_mTranslationVector () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_importMachine::cPtr_C_5F_importMachine (const GGS_uint & in_mIndexOfImportedMachine,
-                                                  const GGS_L_5F_translationVector & in_mTranslationVector
+                                                  const GGS_L_5F_translationVector & in_mTranslationVector,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mIndexOfImportedMachine (),
 mProperty_mTranslationVector () {
   mProperty_mIndexOfImportedMachine = in_mIndexOfImportedMachine ;
@@ -9572,12 +9576,22 @@ void cPtr_C_5F_importMachine::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_importMachine::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_importMachine::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_importMachine (mProperty_mIndexOfImportedMachine, mProperty_mTranslationVector COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_importMachine (mProperty_mIndexOfImportedMachine, mProperty_mTranslationVector, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_importMachine::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mIndexOfImportedMachine.printNonNullClassInstanceProperties ("mIndexOfImportedMachine") ;
+    mProperty_mTranslationVector.printNonNullClassInstanceProperties ("mTranslationVector") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -9736,30 +9750,6 @@ GGS_C_5F_importMachine_2E_weak GGS_C_5F_importMachine_2E_weak::extractObject (co
 // @C_5F_explicitAutomatonDefinition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_explicitAutomatonDefinition::cPtr_C_5F_explicitAutomatonDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mStatesMap (),
-mProperty_mInitialStatesDefinitionList (),
-mProperty_mTerminalStatesDefinitionList (),
-mProperty_mStateDefinitionList (),
-mProperty_mEndOfDefinition () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_explicitAutomatonDefinition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mStatesMap.printNonNullClassInstanceProperties ("mStatesMap") ;
-    mProperty_mInitialStatesDefinitionList.printNonNullClassInstanceProperties ("mInitialStatesDefinitionList") ;
-    mProperty_mTerminalStatesDefinitionList.printNonNullClassInstanceProperties ("mTerminalStatesDefinitionList") ;
-    mProperty_mStateDefinitionList.printNonNullClassInstanceProperties ("mStateDefinitionList") ;
-    mProperty_mEndOfDefinition.printNonNullClassInstanceProperties ("mEndOfDefinition") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_explicitAutomatonDefinition::objectCompare (const GGS_C_5F_explicitAutomatonDefinition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -9828,10 +9818,11 @@ GGS_C_5F_explicitAutomatonDefinition GGS_C_5F_explicitAutomatonDefinition::class
                                                                                            const GGS_L_5F_statesDefinitionList & in_mInitialStatesDefinitionList,
                                                                                            const GGS_L_5F_statesDefinitionList & in_mTerminalStatesDefinitionList,
                                                                                            const GGS_L_5F_stateDefinition & in_mStateDefinitionList,
-                                                                                           const GGS_location & in_mEndOfDefinition
+                                                                                           const GGS_location & in_mEndOfDefinition,
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   GGS_C_5F_explicitAutomatonDefinition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_explicitAutomatonDefinition (in_mStatesMap, in_mInitialStatesDefinitionList, in_mTerminalStatesDefinitionList, in_mStateDefinitionList, in_mEndOfDefinition COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_explicitAutomatonDefinition (in_mStatesMap, in_mInitialStatesDefinitionList, in_mTerminalStatesDefinitionList, in_mStateDefinitionList, in_mEndOfDefinition,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -9949,13 +9940,25 @@ void GGS_C_5F_explicitAutomatonDefinition::setProperty_mEndOfDefinition (const G
 //Pointer class for @C_explicitAutomatonDefinition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_explicitAutomatonDefinition::cPtr_C_5F_explicitAutomatonDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mStatesMap (),
+mProperty_mInitialStatesDefinitionList (),
+mProperty_mTerminalStatesDefinitionList (),
+mProperty_mStateDefinitionList (),
+mProperty_mEndOfDefinition () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_explicitAutomatonDefinition::cPtr_C_5F_explicitAutomatonDefinition (const GGS_M_5F_stateMap & in_mStatesMap,
                                                                               const GGS_L_5F_statesDefinitionList & in_mInitialStatesDefinitionList,
                                                                               const GGS_L_5F_statesDefinitionList & in_mTerminalStatesDefinitionList,
                                                                               const GGS_L_5F_stateDefinition & in_mStateDefinitionList,
-                                                                              const GGS_location & in_mEndOfDefinition
+                                                                              const GGS_location & in_mEndOfDefinition,
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mStatesMap (),
 mProperty_mInitialStatesDefinitionList (),
 mProperty_mTerminalStatesDefinitionList (),
@@ -9991,12 +9994,25 @@ void cPtr_C_5F_explicitAutomatonDefinition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_explicitAutomatonDefinition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_explicitAutomatonDefinition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_explicitAutomatonDefinition (mProperty_mStatesMap, mProperty_mInitialStatesDefinitionList, mProperty_mTerminalStatesDefinitionList, mProperty_mStateDefinitionList, mProperty_mEndOfDefinition COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_explicitAutomatonDefinition (mProperty_mStatesMap, mProperty_mInitialStatesDefinitionList, mProperty_mTerminalStatesDefinitionList, mProperty_mStateDefinitionList, mProperty_mEndOfDefinition, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_explicitAutomatonDefinition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mStatesMap.printNonNullClassInstanceProperties ("mStatesMap") ;
+    mProperty_mInitialStatesDefinitionList.printNonNullClassInstanceProperties ("mInitialStatesDefinitionList") ;
+    mProperty_mTerminalStatesDefinitionList.printNonNullClassInstanceProperties ("mTerminalStatesDefinitionList") ;
+    mProperty_mStateDefinitionList.printNonNullClassInstanceProperties ("mStateDefinitionList") ;
+    mProperty_mEndOfDefinition.printNonNullClassInstanceProperties ("mEndOfDefinition") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10155,22 +10171,6 @@ GGS_C_5F_explicitAutomatonDefinition_2E_weak GGS_C_5F_explicitAutomatonDefinitio
 // @C_5F_boolToSeqExpression reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_boolToSeqExpression::cPtr_C_5F_boolToSeqExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_boolToSeqExpression::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_boolToSeqExpression::objectCompare (const GGS_C_5F_boolToSeqExpression & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10223,10 +10223,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_boolToSeqExpression GGS_C_5F_boolToSeqExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mExpression
+GGS_C_5F_boolToSeqExpression GGS_C_5F_boolToSeqExpression::class_func_new (const GGS_AC_5F_boolExpression & in_mExpression,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_C_5F_boolToSeqExpression result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_boolToSeqExpression (in_mExpression COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_boolToSeqExpression (in_mExpression,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10256,9 +10257,17 @@ void GGS_C_5F_boolToSeqExpression::setProperty_mExpression (const GGS_AC_5F_bool
 //Pointer class for @C_boolToSeqExpression class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_boolToSeqExpression::cPtr_C_5F_boolToSeqExpression (const GGS_AC_5F_boolExpression & in_mExpression
+cPtr_C_5F_boolToSeqExpression::cPtr_C_5F_boolToSeqExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mExpression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_boolToSeqExpression::cPtr_C_5F_boolToSeqExpression (const GGS_AC_5F_boolExpression & in_mExpression,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mExpression () {
   mProperty_mExpression = in_mExpression ;
 }
@@ -10278,12 +10287,21 @@ void cPtr_C_5F_boolToSeqExpression::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_boolToSeqExpression::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_boolToSeqExpression::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_boolToSeqExpression (mProperty_mExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_boolToSeqExpression (mProperty_mExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_boolToSeqExpression::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10442,26 +10460,6 @@ GGS_C_5F_boolToSeqExpression_2E_weak GGS_C_5F_boolToSeqExpression_2E_weak::extra
 // @C_5F_existsDefinition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_existsDefinition::cPtr_C_5F_existsDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mPreviousVariableCount (),
-mProperty_mTotalVariableCount (),
-mProperty_mOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_existsDefinition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mPreviousVariableCount.printNonNullClassInstanceProperties ("mPreviousVariableCount") ;
-    mProperty_mTotalVariableCount.printNonNullClassInstanceProperties ("mTotalVariableCount") ;
-    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_existsDefinition::objectCompare (const GGS_C_5F_existsDefinition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10522,10 +10520,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 
 GGS_C_5F_existsDefinition GGS_C_5F_existsDefinition::class_func_new (const GGS_uint & in_mPreviousVariableCount,
                                                                      const GGS_uint & in_mTotalVariableCount,
-                                                                     const GGS_AC_5F_machineDefinition & in_mOperand
+                                                                     const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_C_5F_existsDefinition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_existsDefinition (in_mPreviousVariableCount, in_mTotalVariableCount, in_mOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_existsDefinition (in_mPreviousVariableCount, in_mTotalVariableCount, in_mOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10599,11 +10598,21 @@ void GGS_C_5F_existsDefinition::setProperty_mOperand (const GGS_AC_5F_machineDef
 //Pointer class for @C_existsDefinition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_existsDefinition::cPtr_C_5F_existsDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mPreviousVariableCount (),
+mProperty_mTotalVariableCount (),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_existsDefinition::cPtr_C_5F_existsDefinition (const GGS_uint & in_mPreviousVariableCount,
                                                         const GGS_uint & in_mTotalVariableCount,
-                                                        const GGS_AC_5F_machineDefinition & in_mOperand
+                                                        const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mPreviousVariableCount (),
 mProperty_mTotalVariableCount (),
 mProperty_mOperand () {
@@ -10631,12 +10640,23 @@ void cPtr_C_5F_existsDefinition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_existsDefinition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_existsDefinition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_existsDefinition (mProperty_mPreviousVariableCount, mProperty_mTotalVariableCount, mProperty_mOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_existsDefinition (mProperty_mPreviousVariableCount, mProperty_mTotalVariableCount, mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_existsDefinition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mPreviousVariableCount.printNonNullClassInstanceProperties ("mPreviousVariableCount") ;
+    mProperty_mTotalVariableCount.printNonNullClassInstanceProperties ("mTotalVariableCount") ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -10795,26 +10815,6 @@ GGS_C_5F_existsDefinition_2E_weak GGS_C_5F_existsDefinition_2E_weak::extractObje
 // @C_5F_forallDefinition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_forallDefinition::cPtr_C_5F_forallDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mPreviousVariableCount (),
-mProperty_mTotalVariableCount (),
-mProperty_mOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_forallDefinition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mPreviousVariableCount.printNonNullClassInstanceProperties ("mPreviousVariableCount") ;
-    mProperty_mTotalVariableCount.printNonNullClassInstanceProperties ("mTotalVariableCount") ;
-    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_forallDefinition::objectCompare (const GGS_C_5F_forallDefinition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -10875,10 +10875,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 
 GGS_C_5F_forallDefinition GGS_C_5F_forallDefinition::class_func_new (const GGS_uint & in_mPreviousVariableCount,
                                                                      const GGS_uint & in_mTotalVariableCount,
-                                                                     const GGS_AC_5F_machineDefinition & in_mOperand
+                                                                     const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   GGS_C_5F_forallDefinition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_forallDefinition (in_mPreviousVariableCount, in_mTotalVariableCount, in_mOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_forallDefinition (in_mPreviousVariableCount, in_mTotalVariableCount, in_mOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -10952,11 +10953,21 @@ void GGS_C_5F_forallDefinition::setProperty_mOperand (const GGS_AC_5F_machineDef
 //Pointer class for @C_forallDefinition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_forallDefinition::cPtr_C_5F_forallDefinition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mPreviousVariableCount (),
+mProperty_mTotalVariableCount (),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_forallDefinition::cPtr_C_5F_forallDefinition (const GGS_uint & in_mPreviousVariableCount,
                                                         const GGS_uint & in_mTotalVariableCount,
-                                                        const GGS_AC_5F_machineDefinition & in_mOperand
+                                                        const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mPreviousVariableCount (),
 mProperty_mTotalVariableCount (),
 mProperty_mOperand () {
@@ -10984,12 +10995,23 @@ void cPtr_C_5F_forallDefinition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_forallDefinition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_forallDefinition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_forallDefinition (mProperty_mPreviousVariableCount, mProperty_mTotalVariableCount, mProperty_mOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_forallDefinition (mProperty_mPreviousVariableCount, mProperty_mTotalVariableCount, mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_forallDefinition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mPreviousVariableCount.printNonNullClassInstanceProperties ("mPreviousVariableCount") ;
+    mProperty_mTotalVariableCount.printNonNullClassInstanceProperties ("mTotalVariableCount") ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11148,24 +11170,6 @@ GGS_C_5F_forallDefinition_2E_weak GGS_C_5F_forallDefinition_2E_weak::extractObje
 // @C_5F_parallelComposition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_parallelComposition::cPtr_C_5F_parallelComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mLeftOperand (),
-mProperty_mRightOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_parallelComposition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
-    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_parallelComposition::objectCompare (const GGS_C_5F_parallelComposition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11222,10 +11226,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_parallelComposition GGS_C_5F_parallelComposition::class_func_new (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                                                           const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                                           const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   GGS_C_5F_parallelComposition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_parallelComposition (in_mLeftOperand, in_mRightOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_parallelComposition (in_mLeftOperand, in_mRightOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11277,10 +11282,19 @@ void GGS_C_5F_parallelComposition::setProperty_mRightOperand (const GGS_AC_5F_ma
 //Pointer class for @C_parallelComposition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_parallelComposition::cPtr_C_5F_parallelComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mLeftOperand (),
+mProperty_mRightOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_parallelComposition::cPtr_C_5F_parallelComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                                              const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                              const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mLeftOperand (),
 mProperty_mRightOperand () {
   mProperty_mLeftOperand = in_mLeftOperand ;
@@ -11304,12 +11318,22 @@ void cPtr_C_5F_parallelComposition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_parallelComposition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_parallelComposition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_parallelComposition (mProperty_mLeftOperand, mProperty_mRightOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_parallelComposition (mProperty_mLeftOperand, mProperty_mRightOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_parallelComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11468,24 +11492,6 @@ GGS_C_5F_parallelComposition_2E_weak GGS_C_5F_parallelComposition_2E_weak::extra
 // @C_5F_orComposition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_orComposition::cPtr_C_5F_orComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mLeftOperand (),
-mProperty_mRightOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_orComposition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
-    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_orComposition::objectCompare (const GGS_C_5F_orComposition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11542,10 +11548,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_orComposition GGS_C_5F_orComposition::class_func_new (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                                               const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                               const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_orComposition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_orComposition (in_mLeftOperand, in_mRightOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_orComposition (in_mLeftOperand, in_mRightOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11597,10 +11604,19 @@ void GGS_C_5F_orComposition::setProperty_mRightOperand (const GGS_AC_5F_machineD
 //Pointer class for @C_orComposition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_orComposition::cPtr_C_5F_orComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mLeftOperand (),
+mProperty_mRightOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_orComposition::cPtr_C_5F_orComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                                  const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                  const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mLeftOperand (),
 mProperty_mRightOperand () {
   mProperty_mLeftOperand = in_mLeftOperand ;
@@ -11624,12 +11640,22 @@ void cPtr_C_5F_orComposition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_orComposition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_orComposition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_orComposition (mProperty_mLeftOperand, mProperty_mRightOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_orComposition (mProperty_mLeftOperand, mProperty_mRightOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_orComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -11788,26 +11814,6 @@ GGS_C_5F_orComposition_2E_weak GGS_C_5F_orComposition_2E_weak::extractObject (co
 // @C_5F_strongModalComposition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_strongModalComposition::cPtr_C_5F_strongModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mLeftOperand (),
-mProperty_mErrorLocation (),
-mProperty_mRightOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_strongModalComposition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
-    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
-    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_strongModalComposition::objectCompare (const GGS_C_5F_strongModalComposition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -11868,10 +11874,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 
 GGS_C_5F_strongModalComposition GGS_C_5F_strongModalComposition::class_func_new (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
                                                                                  const GGS_location & in_mErrorLocation,
-                                                                                 const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                                                 const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) {
   GGS_C_5F_strongModalComposition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_strongModalComposition (in_mLeftOperand, in_mErrorLocation, in_mRightOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_strongModalComposition (in_mLeftOperand, in_mErrorLocation, in_mRightOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -11945,11 +11952,21 @@ void GGS_C_5F_strongModalComposition::setProperty_mRightOperand (const GGS_AC_5F
 //Pointer class for @C_strongModalComposition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_strongModalComposition::cPtr_C_5F_strongModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mLeftOperand (),
+mProperty_mErrorLocation (),
+mProperty_mRightOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_strongModalComposition::cPtr_C_5F_strongModalComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
                                                                     const GGS_location & in_mErrorLocation,
-                                                                    const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                                    const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mLeftOperand (),
 mProperty_mErrorLocation (),
 mProperty_mRightOperand () {
@@ -11977,12 +11994,23 @@ void cPtr_C_5F_strongModalComposition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_strongModalComposition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_strongModalComposition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_strongModalComposition (mProperty_mLeftOperand, mProperty_mErrorLocation, mProperty_mRightOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_strongModalComposition (mProperty_mLeftOperand, mProperty_mErrorLocation, mProperty_mRightOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_strongModalComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12141,26 +12169,6 @@ GGS_C_5F_strongModalComposition_2E_weak GGS_C_5F_strongModalComposition_2E_weak:
 // @C_5F_weakModalComposition reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_weakModalComposition::cPtr_C_5F_weakModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mLeftOperand (),
-mProperty_mErrorLocation (),
-mProperty_mRightOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_weakModalComposition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
-    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
-    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_weakModalComposition::objectCompare (const GGS_C_5F_weakModalComposition & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12221,10 +12229,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 
 GGS_C_5F_weakModalComposition GGS_C_5F_weakModalComposition::class_func_new (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
                                                                              const GGS_location & in_mErrorLocation,
-                                                                             const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                                             const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   GGS_C_5F_weakModalComposition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_weakModalComposition (in_mLeftOperand, in_mErrorLocation, in_mRightOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_weakModalComposition (in_mLeftOperand, in_mErrorLocation, in_mRightOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12298,11 +12307,21 @@ void GGS_C_5F_weakModalComposition::setProperty_mRightOperand (const GGS_AC_5F_m
 //Pointer class for @C_weakModalComposition class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_weakModalComposition::cPtr_C_5F_weakModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mLeftOperand (),
+mProperty_mErrorLocation (),
+mProperty_mRightOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_weakModalComposition::cPtr_C_5F_weakModalComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
                                                                 const GGS_location & in_mErrorLocation,
-                                                                const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                                                const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mLeftOperand (),
 mProperty_mErrorLocation (),
 mProperty_mRightOperand () {
@@ -12330,12 +12349,23 @@ void cPtr_C_5F_weakModalComposition::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_weakModalComposition::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_weakModalComposition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_weakModalComposition (mProperty_mLeftOperand, mProperty_mErrorLocation, mProperty_mRightOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_weakModalComposition (mProperty_mLeftOperand, mProperty_mErrorLocation, mProperty_mRightOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_weakModalComposition::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
+    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
+    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12494,22 +12524,6 @@ GGS_C_5F_weakModalComposition_2E_weak GGS_C_5F_weakModalComposition_2E_weak::ext
 // @C_5F_fullSaturationOperation reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_fullSaturationOperation::cPtr_C_5F_fullSaturationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_fullSaturationOperation::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_fullSaturationOperation::objectCompare (const GGS_C_5F_fullSaturationOperation & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12562,10 +12576,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_fullSaturationOperation GGS_C_5F_fullSaturationOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand
+GGS_C_5F_fullSaturationOperation GGS_C_5F_fullSaturationOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                   Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   GGS_C_5F_fullSaturationOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_fullSaturationOperation (in_mOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_fullSaturationOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12595,9 +12610,17 @@ void GGS_C_5F_fullSaturationOperation::setProperty_mOperand (const GGS_AC_5F_mac
 //Pointer class for @C_fullSaturationOperation class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_fullSaturationOperation::cPtr_C_5F_fullSaturationOperation (const GGS_AC_5F_machineDefinition & in_mOperand
+cPtr_C_5F_fullSaturationOperation::cPtr_C_5F_fullSaturationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_fullSaturationOperation::cPtr_C_5F_fullSaturationOperation (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mOperand () {
   mProperty_mOperand = in_mOperand ;
 }
@@ -12617,12 +12640,21 @@ void cPtr_C_5F_fullSaturationOperation::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_fullSaturationOperation::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_fullSaturationOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_fullSaturationOperation (mProperty_mOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_fullSaturationOperation (mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_fullSaturationOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -12781,22 +12813,6 @@ GGS_C_5F_fullSaturationOperation_2E_weak GGS_C_5F_fullSaturationOperation_2E_wea
 // @C_5F_complementationOperation reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_complementationOperation::cPtr_C_5F_complementationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_complementationOperation::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_complementationOperation::objectCompare (const GGS_C_5F_complementationOperation & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -12849,10 +12865,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_complementationOperation GGS_C_5F_complementationOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand
+GGS_C_5F_complementationOperation GGS_C_5F_complementationOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) {
   GGS_C_5F_complementationOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_complementationOperation (in_mOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_complementationOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -12882,9 +12899,17 @@ void GGS_C_5F_complementationOperation::setProperty_mOperand (const GGS_AC_5F_ma
 //Pointer class for @C_complementationOperation class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_complementationOperation::cPtr_C_5F_complementationOperation (const GGS_AC_5F_machineDefinition & in_mOperand
+cPtr_C_5F_complementationOperation::cPtr_C_5F_complementationOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_complementationOperation::cPtr_C_5F_complementationOperation (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mOperand () {
   mProperty_mOperand = in_mOperand ;
 }
@@ -12904,12 +12929,21 @@ void cPtr_C_5F_complementationOperation::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_complementationOperation::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_complementationOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_complementationOperation (mProperty_mOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_complementationOperation (mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_complementationOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13068,22 +13102,6 @@ GGS_C_5F_complementationOperation_2E_weak GGS_C_5F_complementationOperation_2E_w
 // @C_5F_suppressTerminalStatesOperation reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_suppressTerminalStatesOperation::cPtr_C_5F_suppressTerminalStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_suppressTerminalStatesOperation::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_suppressTerminalStatesOperation::objectCompare (const GGS_C_5F_suppressTerminalStatesOperation & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13136,10 +13154,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand
+GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) {
   GGS_C_5F_suppressTerminalStatesOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_suppressTerminalStatesOperation (in_mOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_suppressTerminalStatesOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13169,9 +13188,17 @@ void GGS_C_5F_suppressTerminalStatesOperation::setProperty_mOperand (const GGS_A
 //Pointer class for @C_suppressTerminalStatesOperation class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_suppressTerminalStatesOperation::cPtr_C_5F_suppressTerminalStatesOperation (const GGS_AC_5F_machineDefinition & in_mOperand
+cPtr_C_5F_suppressTerminalStatesOperation::cPtr_C_5F_suppressTerminalStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_suppressTerminalStatesOperation::cPtr_C_5F_suppressTerminalStatesOperation (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mOperand () {
   mProperty_mOperand = in_mOperand ;
 }
@@ -13191,12 +13218,21 @@ void cPtr_C_5F_suppressTerminalStatesOperation::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_suppressTerminalStatesOperation::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_suppressTerminalStatesOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_suppressTerminalStatesOperation (mProperty_mOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_suppressTerminalStatesOperation (mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_suppressTerminalStatesOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13355,22 +13391,6 @@ GGS_C_5F_suppressTerminalStatesOperation_2E_weak GGS_C_5F_suppressTerminalStates
 // @C_5F_suppressInitialStatesOperation reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_suppressInitialStatesOperation::cPtr_C_5F_suppressInitialStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_suppressInitialStatesOperation::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_suppressInitialStatesOperation::objectCompare (const GGS_C_5F_suppressInitialStatesOperation & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13423,10 +13443,11 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand
+GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) {
   GGS_C_5F_suppressInitialStatesOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_suppressInitialStatesOperation (in_mOperand COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_suppressInitialStatesOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13456,9 +13477,17 @@ void GGS_C_5F_suppressInitialStatesOperation::setProperty_mOperand (const GGS_AC
 //Pointer class for @C_suppressInitialStatesOperation class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_suppressInitialStatesOperation::cPtr_C_5F_suppressInitialStatesOperation (const GGS_AC_5F_machineDefinition & in_mOperand
+cPtr_C_5F_suppressInitialStatesOperation::cPtr_C_5F_suppressInitialStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_suppressInitialStatesOperation::cPtr_C_5F_suppressInitialStatesOperation (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (THERE),
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
 mProperty_mOperand () {
   mProperty_mOperand = in_mOperand ;
 }
@@ -13478,12 +13507,21 @@ void cPtr_C_5F_suppressInitialStatesOperation::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_suppressInitialStatesOperation::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_suppressInitialStatesOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_suppressInitialStatesOperation (mProperty_mOperand COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_suppressInitialStatesOperation (mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_suppressInitialStatesOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13642,20 +13680,6 @@ GGS_C_5F_suppressInitialStatesOperation_2E_weak GGS_C_5F_suppressInitialStatesOp
 // @AC_5F_job reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_AC_5F_job::cPtr_AC_5F_job (Compiler * /* inCompiler */ COMMA_LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_AC_5F_job::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_AC_5F_job::objectCompare (const GGS_AC_5F_job & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13688,10 +13712,22 @@ AC_GALGAS_reference_class (inSourcePtr) {
 //Pointer class for @AC_job class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_AC_5F_job::cPtr_AC_5F_job (LOCATION_ARGS) :
-acStrongPtr_class (THERE) {
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_AC_5F_job::cPtr_AC_5F_job (Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) :
+acStrongPtr_class (inCompiler COMMA_THERE) {
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_AC_5F_job::printNonNullClassInstanceProperties (void) const {
+    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -13850,22 +13886,6 @@ GGS_AC_5F_job_2E_weak GGS_AC_5F_job_2E_weak::extractObject (const GGS_object & i
 // @C_5F_machineDisplayStates reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayStates::cPtr_C_5F_machineDisplayStates (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (inCompiler COMMA_THERE),
-mProperty_mMachineIndex () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_machineDisplayStates::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
-    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_machineDisplayStates::objectCompare (const GGS_C_5F_machineDisplayStates & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -13918,10 +13938,11 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates::class_func_new (const GGS_uint & in_mMachineIndex
+GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates::class_func_new (const GGS_uint & in_mMachineIndex,
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   GGS_C_5F_machineDisplayStates result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayStates (in_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayStates (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -13951,9 +13972,17 @@ void GGS_C_5F_machineDisplayStates::setProperty_mMachineIndex (const GGS_uint & 
 //Pointer class for @C_machineDisplayStates class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayStates::cPtr_C_5F_machineDisplayStates (const GGS_uint & in_mMachineIndex
+cPtr_C_5F_machineDisplayStates::cPtr_C_5F_machineDisplayStates (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
+mProperty_mMachineIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_machineDisplayStates::cPtr_C_5F_machineDisplayStates (const GGS_uint & in_mMachineIndex,
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
 mProperty_mMachineIndex () {
   mProperty_mMachineIndex = in_mMachineIndex ;
 }
@@ -13973,12 +14002,21 @@ void cPtr_C_5F_machineDisplayStates::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayStates::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_machineDisplayStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_machineDisplayStates (mProperty_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_machineDisplayStates (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayStates::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -14137,22 +14175,6 @@ GGS_C_5F_machineDisplayStates_2E_weak GGS_C_5F_machineDisplayStates_2E_weak::ext
 // @C_5F_machineDisplayInitialStates reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayInitialStates::cPtr_C_5F_machineDisplayInitialStates (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (inCompiler COMMA_THERE),
-mProperty_mMachineIndex () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_machineDisplayInitialStates::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
-    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_machineDisplayInitialStates::objectCompare (const GGS_C_5F_machineDisplayInitialStates & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14205,10 +14227,11 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates::class_func_new (const GGS_uint & in_mMachineIndex
+GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates::class_func_new (const GGS_uint & in_mMachineIndex,
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
   GGS_C_5F_machineDisplayInitialStates result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayInitialStates (in_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayInitialStates (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -14238,9 +14261,17 @@ void GGS_C_5F_machineDisplayInitialStates::setProperty_mMachineIndex (const GGS_
 //Pointer class for @C_machineDisplayInitialStates class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayInitialStates::cPtr_C_5F_machineDisplayInitialStates (const GGS_uint & in_mMachineIndex
+cPtr_C_5F_machineDisplayInitialStates::cPtr_C_5F_machineDisplayInitialStates (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
+mProperty_mMachineIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_machineDisplayInitialStates::cPtr_C_5F_machineDisplayInitialStates (const GGS_uint & in_mMachineIndex,
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
 mProperty_mMachineIndex () {
   mProperty_mMachineIndex = in_mMachineIndex ;
 }
@@ -14260,12 +14291,21 @@ void cPtr_C_5F_machineDisplayInitialStates::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayInitialStates::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_machineDisplayInitialStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_machineDisplayInitialStates (mProperty_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_machineDisplayInitialStates (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayInitialStates::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -14424,22 +14464,6 @@ GGS_C_5F_machineDisplayInitialStates_2E_weak GGS_C_5F_machineDisplayInitialState
 // @C_5F_machineDisplayTerminalStates reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayTerminalStates::cPtr_C_5F_machineDisplayTerminalStates (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (inCompiler COMMA_THERE),
-mProperty_mMachineIndex () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_machineDisplayTerminalStates::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
-    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_machineDisplayTerminalStates::objectCompare (const GGS_C_5F_machineDisplayTerminalStates & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14492,10 +14516,11 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates::class_func_new (const GGS_uint & in_mMachineIndex
+GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates::class_func_new (const GGS_uint & in_mMachineIndex,
+                                                                                             Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) {
   GGS_C_5F_machineDisplayTerminalStates result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayTerminalStates (in_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayTerminalStates (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -14525,9 +14550,17 @@ void GGS_C_5F_machineDisplayTerminalStates::setProperty_mMachineIndex (const GGS
 //Pointer class for @C_machineDisplayTerminalStates class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayTerminalStates::cPtr_C_5F_machineDisplayTerminalStates (const GGS_uint & in_mMachineIndex
+cPtr_C_5F_machineDisplayTerminalStates::cPtr_C_5F_machineDisplayTerminalStates (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
+mProperty_mMachineIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_machineDisplayTerminalStates::cPtr_C_5F_machineDisplayTerminalStates (const GGS_uint & in_mMachineIndex,
+                                                                                Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
 mProperty_mMachineIndex () {
   mProperty_mMachineIndex = in_mMachineIndex ;
 }
@@ -14547,12 +14580,21 @@ void cPtr_C_5F_machineDisplayTerminalStates::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayTerminalStates::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_machineDisplayTerminalStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_machineDisplayTerminalStates (mProperty_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_machineDisplayTerminalStates (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayTerminalStates::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -14711,22 +14753,6 @@ GGS_C_5F_machineDisplayTerminalStates_2E_weak GGS_C_5F_machineDisplayTerminalSta
 // @C_5F_machineDisplayTransitions reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayTransitions::cPtr_C_5F_machineDisplayTransitions (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (inCompiler COMMA_THERE),
-mProperty_mMachineIndex () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_machineDisplayTransitions::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
-    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_machineDisplayTransitions::objectCompare (const GGS_C_5F_machineDisplayTransitions & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -14779,10 +14805,11 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions::class_func_new (const GGS_uint & in_mMachineIndex
+GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions::class_func_new (const GGS_uint & in_mMachineIndex,
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) {
   GGS_C_5F_machineDisplayTransitions result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayTransitions (in_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayTransitions (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -14812,9 +14839,17 @@ void GGS_C_5F_machineDisplayTransitions::setProperty_mMachineIndex (const GGS_ui
 //Pointer class for @C_machineDisplayTransitions class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineDisplayTransitions::cPtr_C_5F_machineDisplayTransitions (const GGS_uint & in_mMachineIndex
+cPtr_C_5F_machineDisplayTransitions::cPtr_C_5F_machineDisplayTransitions (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
+mProperty_mMachineIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_machineDisplayTransitions::cPtr_C_5F_machineDisplayTransitions (const GGS_uint & in_mMachineIndex,
+                                                                          Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
 mProperty_mMachineIndex () {
   mProperty_mMachineIndex = in_mMachineIndex ;
 }
@@ -14834,12 +14869,21 @@ void cPtr_C_5F_machineDisplayTransitions::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayTransitions::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_machineDisplayTransitions::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_machineDisplayTransitions (mProperty_mMachineIndex COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_machineDisplayTransitions (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineDisplayTransitions::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -15109,24 +15153,6 @@ GGS_C_5F_machineCheck_2E_weak GGS_C_5F_machineCheck_2E_weak::extractObject (cons
 // @C_5F_machineCheckIdentical reference class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_C_5F_machineCheckIdentical::cPtr_C_5F_machineCheckIdentical (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (inCompiler COMMA_THERE),
-mProperty_mMachineIndex_31_ (),
-mProperty_mMachineIndex_32_ () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_machineCheckIdentical::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
-    mProperty_mMachineIndex_31_.printNonNullClassInstanceProperties ("mMachineIndex1") ;
-    mProperty_mMachineIndex_32_.printNonNullClassInstanceProperties ("mMachineIndex2") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_machineCheckIdentical::objectCompare (const GGS_C_5F_machineCheckIdentical & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -15183,10 +15209,11 @@ GGS_AC_5F_job (inSourcePtr) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineCheckIdentical GGS_C_5F_machineCheckIdentical::class_func_new (const GGS_uint & in_mMachineIndex_31_,
-                                                                               const GGS_uint & in_mMachineIndex_32_
+                                                                               const GGS_uint & in_mMachineIndex_32_,
+                                                                               Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   GGS_C_5F_machineCheckIdentical result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineCheckIdentical (in_mMachineIndex_31_, in_mMachineIndex_32_ COMMA_THERE)) ;
+  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineCheckIdentical (in_mMachineIndex_31_, in_mMachineIndex_32_,  inCompiler COMMA_THERE)) ;
   return result ;
 }
 
@@ -15238,10 +15265,19 @@ void GGS_C_5F_machineCheckIdentical::setProperty_mMachineIndex_32_ (const GGS_ui
 //Pointer class for @C_machineCheckIdentical class
 //--------------------------------------------------------------------------------------------------
 
+cPtr_C_5F_machineCheckIdentical::cPtr_C_5F_machineCheckIdentical (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
+mProperty_mMachineIndex_31_ (),
+mProperty_mMachineIndex_32_ () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
 cPtr_C_5F_machineCheckIdentical::cPtr_C_5F_machineCheckIdentical (const GGS_uint & in_mMachineIndex_31_,
-                                                                  const GGS_uint & in_mMachineIndex_32_
+                                                                  const GGS_uint & in_mMachineIndex_32_,
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
+cPtr_AC_5F_job (inCompiler COMMA_THERE),
 mProperty_mMachineIndex_31_ (),
 mProperty_mMachineIndex_32_ () {
   mProperty_mMachineIndex_31_ = in_mMachineIndex_31_ ;
@@ -15265,12 +15301,22 @@ void cPtr_C_5F_machineCheckIdentical::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineCheckIdentical::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_C_5F_machineCheckIdentical::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_machineCheckIdentical (mProperty_mMachineIndex_31_, mProperty_mMachineIndex_32_ COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_C_5F_machineCheckIdentical (mProperty_mMachineIndex_31_, mProperty_mMachineIndex_32_, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_machineCheckIdentical::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
+    mProperty_mMachineIndex_31_.printNonNullClassInstanceProperties ("mMachineIndex1") ;
+    mProperty_mMachineIndex_32_.printNonNullClassInstanceProperties ("mMachineIndex2") ;
+  }
+#endif
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -17044,314 +17090,6 @@ GGS_L_5F_scenarioList GGS_L_5F_scenarioList::extractObject (const GGS_object & i
       result = *p ;
     }else{
       inCompiler->castError ("L_scenarioList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @C_5F_scenarioComponent reference class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_C_5F_scenarioComponent::cPtr_C_5F_scenarioComponent (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (inCompiler COMMA_THERE),
-mProperty_mMachineIndex (),
-mProperty_mInputVariableCount (),
-mProperty_mInputAndInternalVariableCount (),
-mProperty_mVariablesMap (),
-mProperty_mScenarioList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_scenarioComponent::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_job::printNonNullClassInstanceProperties () ;
-    mProperty_mMachineIndex.printNonNullClassInstanceProperties ("mMachineIndex") ;
-    mProperty_mInputVariableCount.printNonNullClassInstanceProperties ("mInputVariableCount") ;
-    mProperty_mInputAndInternalVariableCount.printNonNullClassInstanceProperties ("mInputAndInternalVariableCount") ;
-    mProperty_mVariablesMap.printNonNullClassInstanceProperties ("mVariablesMap") ;
-    mProperty_mScenarioList.printNonNullClassInstanceProperties ("mScenarioList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_C_5F_scenarioComponent::objectCompare (const GGS_C_5F_scenarioComponent & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_scenarioComponent::GGS_C_5F_scenarioComponent (void) :
-GGS_AC_5F_job () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent::
-init_21__21__21__21__21_ (const GGS_uint & in_mMachineIndex,
-                          const GGS_uint & in_mInputVariableCount,
-                          const GGS_uint & in_mInputAndInternalVariableCount,
-                          const GGS_M_5F_variablesMap & in_mVariablesMap,
-                          const GGS_L_5F_scenarioList & in_mScenarioList,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
-  cPtr_C_5F_scenarioComponent * object = nullptr ;
-  macroMyNew (object, cPtr_C_5F_scenarioComponent (inCompiler COMMA_THERE)) ;
-  object->C_5F_scenarioComponent_init_21__21__21__21__21_ (in_mMachineIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mScenarioList, inCompiler) ;
-  const GGS_C_5F_scenarioComponent result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_C_5F_scenarioComponent::
-C_5F_scenarioComponent_init_21__21__21__21__21_ (const GGS_uint & in_mMachineIndex,
-                                                 const GGS_uint & in_mInputVariableCount,
-                                                 const GGS_uint & in_mInputAndInternalVariableCount,
-                                                 const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                 const GGS_L_5F_scenarioList & in_mScenarioList,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mMachineIndex = in_mMachineIndex ;
-  mProperty_mInputVariableCount = in_mInputVariableCount ;
-  mProperty_mInputAndInternalVariableCount = in_mInputAndInternalVariableCount ;
-  mProperty_mVariablesMap = in_mVariablesMap ;
-  mProperty_mScenarioList = in_mScenarioList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_scenarioComponent::GGS_C_5F_scenarioComponent (const cPtr_C_5F_scenarioComponent * inSourcePtr) :
-GGS_AC_5F_job (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_scenarioComponent) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                                       const GGS_uint & in_mInputVariableCount,
-                                                                       const GGS_uint & in_mInputAndInternalVariableCount,
-                                                                       const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                                       const GGS_L_5F_scenarioList & in_mScenarioList
-                                                                       COMMA_LOCATION_ARGS) {
-  GGS_C_5F_scenarioComponent result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_scenarioComponent (in_mMachineIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mScenarioList COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_C_5F_scenarioComponent::readProperty_mMachineIndex (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_uint () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mMachineIndex ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_scenarioComponent::setProperty_mMachineIndex (const GGS_uint & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mMachineIndex = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_C_5F_scenarioComponent::readProperty_mInputVariableCount (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_uint () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mInputVariableCount ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_scenarioComponent::setProperty_mInputVariableCount (const GGS_uint & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mInputVariableCount = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_C_5F_scenarioComponent::readProperty_mInputAndInternalVariableCount (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_uint () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mInputAndInternalVariableCount ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_scenarioComponent::setProperty_mInputAndInternalVariableCount (const GGS_uint & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mInputAndInternalVariableCount = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_variablesMap GGS_C_5F_scenarioComponent::readProperty_mVariablesMap (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_M_5F_variablesMap () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mVariablesMap ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_scenarioComponent::setProperty_mVariablesMap (const GGS_M_5F_variablesMap & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mVariablesMap = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_C_5F_scenarioComponent::readProperty_mScenarioList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_L_5F_scenarioList () ;
-  }else{
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    return p->mProperty_mScenarioList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_scenarioComponent::setProperty_mScenarioList (const GGS_L_5F_scenarioList & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_scenarioComponent * p = (cPtr_C_5F_scenarioComponent *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_scenarioComponent) ;
-    p->mProperty_mScenarioList = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @C_scenarioComponent class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_C_5F_scenarioComponent::cPtr_C_5F_scenarioComponent (const GGS_uint & in_mMachineIndex,
-                                                          const GGS_uint & in_mInputVariableCount,
-                                                          const GGS_uint & in_mInputAndInternalVariableCount,
-                                                          const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                          const GGS_L_5F_scenarioList & in_mScenarioList
-                                                          COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_job (THERE),
-mProperty_mMachineIndex (),
-mProperty_mInputVariableCount (),
-mProperty_mInputAndInternalVariableCount (),
-mProperty_mVariablesMap (),
-mProperty_mScenarioList () {
-  mProperty_mMachineIndex = in_mMachineIndex ;
-  mProperty_mInputVariableCount = in_mInputVariableCount ;
-  mProperty_mInputAndInternalVariableCount = in_mInputAndInternalVariableCount ;
-  mProperty_mVariablesMap = in_mVariablesMap ;
-  mProperty_mScenarioList = in_mScenarioList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * cPtr_C_5F_scenarioComponent::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
-}
-
-void cPtr_C_5F_scenarioComponent::description (String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString.appendCString ("[@C_scenarioComponent:") ;
-  mProperty_mMachineIndex.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mInputAndInternalVariableCount.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mVariablesMap.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mScenarioList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_C_5F_scenarioComponent::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_scenarioComponent (mProperty_mMachineIndex, mProperty_mInputVariableCount, mProperty_mInputAndInternalVariableCount, mProperty_mVariablesMap, mProperty_mScenarioList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @C_scenarioComponent generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ("C_scenarioComponent",
-                                                                              & kTypeDescriptor_GALGAS_AC_5F_job) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_C_5F_scenarioComponent::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_C_5F_scenarioComponent::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_C_5F_scenarioComponent (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_C_5F_scenarioComponent result ;
-  const GGS_C_5F_scenarioComponent * p = (const GGS_C_5F_scenarioComponent *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_C_5F_scenarioComponent *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("C_scenarioComponent", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

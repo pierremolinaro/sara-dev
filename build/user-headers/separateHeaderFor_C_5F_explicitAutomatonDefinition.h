@@ -50,11 +50,12 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
                                                  const GGS_L_5F_statesDefinitionList & in_mInitialStatesDefinitionList,
                                                  const GGS_L_5F_statesDefinitionList & in_mTerminalStatesDefinitionList,
                                                  const GGS_L_5F_stateDefinition & in_mStateDefinitionList,
-                                                 const GGS_location & in_mEndOfDefinition
+                                                 const GGS_location & in_mEndOfDefinition,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

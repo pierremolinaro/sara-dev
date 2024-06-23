@@ -30,11 +30,10 @@ class cPtr_AC_5F_boolExpression : public acStrongPtr_class {
 //--- Properties
 
 
-//--- Default constructor
-  public: cPtr_AC_5F_boolExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_AC_5F_boolExpression (LOCATION_ARGS) ;
+  public: cPtr_AC_5F_boolExpression (Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
 //--- Description

@@ -36,11 +36,12 @@ class cPtr_C_5F_VariableExpression : public cPtr_AC_5F_boolExpression {
   public: cPtr_C_5F_VariableExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_VariableExpression (const GGS_uint & in_mInputVarIndex
+  public: cPtr_C_5F_VariableExpression (const GGS_uint & in_mInputVarIndex,
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

@@ -44,11 +44,12 @@ class cPtr_C_5F_strongModalComposition : public cPtr_AC_5F_machineDefinition {
 //--- Constructor
   public: cPtr_C_5F_strongModalComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
                                             const GGS_location & in_mErrorLocation,
-                                            const GGS_AC_5F_machineDefinition & in_mRightOperand
+                                            const GGS_AC_5F_machineDefinition & in_mRightOperand,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

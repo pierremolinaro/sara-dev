@@ -10,6 +10,87 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+// Phase 1: @C_5F_scenarioComponent reference class
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_C_5F_scenarioComponent : public GGS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GGS_C_5F_scenarioComponent (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_uint readProperty_mMachineIndex (void) const ;
+  public: void setProperty_mMachineIndex (const GGS_uint & inValue) ;
+
+  public: class GGS_uint readProperty_mInputVariableCount (void) const ;
+  public: void setProperty_mInputVariableCount (const GGS_uint & inValue) ;
+
+  public: class GGS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+  public: void setProperty_mInputAndInternalVariableCount (const GGS_uint & inValue) ;
+
+  public: class GGS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+  public: void setProperty_mVariablesMap (const GGS_M_5F_variablesMap & inValue) ;
+
+  public: class GGS_L_5F_scenarioList readProperty_mScenarioList (void) const ;
+  public: void setProperty_mScenarioList (const GGS_L_5F_scenarioList & inValue) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_C_5F_scenarioComponent init_21__21__21__21__21_ (const class GGS_uint & inOperand0,
+                                                                      const class GGS_uint & inOperand1,
+                                                                      const class GGS_uint & inOperand2,
+                                                                      const class GGS_M_5F_variablesMap & inOperand3,
+                                                                      const class GGS_L_5F_scenarioList & inOperand4,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_C_5F_scenarioComponent extractObject (const GGS_object & inObject,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_C_5F_scenarioComponent class_func_new (const class GGS_uint & inOperand0,
+                                                                  const class GGS_uint & inOperand1,
+                                                                  const class GGS_uint & inOperand2,
+                                                                  const class GGS_M_5F_variablesMap & inOperand3,
+                                                                  const class GGS_L_5F_scenarioList & inOperand4,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_C_5F_scenarioComponent & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ; // End of GGS_C_5F_scenarioComponent class
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
+
+#include "separateHeaderFor_C_5F_scenarioComponent.h"
+
+//--------------------------------------------------------------------------------------------------
+//
 // Phase 1: @C_5F_scenarioComponent_2E_weak weak reference class
 //
 //--------------------------------------------------------------------------------------------------
@@ -127,7 +208,8 @@ class GGS_typeDisplayBDDstats : public GGS_AC_5F_job {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GGS_typeDisplayBDDstats class_func_new (LOCATION_ARGS) ;
+  public: static class GGS_typeDisplayBDDstats class_func_new (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_typeDisplayBDDstats & inOperand) const ;

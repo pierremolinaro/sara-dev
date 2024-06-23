@@ -41,11 +41,12 @@ class cPtr_C_5F_importMachine : public cPtr_AC_5F_machineDefinition {
 
 //--- Constructor
   public: cPtr_C_5F_importMachine (const GGS_uint & in_mIndexOfImportedMachine,
-                                   const GGS_L_5F_translationVector & in_mTranslationVector
+                                   const GGS_L_5F_translationVector & in_mTranslationVector,
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

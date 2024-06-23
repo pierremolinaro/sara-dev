@@ -36,11 +36,12 @@ class cPtr_C_5F_notExpression : public cPtr_AC_5F_boolExpression {
   public: cPtr_C_5F_notExpression (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_C_5F_notExpression (const GGS_AC_5F_boolExpression & in_mExpression
+  public: cPtr_C_5F_notExpression (const GGS_AC_5F_boolExpression & in_mExpression,
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description

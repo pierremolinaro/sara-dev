@@ -44,11 +44,12 @@ class cPtr_C_5F_existsDefinition : public cPtr_AC_5F_machineDefinition {
 //--- Constructor
   public: cPtr_C_5F_existsDefinition (const GGS_uint & in_mPreviousVariableCount,
                                       const GGS_uint & in_mTotalVariableCount,
-                                      const GGS_AC_5F_machineDefinition & in_mOperand
+                                      const GGS_AC_5F_machineDefinition & in_mOperand,
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
-  public: virtual acPtr_class * duplicate (LOCATION_ARGS) const override ;
+  public: virtual acPtr_class * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
 //--- Attribute accessors
 //--- Description
