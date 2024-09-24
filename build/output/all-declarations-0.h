@@ -314,56 +314,56 @@ class Lexique_sara_5F_scanner : public Lexique {
 
 
 //--- Terminal symbols enumeration
-  public: enum {kToken_,
-   kToken_identifier /* 1 */ ,
-   kToken_literal_5F_string /* 2 */ ,
-   kToken_machineIdf /* 3 */ ,
-   kToken_literal_5F_integer /* 4 */ ,
-   kToken_comment /* 5 */ ,
-   kToken_auto /* 6 */ ,
-   kToken_state /* 7 */ ,
-   kToken_first /* 8 */ ,
-   kToken_last /* 9 */ ,
-   kToken_goto /* 10 */ ,
-   kToken_true /* 11 */ ,
-   kToken_false /* 12 */ ,
-   kToken_nofirst /* 13 */ ,
-   kToken_nolast /* 14 */ ,
-   kToken_modalcompadd /* 15 */ ,
-   kToken_exclude /* 16 */ ,
-   kToken_modalcompsub /* 17 */ ,
-   kToken_include /* 18 */ ,
-   kToken_to /* 19 */ ,
-   kToken_scenario /* 20 */ ,
-   kToken_trans /* 21 */ ,
-   kToken_display /* 22 */ ,
-   kToken_bdd /* 23 */ ,
-   kToken_bool /* 24 */ ,
-   kToken_map /* 25 */ ,
-   kToken_check /* 26 */ ,
-   kToken_checkbool /* 27 */ ,
-   kToken_checkidentical /* 28 */ ,
-   kToken__2C_ /* 29 */ ,
-   kToken__3B_ /* 30 */ ,
-   kToken__3A_ /* 31 */ ,
-   kToken__7B_ /* 32 */ ,
-   kToken__7D_ /* 33 */ ,
-   kToken__2D__3E_ /* 34 */ ,
-   kToken__26_ /* 35 */ ,
-   kToken__7E_ /* 36 */ ,
-   kToken__3F_ /* 37 */ ,
-   kToken__21_ /* 38 */ ,
-   kToken__7C_ /* 39 */ ,
-   kToken__7C__7C_ /* 40 */ ,
-   kToken__2B_ /* 41 */ ,
-   kToken__28_ /* 42 */ ,
-   kToken__29_ /* 43 */ ,
-   kToken__3A__3D_ /* 44 */ ,
-   kToken__5E_ /* 45 */ ,
-   kToken__3D_ /* 46 */ ,
-   kToken__2A_ /* 47 */ ,
-   kToken__40_ /* 48 */ ,
-   kToken__2A__2A_ /* 49 */ } ;
+  public: const static int32_t kToken_ = 0 ;
+  public: static const int32_t kToken_identifier = 1 ;
+  public: static const int32_t kToken_literal_5F_string = 2 ;
+  public: static const int32_t kToken_machineIdf = 3 ;
+  public: static const int32_t kToken_literal_5F_integer = 4 ;
+  public: static const int32_t kToken_comment = 5 ;
+  public: static const int32_t kToken_auto = 6 ;
+  public: static const int32_t kToken_state = 7 ;
+  public: static const int32_t kToken_first = 8 ;
+  public: static const int32_t kToken_last = 9 ;
+  public: static const int32_t kToken_goto = 10 ;
+  public: static const int32_t kToken_true = 11 ;
+  public: static const int32_t kToken_false = 12 ;
+  public: static const int32_t kToken_nofirst = 13 ;
+  public: static const int32_t kToken_nolast = 14 ;
+  public: static const int32_t kToken_modalcompadd = 15 ;
+  public: static const int32_t kToken_exclude = 16 ;
+  public: static const int32_t kToken_modalcompsub = 17 ;
+  public: static const int32_t kToken_include = 18 ;
+  public: static const int32_t kToken_to = 19 ;
+  public: static const int32_t kToken_scenario = 20 ;
+  public: static const int32_t kToken_trans = 21 ;
+  public: static const int32_t kToken_display = 22 ;
+  public: static const int32_t kToken_bdd = 23 ;
+  public: static const int32_t kToken_bool = 24 ;
+  public: static const int32_t kToken_map = 25 ;
+  public: static const int32_t kToken_check = 26 ;
+  public: static const int32_t kToken_checkbool = 27 ;
+  public: static const int32_t kToken_checkidentical = 28 ;
+  public: static const int32_t kToken__2C_ = 29 ;
+  public: static const int32_t kToken__3B_ = 30 ;
+  public: static const int32_t kToken__3A_ = 31 ;
+  public: static const int32_t kToken__7B_ = 32 ;
+  public: static const int32_t kToken__7D_ = 33 ;
+  public: static const int32_t kToken__2D__3E_ = 34 ;
+  public: static const int32_t kToken__26_ = 35 ;
+  public: static const int32_t kToken__7E_ = 36 ;
+  public: static const int32_t kToken__3F_ = 37 ;
+  public: static const int32_t kToken__21_ = 38 ;
+  public: static const int32_t kToken__7C_ = 39 ;
+  public: static const int32_t kToken__7C__7C_ = 40 ;
+  public: static const int32_t kToken__2B_ = 41 ;
+  public: static const int32_t kToken__28_ = 42 ;
+  public: static const int32_t kToken__29_ = 43 ;
+  public: static const int32_t kToken__3A__3D_ = 44 ;
+  public: static const int32_t kToken__5E_ = 45 ;
+  public: static const int32_t kToken__3D_ = 46 ;
+  public: static const int32_t kToken__2A_ = 47 ;
+  public: static const int32_t kToken__40_ = 48 ;
+  public: static const int32_t kToken__2A__2A_ = 49 ;
 
 //--- Key words table 'keyWordList'
   public: static int32_t search_into_keyWordList (const String & inSearchedString) ;
