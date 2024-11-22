@@ -25,52 +25,52 @@ list @L_translationVector {
   public var @uint mTargetSlot
 }
 
-abstract refclass @AC_boolExpression %generatedInSeparateFile {
+abstract class @AC_boolExpression %generatedInSeparateFile {
 }
 
-refclass @C_importBoolMachine : @AC_boolExpression {
+class @C_importBoolMachine : @AC_boolExpression {
   public var @uint mIndexOfImportedMachine
   public var @location mErrorLocation
   public var @L_translationVector mTranslationVector
 }
 
-refclass @C_andExpression : @AC_boolExpression {
+class @C_andExpression : @AC_boolExpression {
   public var @AC_boolExpression mLeftExpression
   public var @AC_boolExpression mRightExpression
 }
   
-refclass @C_orExpression : @AC_boolExpression {
+class @C_orExpression : @AC_boolExpression {
   public var @AC_boolExpression mLeftExpression
   public var @AC_boolExpression mRightExpression
 }
   
-refclass @C_xorExpression : @AC_boolExpression {
+class @C_xorExpression : @AC_boolExpression {
   public var @AC_boolExpression mLeftExpression
   public var @AC_boolExpression mRightExpression
 }
   
-refclass @C_impliesExpression : @AC_boolExpression  {
+class @C_impliesExpression : @AC_boolExpression  {
   public var @AC_boolExpression mLeftExpression
   public var @AC_boolExpression mRightExpression
 }
   
-refclass @C_equalExpression : @AC_boolExpression {
+class @C_equalExpression : @AC_boolExpression {
   public var @AC_boolExpression mLeftExpression
   public var @AC_boolExpression mRightExpression
 }
   
-refclass @C_notExpression : @AC_boolExpression {
+class @C_notExpression : @AC_boolExpression {
   public var @AC_boolExpression mExpression
 }
     
-refclass @C_VariableExpression : @AC_boolExpression {
+class @C_VariableExpression : @AC_boolExpression {
   public var @uint mInputVarIndex
 }
 
-refclass @C_trueExpression : @AC_boolExpression {
+class @C_trueExpression : @AC_boolExpression {
 }
 
-refclass @C_falseExpression : @AC_boolExpression {
+class @C_falseExpression : @AC_boolExpression {
 }
 
 #---------------------------------------------------------------------------*
@@ -97,7 +97,7 @@ list @L_statesDefinitionList {
 
 #---------------------------------------------------------------------------*
 
-abstract refclass @AC_machineDefinition %generatedInSeparateFile {
+abstract class @AC_machineDefinition %generatedInSeparateFile {
 }
 
 map @M_modesMap {
@@ -112,27 +112,27 @@ list @ListForModes {
   public var @uint mTargetMode
 }
 
-refclass @C_substractiveModalCompositionComponent : @AC_machineDefinition {
+class @C_substractiveModalCompositionComponent : @AC_machineDefinition {
   public var @M_modesMap mModeMap
   public var @ListForModes mExclusionList
 }
 
-refclass @C_additiveModalCompositionComponent : @AC_machineDefinition {
+class @C_additiveModalCompositionComponent : @AC_machineDefinition {
   public var @M_modesMap mModeMap
   public var @ListForModes mInclusionList
 }
 
-refclass @C_trans : @AC_machineDefinition {
+class @C_trans : @AC_machineDefinition {
   public var @AC_boolExpression mSourceStateExpression
   public var @AC_boolExpression mTargetStateExpression
 }
   
-refclass @C_importMachine : @AC_machineDefinition {
+class @C_importMachine : @AC_machineDefinition {
   public var @uint mIndexOfImportedMachine
   public var @L_translationVector mTranslationVector
 }
 
-refclass @C_explicitAutomatonDefinition : @AC_machineDefinition {
+class @C_explicitAutomatonDefinition : @AC_machineDefinition {
   public var @M_stateMap mStatesMap
   public var @L_statesDefinitionList mInitialStatesDefinitionList
   public var @L_statesDefinitionList mTerminalStatesDefinitionList
@@ -140,93 +140,93 @@ refclass @C_explicitAutomatonDefinition : @AC_machineDefinition {
   public var @location mEndOfDefinition
 }
 
- refclass @C_boolToSeqExpression : @AC_machineDefinition {
+ class @C_boolToSeqExpression : @AC_machineDefinition {
    public var @AC_boolExpression mExpression
  }
   
-refclass @C_existsDefinition : @AC_machineDefinition {
+class @C_existsDefinition : @AC_machineDefinition {
   public var @uint mPreviousVariableCount
   public var @uint mTotalVariableCount
   public var @AC_machineDefinition mOperand
 }
 
-refclass @C_forallDefinition : @AC_machineDefinition {
+class @C_forallDefinition : @AC_machineDefinition {
   public var @uint mPreviousVariableCount
   public var @uint mTotalVariableCount
   public var @AC_machineDefinition mOperand
 }
 
-refclass @C_parallelComposition : @AC_machineDefinition {
+class @C_parallelComposition : @AC_machineDefinition {
   public var @AC_machineDefinition mLeftOperand
   public var @AC_machineDefinition mRightOperand
 }
 
-refclass @C_orComposition : @AC_machineDefinition {
+class @C_orComposition : @AC_machineDefinition {
   public var @AC_machineDefinition mLeftOperand
   public var @AC_machineDefinition mRightOperand
 }
 
-refclass @C_strongModalComposition : @AC_machineDefinition {
-  public var @AC_machineDefinition mLeftOperand
-  public var @location mErrorLocation
-  public var @AC_machineDefinition mRightOperand
-}
-
-refclass @C_weakModalComposition : @AC_machineDefinition {
+class @C_strongModalComposition : @AC_machineDefinition {
   public var @AC_machineDefinition mLeftOperand
   public var @location mErrorLocation
   public var @AC_machineDefinition mRightOperand
 }
 
-refclass @C_fullSaturationOperation : @AC_machineDefinition {
+class @C_weakModalComposition : @AC_machineDefinition {
+  public var @AC_machineDefinition mLeftOperand
+  public var @location mErrorLocation
+  public var @AC_machineDefinition mRightOperand
+}
+
+class @C_fullSaturationOperation : @AC_machineDefinition {
   public var @AC_machineDefinition mOperand
 }
 
-refclass @C_complementationOperation : @AC_machineDefinition {
+class @C_complementationOperation : @AC_machineDefinition {
   public var @AC_machineDefinition mOperand
 }
 
-refclass @C_suppressTerminalStatesOperation : @AC_machineDefinition {
+class @C_suppressTerminalStatesOperation : @AC_machineDefinition {
   public var @AC_machineDefinition mOperand
 }
 
-refclass @C_suppressInitialStatesOperation : @AC_machineDefinition {
+class @C_suppressInitialStatesOperation : @AC_machineDefinition {
   public var @AC_machineDefinition mOperand
 }
 
 #---------------------------------------------------------------------------*
 
-abstract refclass @AC_job %generatedInSeparateFile {
+abstract class @AC_job %generatedInSeparateFile {
 }
  
-refclass @C_machineDisplayStates : @AC_job {
+class @C_machineDisplayStates : @AC_job {
   public var @uint mMachineIndex
 }
 
-refclass @C_machineDisplayInitialStates : @AC_job {
+class @C_machineDisplayInitialStates : @AC_job {
   public var @uint mMachineIndex
 }
 
-refclass @C_machineDisplayTerminalStates : @AC_job {
+class @C_machineDisplayTerminalStates : @AC_job {
   public var @uint mMachineIndex
 }
 
-refclass @C_machineDisplayTransitions : @AC_job {
+class @C_machineDisplayTransitions : @AC_job {
   public var @uint mMachineIndex
 }
 
-refclass @C_machineCheck : @AC_job {
+class @C_machineCheck : @AC_job {
   public var @uint mMachineIndex
   public var @bool mCheckMachineIsBoolean
 }
 
 
-refclass @C_machineCheckIdentical : @AC_job {
+class @C_machineCheckIdentical : @AC_job {
   public var @uint mMachineIndex1
   public var @uint mMachineIndex2
 }
 
-refclass @C_machineComponent : @AC_job {
+class @C_machineComponent : @AC_job {
   public var @lstring mMachineName
   public var @uint mMachineIndex
   public var @uint mInputVariableCount
@@ -236,7 +236,7 @@ refclass @C_machineComponent : @AC_job {
   public var @AC_machineDefinition mDefinition
 }
 
-refclass @C_machineDefinedByAdditiveModalComp : @AC_job {
+class @C_machineDefinedByAdditiveModalComp : @AC_job {
   public var @lstring mMachineName
   public var @uint mMachineIndex
   public var @uint mInputVariableCount
@@ -246,7 +246,7 @@ refclass @C_machineDefinedByAdditiveModalComp : @AC_job {
   public var @ListForModes mInclusionList
 }
 
-refclass @C_machineDefinedBySubstractiveModalComp : @AC_job {
+class @C_machineDefinedBySubstractiveModalComp : @AC_job {
   public var @lstring mMachineName
   public var @uint mMachineIndex
   public var @uint mInputVariableCount
@@ -269,7 +269,7 @@ list @L_scenarioList {
   public var @L_inputScenario mInputScenario
 }
 
-refclass @C_scenarioComponent : @AC_job {
+class @C_scenarioComponent : @AC_job {
   public var @uint mMachineIndex
   public var @uint mInputVariableCount
   public var @uint mInputAndInternalVariableCount
@@ -298,7 +298,7 @@ refclass @C_scenarioComponent : @AC_job {
 #  @luint mNewSize
 #}
 
-refclass @typeDisplayBDDstats : @AC_job {
+class @typeDisplayBDDstats : @AC_job {
 }
 
 #---------------------------------------------------------------------------*
