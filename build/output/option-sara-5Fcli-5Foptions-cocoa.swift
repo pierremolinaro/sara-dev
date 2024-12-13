@@ -5,34 +5,36 @@
 
 //--------------------------------------------------------------------------------------------------
 
-func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
-                   _ ioUIntOptionArray : inout [SWIFT_CommandLineOption],
-                   _ ioStringOptionArray : inout [SWIFT_CommandLineOption],
-                   _ ioStringListOptionArray : inout [SWIFT_CommandLineOption]) {
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+func enterOptions () -> [SWIFT_CommandLineOption] {
+  var array = [SWIFT_CommandLineOption] ()
+  array.append (SWIFT_CommandLineOption (
     domainName: "sara_cli_options",
+    type: .bool,
     identifier: "displayBDDvaluesCount",
     commandChar: "c",
     commandString: "display-bdd-values-count",
     comment: "displays values count for every BDD",
     defaultValue: ""
   ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+  array.append (SWIFT_CommandLineOption (
     domainName: "sara_cli_options",
+    type: .bool,
     identifier: "displayBDDvalues",
     commandChar: "v",
     commandString: "display-bdd-values",
     comment: "displays values for every BDD",
     defaultValue: ""
   ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
+  array.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
+    type: .bool,
     identifier: "quiet_output",
     commandChar: "q",
     commandString: "quiet",
     comment: "Quiet output",
     defaultValue: ""
   ))
+  return array
 }
 
 //--------------------------------------------------------------------------------------------------
