@@ -13,8 +13,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "displayBDDvaluesCount",
     commandChar: "c",
     commandString: "display-bdd-values-count",
-    comment: "displays values count for every BDD",
-    defaultValue: ""
+    comment: "displays values count for every BDD"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "sara_cli_options",
@@ -22,8 +21,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "displayBDDvalues",
     commandChar: "v",
     commandString: "display-bdd-values",
-    comment: "displays values for every BDD",
-    defaultValue: ""
+    comment: "displays values for every BDD"
   ))
   array.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
@@ -31,8 +29,7 @@ func enterOptions () -> [SWIFT_CommandLineOption] {
     identifier: "quiet_output",
     commandChar: "q",
     commandString: "quiet",
-    comment: "Quiet output",
-    defaultValue: ""
+    comment: "Quiet output"
   ))
   return array
 }
