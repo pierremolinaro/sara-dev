@@ -150,7 +150,8 @@ static const UInt16 * gPopUpData_0_sara_5F_scanner [1] = {
 
 OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
   OC_Lexique * result = nil ;
-  if ([inExtension isEqualToString:@"sara"]) {
+  NSString * uppercasedExtension = [inExtension uppercaseString] ;
+  if ([uppercasedExtension isEqualToString:@"SARA"]) {
     result = [OC_Tokenizer_0_sara_scanner new] ;
   }
   return result ;
