@@ -403,16 +403,17 @@ GGS_lstring GGS__32_lstringlist::getter_mValue_31_AtIndex (const GGS_uint & inIn
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_32_lstringlist
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator__32_lstringlist::cEnumerator__32_lstringlist (const GGS__32_lstringlist & inEnumeratedObject,
-                                                          const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator__32_lstringlist::DownEnumerator__32_lstringlist (const GGS__32_lstringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element cEnumerator__32_lstringlist::current (LOCATION_ARGS) const {
+GGS__32_lstringlist_2E_element DownEnumerator__32_lstringlist::current (LOCATION_ARGS) const {
   const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
   return p->mObject ;
@@ -421,7 +422,7 @@ GGS__32_lstringlist_2E_element cEnumerator__32_lstringlist::current (LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring cEnumerator__32_lstringlist::current_mValue_30_ (LOCATION_ARGS) const {
+GGS_lstring DownEnumerator__32_lstringlist::current_mValue_30_ (LOCATION_ARGS) const {
   const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
   return p->mObject.mProperty_mValue_30_ ;
@@ -429,7 +430,43 @@ GGS_lstring cEnumerator__32_lstringlist::current_mValue_30_ (LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring cEnumerator__32_lstringlist::current_mValue_31_ (LOCATION_ARGS) const {
+GGS_lstring DownEnumerator__32_lstringlist::current_mValue_31_ (LOCATION_ARGS) const {
+  const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
+  return p->mObject.mProperty_mValue_31_ ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_32_lstringlist
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__32_lstringlist::UpEnumerator__32_lstringlist (const GGS__32_lstringlist & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element UpEnumerator__32_lstringlist::current (LOCATION_ARGS) const {
+  const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator__32_lstringlist::current_mValue_30_ (LOCATION_ARGS) const {
+  const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
+  return p->mObject.mProperty_mValue_30_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator__32_lstringlist::current_mValue_31_ (LOCATION_ARGS) const {
   const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
   return p->mObject.mProperty_mValue_31_ ;
@@ -439,9 +476,7 @@ GGS_lstring cEnumerator__32_lstringlist::current_mValue_31_ (LOCATION_ARGS) cons
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @2lstringlist generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist ("2lstringlist",
@@ -1905,7 +1940,7 @@ GGS_M_5F_variablesMap GGS_M_5F_variablesMap::add_operation (const GGS_M_5F_varia
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GGS_M_5F_variablesMap result = *this ;
-  cEnumerator_M_5F_variablesMap enumerator (inOperand, EnumerationOrder::up) ;
+  UpEnumerator_M_5F_variablesMap enumerator (inOperand) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -1991,16 +2026,17 @@ cMapElement_M_5F_variablesMap * GGS_M_5F_variablesMap::readWriteAccessForWithIns
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @M_5F_variablesMap
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_M_5F_variablesMap::cEnumerator_M_5F_variablesMap (const GGS_M_5F_variablesMap & inEnumeratedObject,
-                                                              const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_M_5F_variablesMap::DownEnumerator_M_5F_variablesMap (const GGS_M_5F_variablesMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_variablesMap_2E_element cEnumerator_M_5F_variablesMap::current (LOCATION_ARGS) const {
+GGS_M_5F_variablesMap_2E_element DownEnumerator_M_5F_variablesMap::current (LOCATION_ARGS) const {
   const cMapElement_M_5F_variablesMap * p = (const cMapElement_M_5F_variablesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_variablesMap) ;
   return GGS_M_5F_variablesMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex) ;
@@ -2008,7 +2044,7 @@ GGS_M_5F_variablesMap_2E_element cEnumerator_M_5F_variablesMap::current (LOCATIO
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring cEnumerator_M_5F_variablesMap::current_lkey (LOCATION_ARGS) const {
+GGS_lstring DownEnumerator_M_5F_variablesMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
@@ -2016,16 +2052,48 @@ GGS_lstring cEnumerator_M_5F_variablesMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_M_5F_variablesMap::current_mIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_M_5F_variablesMap::current_mIndex (LOCATION_ARGS) const {
   const cMapElement_M_5F_variablesMap * p = (const cMapElement_M_5F_variablesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_variablesMap) ;
   return p->mProperty_mIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//
+//  Up Enumerator for @M_5F_variablesMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_M_5F_variablesMap::UpEnumerator_M_5F_variablesMap (const GGS_M_5F_variablesMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_variablesMap_2E_element UpEnumerator_M_5F_variablesMap::current (LOCATION_ARGS) const {
+  const cMapElement_M_5F_variablesMap * p = (const cMapElement_M_5F_variablesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_variablesMap) ;
+  return GGS_M_5F_variablesMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_M_5F_variablesMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_M_5F_variablesMap::current_mIndex (LOCATION_ARGS) const {
+  const cMapElement_M_5F_variablesMap * p = (const cMapElement_M_5F_variablesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_variablesMap) ;
+  return p->mProperty_mIndex ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //     @M_variablesMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap ("M_variablesMap",
@@ -2215,7 +2283,7 @@ GGS_M_5F_stateMap GGS_M_5F_stateMap::add_operation (const GGS_M_5F_stateMap & in
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   GGS_M_5F_stateMap result = *this ;
-  cEnumerator_M_5F_stateMap enumerator (inOperand, EnumerationOrder::up) ;
+  UpEnumerator_M_5F_stateMap enumerator (inOperand) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -2317,16 +2385,17 @@ cMapElement_M_5F_stateMap * GGS_M_5F_stateMap::readWriteAccessForWithInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @M_5F_stateMap
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_M_5F_stateMap::cEnumerator_M_5F_stateMap (const GGS_M_5F_stateMap & inEnumeratedObject,
-                                                      const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_M_5F_stateMap::DownEnumerator_M_5F_stateMap (const GGS_M_5F_stateMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_stateMap_2E_element cEnumerator_M_5F_stateMap::current (LOCATION_ARGS) const {
+GGS_M_5F_stateMap_2E_element DownEnumerator_M_5F_stateMap::current (LOCATION_ARGS) const {
   const cMapElement_M_5F_stateMap * p = (const cMapElement_M_5F_stateMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
   return GGS_M_5F_stateMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex) ;
@@ -2334,7 +2403,7 @@ GGS_M_5F_stateMap_2E_element cEnumerator_M_5F_stateMap::current (LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring cEnumerator_M_5F_stateMap::current_lkey (LOCATION_ARGS) const {
+GGS_lstring DownEnumerator_M_5F_stateMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
@@ -2342,16 +2411,48 @@ GGS_lstring cEnumerator_M_5F_stateMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_M_5F_stateMap::current_mIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_M_5F_stateMap::current_mIndex (LOCATION_ARGS) const {
   const cMapElement_M_5F_stateMap * p = (const cMapElement_M_5F_stateMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
   return p->mProperty_mIndex ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//
+//  Up Enumerator for @M_5F_stateMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_M_5F_stateMap::UpEnumerator_M_5F_stateMap (const GGS_M_5F_stateMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_stateMap_2E_element UpEnumerator_M_5F_stateMap::current (LOCATION_ARGS) const {
+  const cMapElement_M_5F_stateMap * p = (const cMapElement_M_5F_stateMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
+  return GGS_M_5F_stateMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_M_5F_stateMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_M_5F_stateMap::current_mIndex (LOCATION_ARGS) const {
+  const cMapElement_M_5F_stateMap * p = (const cMapElement_M_5F_stateMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_stateMap) ;
+  return p->mProperty_mIndex ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //     @M_stateMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap ("M_stateMap",
@@ -2730,16 +2831,17 @@ GGS_uint GGS_L_5F_translationVector::getter_mTargetSlotAtIndex (const GGS_uint &
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_translationVector
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_translationVector::cEnumerator_L_5F_translationVector (const GGS_L_5F_translationVector & inEnumeratedObject,
-                                                                        const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_translationVector::DownEnumerator_L_5F_translationVector (const GGS_L_5F_translationVector & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_translationVector_2E_element cEnumerator_L_5F_translationVector::current (LOCATION_ARGS) const {
+GGS_L_5F_translationVector_2E_element DownEnumerator_L_5F_translationVector::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_translationVector * p = (const cCollectionElement_L_5F_translationVector *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_translationVector) ;
   return p->mObject ;
@@ -2748,7 +2850,35 @@ GGS_L_5F_translationVector_2E_element cEnumerator_L_5F_translationVector::curren
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_L_5F_translationVector::current_mTargetSlot (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_L_5F_translationVector::current_mTargetSlot (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_translationVector * p = (const cCollectionElement_L_5F_translationVector *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_translationVector) ;
+  return p->mObject.mProperty_mTargetSlot ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_translationVector
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_translationVector::UpEnumerator_L_5F_translationVector (const GGS_L_5F_translationVector & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_translationVector_2E_element UpEnumerator_L_5F_translationVector::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_translationVector * p = (const cCollectionElement_L_5F_translationVector *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_translationVector) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_L_5F_translationVector::current_mTargetSlot (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_translationVector * p = (const cCollectionElement_L_5F_translationVector *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_translationVector) ;
   return p->mObject.mProperty_mTargetSlot ;
@@ -2758,9 +2888,7 @@ GGS_uint cEnumerator_L_5F_translationVector::current_mTargetSlot (LOCATION_ARGS)
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_translationVector generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_translationVector ("L_translationVector",
@@ -2853,9 +2981,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AC_boolExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_boolExpression ("AC_boolExpression",
@@ -2964,9 +3090,7 @@ GGS_AC_5F_boolExpression GGS_AC_5F_boolExpression_2E_weak::bang_AC_5F_boolExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AC_boolExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_boolExpression_2E_weak ("AC_boolExpression.weak",
@@ -3075,9 +3199,7 @@ GGS_C_5F_importBoolMachine GGS_C_5F_importBoolMachine_2E_weak::bang_C_5F_importB
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_importBoolMachine.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importBoolMachine_2E_weak ("C_importBoolMachine.weak",
@@ -3286,9 +3408,7 @@ acPtr_class * cPtr_C_5F_andExpression::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_andExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_andExpression ("C_andExpression",
@@ -3397,9 +3517,7 @@ GGS_C_5F_andExpression GGS_C_5F_andExpression_2E_weak::bang_C_5F_andExpression_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_andExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_andExpression_2E_weak ("C_andExpression.weak",
@@ -3608,9 +3726,7 @@ acPtr_class * cPtr_C_5F_orExpression::duplicate (Compiler * inCompiler COMMA_LOC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_orExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_orExpression ("C_orExpression",
@@ -3719,9 +3835,7 @@ GGS_C_5F_orExpression GGS_C_5F_orExpression_2E_weak::bang_C_5F_orExpression_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_orExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_orExpression_2E_weak ("C_orExpression.weak",
@@ -3930,9 +4044,7 @@ acPtr_class * cPtr_C_5F_xorExpression::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_xorExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_xorExpression ("C_xorExpression",
@@ -4041,9 +4153,7 @@ GGS_C_5F_xorExpression GGS_C_5F_xorExpression_2E_weak::bang_C_5F_xorExpression_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_xorExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_xorExpression_2E_weak ("C_xorExpression.weak",
@@ -4252,9 +4362,7 @@ acPtr_class * cPtr_C_5F_impliesExpression::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_impliesExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_impliesExpression ("C_impliesExpression",
@@ -4363,9 +4471,7 @@ GGS_C_5F_impliesExpression GGS_C_5F_impliesExpression_2E_weak::bang_C_5F_implies
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_impliesExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_impliesExpression_2E_weak ("C_impliesExpression.weak",
@@ -4574,9 +4680,7 @@ acPtr_class * cPtr_C_5F_equalExpression::duplicate (Compiler * inCompiler COMMA_
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_equalExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_equalExpression ("C_equalExpression",
@@ -4685,9 +4789,7 @@ GGS_C_5F_equalExpression GGS_C_5F_equalExpression_2E_weak::bang_C_5F_equalExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_equalExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_equalExpression_2E_weak ("C_equalExpression.weak",
@@ -4863,9 +4965,7 @@ acPtr_class * cPtr_C_5F_notExpression::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_notExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_notExpression ("C_notExpression",
@@ -4974,9 +5074,7 @@ GGS_C_5F_notExpression GGS_C_5F_notExpression_2E_weak::bang_C_5F_notExpression_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_notExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_notExpression_2E_weak ("C_notExpression.weak",
@@ -5152,9 +5250,7 @@ acPtr_class * cPtr_C_5F_VariableExpression::duplicate (Compiler * inCompiler COM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_VariableExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_VariableExpression ("C_VariableExpression",
@@ -5263,9 +5359,7 @@ GGS_C_5F_VariableExpression GGS_C_5F_VariableExpression_2E_weak::bang_C_5F_Varia
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_VariableExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_VariableExpression_2E_weak ("C_VariableExpression.weak",
@@ -5404,9 +5498,7 @@ acPtr_class * cPtr_C_5F_trueExpression::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_trueExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_trueExpression ("C_trueExpression",
@@ -5515,9 +5607,7 @@ GGS_C_5F_trueExpression GGS_C_5F_trueExpression_2E_weak::bang_C_5F_trueExpressio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_trueExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_trueExpression_2E_weak ("C_trueExpression.weak",
@@ -5656,9 +5746,7 @@ acPtr_class * cPtr_C_5F_falseExpression::duplicate (Compiler * inCompiler COMMA_
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_falseExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_falseExpression ("C_falseExpression",
@@ -5767,9 +5855,7 @@ GGS_C_5F_falseExpression GGS_C_5F_falseExpression_2E_weak::bang_C_5F_falseExpres
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_falseExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_falseExpression_2E_weak ("C_falseExpression.weak",
@@ -6260,16 +6346,17 @@ GGS_uint GGS_L_5F_transitionDefinition::getter_mTargetStateIndexAtIndex (const G
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_transitionDefinition
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_transitionDefinition::cEnumerator_L_5F_transitionDefinition (const GGS_L_5F_transitionDefinition & inEnumeratedObject,
-                                                                              const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_transitionDefinition::DownEnumerator_L_5F_transitionDefinition (const GGS_L_5F_transitionDefinition & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_transitionDefinition_2E_element cEnumerator_L_5F_transitionDefinition::current (LOCATION_ARGS) const {
+GGS_L_5F_transitionDefinition_2E_element DownEnumerator_L_5F_transitionDefinition::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
   return p->mObject ;
@@ -6278,7 +6365,7 @@ GGS_L_5F_transitionDefinition_2E_element cEnumerator_L_5F_transitionDefinition::
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_AC_5F_boolExpression cEnumerator_L_5F_transitionDefinition::current_mActionExpression (LOCATION_ARGS) const {
+GGS_AC_5F_boolExpression DownEnumerator_L_5F_transitionDefinition::current_mActionExpression (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
   return p->mObject.mProperty_mActionExpression ;
@@ -6286,7 +6373,7 @@ GGS_AC_5F_boolExpression cEnumerator_L_5F_transitionDefinition::current_mActionE
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location cEnumerator_L_5F_transitionDefinition::current_mEndOfExpression (LOCATION_ARGS) const {
+GGS_location DownEnumerator_L_5F_transitionDefinition::current_mEndOfExpression (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
   return p->mObject.mProperty_mEndOfExpression ;
@@ -6294,7 +6381,51 @@ GGS_location cEnumerator_L_5F_transitionDefinition::current_mEndOfExpression (LO
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_L_5F_transitionDefinition::current_mTargetStateIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_L_5F_transitionDefinition::current_mTargetStateIndex (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
+  return p->mObject.mProperty_mTargetStateIndex ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_transitionDefinition
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_transitionDefinition::UpEnumerator_L_5F_transitionDefinition (const GGS_L_5F_transitionDefinition & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_transitionDefinition_2E_element UpEnumerator_L_5F_transitionDefinition::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AC_5F_boolExpression UpEnumerator_L_5F_transitionDefinition::current_mActionExpression (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
+  return p->mObject.mProperty_mActionExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location UpEnumerator_L_5F_transitionDefinition::current_mEndOfExpression (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
+  return p->mObject.mProperty_mEndOfExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_L_5F_transitionDefinition::current_mTargetStateIndex (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_transitionDefinition * p = (const cCollectionElement_L_5F_transitionDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_transitionDefinition) ;
   return p->mObject.mProperty_mTargetStateIndex ;
@@ -6304,9 +6435,7 @@ GGS_uint cEnumerator_L_5F_transitionDefinition::current_mTargetStateIndex (LOCAT
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_transitionDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_transitionDefinition ("L_transitionDefinition",
@@ -6853,16 +6982,17 @@ GGS_L_5F_transitionDefinition GGS_L_5F_stateDefinition::getter_mTransitionsListA
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_stateDefinition
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_stateDefinition::cEnumerator_L_5F_stateDefinition (const GGS_L_5F_stateDefinition & inEnumeratedObject,
-                                                                    const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_stateDefinition::DownEnumerator_L_5F_stateDefinition (const GGS_L_5F_stateDefinition & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_stateDefinition_2E_element cEnumerator_L_5F_stateDefinition::current (LOCATION_ARGS) const {
+GGS_L_5F_stateDefinition_2E_element DownEnumerator_L_5F_stateDefinition::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
   return p->mObject ;
@@ -6871,7 +7001,7 @@ GGS_L_5F_stateDefinition_2E_element cEnumerator_L_5F_stateDefinition::current (L
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_L_5F_stateDefinition::current_mStateIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_L_5F_stateDefinition::current_mStateIndex (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
   return p->mObject.mProperty_mStateIndex ;
@@ -6879,7 +7009,7 @@ GGS_uint cEnumerator_L_5F_stateDefinition::current_mStateIndex (LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_AC_5F_boolExpression cEnumerator_L_5F_stateDefinition::current_mStateExpression (LOCATION_ARGS) const {
+GGS_AC_5F_boolExpression DownEnumerator_L_5F_stateDefinition::current_mStateExpression (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
   return p->mObject.mProperty_mStateExpression ;
@@ -6887,7 +7017,7 @@ GGS_AC_5F_boolExpression cEnumerator_L_5F_stateDefinition::current_mStateExpress
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location cEnumerator_L_5F_stateDefinition::current_mEndOfStateExpression (LOCATION_ARGS) const {
+GGS_location DownEnumerator_L_5F_stateDefinition::current_mEndOfStateExpression (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
   return p->mObject.mProperty_mEndOfStateExpression ;
@@ -6895,7 +7025,59 @@ GGS_location cEnumerator_L_5F_stateDefinition::current_mEndOfStateExpression (LO
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_transitionDefinition cEnumerator_L_5F_stateDefinition::current_mTransitionsList (LOCATION_ARGS) const {
+GGS_L_5F_transitionDefinition DownEnumerator_L_5F_stateDefinition::current_mTransitionsList (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
+  return p->mObject.mProperty_mTransitionsList ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_stateDefinition
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_stateDefinition::UpEnumerator_L_5F_stateDefinition (const GGS_L_5F_stateDefinition & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_stateDefinition_2E_element UpEnumerator_L_5F_stateDefinition::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_L_5F_stateDefinition::current_mStateIndex (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
+  return p->mObject.mProperty_mStateIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AC_5F_boolExpression UpEnumerator_L_5F_stateDefinition::current_mStateExpression (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
+  return p->mObject.mProperty_mStateExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location UpEnumerator_L_5F_stateDefinition::current_mEndOfStateExpression (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
+  return p->mObject.mProperty_mEndOfStateExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_transitionDefinition UpEnumerator_L_5F_stateDefinition::current_mTransitionsList (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_stateDefinition * p = (const cCollectionElement_L_5F_stateDefinition *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_stateDefinition) ;
   return p->mObject.mProperty_mTransitionsList ;
@@ -6905,9 +7087,7 @@ GGS_L_5F_transitionDefinition cEnumerator_L_5F_stateDefinition::current_mTransit
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_stateDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_stateDefinition ("L_stateDefinition",
@@ -7342,16 +7522,17 @@ GGS_location GGS_L_5F_statesDefinitionList::getter_mStateLocationAtIndex (const 
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_statesDefinitionList
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_statesDefinitionList::cEnumerator_L_5F_statesDefinitionList (const GGS_L_5F_statesDefinitionList & inEnumeratedObject,
-                                                                              const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_statesDefinitionList::DownEnumerator_L_5F_statesDefinitionList (const GGS_L_5F_statesDefinitionList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_statesDefinitionList_2E_element cEnumerator_L_5F_statesDefinitionList::current (LOCATION_ARGS) const {
+GGS_L_5F_statesDefinitionList_2E_element DownEnumerator_L_5F_statesDefinitionList::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_statesDefinitionList * p = (const cCollectionElement_L_5F_statesDefinitionList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_statesDefinitionList) ;
   return p->mObject ;
@@ -7360,7 +7541,7 @@ GGS_L_5F_statesDefinitionList_2E_element cEnumerator_L_5F_statesDefinitionList::
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_L_5F_statesDefinitionList::current_mStateIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_L_5F_statesDefinitionList::current_mStateIndex (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_statesDefinitionList * p = (const cCollectionElement_L_5F_statesDefinitionList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_statesDefinitionList) ;
   return p->mObject.mProperty_mStateIndex ;
@@ -7368,7 +7549,43 @@ GGS_uint cEnumerator_L_5F_statesDefinitionList::current_mStateIndex (LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location cEnumerator_L_5F_statesDefinitionList::current_mStateLocation (LOCATION_ARGS) const {
+GGS_location DownEnumerator_L_5F_statesDefinitionList::current_mStateLocation (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_statesDefinitionList * p = (const cCollectionElement_L_5F_statesDefinitionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_statesDefinitionList) ;
+  return p->mObject.mProperty_mStateLocation ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_statesDefinitionList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_statesDefinitionList::UpEnumerator_L_5F_statesDefinitionList (const GGS_L_5F_statesDefinitionList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_statesDefinitionList_2E_element UpEnumerator_L_5F_statesDefinitionList::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_statesDefinitionList * p = (const cCollectionElement_L_5F_statesDefinitionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_statesDefinitionList) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_L_5F_statesDefinitionList::current_mStateIndex (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_statesDefinitionList * p = (const cCollectionElement_L_5F_statesDefinitionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_statesDefinitionList) ;
+  return p->mObject.mProperty_mStateIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location UpEnumerator_L_5F_statesDefinitionList::current_mStateLocation (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_statesDefinitionList * p = (const cCollectionElement_L_5F_statesDefinitionList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_statesDefinitionList) ;
   return p->mObject.mProperty_mStateLocation ;
@@ -7378,9 +7595,7 @@ GGS_location cEnumerator_L_5F_statesDefinitionList::current_mStateLocation (LOCA
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_statesDefinitionList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_statesDefinitionList ("L_statesDefinitionList",
@@ -7473,9 +7688,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AC_machineDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_machineDefinition ("AC_machineDefinition",
@@ -7584,9 +7797,7 @@ GGS_AC_5F_machineDefinition GGS_AC_5F_machineDefinition_2E_weak::bang_AC_5F_mach
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AC_machineDefinition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_machineDefinition_2E_weak ("AC_machineDefinition.weak",
@@ -7785,7 +7996,7 @@ GGS_M_5F_modesMap GGS_M_5F_modesMap::add_operation (const GGS_M_5F_modesMap & in
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   GGS_M_5F_modesMap result = *this ;
-  cEnumerator_M_5F_modesMap enumerator (inOperand, EnumerationOrder::up) ;
+  UpEnumerator_M_5F_modesMap enumerator (inOperand) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mModeDefinition (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -7904,16 +8115,17 @@ cMapElement_M_5F_modesMap * GGS_M_5F_modesMap::readWriteAccessForWithInstruction
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @M_5F_modesMap
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_M_5F_modesMap::cEnumerator_M_5F_modesMap (const GGS_M_5F_modesMap & inEnumeratedObject,
-                                                      const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_M_5F_modesMap::DownEnumerator_M_5F_modesMap (const GGS_M_5F_modesMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_modesMap_2E_element cEnumerator_M_5F_modesMap::current (LOCATION_ARGS) const {
+GGS_M_5F_modesMap_2E_element DownEnumerator_M_5F_modesMap::current (LOCATION_ARGS) const {
   const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
   return GGS_M_5F_modesMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex, p->mProperty_mModeDefinition) ;
@@ -7921,7 +8133,7 @@ GGS_M_5F_modesMap_2E_element cEnumerator_M_5F_modesMap::current (LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring cEnumerator_M_5F_modesMap::current_lkey (LOCATION_ARGS) const {
+GGS_lstring DownEnumerator_M_5F_modesMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
@@ -7929,7 +8141,7 @@ GGS_lstring cEnumerator_M_5F_modesMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_M_5F_modesMap::current_mIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_M_5F_modesMap::current_mIndex (LOCATION_ARGS) const {
   const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
   return p->mProperty_mIndex ;
@@ -7937,16 +8149,56 @@ GGS_uint cEnumerator_M_5F_modesMap::current_mIndex (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_AC_5F_machineDefinition cEnumerator_M_5F_modesMap::current_mModeDefinition (LOCATION_ARGS) const {
+GGS_AC_5F_machineDefinition DownEnumerator_M_5F_modesMap::current_mModeDefinition (LOCATION_ARGS) const {
   const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
   return p->mProperty_mModeDefinition ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//
+//  Up Enumerator for @M_5F_modesMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_M_5F_modesMap::UpEnumerator_M_5F_modesMap (const GGS_M_5F_modesMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_modesMap_2E_element UpEnumerator_M_5F_modesMap::current (LOCATION_ARGS) const {
+  const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
+  return GGS_M_5F_modesMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex, p->mProperty_mModeDefinition) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_M_5F_modesMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_M_5F_modesMap::current_mIndex (LOCATION_ARGS) const {
+  const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
+  return p->mProperty_mIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AC_5F_machineDefinition UpEnumerator_M_5F_modesMap::current_mModeDefinition (LOCATION_ARGS) const {
+  const cMapElement_M_5F_modesMap * p = (const cMapElement_M_5F_modesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_modesMap) ;
+  return p->mProperty_mModeDefinition ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //     @M_modesMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap ("M_modesMap",
@@ -8381,16 +8633,17 @@ GGS_uint GGS_ListForModes::getter_mTargetModeAtIndex (const GGS_uint & inIndex,
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @ListForModes
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_ListForModes::cEnumerator_ListForModes (const GGS_ListForModes & inEnumeratedObject,
-                                                    const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_ListForModes::DownEnumerator_ListForModes (const GGS_ListForModes & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ListForModes_2E_element cEnumerator_ListForModes::current (LOCATION_ARGS) const {
+GGS_ListForModes_2E_element DownEnumerator_ListForModes::current (LOCATION_ARGS) const {
   const cCollectionElement_ListForModes * p = (const cCollectionElement_ListForModes *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ListForModes) ;
   return p->mObject ;
@@ -8399,7 +8652,7 @@ GGS_ListForModes_2E_element cEnumerator_ListForModes::current (LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_ListForModes::current_mSourceMode (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_ListForModes::current_mSourceMode (LOCATION_ARGS) const {
   const cCollectionElement_ListForModes * p = (const cCollectionElement_ListForModes *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ListForModes) ;
   return p->mObject.mProperty_mSourceMode ;
@@ -8407,7 +8660,43 @@ GGS_uint cEnumerator_ListForModes::current_mSourceMode (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_ListForModes::current_mTargetMode (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_ListForModes::current_mTargetMode (LOCATION_ARGS) const {
+  const cCollectionElement_ListForModes * p = (const cCollectionElement_ListForModes *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_ListForModes) ;
+  return p->mObject.mProperty_mTargetMode ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @ListForModes
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_ListForModes::UpEnumerator_ListForModes (const GGS_ListForModes & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ListForModes_2E_element UpEnumerator_ListForModes::current (LOCATION_ARGS) const {
+  const cCollectionElement_ListForModes * p = (const cCollectionElement_ListForModes *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_ListForModes) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_ListForModes::current_mSourceMode (LOCATION_ARGS) const {
+  const cCollectionElement_ListForModes * p = (const cCollectionElement_ListForModes *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_ListForModes) ;
+  return p->mObject.mProperty_mSourceMode ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_ListForModes::current_mTargetMode (LOCATION_ARGS) const {
   const cCollectionElement_ListForModes * p = (const cCollectionElement_ListForModes *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ListForModes) ;
   return p->mObject.mProperty_mTargetMode ;
@@ -8417,9 +8706,7 @@ GGS_uint cEnumerator_ListForModes::current_mTargetMode (LOCATION_ARGS) const {
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ListForModes generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ListForModes ("ListForModes",
@@ -8628,9 +8915,7 @@ acPtr_class * cPtr_C_5F_substractiveModalCompositionComponent::duplicate (Compil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_substractiveModalCompositionComponent generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_substractiveModalCompositionComponent ("C_substractiveModalCompositionComponent",
@@ -8739,9 +9024,7 @@ GGS_C_5F_substractiveModalCompositionComponent GGS_C_5F_substractiveModalComposi
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_substractiveModalCompositionComponent.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_substractiveModalCompositionComponent_2E_weak ("C_substractiveModalCompositionComponent.weak",
@@ -8950,9 +9233,7 @@ acPtr_class * cPtr_C_5F_additiveModalCompositionComponent::duplicate (Compiler *
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_additiveModalCompositionComponent generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_additiveModalCompositionComponent ("C_additiveModalCompositionComponent",
@@ -9061,9 +9342,7 @@ GGS_C_5F_additiveModalCompositionComponent GGS_C_5F_additiveModalCompositionComp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_additiveModalCompositionComponent.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_additiveModalCompositionComponent_2E_weak ("C_additiveModalCompositionComponent.weak",
@@ -9272,9 +9551,7 @@ acPtr_class * cPtr_C_5F_trans::duplicate (Compiler * inCompiler COMMA_LOCATION_A
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_trans generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_trans ("C_trans",
@@ -9383,9 +9660,7 @@ GGS_C_5F_trans GGS_C_5F_trans_2E_weak::bang_C_5F_trans_2E_weak (Compiler * inCom
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_trans.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_trans_2E_weak ("C_trans.weak",
@@ -9594,9 +9869,7 @@ acPtr_class * cPtr_C_5F_importMachine::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_importMachine generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importMachine ("C_importMachine",
@@ -9705,9 +9978,7 @@ GGS_C_5F_importMachine GGS_C_5F_importMachine_2E_weak::bang_C_5F_importMachine_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_importMachine.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importMachine_2E_weak ("C_importMachine.weak",
@@ -10015,9 +10286,7 @@ acPtr_class * cPtr_C_5F_explicitAutomatonDefinition::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_explicitAutomatonDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_explicitAutomatonDefinition ("C_explicitAutomatonDefinition",
@@ -10126,9 +10395,7 @@ GGS_C_5F_explicitAutomatonDefinition GGS_C_5F_explicitAutomatonDefinition_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_explicitAutomatonDefinition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_explicitAutomatonDefinition_2E_weak ("C_explicitAutomatonDefinition.weak",
@@ -10304,9 +10571,7 @@ acPtr_class * cPtr_C_5F_boolToSeqExpression::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_boolToSeqExpression generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_boolToSeqExpression ("C_boolToSeqExpression",
@@ -10415,9 +10680,7 @@ GGS_C_5F_boolToSeqExpression GGS_C_5F_boolToSeqExpression_2E_weak::bang_C_5F_boo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_boolToSeqExpression.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_boolToSeqExpression_2E_weak ("C_boolToSeqExpression.weak",
@@ -10659,9 +10922,7 @@ acPtr_class * cPtr_C_5F_existsDefinition::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_existsDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_existsDefinition ("C_existsDefinition",
@@ -10770,9 +11031,7 @@ GGS_C_5F_existsDefinition GGS_C_5F_existsDefinition_2E_weak::bang_C_5F_existsDef
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_existsDefinition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_existsDefinition_2E_weak ("C_existsDefinition.weak",
@@ -11014,9 +11273,7 @@ acPtr_class * cPtr_C_5F_forallDefinition::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_forallDefinition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_forallDefinition ("C_forallDefinition",
@@ -11125,9 +11382,7 @@ GGS_C_5F_forallDefinition GGS_C_5F_forallDefinition_2E_weak::bang_C_5F_forallDef
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_forallDefinition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_forallDefinition_2E_weak ("C_forallDefinition.weak",
@@ -11336,9 +11591,7 @@ acPtr_class * cPtr_C_5F_parallelComposition::duplicate (Compiler * inCompiler CO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_parallelComposition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_parallelComposition ("C_parallelComposition",
@@ -11447,9 +11700,7 @@ GGS_C_5F_parallelComposition GGS_C_5F_parallelComposition_2E_weak::bang_C_5F_par
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_parallelComposition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_parallelComposition_2E_weak ("C_parallelComposition.weak",
@@ -11658,9 +11909,7 @@ acPtr_class * cPtr_C_5F_orComposition::duplicate (Compiler * inCompiler COMMA_LO
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_orComposition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_orComposition ("C_orComposition",
@@ -11769,9 +12018,7 @@ GGS_C_5F_orComposition GGS_C_5F_orComposition_2E_weak::bang_C_5F_orComposition_2
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_orComposition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_orComposition_2E_weak ("C_orComposition.weak",
@@ -12013,9 +12260,7 @@ acPtr_class * cPtr_C_5F_strongModalComposition::duplicate (Compiler * inCompiler
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_strongModalComposition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_strongModalComposition ("C_strongModalComposition",
@@ -12124,9 +12369,7 @@ GGS_C_5F_strongModalComposition GGS_C_5F_strongModalComposition_2E_weak::bang_C_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_strongModalComposition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_strongModalComposition_2E_weak ("C_strongModalComposition.weak",
@@ -12368,9 +12611,7 @@ acPtr_class * cPtr_C_5F_weakModalComposition::duplicate (Compiler * inCompiler C
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_weakModalComposition generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_weakModalComposition ("C_weakModalComposition",
@@ -12479,9 +12720,7 @@ GGS_C_5F_weakModalComposition GGS_C_5F_weakModalComposition_2E_weak::bang_C_5F_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_weakModalComposition.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_weakModalComposition_2E_weak ("C_weakModalComposition.weak",
@@ -12657,9 +12896,7 @@ acPtr_class * cPtr_C_5F_fullSaturationOperation::duplicate (Compiler * inCompile
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_fullSaturationOperation generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_fullSaturationOperation ("C_fullSaturationOperation",
@@ -12768,9 +13005,7 @@ GGS_C_5F_fullSaturationOperation GGS_C_5F_fullSaturationOperation_2E_weak::bang_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_fullSaturationOperation.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_fullSaturationOperation_2E_weak ("C_fullSaturationOperation.weak",
@@ -12946,9 +13181,7 @@ acPtr_class * cPtr_C_5F_complementationOperation::duplicate (Compiler * inCompil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_complementationOperation generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_complementationOperation ("C_complementationOperation",
@@ -13057,9 +13290,7 @@ GGS_C_5F_complementationOperation GGS_C_5F_complementationOperation_2E_weak::ban
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_complementationOperation.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_complementationOperation_2E_weak ("C_complementationOperation.weak",
@@ -13235,9 +13466,7 @@ acPtr_class * cPtr_C_5F_suppressTerminalStatesOperation::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_suppressTerminalStatesOperation generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation ("C_suppressTerminalStatesOperation",
@@ -13346,9 +13575,7 @@ GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperatio
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_suppressTerminalStatesOperation.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation_2E_weak ("C_suppressTerminalStatesOperation.weak",
@@ -13524,9 +13751,7 @@ acPtr_class * cPtr_C_5F_suppressInitialStatesOperation::duplicate (Compiler * in
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_suppressInitialStatesOperation generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_suppressInitialStatesOperation ("C_suppressInitialStatesOperation",
@@ -13635,9 +13860,7 @@ GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation_
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_suppressInitialStatesOperation.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_suppressInitialStatesOperation_2E_weak ("C_suppressInitialStatesOperation.weak",
@@ -13730,9 +13953,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AC_job generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_job ("AC_job",
@@ -13841,9 +14062,7 @@ GGS_AC_5F_job GGS_AC_5F_job_2E_weak::bang_AC_5F_job_2E_weak (Compiler * inCompil
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @AC_job.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_AC_5F_job_2E_weak ("AC_job.weak",
@@ -14019,9 +14238,7 @@ acPtr_class * cPtr_C_5F_machineDisplayStates::duplicate (Compiler * inCompiler C
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayStates generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayStates ("C_machineDisplayStates",
@@ -14130,9 +14347,7 @@ GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates_2E_weak::bang_C_5F_m
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayStates.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayStates_2E_weak ("C_machineDisplayStates.weak",
@@ -14308,9 +14523,7 @@ acPtr_class * cPtr_C_5F_machineDisplayInitialStates::duplicate (Compiler * inCom
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayInitialStates generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayInitialStates ("C_machineDisplayInitialStates",
@@ -14419,9 +14632,7 @@ GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates_2E_wea
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayInitialStates.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayInitialStates_2E_weak ("C_machineDisplayInitialStates.weak",
@@ -14597,9 +14808,7 @@ acPtr_class * cPtr_C_5F_machineDisplayTerminalStates::duplicate (Compiler * inCo
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayTerminalStates generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTerminalStates ("C_machineDisplayTerminalStates",
@@ -14708,9 +14917,7 @@ GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayTerminalStates.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTerminalStates_2E_weak ("C_machineDisplayTerminalStates.weak",
@@ -14886,9 +15093,7 @@ acPtr_class * cPtr_C_5F_machineDisplayTransitions::duplicate (Compiler * inCompi
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayTransitions generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTransitions ("C_machineDisplayTransitions",
@@ -14997,9 +15202,7 @@ GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions_2E_weak::b
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDisplayTransitions.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTransitions_2E_weak ("C_machineDisplayTransitions.weak",
@@ -15108,9 +15311,7 @@ GGS_C_5F_machineCheck GGS_C_5F_machineCheck_2E_weak::bang_C_5F_machineCheck_2E_w
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineCheck.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheck_2E_weak ("C_machineCheck.weak",
@@ -15319,9 +15520,7 @@ acPtr_class * cPtr_C_5F_machineCheckIdentical::duplicate (Compiler * inCompiler 
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineCheckIdentical generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheckIdentical ("C_machineCheckIdentical",
@@ -15430,9 +15629,7 @@ GGS_C_5F_machineCheckIdentical GGS_C_5F_machineCheckIdentical_2E_weak::bang_C_5F
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineCheckIdentical.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheckIdentical_2E_weak ("C_machineCheckIdentical.weak",
@@ -15541,9 +15738,7 @@ GGS_C_5F_machineComponent GGS_C_5F_machineComponent_2E_weak::bang_C_5F_machineCo
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineComponent.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineComponent_2E_weak ("C_machineComponent.weak",
@@ -15652,9 +15847,7 @@ GGS_C_5F_machineDefinedByAdditiveModalComp GGS_C_5F_machineDefinedByAdditiveModa
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDefinedByAdditiveModalComp.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp_2E_weak ("C_machineDefinedByAdditiveModalComp.weak",
@@ -15763,9 +15956,7 @@ GGS_C_5F_machineDefinedBySubstractiveModalComp GGS_C_5F_machineDefinedBySubstrac
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDefinedBySubstractiveModalComp.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak ("C_machineDefinedBySubstractiveModalComp.weak",
@@ -16144,16 +16335,17 @@ GGS_luint GGS_L_5F_inputConfigurationForScenario::getter_mInputValueAtIndex (con
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_inputConfigurationForScenario
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_inputConfigurationForScenario::cEnumerator_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario & inEnumeratedObject,
-                                                                                                const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_inputConfigurationForScenario::DownEnumerator_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputConfigurationForScenario_2E_element cEnumerator_L_5F_inputConfigurationForScenario::current (LOCATION_ARGS) const {
+GGS_L_5F_inputConfigurationForScenario_2E_element DownEnumerator_L_5F_inputConfigurationForScenario::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_inputConfigurationForScenario * p = (const cCollectionElement_L_5F_inputConfigurationForScenario *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_inputConfigurationForScenario) ;
   return p->mObject ;
@@ -16162,7 +16354,35 @@ GGS_L_5F_inputConfigurationForScenario_2E_element cEnumerator_L_5F_inputConfigur
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint cEnumerator_L_5F_inputConfigurationForScenario::current_mInputValue (LOCATION_ARGS) const {
+GGS_luint DownEnumerator_L_5F_inputConfigurationForScenario::current_mInputValue (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_inputConfigurationForScenario * p = (const cCollectionElement_L_5F_inputConfigurationForScenario *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_inputConfigurationForScenario) ;
+  return p->mObject.mProperty_mInputValue ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_inputConfigurationForScenario
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_inputConfigurationForScenario::UpEnumerator_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputConfigurationForScenario_2E_element UpEnumerator_L_5F_inputConfigurationForScenario::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_inputConfigurationForScenario * p = (const cCollectionElement_L_5F_inputConfigurationForScenario *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_inputConfigurationForScenario) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint UpEnumerator_L_5F_inputConfigurationForScenario::current_mInputValue (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_inputConfigurationForScenario * p = (const cCollectionElement_L_5F_inputConfigurationForScenario *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_inputConfigurationForScenario) ;
   return p->mObject.mProperty_mInputValue ;
@@ -16172,9 +16392,7 @@ GGS_luint cEnumerator_L_5F_inputConfigurationForScenario::current_mInputValue (L
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_inputConfigurationForScenario generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputConfigurationForScenario ("L_inputConfigurationForScenario",
@@ -16553,16 +16771,17 @@ GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputScenario::getter_mInputConf
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_inputScenario
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_inputScenario::cEnumerator_L_5F_inputScenario (const GGS_L_5F_inputScenario & inEnumeratedObject,
-                                                                const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_inputScenario::DownEnumerator_L_5F_inputScenario (const GGS_L_5F_inputScenario & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputScenario_2E_element cEnumerator_L_5F_inputScenario::current (LOCATION_ARGS) const {
+GGS_L_5F_inputScenario_2E_element DownEnumerator_L_5F_inputScenario::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_inputScenario * p = (const cCollectionElement_L_5F_inputScenario *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_inputScenario) ;
   return p->mObject ;
@@ -16571,7 +16790,35 @@ GGS_L_5F_inputScenario_2E_element cEnumerator_L_5F_inputScenario::current (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputConfigurationForScenario cEnumerator_L_5F_inputScenario::current_mInputConfiguration (LOCATION_ARGS) const {
+GGS_L_5F_inputConfigurationForScenario DownEnumerator_L_5F_inputScenario::current_mInputConfiguration (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_inputScenario * p = (const cCollectionElement_L_5F_inputScenario *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_inputScenario) ;
+  return p->mObject.mProperty_mInputConfiguration ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_inputScenario
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_inputScenario::UpEnumerator_L_5F_inputScenario (const GGS_L_5F_inputScenario & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario_2E_element UpEnumerator_L_5F_inputScenario::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_inputScenario * p = (const cCollectionElement_L_5F_inputScenario *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_inputScenario) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputConfigurationForScenario UpEnumerator_L_5F_inputScenario::current_mInputConfiguration (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_inputScenario * p = (const cCollectionElement_L_5F_inputScenario *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_inputScenario) ;
   return p->mObject.mProperty_mInputConfiguration ;
@@ -16581,9 +16828,7 @@ GGS_L_5F_inputConfigurationForScenario cEnumerator_L_5F_inputScenario::current_m
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_inputScenario generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario ("L_inputScenario",
@@ -16617,479 +16862,6 @@ GGS_L_5F_inputScenario GGS_L_5F_inputScenario::extractObject (const GGS_object &
       result = *p ;
     }else{
       inCompiler->castError ("L_inputScenario", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Class for element of '@L_5F_scenarioList' list
-//
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_L_5F_scenarioList : public cCollectionElement {
-  public: GGS_L_5F_scenarioList_2E_element mObject ;
-
-//--- Class functions
-  public: cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
-                                                const GGS_L_5F_inputScenario & in_mInputScenario
-                                                COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
-                                                                            const GGS_L_5F_inputScenario & in_mInputScenario
-                                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mScenarioTitle, in_mInputScenario) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_L_5F_scenarioList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement * cCollectionElement_L_5F_scenarioList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_L_5F_scenarioList::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mScenarioTitle" ":") ;
-  mObject.mProperty_mScenarioTitle.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mInputScenario" ":") ;
-  mObject.mProperty_mInputScenario.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (void) :
-AC_GALGAS_list () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::enterElement (const GGS_L_5F_scenarioList_2E_element & inValue,
-                                          Compiler * /* inCompiler */
-                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_L_5F_scenarioList (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_listWithValue (const GGS_lstring & inOperand0,
-                                                                       const GGS_L_5F_inputScenario & inOperand1
-                                                                       COMMA_LOCATION_ARGS) {
-  GGS_L_5F_scenarioList result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_L_5F_scenarioList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                       const GGS_lstring & in_mScenarioTitle,
-                                                       const GGS_L_5F_inputScenario & in_mInputScenario
-                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_scenarioList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_L_5F_scenarioList (in_mScenarioTitle,
-                                                       in_mInputScenario COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::addAssign_operation (const GGS_lstring & inOperand0,
-                                                 const GGS_L_5F_inputScenario & inOperand1
-                                                 COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_append (const GGS_lstring inOperand0,
-                                           const GGS_L_5F_inputScenario inOperand1,
-                                           Compiler * /* inCompiler */
-                                           COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_insertAtIndex (const GGS_lstring inOperand0,
-                                                  const GGS_L_5F_inputScenario inOperand1,
-                                                  const GGS_uint inInsertionIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_removeAtIndex (GGS_lstring & outOperand0,
-                                                  GGS_L_5F_inputScenario & outOperand1,
-                                                  const GGS_uint inRemoveIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-      outOperand0 = p->mObject.mProperty_mScenarioTitle ;
-      outOperand1 = p->mObject.mProperty_mInputScenario ;
-    }
-  }else{
-    drop () ;    
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_popFirst (GGS_lstring & outOperand0,
-                                             GGS_L_5F_inputScenario & outOperand1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
-    outOperand1 = p->mObject.mProperty_mInputScenario ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_popLast (GGS_lstring & outOperand0,
-                                            GGS_L_5F_inputScenario & outOperand1,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
-    outOperand1 = p->mObject.mProperty_mInputScenario ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::method_first (GGS_lstring & outOperand0,
-                                          GGS_L_5F_inputScenario & outOperand1,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
-    outOperand1 = p->mObject.mProperty_mInputScenario ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::method_last (GGS_lstring & outOperand0,
-                                         GGS_L_5F_inputScenario & outOperand1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-  if (nullptr == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
-    outOperand1 = p->mObject.mProperty_mInputScenario ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::add_operation (const GGS_L_5F_scenarioList & inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_L_5F_scenarioList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListWithRange (const GGS_range & inRange,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::plusAssign_operation (const GGS_L_5F_scenarioList inOperand,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_setMScenarioTitleAtIndex (GGS_lstring inOperand,
-                                                             GGS_uint inIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mScenarioTitle = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_L_5F_scenarioList::getter_mScenarioTitleAtIndex (const GGS_uint & inIndex,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-  GGS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    result = p->mObject.mProperty_mScenarioTitle ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_L_5F_scenarioList::setter_setMInputScenarioAtIndex (GGS_L_5F_inputScenario inOperand,
-                                                             GGS_uint inIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mInputScenario = inOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_inputScenario GGS_L_5F_scenarioList::getter_mInputScenarioAtIndex (const GGS_uint & inIndex,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
-  GGS_L_5F_inputScenario result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-    result = p->mObject.mProperty_mInputScenario ;
-  }
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-cEnumerator_L_5F_scenarioList::cEnumerator_L_5F_scenarioList (const GGS_L_5F_scenarioList & inEnumeratedObject,
-                                                              const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList_2E_element cEnumerator_L_5F_scenarioList::current (LOCATION_ARGS) const {
-  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-  return p->mObject ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring cEnumerator_L_5F_scenarioList::current_mScenarioTitle (LOCATION_ARGS) const {
-  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-  return p->mObject.mProperty_mScenarioTitle ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_inputScenario cEnumerator_L_5F_scenarioList::current_mInputScenario (LOCATION_ARGS) const {
-  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
-  return p->mObject.mProperty_mInputScenario ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//     @L_scenarioList generic code implementation
-//
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ("L_scenarioList",
-                                                                         nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const C_galgas_type_descriptor * GGS_L_5F_scenarioList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_L_5F_scenarioList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_L_5F_scenarioList::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_L_5F_scenarioList (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GGS_L_5F_scenarioList result ;
-  const GGS_L_5F_scenarioList * p = (const GGS_L_5F_scenarioList *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_L_5F_scenarioList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("L_scenarioList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

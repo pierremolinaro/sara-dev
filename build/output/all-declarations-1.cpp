@@ -8,6 +8,514 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
+//
+//Class for element of '@L_5F_scenarioList' list
+//
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_L_5F_scenarioList : public cCollectionElement {
+  public: GGS_L_5F_scenarioList_2E_element mObject ;
+
+//--- Class functions
+  public: cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                const GGS_L_5F_inputScenario & in_mInputScenario
+                                                COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                                            const GGS_L_5F_inputScenario & in_mInputScenario
+                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mScenarioTitle, in_mInputScenario) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_L_5F_scenarioList::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_L_5F_scenarioList::copy (void) {
+  cCollectionElement * result = nullptr ;
+  macroMyNew (result, cCollectionElement_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_L_5F_scenarioList::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mScenarioTitle" ":") ;
+  mObject.mProperty_mScenarioTitle.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mInputScenario" ":") ;
+  mObject.mProperty_mInputScenario.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (void) :
+AC_GALGAS_list () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::enterElement (const GGS_L_5F_scenarioList_2E_element & inValue,
+                                          Compiler * /* inCompiler */
+                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_scenarioList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                       const GGS_L_5F_inputScenario & inOperand1
+                                                                       COMMA_LOCATION_ARGS) {
+  GGS_L_5F_scenarioList result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GGS_L_5F_scenarioList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                       const GGS_lstring & in_mScenarioTitle,
+                                                       const GGS_L_5F_inputScenario & in_mInputScenario
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement_L_5F_scenarioList * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_scenarioList (in_mScenarioTitle,
+                                                       in_mInputScenario COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::addAssign_operation (const GGS_lstring & inOperand0,
+                                                 const GGS_L_5F_inputScenario & inOperand1
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_append (const GGS_lstring inOperand0,
+                                           const GGS_L_5F_inputScenario inOperand1,
+                                           Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                  const GGS_L_5F_inputScenario inOperand1,
+                                                  const GGS_uint inInsertionIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                  GGS_L_5F_inputScenario & outOperand1,
+                                                  const GGS_uint inRemoveIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+      outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+      outOperand1 = p->mObject.mProperty_mInputScenario ;
+    }
+  }else{
+    drop () ;    
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_popFirst (GGS_lstring & outOperand0,
+                                             GGS_L_5F_inputScenario & outOperand1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_popLast (GGS_lstring & outOperand0,
+                                            GGS_L_5F_inputScenario & outOperand1,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::method_first (GGS_lstring & outOperand0,
+                                          GGS_L_5F_inputScenario & outOperand1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::method_last (GGS_lstring & outOperand0,
+                                         GGS_L_5F_inputScenario & outOperand1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::add_operation (const GGS_L_5F_scenarioList & inOperand,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListWithRange (const GGS_range & inRange,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::plusAssign_operation (const GGS_L_5F_scenarioList inOperand,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_setMScenarioTitleAtIndex (GGS_lstring inOperand,
+                                                             GGS_uint inIndex,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mScenarioTitle = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_L_5F_scenarioList::getter_mScenarioTitleAtIndex (const GGS_uint & inIndex,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    result = p->mObject.mProperty_mScenarioTitle ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_setMInputScenarioAtIndex (GGS_L_5F_inputScenario inOperand,
+                                                             GGS_uint inIndex,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mInputScenario = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario GGS_L_5F_scenarioList::getter_mInputScenarioAtIndex (const GGS_uint & inIndex,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  GGS_L_5F_inputScenario result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    result = p->mObject.mProperty_mInputScenario ;
+  }
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_scenarioList
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_L_5F_scenarioList::DownEnumerator_L_5F_scenarioList (const GGS_L_5F_scenarioList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList_2E_element DownEnumerator_L_5F_scenarioList::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_L_5F_scenarioList::current_mScenarioTitle (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mScenarioTitle ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario DownEnumerator_L_5F_scenarioList::current_mInputScenario (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mInputScenario ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_scenarioList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_scenarioList::UpEnumerator_L_5F_scenarioList (const GGS_L_5F_scenarioList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList_2E_element UpEnumerator_L_5F_scenarioList::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_L_5F_scenarioList::current_mScenarioTitle (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mScenarioTitle ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario UpEnumerator_L_5F_scenarioList::current_mInputScenario (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mInputScenario ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @L_scenarioList generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ("L_scenarioList",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_L_5F_scenarioList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_L_5F_scenarioList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_L_5F_scenarioList::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_L_5F_scenarioList (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  GGS_L_5F_scenarioList result ;
+  const GGS_L_5F_scenarioList * p = (const GGS_L_5F_scenarioList *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_L_5F_scenarioList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("L_scenarioList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @C_5F_scenarioComponent reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -276,9 +784,7 @@ acPtr_class * cPtr_C_5F_scenarioComponent::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_scenarioComponent generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ("C_scenarioComponent",
@@ -387,9 +893,7 @@ GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent_2E_weak::bang_C_5F_scenari
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_scenarioComponent.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2E_weak ("C_scenarioComponent.weak",
@@ -528,9 +1032,7 @@ acPtr_class * cPtr_typeDisplayBDDstats::duplicate (Compiler * inCompiler COMMA_L
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeDisplayBDDstats generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats ("typeDisplayBDDstats",
@@ -639,9 +1141,7 @@ GGS_typeDisplayBDDstats GGS_typeDisplayBDDstats_2E_weak::bang_typeDisplayBDDstat
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @typeDisplayBDDstats.weak generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats_2E_weak ("typeDisplayBDDstats.weak",
@@ -1020,16 +1520,17 @@ GGS_AC_5F_job GGS_L_5F_jobList::getter_mComponentAtIndex (const GGS_uint & inInd
 
 
 //--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_jobList
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_L_5F_jobList::cEnumerator_L_5F_jobList (const GGS_L_5F_jobList & inEnumeratedObject,
-                                                    const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_L_5F_jobList::DownEnumerator_L_5F_jobList (const GGS_L_5F_jobList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_jobList_2E_element cEnumerator_L_5F_jobList::current (LOCATION_ARGS) const {
+GGS_L_5F_jobList_2E_element DownEnumerator_L_5F_jobList::current (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_jobList * p = (const cCollectionElement_L_5F_jobList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_jobList) ;
   return p->mObject ;
@@ -1038,7 +1539,35 @@ GGS_L_5F_jobList_2E_element cEnumerator_L_5F_jobList::current (LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_AC_5F_job cEnumerator_L_5F_jobList::current_mComponent (LOCATION_ARGS) const {
+GGS_AC_5F_job DownEnumerator_L_5F_jobList::current_mComponent (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_jobList * p = (const cCollectionElement_L_5F_jobList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_jobList) ;
+  return p->mObject.mProperty_mComponent ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_jobList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_jobList::UpEnumerator_L_5F_jobList (const GGS_L_5F_jobList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_jobList_2E_element UpEnumerator_L_5F_jobList::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_jobList * p = (const cCollectionElement_L_5F_jobList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_jobList) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AC_5F_job UpEnumerator_L_5F_jobList::current_mComponent (LOCATION_ARGS) const {
   const cCollectionElement_L_5F_jobList * p = (const cCollectionElement_L_5F_jobList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_L_5F_jobList) ;
   return p->mObject.mProperty_mComponent ;
@@ -1048,9 +1577,7 @@ GGS_AC_5F_job cEnumerator_L_5F_jobList::current_mComponent (LOCATION_ARGS) const
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_jobList generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList ("L_jobList",
@@ -1276,7 +1803,7 @@ GGS_M_5F_machinesMap GGS_M_5F_machinesMap::add_operation (const GGS_M_5F_machine
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GGS_M_5F_machinesMap result = *this ;
-  cEnumerator_M_5F_machinesMap enumerator (inOperand, EnumerationOrder::up) ;
+  UpEnumerator_M_5F_machinesMap enumerator (inOperand) ;
   while (enumerator.hasCurrentObject ()) {
     result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mInputVariableCount (HERE), enumerator.current_mInputAndInternalVariableCount (HERE), enumerator.current_mVariablesMap (HERE), enumerator.current_mNameList (HERE), inCompiler COMMA_THERE) ;
     enumerator.gotoNextObject () ;
@@ -1524,16 +2051,17 @@ cMapElement_M_5F_machinesMap * GGS_M_5F_machinesMap::readWriteAccessForWithInstr
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @M_5F_machinesMap
+//--------------------------------------------------------------------------------------------------
 
-cEnumerator_M_5F_machinesMap::cEnumerator_M_5F_machinesMap (const GGS_M_5F_machinesMap & inEnumeratedObject,
-                                                            const EnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
+DownEnumerator_M_5F_machinesMap::DownEnumerator_M_5F_machinesMap (const GGS_M_5F_machinesMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_machinesMap_2E_element cEnumerator_M_5F_machinesMap::current (LOCATION_ARGS) const {
+GGS_M_5F_machinesMap_2E_element DownEnumerator_M_5F_machinesMap::current (LOCATION_ARGS) const {
   const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
   return GGS_M_5F_machinesMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex, p->mProperty_mInputVariableCount, p->mProperty_mInputAndInternalVariableCount, p->mProperty_mVariablesMap, p->mProperty_mNameList) ;
@@ -1541,7 +2069,7 @@ GGS_M_5F_machinesMap_2E_element cEnumerator_M_5F_machinesMap::current (LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring cEnumerator_M_5F_machinesMap::current_lkey (LOCATION_ARGS) const {
+GGS_lstring DownEnumerator_M_5F_machinesMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
@@ -1549,7 +2077,7 @@ GGS_lstring cEnumerator_M_5F_machinesMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_M_5F_machinesMap::current_mIndex (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_M_5F_machinesMap::current_mIndex (LOCATION_ARGS) const {
   const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
   return p->mProperty_mIndex ;
@@ -1557,7 +2085,7 @@ GGS_uint cEnumerator_M_5F_machinesMap::current_mIndex (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_M_5F_machinesMap::current_mInputVariableCount (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_M_5F_machinesMap::current_mInputVariableCount (LOCATION_ARGS) const {
   const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
   return p->mProperty_mInputVariableCount ;
@@ -1565,7 +2093,7 @@ GGS_uint cEnumerator_M_5F_machinesMap::current_mInputVariableCount (LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint cEnumerator_M_5F_machinesMap::current_mInputAndInternalVariableCount (LOCATION_ARGS) const {
+GGS_uint DownEnumerator_M_5F_machinesMap::current_mInputAndInternalVariableCount (LOCATION_ARGS) const {
   const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
   return p->mProperty_mInputAndInternalVariableCount ;
@@ -1573,7 +2101,7 @@ GGS_uint cEnumerator_M_5F_machinesMap::current_mInputAndInternalVariableCount (L
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_variablesMap cEnumerator_M_5F_machinesMap::current_mVariablesMap (LOCATION_ARGS) const {
+GGS_M_5F_variablesMap DownEnumerator_M_5F_machinesMap::current_mVariablesMap (LOCATION_ARGS) const {
   const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
   return p->mProperty_mVariablesMap ;
@@ -1581,16 +2109,80 @@ GGS_M_5F_variablesMap cEnumerator_M_5F_machinesMap::current_mVariablesMap (LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist cEnumerator_M_5F_machinesMap::current_mNameList (LOCATION_ARGS) const {
+GGS_stringlist DownEnumerator_M_5F_machinesMap::current_mNameList (LOCATION_ARGS) const {
   const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
   return p->mProperty_mNameList ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//
+//  Up Enumerator for @M_5F_machinesMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_M_5F_machinesMap::UpEnumerator_M_5F_machinesMap (const GGS_M_5F_machinesMap & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_machinesMap_2E_element UpEnumerator_M_5F_machinesMap::current (LOCATION_ARGS) const {
+  const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
+  return GGS_M_5F_machinesMap_2E_element (p->mProperty_lkey, p->mProperty_mIndex, p->mProperty_mInputVariableCount, p->mProperty_mInputAndInternalVariableCount, p->mProperty_mVariablesMap, p->mProperty_mNameList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_M_5F_machinesMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_M_5F_machinesMap::current_mIndex (LOCATION_ARGS) const {
+  const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
+  return p->mProperty_mIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_M_5F_machinesMap::current_mInputVariableCount (LOCATION_ARGS) const {
+  const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
+  return p->mProperty_mInputVariableCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint UpEnumerator_M_5F_machinesMap::current_mInputAndInternalVariableCount (LOCATION_ARGS) const {
+  const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
+  return p->mProperty_mInputAndInternalVariableCount ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_variablesMap UpEnumerator_M_5F_machinesMap::current_mVariablesMap (LOCATION_ARGS) const {
+  const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
+  return p->mProperty_mVariablesMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist UpEnumerator_M_5F_machinesMap::current_mNameList (LOCATION_ARGS) const {
+  const cMapElement_M_5F_machinesMap * p = (const cMapElement_M_5F_machinesMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_M_5F_machinesMap) ;
+  return p->mProperty_mNameList ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //     @M_machinesMap generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap ("M_machinesMap",
@@ -1638,7 +2230,17 @@ mProperty_machinesMap () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticContext::~ GGS_semanticContext (void) {
+GGS_semanticContext::GGS_semanticContext (const GGS_semanticContext & inSource) :
+mProperty_componentsMap (inSource.mProperty_componentsMap),
+mProperty_machinesMap (inSource.mProperty_machinesMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticContext & GGS_semanticContext::operator = (const GGS_semanticContext & inSource) {
+  mProperty_componentsMap = inSource.mProperty_componentsMap ;
+  mProperty_machinesMap = inSource.mProperty_machinesMap ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -1709,9 +2311,7 @@ void GGS_semanticContext::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @semanticContext generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ("semanticContext",
@@ -4455,7 +5055,7 @@ void cParser_sara_5F_parser::rule_sara_5F_parser_explicit_5F_automaton_i27_ (con
       repeatFlag_8 = false ;
     }
   }
-  cEnumerator_M_5F_stateMap enumerator_32033 (var_statesMap_30029, EnumerationOrder::up) ;
+  UpEnumerator_M_5F_stateMap enumerator_32033 (var_statesMap_30029) ;
   while (enumerator_32033.hasCurrentObject ()) {
     GalgasBool test_11 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_11) {
@@ -4624,7 +5224,15 @@ mProperty_mTargetSlot () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_translationVector_2E_element::~ GGS_L_5F_translationVector_2E_element (void) {
+GGS_L_5F_translationVector_2E_element::GGS_L_5F_translationVector_2E_element (const GGS_L_5F_translationVector_2E_element & inSource) :
+mProperty_mTargetSlot (inSource.mProperty_mTargetSlot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_translationVector_2E_element & GGS_L_5F_translationVector_2E_element::operator = (const GGS_L_5F_translationVector_2E_element & inSource) {
+  mProperty_mTargetSlot = inSource.mProperty_mTargetSlot ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -4686,9 +5294,7 @@ void GGS_L_5F_translationVector_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_translationVector.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_translationVector_2E_element ("L_translationVector.element",
@@ -4737,7 +5343,19 @@ mProperty_mTargetStateIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_transitionDefinition_2E_element::~ GGS_L_5F_transitionDefinition_2E_element (void) {
+GGS_L_5F_transitionDefinition_2E_element::GGS_L_5F_transitionDefinition_2E_element (const GGS_L_5F_transitionDefinition_2E_element & inSource) :
+mProperty_mActionExpression (inSource.mProperty_mActionExpression),
+mProperty_mEndOfExpression (inSource.mProperty_mEndOfExpression),
+mProperty_mTargetStateIndex (inSource.mProperty_mTargetStateIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_transitionDefinition_2E_element & GGS_L_5F_transitionDefinition_2E_element::operator = (const GGS_L_5F_transitionDefinition_2E_element & inSource) {
+  mProperty_mActionExpression = inSource.mProperty_mActionExpression ;
+  mProperty_mEndOfExpression = inSource.mProperty_mEndOfExpression ;
+  mProperty_mTargetStateIndex = inSource.mProperty_mTargetStateIndex ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -4817,9 +5435,7 @@ void GGS_L_5F_transitionDefinition_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_transitionDefinition.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_transitionDefinition_2E_element ("L_transitionDefinition.element",
@@ -4869,7 +5485,21 @@ mProperty_mTransitionsList () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_stateDefinition_2E_element::~ GGS_L_5F_stateDefinition_2E_element (void) {
+GGS_L_5F_stateDefinition_2E_element::GGS_L_5F_stateDefinition_2E_element (const GGS_L_5F_stateDefinition_2E_element & inSource) :
+mProperty_mStateIndex (inSource.mProperty_mStateIndex),
+mProperty_mStateExpression (inSource.mProperty_mStateExpression),
+mProperty_mEndOfStateExpression (inSource.mProperty_mEndOfStateExpression),
+mProperty_mTransitionsList (inSource.mProperty_mTransitionsList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_stateDefinition_2E_element & GGS_L_5F_stateDefinition_2E_element::operator = (const GGS_L_5F_stateDefinition_2E_element & inSource) {
+  mProperty_mStateIndex = inSource.mProperty_mStateIndex ;
+  mProperty_mStateExpression = inSource.mProperty_mStateExpression ;
+  mProperty_mEndOfStateExpression = inSource.mProperty_mEndOfStateExpression ;
+  mProperty_mTransitionsList = inSource.mProperty_mTransitionsList ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -4958,9 +5588,7 @@ void GGS_L_5F_stateDefinition_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_stateDefinition.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_stateDefinition_2E_element ("L_stateDefinition.element",
@@ -5008,7 +5636,17 @@ mProperty_mStateLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_statesDefinitionList_2E_element::~ GGS_L_5F_statesDefinitionList_2E_element (void) {
+GGS_L_5F_statesDefinitionList_2E_element::GGS_L_5F_statesDefinitionList_2E_element (const GGS_L_5F_statesDefinitionList_2E_element & inSource) :
+mProperty_mStateIndex (inSource.mProperty_mStateIndex),
+mProperty_mStateLocation (inSource.mProperty_mStateLocation) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_statesDefinitionList_2E_element & GGS_L_5F_statesDefinitionList_2E_element::operator = (const GGS_L_5F_statesDefinitionList_2E_element & inSource) {
+  mProperty_mStateIndex = inSource.mProperty_mStateIndex ;
+  mProperty_mStateLocation = inSource.mProperty_mStateLocation ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -5079,9 +5717,7 @@ void GGS_L_5F_statesDefinitionList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_statesDefinitionList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_statesDefinitionList_2E_element ("L_statesDefinitionList.element",
@@ -5129,7 +5765,17 @@ mProperty_mTargetMode () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ListForModes_2E_element::~ GGS_ListForModes_2E_element (void) {
+GGS_ListForModes_2E_element::GGS_ListForModes_2E_element (const GGS_ListForModes_2E_element & inSource) :
+mProperty_mSourceMode (inSource.mProperty_mSourceMode),
+mProperty_mTargetMode (inSource.mProperty_mTargetMode) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ListForModes_2E_element & GGS_ListForModes_2E_element::operator = (const GGS_ListForModes_2E_element & inSource) {
+  mProperty_mSourceMode = inSource.mProperty_mSourceMode ;
+  mProperty_mTargetMode = inSource.mProperty_mTargetMode ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -5200,9 +5846,7 @@ void GGS_ListForModes_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @ListForModes.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ListForModes_2E_element ("ListForModes.element",
@@ -5249,7 +5893,15 @@ mProperty_mInputValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputConfigurationForScenario_2E_element::~ GGS_L_5F_inputConfigurationForScenario_2E_element (void) {
+GGS_L_5F_inputConfigurationForScenario_2E_element::GGS_L_5F_inputConfigurationForScenario_2E_element (const GGS_L_5F_inputConfigurationForScenario_2E_element & inSource) :
+mProperty_mInputValue (inSource.mProperty_mInputValue) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputConfigurationForScenario_2E_element & GGS_L_5F_inputConfigurationForScenario_2E_element::operator = (const GGS_L_5F_inputConfigurationForScenario_2E_element & inSource) {
+  mProperty_mInputValue = inSource.mProperty_mInputValue ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -5311,9 +5963,7 @@ void GGS_L_5F_inputConfigurationForScenario_2E_element::description (String & io
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_inputConfigurationForScenario.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputConfigurationForScenario_2E_element ("L_inputConfigurationForScenario.element",
@@ -5360,7 +6010,15 @@ mProperty_mInputConfiguration () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputScenario_2E_element::~ GGS_L_5F_inputScenario_2E_element (void) {
+GGS_L_5F_inputScenario_2E_element::GGS_L_5F_inputScenario_2E_element (const GGS_L_5F_inputScenario_2E_element & inSource) :
+mProperty_mInputConfiguration (inSource.mProperty_mInputConfiguration) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario_2E_element & GGS_L_5F_inputScenario_2E_element::operator = (const GGS_L_5F_inputScenario_2E_element & inSource) {
+  mProperty_mInputConfiguration = inSource.mProperty_mInputConfiguration ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -5422,9 +6080,7 @@ void GGS_L_5F_inputScenario_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_inputScenario.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_inputScenario_2E_element ("L_inputScenario.element",
@@ -5471,7 +6127,15 @@ mProperty_mComponent () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_jobList_2E_element::~ GGS_L_5F_jobList_2E_element (void) {
+GGS_L_5F_jobList_2E_element::GGS_L_5F_jobList_2E_element (const GGS_L_5F_jobList_2E_element & inSource) :
+mProperty_mComponent (inSource.mProperty_mComponent) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_jobList_2E_element & GGS_L_5F_jobList_2E_element::operator = (const GGS_L_5F_jobList_2E_element & inSource) {
+  mProperty_mComponent = inSource.mProperty_mComponent ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -5533,9 +6197,7 @@ void GGS_L_5F_jobList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_jobList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList_2E_element ("L_jobList.element",
@@ -5777,9 +6439,7 @@ acPtr_class * cPtr_C_5F_importBoolMachine::duplicate (Compiler * inCompiler COMM
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_importBoolMachine generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_importBoolMachine ("C_importBoolMachine",
@@ -5988,9 +6648,7 @@ acPtr_class * cPtr_C_5F_machineCheck::duplicate (Compiler * inCompiler COMMA_LOC
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineCheck generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineCheck ("C_machineCheck",
@@ -6364,9 +7022,7 @@ acPtr_class * cPtr_C_5F_machineComponent::duplicate (Compiler * inCompiler COMMA
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineComponent generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineComponent ("C_machineComponent",
@@ -6740,9 +7396,7 @@ acPtr_class * cPtr_C_5F_machineDefinedByAdditiveModalComp::duplicate (Compiler *
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDefinedByAdditiveModalComp generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp ("C_machineDefinedByAdditiveModalComp",
@@ -7116,9 +7770,7 @@ acPtr_class * cPtr_C_5F_machineDefinedBySubstractiveModalComp::duplicate (Compil
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @C_machineDefinedBySubstractiveModalComp generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedBySubstractiveModalComp ("C_machineDefinedBySubstractiveModalComp",
@@ -9495,7 +10147,17 @@ mProperty_mValue_31_ () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element::~ GGS__32_lstringlist_2E_element (void) {
+GGS__32_lstringlist_2E_element::GGS__32_lstringlist_2E_element (const GGS__32_lstringlist_2E_element & inSource) :
+mProperty_mValue_30_ (inSource.mProperty_mValue_30_),
+mProperty_mValue_31_ (inSource.mProperty_mValue_31_) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_lstringlist_2E_element & GGS__32_lstringlist_2E_element::operator = (const GGS__32_lstringlist_2E_element & inSource) {
+  mProperty_mValue_30_ = inSource.mProperty_mValue_30_ ;
+  mProperty_mValue_31_ = inSource.mProperty_mValue_31_ ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -9566,9 +10228,7 @@ void GGS__32_lstringlist_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @2lstringlist.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_lstringlist_2E_element ("2lstringlist.element",
@@ -9616,7 +10276,17 @@ mProperty_mIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_variablesMap_2E_element::~ GGS_M_5F_variablesMap_2E_element (void) {
+GGS_M_5F_variablesMap_2E_element::GGS_M_5F_variablesMap_2E_element (const GGS_M_5F_variablesMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_variablesMap_2E_element & GGS_M_5F_variablesMap_2E_element::operator = (const GGS_M_5F_variablesMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -9687,9 +10357,7 @@ void GGS_M_5F_variablesMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_variablesMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap_2E_element ("M_variablesMap.element",
@@ -9809,9 +10477,7 @@ void GGS_M_5F_variablesMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_variablesMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_variablesMap_2E_element_3F_ ("M_variablesMap.element?",
@@ -9859,7 +10525,17 @@ mProperty_mIndex () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_stateMap_2E_element::~ GGS_M_5F_stateMap_2E_element (void) {
+GGS_M_5F_stateMap_2E_element::GGS_M_5F_stateMap_2E_element (const GGS_M_5F_stateMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_stateMap_2E_element & GGS_M_5F_stateMap_2E_element::operator = (const GGS_M_5F_stateMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -9930,9 +10606,7 @@ void GGS_M_5F_stateMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_stateMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap_2E_element ("M_stateMap.element",
@@ -10052,9 +10726,7 @@ void GGS_M_5F_stateMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_stateMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_stateMap_2E_element_3F_ ("M_stateMap.element?",
@@ -10103,7 +10775,19 @@ mProperty_mModeDefinition () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_modesMap_2E_element::~ GGS_M_5F_modesMap_2E_element (void) {
+GGS_M_5F_modesMap_2E_element::GGS_M_5F_modesMap_2E_element (const GGS_M_5F_modesMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex),
+mProperty_mModeDefinition (inSource.mProperty_mModeDefinition) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_modesMap_2E_element & GGS_M_5F_modesMap_2E_element::operator = (const GGS_M_5F_modesMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  mProperty_mModeDefinition = inSource.mProperty_mModeDefinition ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -10183,9 +10867,7 @@ void GGS_M_5F_modesMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_modesMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap_2E_element ("M_modesMap.element",
@@ -10305,9 +10987,7 @@ void GGS_M_5F_modesMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_modesMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_modesMap_2E_element_3F_ ("M_modesMap.element?",
@@ -10355,7 +11035,17 @@ mProperty_mInputScenario () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_scenarioList_2E_element::~ GGS_L_5F_scenarioList_2E_element (void) {
+GGS_L_5F_scenarioList_2E_element::GGS_L_5F_scenarioList_2E_element (const GGS_L_5F_scenarioList_2E_element & inSource) :
+mProperty_mScenarioTitle (inSource.mProperty_mScenarioTitle),
+mProperty_mInputScenario (inSource.mProperty_mInputScenario) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList_2E_element & GGS_L_5F_scenarioList_2E_element::operator = (const GGS_L_5F_scenarioList_2E_element & inSource) {
+  mProperty_mScenarioTitle = inSource.mProperty_mScenarioTitle ;
+  mProperty_mInputScenario = inSource.mProperty_mInputScenario ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -10426,9 +11116,7 @@ void GGS_L_5F_scenarioList_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @L_scenarioList.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2E_element ("L_scenarioList.element",
@@ -10480,7 +11168,25 @@ mProperty_mNameList () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_machinesMap_2E_element::~ GGS_M_5F_machinesMap_2E_element (void) {
+GGS_M_5F_machinesMap_2E_element::GGS_M_5F_machinesMap_2E_element (const GGS_M_5F_machinesMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIndex (inSource.mProperty_mIndex),
+mProperty_mInputVariableCount (inSource.mProperty_mInputVariableCount),
+mProperty_mInputAndInternalVariableCount (inSource.mProperty_mInputAndInternalVariableCount),
+mProperty_mVariablesMap (inSource.mProperty_mVariablesMap),
+mProperty_mNameList (inSource.mProperty_mNameList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_M_5F_machinesMap_2E_element & GGS_M_5F_machinesMap_2E_element::operator = (const GGS_M_5F_machinesMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIndex = inSource.mProperty_mIndex ;
+  mProperty_mInputVariableCount = inSource.mProperty_mInputVariableCount ;
+  mProperty_mInputAndInternalVariableCount = inSource.mProperty_mInputAndInternalVariableCount ;
+  mProperty_mVariablesMap = inSource.mProperty_mVariablesMap ;
+  mProperty_mNameList = inSource.mProperty_mNameList ;
+  return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
@@ -10587,9 +11293,7 @@ void GGS_M_5F_machinesMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_machinesMap.element generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2E_element ("M_machinesMap.element",
@@ -10709,9 +11413,7 @@ void GGS_M_5F_machinesMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //     @M_machinesMap.element? generic code implementation
-//
 //--------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2E_element_3F_ ("M_machinesMap.element?",

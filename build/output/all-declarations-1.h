@@ -9,6 +9,274 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @L_5F_scenarioList list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_L_5F_scenarioList final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_L_5F_scenarioList (const class GGS_L_5F_scenarioList & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_mScenarioTitle (LOCATION_ARGS) const ;
+  public: class GGS_L_5F_inputScenario current_mInputScenario (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_L_5F_scenarioList_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_L_5F_scenarioList final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_L_5F_scenarioList (const class GGS_L_5F_scenarioList & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_mScenarioTitle (LOCATION_ARGS) const ;
+  public: class GGS_L_5F_inputScenario current_mInputScenario (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_L_5F_scenarioList_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @L_scenarioList list
+//--------------------------------------------------------------------------------------------------
+
+class GGS_L_5F_scenarioList : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public: GGS_L_5F_scenarioList (void) ;
+
+//--------------------------------- List constructor by graph
+  public: GGS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) ;
+
+//--------------------------------- Element constructor
+  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                 const class GGS_lstring & in_mScenarioTitle,
+                                                 const class GGS_L_5F_inputScenario & in_mInputScenario
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_L_5F_scenarioList init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_L_5F_scenarioList extractObject (const GGS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_L_5F_scenarioList class_func_emptyList (LOCATION_ARGS) ;
+
+  public: static class GGS_L_5F_scenarioList class_func_listWithValue (const class GGS_lstring & inOperand0,
+                                                                       const class GGS_L_5F_inputScenario & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GGS_L_5F_scenarioList inOperand,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (const class GGS_lstring & inOperand0,
+                                                     const class GGS_L_5F_inputScenario & inOperand1
+                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: VIRTUAL_IN_DEBUG GGS_L_5F_scenarioList add_operation (const GGS_L_5F_scenarioList & inOperand,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: VIRTUAL_IN_DEBUG void setter_append (class GGS_lstring constinArgument0,
+                                               class GGS_L_5F_inputScenario constinArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GGS_lstring constinArgument0,
+                                                      class GGS_L_5F_inputScenario constinArgument1,
+                                                      class GGS_uint constinArgument2,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popFirst (class GGS_lstring & outArgument0,
+                                                 class GGS_L_5F_inputScenario & outArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_popLast (class GGS_lstring & outArgument0,
+                                                class GGS_L_5F_inputScenario & outArgument1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GGS_lstring & outArgument0,
+                                                      class GGS_L_5F_inputScenario & outArgument1,
+                                                      class GGS_uint constinArgument2,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMInputScenarioAtIndex (class GGS_L_5F_inputScenario constinArgument0,
+                                                                 class GGS_uint constinArgument1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: VIRTUAL_IN_DEBUG void setter_setMScenarioTitleAtIndex (class GGS_lstring constinArgument0,
+                                                                 class GGS_uint constinArgument1,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: VIRTUAL_IN_DEBUG void method_first (class GGS_lstring & outArgument0,
+                                              class GGS_L_5F_inputScenario & outArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG void method_last (class GGS_lstring & outArgument0,
+                                             class GGS_L_5F_inputScenario & outArgument1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: VIRTUAL_IN_DEBUG class GGS_L_5F_inputScenario getter_mInputScenarioAtIndex (const class GGS_uint & constinOperand0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_lstring getter_mScenarioTitleAtIndex (const class GGS_uint & constinOperand0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_L_5F_scenarioList getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_L_5F_scenarioList getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: VIRTUAL_IN_DEBUG class GGS_L_5F_scenarioList getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+
+//--- Append element
+  public: VIRTUAL_IN_DEBUG void enterElement (const class GGS_L_5F_scenarioList_2E_element & inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator_L_5F_scenarioList ;
+  friend class DownEnumerator_L_5F_scenarioList ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @L_5F_scenarioList_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_L_5F_scenarioList_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mScenarioTitle ;
+  public: inline GGS_lstring readProperty_mScenarioTitle (void) const {
+    return mProperty_mScenarioTitle ;
+  }
+
+  public: GGS_L_5F_inputScenario mProperty_mInputScenario ;
+  public: inline GGS_L_5F_inputScenario readProperty_mInputScenario (void) const {
+    return mProperty_mInputScenario ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_L_5F_scenarioList_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMScenarioTitle (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mScenarioTitle = inValue ;
+  }
+
+  public: inline void setter_setMInputScenario (const GGS_L_5F_inputScenario & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mInputScenario = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_L_5F_scenarioList_2E_element (const GGS_lstring & in_mScenarioTitle,
+                                            const GGS_L_5F_inputScenario & in_mInputScenario) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_L_5F_scenarioList_2E_element (const GGS_L_5F_scenarioList_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_L_5F_scenarioList_2E_element & operator = (const GGS_L_5F_scenarioList_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_L_5F_scenarioList_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
+                                                                const class GGS_L_5F_inputScenario & inOperand1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_L_5F_scenarioList_2E_element extractObject (const GGS_object & inObject,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_L_5F_scenarioList_2E_element class_func_new (const class GGS_lstring & inOperand0,
+                                                                        const class GGS_L_5F_inputScenario & inOperand1,
+                                                                        class Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
 //
 // Phase 1: @C_5F_scenarioComponent reference class
 //
@@ -80,8 +348,7 @@ class GGS_C_5F_scenarioComponent : public GGS_AC_5F_job {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_C_5F_scenarioComponent class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -172,8 +439,7 @@ class GGS_C_5F_scenarioComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_C_5F_scenarioComponent_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -226,8 +492,7 @@ class GGS_typeDisplayBDDstats : public GGS_AC_5F_job {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_typeDisplayBDDstats class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -318,24 +583,51 @@ class GGS_typeDisplayBDDstats_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_typeDisplayBDDstats_2E_weak class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @L_5F_jobList list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_L_5F_jobList final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_L_5F_jobList (const class GGS_L_5F_jobList & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_L_5F_jobList_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_L_5F_jobList final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_L_5F_jobList (const class GGS_L_5F_jobList & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_L_5F_jobList_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @L_jobList list
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_L_5F_jobList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public: GGS_L_5F_jobList (void) ;
 
-//--------------------------------- List constructor used by listmap
+//--------------------------------- List constructor by graph
   public: GGS_L_5F_jobList (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
@@ -446,22 +738,9 @@ class GGS_L_5F_jobList : public AC_GALGAS_list {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_L_5F_jobList ;
+  friend class UpEnumerator_L_5F_jobList ;
+  friend class DownEnumerator_L_5F_jobList ;
  
-} ; // End of GGS_L_5F_jobList class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
-  public: cEnumerator_L_5F_jobList (const GGS_L_5F_jobList & inEnumeratedObject,
-                                    const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GGS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_L_5F_jobList_2E_element current (LOCATION_ARGS) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -469,9 +748,7 @@ class cEnumerator_L_5F_jobList : public cGenericAbstractEnumerator {
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @L_5F_jobList_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_L_5F_jobList_2E_element : public AC_GALGAS_root {
@@ -493,14 +770,17 @@ class GGS_L_5F_jobList_2E_element : public AC_GALGAS_root {
     mProperty_mComponent = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_L_5F_jobList_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_L_5F_jobList_2E_element (const GGS_AC_5F_job & in_mComponent) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_L_5F_jobList_2E_element (const GGS_L_5F_jobList_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_L_5F_jobList_2E_element & operator = (const GGS_L_5F_jobList_2E_element & inSource) ;
 
 //-- Start of type generic part
 
@@ -538,17 +818,54 @@ class GGS_L_5F_jobList_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_L_5F_jobList_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_jobList_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-//
+// Phase 1: @M_5F_machinesMap map enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_M_5F_machinesMap final : public cGenericAbstractEnumerator {
+  public: DownEnumerator_M_5F_machinesMap (const class GGS_M_5F_machinesMap & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mInputVariableCount (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+  public: class GGS_M_5F_variablesMap current_mVariablesMap (LOCATION_ARGS) const ;
+  public: class GGS_stringlist current_mNameList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_M_5F_machinesMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_M_5F_machinesMap final : public cGenericAbstractEnumerator {
+  public: UpEnumerator_M_5F_machinesMap (const class GGS_M_5F_machinesMap & inEnumeratedObject) ;
+
+//    public: bool hasCurrentObject (void) const ;
+//    public: void gotoNextObject (void) ;
+//    public: void rewind (void) ;
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mInputVariableCount (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+  public: class GGS_M_5F_variablesMap current_mVariablesMap (LOCATION_ARGS) const ;
+  public: class GGS_stringlist current_mNameList (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_M_5F_machinesMap_2E_element current (LOCATION_ARGS) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @M_machinesMap map
-//
 //--------------------------------------------------------------------------------------------------
 
 class cMapElement_M_5F_machinesMap ;
@@ -703,27 +1020,9 @@ class GGS_M_5F_machinesMap : public AC_GALGAS_map {
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
-  friend class cEnumerator_M_5F_machinesMap ;
+  friend class UpEnumerator_M_5F_machinesMap ;
+  friend class DownEnumerator_M_5F_machinesMap ;
  
-} ; // End of GGS_M_5F_machinesMap class
-
-//--------------------------------------------------------------------------------------------------
-//   Enumerator declaration                                                                      
-//--------------------------------------------------------------------------------------------------
-
-class cEnumerator_M_5F_machinesMap : public cGenericAbstractEnumerator {
-  public: cEnumerator_M_5F_machinesMap (const GGS_M_5F_machinesMap & inEnumeratedObject,
-                                        const EnumerationOrder inOrder) ;
-
-//--- Current element access
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mInputVariableCount (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
-  public: class GGS_M_5F_variablesMap current_mVariablesMap (LOCATION_ARGS) const ;
-  public: class GGS_stringlist current_mNameList (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_M_5F_machinesMap_2E_element current (LOCATION_ARGS) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -769,9 +1068,7 @@ class cMapElement_M_5F_machinesMap : public cMapElement {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @M_5F_machinesMap_2E_element struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_M_5F_machinesMap_2E_element : public AC_GALGAS_root {
@@ -838,9 +1135,6 @@ class GGS_M_5F_machinesMap_2E_element : public AC_GALGAS_root {
     mProperty_mNameList = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_M_5F_machinesMap_2E_element (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -851,6 +1145,12 @@ class GGS_M_5F_machinesMap_2E_element : public AC_GALGAS_root {
                                            const GGS_uint & in_mInputAndInternalVariableCount,
                                            const GGS_M_5F_variablesMap & in_mVariablesMap,
                                            const GGS_stringlist & in_mNameList) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_M_5F_machinesMap_2E_element (const GGS_M_5F_machinesMap_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_M_5F_machinesMap_2E_element & operator = (const GGS_M_5F_machinesMap_2E_element & inSource) ;
 
 //-- Start of type generic part
 
@@ -898,8 +1198,7 @@ class GGS_M_5F_machinesMap_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_M_5F_machinesMap_2E_element class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -977,17 +1276,14 @@ class GGS_M_5F_machinesMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_M_5F_machinesMap_2E_element_3F_ class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 1: @semanticContext struct
-//
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticContext : public AC_GALGAS_root {
@@ -1018,15 +1314,18 @@ class GGS_semanticContext : public AC_GALGAS_root {
     mProperty_machinesMap = inValue ;
   }
 
-//--------------------------------- Virtual destructor
-  public: virtual ~ GGS_semanticContext (void) ;
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_semanticContext (const GGS_L_5F_jobList & in_componentsMap,
                                const GGS_M_5F_machinesMap & in_machinesMap) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_semanticContext (const GGS_semanticContext & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_semanticContext & operator = (const GGS_semanticContext & inSource) ;
 
 //-- Start of type generic part
 
@@ -1066,8 +1365,7 @@ class GGS_semanticContext : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
  
-} ; // End of GGS_semanticContext class
-
+} ;
 
 //--------------------------------------------------------------------------------------------------
 
