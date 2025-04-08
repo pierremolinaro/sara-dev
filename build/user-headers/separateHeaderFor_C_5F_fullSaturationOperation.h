@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_fullSaturationOperation class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_fullSaturationOperation : public cPtr_AC_5F_machineDefinition {

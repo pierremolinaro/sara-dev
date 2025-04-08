@@ -10,8 +10,8 @@ syntax sara_parser (sara_scanner) {
 
 rule <start_symbol> {
   var semanticContext =@semanticContext {
-    !@L_jobList @[]
-    !@M_machinesMap @[]
+    !@L_jobList ()
+    !@M_machinesMap ()
   }
   repeat
     <component> !?semanticContext
@@ -214,8 +214,8 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  var variablesMap =@M_variablesMap @[]
-  var nameList =@stringlist @[]
+  var variablesMap =@M_variablesMap ()
+  var nameList =@stringlist ()
 #--- Machine name
   $machineIdf$ ?let machineName
   $($
@@ -276,8 +276,8 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  var variablesMap =@M_variablesMap @[]
-  var nameList =@stringlist @[]
+  var variablesMap =@M_variablesMap ()
+  var nameList =@stringlist ()
 #--- Machine name
   $modalcompadd$
   $machineIdf$ ?let machineName
@@ -343,8 +343,8 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-  var variablesMap =@M_variablesMap @[]
-  var nameList =@stringlist @[]
+  var variablesMap =@M_variablesMap ()
+  var nameList =@stringlist ()
 #--- Machine name
   $modalcompsub$
   $machineIdf$ ?let machineName
@@ -408,7 +408,7 @@ rule <component>
 #---------------------------------------------------------------------------*
 rule <component> ?!@semanticContext ioSemanticContext {
   $scenario$
-  var variablesMap =@M_variablesMap @[]
+  var variablesMap =@M_variablesMap ()
 #--- Machine name
   $machineIdf$ ?let machineName
 #--- Search machine from machine map
@@ -463,13 +463,13 @@ rule <component> ?!@semanticContext ioSemanticContext {
       + " variables, but machine definition names " + [outputVariablesCountFromDefinition string] + " variables"
   end
   ${$
-  var scenarioList =@L_scenarioList @[]
+  var scenarioList =@L_scenarioList ()
   repeat
     $literal_string$ ? let scenarioTitle
-    var inputScenario =@L_inputScenario @[]
+    var inputScenario =@L_inputScenario ()
     repeat
       $:$
-      var inputConfigurationForScenario =@L_inputConfigurationForScenario @[]
+      var inputConfigurationForScenario =@L_inputConfigurationForScenario ()
       repeat
        $literal_integer$  ? let v
        if v.uint > 1 then
@@ -598,7 +598,7 @@ rule <io_primary>
   !@AC_boolExpression outExpression {
   $machineIdf$ ?let machineIdentifier
   [inSemanticContext.machinesMap searchKey !machineIdentifier ?let indexOfImportedMachine ?let machineInputVariableCount ?let machineInputAndInternalVariableCount ?let machineVariablesMap ?*]
-  var translationVector =@L_translationVector @[]
+  var translationVector =@L_translationVector ()
 #--- Parse input variables
   $($
   repeat
@@ -707,8 +707,8 @@ rule <modalcompadd_definition>
   ?!@M_variablesMap variablesMap
   !@M_modesMap outModeMap
   !@ListForModes outInclusionList {
-  outModeMap = @M_modesMap @[]
-  outInclusionList = @ListForModes @[]
+  outModeMap = @M_modesMap ()
+  outInclusionList = @ListForModes ()
   repeat
     $identifier$ ?let modeName
     $:$
@@ -741,8 +741,8 @@ rule <modalcompsub_definition>
   ?!@M_variablesMap variablesMap
   !@M_modesMap outModeMap
   !@ListForModes outExclusionList {
-  outModeMap = @M_modesMap @[]
-  outExclusionList = @ListForModes @[]
+  outModeMap = @M_modesMap ()
+  outExclusionList = @ListForModes ()
   repeat
     $identifier$ ?let modeName
     $:$
@@ -875,7 +875,7 @@ rule <definition_expression_factor>
   !@AC_machineDefinition outDefinition {
   $machineIdf$ ?let machineIdentifier
   [inSemanticContext.machinesMap searchKey !machineIdentifier ?let indexOfImportedMachine ?let machineInputVariableCount ?let machineInputAndInternalVariableCount ?let machineVariablesMap ?*]
-  var translationVector =@L_translationVector @[]
+  var translationVector =@L_translationVector ()
 #--- Parse input variables
   $($
   repeat
@@ -936,8 +936,8 @@ rule <explicit_automaton>
   ?let @semanticContext inSemanticContext
   ?!@M_variablesMap variablesMap
   !@AC_machineDefinition outDefinition {
-  var statesMap =@M_stateMap @[]
-  var stateDefinitionList =@L_stateDefinition @[]
+  var statesMap =@M_stateMap ()
+  var stateDefinitionList =@L_stateDefinition ()
   $auto$
   ${$
 #--- States declaration
@@ -950,7 +950,7 @@ rule <explicit_automaton>
   end
   $;$
 #--- Initial states
-  var initialStatesDefinitionList =@L_statesDefinitionList @[]
+  var initialStatesDefinitionList =@L_statesDefinitionList ()
   $first$
   repeat
     $identifier$ ?let initialState
@@ -961,7 +961,7 @@ rule <explicit_automaton>
   end
   $;$
 #--- terminal states
-  var terminalStatesDefinitionList =@L_statesDefinitionList @[]
+  var terminalStatesDefinitionList =@L_statesDefinitionList ()
   select
   or
     $last$
@@ -975,7 +975,7 @@ rule <explicit_automaton>
     $;$
   end
 #--- Parse state definitions
-  var stateDefinitionMap =@M_stateMap @[]
+  var stateDefinitionMap =@M_stateMap ()
   repeat
   #--- Current state
     $identifier$ ?let stateName
@@ -987,7 +987,7 @@ rule <explicit_automaton>
     let @location endOfStateExpression = @location.here
     ${$
   #--- Parse state transition
-    var transitionsList =@L_transitionDefinition @[]
+    var transitionsList =@L_transitionDefinition ()
     repeat
     while
       <io_bool_expression> !inSemanticContext !?variablesMap ?let transitionInputExpression

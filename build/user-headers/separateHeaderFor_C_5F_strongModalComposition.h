@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_strongModalComposition class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_strongModalComposition : public cPtr_AC_5F_machineDefinition {

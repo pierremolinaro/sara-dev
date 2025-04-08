@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_importBoolMachine class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_importBoolMachine : public cPtr_AC_5F_boolExpression {

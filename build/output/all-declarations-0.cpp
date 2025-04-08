@@ -8,9 +8,7 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@_32_lstringlist' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_lstringlist : public cCollectionElement {
@@ -103,9 +101,8 @@ GGS__32_lstringlist GGS__32_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::enterElement (const GGS__32_lstringlist_2E_element & inValue,
-                                        Compiler * /* inCompiler */
-                                        COMMA_LOCATION_ARGS) {
+void GGS__32_lstringlist::plusPlusAssignOperation (const GGS__32_lstringlist_2E_element & inValue
+                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement__32_lstringlist (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -144,9 +141,9 @@ void GGS__32_lstringlist::makeAttributesFromObjects (capCollectionElement & outA
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::addAssign_operation (const GGS_lstring & inOperand0,
-                                               const GGS_lstring & inOperand1
-                                               COMMA_LOCATION_ARGS) {
+void GGS__32_lstringlist::addAssignOperation (const GGS_lstring & inOperand0,
+                                              const GGS_lstring & inOperand1
+                                              COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement__32_lstringlist (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -336,9 +333,9 @@ GGS__32_lstringlist GGS__32_lstringlist::getter_subListToIndex (const GGS_uint &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_lstringlist::plusAssign_operation (const GGS__32_lstringlist inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__32_lstringlist::plusAssignOperation (const GGS__32_lstringlist inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -1584,55 +1581,55 @@ GGS_luint Lexique_sara_5F_scanner::synthetizedAttribute_ulongValue (void) const 
 
 GGS_stringlist Lexique_sara_5F_scanner::symbols (LOCATION_ARGS) {
   GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  result.addAssign_operation (GGS_string ("identifier") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("literal_string") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("machineIdf") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("literal_integer") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("comment") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("auto") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("state") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("first") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("last") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("goto") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("true") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("false") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("nofirst") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("nolast") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("modalcompadd") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("exclude") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("modalcompsub") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("include") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("to") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("scenario") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("trans") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("display") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("bdd") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("bool") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("map") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("check") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("checkbool") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("checkidentical") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (",") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (";") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("{") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("}") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("->") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("&") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("~") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("\?") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("!") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("|") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("||") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("+") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("(") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (")") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string (":=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("^") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("=") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("*") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("@") COMMA_HERE) ;
-  result.addAssign_operation (GGS_string ("**") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literal_string") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("machineIdf") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("literal_integer") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("comment") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("auto") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("state") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("first") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("last") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("goto") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("true") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("false") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("nofirst") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("nolast") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("modalcompadd") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("exclude") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("modalcompsub") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("include") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("to") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("scenario") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("trans") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("display") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("bdd") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("bool") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("map") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("check") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("checkbool") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("checkidentical") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (",") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (";") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("{") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("}") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("->") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("~") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("\?") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("!") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("|") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("||") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("+") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("(") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (")") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string (":=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("^") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("*") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("@") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("**") COMMA_HERE) ;
   return result ;
 }
 
@@ -1900,51 +1897,6 @@ GGS_M_5F_variablesMap GGS_M_5F_variablesMap::getter_overriddenMap (Compiler * in
                                                                    COMMA_LOCATION_ARGS) const {
   GGS_M_5F_variablesMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_M_5F_variablesMap::enterElement (const GGS_M_5F_variablesMap_2E_element & inValue,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_variablesMap * p = nullptr ;
-  macroMyNew (p, cMapElement_M_5F_variablesMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@M_5F_variablesMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_M_5F_variablesMap::addAssign_operation (const GGS_lstring & inKey,
-                                                 const GGS_uint & inArgument0,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_variablesMap * p = nullptr ;
-  macroMyNew (p, cMapElement_M_5F_variablesMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@M_5F_variablesMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_variablesMap GGS_M_5F_variablesMap::add_operation (const GGS_M_5F_variablesMap & inOperand,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_M_5F_variablesMap result = *this ;
-  UpEnumerator_M_5F_variablesMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
   return result ;
 }
 
@@ -2248,51 +2200,6 @@ GGS_M_5F_stateMap GGS_M_5F_stateMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_M_5F_stateMap::enterElement (const GGS_M_5F_stateMap_2E_element & inValue,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_stateMap * p = nullptr ;
-  macroMyNew (p, cMapElement_M_5F_stateMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@M_5F_stateMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_M_5F_stateMap::addAssign_operation (const GGS_lstring & inKey,
-                                             const GGS_uint & inArgument0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_stateMap * p = nullptr ;
-  macroMyNew (p, cMapElement_M_5F_stateMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@M_5F_stateMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_stateMap GGS_M_5F_stateMap::add_operation (const GGS_M_5F_stateMap & inOperand,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_M_5F_stateMap result = *this ;
-  UpEnumerator_M_5F_stateMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_M_5F_stateMap::setter_insertKey (GGS_lstring inKey,
                                           GGS_uint inArgument0,
                                           Compiler * inCompiler
@@ -2492,9 +2399,7 @@ GGS_M_5F_stateMap GGS_M_5F_stateMap::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@L_5F_translationVector' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_L_5F_translationVector : public cCollectionElement {
@@ -2581,9 +2486,8 @@ GGS_L_5F_translationVector GGS_L_5F_translationVector::init (Compiler * COMMA_UN
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_translationVector::enterElement (const GGS_L_5F_translationVector_2E_element & inValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) {
+void GGS_L_5F_translationVector::plusPlusAssignOperation (const GGS_L_5F_translationVector_2E_element & inValue
+                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_L_5F_translationVector (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -2619,8 +2523,8 @@ void GGS_L_5F_translationVector::makeAttributesFromObjects (capCollectionElement
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_translationVector::addAssign_operation (const GGS_uint & inOperand0
-                                                      COMMA_LOCATION_ARGS) {
+void GGS_L_5F_translationVector::addAssignOperation (const GGS_uint & inOperand0
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_L_5F_translationVector (inOperand0 COMMA_THERE)) ;
@@ -2793,9 +2697,9 @@ GGS_L_5F_translationVector GGS_L_5F_translationVector::getter_subListToIndex (co
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_translationVector::plusAssign_operation (const GGS_L_5F_translationVector inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_L_5F_translationVector::plusAssignOperation (const GGS_L_5F_translationVector inOperand,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -2951,6 +2855,11 @@ ComparisonResult GGS_AC_5F_boolExpression::objectCompare (const GGS_AC_5F_boolEx
 
 GGS_AC_5F_boolExpression::GGS_AC_5F_boolExpression (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_AC_5F_boolExpression::
+AC_5F_boolExpression_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5895,9 +5804,7 @@ GGS_C_5F_falseExpression_2E_weak GGS_C_5F_falseExpression_2E_weak::extractObject
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@L_5F_transitionDefinition' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_L_5F_transitionDefinition : public cCollectionElement {
@@ -5996,9 +5903,8 @@ GGS_L_5F_transitionDefinition GGS_L_5F_transitionDefinition::init (Compiler * CO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_transitionDefinition::enterElement (const GGS_L_5F_transitionDefinition_2E_element & inValue,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_LOCATION_ARGS) {
+void GGS_L_5F_transitionDefinition::plusPlusAssignOperation (const GGS_L_5F_transitionDefinition_2E_element & inValue
+                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_L_5F_transitionDefinition (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -6040,10 +5946,10 @@ void GGS_L_5F_transitionDefinition::makeAttributesFromObjects (capCollectionElem
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_transitionDefinition::addAssign_operation (const GGS_AC_5F_boolExpression & inOperand0,
-                                                         const GGS_location & inOperand1,
-                                                         const GGS_uint & inOperand2
-                                                         COMMA_LOCATION_ARGS) {
+void GGS_L_5F_transitionDefinition::addAssignOperation (const GGS_AC_5F_boolExpression & inOperand0,
+                                                        const GGS_location & inOperand1,
+                                                        const GGS_uint & inOperand2
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_L_5F_transitionDefinition (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -6250,9 +6156,9 @@ GGS_L_5F_transitionDefinition GGS_L_5F_transitionDefinition::getter_subListToInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_transitionDefinition::plusAssign_operation (const GGS_L_5F_transitionDefinition inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_L_5F_transitionDefinition::plusAssignOperation (const GGS_L_5F_transitionDefinition inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -6475,9 +6381,7 @@ GGS_L_5F_transitionDefinition GGS_L_5F_transitionDefinition::extractObject (cons
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@L_5F_stateDefinition' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_L_5F_stateDefinition : public cCollectionElement {
@@ -6582,9 +6486,8 @@ GGS_L_5F_stateDefinition GGS_L_5F_stateDefinition::init (Compiler * COMMA_UNUSED
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_stateDefinition::enterElement (const GGS_L_5F_stateDefinition_2E_element & inValue,
-                                             Compiler * /* inCompiler */
-                                             COMMA_LOCATION_ARGS) {
+void GGS_L_5F_stateDefinition::plusPlusAssignOperation (const GGS_L_5F_stateDefinition_2E_element & inValue
+                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_L_5F_stateDefinition (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -6629,11 +6532,11 @@ void GGS_L_5F_stateDefinition::makeAttributesFromObjects (capCollectionElement &
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_stateDefinition::addAssign_operation (const GGS_uint & inOperand0,
-                                                    const GGS_AC_5F_boolExpression & inOperand1,
-                                                    const GGS_location & inOperand2,
-                                                    const GGS_L_5F_transitionDefinition & inOperand3
-                                                    COMMA_LOCATION_ARGS) {
+void GGS_L_5F_stateDefinition::addAssignOperation (const GGS_uint & inOperand0,
+                                                   const GGS_AC_5F_boolExpression & inOperand1,
+                                                   const GGS_location & inOperand2,
+                                                   const GGS_L_5F_transitionDefinition & inOperand3
+                                                   COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_L_5F_stateDefinition (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -6857,9 +6760,9 @@ GGS_L_5F_stateDefinition GGS_L_5F_stateDefinition::getter_subListToIndex (const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_stateDefinition::plusAssign_operation (const GGS_L_5F_stateDefinition inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_L_5F_stateDefinition::plusAssignOperation (const GGS_L_5F_stateDefinition inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7127,9 +7030,7 @@ GGS_L_5F_stateDefinition GGS_L_5F_stateDefinition::extractObject (const GGS_obje
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@L_5F_statesDefinitionList' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_L_5F_statesDefinitionList : public cCollectionElement {
@@ -7222,9 +7123,8 @@ GGS_L_5F_statesDefinitionList GGS_L_5F_statesDefinitionList::init (Compiler * CO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_statesDefinitionList::enterElement (const GGS_L_5F_statesDefinitionList_2E_element & inValue,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_LOCATION_ARGS) {
+void GGS_L_5F_statesDefinitionList::plusPlusAssignOperation (const GGS_L_5F_statesDefinitionList_2E_element & inValue
+                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_L_5F_statesDefinitionList (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -7263,9 +7163,9 @@ void GGS_L_5F_statesDefinitionList::makeAttributesFromObjects (capCollectionElem
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_statesDefinitionList::addAssign_operation (const GGS_uint & inOperand0,
-                                                         const GGS_location & inOperand1
-                                                         COMMA_LOCATION_ARGS) {
+void GGS_L_5F_statesDefinitionList::addAssignOperation (const GGS_uint & inOperand0,
+                                                        const GGS_location & inOperand1
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_L_5F_statesDefinitionList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -7455,9 +7355,9 @@ GGS_L_5F_statesDefinitionList GGS_L_5F_statesDefinitionList::getter_subListToInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_statesDefinitionList::plusAssign_operation (const GGS_L_5F_statesDefinitionList inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_L_5F_statesDefinitionList::plusAssignOperation (const GGS_L_5F_statesDefinitionList inOperand,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -7658,6 +7558,11 @@ ComparisonResult GGS_AC_5F_machineDefinition::objectCompare (const GGS_AC_5F_mac
 
 GGS_AC_5F_machineDefinition::GGS_AC_5F_machineDefinition (void) :
 AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_AC_5F_machineDefinition::
+AC_5F_machineDefinition_init (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7960,52 +7865,6 @@ GGS_M_5F_modesMap GGS_M_5F_modesMap::getter_overriddenMap (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_M_5F_modesMap::enterElement (const GGS_M_5F_modesMap_2E_element & inValue,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_modesMap * p = nullptr ;
-  macroMyNew (p, cMapElement_M_5F_modesMap (inValue COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@M_5F_modesMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_M_5F_modesMap::addAssign_operation (const GGS_lstring & inKey,
-                                             const GGS_uint & inArgument0,
-                                             const GGS_AC_5F_machineDefinition & inArgument1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  cMapElement_M_5F_modesMap * p = nullptr ;
-  macroMyNew (p, cMapElement_M_5F_modesMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@M_5F_modesMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_modesMap GGS_M_5F_modesMap::add_operation (const GGS_M_5F_modesMap & inOperand,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_M_5F_modesMap result = *this ;
-  UpEnumerator_M_5F_modesMap enumerator (inOperand) ;
-  while (enumerator.hasCurrentObject ()) {
-    result.addAssign_operation (enumerator.current_lkey (HERE), enumerator.current_mIndex (HERE), enumerator.current_mModeDefinition (HERE), inCompiler COMMA_THERE) ;
-    enumerator.gotoNextObject () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_M_5F_modesMap::setter_insertKey (GGS_lstring inKey,
                                           GGS_uint inArgument0,
                                           GGS_AC_5F_machineDefinition inArgument1,
@@ -8238,9 +8097,7 @@ GGS_M_5F_modesMap GGS_M_5F_modesMap::extractObject (const GGS_object & inObject,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@ListForModes' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_ListForModes : public cCollectionElement {
@@ -8333,9 +8190,8 @@ GGS_ListForModes GGS_ListForModes::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ListForModes::enterElement (const GGS_ListForModes_2E_element & inValue,
-                                     Compiler * /* inCompiler */
-                                     COMMA_LOCATION_ARGS) {
+void GGS_ListForModes::plusPlusAssignOperation (const GGS_ListForModes_2E_element & inValue
+                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_ListForModes (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -8374,9 +8230,9 @@ void GGS_ListForModes::makeAttributesFromObjects (capCollectionElement & outAttr
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ListForModes::addAssign_operation (const GGS_uint & inOperand0,
-                                            const GGS_uint & inOperand1
-                                            COMMA_LOCATION_ARGS) {
+void GGS_ListForModes::addAssignOperation (const GGS_uint & inOperand0,
+                                           const GGS_uint & inOperand1
+                                           COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_ListForModes (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -8566,9 +8422,9 @@ GGS_ListForModes GGS_ListForModes::getter_subListToIndex (const GGS_uint & inInd
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ListForModes::plusAssign_operation (const GGS_ListForModes inOperand,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_ListForModes::plusAssignOperation (const GGS_ListForModes inOperand,
+                                            Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -13925,6 +13781,11 @@ GGS_AC_5F_job::GGS_AC_5F_job (void) :
 AC_GALGAS_reference_class () {
 }
 
+
+void cPtr_AC_5F_job::
+AC_5F_job_init (Compiler * /* inCompiler */) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
 GGS_AC_5F_job::GGS_AC_5F_job (const cPtr_AC_5F_job * inSourcePtr) :
@@ -15996,9 +15857,7 @@ GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak GGS_C_5F_machineDefinedBy
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@L_5F_inputConfigurationForScenario' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_L_5F_inputConfigurationForScenario : public cCollectionElement {
@@ -16085,9 +15944,8 @@ GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::i
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputConfigurationForScenario::enterElement (const GGS_L_5F_inputConfigurationForScenario_2E_element & inValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
+void GGS_L_5F_inputConfigurationForScenario::plusPlusAssignOperation (const GGS_L_5F_inputConfigurationForScenario_2E_element & inValue
+                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_L_5F_inputConfigurationForScenario (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -16123,8 +15981,8 @@ void GGS_L_5F_inputConfigurationForScenario::makeAttributesFromObjects (capColle
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputConfigurationForScenario::addAssign_operation (const GGS_luint & inOperand0
-                                                                  COMMA_LOCATION_ARGS) {
+void GGS_L_5F_inputConfigurationForScenario::addAssignOperation (const GGS_luint & inOperand0
+                                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_L_5F_inputConfigurationForScenario (inOperand0 COMMA_THERE)) ;
@@ -16297,9 +16155,9 @@ GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::g
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputConfigurationForScenario::plusAssign_operation (const GGS_L_5F_inputConfigurationForScenario inOperand,
-                                                                   Compiler * /* inCompiler */
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_L_5F_inputConfigurationForScenario::plusAssignOperation (const GGS_L_5F_inputConfigurationForScenario inOperand,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -16432,9 +16290,7 @@ GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::e
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Class for element of '@L_5F_inputScenario' list
-//
 //--------------------------------------------------------------------------------------------------
 
 class cCollectionElement_L_5F_inputScenario : public cCollectionElement {
@@ -16521,9 +16377,8 @@ GGS_L_5F_inputScenario GGS_L_5F_inputScenario::init (Compiler * COMMA_UNUSED_LOC
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputScenario::enterElement (const GGS_L_5F_inputScenario_2E_element & inValue,
-                                           Compiler * /* inCompiler */
-                                           COMMA_LOCATION_ARGS) {
+void GGS_L_5F_inputScenario::plusPlusAssignOperation (const GGS_L_5F_inputScenario_2E_element & inValue
+                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * p = nullptr ;
   macroMyNew (p, cCollectionElement_L_5F_inputScenario (inValue COMMA_THERE)) ;
   capCollectionElement attributes ;
@@ -16559,8 +16414,8 @@ void GGS_L_5F_inputScenario::makeAttributesFromObjects (capCollectionElement & o
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputScenario::addAssign_operation (const GGS_L_5F_inputConfigurationForScenario & inOperand0
-                                                  COMMA_LOCATION_ARGS) {
+void GGS_L_5F_inputScenario::addAssignOperation (const GGS_L_5F_inputConfigurationForScenario & inOperand0
+                                                 COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     cCollectionElement * p = nullptr ;
     macroMyNew (p, cCollectionElement_L_5F_inputScenario (inOperand0 COMMA_THERE)) ;
@@ -16733,9 +16588,9 @@ GGS_L_5F_inputScenario GGS_L_5F_inputScenario::getter_subListToIndex (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputScenario::plusAssign_operation (const GGS_L_5F_inputScenario inOperand,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_L_5F_inputScenario::plusAssignOperation (const GGS_L_5F_inputScenario inOperand,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
 }
 
@@ -16862,6 +16717,511 @@ GGS_L_5F_inputScenario GGS_L_5F_inputScenario::extractObject (const GGS_object &
       result = *p ;
     }else{
       inCompiler->castError ("L_inputScenario", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@L_5F_scenarioList' list
+//--------------------------------------------------------------------------------------------------
+
+class cCollectionElement_L_5F_scenarioList : public cCollectionElement {
+  public: GGS_L_5F_scenarioList_2E_element mObject ;
+
+//--- Class functions
+  public: cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                const GGS_L_5F_inputScenario & in_mInputScenario
+                                                COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+
+//--- Virtual method that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public: virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                                            const GGS_L_5F_inputScenario & in_mInputScenario
+                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mScenarioTitle, in_mInputScenario) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_L_5F_scenarioList::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_L_5F_scenarioList::copy (void) {
+  cCollectionElement * result = nullptr ;
+  macroMyNew (result, cCollectionElement_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cCollectionElement_L_5F_scenarioList::description (String & ioString, const int32_t inIndentation) const {
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mScenarioTitle" ":") ;
+  mObject.mProperty_mScenarioTitle.description (ioString, inIndentation) ;
+  ioString.appendNewLine () ;
+  ioString.appendStringMultiple ("| ", inIndentation) ;
+  ioString.appendCString ("mInputScenario" ":") ;
+  mObject.mProperty_mInputScenario.description (ioString, inIndentation) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (void) :
+AC_GALGAS_list () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  return GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::plusPlusAssignOperation (const GGS_L_5F_scenarioList_2E_element & inValue
+                                                     COMMA_LOCATION_ARGS) {
+  cCollectionElement * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_scenarioList (inValue COMMA_THERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  appendObject (attributes) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                       const GGS_L_5F_inputScenario & inOperand1
+                                                                       COMMA_LOCATION_ARGS) {
+  GGS_L_5F_scenarioList result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GGS_L_5F_scenarioList (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GGS_L_5F_scenarioList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                       const GGS_lstring & in_mScenarioTitle,
+                                                       const GGS_L_5F_inputScenario & in_mInputScenario
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement_L_5F_scenarioList * p = nullptr ;
+  macroMyNew (p, cCollectionElement_L_5F_scenarioList (in_mScenarioTitle,
+                                                       in_mInputScenario COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::addAssignOperation (const GGS_lstring & inOperand0,
+                                                const GGS_L_5F_inputScenario & inOperand1
+                                                COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_append (const GGS_lstring inOperand0,
+                                           const GGS_L_5F_inputScenario inOperand1,
+                                           Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                  const GGS_L_5F_inputScenario inOperand1,
+                                                  const GGS_uint inInsertionIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    cCollectionElement * p = nullptr ;
+    macroMyNew (p, cCollectionElement_L_5F_scenarioList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                  GGS_L_5F_inputScenario & outOperand1,
+                                                  const GGS_uint inRemoveIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+    if (nullptr == p) {
+      drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+      outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+      outOperand1 = p->mObject.mProperty_mInputScenario ;
+    }
+  }else{
+    drop () ;    
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_popFirst (GGS_lstring & outOperand0,
+                                             GGS_L_5F_inputScenario & outOperand1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_popLast (GGS_lstring & outOperand0,
+                                            GGS_L_5F_inputScenario & outOperand1,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::method_first (GGS_lstring & outOperand0,
+                                          GGS_L_5F_inputScenario & outOperand1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::method_last (GGS_lstring & outOperand0,
+                                         GGS_L_5F_inputScenario & outOperand1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  if (nullptr == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    outOperand0 = p->mObject.mProperty_mScenarioTitle ;
+    outOperand1 = p->mObject.mProperty_mInputScenario ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::add_operation (const GGS_L_5F_scenarioList & inOperand,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListWithRange (const GGS_range & inRange,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_L_5F_scenarioList result = GGS_L_5F_scenarioList::class_func_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::plusAssignOperation (const GGS_L_5F_scenarioList inOperand,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_setMScenarioTitleAtIndex (GGS_lstring inOperand,
+                                                             GGS_uint inIndex,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mScenarioTitle = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_L_5F_scenarioList::getter_mScenarioTitleAtIndex (const GGS_uint & inIndex,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  GGS_lstring result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    result = p->mObject.mProperty_mScenarioTitle ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_L_5F_scenarioList::setter_setMInputScenarioAtIndex (GGS_L_5F_inputScenario inOperand,
+                                                             GGS_uint inIndex,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mInputScenario = inOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario GGS_L_5F_scenarioList::getter_mInputScenarioAtIndex (const GGS_uint & inIndex,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) attributes.ptr () ;
+  GGS_L_5F_inputScenario result ;
+  if (nullptr != p) {
+    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    result = p->mObject.mProperty_mInputScenario ;
+  }
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @L_5F_scenarioList
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_L_5F_scenarioList::DownEnumerator_L_5F_scenarioList (const GGS_L_5F_scenarioList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Down) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList_2E_element DownEnumerator_L_5F_scenarioList::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_L_5F_scenarioList::current_mScenarioTitle (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mScenarioTitle ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario DownEnumerator_L_5F_scenarioList::current_mInputScenario (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mInputScenario ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @L_5F_scenarioList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_L_5F_scenarioList::UpEnumerator_L_5F_scenarioList (const GGS_L_5F_scenarioList & inEnumeratedObject) :
+cGenericAbstractEnumerator (EnumerationOrder::Up) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList_2E_element UpEnumerator_L_5F_scenarioList::current (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_L_5F_scenarioList::current_mScenarioTitle (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mScenarioTitle ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_inputScenario UpEnumerator_L_5F_scenarioList::current_mInputScenario (LOCATION_ARGS) const {
+  const cCollectionElement_L_5F_scenarioList * p = (const cCollectionElement_L_5F_scenarioList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+  return p->mObject.mProperty_mInputScenario ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @L_scenarioList generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor kTypeDescriptor_GALGAS_L_5F_scenarioList ("L_scenarioList",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GGS_L_5F_scenarioList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_L_5F_scenarioList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_L_5F_scenarioList::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_L_5F_scenarioList (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_L_5F_scenarioList GGS_L_5F_scenarioList::extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  GGS_L_5F_scenarioList result ;
+  const GGS_L_5F_scenarioList * p = (const GGS_L_5F_scenarioList *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_L_5F_scenarioList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("L_scenarioList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

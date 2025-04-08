@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_falseExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_falseExpression : public cPtr_AC_5F_boolExpression {

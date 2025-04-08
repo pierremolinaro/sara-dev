@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_importMachine class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_importMachine : public cPtr_AC_5F_machineDefinition {

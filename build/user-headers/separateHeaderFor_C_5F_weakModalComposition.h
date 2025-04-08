@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_weakModalComposition class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_weakModalComposition : public cPtr_AC_5F_machineDefinition {

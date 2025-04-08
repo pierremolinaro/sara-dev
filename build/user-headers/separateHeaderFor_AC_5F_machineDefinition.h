@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @AC_machineDefinition class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_AC_5F_machineDefinition : public acStrongPtr_class {

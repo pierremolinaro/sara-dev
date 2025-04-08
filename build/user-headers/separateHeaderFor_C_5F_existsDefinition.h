@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_existsDefinition class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_existsDefinition : public cPtr_AC_5F_machineDefinition {

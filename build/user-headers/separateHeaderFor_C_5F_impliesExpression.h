@@ -4,9 +4,7 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//
 // Phase 2: pointer class for @C_impliesExpression class
-//
 //--------------------------------------------------------------------------------------------------
 
 class cPtr_C_5F_impliesExpression : public cPtr_AC_5F_boolExpression {
