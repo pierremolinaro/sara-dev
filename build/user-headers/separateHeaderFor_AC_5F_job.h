@@ -20,7 +20,7 @@ class cPtr_AC_5F_job : public acStrongPtr_class {
 //--- START OF USER ZONE 2
 
   public : virtual void compute (Compiler * inCompiler,
-                                 TC_Array <C_saraMachine> & ioSaraSystemArray,
+                                 GenericArray <C_saraMachine> & ioSaraSystemArray,
                                  const bool inDisplayBDDvaluesCount,
                                  const bool inDisplayBDDvalues) const = 0 ;
 
@@ -39,7 +39,7 @@ class cPtr_AC_5F_job : public acStrongPtr_class {
                                     const int32_t inIndentation) const override = 0 ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override = 0 ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
 
 } ;
 

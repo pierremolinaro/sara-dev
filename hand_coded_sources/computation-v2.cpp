@@ -20,8 +20,7 @@
 
 #include "sara_parser.h"
 #include "Compiler.h"
-//#include "C_galgas_io.h"
-#include "TC_Array.h"
+#include "GenericArray.h"
 #include "MF_MemoryControl.h"
 #include "cDisplayBDD.h"
 #include "printBDD.h"
@@ -31,7 +30,7 @@
 
 BinaryDecisionDiagram cPtr_C_5F_VariableExpression::
 computeBDD (Compiler * /* inCompiler */,
-            const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+            const GenericArray <C_saraMachine> & /* inSaraSystemArray */,
             const uint32_t /* inVariablesCount */,
             const uint32_t inBDDslotOffset) const {
   return BinaryDecisionDiagram ( (mProperty_mInputVarIndex.uintValue () + inBDDslotOffset), true) ;
@@ -41,7 +40,7 @@ computeBDD (Compiler * /* inCompiler */,
 
 BinaryDecisionDiagram cPtr_C_5F_trueExpression::
 computeBDD (Compiler * /* inCompiler */,
-            const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+            const GenericArray <C_saraMachine> & /* inSaraSystemArray */,
             const uint32_t /* inVariablesCount */,
             const uint32_t /* inBDDslotOffset */) const {
   return ~ BinaryDecisionDiagram () ;
@@ -51,7 +50,7 @@ computeBDD (Compiler * /* inCompiler */,
 
 BinaryDecisionDiagram cPtr_C_5F_falseExpression::
 computeBDD (Compiler * /* inCompiler */,
-            const TC_Array <C_saraMachine> & /* inSaraSystemArray */,
+            const GenericArray <C_saraMachine> & /* inSaraSystemArray */,
             const uint32_t /* inVariablesCount */,
             const uint32_t /* inBDDslotOffset */) const {
   return BinaryDecisionDiagram () ;
@@ -61,7 +60,7 @@ computeBDD (Compiler * /* inCompiler */,
 
 BinaryDecisionDiagram cPtr_C_5F_notExpression::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mExpression.ptr () ;
@@ -72,7 +71,7 @@ computeBDD (Compiler * inCompiler,
 
 BinaryDecisionDiagram cPtr_C_5F_andExpression::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
@@ -85,7 +84,7 @@ computeBDD (Compiler * inCompiler,
 
 BinaryDecisionDiagram cPtr_C_5F_orExpression::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
@@ -98,7 +97,7 @@ computeBDD (Compiler * inCompiler,
 
 BinaryDecisionDiagram cPtr_C_5F_xorExpression::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
@@ -111,7 +110,7 @@ computeBDD (Compiler * inCompiler,
 
 BinaryDecisionDiagram cPtr_C_5F_impliesExpression::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
@@ -124,7 +123,7 @@ computeBDD (Compiler * inCompiler,
 
 BinaryDecisionDiagram cPtr_C_5F_equalExpression::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t inVariablesCount,
             const uint32_t inBDDslotOffset) const {
   auto p = (const cPtr_AC_5F_boolExpression *) mProperty_mLeftExpression.ptr () ;
@@ -137,7 +136,7 @@ computeBDD (Compiler * inCompiler,
 
 BinaryDecisionDiagram cPtr_C_5F_importBoolMachine::
 computeBDD (Compiler * inCompiler,
-            const TC_Array <C_saraMachine> & inSaraSystemArray,
+            const GenericArray <C_saraMachine> & inSaraSystemArray,
             const uint32_t /* inVariablesCount */,
             const uint32_t /* inBDDslotOffset */) const {
 //--- Get index of imported machine
@@ -148,13 +147,13 @@ computeBDD (Compiler * inCompiler,
   const BinaryDecisionDiagram transitionsOfImportedMachine = inSaraSystemArray (indexOfImportedMachine COMMA_HERE).mTransitionRelationBDD ;
   if (initialStatesOfImportedMachine != (terminalStatesOfImportedMachine)) {
     String errorMessage ("this machine is not combinatory (initial states != terminal states), so it cannot be imported in boolean expression") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
   const uint32_t importedMachineVariableCount =  mProperty_mTranslationVector.count () ;
   const BinaryDecisionDiagram boolAccessibilityRelationBDD = initialStatesOfImportedMachine & initialStatesOfImportedMachine.translate (importedMachineVariableCount, importedMachineVariableCount) ;
   if (boolAccessibilityRelationBDD != (transitionsOfImportedMachine)) {
     String errorMessage ("this machine is not combinatory (transitions != initial states x initial states), so it cannot be imported in boolean expression") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
 //--- Construct substitution arraies
   uint32_t * statesSubstitutionArray = NULL ;
@@ -210,7 +209,7 @@ void routine_performComputations_3F_ (const GGS_L_5F_jobList inComponentMap,
                                       Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
-    TC_Array <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
+    GenericArray <C_saraMachine> saraSystemArray (0 COMMA_HERE) ;
   //--- Options
     const bool displayBDDvaluesCount = gOption_sara_5F_cli_5F_options_displayBDDvaluesCount.mValue ;
     const bool displayBDDvalues = gOption_sara_5F_cli_5F_options_displayBDDvalues.mValue ;
@@ -230,7 +229,7 @@ void routine_performComputations_3F_ (const GGS_L_5F_jobList inComponentMap,
 
 void cPtr_C_5F_machineComponent::
 compute (Compiler * inCompiler,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
   gCout.appendString ("------------------ Computations for '") ;
@@ -241,10 +240,10 @@ compute (Compiler * inCompiler,
 //--- Build input variables array names
   const uint32_t inputVariablesCount = mProperty_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const uint32_t variableCount = mProperty_mVariablesMap.count () ;
+  const uint32_t variableCount = uint32_t (mProperty_mVariablesMap.count ()) ;
   const uint32_t inputAndInternalVariablesCount = mProperty_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_Array <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
+  { GenericArray <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   UpEnumerator_stringlist currentVar (mProperty_mNameList) ;
@@ -282,7 +281,7 @@ compute (Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---
-  TC_Array <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+  GenericArray <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
   for (uint32_t i=0 ; i<variableCount ; i++) {
     transitionsVariableNameArray ((int32_t) i COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
     transitionsVariableNameArray ((int32_t)  (variableCount + i) COMMA_HERE) = machine.mNamesArray ((int32_t) i COMMA_HERE) ;
@@ -405,7 +404,7 @@ compute (Compiler * inCompiler,
 
 void cPtr_C_5F_machineCheckIdentical::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
@@ -500,7 +499,7 @@ compute (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_machineDisplayStates::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
@@ -520,7 +519,7 @@ compute (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_machineDisplayInitialStates::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
@@ -540,7 +539,7 @@ compute (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_machineDisplayTerminalStates::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
@@ -559,7 +558,7 @@ compute (Compiler * /* inCompiler */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_5F_machineDisplayTransitions::compute (Compiler * /* inCompiler */,
-                                                   TC_Array <C_saraMachine> & ioSaraSystemArray,
+                                                   GenericArray <C_saraMachine> & ioSaraSystemArray,
                                                    const bool /* inDisplayBDDvaluesCount */,
                                                    const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
@@ -598,7 +597,7 @@ void cPtr_C_5F_machineDisplayTransitions::compute (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_machineCheck::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
 //--- Get machine index
@@ -677,7 +676,7 @@ compute (Compiler * /* inCompiler */,
     gCout.appendString (" ambiguous transition") ;
     gCout.appendString ((n > 1) ? "s" : "");
     gCout.appendString (":\n") ;
-    TC_Array <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+    GenericArray <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
     for (int32_t i=0 ; i<(int32_t)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
       transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
@@ -696,7 +695,7 @@ compute (Compiler * /* inCompiler */,
     gCout.appendString (" incomplete state") ;
     gCout.appendString ((n > 1) ? "s" : "");
     gCout.appendString (":\n") ;
-    TC_Array <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+    GenericArray <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
     for (int32_t i=0 ; i<(int32_t)variableCount ; i++) {
       transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
       transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
@@ -742,7 +741,7 @@ compute (Compiler * /* inCompiler */,
 
 void cPtr_typeDisplayBDDstats::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   gCout.appendString ("------------------ bdd: print BDD package statistics.\n") ;
@@ -753,7 +752,7 @@ compute (Compiler * /* inCompiler */,
 
 //void cPtr_typeResizeMap::
 //compute (Compiler * /* inCompiler */,
-//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_Timer duree ;
@@ -772,7 +771,7 @@ compute (Compiler * /* inCompiler */,
 
 //void cPtr_typeResize_5F_AND_5F_cache::
 //compute (Compiler * /* inCompiler */,
-//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_Timer duree ;
@@ -791,7 +790,7 @@ compute (Compiler * /* inCompiler */,
 
 //void cPtr_typeResize_5F_ITE_5F_cache::
 //compute (Compiler * /* inCompiler */,
-//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* C_Timer duree ;
@@ -810,7 +809,7 @@ compute (Compiler * /* inCompiler */,
 
 //void cPtr_typeUse_5F_AND::
 //compute (Compiler * /* inCompiler */,
-//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* BinaryDecisionDiagram::setComputingMode (BinaryDecisionDiagram::ITE_COMPUTED_FROM_AND) ;
@@ -821,7 +820,7 @@ compute (Compiler * /* inCompiler */,
 
 //void cPtr_typeUse_5F_ITE::
 //compute (Compiler * /* inCompiler */,
-//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* BinaryDecisionDiagram::setComputingMode (BinaryDecisionDiagram::AND_COMPUTED_FROM_ITE) ;
@@ -832,7 +831,7 @@ compute (Compiler * /* inCompiler */,
 
 //void cPtr_typeUse_5F_AND_5F_ITE::
 //compute (Compiler * /* inCompiler */,
-//         TC_Array <C_saraMachine> & /* ioSaraSystemArray */,
+//         GenericArray <C_saraMachine> & /* ioSaraSystemArray */,
 //         const bool /* inDisplayBDDvaluesCount */,
 //         const bool /* inDisplayBDDvalues */) const {
 //  /* BinaryDecisionDiagram::setComputingMode (BinaryDecisionDiagram::ITE_and_AND_ARE_INDEPENDANT) ;
@@ -843,7 +842,7 @@ compute (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_scenarioComponent::
 compute (Compiler * /* inCompiler */,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool /* inDisplayBDDvalues */) const {
   gCout.appendString ("------------------ Scenarios for '") ;
@@ -922,13 +921,13 @@ compute (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_explicitAutomatonDefinition::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
                        BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Build state array names
-  TC_Array <String> stateNameArray ((int32_t) mProperty_mStatesMap.count () COMMA_HERE) ;
+  GenericArray <String> stateNameArray ((int32_t) mProperty_mStatesMap.count () COMMA_HERE) ;
   UpEnumerator_M_5F_stateMap currentState (mProperty_mStatesMap) ;
   while (currentState.hasCurrentObject ()) {
     stateNameArray.appendObject (currentState.current_lkey (HERE).mProperty_string.stringValue ()) ;
@@ -941,7 +940,7 @@ computeFromExpression (Compiler * inCompiler,
 //    Slots n .. n+p-1 are assigned to outputs
 //---- For each state defined in source file, we compute the BDD built from
 //     state input configuration and state output configuration
-  TC_Array <BinaryDecisionDiagram> stateExpressionBDD ((int32_t) mProperty_mStatesMap.count (), BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> stateExpressionBDD ((int32_t) mProperty_mStatesMap.count (), BinaryDecisionDiagram () COMMA_HERE) ;
   UpEnumerator_L_5F_stateDefinition currentDefinition (mProperty_mStateDefinitionList) ;
   while (currentDefinition.hasCurrentObject ()) {
   //--- Get state index
@@ -955,7 +954,7 @@ computeFromExpression (Compiler * inCompiler,
       errorMessage.appendString ("input configuration for state '") ;
       errorMessage.appendString (stateNameArray (stateIndex COMMA_HERE)) ;
       errorMessage.appendString ("' is empty") ;
-      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (currentDefinition.current_mEndOfStateExpression (HERE), errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
     }
   //--- Go to next state definition
     currentDefinition.gotoNextObject () ;
@@ -975,7 +974,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' intersects expression for state '") ;
         errorMessage.appendString (stateNameArray ((int32_t) currentDefinition.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
         errorMessage.appendString ("'") ;
-        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedState.current_mEndOfStateExpression (HERE), errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
       testedState.gotoNextObject () ;
     }
@@ -1010,7 +1009,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' intersects previous initial state '") ;
         errorMessage.appendString (stateNameArray ((int32_t) currentInitialState.current_mStateIndex (HERE).uintValue () COMMA_HERE)) ;
         errorMessage.appendString ("'") ;
-        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (testedInitialState.current_mStateLocation (HERE), errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
       testedInitialState.gotoNextObject () ;
     }
@@ -1075,7 +1074,7 @@ computeFromExpression (Compiler * inCompiler,
       if (! (stateExpressionBDD (stateIndex COMMA_HERE) & actionBDD).isFalse ()) {
         String errorMessage ;
         errorMessage.appendString ("this action intersects with current state input configuration") ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check action does not intersect with other actions
       UpEnumerator_L_5F_transitionDefinition testedTransition (currentDefinition.current_mTransitionsList (HERE).getter_subListFromIndex (GGS_uint (currentTransition.index () + 1), inCompiler COMMA_HERE)) ;
@@ -1089,7 +1088,7 @@ computeFromExpression (Compiler * inCompiler,
           errorMessage.appendString ("this action intersects with #") ;
           errorMessage.appendSigned (transitionIndex) ;
           errorMessage.appendString (" previous action") ;
-          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+          inCompiler->semanticErrorAtLocation (testedTransition.current_mEndOfExpression (HERE), errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
         }
         testedTransition.gotoNextObject () ;
       }
@@ -1098,7 +1097,7 @@ computeFromExpression (Compiler * inCompiler,
       if (x.isFalse ()) {
         String errorMessage ;
         errorMessage.appendString ("this transition is not compatible with configuration of target state") ;
-        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (currentTransition.current_mEndOfExpression (HERE), errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Goto next transition
       currentTransition.gotoNextObject () ;
@@ -1132,7 +1131,7 @@ computeFromExpression (Compiler * inCompiler,
       errorMessage.appendString ("state '") ;
       errorMessage.appendString (stateNameArray (i COMMA_HERE)) ;
       errorMessage.appendString ("' is not accessible") ;
-      inCompiler->semanticErrorAtLocation (mProperty_mEndOfDefinition, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+      inCompiler->semanticErrorAtLocation (mProperty_mEndOfDefinition, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
     }
   }
 //--- Add stable transitions. We add them now because they do not change accessible states computation
@@ -1147,7 +1146,7 @@ computeFromExpression (Compiler * inCompiler,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_5F_parallelComposition::computeFromExpression (Compiler * inCompiler,
-                                                           const TC_Array <C_saraMachine> & inSaraSystemArray,
+                                                           const GenericArray <C_saraMachine> & inSaraSystemArray,
                                                            const uint32_t inVariablesCount,
                                                            BinaryDecisionDiagram & outInitialStatesBDD,
                                                            BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1184,7 +1183,7 @@ void cPtr_C_5F_parallelComposition::computeFromExpression (Compiler * inCompiler
 
 void cPtr_C_5F_orComposition::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1244,7 +1243,7 @@ static BinaryDecisionDiagram accessibleStates (const BinaryDecisionDiagram & inI
 
 void cPtr_C_5F_strongModalComposition::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1278,7 +1277,7 @@ computeFromExpression (Compiler * inCompiler,
   if (! intersection.isFalse ()) {
     String errorMessage ;
     errorMessage.appendString ("operands transitions intersects, strong modal composition is not valid") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1290,7 +1289,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_weakModalComposition::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1340,7 +1339,7 @@ computeFromExpression (Compiler * inCompiler,
   if (intersection != (leftAccessiblesStates)) {
     String errorMessage ;
     errorMessage.appendString ("left operand does not respect weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute in right operand accessible states from intersection
   BinaryDecisionDiagram rightAccessiblesStates ;
@@ -1356,21 +1355,21 @@ computeFromExpression (Compiler * inCompiler,
   if (intersection != (rightAccessiblesStates)) {
     String errorMessage ;
     errorMessage.appendString ("right operand does not respect weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
 //--- Check initial states are compatible
   const bool initialStatesAreCompatible = (intersection & leftInitialStatesBDD) == (intersection & rightInitialStatesBDD) ;
   if (! initialStatesAreCompatible) {
     String errorMessage ;
     errorMessage.appendString ("initial states are not compatible with weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
 //--- Check terminal states are compatible
   const bool terminalStatesAreCompatible = (intersection & leftTerminalStatesBDD) == (intersection & rightTerminalStatesBDD) ;
   if (! terminalStatesAreCompatible) {
     String errorMessage ;
     errorMessage.appendString ("terminal states are not compatible with weak modal composition") ;
-    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (mProperty_mErrorLocation, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
   }
 //--- Compute modal composition
   outInitialStatesBDD = leftInitialStatesBDD | rightInitialStatesBDD ;
@@ -1382,7 +1381,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_boolToSeqExpression::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1397,7 +1396,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_existsDefinition::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t /* inVariablesCount */,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1438,7 +1437,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_forallDefinition::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t /* inVariablesCount */,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1479,7 +1478,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_suppressInitialStatesOperation::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1497,7 +1496,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_suppressTerminalStatesOperation::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1516,7 +1515,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_fullSaturationOperation::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1539,7 +1538,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_complementationOperation::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1565,7 +1564,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_importMachine::
 computeFromExpression (Compiler * /* inCompiler */,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1605,18 +1604,18 @@ computeFromExpression (Compiler * /* inCompiler */,
 
 void cPtr_C_5F_additiveModalCompositionComponent::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
                        BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   UpEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -1668,7 +1667,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1690,7 +1689,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1701,7 +1700,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1713,7 +1712,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -1748,18 +1747,18 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_substractiveModalCompositionComponent::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
                        BinaryDecisionDiagram & outAccessibilityRelationBDD) const {
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   UpEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -1811,7 +1810,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -1833,7 +1832,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -1844,7 +1843,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -1856,7 +1855,7 @@ computeFromExpression (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -1900,7 +1899,7 @@ computeFromExpression (Compiler * inCompiler,
 
 void cPtr_C_5F_trans::
 computeFromExpression (Compiler * inCompiler,
-                       const TC_Array <C_saraMachine> & inSaraSystemArray,
+                       const GenericArray <C_saraMachine> & inSaraSystemArray,
                        const uint32_t inVariablesCount,
                        BinaryDecisionDiagram & outInitialStatesBDD,
                        BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -1940,7 +1939,7 @@ addFilteredTransitions (BinaryDecisionDiagram & ioAcculmulatedTransitions,
 
 void cPtr_C_5F_machineDefinedByAdditiveModalComp::
 compute (Compiler * inCompiler,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
   gCout.appendString ("------------------ Computations for '") ;
@@ -1951,10 +1950,10 @@ compute (Compiler * inCompiler,
 //--- Build input variables array names
   const uint32_t inputVariablesCount =  mProperty_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const uint32_t variableCount =  mProperty_mVariablesMap.count () ;
+  const uint32_t variableCount = uint32_t (mProperty_mVariablesMap.count ()) ;
   const uint32_t inputAndInternalVariablesCount =  mProperty_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_Array <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
+  { GenericArray <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   UpEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap) ;
@@ -1966,11 +1965,11 @@ compute (Compiler * inCompiler,
   }
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   UpEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -2022,7 +2021,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2044,7 +2043,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2055,7 +2054,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2067,7 +2066,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -2118,7 +2117,7 @@ compute (Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---
-  TC_Array <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
+  GenericArray <String> transitionsVariableNameArray ((int32_t) (variableCount + variableCount), "" COMMA_HERE) ;
   for (int32_t i=0 ; i<(int32_t) variableCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
@@ -2234,7 +2233,7 @@ compute (Compiler * inCompiler,
 
 void cPtr_C_5F_machineDefinedBySubstractiveModalComp::
 compute (Compiler * inCompiler,
-         TC_Array <C_saraMachine> & ioSaraSystemArray,
+         GenericArray <C_saraMachine> & ioSaraSystemArray,
          const bool /* inDisplayBDDvaluesCount */,
          const bool inDisplayBDDvalues) const {
   gCout.appendString ("------------------ Computations for '") ;
@@ -2245,10 +2244,10 @@ compute (Compiler * inCompiler,
 //--- Build input variables array names
   const uint32_t inputVariablesCount =  mProperty_mInputVariableCount.uintValue () ;
   machine.mInputVariablesCount = inputVariablesCount ;
-  const uint32_t variableCount =  mProperty_mVariablesMap.count () ;
+  const uint32_t variableCount = uint32_t (mProperty_mVariablesMap.count ()) ;
   const uint32_t inputAndInternalVariablesCount =  mProperty_mInputAndInternalVariableCount.uintValue () ;
   machine.mInputAndInternalVariablesCount = inputAndInternalVariablesCount ;
-  { TC_Array <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
+  { GenericArray <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
   UpEnumerator_M_5F_variablesMap currentVar (mProperty_mVariablesMap) ;
@@ -2261,11 +2260,11 @@ compute (Compiler * inCompiler,
 //----------- Compute automaton from definition expression
 //--- Compute BDDs for each mode
   const int32_t modeCount = (int32_t) mProperty_mModeMap.count () ;
-  TC_Array <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
-  TC_Array <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> initialStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> terminalStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibleStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <BinaryDecisionDiagram> accessibilityRelationStatesArray (modeCount, BinaryDecisionDiagram () COMMA_HERE) ;
+  GenericArray <GGS_lstring> modeNamesArray (modeCount, GGS_lstring () COMMA_HERE) ;
   UpEnumerator_M_5F_modesMap currentMode (mProperty_mModeMap) ;
   {int32_t index = 0 ;
     while (currentMode.hasCurrentObject ()) {
@@ -2317,7 +2316,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Compute in right operand accessible states from intersection
       // printf ("right\n") ; fflush (stdout) ;
@@ -2339,7 +2338,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' mode does not respect weak modal composition with '") ;
         errorMessage.appendString (modeNamesArray (mode COMMA_HERE).mProperty_string.stringValue ()) ;
         errorMessage.appendString ("' mode") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check initial states are compatible
       const bool initialStatesAreCompatible = (intersection & initialStatesArray (mode COMMA_HERE)) == (intersection & initialStatesArray (testedMode COMMA_HERE)) ;
@@ -2350,7 +2349,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     //--- Check terminal states are compatible
       //printf ("Check terminal states are compatible\n") ; fflush (stdout) ;
@@ -2362,7 +2361,7 @@ compute (Compiler * inCompiler,
         errorMessage.appendString ("' and '") ;
         errorMessage.appendString (modeNamesArray (testedMode COMMA_HERE).mProperty_string.stringValue ()) ; ;
         errorMessage.appendString ("' modes are not compatible with weak modal composition") ;
-        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, TC_Array <FixItDescription> () COMMA_HERE) ;
+        inCompiler->semanticErrorAtLocation (modeNamesArray (testedMode COMMA_HERE).mProperty_location, errorMessage, GenericArray <FixItDescription> () COMMA_HERE) ;
       }
     }
   }
@@ -2422,7 +2421,7 @@ compute (Compiler * inCompiler,
   machine.mTerminalStatesBDD &= machine.mAccessibleStatesBDD ;
 
 //---
-  TC_Array <String> transitionsVariableNameArray ((int32_t)  (variableCount + variableCount), "" COMMA_HERE) ;
+  GenericArray <String> transitionsVariableNameArray ((int32_t)  (variableCount + variableCount), "" COMMA_HERE) ;
   for (int32_t i=0 ; i<(int32_t) variableCount ; i++) {
     transitionsVariableNameArray (i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;
     transitionsVariableNameArray ((int32_t) variableCount + i COMMA_HERE) = machine.mNamesArray (i COMMA_HERE) ;

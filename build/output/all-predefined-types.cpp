@@ -6,8 +6,6 @@
 
 #include "all-predefined-types.h"
 #include "cCollectionElement.h"
-#include "cSortedListElement.h"
-#include "capSortedListElement.h"
 #include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -22,12 +20,12 @@ mProperty_lkey (inLKey) {
 //     @uint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint ("uint",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ("uint",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint ;
 }
 
@@ -62,12 +60,12 @@ GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
 //     @location generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_location ("location",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ("location",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_location::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_location::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_location ;
 }
 
@@ -102,12 +100,12 @@ GGS_location GGS_location::extractObject (const GGS_object & inObject,
 //     @bool generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ("bool",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ("bool",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bool::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bool::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bool ;
 }
 
@@ -142,12 +140,12 @@ GGS_bool GGS_bool::extractObject (const GGS_object & inObject,
 //     @stringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringlist ("stringlist",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringlist ;
 }
 
@@ -190,17 +188,11 @@ class cCollectionElement_stringlist : public cCollectionElement {
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_stringlist (const GGS_stringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -233,70 +225,25 @@ cCollectionElement * cCollectionElement_stringlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_stringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_stringlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_stringlist * operand = (cCollectionElement_stringlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_stringlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @stringlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist::GGS_stringlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist::GGS_stringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_stringlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_stringlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_stringlist::plusPlusAssignOperation (const GGS_stringlist_2E_element & inValue
-                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_stringlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_stringlist::class_func_listWithValue (const GGS_string & inOperand0
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_stringlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_stringlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_stringlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_stringlist::GGS_stringlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_stringlist) ;
+    const GGS_stringlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -312,16 +259,96 @@ void GGS_stringlist::makeAttributesFromObjects (capCollectionElement & outAttrib
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_stringlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_stringlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_stringlist::description (String & ioString,
+                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_stringlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_stringlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_stringlist::plusPlusAssignOperation (const GGS_stringlist_2E_element & inValue
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_stringlist::class_func_listWithValue (const GGS_string & inOperand0
+                                                         COMMA_LOCATION_ARGS) {
+  const GGS_stringlist_2E_element element (inOperand0) ;
+  GGS_stringlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_stringlist::addAssignOperation (const GGS_string & inOperand0
                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_stringlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_stringlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -329,13 +356,9 @@ void GGS_stringlist::addAssignOperation (const GGS_string & inOperand0
 void GGS_stringlist::setter_append (const GGS_string inOperand0,
                                     Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_stringlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_stringlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -345,13 +368,18 @@ void GGS_stringlist::setter_insertAtIndex (const GGS_string inOperand0,
                                            const GGS_uint inInsertionIndex,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_stringlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_stringlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -361,19 +389,23 @@ void GGS_stringlist::setter_removeAtIndex (GGS_string & outOperand0,
                                            const GGS_uint inRemoveIndex,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_stringlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -382,14 +414,19 @@ void GGS_stringlist::setter_removeAtIndex (GGS_string & outOperand0,
 void GGS_stringlist::setter_popFirst (GGS_string & outOperand0,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -398,14 +435,19 @@ void GGS_stringlist::setter_popFirst (GGS_string & outOperand0,
 void GGS_stringlist::setter_popLast (GGS_string & outOperand0,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -414,14 +456,18 @@ void GGS_stringlist::setter_popLast (GGS_string & outOperand0,
 void GGS_stringlist::method_first (GGS_string & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -430,14 +476,18 @@ void GGS_stringlist::method_first (GGS_string & outOperand0,
 void GGS_stringlist::method_last (GGS_string & outOperand0,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -449,7 +499,35 @@ GGS_stringlist GGS_stringlist::add_operation (const GGS_stringlist & inOperand,
   GGS_stringlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_stringlist::subList (const int32_t inStart,
+                                        const int32_t inLength,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const {
+  GGS_stringlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -459,8 +537,12 @@ GGS_stringlist GGS_stringlist::add_operation (const GGS_stringlist & inOperand,
 GGS_stringlist GGS_stringlist::getter_subListWithRange (const GGS_range & inRange,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_stringlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -469,8 +551,12 @@ GGS_stringlist GGS_stringlist::getter_subListWithRange (const GGS_range & inRang
 GGS_stringlist GGS_stringlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_stringlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -479,17 +565,26 @@ GGS_stringlist GGS_stringlist::getter_subListFromIndex (const GGS_uint & inIndex
 GGS_stringlist GGS_stringlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result = GGS_stringlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_stringlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringlist::plusAssignOperation (const GGS_stringlist inOperand,
+void GGS_stringlist::plusAssignOperation (const GGS_stringlist inList,
                                           Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -498,55 +593,80 @@ void GGS_stringlist::setter_setMValueAtIndex (GGS_string inOperand,
                                               GGS_uint inIndex,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_string GGS_stringlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) attributes.ptr () ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_stringlist::objectCompare (const GGS_stringlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_stringlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_stringlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @stringlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_stringlist::DownEnumerator_stringlist (const GGS_stringlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist_2E_element DownEnumerator_stringlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -556,25 +676,20 @@ GGS_string DownEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_stringlist::UpEnumerator_stringlist (const GGS_stringlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_stringlist_2E_element UpEnumerator_stringlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -584,12 +699,12 @@ GGS_string UpEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
 //     @luint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint ("luint",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint ("luint",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luint ;
 }
 
@@ -726,12 +841,12 @@ void GGS_luint::description (String & ioString,
 //     @bigint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint ("bigint",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint ("bigint",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigint ;
 }
 
@@ -766,12 +881,12 @@ GGS_bigint GGS_bigint::extractObject (const GGS_object & inObject,
 //     @binaryset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_binaryset::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_binaryset::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_binaryset ;
 }
 
@@ -806,12 +921,12 @@ GGS_binaryset GGS_binaryset::extractObject (const GGS_object & inObject,
 //     @char generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_char ("char",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_char ("char",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_char::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_char::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_char ;
 }
 
@@ -846,12 +961,12 @@ GGS_char GGS_char::extractObject (const GGS_object & inObject,
 //     @data generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_data ("data",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_data ("data",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_data::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_data::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_data ;
 }
 
@@ -886,12 +1001,12 @@ GGS_data GGS_data::extractObject (const GGS_object & inObject,
 //     @double generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_double ("double",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ("double",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_double::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_double::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_double ;
 }
 
@@ -926,12 +1041,12 @@ GGS_double GGS_double::extractObject (const GGS_object & inObject,
 //     @filewrapper generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapper ("filewrapper",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_filewrapper::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_filewrapper::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapper ;
 }
 
@@ -966,12 +1081,12 @@ GGS_filewrapper GGS_filewrapper::extractObject (const GGS_object & inObject,
 //     @function generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_function ("function",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_function ("function",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_function::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_function::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_function ;
 }
 
@@ -1006,12 +1121,12 @@ GGS_function GGS_function::extractObject (const GGS_object & inObject,
 //     @object generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_object ("object",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_object ("object",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_object::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_object::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_object ;
 }
 
@@ -1046,12 +1161,12 @@ GGS_object GGS_object::extractObject (const GGS_object & inObject,
 //     @sint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ("sint",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint ("sint",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint ;
 }
 
@@ -1086,12 +1201,12 @@ GGS_sint GGS_sint::extractObject (const GGS_object & inObject,
 //     @sint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_sint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_sint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint_36__34_ ;
 }
 
@@ -1126,12 +1241,12 @@ GGS_sint_36__34_ GGS_sint_36__34_::extractObject (const GGS_object & inObject,
 //     @string generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_string ("string",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ("string",
+                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_string::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_string ;
 }
 
@@ -1166,12 +1281,12 @@ GGS_string GGS_string::extractObject (const GGS_object & inObject,
 //     @stringset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringset ("stringset",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringset ("stringset",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringset::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringset::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringset ;
 }
 
@@ -1206,12 +1321,12 @@ GGS_stringset GGS_stringset::extractObject (const GGS_object & inObject,
 //     @timer generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timer ("timer",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_timer ("timer",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_timer::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_timer::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_timer ;
 }
 
@@ -1246,12 +1361,12 @@ GGS_timer GGS_timer::extractObject (const GGS_object & inObject,
 //     @type generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ("type",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_type ("type",
+                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_type::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_type::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_type ;
 }
 
@@ -1286,12 +1401,12 @@ GGS_type GGS_type::extractObject (const GGS_object & inObject,
 //     @uint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_ ;
 }
 
@@ -1326,12 +1441,12 @@ GGS_uint_36__34_ GGS_uint_36__34_::extractObject (const GGS_object & inObject,
 //     @functionlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
-                                                                    nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionlist ("functionlist",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionlist ;
 }
 
@@ -1374,17 +1489,11 @@ class cCollectionElement_functionlist : public cCollectionElement {
                                            COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_functionlist (const GGS_functionlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1417,70 +1526,25 @@ cCollectionElement * cCollectionElement_functionlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_functionlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_functionlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_functionlist * operand = (cCollectionElement_functionlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_functionlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @functionlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_functionlist::GGS_functionlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionlist::GGS_functionlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionlist GGS_functionlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_functionlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionlist GGS_functionlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_functionlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionlist::plusPlusAssignOperation (const GGS_functionlist_2E_element & inValue
-                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_functionlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionlist GGS_functionlist::class_func_listWithValue (const GGS_function & inOperand0
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_functionlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_functionlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_functionlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_functionlist::GGS_functionlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_functionlist) ;
+    const GGS_functionlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1496,16 +1560,96 @@ void GGS_functionlist::makeAttributesFromObjects (capCollectionElement & outAttr
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_functionlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_functionlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionlist::description (String & ioString,
+                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionlist GGS_functionlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_functionlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionlist GGS_functionlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_functionlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionlist::plusPlusAssignOperation (const GGS_functionlist_2E_element & inValue
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionlist GGS_functionlist::class_func_listWithValue (const GGS_function & inOperand0
+                                                             COMMA_LOCATION_ARGS) {
+  const GGS_functionlist_2E_element element (inOperand0) ;
+  GGS_functionlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_functionlist::addAssignOperation (const GGS_function & inOperand0
                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_functionlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_functionlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1513,13 +1657,9 @@ void GGS_functionlist::addAssignOperation (const GGS_function & inOperand0
 void GGS_functionlist::setter_append (const GGS_function inOperand0,
                                       Compiler * /* inCompiler */
                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_functionlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_functionlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -1529,13 +1669,18 @@ void GGS_functionlist::setter_insertAtIndex (const GGS_function inOperand0,
                                              const GGS_uint inInsertionIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_functionlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_functionlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -1545,19 +1690,23 @@ void GGS_functionlist::setter_removeAtIndex (GGS_function & outOperand0,
                                              const GGS_uint inRemoveIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_functionlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -1566,14 +1715,19 @@ void GGS_functionlist::setter_removeAtIndex (GGS_function & outOperand0,
 void GGS_functionlist::setter_popFirst (GGS_function & outOperand0,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -1582,14 +1736,19 @@ void GGS_functionlist::setter_popFirst (GGS_function & outOperand0,
 void GGS_functionlist::setter_popLast (GGS_function & outOperand0,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -1598,14 +1757,18 @@ void GGS_functionlist::setter_popLast (GGS_function & outOperand0,
 void GGS_functionlist::method_first (GGS_function & outOperand0,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -1614,14 +1777,18 @@ void GGS_functionlist::method_first (GGS_function & outOperand0,
 void GGS_functionlist::method_last (GGS_function & outOperand0,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -1633,7 +1800,35 @@ GGS_functionlist GGS_functionlist::add_operation (const GGS_functionlist & inOpe
   GGS_functionlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionlist GGS_functionlist::subList (const int32_t inStart,
+                                            const int32_t inLength,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_functionlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -1643,8 +1838,12 @@ GGS_functionlist GGS_functionlist::add_operation (const GGS_functionlist & inOpe
 GGS_functionlist GGS_functionlist::getter_subListWithRange (const GGS_range & inRange,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GGS_functionlist result = GGS_functionlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_functionlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -1653,8 +1852,12 @@ GGS_functionlist GGS_functionlist::getter_subListWithRange (const GGS_range & in
 GGS_functionlist GGS_functionlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GGS_functionlist result = GGS_functionlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_functionlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -1663,17 +1866,26 @@ GGS_functionlist GGS_functionlist::getter_subListFromIndex (const GGS_uint & inI
 GGS_functionlist GGS_functionlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GGS_functionlist result = GGS_functionlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_functionlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_functionlist::plusAssignOperation (const GGS_functionlist inOperand,
+void GGS_functionlist::plusAssignOperation (const GGS_functionlist inList,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1682,55 +1894,80 @@ void GGS_functionlist::setter_setMValueAtIndex (GGS_function inOperand,
                                                 GGS_uint inIndex,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_function GGS_functionlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) attributes.ptr () ;
   GGS_function result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_functionlist::objectCompare (const GGS_functionlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_functionlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_functionlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @functionlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_functionlist::DownEnumerator_functionlist (const GGS_functionlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_functionlist_2E_element DownEnumerator_functionlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_functionlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_function DownEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_functionlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -1740,25 +1977,20 @@ GGS_function DownEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_functionlist::UpEnumerator_functionlist (const GGS_functionlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_functionlist_2E_element UpEnumerator_functionlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_functionlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_function UpEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_functionlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -1768,12 +2000,12 @@ GGS_function UpEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
 //     @luintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luintlist ;
 }
 
@@ -1816,17 +2048,11 @@ class cCollectionElement_luintlist : public cCollectionElement {
                                         COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_luintlist (const GGS_luintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1859,70 +2085,25 @@ cCollectionElement * cCollectionElement_luintlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_luintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_luintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_luintlist * operand = (cCollectionElement_luintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_luintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @luintlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_luintlist::GGS_luintlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luintlist::GGS_luintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luintlist GGS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_luintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luintlist GGS_luintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_luintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_luintlist::plusPlusAssignOperation (const GGS_luintlist_2E_element & inValue
-                                             COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_luintlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luintlist GGS_luintlist::class_func_listWithValue (const GGS_luint & inOperand0
-                                                       COMMA_LOCATION_ARGS) {
-  GGS_luintlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_luintlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_luintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_luintlist::GGS_luintlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_luintlist) ;
+    const GGS_luintlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1938,16 +2119,96 @@ void GGS_luintlist::makeAttributesFromObjects (capCollectionElement & outAttribu
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_luintlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_luintlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_luintlist::description (String & ioString,
+                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist GGS_luintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_luintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist GGS_luintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_luintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_luintlist::plusPlusAssignOperation (const GGS_luintlist_2E_element & inValue
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist GGS_luintlist::class_func_listWithValue (const GGS_luint & inOperand0
+                                                       COMMA_LOCATION_ARGS) {
+  const GGS_luintlist_2E_element element (inOperand0) ;
+  GGS_luintlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_luintlist::addAssignOperation (const GGS_luint & inOperand0
                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_luintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_luintlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1955,13 +2216,9 @@ void GGS_luintlist::addAssignOperation (const GGS_luint & inOperand0
 void GGS_luintlist::setter_append (const GGS_luint inOperand0,
                                    Compiler * /* inCompiler */
                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_luintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_luintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -1971,13 +2228,18 @@ void GGS_luintlist::setter_insertAtIndex (const GGS_luint inOperand0,
                                           const GGS_uint inInsertionIndex,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_luintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_luintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -1987,19 +2249,23 @@ void GGS_luintlist::setter_removeAtIndex (GGS_luint & outOperand0,
                                           const GGS_uint inRemoveIndex,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_luintlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -2008,14 +2274,19 @@ void GGS_luintlist::setter_removeAtIndex (GGS_luint & outOperand0,
 void GGS_luintlist::setter_popFirst (GGS_luint & outOperand0,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2024,14 +2295,19 @@ void GGS_luintlist::setter_popFirst (GGS_luint & outOperand0,
 void GGS_luintlist::setter_popLast (GGS_luint & outOperand0,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2040,14 +2316,18 @@ void GGS_luintlist::setter_popLast (GGS_luint & outOperand0,
 void GGS_luintlist::method_first (GGS_luint & outOperand0,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2056,14 +2336,18 @@ void GGS_luintlist::method_first (GGS_luint & outOperand0,
 void GGS_luintlist::method_last (GGS_luint & outOperand0,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2075,7 +2359,35 @@ GGS_luintlist GGS_luintlist::add_operation (const GGS_luintlist & inOperand,
   GGS_luintlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luintlist GGS_luintlist::subList (const int32_t inStart,
+                                      const int32_t inLength,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const {
+  GGS_luintlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -2085,8 +2397,12 @@ GGS_luintlist GGS_luintlist::add_operation (const GGS_luintlist & inOperand,
 GGS_luintlist GGS_luintlist::getter_subListWithRange (const GGS_range & inRange,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GGS_luintlist result = GGS_luintlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_luintlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2095,8 +2411,12 @@ GGS_luintlist GGS_luintlist::getter_subListWithRange (const GGS_range & inRange,
 GGS_luintlist GGS_luintlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GGS_luintlist result = GGS_luintlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_luintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2105,74 +2425,108 @@ GGS_luintlist GGS_luintlist::getter_subListFromIndex (const GGS_uint & inIndex,
 GGS_luintlist GGS_luintlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
-  GGS_luintlist result = GGS_luintlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_luintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_luintlist::plusAssignOperation (const GGS_luintlist inOperand,
+void GGS_luintlist::plusAssignOperation (const GGS_luintlist inList,
                                          Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_luintlist::setter_setMValueAtIndex (GGS_luint inOperand,
-                                              GGS_uint inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+                                             GGS_uint inIndex,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_luint GGS_luintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) attributes.ptr () ;
   GGS_luint result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_luintlist::objectCompare (const GGS_luintlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_luintlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_luintlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @luintlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_luintlist::DownEnumerator_luintlist (const GGS_luintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_luintlist_2E_element DownEnumerator_luintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_luintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_luint DownEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_luintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -2182,25 +2536,20 @@ GGS_luint DownEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_luintlist::UpEnumerator_luintlist (const GGS_luintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_luintlist_2E_element UpEnumerator_luintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_luintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_luint UpEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_luintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -2210,12 +2559,12 @@ GGS_luint UpEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
 //     @lstringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lstringlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lstringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstringlist ;
 }
 
@@ -2258,17 +2607,11 @@ class cCollectionElement_lstringlist : public cCollectionElement {
                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lstringlist (const GGS_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2301,70 +2644,25 @@ cCollectionElement * cCollectionElement_lstringlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_lstringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_lstringlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_lstringlist * operand = (cCollectionElement_lstringlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_lstringlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @lstringlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstringlist::GGS_lstringlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist::GGS_lstringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_lstringlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_lstringlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lstringlist::plusPlusAssignOperation (const GGS_lstringlist_2E_element & inValue
-                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_lstringlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_lstringlist::class_func_listWithValue (const GGS_lstring & inOperand0
-                                                           COMMA_LOCATION_ARGS) {
-  GGS_lstringlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_lstringlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_lstringlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_lstringlist::GGS_lstringlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
+    const GGS_lstringlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2380,16 +2678,96 @@ void GGS_lstringlist::makeAttributesFromObjects (capCollectionElement & outAttri
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_lstringlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_lstringlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lstringlist::description (String & ioString,
+                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lstringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_lstringlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lstringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lstringlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lstringlist::plusPlusAssignOperation (const GGS_lstringlist_2E_element & inValue
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lstringlist::class_func_listWithValue (const GGS_lstring & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
+  const GGS_lstringlist_2E_element element (inOperand0) ;
+  GGS_lstringlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_lstringlist::addAssignOperation (const GGS_lstring & inOperand0
                                           COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_lstringlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_lstringlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2397,13 +2775,9 @@ void GGS_lstringlist::addAssignOperation (const GGS_lstring & inOperand0
 void GGS_lstringlist::setter_append (const GGS_lstring inOperand0,
                                      Compiler * /* inCompiler */
                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_lstringlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_lstringlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -2413,13 +2787,18 @@ void GGS_lstringlist::setter_insertAtIndex (const GGS_lstring inOperand0,
                                             const GGS_uint inInsertionIndex,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_lstringlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_lstringlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -2429,19 +2808,23 @@ void GGS_lstringlist::setter_removeAtIndex (GGS_lstring & outOperand0,
                                             const GGS_uint inRemoveIndex,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -2450,14 +2833,19 @@ void GGS_lstringlist::setter_removeAtIndex (GGS_lstring & outOperand0,
 void GGS_lstringlist::setter_popFirst (GGS_lstring & outOperand0,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2466,14 +2854,19 @@ void GGS_lstringlist::setter_popFirst (GGS_lstring & outOperand0,
 void GGS_lstringlist::setter_popLast (GGS_lstring & outOperand0,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2482,14 +2875,18 @@ void GGS_lstringlist::setter_popLast (GGS_lstring & outOperand0,
 void GGS_lstringlist::method_first (GGS_lstring & outOperand0,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2498,14 +2895,18 @@ void GGS_lstringlist::method_first (GGS_lstring & outOperand0,
 void GGS_lstringlist::method_last (GGS_lstring & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2517,7 +2918,35 @@ GGS_lstringlist GGS_lstringlist::add_operation (const GGS_lstringlist & inOperan
   GGS_lstringlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_lstringlist::subList (const int32_t inStart,
+                                          const int32_t inLength,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -2527,8 +2956,12 @@ GGS_lstringlist GGS_lstringlist::add_operation (const GGS_lstringlist & inOperan
 GGS_lstringlist GGS_lstringlist::getter_subListWithRange (const GGS_range & inRange,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result = GGS_lstringlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_lstringlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2537,8 +2970,12 @@ GGS_lstringlist GGS_lstringlist::getter_subListWithRange (const GGS_range & inRa
 GGS_lstringlist GGS_lstringlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result = GGS_lstringlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_lstringlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2547,17 +2984,26 @@ GGS_lstringlist GGS_lstringlist::getter_subListFromIndex (const GGS_uint & inInd
 GGS_lstringlist GGS_lstringlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result = GGS_lstringlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_lstringlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lstringlist::plusAssignOperation (const GGS_lstringlist inOperand,
+void GGS_lstringlist::plusAssignOperation (const GGS_lstringlist inList,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2566,55 +3012,80 @@ void GGS_lstringlist::setter_setMValueAtIndex (GGS_lstring inOperand,
                                                GGS_uint inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_lstring GGS_lstringlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) attributes.ptr () ;
   GGS_lstring result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_lstringlist::objectCompare (const GGS_lstringlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_lstringlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_lstringlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @lstringlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_lstringlist::DownEnumerator_lstringlist (const GGS_lstringlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstringlist_2E_element DownEnumerator_lstringlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring DownEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -2624,25 +3095,20 @@ GGS_lstring DownEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_lstringlist::UpEnumerator_lstringlist (const GGS_lstringlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstringlist_2E_element UpEnumerator_lstringlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring UpEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -2652,12 +3118,12 @@ GGS_lstring UpEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
 //     @objectlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_objectlist ("objectlist",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_objectlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_objectlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectlist ;
 }
 
@@ -2700,17 +3166,11 @@ class cCollectionElement_objectlist : public cCollectionElement {
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_objectlist (const GGS_objectlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2743,70 +3203,25 @@ cCollectionElement * cCollectionElement_objectlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_objectlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_objectlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_objectlist * operand = (cCollectionElement_objectlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_objectlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @objectlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_objectlist::GGS_objectlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_objectlist::GGS_objectlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_objectlist GGS_objectlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_objectlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_objectlist GGS_objectlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_objectlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_objectlist::plusPlusAssignOperation (const GGS_objectlist_2E_element & inValue
-                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_objectlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_objectlist GGS_objectlist::class_func_listWithValue (const GGS_object & inOperand0
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_objectlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_objectlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_objectlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_objectlist::GGS_objectlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_objectlist) ;
+    const GGS_objectlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2822,16 +3237,96 @@ void GGS_objectlist::makeAttributesFromObjects (capCollectionElement & outAttrib
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_objectlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_objectlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_objectlist::description (String & ioString,
+                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_objectlist GGS_objectlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_objectlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_objectlist GGS_objectlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_objectlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_objectlist::plusPlusAssignOperation (const GGS_objectlist_2E_element & inValue
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_objectlist GGS_objectlist::class_func_listWithValue (const GGS_object & inOperand0
+                                                         COMMA_LOCATION_ARGS) {
+  const GGS_objectlist_2E_element element (inOperand0) ;
+  GGS_objectlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_objectlist::addAssignOperation (const GGS_object & inOperand0
                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_objectlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_objectlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2839,13 +3334,9 @@ void GGS_objectlist::addAssignOperation (const GGS_object & inOperand0
 void GGS_objectlist::setter_append (const GGS_object inOperand0,
                                     Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_objectlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_objectlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -2855,13 +3346,18 @@ void GGS_objectlist::setter_insertAtIndex (const GGS_object inOperand0,
                                            const GGS_uint inInsertionIndex,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_objectlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_objectlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -2871,19 +3367,23 @@ void GGS_objectlist::setter_removeAtIndex (GGS_object & outOperand0,
                                            const GGS_uint inRemoveIndex,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_objectlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -2892,14 +3392,19 @@ void GGS_objectlist::setter_removeAtIndex (GGS_object & outOperand0,
 void GGS_objectlist::setter_popFirst (GGS_object & outOperand0,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2908,14 +3413,19 @@ void GGS_objectlist::setter_popFirst (GGS_object & outOperand0,
 void GGS_objectlist::setter_popLast (GGS_object & outOperand0,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2924,14 +3434,18 @@ void GGS_objectlist::setter_popLast (GGS_object & outOperand0,
 void GGS_objectlist::method_first (GGS_object & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2940,14 +3454,18 @@ void GGS_objectlist::method_first (GGS_object & outOperand0,
 void GGS_objectlist::method_last (GGS_object & outOperand0,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2959,7 +3477,35 @@ GGS_objectlist GGS_objectlist::add_operation (const GGS_objectlist & inOperand,
   GGS_objectlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_objectlist GGS_objectlist::subList (const int32_t inStart,
+                                        const int32_t inLength,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const {
+  GGS_objectlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -2969,8 +3515,12 @@ GGS_objectlist GGS_objectlist::add_operation (const GGS_objectlist & inOperand,
 GGS_objectlist GGS_objectlist::getter_subListWithRange (const GGS_range & inRange,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_objectlist result = GGS_objectlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_objectlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2979,8 +3529,12 @@ GGS_objectlist GGS_objectlist::getter_subListWithRange (const GGS_range & inRang
 GGS_objectlist GGS_objectlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_objectlist result = GGS_objectlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_objectlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -2989,17 +3543,26 @@ GGS_objectlist GGS_objectlist::getter_subListFromIndex (const GGS_uint & inIndex
 GGS_objectlist GGS_objectlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GGS_objectlist result = GGS_objectlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_objectlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_objectlist::plusAssignOperation (const GGS_objectlist inOperand,
+void GGS_objectlist::plusAssignOperation (const GGS_objectlist inList,
                                           Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3008,55 +3571,80 @@ void GGS_objectlist::setter_setMValueAtIndex (GGS_object inOperand,
                                               GGS_uint inIndex,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_object GGS_objectlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) attributes.ptr () ;
   GGS_object result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_objectlist::objectCompare (const GGS_objectlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_objectlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_objectlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @objectlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_objectlist::DownEnumerator_objectlist (const GGS_objectlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_objectlist_2E_element DownEnumerator_objectlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_objectlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_object DownEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_objectlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -3066,25 +3654,20 @@ GGS_object DownEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_objectlist::UpEnumerator_objectlist (const GGS_objectlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_objectlist_2E_element UpEnumerator_objectlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_objectlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_object UpEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_objectlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -3094,12 +3677,12 @@ GGS_object UpEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
 //     @typelist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ("typelist",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typelist ("typelist",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typelist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typelist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typelist ;
 }
 
@@ -3142,17 +3725,11 @@ class cCollectionElement_typelist : public cCollectionElement {
                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_typelist (const GGS_typelist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3185,70 +3762,25 @@ cCollectionElement * cCollectionElement_typelist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_typelist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_typelist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_typelist * operand = (cCollectionElement_typelist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_typelist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @typelist
 //--------------------------------------------------------------------------------------------------
 
 GGS_typelist::GGS_typelist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typelist::GGS_typelist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typelist GGS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_typelist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typelist GGS_typelist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_typelist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typelist::plusPlusAssignOperation (const GGS_typelist_2E_element & inValue
-                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_typelist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typelist GGS_typelist::class_func_listWithValue (const GGS_type & inOperand0
-                                                     COMMA_LOCATION_ARGS) {
-  GGS_typelist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_typelist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_typelist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_typelist::GGS_typelist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_typelist * p = (cCollectionElement_typelist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_typelist) ;
+    const GGS_typelist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3264,16 +3796,96 @@ void GGS_typelist::makeAttributesFromObjects (capCollectionElement & outAttribut
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_typelist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_typelist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typelist::description (String & ioString,
+                                const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typelist GGS_typelist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_typelist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typelist GGS_typelist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_typelist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typelist::plusPlusAssignOperation (const GGS_typelist_2E_element & inValue
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typelist GGS_typelist::class_func_listWithValue (const GGS_type & inOperand0
+                                                     COMMA_LOCATION_ARGS) {
+  const GGS_typelist_2E_element element (inOperand0) ;
+  GGS_typelist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_typelist::addAssignOperation (const GGS_type & inOperand0
                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_typelist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_typelist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3281,13 +3893,9 @@ void GGS_typelist::addAssignOperation (const GGS_type & inOperand0
 void GGS_typelist::setter_append (const GGS_type inOperand0,
                                   Compiler * /* inCompiler */
                                   COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_typelist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_typelist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -3297,13 +3905,18 @@ void GGS_typelist::setter_insertAtIndex (const GGS_type inOperand0,
                                          const GGS_uint inInsertionIndex,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_typelist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_typelist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -3313,19 +3926,23 @@ void GGS_typelist::setter_removeAtIndex (GGS_type & outOperand0,
                                          const GGS_uint inRemoveIndex,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_typelist * p = (cCollectionElement_typelist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_typelist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -3334,14 +3951,19 @@ void GGS_typelist::setter_removeAtIndex (GGS_type & outOperand0,
 void GGS_typelist::setter_popFirst (GGS_type & outOperand0,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3350,14 +3972,19 @@ void GGS_typelist::setter_popFirst (GGS_type & outOperand0,
 void GGS_typelist::setter_popLast (GGS_type & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3366,14 +3993,18 @@ void GGS_typelist::setter_popLast (GGS_type & outOperand0,
 void GGS_typelist::method_first (GGS_type & outOperand0,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3382,14 +4013,18 @@ void GGS_typelist::method_first (GGS_type & outOperand0,
 void GGS_typelist::method_last (GGS_type & outOperand0,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3401,7 +4036,35 @@ GGS_typelist GGS_typelist::add_operation (const GGS_typelist & inOperand,
   GGS_typelist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typelist GGS_typelist::subList (const int32_t inStart,
+                                    const int32_t inLength,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) const {
+  GGS_typelist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -3411,8 +4074,12 @@ GGS_typelist GGS_typelist::add_operation (const GGS_typelist & inOperand,
 GGS_typelist GGS_typelist::getter_subListWithRange (const GGS_range & inRange,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
-  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_typelist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -3421,8 +4088,12 @@ GGS_typelist GGS_typelist::getter_subListWithRange (const GGS_range & inRange,
 GGS_typelist GGS_typelist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
-  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_typelist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -3431,74 +4102,108 @@ GGS_typelist GGS_typelist::getter_subListFromIndex (const GGS_uint & inIndex,
 GGS_typelist GGS_typelist::getter_subListToIndex (const GGS_uint & inIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GGS_typelist result = GGS_typelist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_typelist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typelist::plusAssignOperation (const GGS_typelist inOperand,
+void GGS_typelist::plusAssignOperation (const GGS_typelist inList,
                                         Compiler * /* inCompiler */
                                         COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_typelist::setter_setMValueAtIndex (GGS_type inOperand,
-                                              GGS_uint inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_typelist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+                                            GGS_uint inIndex,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_type GGS_typelist::getter_mValueAtIndex (const GGS_uint & inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) attributes.ptr () ;
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
   GGS_type result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_typelist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_typelist::objectCompare (const GGS_typelist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_typelist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_typelist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @typelist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_typelist::DownEnumerator_typelist (const GGS_typelist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_typelist_2E_element DownEnumerator_typelist::current (LOCATION_ARGS) const {
-  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_typelist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_type DownEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_typelist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -3508,25 +4213,20 @@ GGS_type DownEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_typelist::UpEnumerator_typelist (const GGS_typelist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_typelist_2E_element UpEnumerator_typelist::current (LOCATION_ARGS) const {
-  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_typelist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_type UpEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_typelist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -3536,12 +4236,12 @@ GGS_type UpEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
 //     @uintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
-                                                                nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uintlist ("uintlist",
+                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintlist ;
 }
 
@@ -3584,17 +4284,11 @@ class cCollectionElement_uintlist : public cCollectionElement {
                                        COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_uintlist (const GGS_uintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3627,70 +4321,25 @@ cCollectionElement * cCollectionElement_uintlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_uintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_uintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_uintlist * operand = (cCollectionElement_uintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_uintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @uintlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_uintlist::GGS_uintlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uintlist::GGS_uintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uintlist GGS_uintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_uintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uintlist GGS_uintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_uintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uintlist::plusPlusAssignOperation (const GGS_uintlist_2E_element & inValue
-                                            COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_uintlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uintlist GGS_uintlist::class_func_listWithValue (const GGS_uint & inOperand0
-                                                     COMMA_LOCATION_ARGS) {
-  GGS_uintlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_uintlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_uintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_uintlist::GGS_uintlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_uintlist) ;
+    const GGS_uintlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3706,16 +4355,96 @@ void GGS_uintlist::makeAttributesFromObjects (capCollectionElement & outAttribut
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_uintlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_uintlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_uintlist::description (String & ioString,
+                                const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist GGS_uintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_uintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist GGS_uintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_uintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_uintlist::plusPlusAssignOperation (const GGS_uintlist_2E_element & inValue
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist GGS_uintlist::class_func_listWithValue (const GGS_uint & inOperand0
+                                                     COMMA_LOCATION_ARGS) {
+  const GGS_uintlist_2E_element element (inOperand0) ;
+  GGS_uintlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_uintlist::addAssignOperation (const GGS_uint & inOperand0
                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_uintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_uintlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3723,13 +4452,9 @@ void GGS_uintlist::addAssignOperation (const GGS_uint & inOperand0
 void GGS_uintlist::setter_append (const GGS_uint inOperand0,
                                   Compiler * /* inCompiler */
                                   COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_uintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_uintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -3739,13 +4464,18 @@ void GGS_uintlist::setter_insertAtIndex (const GGS_uint inOperand0,
                                          const GGS_uint inInsertionIndex,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_uintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_uintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -3755,19 +4485,23 @@ void GGS_uintlist::setter_removeAtIndex (GGS_uint & outOperand0,
                                          const GGS_uint inRemoveIndex,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_uintlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -3776,14 +4510,19 @@ void GGS_uintlist::setter_removeAtIndex (GGS_uint & outOperand0,
 void GGS_uintlist::setter_popFirst (GGS_uint & outOperand0,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3792,14 +4531,19 @@ void GGS_uintlist::setter_popFirst (GGS_uint & outOperand0,
 void GGS_uintlist::setter_popLast (GGS_uint & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3808,14 +4552,18 @@ void GGS_uintlist::setter_popLast (GGS_uint & outOperand0,
 void GGS_uintlist::method_first (GGS_uint & outOperand0,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3824,14 +4572,18 @@ void GGS_uintlist::method_first (GGS_uint & outOperand0,
 void GGS_uintlist::method_last (GGS_uint & outOperand0,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3843,7 +4595,35 @@ GGS_uintlist GGS_uintlist::add_operation (const GGS_uintlist & inOperand,
   GGS_uintlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uintlist GGS_uintlist::subList (const int32_t inStart,
+                                    const int32_t inLength,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) const {
+  GGS_uintlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -3853,8 +4633,12 @@ GGS_uintlist GGS_uintlist::add_operation (const GGS_uintlist & inOperand,
 GGS_uintlist GGS_uintlist::getter_subListWithRange (const GGS_range & inRange,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
-  GGS_uintlist result = GGS_uintlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_uintlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -3863,8 +4647,12 @@ GGS_uintlist GGS_uintlist::getter_subListWithRange (const GGS_range & inRange,
 GGS_uintlist GGS_uintlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
-  GGS_uintlist result = GGS_uintlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_uintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -3873,74 +4661,108 @@ GGS_uintlist GGS_uintlist::getter_subListFromIndex (const GGS_uint & inIndex,
 GGS_uintlist GGS_uintlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GGS_uintlist result = GGS_uintlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_uintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uintlist::plusAssignOperation (const GGS_uintlist inOperand,
+void GGS_uintlist::plusAssignOperation (const GGS_uintlist inList,
                                         Compiler * /* inCompiler */
                                         COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_uintlist::setter_setMValueAtIndex (GGS_uint inOperand,
-                                              GGS_uint inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+                                            GGS_uint inIndex,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_uint GGS_uintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) attributes.ptr () ;
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_uintlist::objectCompare (const GGS_uintlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_uintlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_uintlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @uintlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_uintlist::DownEnumerator_uintlist (const GGS_uintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uintlist_2E_element DownEnumerator_uintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint DownEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -3950,25 +4772,20 @@ GGS_uint DownEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_uintlist::UpEnumerator_uintlist (const GGS_uintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uintlist_2E_element UpEnumerator_uintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint UpEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -3978,12 +4795,12 @@ GGS_uint UpEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
 //     @uint64list generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
-                                                                        nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_list ("uint64list",
+                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_list::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_list::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_list ;
 }
 
@@ -4026,17 +4843,11 @@ class cCollectionElement_uint_36__34_list : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_uint_36__34_list (const GGS_uint_36__34_list_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4069,70 +4880,25 @@ cCollectionElement * cCollectionElement_uint_36__34_list::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_uint_36__34_list::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_uint_36__34_list * operand = (cCollectionElement_uint_36__34_list *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_uint_36__34_list) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @uint_36__34_list
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_list::GGS_uint_36__34_list (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_list::GGS_uint_36__34_list (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint_36__34_list GGS_uint_36__34_list::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_uint_36__34_list (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint_36__34_list GGS_uint_36__34_list::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_uint_36__34_list (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint_36__34_list::plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inValue
-                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_uint_36__34_list (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint_36__34_list GGS_uint_36__34_list::class_func_listWithValue (const GGS_uint_36__34_ & inOperand0
-                                                                     COMMA_LOCATION_ARGS) {
-  GGS_uint_36__34_list result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_uint_36__34_list (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_uint_36__34_list::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_uint_36__34_list::GGS_uint_36__34_list (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
+    const GGS_uint_36__34_list_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4148,16 +4914,96 @@ void GGS_uint_36__34_list::makeAttributesFromObjects (capCollectionElement & out
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_uint_36__34_list::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_uint_36__34_list::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_uint_36__34_list::description (String & ioString,
+                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_list GGS_uint_36__34_list::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_uint_36__34_list result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_list GGS_uint_36__34_list::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_uint_36__34_list result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_uint_36__34_list::plusPlusAssignOperation (const GGS_uint_36__34_list_2E_element & inValue
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_list GGS_uint_36__34_list::class_func_listWithValue (const GGS_uint_36__34_ & inOperand0
+                                                                     COMMA_LOCATION_ARGS) {
+  const GGS_uint_36__34_list_2E_element element (inOperand0) ;
+  GGS_uint_36__34_list result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_uint_36__34_list::addAssignOperation (const GGS_uint_36__34_ & inOperand0
                                                COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_uint_36__34_list (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_uint_36__34_list_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4165,13 +5011,9 @@ void GGS_uint_36__34_list::addAssignOperation (const GGS_uint_36__34_ & inOperan
 void GGS_uint_36__34_list::setter_append (const GGS_uint_36__34_ inOperand0,
                                           Compiler * /* inCompiler */
                                           COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_uint_36__34_list (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_uint_36__34_list_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -4181,13 +5023,18 @@ void GGS_uint_36__34_list::setter_insertAtIndex (const GGS_uint_36__34_ inOperan
                                                  const GGS_uint inInsertionIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_uint_36__34_list (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_uint_36__34_list_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -4197,19 +5044,23 @@ void GGS_uint_36__34_list::setter_removeAtIndex (GGS_uint_36__34_ & outOperand0,
                                                  const GGS_uint inRemoveIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -4218,14 +5069,19 @@ void GGS_uint_36__34_list::setter_removeAtIndex (GGS_uint_36__34_ & outOperand0,
 void GGS_uint_36__34_list::setter_popFirst (GGS_uint_36__34_ & outOperand0,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4234,14 +5090,19 @@ void GGS_uint_36__34_list::setter_popFirst (GGS_uint_36__34_ & outOperand0,
 void GGS_uint_36__34_list::setter_popLast (GGS_uint_36__34_ & outOperand0,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4250,14 +5111,18 @@ void GGS_uint_36__34_list::setter_popLast (GGS_uint_36__34_ & outOperand0,
 void GGS_uint_36__34_list::method_first (GGS_uint_36__34_ & outOperand0,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4266,14 +5131,18 @@ void GGS_uint_36__34_list::method_first (GGS_uint_36__34_ & outOperand0,
 void GGS_uint_36__34_list::method_last (GGS_uint_36__34_ & outOperand0,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4285,7 +5154,35 @@ GGS_uint_36__34_list GGS_uint_36__34_list::add_operation (const GGS_uint_36__34_
   GGS_uint_36__34_list result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_list GGS_uint_36__34_list::subList (const int32_t inStart,
+                                                    const int32_t inLength,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  GGS_uint_36__34_list result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -4295,8 +5192,12 @@ GGS_uint_36__34_list GGS_uint_36__34_list::add_operation (const GGS_uint_36__34_
 GGS_uint_36__34_list GGS_uint_36__34_list::getter_subListWithRange (const GGS_range & inRange,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_list result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_uint_36__34_list result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -4305,8 +5206,12 @@ GGS_uint_36__34_list GGS_uint_36__34_list::getter_subListWithRange (const GGS_ra
 GGS_uint_36__34_list GGS_uint_36__34_list::getter_subListFromIndex (const GGS_uint & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_list result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_uint_36__34_list result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -4315,17 +5220,26 @@ GGS_uint_36__34_list GGS_uint_36__34_list::getter_subListFromIndex (const GGS_ui
 GGS_uint_36__34_list GGS_uint_36__34_list::getter_subListToIndex (const GGS_uint & inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_list result = GGS_uint_36__34_list::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_uint_36__34_list result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_list::plusAssignOperation (const GGS_uint_36__34_list inOperand,
+void GGS_uint_36__34_list::plusAssignOperation (const GGS_uint_36__34_list inList,
                                                 Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4334,55 +5248,80 @@ void GGS_uint_36__34_list::setter_setMValueAtIndex (GGS_uint_36__34_ inOperand,
                                                     GGS_uint inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_uint_36__34_ GGS_uint_36__34_list::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) attributes.ptr () ;
   GGS_uint_36__34_ result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_uint_36__34_list::objectCompare (const GGS_uint_36__34_list & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_uint_36__34_list_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_uint_36__34_list_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @uint_36__34_list
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_uint_36__34_list::DownEnumerator_uint_36__34_list (const GGS_uint_36__34_list & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_list_2E_element DownEnumerator_uint_36__34_list::current (LOCATION_ARGS) const {
-  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ DownEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -4392,25 +5331,20 @@ GGS_uint_36__34_ DownEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS)
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_uint_36__34_list::UpEnumerator_uint_36__34_list (const GGS_uint_36__34_list & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_list_2E_element UpEnumerator_uint_36__34_list::current (LOCATION_ARGS) const {
-  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ UpEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -4420,12 +5354,12 @@ GGS_uint_36__34_ UpEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) c
 //     @bigintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintlist ("bigintlist",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintlist ;
 }
 
@@ -4468,17 +5402,11 @@ class cCollectionElement_bigintlist : public cCollectionElement {
                                          COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_bigintlist (const GGS_bigintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4511,70 +5439,25 @@ cCollectionElement * cCollectionElement_bigintlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_bigintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_bigintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_bigintlist * operand = (cCollectionElement_bigintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_bigintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @bigintlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigintlist::GGS_bigintlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigintlist::GGS_bigintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bigintlist GGS_bigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_bigintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bigintlist GGS_bigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_bigintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bigintlist::plusPlusAssignOperation (const GGS_bigintlist_2E_element & inValue
-                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_bigintlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bigintlist GGS_bigintlist::class_func_listWithValue (const GGS_bigint & inOperand0
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_bigintlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_bigintlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_bigintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_bigintlist::GGS_bigintlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
+    const GGS_bigintlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4590,16 +5473,96 @@ void GGS_bigintlist::makeAttributesFromObjects (capCollectionElement & outAttrib
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_bigintlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_bigintlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bigintlist::description (String & ioString,
+                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist GGS_bigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_bigintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist GGS_bigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bigintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_bigintlist::plusPlusAssignOperation (const GGS_bigintlist_2E_element & inValue
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist GGS_bigintlist::class_func_listWithValue (const GGS_bigint & inOperand0
+                                                         COMMA_LOCATION_ARGS) {
+  const GGS_bigintlist_2E_element element (inOperand0) ;
+  GGS_bigintlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_bigintlist::addAssignOperation (const GGS_bigint & inOperand0
                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_bigintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_bigintlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4607,13 +5570,9 @@ void GGS_bigintlist::addAssignOperation (const GGS_bigint & inOperand0
 void GGS_bigintlist::setter_append (const GGS_bigint inOperand0,
                                     Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_bigintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_bigintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -4623,13 +5582,18 @@ void GGS_bigintlist::setter_insertAtIndex (const GGS_bigint inOperand0,
                                            const GGS_uint inInsertionIndex,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_bigintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_bigintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -4639,19 +5603,23 @@ void GGS_bigintlist::setter_removeAtIndex (GGS_bigint & outOperand0,
                                            const GGS_uint inRemoveIndex,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -4660,14 +5628,19 @@ void GGS_bigintlist::setter_removeAtIndex (GGS_bigint & outOperand0,
 void GGS_bigintlist::setter_popFirst (GGS_bigint & outOperand0,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4676,14 +5649,19 @@ void GGS_bigintlist::setter_popFirst (GGS_bigint & outOperand0,
 void GGS_bigintlist::setter_popLast (GGS_bigint & outOperand0,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4692,14 +5670,18 @@ void GGS_bigintlist::setter_popLast (GGS_bigint & outOperand0,
 void GGS_bigintlist::method_first (GGS_bigint & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4708,14 +5690,18 @@ void GGS_bigintlist::method_first (GGS_bigint & outOperand0,
 void GGS_bigintlist::method_last (GGS_bigint & outOperand0,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4727,7 +5713,35 @@ GGS_bigintlist GGS_bigintlist::add_operation (const GGS_bigintlist & inOperand,
   GGS_bigintlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bigintlist GGS_bigintlist::subList (const int32_t inStart,
+                                        const int32_t inLength,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const {
+  GGS_bigintlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -4737,8 +5751,12 @@ GGS_bigintlist GGS_bigintlist::add_operation (const GGS_bigintlist & inOperand,
 GGS_bigintlist GGS_bigintlist::getter_subListWithRange (const GGS_range & inRange,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_bigintlist result = GGS_bigintlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_bigintlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -4747,8 +5765,12 @@ GGS_bigintlist GGS_bigintlist::getter_subListWithRange (const GGS_range & inRang
 GGS_bigintlist GGS_bigintlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_bigintlist result = GGS_bigintlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_bigintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -4757,17 +5779,26 @@ GGS_bigintlist GGS_bigintlist::getter_subListFromIndex (const GGS_uint & inIndex
 GGS_bigintlist GGS_bigintlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  GGS_bigintlist result = GGS_bigintlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_bigintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigintlist::plusAssignOperation (const GGS_bigintlist inOperand,
+void GGS_bigintlist::plusAssignOperation (const GGS_bigintlist inList,
                                           Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4776,55 +5807,80 @@ void GGS_bigintlist::setter_setMValueAtIndex (GGS_bigint inOperand,
                                               GGS_uint inIndex,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_bigint GGS_bigintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) attributes.ptr () ;
   GGS_bigint result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_bigintlist::objectCompare (const GGS_bigintlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_bigintlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_bigintlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @bigintlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_bigintlist::DownEnumerator_bigintlist (const GGS_bigintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigintlist_2E_element DownEnumerator_bigintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigint DownEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -4834,25 +5890,20 @@ GGS_bigint DownEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_bigintlist::UpEnumerator_bigintlist (const GGS_bigintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigintlist_2E_element UpEnumerator_bigintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_bigint UpEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -4862,12 +5913,12 @@ GGS_bigint UpEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
 //     @lbigintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
-                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist ("lbigintlist",
+                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbigintlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbigintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigintlist ;
 }
 
@@ -4910,17 +5961,11 @@ class cCollectionElement_lbigintlist : public cCollectionElement {
                                           COMMA_LOCATION_ARGS) ;
   public: cCollectionElement_lbigintlist (const GGS_lbigintlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4953,70 +5998,25 @@ cCollectionElement * cCollectionElement_lbigintlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_lbigintlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue" ":") ;
-  mObject.mProperty_mValue.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_lbigintlist * operand = (cCollectionElement_lbigintlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_lbigintlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @lbigintlist
 //--------------------------------------------------------------------------------------------------
 
 GGS_lbigintlist::GGS_lbigintlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lbigintlist::GGS_lbigintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigintlist GGS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS_lbigintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigintlist GGS_lbigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_lbigintlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lbigintlist::plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inValue
-                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement_lbigintlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigintlist GGS_lbigintlist::class_func_listWithValue (const GGS_lbigint & inOperand0
-                                                           COMMA_LOCATION_ARGS) {
-  GGS_lbigintlist result ;
-  if (inOperand0.isValid ()) {
-    result = GGS_lbigintlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS_lbigintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS_lbigintlist::GGS_lbigintlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
+    const GGS_lbigintlist_2E_element element (p->mObject.mProperty_mValue) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5032,16 +6032,96 @@ void GGS_lbigintlist::makeAttributesFromObjects (capCollectionElement & outAttri
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_uint GGS_lbigintlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_lbigintlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lbigintlist::description (String & ioString,
+                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist GGS_lbigintlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS_lbigintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist GGS_lbigintlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lbigintlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lbigintlist::plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inValue
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist GGS_lbigintlist::class_func_listWithValue (const GGS_lbigint & inOperand0
+                                                           COMMA_LOCATION_ARGS) {
+  const GGS_lbigintlist_2E_element element (inOperand0) ;
+  GGS_lbigintlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_lbigintlist::addAssignOperation (const GGS_lbigint & inOperand0
                                           COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_lbigintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS_lbigintlist_2E_element newElement (inOperand0) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5049,13 +6129,9 @@ void GGS_lbigintlist::addAssignOperation (const GGS_lbigint & inOperand0
 void GGS_lbigintlist::setter_append (const GGS_lbigint inOperand0,
                                      Compiler * /* inCompiler */
                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_lbigintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS_lbigintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -5065,13 +6141,18 @@ void GGS_lbigintlist::setter_insertAtIndex (const GGS_lbigint inOperand0,
                                             const GGS_uint inInsertionIndex,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement_lbigintlist (inOperand0 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS_lbigintlist_2E_element newElement (inOperand0) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -5081,19 +6162,23 @@ void GGS_lbigintlist::setter_removeAtIndex (GGS_lbigint & outOperand0,
                                             const GGS_uint inRemoveIndex,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-      outOperand0 = p->mObject.mProperty_mValue ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
   }
 }
 
@@ -5102,14 +6187,19 @@ void GGS_lbigintlist::setter_removeAtIndex (GGS_lbigint & outOperand0,
 void GGS_lbigintlist::setter_popFirst (GGS_lbigint & outOperand0,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5118,14 +6208,19 @@ void GGS_lbigintlist::setter_popFirst (GGS_lbigint & outOperand0,
 void GGS_lbigintlist::setter_popLast (GGS_lbigint & outOperand0,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5134,14 +6229,18 @@ void GGS_lbigintlist::setter_popLast (GGS_lbigint & outOperand0,
 void GGS_lbigintlist::method_first (GGS_lbigint & outOperand0,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5150,14 +6249,18 @@ void GGS_lbigintlist::method_first (GGS_lbigint & outOperand0,
 void GGS_lbigintlist::method_last (GGS_lbigint & outOperand0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5169,7 +6272,35 @@ GGS_lbigintlist GGS_lbigintlist::add_operation (const GGS_lbigintlist & inOperan
   GGS_lbigintlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigintlist GGS_lbigintlist::subList (const int32_t inStart,
+                                          const int32_t inLength,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_lbigintlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -5179,8 +6310,12 @@ GGS_lbigintlist GGS_lbigintlist::add_operation (const GGS_lbigintlist & inOperan
 GGS_lbigintlist GGS_lbigintlist::getter_subListWithRange (const GGS_range & inRange,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lbigintlist result = GGS_lbigintlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS_lbigintlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -5189,8 +6324,12 @@ GGS_lbigintlist GGS_lbigintlist::getter_subListWithRange (const GGS_range & inRa
 GGS_lbigintlist GGS_lbigintlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lbigintlist result = GGS_lbigintlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_lbigintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -5199,17 +6338,26 @@ GGS_lbigintlist GGS_lbigintlist::getter_subListFromIndex (const GGS_uint & inInd
 GGS_lbigintlist GGS_lbigintlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_lbigintlist result = GGS_lbigintlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS_lbigintlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lbigintlist::plusAssignOperation (const GGS_lbigintlist inOperand,
+void GGS_lbigintlist::plusAssignOperation (const GGS_lbigintlist inList,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5218,55 +6366,80 @@ void GGS_lbigintlist::setter_setMValueAtIndex (GGS_lbigint inOperand,
                                                GGS_uint inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_lbigint GGS_lbigintlist::getter_mValueAtIndex (const GGS_uint & inIndex,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) attributes.ptr () ;
   GGS_lbigint result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    result = p->mObject.mProperty_mValue ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS_lbigintlist::objectCompare (const GGS_lbigintlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_lbigintlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS_lbigintlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @lbigintlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_lbigintlist::DownEnumerator_lbigintlist (const GGS_lbigintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lbigintlist_2E_element DownEnumerator_lbigintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lbigint DownEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -5276,25 +6449,20 @@ GGS_lbigint DownEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_lbigintlist::UpEnumerator_lbigintlist (const GGS_lbigintlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lbigintlist_2E_element UpEnumerator_lbigintlist::current (LOCATION_ARGS) const {
-  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_lbigint UpEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
-  const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-  return p->mObject.mProperty_mValue ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue ;
 }
 
 
@@ -5304,12 +6472,12 @@ GGS_lbigint UpEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
 //     @lbigint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbigint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbigint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigint ;
 }
 
@@ -5446,12 +6614,12 @@ void GGS_lbigint::description (String & ioString,
 //     @lbool generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ("lbool",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ("lbool",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbool::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbool::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbool ;
 }
 
@@ -5588,12 +6756,12 @@ void GGS_lbool::description (String & ioString,
 //     @lchar generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lchar ("lchar",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ("lchar",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lchar::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lchar::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lchar ;
 }
 
@@ -5730,12 +6898,12 @@ void GGS_lchar::description (String & ioString,
 //     @ldouble generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_ldouble::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_ldouble::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_ldouble ;
 }
 
@@ -5872,12 +7040,12 @@ void GGS_ldouble::description (String & ioString,
 //     @lsint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint ("lsint",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint ("lsint",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lsint::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lsint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lsint ;
 }
 
@@ -6014,12 +7182,12 @@ void GGS_lsint::description (String & ioString,
 //     @lsint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
-                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lsint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lsint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lsint_36__34_ ;
 }
 
@@ -6156,12 +7324,12 @@ void GGS_lsint_36__34_::description (String & ioString,
 //     @luint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
-                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
+                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luint_36__34_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luint_36__34_ ;
 }
 
@@ -6298,12 +7466,12 @@ void GGS_luint_36__34_::description (String & ioString,
 //     @2stringlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__32_stringlist::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__32_stringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_stringlist ;
 }
 
@@ -6347,17 +7515,11 @@ class cCollectionElement__32_stringlist : public cCollectionElement {
                                              COMMA_LOCATION_ARGS) ;
   public: cCollectionElement__32_stringlist (const GGS__32_stringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const cCollectionElement * inOperand) const ;
-
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
   public: virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public: virtual void description (String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6391,75 +7553,25 @@ cCollectionElement * cCollectionElement__32_stringlist::copy (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-void cCollectionElement__32_stringlist::description (String & ioString, const int32_t inIndentation) const {
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue0" ":") ;
-  mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
-  ioString.appendNewLine () ;
-  ioString.appendStringMultiple ("| ", inIndentation) ;
-  ioString.appendCString ("mValue1" ":") ;
-  mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement__32_stringlist::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement__32_stringlist * operand = (cCollectionElement__32_stringlist *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement__32_stringlist) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
+// List type @_32_stringlist
 //--------------------------------------------------------------------------------------------------
 
 GGS__32_stringlist::GGS__32_stringlist (void) :
-AC_GALGAS_list () {
+mArray () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_stringlist::GGS__32_stringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist GGS__32_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  return GGS__32_stringlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist GGS__32_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS__32_stringlist (capCollectionElementArray ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__32_stringlist::plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inValue
-                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement * p = nullptr ;
-  macroMyNew (p, cCollectionElement__32_stringlist (inValue COMMA_THERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  appendObject (attributes) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist GGS__32_stringlist::class_func_listWithValue (const GGS_string & inOperand0,
-                                                                 const GGS_string & inOperand1
-                                                                 COMMA_LOCATION_ARGS) {
-  GGS__32_stringlist result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GGS__32_stringlist (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GGS__32_stringlist::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.appendObject (attributes) ;
+GGS__32_stringlist::GGS__32_stringlist (const capCollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) v.ptr () ;
+    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
+    const GGS__32_stringlist_2E_element element (p->mObject.mProperty_mValue_30_, p->mObject.mProperty_mValue_31_) ;
+    mArray.appendObject (element) ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6469,10 +7581,100 @@ void GGS__32_stringlist::makeAttributesFromObjects (capCollectionElement & outAt
                                                     const GGS_string & in_mValue_31_
                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement__32_stringlist * p = nullptr ;
-  macroMyNew (p, cCollectionElement__32_stringlist (in_mValue_30_,
-                                                    in_mValue_31_ COMMA_THERE)) ;
+  macroMyNew (p, cCollectionElement__32_stringlist (in_mValue_30_, in_mValue_31_ COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__32_stringlist::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS__32_stringlist::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__32_stringlist::description (String & ioString,
+                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue0:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue_30_.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mValue1:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mValue_31_.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist GGS__32_stringlist::class_func_emptyList (UNUSED_LOCATION_ARGS) {
+  GGS__32_stringlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist GGS__32_stringlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__32_stringlist result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__32_stringlist::plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inValue
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist GGS__32_stringlist::class_func_listWithValue (const GGS_string & inOperand0,
+                                                                 const GGS_string & inOperand1
+                                                                 COMMA_LOCATION_ARGS) {
+  const GGS__32_stringlist_2E_element element (inOperand0, inOperand1) ;
+  GGS__32_stringlist result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6480,14 +7682,8 @@ void GGS__32_stringlist::makeAttributesFromObjects (capCollectionElement & outAt
 void GGS__32_stringlist::addAssignOperation (const GGS_string & inOperand0,
                                              const GGS_string & inOperand1
                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement__32_stringlist (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
+  const GGS__32_stringlist_2E_element newElement (inOperand0, inOperand1) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6496,13 +7692,9 @@ void GGS__32_stringlist::setter_append (const GGS_string inOperand0,
                                         const GGS_string inOperand1,
                                         Compiler * /* inCompiler */
                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement__32_stringlist (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  const GGS__32_stringlist_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
   }
 }
 
@@ -6513,13 +7705,18 @@ void GGS__32_stringlist::setter_insertAtIndex (const GGS_string inOperand0,
                                                const GGS_uint inInsertionIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    cCollectionElement * p = nullptr ;
-    macroMyNew (p, cCollectionElement__32_stringlist (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  const GGS__32_stringlist_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
 
@@ -6530,21 +7727,25 @@ void GGS__32_stringlist::setter_removeAtIndex (GGS_string & outOperand0,
                                                const GGS_uint inRemoveIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
+  bool removed = false ;
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
-    if (nullptr == p) {
-      drop () ;
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mValue_30_ ;
+      outOperand1 = mArray (idx COMMA_HERE).mProperty_mValue_31_ ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-      outOperand0 = p->mObject.mProperty_mValue_30_ ;
-      outOperand1 = p->mObject.mProperty_mValue_31_ ;
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
-  }else{
-    drop () ;    
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
   }
 }
 
@@ -6554,16 +7755,21 @@ void GGS__32_stringlist::setter_popFirst (GGS_string & outOperand0,
                                           GGS_string & outOperand1,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue_30_ ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mValue_31_ ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
     outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue_30_ ;
-    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -6573,16 +7779,21 @@ void GGS__32_stringlist::setter_popLast (GGS_string & outOperand0,
                                          GGS_string & outOperand1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue_30_ ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mValue_31_ ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
     outOperand0.drop () ;
     outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue_30_ ;
-    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -6592,16 +7803,20 @@ void GGS__32_stringlist::method_first (GGS_string & outOperand0,
                                        GGS_string & outOperand1,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mValue_30_ ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mValue_31_ ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue_30_ ;
-    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -6611,16 +7826,20 @@ void GGS__32_stringlist::method_last (GGS_string & outOperand0,
                                       GGS_string & outOperand1,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
-  if (nullptr == p) {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mValue_30_ ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mValue_31_ ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
     outOperand0.drop () ;
     outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mProperty_mValue_30_ ;
-    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -6632,7 +7851,35 @@ GGS__32_stringlist GGS__32_stringlist::add_operation (const GGS__32_stringlist &
   GGS__32_stringlist result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist GGS__32_stringlist::subList (const int32_t inStart,
+                                                const int32_t inLength,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  GGS__32_stringlist result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
   }
   return result ;
 }
@@ -6642,8 +7889,12 @@ GGS__32_stringlist GGS__32_stringlist::add_operation (const GGS__32_stringlist &
 GGS__32_stringlist GGS__32_stringlist::getter_subListWithRange (const GGS_range & inRange,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GGS__32_stringlist result = GGS__32_stringlist::class_func_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GGS__32_stringlist result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -6652,8 +7903,12 @@ GGS__32_stringlist GGS__32_stringlist::getter_subListWithRange (const GGS_range 
 GGS__32_stringlist GGS__32_stringlist::getter_subListFromIndex (const GGS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GGS__32_stringlist result = GGS__32_stringlist::class_func_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS__32_stringlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
@@ -6662,17 +7917,26 @@ GGS__32_stringlist GGS__32_stringlist::getter_subListFromIndex (const GGS_uint &
 GGS__32_stringlist GGS__32_stringlist::getter_subListToIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GGS__32_stringlist result = GGS__32_stringlist::class_func_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GGS__32_stringlist result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__32_stringlist::plusAssignOperation (const GGS__32_stringlist inOperand,
+void GGS__32_stringlist::plusAssignOperation (const GGS__32_stringlist inList,
                                               Compiler * /* inCompiler */
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6681,92 +7945,125 @@ void GGS__32_stringlist::setter_setMValue_30_AtIndex (GGS_string inOperand,
                                                       GGS_uint inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue_30_ = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue_30_ = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_string GGS__32_stringlist::getter_mValue_30_AtIndex (const GGS_uint & inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    result = p->mObject.mProperty_mValue_30_ ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue_30_ ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
-
 //--------------------------------------------------------------------------------------------------
 
 void GGS__32_stringlist::setter_setMValue_31_AtIndex (GGS_string inOperand,
                                                       GGS_uint inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mValue_31_ = inOperand ;
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mValue_31_ = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
 }
-
 //--------------------------------------------------------------------------------------------------
-
+  
 GGS_string GGS__32_stringlist::getter_mValue_31_AtIndex (const GGS_uint & inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) attributes.ptr () ;
   GGS_string result ;
-  if (nullptr != p) {
-    macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    result = p->mObject.mProperty_mValue_31_ ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mValue_31_ ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
   }
   return result ;
 }
+//--------------------------------------------------------------------------------------------------
 
-
+ComparisonResult GGS__32_stringlist::objectCompare (const GGS__32_stringlist & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS__32_stringlist_2E_element left = mArray (int32_t (i) COMMA_HERE) ;
+        const GGS__32_stringlist_2E_element right = inOperand.mArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_32_stringlist
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator__32_stringlist::DownEnumerator__32_stringlist (const GGS__32_stringlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Down) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__32_stringlist_2E_element DownEnumerator__32_stringlist::current (LOCATION_ARGS) const {
-  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) const {
-  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject.mProperty_mValue_30_ ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue_30_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string DownEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const {
-  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject.mProperty_mValue_31_ ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue_31_ ;
 }
 
 
@@ -6776,33 +8073,26 @@ GGS_string DownEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) con
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator__32_stringlist::UpEnumerator__32_stringlist (const GGS__32_stringlist & inEnumeratedObject) :
-cGenericAbstractEnumerator (EnumerationOrder::Up) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__32_stringlist_2E_element UpEnumerator__32_stringlist::current (LOCATION_ARGS) const {
-  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject ;
+  return mArray (mIndex COMMA_THERE) ;
 }
-
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) const {
-  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject.mProperty_mValue_30_ ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue_30_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string UpEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const {
-  const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject.mProperty_mValue_31_ ;
+  return mArray (mIndex COMMA_THERE).mProperty_mValue_31_ ;
 }
 
 
@@ -6812,12 +8102,12 @@ GGS_string UpEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const
 //     @range generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ("range",
-                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_range ("range",
+                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_range::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_range::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_range ;
 }
 
@@ -6954,12 +8244,12 @@ void GGS_range::description (String & ioString,
 //     @bigint? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigint_3F_::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigint_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigint_3F_ ;
 }
 
@@ -7089,12 +8379,12 @@ void GGS_bigint_3F_::description (String & ioString,
 //     @functionlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2E_element ("functionlist.element",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionlist_2E_element ("functionlist.element",
+                                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_functionlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_functionlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionlist_2E_element ;
 }
 
@@ -7216,12 +8506,12 @@ void GGS_functionlist_2E_element::description (String & ioString,
 //     @luintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2E_element ("luintlist.element",
-                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luintlist_2E_element ("luintlist.element",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_luintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_luintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luintlist_2E_element ;
 }
 
@@ -7343,12 +8633,12 @@ void GGS_luintlist_2E_element::description (String & ioString,
 //     @objectlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2E_element ("objectlist.element",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_objectlist_2E_element ("objectlist.element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_objectlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_objectlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_objectlist_2E_element ;
 }
 
@@ -7470,12 +8760,12 @@ void GGS_objectlist_2E_element::description (String & ioString,
 //     @stringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2E_element ("stringlist.element",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringlist_2E_element ("stringlist.element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_stringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_stringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_stringlist_2E_element ;
 }
 
@@ -7597,12 +8887,12 @@ void GGS_stringlist_2E_element::description (String & ioString,
 //     @typelist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2E_element ("typelist.element",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typelist_2E_element ("typelist.element",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_typelist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_typelist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typelist_2E_element ;
 }
 
@@ -7724,12 +9014,12 @@ void GGS_typelist_2E_element::description (String & ioString,
 //     @uintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2E_element ("uintlist.element",
-                                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uintlist_2E_element ("uintlist.element",
+                                                                        nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uintlist_2E_element ;
 }
 
@@ -7851,12 +9141,12 @@ void GGS_uintlist_2E_element::description (String & ioString,
 //     @uint64list.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ("uint64list.element",
-                                                                                   nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ("uint64list.element",
+                                                                                nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_uint_36__34_list_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_uint_36__34_list_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ;
 }
 
@@ -7978,12 +9268,12 @@ void GGS_uint_36__34_list_2E_element::description (String & ioString,
 //     @bigintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist_2E_element ("bigintlist.element",
-                                                                             nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintlist_2E_element ("bigintlist.element",
+                                                                          nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_bigintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_bigintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintlist_2E_element ;
 }
 
@@ -8105,12 +9395,12 @@ void GGS_bigintlist_2E_element::description (String & ioString,
 //     @lbigintlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element ("lbigintlist.element",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element ("lbigintlist.element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lbigintlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lbigintlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigintlist_2E_element ;
 }
 
@@ -8232,12 +9522,12 @@ void GGS_lbigintlist_2E_element::description (String & ioString,
 //     @2stringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ("2stringlist.element",
-                                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ("2stringlist.element",
+                                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS__32_stringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS__32_stringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_stringlist_2E_element ;
 }
 
@@ -8374,12 +9664,12 @@ void GGS__32_stringlist_2E_element::description (String & ioString,
 //     @lstring generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstring ("lstring",
-                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstring ("lstring",
+                                                            nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lstring::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lstring::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstring ;
 }
 
@@ -8516,12 +9806,12 @@ void GGS_lstring::description (String & ioString,
 //     @lstringlist.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ("lstringlist.element",
-                                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ("lstringlist.element",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GGS_lstringlist_2E_element::staticTypeDescriptor (void) const {
+const GALGAS_TypeDescriptor * GGS_lstringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstringlist_2E_element ;
 }
 

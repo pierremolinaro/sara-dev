@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "M_machine.h"
-#include "TC_UniqueArray.h"
+#include "GenericUniqueArray.h"
 #include "String-class.h"
 
 //-----------------------------------------------------------------------------*
@@ -37,7 +37,7 @@ class AbstractOutputStream ;
 class cDisplayBDD {
 //--- Attributs
   protected : uint32_t aNombreChaines ;
-  protected : TC_UniqueArray <String> aTab ;
+  protected : GenericUniqueArray <String> aTab ;
   protected : uint32_t * aDimensions ;
 
 //--- Constructeur et destructeur

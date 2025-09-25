@@ -25,7 +25,7 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
 //--- START OF USER ZONE 2
 
   public : virtual void computeFromExpression (Compiler * inCompiler,
-                                               const TC_Array <C_saraMachine> & inSaraSystemArray,
+                                               const GenericArray <C_saraMachine> & inSaraSystemArray,
                                                const uint32_t inVariablesCount,
                                                BinaryDecisionDiagram & outInitialStatesBDD,
                                                BinaryDecisionDiagram & outTerminalStatesBDD,
@@ -61,7 +61,7 @@ class cPtr_C_5F_explicitAutomatonDefinition : public cPtr_AC_5F_machineDefinitio
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 

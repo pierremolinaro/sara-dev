@@ -22,7 +22,7 @@ class cPtr_C_5F_andExpression : public cPtr_AC_5F_boolExpression {
 //--- START OF USER ZONE 2
 
   public : virtual BinaryDecisionDiagram computeBDD (Compiler * inCompiler,
-                                     const TC_Array <C_saraMachine> & inSaraSystemArray,
+                                     const GenericArray <C_saraMachine> & inSaraSystemArray,
                                      const uint32_t inVariablesCount,
                                      const uint32_t inBDDslotOffset) const override ;
 
@@ -50,7 +50,7 @@ class cPtr_C_5F_andExpression : public cPtr_AC_5F_boolExpression {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 

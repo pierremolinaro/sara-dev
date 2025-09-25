@@ -27,7 +27,7 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
 //--- START OF USER ZONE 2
 
   public : virtual void compute (Compiler * inCompiler,
-                                 TC_Array <C_saraMachine> & ioSaraSystemArray,
+                                 GenericArray <C_saraMachine> & ioSaraSystemArray,
                                  const bool inDisplayBDDvaluesCount,
                                  const bool inDisplayBDDvalues) const override ;
 
@@ -65,7 +65,7 @@ class cPtr_C_5F_machineDefinedBySubstractiveModalComp : public cPtr_AC_5F_job {
                                     const int32_t inIndentation) const override ;
 
 //--- Class descriptor
-  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const override ;
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
 

@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "M_machine.h"
-#include "TC_Array.h"
+#include "GenericArray.h"
 #include "String-class.h"
 
 //-----------------------------------------------------------------------------*
@@ -44,20 +44,20 @@ void printBDDWithVariables (const BinaryDecisionDiagram & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDD (const BinaryDecisionDiagram & inBDD,
-               const TC_Array <String> & inVariablesNames,
+               const GenericArray <String> & inVariablesNames,
                const int32_t inVariableCount,
                const int32_t inLeadingSpacesCount) ;
 
 //-----------------------------------------------------------------------------*
 
 void printBDD (const BinaryDecisionDiagram & inBDD,
-               const TC_Array <String> & inVariablesNames,
+               const GenericArray <String> & inVariablesNames,
                const int32_t inLeadingSpacesCount) ;
 
 //-----------------------------------------------------------------------------*
 
 void printBDDWithoutHeader (const BinaryDecisionDiagram & inBDD,
-                            const TC_Array <String> & inVariablesNames,
+                            const GenericArray <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) ;
 

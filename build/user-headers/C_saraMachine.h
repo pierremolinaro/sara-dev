@@ -12,7 +12,7 @@ class C_saraMachine {
   public : String mMachineName ;
   public : uint32_t mInputVariablesCount ;
   public : uint32_t mInputAndInternalVariablesCount ;
-  public : TC_Array <String> mNamesArray ;
+  public : GenericArray <String> mNamesArray ;
   public : BinaryDecisionDiagram mInitialStatesBDD ;
   public : BinaryDecisionDiagram mTerminalStatesBDD ;
   public : BinaryDecisionDiagram mTransitionRelationBDD ;

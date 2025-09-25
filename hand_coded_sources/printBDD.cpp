@@ -41,7 +41,7 @@ static inline int32_t sup (const int32_t inA,
 
 static void
 ecrireLigneBDD (AbstractOutputStream & inStream,
-                TC_Array <char> & chaineAffichage,
+                GenericArray <char> & chaineAffichage,
                 const cDisplayBDD & inVariablesNames) {
 //--- Ecriture des valeurs booleennes
   int32_t indiceBDD = 0 ;
@@ -63,7 +63,7 @@ ecrireLigneBDD (AbstractOutputStream & inStream,
 static void
 ecrireBDDinterne (AbstractOutputStream & inStream,
                   const uint32_t inValue,
-                  TC_Array <char> & chaineAffichage,
+                  GenericArray <char> & chaineAffichage,
                   uint32_t numeroVariable,
                   const uint32_t inVariableCount,
                   const cDisplayBDD & inVariablesNames) {
@@ -129,10 +129,10 @@ void printBDDWithVariables (const BinaryDecisionDiagram & inBDD,
   if (bddValue == 0) {
     inStream.appendString ("(false)\n") ;
   }else if (bddValue == 1) {
-    TC_Array <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
+    GenericArray <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
     ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
   }else{
-    TC_Array <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
+    GenericArray <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
     ecrireBDDinterne (inStream, bddValue, chaineAffichage, inVariableCount - 1, inVariableCount, inVariablesNames) ;
   }
 }
@@ -142,8 +142,8 @@ void printBDDWithVariables (const BinaryDecisionDiagram & inBDD,
 //   printBDD                                                                  *
 //-----------------------------------------------------------------------------*
 
-static void printBDDline (const TC_Array <char> & inDisplayString,
-                          const TC_Array <int32_t> & inNameLengthArray,
+static void printBDDline (const GenericArray <char> & inDisplayString,
+                          const GenericArray <int32_t> & inNameLengthArray,
                           const int32_t inLeadingSpacesCount) {
   for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
     gCout.appendString (" ") ;
@@ -161,8 +161,8 @@ static void printBDDline (const TC_Array <char> & inDisplayString,
 
 static void
 internalPrintBDD (const uint32_t inValue,
-                  TC_Array <char> & inDisplayString,
-                  const TC_Array <int32_t> & inNameLengthArray,
+                  GenericArray <char> & inDisplayString,
+                  const GenericArray <int32_t> & inNameLengthArray,
                   uint32_t inVariableIndex,
                   const int32_t inLeadingSpacesCount) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
@@ -208,7 +208,7 @@ internalPrintBDD (const uint32_t inValue,
 
 //-----------------------------------------------------------------------------*
 
-static void printBDDHeader (const TC_Array <String> & inVariablesNames,
+static void printBDDHeader (const GenericArray <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) {
 //--- Imprimer les variables
@@ -225,11 +225,11 @@ static void printBDDHeader (const TC_Array <String> & inVariablesNames,
 //-----------------------------------------------------------------------------*
 
 static void printBDDwithoutHeader (const BinaryDecisionDiagram & inBDD,
-                                   const TC_Array <String> & inVariablesNames,
+                                   const GenericArray <String> & inVariablesNames,
                                    const int32_t inVariableCount,
                                    const int32_t inLeadingSpacesCount) {
 //--- Compute header size
-  TC_Array <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
+  GenericArray <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
   for (int32_t i=0 ; i<inVariableCount ; i++) {
     nameLengthArray.appendObject (inVariablesNames (i COMMA_HERE).length ()) ;
   }
@@ -241,7 +241,7 @@ static void printBDDwithoutHeader (const BinaryDecisionDiagram & inBDD,
     }
     gCout.appendString (" (false)\n") ;
   }else if (BDDValue == 1) {
-    TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
+    GenericArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
     printBDDline (displayString, nameLengthArray, inLeadingSpacesCount) ;
   }else{
     const uint32_t nodeIndex = nodeIndexForRoot (BDDValue COMMA_HERE) ;
@@ -257,7 +257,7 @@ static void printBDDwithoutHeader (const BinaryDecisionDiagram & inBDD,
       gCout.appendSigned (inVariableCount);
       gCout.appendString (") **\n") ;
     }else{
-      TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
+      GenericArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
       internalPrintBDD (BDDValue, displayString, nameLengthArray, (uint32_t) (inVariableCount - 1), inLeadingSpacesCount) ;
     }
   }
@@ -266,7 +266,7 @@ static void printBDDwithoutHeader (const BinaryDecisionDiagram & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDD (const BinaryDecisionDiagram & inBDD,
-               const TC_Array <String> & inVariablesNames,
+               const GenericArray <String> & inVariablesNames,
                const int32_t inVariableCount,
                const int32_t inLeadingSpacesCount) {
 //--- Print header
@@ -278,7 +278,7 @@ void printBDD (const BinaryDecisionDiagram & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDD (const BinaryDecisionDiagram & inBDD,
-               const TC_Array <String> & inVariablesNames,
+               const GenericArray <String> & inVariablesNames,
                const int32_t inLeadingSpacesCount) {
   printBDD (inBDD, inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
 }
@@ -286,11 +286,11 @@ void printBDD (const BinaryDecisionDiagram & inBDD,
 //-----------------------------------------------------------------------------*
 
 void printBDDWithoutHeader (const BinaryDecisionDiagram & inBDD,
-                            const TC_Array <String> & inVariablesNames,
+                            const GenericArray <String> & inVariablesNames,
                             const int32_t inVariableCount,
                             const int32_t inLeadingSpacesCount) {
 //--- Compute header size
-  TC_Array <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
+  GenericArray <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
   for (int32_t i=0 ; i<inVariableCount ; i++) {
     nameLengthArray.appendObject (inVariablesNames (i COMMA_HERE).length ()) ;
   }
@@ -301,7 +301,7 @@ void printBDDWithoutHeader (const BinaryDecisionDiagram & inBDD,
     }
     gCout.appendString (" (false)\n") ;
   }else if (inBDD.integerValue() == 1) {
-    TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
+    GenericArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
     printBDDline (displayString, nameLengthArray, inLeadingSpacesCount) ;
   }else{
     const uint32_t nodeIndex = nodeIndexForRoot (inBDD.integerValue() COMMA_HERE) ;
@@ -317,7 +317,7 @@ void printBDDWithoutHeader (const BinaryDecisionDiagram & inBDD,
       gCout.appendSigned (inVariableCount);
       gCout.appendString (") **\n") ;
     }else{
-      TC_Array <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
+      GenericArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
       internalPrintBDD (inBDD.integerValue(), displayString, nameLengthArray, (uint32_t) (inVariableCount - 1), inLeadingSpacesCount) ;
     }
   }
