@@ -6,15 +6,4 @@ project (0:0:1) -> "sara" {
   %makefile-win32-on-macosx
   %MacSwiftApp
   %applicationBundleBase : "fr.irccyn"
-#---
-  "sources/sara_scanner.galgas"
-  "sources/sara_semantics.galgas"
-  "sources/sara_cli_options.galgas"
-  "sources/sara_parser.galgas"
-  "sources/sara_grammar.galgas"
-  "sources/sara_main.galgas"
-  "sources/cocoa_sara.galgas"
-  %tool-source : "hand_coded_sources/computation-v2.cpp"
-  %tool-source : "hand_coded_sources/cDisplayBDD.cpp"
-  %tool-source : "hand_coded_sources/printBDD.cpp"
 }
