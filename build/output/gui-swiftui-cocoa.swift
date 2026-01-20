@@ -4,9 +4,28 @@
 //--- END OF USER ZONE 1
 
 import SwiftUI
+import UniformTypeIdentifiers
+
+//--------------------------------------------------------------------------------------------------
+
+extension UTType {
+  nonisolated static let sara = UTType (exportedAs: Bundle.main.bundleIdentifier! + ".sara")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+extension ProjectDocument {
+  static let readableContentTypes : [UTType] = [.sara]
+}
 
 //--------------------------------------------------------------------------------------------------
 //    Project file extensions
+//--------------------------------------------------------------------------------------------------
+
+let projectFileExtensions = Set (["sara"])
+
+//--------------------------------------------------------------------------------------------------
+//    Indexing dictionary
 //--------------------------------------------------------------------------------------------------
 
 func indexingDescriptorDictionary () -> [String : String] {
@@ -14,33 +33,50 @@ func indexingDescriptorDictionary () -> [String : String] {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Global functions
+//   Scanner for a given extension
 //--------------------------------------------------------------------------------------------------
 
-@MainActor func scannerFor (extension inExtension : String) -> SWIFT_Scanner? {
-  var result : SWIFT_Scanner? = nil
-  if inExtension == "sara" {
+@MainActor func scannerFor (extension inExtension : String) -> AbstractScanner? {
+  var result : AbstractScanner? = nil
+  let fileExtension = inExtension.lowercased ()
+  if fileExtension == "sara" {
     result = ScannerFor_sara_scanner ()
   }
   return result
 }
 
 //--------------------------------------------------------------------------------------------------
-
-/* @MainActor func tokenizers () -> [any SWIFT_Tokenizer_Protocol] {
-  return [
-    SettingViewFor_sara_scanner ()
-  ]
-} */
-
+// Setting View
 //--------------------------------------------------------------------------------------------------
 
 struct SettingsView : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  enum SidebarItem {
+    case commandLineOptions
+    case sara_scanner_0
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mSelection : SidebarItem = .commandLineOptions
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @ViewBuilder var body : some View {
-    TabView {
-      SettingViewFor_sara_scanner ().tabItem { Text ("Source") }
+    NavigationSplitView {
+      List(selection: self.$mSelection) {
+        Text ("Options").tag (SidebarItem.commandLineOptions)
+
+        Text ("Source").tag (SidebarItem.sara_scanner_0)
+      }
+      .toolbar (removing: .sidebarToggle)
+    } detail: {
+      switch self.mSelection {
+        case .commandLineOptions : OptionView ()
+        case .sara_scanner_0 : SettingViewFor_sara_scanner ()
+      }
     }
   }
 
@@ -50,10 +86,19 @@ struct SettingsView : View {
 
 
 //--------------------------------------------------------------------------------------------------
+//   Popup list data for 'sara_scanner' lexique
+//--------------------------------------------------------------------------------------------------
 
-/* func buildRunOption () -> String {
-  return ""
-} */
+let gPopUpData_sara_scanner : [[UInt16]] = [
+
+]
+
+//--------------------------------------------------------------------------------------------------
+//   Block Comment for 'sara_scanner' lexique
+//--------------------------------------------------------------------------------------------------
+
+let gBlockComment_sara_scanner : String? = nil
+
 
 //--------------------------------------------------------------------------------------------------
 
