@@ -1,12 +1,12 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   S Y N T A X                                                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   S Y N T A X                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
 
 syntax sara_parser (sara_scanner) {
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <start_symbol> {
   var semanticContext =@semanticContext {
@@ -20,187 +20,122 @@ rule <start_symbol> {
   performComputations ( !semanticContext.componentsMap )
 }
  
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//--- Machine name
   $state$
   $display$
   $machineIdf$ ?let machineName
   $;$
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineDisplayStates { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//--- Machine name
   $trans$
   $display$
   $machineIdf$ ?let machineName
   $;$
-#--- Insert machine into machine map
+////--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineDisplayTransitions { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//--- Machine name
   $first$
   $state$
   $display$
   $machineIdf$ ?let machineName
   $;$
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineDisplayInitialStates { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//////--- Machine name
   $last$
   $state$
   $display$
   $machineIdf$ ?let machineName
   $;$
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineDisplayTerminalStates { !machineIndex}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//--- Machine name
   $check$
   $machineIdf$ ?let machineName
   $;$
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineCheck { !machineIndex !false}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//--- Machine name
   $checkidentical$
   $machineIdf$ ?let machineName1
   $,$
   $machineIdf$ ?let machineName2
   $;$
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName1 ?let machineIndex1 ?* ?* ?* ?*]
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName2 ?let machineIndex2 ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineCheckIdentical { !machineIndex1 !machineIndex2}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-#--- Machine name
+//--- Machine name
   $checkbool$
   $machineIdf$ ?let machineName
   $;$
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job job = @C_machineCheck { !machineIndex !true}
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
-
-#rule <component>
-#  ?!@semanticContext ioSemanticContext {
-#  $use_and$
-#  $;$
-#  @AC_job job = @typeUse_AND. new
-#  ioSemanticContext.componentsMap += !job
-#}
-
-#---------------------------------------------------------------------------*
-
-#rule <component>
-#  ?!@semanticContext ioSemanticContext {
-#  $use_ite$
-#  $;$
-#  @AC_job job = @typeUse_ITE. new
-#  ioSemanticContext.componentsMap += !job
-#}
-
-#---------------------------------------------------------------------------*
-
-#rule <component>
-#  ?!@semanticContext ioSemanticContext {
-#  $use_and_ite$
-#  $;$
-#  @AC_job job = @typeUse_AND_ITE. new
-#  ioSemanticContext.componentsMap += !job
-#}
-
-#---------------------------------------------------------------------------*
-
-#rule <component>
-#  ?!@semanticContext ioSemanticContext {
-#  $and_cache$
-#  @luint size
-#  $literal_integer$ ? size
-#  $;$
-#  @AC_job job = @typeResize_AND_cache. new { !size}
-#  ioSemanticContext.componentsMap += !job
-#}
-
-#---------------------------------------------------------------------------*
-#rule <component>
-#  ?!@semanticContext ioSemanticContext {
-#  $ite_cache$
-#  @luint size
-#  $literal_integer$ ? size
-#  $;$
-#  @AC_job job = @typeResize_ITE_cache. new { !size}
-#  ioSemanticContext.componentsMap += !job
-#}
-
-#---------------------------------------------------------------------------*
-
-#rule <component>
-#  ?!@semanticContext ioSemanticContext {
-#  $map$
-#  @luint size
-#  $literal_integer$ ? size
-#  $;$
-#  @AC_job job = @typeResizeMap. new { !size}
-#  ioSemanticContext.componentsMap += !job
-#}
-
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
@@ -210,16 +145,16 @@ rule <component>
   ioSemanticContext.componentsMap += !job
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
   var variablesMap =@M_variablesMap ()
   var nameList =@stringlist ()
-#--- Machine name
+//--- Machine name
   $machineIdf$ ?let machineName
   $($
-#--- Parse input variables
+//--- Parse input variables
   repeat
     $identifier$ ?let inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
@@ -229,7 +164,7 @@ rule <component>
   end
   let @uint inputVariablesCount = [variablesMap count]
   $)$
-#--- Parse internal variables
+//--- Parse internal variables
   $($
   select
   or
@@ -243,7 +178,7 @@ rule <component>
   end
   $)$
   let @uint inputAndInternalVariablesCount = [variablesMap count]
-#--- Parse output variables
+//--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVarName
@@ -254,9 +189,9 @@ rule <component>
   end
   $)$
   $:=$
-#--- Machine definition
+//--- Machine definition
   <definition_expression> !ioSemanticContext !?variablesMap ?let definition
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey
     !machineName
@@ -266,23 +201,23 @@ rule <component>
     !variablesMap
     !nameList
   ]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job machine = @C_machineComponent { !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList !definition}
   ioSemanticContext.componentsMap += !machine
   $;$
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
   var variablesMap =@M_variablesMap ()
   var nameList =@stringlist ()
-#--- Machine name
+//--- Machine name
   $modalcompadd$
   $machineIdf$ ?let machineName
   $($
-#--- Parse input variables
+//--- Parse input variables
   repeat
     $identifier$ ?let inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
@@ -292,7 +227,7 @@ rule <component>
   end
   let @uint inputVariablesCount = [variablesMap count]
   $)$
-#--- Parse internal variables
+//--- Parse internal variables
   $($
   select
   or
@@ -306,7 +241,7 @@ rule <component>
   end
   $)$
   let @uint inputAndInternalVariablesCount = [variablesMap count]
-#--- Parse output variables
+//--- Parse output variables
   $($
   repeat
     $identifier$ ? let outputVarName
@@ -317,16 +252,16 @@ rule <component>
   end
   $)$
   $:=$
-#--- Machine definition
+//--- Machine definition
   <modalcompadd_definition>
     !ioSemanticContext
     !?variablesMap
     ?let modeMap
     ?let inclusionList
-#--- Insert machine into machine map
+////--- Insert machine into machine map
   let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job machine = @C_machineDefinedByAdditiveModalComp {
    !machineName
    !machineIndex
@@ -339,17 +274,17 @@ rule <component>
   $;$
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
   var variablesMap =@M_variablesMap ()
   var nameList =@stringlist ()
-#--- Machine name
+//--- Machine name
   $modalcompsub$
   $machineIdf$ ?let machineName
   $($
-#--- Parse input variables
+//--- Parse input variables
   repeat
     $identifier$ ?let inputVarName
     [!?variablesMap insertKey !inputVarName ![variablesMap count]]
@@ -359,7 +294,7 @@ rule <component>
   end
   let @uint inputVariablesCount = [variablesMap count]
   $)$
-#--- Parse internal variables
+//--- Parse internal variables
   $($
   select
   or
@@ -373,7 +308,7 @@ rule <component>
   end
   $)$
   let @uint inputAndInternalVariablesCount = [variablesMap count]
-#--- Parse output variables
+//--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVarName
@@ -384,16 +319,16 @@ rule <component>
   end
   $)$
   $:=$
-#--- Machine definition
+//--- Machine definition
   <modalcompsub_definition>
     !ioSemanticContext
     !?variablesMap
     ?let modeMap
     ?let exclusionList
-#--- Insert machine into machine map
+//--- Insert machine into machine map
   let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
-#--- Insert into component map
+//--- Insert into component map
   let @AC_job machine = @C_machineDefinedBySubstractiveModalComp {
    !machineName
    !machineIndex
@@ -405,15 +340,15 @@ rule <component>
   ioSemanticContext.componentsMap += !machine
   $;$
 }
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 rule <component> ?!@semanticContext ioSemanticContext {
   $scenario$
   var variablesMap =@M_variablesMap ()
-#--- Machine name
+//--- Machine name
   $machineIdf$ ?let machineName
-#--- Search machine from machine map
+//--- Search machine from machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?let inputVariablesCountFromDefinition ?let inputAndInternalVariablesCountFromDefinition ?let variablesMapFromDefinition ?*]
-#--- Parse input variables
+//--- Parse input variables
   $($
   repeat
     $identifier$ ?let inputVarName
@@ -423,12 +358,12 @@ rule <component> ?!@semanticContext ioSemanticContext {
   end
   let @uint inputVariablesCount = [variablesMap count]
   $)$
-#--- Check correct number of input variables
+//--- Check correct number of input variables
   if inputVariablesCountFromDefinition != inputVariablesCount then
     error @location.here : "This declaration names " + [inputVariablesCount string]
       + " input variable(s), but machine definition names " + [inputVariablesCountFromDefinition string] + " input variable(s)"
   end
-#--- Parse internal variables
+//--- Parse internal variables
   $($
   select
   or
@@ -440,13 +375,13 @@ rule <component> ?!@semanticContext ioSemanticContext {
     end
   end
   $)$
-#--- Check correct number of internal variables
+//--- Check correct number of internal variables
   let @uint inputAndInternalVariablesCount = [variablesMap count]
   if inputAndInternalVariablesCountFromDefinition != inputAndInternalVariablesCount then
     error @location.here : "This declaration names " + [inputAndInternalVariablesCount string]
       + " input and internal variable(s), but machine definition names " + [inputAndInternalVariablesCountFromDefinition string] + " input and internal variable(s)"
   end
-#--- Parse output variables
+//--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVarName
@@ -455,7 +390,7 @@ rule <component> ?!@semanticContext ioSemanticContext {
     $,$
   end
   $)$
-#--- Check correct number of internal variables
+//--- Check correct number of internal variables
   let @uint outputVariablesCount = [variablesMap count]
   let @uint outputVariablesCountFromDefinition = [variablesMapFromDefinition count]
   if outputVariablesCountFromDefinition != outputVariablesCount then
@@ -490,12 +425,12 @@ rule <component> ?!@semanticContext ioSemanticContext {
   while
   end
   $}$
-#--- Insert job into job list
+//--- Insert job into job list
   let @AC_job machine = @C_scenarioComponent { !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !scenarioList}
   ioSemanticContext.componentsMap += !machine
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_bool_expression>
   ?let @semanticContext inSemanticContext
@@ -522,7 +457,7 @@ rule <io_bool_expression>
   end
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_and_expression> 
   ?let @semanticContext inSemanticContext
@@ -537,7 +472,7 @@ rule <io_and_expression>
   end
 }
 
-#---------------------------------------------------------------------------*
+////---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext inSemanticContext
@@ -548,7 +483,7 @@ rule <io_primary>
   $)$
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext unused inSemanticContext
@@ -559,7 +494,7 @@ rule <io_primary>
   outExpression = @C_VariableExpression { !inputVarIndex}
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext inSemanticContext
@@ -570,7 +505,7 @@ rule <io_primary>
   outExpression = @C_notExpression { ! expression}
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext unused inSemanticContext
@@ -580,7 +515,7 @@ rule <io_primary>
   outExpression = @C_falseExpression ()
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext unused inSemanticContext
@@ -590,7 +525,7 @@ rule <io_primary>
   outExpression = @C_trueExpression ()
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext inSemanticContext
@@ -599,7 +534,7 @@ rule <io_primary>
   $machineIdf$ ?let machineIdentifier
   [inSemanticContext.machinesMap searchKey !machineIdentifier ?let indexOfImportedMachine ?let machineInputVariableCount ?let machineInputAndInternalVariableCount ?let machineVariablesMap ?*]
   var translationVector =@L_translationVector ()
-#--- Parse input variables
+//--- Parse input variables
   $($
   repeat
     $identifier$ ?let inputVar
@@ -614,7 +549,7 @@ rule <io_primary>
     error @location.here : "The '$" + machineIdentifier + "' machine defines " + [machineInputVariableCount string]
     + " input variable(s), but this operand defines " + [inputVariablesCount string] + " input variable(s)"
   end
-#--- Parse internal variables
+//--- Parse internal variables
   $($
   select
   or
@@ -632,7 +567,7 @@ rule <io_primary>
     error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputAndInternalVariableCount string]
     + " input and internal variable(s), but this operand defines " + [inputAndInternalVariablesCount string] + " input and internal variable(s)"
   end
-#--- Parse output variables
+//--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVar
@@ -654,9 +589,9 @@ rule <io_primary>
     !translationVector}
 }
 
-#---------------------------------------------------------------------------*
-#         DEFINITION EXPRESSION                                             *
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+////         DEFINITION EXPRESSION                                             *
+//---------------------------------------------------------------------------*
 
 rule <definition_expression>
   ?let @semanticContext inSemanticContext
@@ -672,7 +607,7 @@ rule <definition_expression>
   end
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <definition_expression_term>
   ?let @semanticContext inSemanticContext
@@ -700,7 +635,7 @@ rule <definition_expression_term>
   end
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <modalcompadd_definition>
   ?let @semanticContext inSemanticContext
@@ -734,7 +669,7 @@ rule <modalcompadd_definition>
   end
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <modalcompsub_definition>
   ?let @semanticContext inSemanticContext
@@ -768,7 +703,7 @@ rule <modalcompsub_definition>
   end
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <definition_expression_factor>
   ?let @semanticContext inSemanticContext
@@ -867,7 +802,7 @@ rule <definition_expression_factor>
   end
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <definition_expression_factor>
   ?let @semanticContext inSemanticContext
@@ -876,7 +811,7 @@ rule <definition_expression_factor>
   $machineIdf$ ?let machineIdentifier
   [inSemanticContext.machinesMap searchKey !machineIdentifier ?let indexOfImportedMachine ?let machineInputVariableCount ?let machineInputAndInternalVariableCount ?let machineVariablesMap ?*]
   var translationVector =@L_translationVector ()
-#--- Parse input variables
+//--- Parse input variables
   $($
   repeat
     $identifier$ ?let inputVar
@@ -891,7 +826,7 @@ rule <definition_expression_factor>
     error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputVariableCount string]
     + " input variable(s), but this operand defines " + [inputVariablesCount string] + " input variable(s)"
   end
-#--- Parse internal variables
+//--- Parse internal variables
   $($
   select
   or
@@ -909,7 +844,7 @@ rule <definition_expression_factor>
     error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputAndInternalVariableCount string]
     + " input and internal variable(s), but this operand defines " + [inputAndInternalVariablesCount string] + " input and internal variable(s)"
   end
-#--- Parse output variables
+//--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVar
@@ -928,9 +863,9 @@ rule <definition_expression_factor>
   outDefinition = @C_importMachine { !indexOfImportedMachine !translationVector}
 }
 
-#---------------------------------------------------------------------------*
-#         EXPLICIT AUTOMATON                                                *
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+//         EXPLICIT AUTOMATON                                                *
+//---------------------------------------------------------------------------*
 
 rule <explicit_automaton>
   ?let @semanticContext inSemanticContext
@@ -940,7 +875,7 @@ rule <explicit_automaton>
   var stateDefinitionList =@L_stateDefinition ()
   $auto$
   ${$
-#--- States declaration
+//--- States declaration
   $state$
   repeat
     $identifier$ ?let stateName
@@ -949,7 +884,7 @@ rule <explicit_automaton>
     $,$
   end
   $;$
-#--- Initial states
+//--- Initial states
   var initialStatesDefinitionList =@L_statesDefinitionList ()
   $first$
   repeat
@@ -960,7 +895,7 @@ rule <explicit_automaton>
     $,$
   end
   $;$
-#--- terminal states
+//--- terminal states
   var terminalStatesDefinitionList =@L_statesDefinitionList ()
   select
   or
@@ -974,19 +909,19 @@ rule <explicit_automaton>
     end
     $;$
   end
-#--- Parse state definitions
+//--- Parse state definitions
   var stateDefinitionMap =@M_stateMap ()
   repeat
-  #--- Current state
+  //--- Current state
     $identifier$ ?let stateName
     [statesMap searchKey !stateName ?let stateIndex]
     [!?stateDefinitionMap defineState !stateName ![stateDefinitionMap count]]
     $:$
-  #--- State input expression
+  //--- State input expression
     <io_bool_expression> !inSemanticContext !?variablesMap ?let stateExpression
     let @location endOfStateExpression = @location.here
     ${$
-  #--- Parse state transition
+  //--- Parse state transition
     var transitionsList =@L_transitionDefinition ()
     repeat
     while
@@ -1003,17 +938,17 @@ rule <explicit_automaton>
                            !transitionsList
   while
   end
-#--- Check all states are defined
+//--- Check all states are defined
   for (lkey *) in  statesMap do
     if not [stateDefinitionMap hasKey !lkey.string] then
       error @location.here : "'" + lkey + "' state is not described"
     end
   end
-#--- End of input source
+//--- End of input source
   $}$
   outDefinition = @C_explicitAutomatonDefinition { !statesMap !initialStatesDefinitionList !terminalStatesDefinitionList !stateDefinitionList !@location.here}
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 }

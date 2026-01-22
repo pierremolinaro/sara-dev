@@ -9,370 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_C_5F_strongModalComposition_2E_weak::objectCompare (const GGS_C_5F_strongModalComposition_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition_2E_weak::GGS_C_5F_strongModalComposition_2E_weak (void) :
-GGS_AC_5F_machineDefinition_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition_2E_weak & GGS_C_5F_strongModalComposition_2E_weak::operator = (const GGS_C_5F_strongModalComposition & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition_2E_weak::GGS_C_5F_strongModalComposition_2E_weak (const GGS_C_5F_strongModalComposition & inSource) :
-GGS_AC_5F_machineDefinition_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition_2E_weak GGS_C_5F_strongModalComposition_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_C_5F_strongModalComposition_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition GGS_C_5F_strongModalComposition_2E_weak::unwrappedValue (void) const {
-  GGS_C_5F_strongModalComposition result ;
-  if (isValid ()) {
-    const cPtr_C_5F_strongModalComposition * p = (cPtr_C_5F_strongModalComposition *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_C_5F_strongModalComposition (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition GGS_C_5F_strongModalComposition_2E_weak::bang_C_5F_strongModalComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_C_5F_strongModalComposition result ;
-  if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_C_5F_strongModalComposition) ;
-      result = GGS_C_5F_strongModalComposition ((cPtr_C_5F_strongModalComposition *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @C_strongModalComposition.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_strongModalComposition_2E_weak ("C_strongModalComposition.weak",
-                                                                                        & kTypeDescriptor_GALGAS_AC_5F_machineDefinition_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_C_5F_strongModalComposition_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_strongModalComposition_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_C_5F_strongModalComposition_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_C_5F_strongModalComposition_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_strongModalComposition_2E_weak GGS_C_5F_strongModalComposition_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) {
-  GGS_C_5F_strongModalComposition_2E_weak result ;
-  const GGS_C_5F_strongModalComposition_2E_weak * p = (const GGS_C_5F_strongModalComposition_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_C_5F_strongModalComposition_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("C_strongModalComposition.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @C_5F_weakModalComposition reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_C_5F_weakModalComposition::objectCompare (const GGS_C_5F_weakModalComposition & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_weakModalComposition::GGS_C_5F_weakModalComposition (void) :
-GGS_AC_5F_machineDefinition () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_C_5F_weakModalComposition GGS_C_5F_weakModalComposition::
-init_21__21__21_ (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                  const GGS_location & in_mErrorLocation,
-                  const GGS_AC_5F_machineDefinition & in_mRightOperand,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_C_5F_weakModalComposition * object = nullptr ;
-  macroMyNew (object, cPtr_C_5F_weakModalComposition (inCompiler COMMA_THERE)) ;
-  object->C_5F_weakModalComposition_init_21__21__21_ (in_mLeftOperand, in_mErrorLocation, in_mRightOperand, inCompiler) ;
-  const GGS_C_5F_weakModalComposition result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_C_5F_weakModalComposition::
-C_5F_weakModalComposition_init_21__21__21_ (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                            const GGS_location & in_mErrorLocation,
-                                            const GGS_AC_5F_machineDefinition & in_mRightOperand,
-                                            Compiler * /* inCompiler */) {
-  mProperty_mLeftOperand = in_mLeftOperand ;
-  mProperty_mErrorLocation = in_mErrorLocation ;
-  mProperty_mRightOperand = in_mRightOperand ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_weakModalComposition::GGS_C_5F_weakModalComposition (const cPtr_C_5F_weakModalComposition * inSourcePtr) :
-GGS_AC_5F_machineDefinition (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_weakModalComposition) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_weakModalComposition GGS_C_5F_weakModalComposition::class_func_new (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                                                             const GGS_location & in_mErrorLocation,
-                                                                             const GGS_AC_5F_machineDefinition & in_mRightOperand,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
-  GGS_C_5F_weakModalComposition result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_weakModalComposition (in_mLeftOperand, in_mErrorLocation, in_mRightOperand,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_AC_5F_machineDefinition GGS_C_5F_weakModalComposition::readProperty_mLeftOperand (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_AC_5F_machineDefinition () ;
-  }else{
-    cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_weakModalComposition) ;
-    return p->mProperty_mLeftOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_weakModalComposition::setProperty_mLeftOperand (const GGS_AC_5F_machineDefinition & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_weakModalComposition) ;
-    p->mProperty_mLeftOperand = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_C_5F_weakModalComposition::readProperty_mErrorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_weakModalComposition) ;
-    return p->mProperty_mErrorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_weakModalComposition::setProperty_mErrorLocation (const GGS_location & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_weakModalComposition) ;
-    p->mProperty_mErrorLocation = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_AC_5F_machineDefinition GGS_C_5F_weakModalComposition::readProperty_mRightOperand (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_AC_5F_machineDefinition () ;
-  }else{
-    cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_weakModalComposition) ;
-    return p->mProperty_mRightOperand ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_C_5F_weakModalComposition::setProperty_mRightOperand (const GGS_AC_5F_machineDefinition & inValue) {
-  if (nullptr != mObjectPtr) {
-    cPtr_C_5F_weakModalComposition * p = (cPtr_C_5F_weakModalComposition *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_C_5F_weakModalComposition) ;
-    p->mProperty_mRightOperand = inValue ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @C_weakModalComposition class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_C_5F_weakModalComposition::cPtr_C_5F_weakModalComposition (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mLeftOperand (),
-mProperty_mErrorLocation (),
-mProperty_mRightOperand () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_C_5F_weakModalComposition::cPtr_C_5F_weakModalComposition (const GGS_AC_5F_machineDefinition & in_mLeftOperand,
-                                                                const GGS_location & in_mErrorLocation,
-                                                                const GGS_AC_5F_machineDefinition & in_mRightOperand,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
-mProperty_mLeftOperand (),
-mProperty_mErrorLocation (),
-mProperty_mRightOperand () {
-  mProperty_mLeftOperand = in_mLeftOperand ;
-  mProperty_mErrorLocation = in_mErrorLocation ;
-  mProperty_mRightOperand = in_mRightOperand ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_C_5F_weakModalComposition::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_weakModalComposition ;
-}
-
-void cPtr_C_5F_weakModalComposition::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@C_weakModalComposition:") ;
-  mProperty_mLeftOperand.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mErrorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightOperand.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-acPtr_class * cPtr_C_5F_weakModalComposition::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_C_5F_weakModalComposition (mProperty_mLeftOperand, mProperty_mErrorLocation, mProperty_mRightOperand, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_C_5F_weakModalComposition::printNonNullClassInstanceProperties (void) const {
-    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
-    mProperty_mLeftOperand.printNonNullClassInstanceProperties ("mLeftOperand") ;
-    mProperty_mErrorLocation.printNonNullClassInstanceProperties ("mErrorLocation") ;
-    mProperty_mRightOperand.printNonNullClassInstanceProperties ("mRightOperand") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @C_weakModalComposition generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_weakModalComposition ("C_weakModalComposition",
-                                                                              & kTypeDescriptor_GALGAS_AC_5F_machineDefinition) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_C_5F_weakModalComposition::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_C_5F_weakModalComposition ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_C_5F_weakModalComposition::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_C_5F_weakModalComposition (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_weakModalComposition GGS_C_5F_weakModalComposition::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS_C_5F_weakModalComposition result ;
-  const GGS_C_5F_weakModalComposition * p = (const GGS_C_5F_weakModalComposition *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_C_5F_weakModalComposition *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("C_weakModalComposition", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 ComparisonResult GGS_C_5F_weakModalComposition_2E_weak::objectCompare (const GGS_C_5F_weakModalComposition_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -547,16 +183,6 @@ GGS_C_5F_fullSaturationOperation::GGS_C_5F_fullSaturationOperation (const cPtr_C
 GGS_AC_5F_machineDefinition (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_fullSaturationOperation) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_fullSaturationOperation GGS_C_5F_fullSaturationOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) {
-  GGS_C_5F_fullSaturationOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_fullSaturationOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_AC_5F_machineDefinition GGS_C_5F_fullSaturationOperation::readProperty_mOperand (void) const {
@@ -847,16 +473,6 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_complementationOperation GGS_C_5F_complementationOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) {
-  GGS_C_5F_complementationOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_complementationOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_AC_5F_machineDefinition GGS_C_5F_complementationOperation::readProperty_mOperand (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_AC_5F_machineDefinition () ;
@@ -1145,16 +761,6 @@ GGS_AC_5F_machineDefinition (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) {
-  GGS_C_5F_suppressTerminalStatesOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_suppressTerminalStatesOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_AC_5F_machineDefinition GGS_C_5F_suppressTerminalStatesOperation::readProperty_mOperand (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_AC_5F_machineDefinition () ;
@@ -1441,16 +1047,6 @@ GGS_C_5F_suppressInitialStatesOperation::GGS_C_5F_suppressInitialStatesOperation
 GGS_AC_5F_machineDefinition (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_suppressInitialStatesOperation) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation::class_func_new (const GGS_AC_5F_machineDefinition & in_mOperand,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) {
-  GGS_C_5F_suppressInitialStatesOperation result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_suppressInitialStatesOperation (in_mOperand,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_AC_5F_machineDefinition GGS_C_5F_suppressInitialStatesOperation::readProperty_mOperand (void) const {
@@ -1961,16 +1557,6 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineDisplayStates result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayStates (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_C_5F_machineDisplayStates::readProperty_mMachineIndex (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -2257,16 +1843,6 @@ GGS_C_5F_machineDisplayInitialStates::GGS_C_5F_machineDisplayInitialStates (cons
 GGS_AC_5F_job (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_machineDisplayInitialStates) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineDisplayInitialStates result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayInitialStates (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_C_5F_machineDisplayInitialStates::readProperty_mMachineIndex (void) const {
@@ -2557,16 +2133,6 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineDisplayTerminalStates result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayTerminalStates (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_C_5F_machineDisplayTerminalStates::readProperty_mMachineIndex (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -2853,16 +2419,6 @@ GGS_C_5F_machineDisplayTransitions::GGS_C_5F_machineDisplayTransitions (const cP
 GGS_AC_5F_job (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_machineDisplayTransitions) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineDisplayTransitions result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDisplayTransitions (in_mMachineIndex,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_C_5F_machineDisplayTransitions::readProperty_mMachineIndex (void) const {
@@ -3276,17 +2832,6 @@ GGS_C_5F_machineCheckIdentical::GGS_C_5F_machineCheckIdentical (const cPtr_C_5F_
 GGS_AC_5F_job (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_machineCheckIdentical) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_machineCheckIdentical GGS_C_5F_machineCheckIdentical::class_func_new (const GGS_uint & in_mMachineIndex_31_,
-                                                                               const GGS_uint & in_mMachineIndex_32_,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineCheckIdentical result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineCheckIdentical (in_mMachineIndex_31_, in_mMachineIndex_32_,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_C_5F_machineCheckIdentical::readProperty_mMachineIndex_31_ (void) const {
@@ -4047,14 +3592,6 @@ void GGS_L_5F_inputConfigurationForScenario::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_inputConfigurationForScenario result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_5F_inputConfigurationForScenario result ;
   result.mArray.setCapacity (16) ; // Build
@@ -4581,14 +4118,6 @@ void GGS_L_5F_inputScenario::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_inputScenario GGS_L_5F_inputScenario::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_inputScenario result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5130,14 +4659,6 @@ void GGS_L_5F_scenarioList::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_scenarioList GGS_L_5F_scenarioList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_scenarioList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_L_5F_scenarioList GGS_L_5F_scenarioList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_5F_scenarioList result ;
   result.mArray.setCapacity (16) ; // Build
@@ -5675,20 +5196,6 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                                       const GGS_uint & in_mInputVariableCount,
-                                                                       const GGS_uint & in_mInputAndInternalVariableCount,
-                                                                       const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                                       const GGS_L_5F_scenarioList & in_mScenarioList,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  GGS_C_5F_scenarioComponent result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_scenarioComponent (in_mMachineIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mScenarioList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_C_5F_scenarioComponent::readProperty_mMachineIndex (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -6089,14 +5596,6 @@ GGS_AC_5F_job (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_typeDisplayBDDstats) ;
 }
 //--------------------------------------------------------------------------------------------------
-
-GGS_typeDisplayBDDstats GGS_typeDisplayBDDstats::class_func_new (Compiler * inCompiler COMMA_LOCATION_ARGS) {
-  GGS_typeDisplayBDDstats result ;
-  macroMyNew (result.mObjectPtr, cPtr_typeDisplayBDDstats (inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Pointer class for @typeDisplayBDDstats class
 //--------------------------------------------------------------------------------------------------
 
@@ -6425,14 +5924,6 @@ void GGS_L_5F_jobList::description (String & ioString,
     ioString.appendCString (" not built") ;
   }
   ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_jobList GGS_L_5F_jobList::class_func_emptyList (UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_jobList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6869,14 +6360,6 @@ GGS_M_5F_machinesMap & GGS_M_5F_machinesMap::operator = (const GGS_M_5F_machines
 //--------------------------------------------------------------------------------------------------
 
 GGS_M_5F_machinesMap GGS_M_5F_machinesMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_M_5F_machinesMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_machinesMap GGS_M_5F_machinesMap::class_func_emptyMap (LOCATION_ARGS) {
   GGS_M_5F_machinesMap result ;
   result.build (THERE) ;
   return result ;
@@ -7661,19 +7144,6 @@ mProperty_machinesMap (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticContext GGS_semanticContext::class_func_new (const GGS_L_5F_jobList & in_componentsMap,
-                                                         const GGS_M_5F_machinesMap & in_machinesMap,
-                                                         Compiler * inCompiler
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticContext result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_componentsMap = in_componentsMap ;
-  result.mProperty_machinesMap = in_machinesMap ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_semanticContext::isValid (void) const {
   return mProperty_componentsMap.isValid () && mProperty_machinesMap.isValid () ;
 }
@@ -7779,17 +7249,6 @@ void GGS_L_5F_translationVector_2E_element::setInitializedProperties (Compiler *
 
 GGS_L_5F_translationVector_2E_element::GGS_L_5F_translationVector_2E_element (const GGS_uint & inOperand0) :
 mProperty_mTargetSlot (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_translationVector_2E_element GGS_L_5F_translationVector_2E_element::class_func_new (const GGS_uint & in_mTargetSlot,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_translationVector_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mTargetSlot = in_mTargetSlot ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7910,21 +7369,6 @@ GGS_L_5F_transitionDefinition_2E_element::GGS_L_5F_transitionDefinition_2E_eleme
 mProperty_mActionExpression (inOperand0),
 mProperty_mEndOfExpression (inOperand1),
 mProperty_mTargetStateIndex (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_transitionDefinition_2E_element GGS_L_5F_transitionDefinition_2E_element::class_func_new (const GGS_AC_5F_boolExpression & in_mActionExpression,
-                                                                                                   const GGS_location & in_mEndOfExpression,
-                                                                                                   const GGS_uint & in_mTargetStateIndex,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_transitionDefinition_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mActionExpression = in_mActionExpression ;
-  result.mProperty_mEndOfExpression = in_mEndOfExpression ;
-  result.mProperty_mTargetStateIndex = in_mTargetStateIndex ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8062,23 +7506,6 @@ mProperty_mTransitionsList (inOperand3) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_stateDefinition_2E_element GGS_L_5F_stateDefinition_2E_element::class_func_new (const GGS_uint & in_mStateIndex,
-                                                                                         const GGS_AC_5F_boolExpression & in_mStateExpression,
-                                                                                         const GGS_location & in_mEndOfStateExpression,
-                                                                                         const GGS_L_5F_transitionDefinition & in_mTransitionsList,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_stateDefinition_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mStateIndex = in_mStateIndex ;
-  result.mProperty_mStateExpression = in_mStateExpression ;
-  result.mProperty_mEndOfStateExpression = in_mEndOfStateExpression ;
-  result.mProperty_mTransitionsList = in_mTransitionsList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_L_5F_stateDefinition_2E_element::isValid (void) const {
   return mProperty_mStateIndex.isValid () && mProperty_mStateExpression.isValid () && mProperty_mEndOfStateExpression.isValid () && mProperty_mTransitionsList.isValid () ;
 }
@@ -8201,19 +7628,6 @@ mProperty_mStateLocation (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_statesDefinitionList_2E_element GGS_L_5F_statesDefinitionList_2E_element::class_func_new (const GGS_uint & in_mStateIndex,
-                                                                                                   const GGS_location & in_mStateLocation,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_statesDefinitionList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mStateIndex = in_mStateIndex ;
-  result.mProperty_mStateLocation = in_mStateLocation ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_L_5F_statesDefinitionList_2E_element::isValid (void) const {
   return mProperty_mStateIndex.isValid () && mProperty_mStateLocation.isValid () ;
 }
@@ -8330,19 +7744,6 @@ mProperty_mTargetMode (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ListForModes_2E_element GGS_ListForModes_2E_element::class_func_new (const GGS_uint & in_mSourceMode,
-                                                                         const GGS_uint & in_mTargetMode,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ListForModes_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mSourceMode = in_mSourceMode ;
-  result.mProperty_mTargetMode = in_mTargetMode ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_ListForModes_2E_element::isValid (void) const {
   return mProperty_mSourceMode.isValid () && mProperty_mTargetMode.isValid () ;
 }
@@ -8448,17 +7849,6 @@ void GGS_L_5F_inputConfigurationForScenario_2E_element::setInitializedProperties
 
 GGS_L_5F_inputConfigurationForScenario_2E_element::GGS_L_5F_inputConfigurationForScenario_2E_element (const GGS_luint & inOperand0) :
 mProperty_mInputValue (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_inputConfigurationForScenario_2E_element GGS_L_5F_inputConfigurationForScenario_2E_element::class_func_new (const GGS_luint & in_mInputValue,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_inputConfigurationForScenario_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mInputValue = in_mInputValue ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8569,17 +7959,6 @@ mProperty_mInputConfiguration (inOperand0) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputScenario_2E_element GGS_L_5F_inputScenario_2E_element::class_func_new (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_inputScenario_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mInputConfiguration = in_mInputConfiguration ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_L_5F_inputScenario_2E_element::isValid (void) const {
   return mProperty_mInputConfiguration.isValid () ;
 }
@@ -8682,17 +8061,6 @@ void GGS_L_5F_jobList_2E_element::setInitializedProperties (Compiler * /* inComp
 
 GGS_L_5F_jobList_2E_element::GGS_L_5F_jobList_2E_element (const GGS_AC_5F_job & inOperand0) :
 mProperty_mComponent (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_L_5F_jobList_2E_element GGS_L_5F_jobList_2E_element::class_func_new (const GGS_AC_5F_job & in_mComponent,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_jobList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mComponent = in_mComponent ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8824,11 +8192,11 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 39 : <component>, in file 'sara_parser.ggs', line 205
+// At index 39 : <component>, in file 'sara_parser.ggs', line 140
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_bdd) // $bdd$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 42 : <component>, in file 'sara_parser.ggs', line 215
+// At index 42 : <component>, in file 'sara_parser.ggs', line 150
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -8845,7 +8213,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 58 : <component>, in file 'sara_parser.ggs', line 277
+// At index 58 : <component>, in file 'sara_parser.ggs', line 212
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompadd) // $modalcompadd$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -8863,7 +8231,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (7) // <modalcompadd_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 75 : <component>, in file 'sara_parser.ggs', line 344
+// At index 75 : <component>, in file 'sara_parser.ggs', line 279
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompsub) // $modalcompsub$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -8881,7 +8249,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (8) // <modalcompsub_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 92 : <component>, in file 'sara_parser.ggs', line 409
+// At index 92 : <component>, in file 'sara_parser.ggs', line 344
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_scenario) // $scenario$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -8905,33 +8273,33 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (28) // <select_sara_5F_parser_17>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 115 : <io_bool_expression>, in file 'sara_parser.ggs', line 500
+// At index 115 : <io_bool_expression>, in file 'sara_parser.ggs', line 435
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 118 : <io_and_expression>, in file 'sara_parser.ggs', line 527
+// At index 118 : <io_and_expression>, in file 'sara_parser.ggs', line 462
 , TOP_DOWN_NONTERMINAL (4) // <io_primary>
 , TOP_DOWN_NONTERMINAL (32) // <select_sara_5F_parser_21>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 121 : <io_primary>, in file 'sara_parser.ggs', line 542
+// At index 121 : <io_primary>, in file 'sara_parser.ggs', line 477
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 125 : <io_primary>, in file 'sara_parser.ggs', line 553
+// At index 125 : <io_primary>, in file 'sara_parser.ggs', line 488
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 127 : <io_primary>, in file 'sara_parser.ggs', line 564
+// At index 127 : <io_primary>, in file 'sara_parser.ggs', line 499
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7E_) // $~$
 , TOP_DOWN_NONTERMINAL (4) // <io_primary>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 130 : <io_primary>, in file 'sara_parser.ggs', line 575
+// At index 130 : <io_primary>, in file 'sara_parser.ggs', line 510
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_false) // $false$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 132 : <io_primary>, in file 'sara_parser.ggs', line 585
+// At index 132 : <io_primary>, in file 'sara_parser.ggs', line 520
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_true) // $true$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 134 : <io_primary>, in file 'sara_parser.ggs', line 595
+// At index 134 : <io_primary>, in file 'sara_parser.ggs', line 530
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -8945,15 +8313,15 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (36) // <select_sara_5F_parser_25>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 147 : <definition_expression>, in file 'sara_parser.ggs', line 661
+// At index 147 : <definition_expression>, in file 'sara_parser.ggs', line 596
 , TOP_DOWN_NONTERMINAL (6) // <definition_expression_term>
 , TOP_DOWN_NONTERMINAL (37) // <select_sara_5F_parser_26>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 150 : <definition_expression_term>, in file 'sara_parser.ggs', line 677
+// At index 150 : <definition_expression_term>, in file 'sara_parser.ggs', line 612
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 153 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 705
+// At index 153 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 640
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
@@ -8961,7 +8329,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (39) // <select_sara_5F_parser_28>
 , TOP_DOWN_NONTERMINAL (40) // <select_sara_5F_parser_29>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 160 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 739
+// At index 160 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 674
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
@@ -8969,10 +8337,10 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (41) // <select_sara_5F_parser_30>
 , TOP_DOWN_NONTERMINAL (42) // <select_sara_5F_parser_31>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 167 : <definition_expression_factor>, in file 'sara_parser.ggs', line 773
+// At index 167 : <definition_expression_factor>, in file 'sara_parser.ggs', line 708
 , TOP_DOWN_NONTERMINAL (43) // <select_sara_5F_parser_32>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 169 : <definition_expression_factor>, in file 'sara_parser.ggs', line 872
+// At index 169 : <definition_expression_factor>, in file 'sara_parser.ggs', line 807
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -8986,7 +8354,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (49) // <select_sara_5F_parser_38>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 182 : <explicit_automaton>, in file 'sara_parser.ggs', line 935
+// At index 182 : <explicit_automaton>, in file 'sara_parser.ggs', line 870
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_auto) // $auto$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_state) // $state$
@@ -9014,117 +8382,117 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (1) // <component>
 , TOP_DOWN_NONTERMINAL (11) // <select_sara_5F_parser_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 206 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 223
+// At index 206 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
 , TOP_DOWN_END_PRODUCTION ()
-// At index 207 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 223
+// At index 207 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (12) // <select_sara_5F_parser_1>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 211 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 234
+// At index 211 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
 , TOP_DOWN_END_PRODUCTION ()
-// At index 212 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 234
+// At index 212 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (14) // <select_sara_5F_parser_3>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 215 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 236
+// At index 215 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
 , TOP_DOWN_END_PRODUCTION ()
-// At index 216 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 236
+// At index 216 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (14) // <select_sara_5F_parser_3>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 220 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 248
+// At index 220 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
 , TOP_DOWN_END_PRODUCTION ()
-// At index 221 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 248
+// At index 221 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (15) // <select_sara_5F_parser_4>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 225 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 286
+// At index 225 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
 , TOP_DOWN_END_PRODUCTION ()
-// At index 226 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 286
+// At index 226 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (16) // <select_sara_5F_parser_5>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 230 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 297
+// At index 230 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
 , TOP_DOWN_END_PRODUCTION ()
-// At index 231 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 297
+// At index 231 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (18) // <select_sara_5F_parser_7>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 234 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 299
+// At index 234 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
 , TOP_DOWN_END_PRODUCTION ()
-// At index 235 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 299
+// At index 235 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (18) // <select_sara_5F_parser_7>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 239 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 311
+// At index 239 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
 , TOP_DOWN_END_PRODUCTION ()
-// At index 240 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 311
+// At index 240 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (19) // <select_sara_5F_parser_8>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 244 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 353
+// At index 244 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
 , TOP_DOWN_END_PRODUCTION ()
-// At index 245 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 353
+// At index 245 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (20) // <select_sara_5F_parser_9>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 249 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 364
+// At index 249 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
 , TOP_DOWN_END_PRODUCTION ()
-// At index 250 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 364
+// At index 250 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (22) // <select_sara_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 253 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 366
+// At index 253 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
 , TOP_DOWN_END_PRODUCTION ()
-// At index 254 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 366
+// At index 254 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (22) // <select_sara_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 258 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 378
+// At index 258 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
 , TOP_DOWN_END_PRODUCTION ()
-// At index 259 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 378
+// At index 259 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (23) // <select_sara_5F_parser_12>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 263 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 418
+// At index 263 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
 , TOP_DOWN_END_PRODUCTION ()
-// At index 264 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 418
+// At index 264 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (24) // <select_sara_5F_parser_13>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 268 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 433
+// At index 268 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
 , TOP_DOWN_END_PRODUCTION ()
-// At index 269 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 433
+// At index 269 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (26) // <select_sara_5F_parser_15>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 272 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 435
+// At index 272 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
 , TOP_DOWN_END_PRODUCTION ()
-// At index 273 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 435
+// At index 273 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (26) // <select_sara_5F_parser_15>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 277 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 451
+// At index 277 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
 , TOP_DOWN_END_PRODUCTION ()
-// At index 278 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 451
+// At index 278 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (27) // <select_sara_5F_parser_16>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 282 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 467
+// At index 282 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
 , TOP_DOWN_END_PRODUCTION ()
-// At index 283 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 467
+// At index 283 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
@@ -9133,113 +8501,113 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (28) // <select_sara_5F_parser_17>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 291 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 470
+// At index 291 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
 , TOP_DOWN_END_PRODUCTION ()
-// At index 292 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 470
+// At index 292 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_NONTERMINAL (30) // <select_sara_5F_parser_19>
 , TOP_DOWN_NONTERMINAL (29) // <select_sara_5F_parser_18>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 297 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 473
+// At index 297 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
 , TOP_DOWN_END_PRODUCTION ()
-// At index 298 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 473
+// At index 298 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_NONTERMINAL (30) // <select_sara_5F_parser_19>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 302 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
+// At index 302 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
 , TOP_DOWN_END_PRODUCTION ()
-// At index 303 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
+// At index 303 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7C_) // $|$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 307 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
+// At index 307 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__5E_) // $^$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 311 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
+// At index 311 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2D__3E_) // $->$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 315 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
+// At index 315 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3D_) // $=$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 319 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 532
+// At index 319 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
 , TOP_DOWN_END_PRODUCTION ()
-// At index 320 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 532
+// At index 320 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__26_) // $&$
 , TOP_DOWN_NONTERMINAL (4) // <io_primary>
 , TOP_DOWN_NONTERMINAL (32) // <select_sara_5F_parser_21>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 324 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 604
+// At index 324 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
 , TOP_DOWN_END_PRODUCTION ()
-// At index 325 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 604
+// At index 325 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (33) // <select_sara_5F_parser_22>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 329 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 619
+// At index 329 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
 , TOP_DOWN_END_PRODUCTION ()
-// At index 330 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 619
+// At index 330 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (35) // <select_sara_5F_parser_24>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 333 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 621
+// At index 333 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
 , TOP_DOWN_END_PRODUCTION ()
-// At index 334 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 621
+// At index 334 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (35) // <select_sara_5F_parser_24>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 338 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 637
+// At index 338 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
 , TOP_DOWN_END_PRODUCTION ()
-// At index 339 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 637
+// At index 339 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (36) // <select_sara_5F_parser_25>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 343 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 666
+// At index 343 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
 , TOP_DOWN_END_PRODUCTION ()
-// At index 344 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 666
+// At index 344 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2B_) // $+$
 , TOP_DOWN_NONTERMINAL (6) // <definition_expression_term>
 , TOP_DOWN_NONTERMINAL (37) // <select_sara_5F_parser_26>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 348 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
+// At index 348 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
 , TOP_DOWN_END_PRODUCTION ()
-// At index 349 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
+// At index 349 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2A_) // $*$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 353 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
+// At index 353 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2A__2A_) // $**$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 357 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
+// At index 357 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7C__7C_) // $||$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 361 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 712
+// At index 361 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
 , TOP_DOWN_END_PRODUCTION ()
-// At index 362 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 712
+// At index 362 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (39) // <select_sara_5F_parser_28>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 368 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 720
+// At index 368 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
 , TOP_DOWN_END_PRODUCTION ()
-// At index 369 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 720
+// At index 369 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_include) // $include$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_to) // $to$
@@ -9247,18 +8615,18 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (40) // <select_sara_5F_parser_29>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 376 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 746
+// At index 376 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
 , TOP_DOWN_END_PRODUCTION ()
-// At index 377 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 746
+// At index 377 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (41) // <select_sara_5F_parser_30>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 383 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 754
+// At index 383 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
 , TOP_DOWN_END_PRODUCTION ()
-// At index 384 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 754
+// At index 384 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_exclude) // $exclude$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_to) // $to$
@@ -9266,15 +8634,15 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (42) // <select_sara_5F_parser_31>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 391 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 391 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_NONTERMINAL (10) // <explicit_automaton>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 393 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 393 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 397 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 397 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3F_) // $?$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (44) // <select_sara_5F_parser_33>
@@ -9282,7 +8650,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 404 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 404 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__21_) // $!$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (45) // <select_sara_5F_parser_34>
@@ -9290,45 +8658,45 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 411 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 411 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_bool) // $bool$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 416 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 416 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__40_) // $@$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 419 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 419 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7E_) // $~$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 422 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 422 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_nofirst) // $nofirst$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 427 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 427 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_nolast) // $nolast$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 432 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 432 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompadd) // $modalcompadd$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (7) // <modalcompadd_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 437 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 437 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompsub) // $modalcompsub$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (8) // <modalcompsub_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 442 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
+// At index 442 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_trans) // $trans$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
@@ -9336,79 +8704,79 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 449 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 787
+// At index 449 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
 , TOP_DOWN_END_PRODUCTION ()
-// At index 450 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 787
+// At index 450 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (44) // <select_sara_5F_parser_33>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 454 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 802
+// At index 454 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
 , TOP_DOWN_END_PRODUCTION ()
-// At index 455 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 802
+// At index 455 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (45) // <select_sara_5F_parser_34>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 459 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 881
+// At index 459 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
 , TOP_DOWN_END_PRODUCTION ()
-// At index 460 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 881
+// At index 460 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (46) // <select_sara_5F_parser_35>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 464 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 896
+// At index 464 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
 , TOP_DOWN_END_PRODUCTION ()
-// At index 465 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 896
+// At index 465 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (48) // <select_sara_5F_parser_37>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 468 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 898
+// At index 468 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
 , TOP_DOWN_END_PRODUCTION ()
-// At index 469 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 898
+// At index 469 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (48) // <select_sara_5F_parser_37>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 473 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 914
+// At index 473 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
 , TOP_DOWN_END_PRODUCTION ()
-// At index 474 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 914
+// At index 474 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (49) // <select_sara_5F_parser_38>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 478 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 945
+// At index 478 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
 , TOP_DOWN_END_PRODUCTION ()
-// At index 479 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 945
+// At index 479 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (50) // <select_sara_5F_parser_39>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 483 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 955
+// At index 483 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
 , TOP_DOWN_END_PRODUCTION ()
-// At index 484 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 955
+// At index 484 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (51) // <select_sara_5F_parser_40>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 488 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 965
+// At index 488 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
 , TOP_DOWN_END_PRODUCTION ()
-// At index 489 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 965
+// At index 489 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_last) // $last$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (53) // <select_sara_5F_parser_42>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 494 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 968
+// At index 494 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
 , TOP_DOWN_END_PRODUCTION ()
-// At index 495 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 968
+// At index 495 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (53) // <select_sara_5F_parser_42>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 499 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 979
+// At index 499 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
 , TOP_DOWN_END_PRODUCTION ()
-// At index 500 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 979
+// At index 500 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
@@ -9417,9 +8785,9 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_NONTERMINAL (54) // <select_sara_5F_parser_43>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 508 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 991
+// At index 508 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
 , TOP_DOWN_END_PRODUCTION ()
-// At index 509 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 991
+// At index 509 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_goto) // $goto$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -9589,131 +8957,131 @@ static const int32_t gProductionIndexes_sara_grammar [134] = {
 25, // index 5 : <component>, in file 'sara_parser.ggs', line 91
 29, // index 6 : <component>, in file 'sara_parser.ggs', line 106
 35, // index 7 : <component>, in file 'sara_parser.ggs', line 125
-39, // index 8 : <component>, in file 'sara_parser.ggs', line 205
-42, // index 9 : <component>, in file 'sara_parser.ggs', line 215
-58, // index 10 : <component>, in file 'sara_parser.ggs', line 277
-75, // index 11 : <component>, in file 'sara_parser.ggs', line 344
-92, // index 12 : <component>, in file 'sara_parser.ggs', line 409
-115, // index 13 : <io_bool_expression>, in file 'sara_parser.ggs', line 500
-118, // index 14 : <io_and_expression>, in file 'sara_parser.ggs', line 527
-121, // index 15 : <io_primary>, in file 'sara_parser.ggs', line 542
-125, // index 16 : <io_primary>, in file 'sara_parser.ggs', line 553
-127, // index 17 : <io_primary>, in file 'sara_parser.ggs', line 564
-130, // index 18 : <io_primary>, in file 'sara_parser.ggs', line 575
-132, // index 19 : <io_primary>, in file 'sara_parser.ggs', line 585
-134, // index 20 : <io_primary>, in file 'sara_parser.ggs', line 595
-147, // index 21 : <definition_expression>, in file 'sara_parser.ggs', line 661
-150, // index 22 : <definition_expression_term>, in file 'sara_parser.ggs', line 677
-153, // index 23 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 705
-160, // index 24 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 739
-167, // index 25 : <definition_expression_factor>, in file 'sara_parser.ggs', line 773
-169, // index 26 : <definition_expression_factor>, in file 'sara_parser.ggs', line 872
-182, // index 27 : <explicit_automaton>, in file 'sara_parser.ggs', line 935
+39, // index 8 : <component>, in file 'sara_parser.ggs', line 140
+42, // index 9 : <component>, in file 'sara_parser.ggs', line 150
+58, // index 10 : <component>, in file 'sara_parser.ggs', line 212
+75, // index 11 : <component>, in file 'sara_parser.ggs', line 279
+92, // index 12 : <component>, in file 'sara_parser.ggs', line 344
+115, // index 13 : <io_bool_expression>, in file 'sara_parser.ggs', line 435
+118, // index 14 : <io_and_expression>, in file 'sara_parser.ggs', line 462
+121, // index 15 : <io_primary>, in file 'sara_parser.ggs', line 477
+125, // index 16 : <io_primary>, in file 'sara_parser.ggs', line 488
+127, // index 17 : <io_primary>, in file 'sara_parser.ggs', line 499
+130, // index 18 : <io_primary>, in file 'sara_parser.ggs', line 510
+132, // index 19 : <io_primary>, in file 'sara_parser.ggs', line 520
+134, // index 20 : <io_primary>, in file 'sara_parser.ggs', line 530
+147, // index 21 : <definition_expression>, in file 'sara_parser.ggs', line 596
+150, // index 22 : <definition_expression_term>, in file 'sara_parser.ggs', line 612
+153, // index 23 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 640
+160, // index 24 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 674
+167, // index 25 : <definition_expression_factor>, in file 'sara_parser.ggs', line 708
+169, // index 26 : <definition_expression_factor>, in file 'sara_parser.ggs', line 807
+182, // index 27 : <explicit_automaton>, in file 'sara_parser.ggs', line 870
 202, // index 28 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
 203, // index 29 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
-206, // index 30 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 223
-207, // index 31 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 223
-211, // index 32 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 234
-212, // index 33 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 234
-215, // index 34 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 236
-216, // index 35 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 236
-220, // index 36 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 248
-221, // index 37 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 248
-225, // index 38 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 286
-226, // index 39 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 286
-230, // index 40 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 297
-231, // index 41 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 297
-234, // index 42 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 299
-235, // index 43 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 299
-239, // index 44 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 311
-240, // index 45 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 311
-244, // index 46 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 353
-245, // index 47 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 353
-249, // index 48 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 364
-250, // index 49 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 364
-253, // index 50 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 366
-254, // index 51 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 366
-258, // index 52 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 378
-259, // index 53 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 378
-263, // index 54 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 418
-264, // index 55 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 418
-268, // index 56 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 433
-269, // index 57 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 433
-272, // index 58 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 435
-273, // index 59 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 435
-277, // index 60 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 451
-278, // index 61 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 451
-282, // index 62 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 467
-283, // index 63 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 467
-291, // index 64 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 470
-292, // index 65 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 470
-297, // index 66 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 473
-298, // index 67 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 473
-302, // index 68 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
-303, // index 69 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
-307, // index 70 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
-311, // index 71 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
-315, // index 72 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 505
-319, // index 73 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 532
-320, // index 74 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 532
-324, // index 75 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 604
-325, // index 76 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 604
-329, // index 77 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 619
-330, // index 78 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 619
-333, // index 79 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 621
-334, // index 80 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 621
-338, // index 81 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 637
-339, // index 82 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 637
-343, // index 83 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 666
-344, // index 84 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 666
-348, // index 85 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
-349, // index 86 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
-353, // index 87 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
-357, // index 88 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 682
-361, // index 89 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 712
-362, // index 90 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 712
-368, // index 91 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 720
-369, // index 92 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 720
-376, // index 93 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 746
-377, // index 94 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 746
-383, // index 95 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 754
-384, // index 96 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 754
-391, // index 97 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-393, // index 98 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-397, // index 99 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-404, // index 100 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-411, // index 101 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-416, // index 102 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-419, // index 103 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-422, // index 104 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-427, // index 105 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-432, // index 106 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-437, // index 107 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-442, // index 108 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 777
-449, // index 109 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 787
-450, // index 110 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 787
-454, // index 111 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 802
-455, // index 112 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 802
-459, // index 113 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 881
-460, // index 114 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 881
-464, // index 115 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 896
-465, // index 116 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 896
-468, // index 117 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 898
-469, // index 118 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 898
-473, // index 119 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 914
-474, // index 120 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 914
-478, // index 121 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 945
-479, // index 122 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 945
-483, // index 123 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 955
-484, // index 124 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 955
-488, // index 125 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 965
-489, // index 126 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 965
-494, // index 127 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 968
-495, // index 128 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 968
-499, // index 129 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 979
-500, // index 130 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 979
-508, // index 131 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 991
-509, // index 132 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 991
+206, // index 30 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
+207, // index 31 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
+211, // index 32 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
+212, // index 33 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
+215, // index 34 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
+216, // index 35 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
+220, // index 36 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
+221, // index 37 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
+225, // index 38 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
+226, // index 39 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
+230, // index 40 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
+231, // index 41 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
+234, // index 42 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
+235, // index 43 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
+239, // index 44 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
+240, // index 45 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
+244, // index 46 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
+245, // index 47 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
+249, // index 48 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
+250, // index 49 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
+253, // index 50 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
+254, // index 51 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
+258, // index 52 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
+259, // index 53 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
+263, // index 54 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
+264, // index 55 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
+268, // index 56 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
+269, // index 57 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
+272, // index 58 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
+273, // index 59 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
+277, // index 60 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
+278, // index 61 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
+282, // index 62 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
+283, // index 63 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
+291, // index 64 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
+292, // index 65 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
+297, // index 66 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
+298, // index 67 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
+302, // index 68 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+303, // index 69 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+307, // index 70 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+311, // index 71 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+315, // index 72 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+319, // index 73 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
+320, // index 74 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
+324, // index 75 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
+325, // index 76 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
+329, // index 77 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
+330, // index 78 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
+333, // index 79 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
+334, // index 80 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
+338, // index 81 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
+339, // index 82 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
+343, // index 83 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
+344, // index 84 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
+348, // index 85 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+349, // index 86 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+353, // index 87 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+357, // index 88 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+361, // index 89 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
+362, // index 90 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
+368, // index 91 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
+369, // index 92 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
+376, // index 93 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
+377, // index 94 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
+383, // index 95 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
+384, // index 96 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
+391, // index 97 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+393, // index 98 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+397, // index 99 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+404, // index 100 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+411, // index 101 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+416, // index 102 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+419, // index 103 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+422, // index 104 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+427, // index 105 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+432, // index 106 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+437, // index 107 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+442, // index 108 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+449, // index 109 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
+450, // index 110 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
+454, // index 111 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
+455, // index 112 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
+459, // index 113 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
+460, // index 114 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
+464, // index 115 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
+465, // index 116 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
+468, // index 117 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
+469, // index 118 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
+473, // index 119 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
+474, // index 120 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
+478, // index 121 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
+479, // index 122 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
+483, // index 123 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
+484, // index 124 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
+488, // index 125 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
+489, // index 126 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
+494, // index 127 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
+495, // index 128 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
+499, // index 129 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
+500, // index 130 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
+508, // index 131 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
+509, // index 132 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
 515 // index 133 : <>, in file '.ggs', line 0
 } ;
 
@@ -11151,18 +10519,6 @@ GGS_AC_5F_boolExpression (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_importBoolMachine GGS_C_5F_importBoolMachine::class_func_new (const GGS_uint & in_mIndexOfImportedMachine,
-                                                                       const GGS_location & in_mErrorLocation,
-                                                                       const GGS_L_5F_translationVector & in_mTranslationVector,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  GGS_C_5F_importBoolMachine result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_importBoolMachine (in_mIndexOfImportedMachine, in_mErrorLocation, in_mTranslationVector,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_C_5F_importBoolMachine::readProperty_mIndexOfImportedMachine (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -11390,17 +10746,6 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineCheck GGS_C_5F_machineCheck::class_func_new (const GGS_uint & in_mMachineIndex,
-                                                             const GGS_bool & in_mCheckMachineIsBoolean,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineCheck result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineCheck (in_mMachineIndex, in_mCheckMachineIsBoolean,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_C_5F_machineCheck::readProperty_mMachineIndex (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_uint () ;
@@ -11612,22 +10957,6 @@ GGS_C_5F_machineComponent::GGS_C_5F_machineComponent (const cPtr_C_5F_machineCom
 GGS_AC_5F_job (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_machineComponent) ;
 }
-//--------------------------------------------------------------------------------------------------
-
-GGS_C_5F_machineComponent GGS_C_5F_machineComponent::class_func_new (const GGS_lstring & in_mMachineName,
-                                                                     const GGS_uint & in_mMachineIndex,
-                                                                     const GGS_uint & in_mInputVariableCount,
-                                                                     const GGS_uint & in_mInputAndInternalVariableCount,
-                                                                     const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                                     const GGS_stringlist & in_mNameList,
-                                                                     const GGS_AC_5F_machineDefinition & in_mDefinition,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineComponent result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineComponent (in_mMachineName, in_mMachineIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mNameList, in_mDefinition,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lstring GGS_C_5F_machineComponent::readProperty_mMachineName (void) const {
@@ -11988,22 +11317,6 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDefinedByAdditiveModalComp GGS_C_5F_machineDefinedByAdditiveModalComp::class_func_new (const GGS_lstring & in_mMachineName,
-                                                                                                       const GGS_uint & in_mMachineIndex,
-                                                                                                       const GGS_uint & in_mInputVariableCount,
-                                                                                                       const GGS_uint & in_mInputAndInternalVariableCount,
-                                                                                                       const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                                                                       const GGS_M_5F_modesMap & in_mModeMap,
-                                                                                                       const GGS_ListForModes & in_mInclusionList,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineDefinedByAdditiveModalComp result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDefinedByAdditiveModalComp (in_mMachineName, in_mMachineIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mModeMap, in_mInclusionList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_C_5F_machineDefinedByAdditiveModalComp::readProperty_mMachineName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -12362,22 +11675,6 @@ GGS_AC_5F_job (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_C_5F_machineDefinedBySubstractiveModalComp GGS_C_5F_machineDefinedBySubstractiveModalComp::class_func_new (const GGS_lstring & in_mMachineName,
-                                                                                                               const GGS_uint & in_mMachineIndex,
-                                                                                                               const GGS_uint & in_mInputVariableCount,
-                                                                                                               const GGS_uint & in_mInputAndInternalVariableCount,
-                                                                                                               const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                                                                               const GGS_M_5F_modesMap & in_mModeMap,
-                                                                                                               const GGS_ListForModes & in_mExclusionList,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) {
-  GGS_C_5F_machineDefinedBySubstractiveModalComp result ;
-  macroMyNew (result.mObjectPtr, cPtr_C_5F_machineDefinedBySubstractiveModalComp (in_mMachineName, in_mMachineIndex, in_mInputVariableCount, in_mInputAndInternalVariableCount, in_mVariablesMap, in_mModeMap, in_mExclusionList,  inCompiler COMMA_THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring GGS_C_5F_machineDefinedBySubstractiveModalComp::readProperty_mMachineName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
@@ -12712,19 +12009,6 @@ mProperty_mValue_31_ (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_lstringlist_2E_element GGS__32_lstringlist_2E_element::class_func_new (const GGS_lstring & in_mValue0,
-                                                                               const GGS_lstring & in_mValue1,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__32_lstringlist_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mValue_30_ = in_mValue0 ;
-  result.mProperty_mValue_31_ = in_mValue1 ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS__32_lstringlist_2E_element::isValid (void) const {
   return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
 }
@@ -12837,19 +12121,6 @@ GGS_M_5F_variablesMap_2E_element::GGS_M_5F_variablesMap_2E_element (const GGS_ls
                                                                     const GGS_uint & inOperand1) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_variablesMap_2E_element GGS_M_5F_variablesMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                                   const GGS_uint & in_mIndex,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_M_5F_variablesMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13084,19 +12355,6 @@ GGS_M_5F_stateMap_2E_element::GGS_M_5F_stateMap_2E_element (const GGS_lstring & 
                                                             const GGS_uint & inOperand1) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_stateMap_2E_element GGS_M_5F_stateMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                           const GGS_uint & in_mIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_M_5F_stateMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13342,21 +12600,6 @@ mProperty_mModeDefinition (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_M_5F_modesMap_2E_element GGS_M_5F_modesMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                           const GGS_uint & in_mIndex,
-                                                                           const GGS_AC_5F_machineDefinition & in_mModeDefinition,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_M_5F_modesMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  result.mProperty_mModeDefinition = in_mModeDefinition ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_M_5F_modesMap_2E_element::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mModeDefinition.isValid () ;
 }
@@ -13594,19 +12837,6 @@ mProperty_mInputScenario (inOperand1) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_scenarioList_2E_element GGS_L_5F_scenarioList_2E_element::class_func_new (const GGS_lstring & in_mScenarioTitle,
-                                                                                   const GGS_L_5F_inputScenario & in_mInputScenario,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_5F_scenarioList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mScenarioTitle = in_mScenarioTitle ;
-  result.mProperty_mInputScenario = in_mInputScenario ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 bool GGS_L_5F_scenarioList_2E_element::isValid (void) const {
   return mProperty_mScenarioTitle.isValid () && mProperty_mInputScenario.isValid () ;
 }
@@ -13747,27 +12977,6 @@ mProperty_mInputVariableCount (inOperand2),
 mProperty_mInputAndInternalVariableCount (inOperand3),
 mProperty_mVariablesMap (inOperand4),
 mProperty_mNameList (inOperand5) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_M_5F_machinesMap_2E_element GGS_M_5F_machinesMap_2E_element::class_func_new (const GGS_lstring & in_lkey,
-                                                                                 const GGS_uint & in_mIndex,
-                                                                                 const GGS_uint & in_mInputVariableCount,
-                                                                                 const GGS_uint & in_mInputAndInternalVariableCount,
-                                                                                 const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                                                                 const GGS_stringlist & in_mNameList,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_M_5F_machinesMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mIndex = in_mIndex ;
-  result.mProperty_mInputVariableCount = in_mInputVariableCount ;
-  result.mProperty_mInputAndInternalVariableCount = in_mInputAndInternalVariableCount ;
-  result.mProperty_mVariablesMap = in_mVariablesMap ;
-  result.mProperty_mNameList = in_mNameList ;
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

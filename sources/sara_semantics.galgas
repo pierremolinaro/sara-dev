@@ -1,10 +1,8 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   S E M A N T I C S                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   S E M A N T I C S                                                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
 
 map @M_variablesMap {
   public var @uint mIndex
@@ -19,7 +17,7 @@ map @M_stateMap {
   search searchKey error message"the '%K' state is not declared"
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 list @L_translationVector {
   public var @uint mTargetSlot
@@ -73,7 +71,7 @@ class @C_trueExpression : @AC_boolExpression {
 class @C_falseExpression : @AC_boolExpression {
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 list @L_transitionDefinition {
   public var @AC_boolExpression mActionExpression
@@ -88,14 +86,14 @@ list @L_stateDefinition {
   public var @L_transitionDefinition mTransitionsList
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 list @L_statesDefinitionList {
   public var @uint mStateIndex
   public var @location mStateLocation
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 abstract class @AC_machineDefinition %generatedInSeparateFile {
 }
@@ -194,7 +192,7 @@ class @C_suppressInitialStatesOperation : @AC_machineDefinition {
   public var @AC_machineDefinition mOperand
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 abstract class @AC_job %generatedInSeparateFile {
 }
@@ -277,37 +275,37 @@ class @C_scenarioComponent : @AC_job {
   public var @L_scenarioList mScenarioList
 }
 
-#class @typeUse_AND : @AC_job {
-#}
-#
-#class @typeUse_ITE : @AC_job {
-#}
-#
-#class @typeUse_AND_ITE : @AC_job {
-#}
-#
-#class @typeResize_AND_cache : @AC_job {
-#  @luint mNewSize
-#}
-#
-#class @typeResize_ITE_cache : @AC_job {
-#  @luint mNewSize
-#}
-#
-#class @typeResizeMap : @AC_job {
-#  @luint mNewSize
-#}
+//class @typeUse_AND : @AC_job {
+//}
+//
+//class @typeUse_ITE : @AC_job {
+//}
+//
+//class @typeUse_AND_ITE : @AC_job {
+//}
+//
+//class @typeResize_AND_cache : @AC_job {
+//  @luint mNewSize
+//}
+//
+//class @typeResize_ITE_cache : @AC_job {
+//  @luint mNewSize
+//}
+//
+//class @typeResizeMap : @AC_job {
+//  @luint mNewSize
+//}
 
 class @typeDisplayBDDstats : @AC_job {
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 list @L_jobList {
   public var @AC_job mComponent
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 map @M_machinesMap {
   public var @uint mIndex
@@ -320,17 +318,17 @@ map @M_machinesMap {
   remove removeKey error message"the '%K' machine is not defined"
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 struct @semanticContext {
   public var @L_jobList componentsMap
   public var @M_machinesMap machinesMap
 }
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 extern proc performComputations
   ?let @L_jobList ioJobList
 
-#---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 

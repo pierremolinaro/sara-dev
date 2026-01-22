@@ -9,85 +9,6 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_strongModalComposition_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_strongModalComposition_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_strongModalComposition_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_strongModalComposition_2E_weak (const class GGS_C_5F_strongModalComposition & inSource) ;
-
-  public: GGS_C_5F_strongModalComposition_2E_weak & operator = (const class GGS_C_5F_strongModalComposition & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_strongModalComposition_2E_weak init_nil (void) {
-    GGS_C_5F_strongModalComposition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_strongModalComposition bang_C_5F_strongModalComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_strongModalComposition unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_strongModalComposition_2E_weak extractObject (const GGS_object & inObject,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_strongModalComposition_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_strongModalComposition_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_strongModalComposition_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @C_5F_weakModalComposition_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1322,11 +1243,6 @@ class GGS_L_5F_inputConfigurationForScenario_2E_element : public AC_GALGAS_root 
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_L_5F_inputConfigurationForScenario_2E_element class_func_new (const class GGS_luint & inOperand0,
-                                                                                         class Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
@@ -1399,11 +1315,6 @@ class GGS_L_5F_inputScenario_2E_element : public AC_GALGAS_root {
   public: static GGS_L_5F_inputScenario_2E_element extractObject (const GGS_object & inObject,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_L_5F_inputScenario_2E_element class_func_new (const class GGS_L_5F_inputConfigurationForScenario & inOperand0,
-                                                                         class Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -1488,12 +1399,6 @@ class GGS_L_5F_scenarioList_2E_element : public AC_GALGAS_root {
   public: static GGS_L_5F_scenarioList_2E_element extractObject (const GGS_object & inObject,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_L_5F_scenarioList_2E_element class_func_new (const class GGS_lstring & inOperand0,
-                                                                        const class GGS_L_5F_inputScenario & inOperand1,
-                                                                        class Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -1726,11 +1631,6 @@ class GGS_L_5F_jobList_2E_element : public AC_GALGAS_root {
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_L_5F_jobList_2E_element class_func_new (const class GGS_AC_5F_job & inOperand0,
-                                                                   class Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
                                              const int32_t inIndentation) const override ;
@@ -1858,16 +1758,6 @@ class GGS_M_5F_machinesMap_2E_element : public AC_GALGAS_root {
   public: static GGS_M_5F_machinesMap_2E_element extractObject (const GGS_object & inObject,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_M_5F_machinesMap_2E_element class_func_new (const class GGS_lstring & inOperand0,
-                                                                       const class GGS_uint & inOperand1,
-                                                                       const class GGS_uint & inOperand2,
-                                                                       const class GGS_uint & inOperand3,
-                                                                       const class GGS_M_5F_variablesMap & inOperand4,
-                                                                       const class GGS_stringlist & inOperand5,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
