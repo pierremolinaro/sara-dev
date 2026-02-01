@@ -490,16 +490,12 @@ class cParser_sara_5F_parser {
   protected: virtual void nt_component_ (class GGS_semanticContext & ioArgument0,
                                          class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_component_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_component_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_ (const class GGS_semanticContext constinArgument0,
                                                         class GGS_M_5F_variablesMap & ioArgument1,
                                                         class GGS_AC_5F_machineDefinition & outArgument2,
                                                         class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_definition_5F_expression_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
@@ -508,16 +504,12 @@ class cParser_sara_5F_parser {
                                                                   class GGS_AC_5F_machineDefinition & outArgument2,
                                                                   class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_definition_5F_expression_5F_factor_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_definition_5F_expression_5F_factor_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_5F_term_ (const class GGS_semanticContext constinArgument0,
                                                                 class GGS_M_5F_variablesMap & ioArgument1,
                                                                 class GGS_AC_5F_machineDefinition & outArgument2,
                                                                 class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_definition_5F_expression_5F_term_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_definition_5F_expression_5F_term_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
@@ -526,16 +518,12 @@ class cParser_sara_5F_parser {
                                                      class GGS_AC_5F_machineDefinition & outArgument2,
                                                      class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_explicit_5F_automaton_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_explicit_5F_automaton_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_and_5F_expression_ (const class GGS_semanticContext constinArgument0,
                                                        class GGS_M_5F_variablesMap & ioArgument1,
                                                        class GGS_AC_5F_boolExpression & outArgument2,
                                                        class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_io_5F_and_5F_expression_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_and_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
@@ -544,16 +532,12 @@ class cParser_sara_5F_parser {
                                                         class GGS_AC_5F_boolExpression & outArgument2,
                                                         class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_io_5F_bool_5F_expression_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_io_5F_bool_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_primary_ (const class GGS_semanticContext constinArgument0,
                                              class GGS_M_5F_variablesMap & ioArgument1,
                                              class GGS_AC_5F_boolExpression & outArgument2,
                                              class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_io_5F_primary_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_io_5F_primary_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
@@ -563,8 +547,6 @@ class cParser_sara_5F_parser {
                                                           class GGS_ListForModes & outArgument3,
                                                           class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_modalcompadd_5F_definition_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_modalcompadd_5F_definition_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_modalcompsub_5F_definition_ (const class GGS_semanticContext constinArgument0,
@@ -573,13 +555,9 @@ class cParser_sara_5F_parser {
                                                           class GGS_ListForModes & outArgument3,
                                                           class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
-  protected: virtual void nt_modalcompsub_5F_definition_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
   protected: virtual void nt_modalcompsub_5F_definition_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_start_5F_symbol_ (class Lexique_sara_5F_scanner * inLexique) = 0 ;
-
-  protected: virtual void nt_start_5F_symbol_parse (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
   protected: virtual void nt_start_5F_symbol_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
 
@@ -587,91 +565,91 @@ class cParser_sara_5F_parser {
 //--- Rule declarations
   protected: void rule_sara_5F_parser_start_5F_symbol_i0_ (Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_start_5F_symbol_i0_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_start_5F_symbol_i0_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_start_5F_symbol_i0_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i1_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i1_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i1_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i1_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i2_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i2_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i2_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i2_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i3_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i3_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i3_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i3_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i4_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i4_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i4_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i4_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i5_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i5_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i5_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i5_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i6_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i6_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i6_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i6_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i7_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i7_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i7_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i7_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i8_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i8_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i8_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i8_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i9_ (GGS_semanticContext & ioArgument0,
                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i9_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i9_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i9_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i10_ (GGS_semanticContext & ioArgument0,
                                                       Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i10_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i10_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i10_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i11_ (GGS_semanticContext & ioArgument0,
                                                       Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i11_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i11_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i11_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
   protected: void rule_sara_5F_parser_component_i12_ (GGS_semanticContext & ioArgument0,
                                                       Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_component_i12_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_component_i12_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_component_i12_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -680,7 +658,7 @@ class cParser_sara_5F_parser {
                                                                      GGS_AC_5F_boolExpression & outArgument2,
                                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -689,7 +667,7 @@ class cParser_sara_5F_parser {
                                                                     GGS_AC_5F_boolExpression & outArgument2,
                                                                     Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -698,7 +676,7 @@ class cParser_sara_5F_parser {
                                                           GGS_AC_5F_boolExpression & outArgument2,
                                                           Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i15_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i15_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_primary_i15_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -707,7 +685,7 @@ class cParser_sara_5F_parser {
                                                           GGS_AC_5F_boolExpression & outArgument2,
                                                           Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i16_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i16_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_primary_i16_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -716,7 +694,7 @@ class cParser_sara_5F_parser {
                                                           GGS_AC_5F_boolExpression & outArgument2,
                                                           Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i17_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i17_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_primary_i17_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -725,7 +703,7 @@ class cParser_sara_5F_parser {
                                                           GGS_AC_5F_boolExpression & outArgument2,
                                                           Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i18_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i18_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_primary_i18_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -734,7 +712,7 @@ class cParser_sara_5F_parser {
                                                           GGS_AC_5F_boolExpression & outArgument2,
                                                           Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i19_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i19_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_primary_i19_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -743,7 +721,7 @@ class cParser_sara_5F_parser {
                                                           GGS_AC_5F_boolExpression & outArgument2,
                                                           Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_io_5F_primary_i20_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i20_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_io_5F_primary_i20_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -752,7 +730,7 @@ class cParser_sara_5F_parser {
                                                                      GGS_AC_5F_machineDefinition & outArgument2,
                                                                      Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_i21_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_i21_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_definition_5F_expression_i21_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -761,7 +739,7 @@ class cParser_sara_5F_parser {
                                                                              GGS_AC_5F_machineDefinition & outArgument2,
                                                                              Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -771,7 +749,7 @@ class cParser_sara_5F_parser {
                                                                        GGS_ListForModes & outArgument3,
                                                                        Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -781,7 +759,7 @@ class cParser_sara_5F_parser {
                                                                        GGS_ListForModes & outArgument3,
                                                                        Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -790,7 +768,7 @@ class cParser_sara_5F_parser {
                                                                                GGS_AC_5F_machineDefinition & outArgument2,
                                                                                Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -799,7 +777,7 @@ class cParser_sara_5F_parser {
                                                                                GGS_AC_5F_machineDefinition & outArgument2,
                                                                                Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -808,7 +786,7 @@ class cParser_sara_5F_parser {
                                                                   GGS_AC_5F_machineDefinition & outArgument2,
                                                                   Lexique_sara_5F_scanner * inLexique) ;
 
-  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_parse (Lexique_sara_5F_scanner * inLexique) ;
+/*  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_parse (Lexique_sara_5F_scanner * inLexique) ; */
 
   protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_indexing (Lexique_sara_5F_scanner * inLexique) ;
 
@@ -9088,4 +9066,241 @@ class GGS_C_5F_strongModalComposition_2E_weak : public GGS_AC_5F_machineDefiniti
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_strongModalComposition_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @C_5F_weakModalComposition_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_C_5F_weakModalComposition_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_C_5F_weakModalComposition_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_C_5F_weakModalComposition_2E_weak (const class GGS_C_5F_weakModalComposition & inSource) ;
+
+  public: GGS_C_5F_weakModalComposition_2E_weak & operator = (const class GGS_C_5F_weakModalComposition & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_weakModalComposition_2E_weak init_nil (void) {
+    GGS_C_5F_weakModalComposition_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_C_5F_weakModalComposition bang_C_5F_weakModalComposition_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_C_5F_weakModalComposition unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_C_5F_weakModalComposition_2E_weak extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_C_5F_weakModalComposition_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_C_5F_weakModalComposition_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_weakModalComposition_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @C_5F_fullSaturationOperation_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_C_5F_fullSaturationOperation_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_C_5F_fullSaturationOperation_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_C_5F_fullSaturationOperation_2E_weak (const class GGS_C_5F_fullSaturationOperation & inSource) ;
+
+  public: GGS_C_5F_fullSaturationOperation_2E_weak & operator = (const class GGS_C_5F_fullSaturationOperation & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_fullSaturationOperation_2E_weak init_nil (void) {
+    GGS_C_5F_fullSaturationOperation_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_C_5F_fullSaturationOperation bang_C_5F_fullSaturationOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_C_5F_fullSaturationOperation unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_C_5F_fullSaturationOperation_2E_weak extractObject (const GGS_object & inObject,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_C_5F_fullSaturationOperation_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_C_5F_fullSaturationOperation_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_fullSaturationOperation_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @C_5F_complementationOperation_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_C_5F_complementationOperation_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_C_5F_complementationOperation_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_C_5F_complementationOperation_2E_weak (const class GGS_C_5F_complementationOperation & inSource) ;
+
+  public: GGS_C_5F_complementationOperation_2E_weak & operator = (const class GGS_C_5F_complementationOperation & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_C_5F_complementationOperation_2E_weak init_nil (void) {
+    GGS_C_5F_complementationOperation_2E_weak result ;
+    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_C_5F_complementationOperation bang_C_5F_complementationOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_C_5F_complementationOperation unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_C_5F_complementationOperation_2E_weak extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_C_5F_complementationOperation_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_C_5F_complementationOperation_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: VIRTUAL_IN_DEBUG const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_complementationOperation_2E_weak ;
 

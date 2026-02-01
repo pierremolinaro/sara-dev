@@ -45,7 +45,7 @@ rule <component>
   $display$
   $machineIdf$ ?let machineName
   $;$
-////--- Insert machine into machine map
+//--- Insert machine into machine map
   [ioSemanticContext.machinesMap searchKey !machineName ?let machineIndex ?* ?* ?* ?*]
 //--- Insert into component map
   let @AC_job job = @C_machineDisplayTransitions { !machineIndex}
@@ -73,7 +73,7 @@ rule <component>
 
 rule <component>
   ?!@semanticContext ioSemanticContext {
-//////--- Machine name
+//--- Machine name
   $last$
   $state$
   $display$
@@ -258,7 +258,7 @@ rule <component>
     !?variablesMap
     ?let modeMap
     ?let inclusionList
-////--- Insert machine into machine map
+//--- Insert machine into machine map
   let @uint machineIndex = [ioSemanticContext.machinesMap count]
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
 //--- Insert into component map
@@ -472,7 +472,7 @@ rule <io_and_expression>
   end
 }
 
-////---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 rule <io_primary> 
   ?let @semanticContext inSemanticContext
@@ -590,7 +590,7 @@ rule <io_primary>
 }
 
 //---------------------------------------------------------------------------*
-////         DEFINITION EXPRESSION                                             *
+//         DEFINITION EXPRESSION                                             *
 //---------------------------------------------------------------------------*
 
 rule <definition_expression>

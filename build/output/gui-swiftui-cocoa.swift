@@ -89,7 +89,7 @@ let gPopUpData_sara_scanner : [[UInt16]] = [
 //   Block Comment for 'sara_scanner' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gBlockComment_sara_scanner : String? = nil
+let gLineComment_sara_scanner : String? = nil
 
 
 //--------------------------------------------------------------------------------------------------

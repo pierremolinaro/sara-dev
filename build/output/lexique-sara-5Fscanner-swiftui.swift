@@ -207,8 +207,8 @@ class ScannerFor_sara_scanner : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  final override func blockComment () -> String? {
-    return gBlockComment_sara_scanner
+  final override func lineComment () -> String? {
+    return gLineComment_sara_scanner
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
