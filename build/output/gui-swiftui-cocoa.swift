@@ -48,6 +48,7 @@ struct SettingsView : View {
   enum SidebarItem {
     case commandLineOptions
     case sara_scanner_0
+    case allocationDebugView
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -62,12 +63,14 @@ struct SettingsView : View {
         Text ("Options").tag (SidebarItem.commandLineOptions)
 
         Text ("Source").tag (SidebarItem.sara_scanner_0)
+        Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
       }
       .toolbar (removing: .sidebarToggle)
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
         case .sara_scanner_0 : SettingViewFor_sara_scanner ()
+        case .allocationDebugView : AllocationDebugView ()
       }
     }
   }
