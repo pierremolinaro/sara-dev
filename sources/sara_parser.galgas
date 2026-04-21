@@ -157,12 +157,12 @@ rule <component>
 //--- Parse input variables
   repeat
     $identifier$ ?let inputVarName
-    [!?variablesMap insertKey !inputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !inputVarName !variablesMap.count]
     nameList += !inputVarName.string
   while
     $,$
   end
-  let @uint inputVariablesCount = [variablesMap count]
+  let @uint inputVariablesCount = variablesMap.count
   $)$
 //--- Parse internal variables
   $($
@@ -170,19 +170,19 @@ rule <component>
   or
     repeat
       $identifier$ ?let outputVarName
-      [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+      [!?variablesMap insertKey !outputVarName !variablesMap.count]
       nameList += !outputVarName.string
     while
       $,$
     end
   end
   $)$
-  let @uint inputAndInternalVariablesCount = [variablesMap count]
+  let @uint inputAndInternalVariablesCount = variablesMap.count
 //--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVarName
-    [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !outputVarName !variablesMap.count]
     nameList += !outputVarName.string
   while
     $,$
@@ -192,7 +192,7 @@ rule <component>
 //--- Machine definition
   <definition_expression> !ioSemanticContext !?variablesMap ?let definition
 //--- Insert machine into machine map
-  let @uint machineIndex = [ioSemanticContext.machinesMap count]
+  let @uint machineIndex = ioSemanticContext.machinesMap.count
   [!?ioSemanticContext.machinesMap insertKey
     !machineName
     !machineIndex
@@ -220,12 +220,12 @@ rule <component>
 //--- Parse input variables
   repeat
     $identifier$ ?let inputVarName
-    [!?variablesMap insertKey !inputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !inputVarName !variablesMap.count]
     nameList += !inputVarName.string
   while
     $,$
   end
-  let @uint inputVariablesCount = [variablesMap count]
+  let @uint inputVariablesCount = variablesMap.count
   $)$
 //--- Parse internal variables
   $($
@@ -233,19 +233,19 @@ rule <component>
   or
     repeat
       $identifier$ ?let outputVarName
-      [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+      [!?variablesMap insertKey !outputVarName !variablesMap.count]
       nameList += !outputVarName.string
     while
       $,$
     end
   end
   $)$
-  let @uint inputAndInternalVariablesCount = [variablesMap count]
+  let @uint inputAndInternalVariablesCount = variablesMap.count
 //--- Parse output variables
   $($
   repeat
     $identifier$ ? let outputVarName
-    [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !outputVarName !variablesMap.count]
     nameList += !outputVarName.string
   while
     $,$
@@ -259,7 +259,7 @@ rule <component>
     ?let modeMap
     ?let inclusionList
 //--- Insert machine into machine map
-  let @uint machineIndex = [ioSemanticContext.machinesMap count]
+  let @uint machineIndex = ioSemanticContext.machinesMap.count
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
 //--- Insert into component map
   let @AC_job machine = @C_machineDefinedByAdditiveModalComp {
@@ -287,12 +287,12 @@ rule <component>
 //--- Parse input variables
   repeat
     $identifier$ ?let inputVarName
-    [!?variablesMap insertKey !inputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !inputVarName !variablesMap.count]
     nameList += !inputVarName.string
   while
     $,$
   end
-  let @uint inputVariablesCount = [variablesMap count]
+  let @uint inputVariablesCount = variablesMap.count
   $)$
 //--- Parse internal variables
   $($
@@ -300,19 +300,19 @@ rule <component>
   or
     repeat
       $identifier$ ?let outputVarName
-      [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+      [!?variablesMap insertKey !outputVarName !variablesMap.count]
       nameList += !outputVarName.string
     while
       $,$
     end
   end
   $)$
-  let @uint inputAndInternalVariablesCount = [variablesMap count]
+  let @uint inputAndInternalVariablesCount = variablesMap.count
 //--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVarName
-    [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !outputVarName !variablesMap.count]
     nameList += !outputVarName.string
   while
     $,$
@@ -326,7 +326,7 @@ rule <component>
     ?let modeMap
     ?let exclusionList
 //--- Insert machine into machine map
-  let @uint machineIndex = [ioSemanticContext.machinesMap count]
+  let @uint machineIndex = ioSemanticContext.machinesMap.count
   [!?ioSemanticContext.machinesMap insertKey !machineName !machineIndex !inputVariablesCount !inputAndInternalVariablesCount !variablesMap !nameList]
 //--- Insert into component map
   let @AC_job machine = @C_machineDefinedBySubstractiveModalComp {
@@ -352,16 +352,16 @@ rule <component> ?!@semanticContext ioSemanticContext {
   $($
   repeat
     $identifier$ ?let inputVarName
-    [!?variablesMap insertKey !inputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !inputVarName !variablesMap.count]
   while
     $,$
   end
-  let @uint inputVariablesCount = [variablesMap count]
+  let @uint inputVariablesCount = variablesMap.count
   $)$
 //--- Check correct number of input variables
   if inputVariablesCountFromDefinition != inputVariablesCount then
-    error @location.here : "This declaration names " + [inputVariablesCount string]
-      + " input variable(s), but machine definition names " + [inputVariablesCountFromDefinition string] + " input variable(s)"
+    error @location.here : "This declaration names " + inputVariablesCount.string
+      + " input variable(s), but machine definition names " + inputVariablesCountFromDefinition.string + " input variable(s)"
   end
 //--- Parse internal variables
   $($
@@ -369,33 +369,33 @@ rule <component> ?!@semanticContext ioSemanticContext {
   or
     repeat
       $identifier$ ?let outputVarName
-      [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+      [!?variablesMap insertKey !outputVarName !variablesMap.count]
     while
       $,$
     end
   end
   $)$
 //--- Check correct number of internal variables
-  let @uint inputAndInternalVariablesCount = [variablesMap count]
+  let @uint inputAndInternalVariablesCount = variablesMap.count
   if inputAndInternalVariablesCountFromDefinition != inputAndInternalVariablesCount then
-    error @location.here : "This declaration names " + [inputAndInternalVariablesCount string]
-      + " input and internal variable(s), but machine definition names " + [inputAndInternalVariablesCountFromDefinition string] + " input and internal variable(s)"
+    error @location.here : "This declaration names " + inputAndInternalVariablesCount.string
+      + " input and internal variable(s), but machine definition names " + inputAndInternalVariablesCountFromDefinition.string + " input and internal variable(s)"
   end
 //--- Parse output variables
   $($
   repeat
     $identifier$ ?let outputVarName
-    [!?variablesMap insertKey !outputVarName ![variablesMap count]]
+    [!?variablesMap insertKey !outputVarName !variablesMap.count]
   while
     $,$
   end
   $)$
 //--- Check correct number of internal variables
-  let @uint outputVariablesCount = [variablesMap count]
-  let @uint outputVariablesCountFromDefinition = [variablesMapFromDefinition count]
+  let @uint outputVariablesCount = variablesMap.count
+  let @uint outputVariablesCountFromDefinition = variablesMapFromDefinition.count
   if outputVariablesCountFromDefinition != outputVariablesCount then
-    error @location.here : "This declaration names " + [outputVariablesCount string]
-      + " variables, but machine definition names " + [outputVariablesCountFromDefinition string] + " variables"
+    error @location.here : "This declaration names " + outputVariablesCount.string
+      + " variables, but machine definition names " + outputVariablesCountFromDefinition.string + " variables"
   end
   ${$
   var scenarioList =@L_scenarioList ()
@@ -414,8 +414,8 @@ rule <component> ?!@semanticContext ioSemanticContext {
       while
        $,$
       end
-      if inputVariablesCount != [inputConfigurationForScenario count] then
-        error @location.here : "this input configuration names " + [[inputConfigurationForScenario count] string] + " input variable(s), instead of " + [inputVariablesCount string]
+      if inputVariablesCount != inputConfigurationForScenario.count then
+        error @location.here : "this input configuration names " + inputConfigurationForScenario.count.string + " input variable(s), instead of " + inputVariablesCount.string
       end
       inputScenario += !inputConfigurationForScenario
     while
@@ -544,10 +544,10 @@ rule <io_primary>
     $,$
   end
   $)$
-  let @uint inputVariablesCount = [translationVector count]
+  let @uint inputVariablesCount = translationVector.count
   if inputVariablesCount != machineInputVariableCount then
-    error @location.here : "The '$" + machineIdentifier + "' machine defines " + [machineInputVariableCount string]
-    + " input variable(s), but this operand defines " + [inputVariablesCount string] + " input variable(s)"
+    error @location.here : "The '$" + machineIdentifier + "' machine defines " + machineInputVariableCount.string
+    + " input variable(s), but this operand defines " + inputVariablesCount.string + " input variable(s)"
   end
 //--- Parse internal variables
   $($
@@ -562,10 +562,10 @@ rule <io_primary>
     end
   end
   $)$
-  let @uint inputAndInternalVariablesCount = [translationVector count]
+  let @uint inputAndInternalVariablesCount = translationVector.count
   if inputAndInternalVariablesCount != machineInputAndInternalVariableCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputAndInternalVariableCount string]
-    + " input and internal variable(s), but this operand defines " + [inputAndInternalVariablesCount string] + " input and internal variable(s)"
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputAndInternalVariableCount.string
+    + " input and internal variable(s), but this operand defines " + inputAndInternalVariablesCount.string + " input and internal variable(s)"
   end
 //--- Parse output variables
   $($
@@ -577,11 +577,11 @@ rule <io_primary>
     $,$
   end
   $)$
-  let @uint allVariablesCount = [translationVector count]
-  let @uint machineAllVariablesCount = [machineVariablesMap count]
+  let @uint allVariablesCount = translationVector.count
+  let @uint machineAllVariablesCount = machineVariablesMap.count
   if allVariablesCount != machineAllVariablesCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineAllVariablesCount string]
-    + " variables, but this operand defines " + [allVariablesCount string] + " variables"
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineAllVariablesCount.string
+    + " variables, but this operand defines " + allVariablesCount.string + " variables"
   end
   outExpression = @C_importBoolMachine {
     !indexOfImportedMachine
@@ -648,7 +648,7 @@ rule <modalcompadd_definition>
     $identifier$ ?let modeName
     $:$
     <definition_expression> !inSemanticContext !?variablesMap ?let def
-    [!?outModeMap insertKey !modeName ![outModeMap count] !def]
+    [!?outModeMap insertKey !modeName !outModeMap.count !def]
     $;$
   while
   end
@@ -682,7 +682,7 @@ rule <modalcompsub_definition>
     $identifier$ ?let modeName
     $:$
     <definition_expression> !inSemanticContext !?variablesMap ?let def
-    [!?outModeMap insertKey !modeName ![outModeMap count] !def]
+    [!?outModeMap insertKey !modeName !outModeMap.count !def]
     $;$
   while
   end
@@ -717,30 +717,30 @@ rule <definition_expression_factor>
     $)$
   or
     var @M_variablesMap extendedVariablesMap = variablesMap
-    let @uint previousVariableCount = [extendedVariablesMap count]
+    let @uint previousVariableCount = extendedVariablesMap.count
     $?$
     repeat
       $identifier$ ?let variableName
-      [!?extendedVariablesMap insertKey !variableName ![extendedVariablesMap count]]
+      [!?extendedVariablesMap insertKey !variableName !extendedVariablesMap.count]
     while
       $,$
     end
-    let @uint actualVariableCount = [extendedVariablesMap count]
+    let @uint actualVariableCount = extendedVariablesMap.count
     $($
     <definition_expression> !inSemanticContext !?extendedVariablesMap ?let def
     $)$
     outDefinition = @C_existsDefinition { !previousVariableCount !actualVariableCount !def}
   or
     var @M_variablesMap extendedVariablesMap = variablesMap
-    let @uint previousVariableCount = [extendedVariablesMap count]
+    let @uint previousVariableCount = extendedVariablesMap.count
     $!$
     repeat
       $identifier$ ?let variableName
-      [!?extendedVariablesMap insertKey !variableName ![extendedVariablesMap count]]
+      [!?extendedVariablesMap insertKey !variableName !extendedVariablesMap.count]
     while
       $,$
     end
-    let @uint actualVariableCount = [extendedVariablesMap count]
+    let @uint actualVariableCount = extendedVariablesMap.count
     $($
     <definition_expression> !inSemanticContext !?extendedVariablesMap ?let def
     $)$
@@ -821,10 +821,10 @@ rule <definition_expression_factor>
     $,$
   end
   $)$
-  let @uint inputVariablesCount = [translationVector count]
+  let @uint inputVariablesCount = translationVector.count
   if inputVariablesCount != machineInputVariableCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputVariableCount string]
-    + " input variable(s), but this operand defines " + [inputVariablesCount string] + " input variable(s)"
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputVariableCount.string
+    + " input variable(s), but this operand defines " + inputVariablesCount.string + " input variable(s)"
   end
 //--- Parse internal variables
   $($
@@ -839,10 +839,10 @@ rule <definition_expression_factor>
     end
   end
   $)$
-  let @uint inputAndInternalVariablesCount = [translationVector count]
+  let @uint inputAndInternalVariablesCount = translationVector.count
   if inputAndInternalVariablesCount != machineInputAndInternalVariableCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineInputAndInternalVariableCount string]
-    + " input and internal variable(s), but this operand defines " + [inputAndInternalVariablesCount string] + " input and internal variable(s)"
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputAndInternalVariableCount.string
+    + " input and internal variable(s), but this operand defines " + inputAndInternalVariablesCount.string + " input and internal variable(s)"
   end
 //--- Parse output variables
   $($
@@ -854,11 +854,11 @@ rule <definition_expression_factor>
     $,$
   end
   $)$
-  let @uint allVariablesCount = [translationVector count]
-  let @uint machineAllVariablesCount = [machineVariablesMap count]
+  let @uint allVariablesCount = translationVector.count
+  let @uint machineAllVariablesCount = machineVariablesMap.count
   if allVariablesCount != machineAllVariablesCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + [machineAllVariablesCount string]
-    + " variables, but this operand defines " + [allVariablesCount string] + " variables"
+    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineAllVariablesCount.string
+    + " variables, but this operand defines " + allVariablesCount.string + " variables"
   end
   outDefinition = @C_importMachine { !indexOfImportedMachine !translationVector}
 }
@@ -879,7 +879,7 @@ rule <explicit_automaton>
   $state$
   repeat
     $identifier$ ?let stateName
-    [!?statesMap insertKey !stateName ![statesMap count]]
+    [!?statesMap insertKey !stateName !statesMap.count]
   while
     $,$
   end
@@ -915,7 +915,7 @@ rule <explicit_automaton>
   //--- Current state
     $identifier$ ?let stateName
     [statesMap searchKey !stateName ?let stateIndex]
-    [!?stateDefinitionMap defineState !stateName ![stateDefinitionMap count]]
+    [!?stateDefinitionMap defineState !stateName !stateDefinitionMap.count]
     $:$
   //--- State input expression
     <io_bool_expression> !inSemanticContext !?variablesMap ?let stateExpression
