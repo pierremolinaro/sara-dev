@@ -360,8 +360,8 @@ rule <component> ?!@semanticContext ioSemanticContext {
   $)$
 //--- Check correct number of input variables
   if inputVariablesCountFromDefinition != inputVariablesCount then
-    error @location.here : "This declaration names " + inputVariablesCount.string
-      + " input variable(s), but machine definition names " + inputVariablesCountFromDefinition.string + " input variable(s)"
+    error (@location.here : "This declaration names " + inputVariablesCount.string
+      + " input variable(s), but machine definition names " + inputVariablesCountFromDefinition.string + " input variable(s)")
   end
 //--- Parse internal variables
   $($
@@ -378,8 +378,8 @@ rule <component> ?!@semanticContext ioSemanticContext {
 //--- Check correct number of internal variables
   let @uint inputAndInternalVariablesCount = variablesMap.count
   if inputAndInternalVariablesCountFromDefinition != inputAndInternalVariablesCount then
-    error @location.here : "This declaration names " + inputAndInternalVariablesCount.string
-      + " input and internal variable(s), but machine definition names " + inputAndInternalVariablesCountFromDefinition.string + " input and internal variable(s)"
+    error (@location.here : "This declaration names " + inputAndInternalVariablesCount.string
+      + " input and internal variable(s), but machine definition names " + inputAndInternalVariablesCountFromDefinition.string + " input and internal variable(s)")
   end
 //--- Parse output variables
   $($
@@ -394,8 +394,8 @@ rule <component> ?!@semanticContext ioSemanticContext {
   let @uint outputVariablesCount = variablesMap.count
   let @uint outputVariablesCountFromDefinition = variablesMapFromDefinition.count
   if outputVariablesCountFromDefinition != outputVariablesCount then
-    error @location.here : "This declaration names " + outputVariablesCount.string
-      + " variables, but machine definition names " + outputVariablesCountFromDefinition.string + " variables"
+    error (@location.here : "This declaration names " + outputVariablesCount.string
+      + " variables, but machine definition names " + outputVariablesCountFromDefinition.string + " variables")
   end
   ${$
   var scenarioList =@L_scenarioList ()
@@ -408,14 +408,14 @@ rule <component> ?!@semanticContext ioSemanticContext {
       repeat
        $literal_integer$  ? let v
        if v.uint > 1 then
-         error v : "this value is not a  binary digit"
+         error (v : "this value is not a  binary digit")
        end
        inputConfigurationForScenario += !v
       while
        $,$
       end
       if inputVariablesCount != inputConfigurationForScenario.count then
-        error @location.here : "this input configuration names " + inputConfigurationForScenario.count.string + " input variable(s), instead of " + inputVariablesCount.string
+        error (@location.here : "this input configuration names " + inputConfigurationForScenario.count.string + " input variable(s), instead of " + inputVariablesCount.string)
       end
       inputScenario += !inputConfigurationForScenario
     while
@@ -546,8 +546,8 @@ rule <io_primary>
   $)$
   let @uint inputVariablesCount = translationVector.count
   if inputVariablesCount != machineInputVariableCount then
-    error @location.here : "The '$" + machineIdentifier + "' machine defines " + machineInputVariableCount.string
-    + " input variable(s), but this operand defines " + inputVariablesCount.string + " input variable(s)"
+    error (@location.here : "The '$" + machineIdentifier + "' machine defines " + machineInputVariableCount.string
+    + " input variable(s), but this operand defines " + inputVariablesCount.string + " input variable(s)")
   end
 //--- Parse internal variables
   $($
@@ -564,8 +564,8 @@ rule <io_primary>
   $)$
   let @uint inputAndInternalVariablesCount = translationVector.count
   if inputAndInternalVariablesCount != machineInputAndInternalVariableCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputAndInternalVariableCount.string
-    + " input and internal variable(s), but this operand defines " + inputAndInternalVariablesCount.string + " input and internal variable(s)"
+    error (@location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputAndInternalVariableCount.string
+    + " input and internal variable(s), but this operand defines " + inputAndInternalVariablesCount.string + " input and internal variable(s)")
   end
 //--- Parse output variables
   $($
@@ -580,8 +580,8 @@ rule <io_primary>
   let @uint allVariablesCount = translationVector.count
   let @uint machineAllVariablesCount = machineVariablesMap.count
   if allVariablesCount != machineAllVariablesCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineAllVariablesCount.string
-    + " variables, but this operand defines " + allVariablesCount.string + " variables"
+    error (@location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineAllVariablesCount.string
+    + " variables, but this operand defines " + allVariablesCount.string + " variables")
   end
   outExpression = @C_importBoolMachine {
     !indexOfImportedMachine
@@ -823,8 +823,8 @@ rule <definition_expression_factor>
   $)$
   let @uint inputVariablesCount = translationVector.count
   if inputVariablesCount != machineInputVariableCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputVariableCount.string
-    + " input variable(s), but this operand defines " + inputVariablesCount.string + " input variable(s)"
+    error (@location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputVariableCount.string
+    + " input variable(s), but this operand defines " + inputVariablesCount.string + " input variable(s)")
   end
 //--- Parse internal variables
   $($
@@ -841,8 +841,8 @@ rule <definition_expression_factor>
   $)$
   let @uint inputAndInternalVariablesCount = translationVector.count
   if inputAndInternalVariablesCount != machineInputAndInternalVariableCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputAndInternalVariableCount.string
-    + " input and internal variable(s), but this operand defines " + inputAndInternalVariablesCount.string + " input and internal variable(s)"
+    error (@location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineInputAndInternalVariableCount.string
+    + " input and internal variable(s), but this operand defines " + inputAndInternalVariablesCount.string + " input and internal variable(s)")
   end
 //--- Parse output variables
   $($
@@ -857,8 +857,8 @@ rule <definition_expression_factor>
   let @uint allVariablesCount = translationVector.count
   let @uint machineAllVariablesCount = machineVariablesMap.count
   if allVariablesCount != machineAllVariablesCount then
-    error @location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineAllVariablesCount.string
-    + " variables, but this operand defines " + allVariablesCount.string + " variables"
+    error (@location.here : "The '$" + machineIdentifier.string + "' machine defines " + machineAllVariablesCount.string
+    + " variables, but this operand defines " + allVariablesCount.string + " variables")
   end
   outDefinition = @C_importMachine { !indexOfImportedMachine !translationVector}
 }
@@ -941,7 +941,7 @@ rule <explicit_automaton>
 //--- Check all states are defined
   for (lkey *) in  statesMap do
     if not [stateDefinitionMap hasKey !lkey.string] then
-      error @location.here : "'" + lkey + "' state is not described"
+      error (@location.here : "'" + lkey + "' state is not described")
     end
   end
 //--- End of input source
