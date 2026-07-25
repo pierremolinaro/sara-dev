@@ -2601,47 +2601,47 @@ GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak GGS_C_5F_machineDefinedBy
 //Class for element of '@L_5F_inputConfigurationForScenario' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_L_5F_inputConfigurationForScenario : public cCollectionElement {
+class CollectionElement_L_5F_inputConfigurationForScenario : public CollectionElement {
   public: GGS_L_5F_inputConfigurationForScenario_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
-                                                                 COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
+                                                                COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_inputConfigurationForScenario::cCollectionElement_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
-                                                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_inputConfigurationForScenario::CollectionElement_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
+                                                                                                            COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mInputValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_inputConfigurationForScenario::cCollectionElement_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_inputConfigurationForScenario::CollectionElement_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mInputValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_L_5F_inputConfigurationForScenario::isValid (void) const {
+bool CollectionElement_L_5F_inputConfigurationForScenario::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_L_5F_inputConfigurationForScenario::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_L_5F_inputConfigurationForScenario (mObject.mProperty_mInputValue COMMA_HERE)) ;
+CollectionElement * CollectionElement_L_5F_inputConfigurationForScenario::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_L_5F_inputConfigurationForScenario (mObject.mProperty_mInputValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -2660,8 +2660,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_L_5F_inputConfigurationForScenario * p = (cCollectionElement_L_5F_inputConfigurationForScenario *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_L_5F_inputConfigurationForScenario) ;
+    CollectionElement_L_5F_inputConfigurationForScenario * p = (CollectionElement_L_5F_inputConfigurationForScenario *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_L_5F_inputConfigurationForScenario) ;
     const GGS_L_5F_inputConfigurationForScenario_2E_element element (p->mObject.mProperty_mInputValue) ;
     mArray.appendObject (element) ;
   }
@@ -2672,8 +2672,8 @@ mArray () {
 void GGS_L_5F_inputConfigurationForScenario::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                         const GGS_luint & in_mInputValue
                                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_inputConfigurationForScenario * p = nullptr ;
-  macroMyNew (p, cCollectionElement_L_5F_inputConfigurationForScenario (in_mInputValue COMMA_THERE)) ;
+  CollectionElement_L_5F_inputConfigurationForScenario * p = nullptr ;
+  macroMyNew (p, CollectionElement_L_5F_inputConfigurationForScenario (in_mInputValue COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3131,47 +3131,47 @@ GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::e
 //Class for element of '@L_5F_inputScenario' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_L_5F_inputScenario : public cCollectionElement {
+class CollectionElement_L_5F_inputScenario : public CollectionElement {
   public: GGS_L_5F_inputScenario_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
-                                                 COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
+                                                COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_inputScenario::cCollectionElement_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
-                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_inputScenario::CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
+                                                                            COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mInputConfiguration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_inputScenario::cCollectionElement_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_inputScenario::CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mInputConfiguration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_L_5F_inputScenario::isValid (void) const {
+bool CollectionElement_L_5F_inputScenario::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_L_5F_inputScenario::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_L_5F_inputScenario (mObject.mProperty_mInputConfiguration COMMA_HERE)) ;
+CollectionElement * CollectionElement_L_5F_inputScenario::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_L_5F_inputScenario (mObject.mProperty_mInputConfiguration COMMA_HERE)) ;
   return result ;
 }
 
@@ -3190,8 +3190,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_L_5F_inputScenario * p = (cCollectionElement_L_5F_inputScenario *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_L_5F_inputScenario) ;
+    CollectionElement_L_5F_inputScenario * p = (CollectionElement_L_5F_inputScenario *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_L_5F_inputScenario) ;
     const GGS_L_5F_inputScenario_2E_element element (p->mObject.mProperty_mInputConfiguration) ;
     mArray.appendObject (element) ;
   }
@@ -3202,8 +3202,8 @@ mArray () {
 void GGS_L_5F_inputScenario::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                         const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_inputScenario * p = nullptr ;
-  macroMyNew (p, cCollectionElement_L_5F_inputScenario (in_mInputConfiguration COMMA_THERE)) ;
+  CollectionElement_L_5F_inputScenario * p = nullptr ;
+  macroMyNew (p, CollectionElement_L_5F_inputScenario (in_mInputConfiguration COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3661,49 +3661,49 @@ GGS_L_5F_inputScenario GGS_L_5F_inputScenario::extractObject (const GGS_object &
 //Class for element of '@L_5F_scenarioList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_L_5F_scenarioList : public cCollectionElement {
+class CollectionElement_L_5F_scenarioList : public CollectionElement {
   public: GGS_L_5F_scenarioList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
-                                                const GGS_L_5F_inputScenario & in_mInputScenario
-                                                COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                               const GGS_L_5F_inputScenario & in_mInputScenario
+                                               COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
-                                                                            const GGS_L_5F_inputScenario & in_mInputScenario
-                                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_scenarioList::CollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                                          const GGS_L_5F_inputScenario & in_mInputScenario
+                                                                          COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mScenarioTitle, in_mInputScenario) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_scenarioList::cCollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_scenarioList::CollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_L_5F_scenarioList::isValid (void) const {
+bool CollectionElement_L_5F_scenarioList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_L_5F_scenarioList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
+CollectionElement * CollectionElement_L_5F_scenarioList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
   return result ;
 }
 
@@ -3722,8 +3722,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_L_5F_scenarioList * p = (cCollectionElement_L_5F_scenarioList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_L_5F_scenarioList) ;
+    CollectionElement_L_5F_scenarioList * p = (CollectionElement_L_5F_scenarioList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_L_5F_scenarioList) ;
     const GGS_L_5F_scenarioList_2E_element element (p->mObject.mProperty_mScenarioTitle, p->mObject.mProperty_mInputScenario) ;
     mArray.appendObject (element) ;
   }
@@ -3735,8 +3735,8 @@ void GGS_L_5F_scenarioList::makeAttributesFromObjects (capCollectionElement & ou
                                                        const GGS_lstring & in_mScenarioTitle,
                                                        const GGS_L_5F_inputScenario & in_mInputScenario
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_scenarioList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_L_5F_scenarioList (in_mScenarioTitle, in_mInputScenario COMMA_THERE)) ;
+  CollectionElement_L_5F_scenarioList * p = nullptr ;
+  macroMyNew (p, CollectionElement_L_5F_scenarioList (in_mScenarioTitle, in_mInputScenario COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -4937,47 +4937,47 @@ GGS_typeDisplayBDDstats_2E_weak GGS_typeDisplayBDDstats_2E_weak::extractObject (
 //Class for element of '@L_5F_jobList' list
 //--------------------------------------------------------------------------------------------------
 
-class cCollectionElement_L_5F_jobList : public cCollectionElement {
+class CollectionElement_L_5F_jobList : public CollectionElement {
   public: GGS_L_5F_jobList_2E_element mObject ;
 
 //--- Class functions
-  public: cCollectionElement_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
-                                           COMMA_LOCATION_ARGS) ;
-  public: cCollectionElement_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
+                                          COMMA_LOCATION_ARGS) ;
+  public: CollectionElement_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual cCollectionElement * copy (void) ;
+  public: virtual CollectionElement * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_jobList::cCollectionElement_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
-                                                                  COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_jobList::CollectionElement_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
+                                                                COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (in_mComponent) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement_L_5F_jobList::cCollectionElement_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
+CollectionElement_L_5F_jobList::CollectionElement_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElement (THERE),
 mObject (inElement.mProperty_mComponent) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool cCollectionElement_L_5F_jobList::isValid (void) const {
+bool CollectionElement_L_5F_jobList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cCollectionElement * cCollectionElement_L_5F_jobList::copy (void) {
-  cCollectionElement * result = nullptr ;
-  macroMyNew (result, cCollectionElement_L_5F_jobList (mObject.mProperty_mComponent COMMA_HERE)) ;
+CollectionElement * CollectionElement_L_5F_jobList::copy (void) {
+  CollectionElement * result = nullptr ;
+  macroMyNew (result, CollectionElement_L_5F_jobList (mObject.mProperty_mComponent COMMA_HERE)) ;
   return result ;
 }
 
@@ -4996,8 +4996,8 @@ mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
     const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    cCollectionElement_L_5F_jobList * p = (cCollectionElement_L_5F_jobList *) v.ptr () ;
-    macroValidSharedObject (p, cCollectionElement_L_5F_jobList) ;
+    CollectionElement_L_5F_jobList * p = (CollectionElement_L_5F_jobList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElement_L_5F_jobList) ;
     const GGS_L_5F_jobList_2E_element element (p->mObject.mProperty_mComponent) ;
     mArray.appendObject (element) ;
   }
@@ -5008,8 +5008,8 @@ mArray () {
 void GGS_L_5F_jobList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const GGS_AC_5F_job & in_mComponent
                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_L_5F_jobList * p = nullptr ;
-  macroMyNew (p, cCollectionElement_L_5F_jobList (in_mComponent COMMA_THERE)) ;
+  CollectionElement_L_5F_jobList * p = nullptr ;
+  macroMyNew (p, CollectionElement_L_5F_jobList (in_mComponent COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
