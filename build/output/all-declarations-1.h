@@ -26,7 +26,7 @@ class GGS_C_5F_suppressTerminalStatesOperation_2E_weak : public GGS_AC_5F_machin
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_suppressTerminalStatesOperation_2E_weak init_nil (void) {
     GGS_C_5F_suppressTerminalStatesOperation_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -105,7 +105,7 @@ class GGS_C_5F_suppressInitialStatesOperation_2E_weak : public GGS_AC_5F_machine
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_suppressInitialStatesOperation_2E_weak init_nil (void) {
     GGS_C_5F_suppressInitialStatesOperation_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -184,7 +184,7 @@ class GGS_AC_5F_job_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_AC_5F_job_2E_weak init_nil (void) {
     GGS_AC_5F_job_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -263,7 +263,7 @@ class GGS_C_5F_machineDisplayStates_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineDisplayStates_2E_weak init_nil (void) {
     GGS_C_5F_machineDisplayStates_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -342,7 +342,7 @@ class GGS_C_5F_machineDisplayInitialStates_2E_weak : public GGS_AC_5F_job_2E_wea
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineDisplayInitialStates_2E_weak init_nil (void) {
     GGS_C_5F_machineDisplayInitialStates_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -421,7 +421,7 @@ class GGS_C_5F_machineDisplayTerminalStates_2E_weak : public GGS_AC_5F_job_2E_we
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineDisplayTerminalStates_2E_weak init_nil (void) {
     GGS_C_5F_machineDisplayTerminalStates_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -500,7 +500,7 @@ class GGS_C_5F_machineDisplayTransitions_2E_weak : public GGS_AC_5F_job_2E_weak 
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineDisplayTransitions_2E_weak init_nil (void) {
     GGS_C_5F_machineDisplayTransitions_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -579,7 +579,7 @@ class GGS_C_5F_machineCheck_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineCheck_2E_weak init_nil (void) {
     GGS_C_5F_machineCheck_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -658,7 +658,7 @@ class GGS_C_5F_machineCheckIdentical_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineCheckIdentical_2E_weak init_nil (void) {
     GGS_C_5F_machineCheckIdentical_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -737,7 +737,7 @@ class GGS_C_5F_machineComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineComponent_2E_weak init_nil (void) {
     GGS_C_5F_machineComponent_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -816,7 +816,7 @@ class GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak : public GGS_AC_5F_job_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak init_nil (void) {
     GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -895,7 +895,7 @@ class GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak : public GGS_AC_5F_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak init_nil (void) {
     GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1204,7 +1204,7 @@ class GGS_C_5F_scenarioComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_scenarioComponent_2E_weak init_nil (void) {
     GGS_C_5F_scenarioComponent_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -1283,7 +1283,7 @@ class GGS_typeDisplayBDDstats_2E_weak : public GGS_AC_5F_job_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_typeDisplayBDDstats_2E_weak init_nil (void) {
     GGS_typeDisplayBDDstats_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 

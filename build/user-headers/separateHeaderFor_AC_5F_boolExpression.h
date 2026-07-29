@@ -7,7 +7,7 @@
 // Phase 2: pointer class for @AC_boolExpression class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_AC_5F_boolExpression : public acStrongPtr_class {
+class cPtr_AC_5F_boolExpression : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;

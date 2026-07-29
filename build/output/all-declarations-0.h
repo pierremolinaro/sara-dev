@@ -107,10 +107,10 @@ class GGS__32_lstringlist : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS__32_lstringlist (const capCollectionElementArray & inSharedArray) ;
+  public: GGS__32_lstringlist (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mValue_30_,
                                                  const class GGS_lstring & in_mValue_31_
                                                  COMMA_LOCATION_ARGS) ;
@@ -1246,10 +1246,10 @@ class GGS_ListForModes : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_ListForModes (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_ListForModes (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_uint & in_mSourceMode,
                                                  const class GGS_uint & in_mTargetMode
                                                  COMMA_LOCATION_ARGS) ;
@@ -2056,10 +2056,10 @@ class GGS_L_5F_stateDefinition : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_stateDefinition (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_stateDefinition (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_uint & in_mStateIndex,
                                                  const class GGS_AC_5F_boolExpression & in_mStateExpression,
                                                  const class GGS_location & in_mEndOfStateExpression,
@@ -2333,10 +2333,10 @@ class GGS_L_5F_statesDefinitionList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_statesDefinitionList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_statesDefinitionList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_uint & in_mStateIndex,
                                                  const class GGS_location & in_mStateLocation
                                                  COMMA_LOCATION_ARGS) ;
@@ -3058,10 +3058,10 @@ class GGS_L_5F_translationVector : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_translationVector (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_translationVector (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_uint & in_mTargetSlot
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -4397,10 +4397,10 @@ class GGS_L_5F_scenarioList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_scenarioList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_scenarioList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mScenarioTitle,
                                                  const class GGS_L_5F_inputScenario & in_mInputScenario
                                                  COMMA_LOCATION_ARGS) ;
@@ -5142,10 +5142,10 @@ class GGS_L_5F_inputConfigurationForScenario : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_inputConfigurationForScenario (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_inputConfigurationForScenario (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_luint & in_mInputValue
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5360,10 +5360,10 @@ class GGS_L_5F_inputScenario : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_inputScenario (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_inputScenario (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5578,10 +5578,10 @@ class GGS_L_5F_jobList : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_jobList (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_jobList (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_AC_5F_job & in_mComponent
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -5800,10 +5800,10 @@ class GGS_L_5F_transitionDefinition : public AC_GALGAS_root {
 
 
 //--- List constructor for graph
-  public: GGS_L_5F_transitionDefinition (const capCollectionElementArray & inSharedArray) ;
+  public: GGS_L_5F_transitionDefinition (const CollectionElementArray & inSharedArray) ;
 
 //--- Element constructor
-  public: static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_AC_5F_boolExpression & in_mActionExpression,
                                                  const class GGS_location & in_mEndOfExpression,
                                                  const class GGS_uint & in_mTargetStateIndex
@@ -6727,7 +6727,7 @@ class GGS_AC_5F_boolExpression_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_AC_5F_boolExpression_2E_weak init_nil (void) {
     GGS_AC_5F_boolExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -6806,7 +6806,7 @@ class GGS_C_5F_importBoolMachine_2E_weak : public GGS_AC_5F_boolExpression_2E_we
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_importBoolMachine_2E_weak init_nil (void) {
     GGS_C_5F_importBoolMachine_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -6885,7 +6885,7 @@ class GGS_C_5F_andExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_andExpression_2E_weak init_nil (void) {
     GGS_C_5F_andExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -6964,7 +6964,7 @@ class GGS_C_5F_orExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_orExpression_2E_weak init_nil (void) {
     GGS_C_5F_orExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7043,7 +7043,7 @@ class GGS_C_5F_xorExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_xorExpression_2E_weak init_nil (void) {
     GGS_C_5F_xorExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7122,7 +7122,7 @@ class GGS_C_5F_impliesExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_we
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_impliesExpression_2E_weak init_nil (void) {
     GGS_C_5F_impliesExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7201,7 +7201,7 @@ class GGS_C_5F_equalExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_equalExpression_2E_weak init_nil (void) {
     GGS_C_5F_equalExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7280,7 +7280,7 @@ class GGS_C_5F_notExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_notExpression_2E_weak init_nil (void) {
     GGS_C_5F_notExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7359,7 +7359,7 @@ class GGS_C_5F_VariableExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_w
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_VariableExpression_2E_weak init_nil (void) {
     GGS_C_5F_VariableExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7438,7 +7438,7 @@ class GGS_C_5F_trueExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak 
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_trueExpression_2E_weak init_nil (void) {
     GGS_C_5F_trueExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7517,7 +7517,7 @@ class GGS_C_5F_falseExpression_2E_weak : public GGS_AC_5F_boolExpression_2E_weak
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_falseExpression_2E_weak init_nil (void) {
     GGS_C_5F_falseExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -7881,7 +7881,7 @@ class GGS_AC_5F_machineDefinition_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------- nil initializer
   public: inline static GGS_AC_5F_machineDefinition_2E_weak init_nil (void) {
     GGS_AC_5F_machineDefinition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8216,7 +8216,7 @@ class GGS_C_5F_substractiveModalCompositionComponent_2E_weak : public GGS_AC_5F_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_substractiveModalCompositionComponent_2E_weak init_nil (void) {
     GGS_C_5F_substractiveModalCompositionComponent_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8295,7 +8295,7 @@ class GGS_C_5F_additiveModalCompositionComponent_2E_weak : public GGS_AC_5F_mach
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_additiveModalCompositionComponent_2E_weak init_nil (void) {
     GGS_C_5F_additiveModalCompositionComponent_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8374,7 +8374,7 @@ class GGS_C_5F_trans_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_trans_2E_weak init_nil (void) {
     GGS_C_5F_trans_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8453,7 +8453,7 @@ class GGS_C_5F_importMachine_2E_weak : public GGS_AC_5F_machineDefinition_2E_wea
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_importMachine_2E_weak init_nil (void) {
     GGS_C_5F_importMachine_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8532,7 +8532,7 @@ class GGS_C_5F_explicitAutomatonDefinition_2E_weak : public GGS_AC_5F_machineDef
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_explicitAutomatonDefinition_2E_weak init_nil (void) {
     GGS_C_5F_explicitAutomatonDefinition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8611,7 +8611,7 @@ class GGS_C_5F_boolToSeqExpression_2E_weak : public GGS_AC_5F_machineDefinition_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_boolToSeqExpression_2E_weak init_nil (void) {
     GGS_C_5F_boolToSeqExpression_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8690,7 +8690,7 @@ class GGS_C_5F_existsDefinition_2E_weak : public GGS_AC_5F_machineDefinition_2E_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_existsDefinition_2E_weak init_nil (void) {
     GGS_C_5F_existsDefinition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8769,7 +8769,7 @@ class GGS_C_5F_forallDefinition_2E_weak : public GGS_AC_5F_machineDefinition_2E_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_forallDefinition_2E_weak init_nil (void) {
     GGS_C_5F_forallDefinition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8848,7 +8848,7 @@ class GGS_C_5F_parallelComposition_2E_weak : public GGS_AC_5F_machineDefinition_
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_parallelComposition_2E_weak init_nil (void) {
     GGS_C_5F_parallelComposition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -8927,7 +8927,7 @@ class GGS_C_5F_orComposition_2E_weak : public GGS_AC_5F_machineDefinition_2E_wea
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_orComposition_2E_weak init_nil (void) {
     GGS_C_5F_orComposition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -9006,7 +9006,7 @@ class GGS_C_5F_strongModalComposition_2E_weak : public GGS_AC_5F_machineDefiniti
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_strongModalComposition_2E_weak init_nil (void) {
     GGS_C_5F_strongModalComposition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -9085,7 +9085,7 @@ class GGS_C_5F_weakModalComposition_2E_weak : public GGS_AC_5F_machineDefinition
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_weakModalComposition_2E_weak init_nil (void) {
     GGS_C_5F_weakModalComposition_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -9164,7 +9164,7 @@ class GGS_C_5F_fullSaturationOperation_2E_weak : public GGS_AC_5F_machineDefinit
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_fullSaturationOperation_2E_weak init_nil (void) {
     GGS_C_5F_fullSaturationOperation_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
@@ -9243,7 +9243,7 @@ class GGS_C_5F_complementationOperation_2E_weak : public GGS_AC_5F_machineDefini
 //--------------------------------- nil initializer
   public: inline static GGS_C_5F_complementationOperation_2E_weak init_nil (void) {
     GGS_C_5F_complementationOperation_2E_weak result ;
-    macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (HERE)) ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 

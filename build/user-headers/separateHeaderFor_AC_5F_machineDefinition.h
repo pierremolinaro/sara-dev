@@ -7,7 +7,7 @@
 // Phase 2: pointer class for @AC_machineDefinition class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_AC_5F_machineDefinition : public acStrongPtr_class {
+class cPtr_AC_5F_machineDefinition : public AbstractStrongPtrClass {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;

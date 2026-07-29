@@ -8,13 +8,179 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
+// @C_5F_suppressTerminalStatesOperation reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_C_5F_suppressTerminalStatesOperation::objectCompare (const GGS_C_5F_suppressTerminalStatesOperation & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_C_5F_suppressTerminalStatesOperation::GGS_C_5F_suppressTerminalStatesOperation (void) :
+GGS_AC_5F_machineDefinition () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperation::
+init_21_ (const GGS_AC_5F_machineDefinition & in_mOperand,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_C_5F_suppressTerminalStatesOperation * object = nullptr ;
+  macroMyNew (object, cPtr_C_5F_suppressTerminalStatesOperation (inCompiler COMMA_THERE)) ;
+  object->C_5F_suppressTerminalStatesOperation_init_21_ (in_mOperand, inCompiler) ;
+  const GGS_C_5F_suppressTerminalStatesOperation result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_C_5F_suppressTerminalStatesOperation::
+C_5F_suppressTerminalStatesOperation_init_21_ (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                               Compiler * /* inCompiler */) {
+  mProperty_mOperand = in_mOperand ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_C_5F_suppressTerminalStatesOperation::GGS_C_5F_suppressTerminalStatesOperation (const cPtr_C_5F_suppressTerminalStatesOperation * inSourcePtr) :
+GGS_AC_5F_machineDefinition (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_C_5F_suppressTerminalStatesOperation) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_AC_5F_machineDefinition GGS_C_5F_suppressTerminalStatesOperation::readProperty_mOperand (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_AC_5F_machineDefinition () ;
+  }else{
+    cPtr_C_5F_suppressTerminalStatesOperation * p = (cPtr_C_5F_suppressTerminalStatesOperation *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_suppressTerminalStatesOperation) ;
+    return p->mProperty_mOperand ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_C_5F_suppressTerminalStatesOperation::setProperty_mOperand (const GGS_AC_5F_machineDefinition & inValue) {
+  if (nullptr != mObjectPtr) {
+    cPtr_C_5F_suppressTerminalStatesOperation * p = (cPtr_C_5F_suppressTerminalStatesOperation *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_C_5F_suppressTerminalStatesOperation) ;
+    p->mProperty_mOperand = inValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @C_suppressTerminalStatesOperation class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_suppressTerminalStatesOperation::cPtr_C_5F_suppressTerminalStatesOperation (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mOperand () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_C_5F_suppressTerminalStatesOperation::cPtr_C_5F_suppressTerminalStatesOperation (const GGS_AC_5F_machineDefinition & in_mOperand,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_AC_5F_machineDefinition (inCompiler COMMA_THERE),
+mProperty_mOperand () {
+  mProperty_mOperand = in_mOperand ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_C_5F_suppressTerminalStatesOperation::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation ;
+}
+
+void cPtr_C_5F_suppressTerminalStatesOperation::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("[@C_suppressTerminalStatesOperation:") ;
+  mProperty_mOperand.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_C_5F_suppressTerminalStatesOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_C_5F_suppressTerminalStatesOperation (mProperty_mOperand, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_C_5F_suppressTerminalStatesOperation::printNonNullClassInstanceProperties (void) const {
+    cPtr_AC_5F_machineDefinition::printNonNullClassInstanceProperties () ;
+    mProperty_mOperand.printNonNullClassInstanceProperties ("mOperand") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @C_suppressTerminalStatesOperation generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation ("C_suppressTerminalStatesOperation",
+                                                                                         & kTypeDescriptor_GALGAS_AC_5F_machineDefinition) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_C_5F_suppressTerminalStatesOperation::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_C_5F_suppressTerminalStatesOperation::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_C_5F_suppressTerminalStatesOperation (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperation::extractObject (const GGS_object & inObject,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GGS_C_5F_suppressTerminalStatesOperation result ;
+  const GGS_C_5F_suppressTerminalStatesOperation * p = (const GGS_C_5F_suppressTerminalStatesOperation *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_C_5F_suppressTerminalStatesOperation *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("C_suppressTerminalStatesOperation", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_C_5F_suppressTerminalStatesOperation_2E_weak::objectCompare (const GGS_C_5F_suppressTerminalStatesOperation_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -36,8 +202,8 @@ GGS_AC_5F_machineDefinition_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_suppressTerminalStatesOperation_2E_weak & GGS_C_5F_suppressTerminalStatesOperation_2E_weak::operator = (const GGS_C_5F_suppressTerminalStatesOperation & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -56,7 +222,7 @@ GGS_AC_5F_machineDefinition_2E_weak (inSource) {
 
 GGS_C_5F_suppressTerminalStatesOperation_2E_weak GGS_C_5F_suppressTerminalStatesOperation_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_suppressTerminalStatesOperation_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -78,7 +244,7 @@ GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperatio
 GGS_C_5F_suppressTerminalStatesOperation GGS_C_5F_suppressTerminalStatesOperation_2E_weak::bang_C_5F_suppressTerminalStatesOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_suppressTerminalStatesOperation result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -239,8 +405,8 @@ void cPtr_C_5F_suppressInitialStatesOperation::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_suppressInitialStatesOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_suppressInitialStatesOperation::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_suppressInitialStatesOperation (mProperty_mOperand, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -300,9 +466,9 @@ GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation:
 ComparisonResult GGS_C_5F_suppressInitialStatesOperation_2E_weak::objectCompare (const GGS_C_5F_suppressInitialStatesOperation_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -324,8 +490,8 @@ GGS_AC_5F_machineDefinition_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_suppressInitialStatesOperation_2E_weak & GGS_C_5F_suppressInitialStatesOperation_2E_weak::operator = (const GGS_C_5F_suppressInitialStatesOperation & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -344,7 +510,7 @@ GGS_AC_5F_machineDefinition_2E_weak (inSource) {
 
 GGS_C_5F_suppressInitialStatesOperation_2E_weak GGS_C_5F_suppressInitialStatesOperation_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_suppressInitialStatesOperation_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -366,7 +532,7 @@ GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation_
 GGS_C_5F_suppressInitialStatesOperation GGS_C_5F_suppressInitialStatesOperation_2E_weak::bang_C_5F_suppressInitialStatesOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_suppressInitialStatesOperation result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -463,7 +629,7 @@ AC_GALGAS_reference_class (inSourcePtr) {
 
 cPtr_AC_5F_job::cPtr_AC_5F_job (Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) :
-acStrongPtr_class (inCompiler COMMA_THERE) {
+AbstractStrongPtrClass (inCompiler COMMA_THERE) {
 }
 
 
@@ -471,7 +637,7 @@ acStrongPtr_class (inCompiler COMMA_THERE) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cPtr_AC_5F_job::printNonNullClassInstanceProperties (void) const {
-    acStrongPtr_class::printNonNullClassInstanceProperties () ;
+    AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;
   }
 #endif
 
@@ -520,9 +686,9 @@ GGS_AC_5F_job GGS_AC_5F_job::extractObject (const GGS_object & inObject,
 ComparisonResult GGS_AC_5F_job_2E_weak::objectCompare (const GGS_AC_5F_job_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -544,8 +710,8 @@ AC_GALGAS_weak_reference () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_AC_5F_job_2E_weak & GGS_AC_5F_job_2E_weak::operator = (const GGS_AC_5F_job & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -564,7 +730,7 @@ AC_GALGAS_weak_reference (inSource) {
 
 GGS_AC_5F_job_2E_weak GGS_AC_5F_job_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_AC_5F_job_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -586,7 +752,7 @@ GGS_AC_5F_job GGS_AC_5F_job_2E_weak::unwrappedValue (void) const {
 GGS_AC_5F_job GGS_AC_5F_job_2E_weak::bang_AC_5F_job_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_AC_5F_job result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -747,8 +913,8 @@ void cPtr_C_5F_machineDisplayStates::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineDisplayStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineDisplayStates (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -808,9 +974,9 @@ GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates::extractObject (cons
 ComparisonResult GGS_C_5F_machineDisplayStates_2E_weak::objectCompare (const GGS_C_5F_machineDisplayStates_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -832,8 +998,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineDisplayStates_2E_weak & GGS_C_5F_machineDisplayStates_2E_weak::operator = (const GGS_C_5F_machineDisplayStates & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -852,7 +1018,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineDisplayStates_2E_weak GGS_C_5F_machineDisplayStates_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineDisplayStates_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -874,7 +1040,7 @@ GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates_2E_weak::unwrappedVa
 GGS_C_5F_machineDisplayStates GGS_C_5F_machineDisplayStates_2E_weak::bang_C_5F_machineDisplayStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineDisplayStates result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -1035,8 +1201,8 @@ void cPtr_C_5F_machineDisplayInitialStates::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayInitialStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineDisplayInitialStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineDisplayInitialStates (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -1096,9 +1262,9 @@ GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates::extra
 ComparisonResult GGS_C_5F_machineDisplayInitialStates_2E_weak::objectCompare (const GGS_C_5F_machineDisplayInitialStates_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1120,8 +1286,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineDisplayInitialStates_2E_weak & GGS_C_5F_machineDisplayInitialStates_2E_weak::operator = (const GGS_C_5F_machineDisplayInitialStates & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -1140,7 +1306,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineDisplayInitialStates_2E_weak GGS_C_5F_machineDisplayInitialStates_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineDisplayInitialStates_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1162,7 +1328,7 @@ GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates_2E_wea
 GGS_C_5F_machineDisplayInitialStates GGS_C_5F_machineDisplayInitialStates_2E_weak::bang_C_5F_machineDisplayInitialStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineDisplayInitialStates result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -1323,8 +1489,8 @@ void cPtr_C_5F_machineDisplayTerminalStates::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayTerminalStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineDisplayTerminalStates::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineDisplayTerminalStates (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -1384,9 +1550,9 @@ GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates::ext
 ComparisonResult GGS_C_5F_machineDisplayTerminalStates_2E_weak::objectCompare (const GGS_C_5F_machineDisplayTerminalStates_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1408,8 +1574,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineDisplayTerminalStates_2E_weak & GGS_C_5F_machineDisplayTerminalStates_2E_weak::operator = (const GGS_C_5F_machineDisplayTerminalStates & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -1428,7 +1594,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineDisplayTerminalStates_2E_weak GGS_C_5F_machineDisplayTerminalStates_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineDisplayTerminalStates_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1450,7 +1616,7 @@ GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates_2E_w
 GGS_C_5F_machineDisplayTerminalStates GGS_C_5F_machineDisplayTerminalStates_2E_weak::bang_C_5F_machineDisplayTerminalStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineDisplayTerminalStates result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -1611,8 +1777,8 @@ void cPtr_C_5F_machineDisplayTransitions::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDisplayTransitions::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineDisplayTransitions::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineDisplayTransitions (mProperty_mMachineIndex, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -1672,9 +1838,9 @@ GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions::extractOb
 ComparisonResult GGS_C_5F_machineDisplayTransitions_2E_weak::objectCompare (const GGS_C_5F_machineDisplayTransitions_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1696,8 +1862,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineDisplayTransitions_2E_weak & GGS_C_5F_machineDisplayTransitions_2E_weak::operator = (const GGS_C_5F_machineDisplayTransitions & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -1716,7 +1882,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineDisplayTransitions_2E_weak GGS_C_5F_machineDisplayTransitions_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineDisplayTransitions_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1738,7 +1904,7 @@ GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions_2E_weak::u
 GGS_C_5F_machineDisplayTransitions GGS_C_5F_machineDisplayTransitions_2E_weak::bang_C_5F_machineDisplayTransitions_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineDisplayTransitions result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -1794,9 +1960,9 @@ GGS_C_5F_machineDisplayTransitions_2E_weak GGS_C_5F_machineDisplayTransitions_2E
 ComparisonResult GGS_C_5F_machineCheck_2E_weak::objectCompare (const GGS_C_5F_machineCheck_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -1818,8 +1984,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineCheck_2E_weak & GGS_C_5F_machineCheck_2E_weak::operator = (const GGS_C_5F_machineCheck & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -1838,7 +2004,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineCheck_2E_weak GGS_C_5F_machineCheck_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineCheck_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -1860,7 +2026,7 @@ GGS_C_5F_machineCheck GGS_C_5F_machineCheck_2E_weak::unwrappedValue (void) const
 GGS_C_5F_machineCheck GGS_C_5F_machineCheck_2E_weak::bang_C_5F_machineCheck_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineCheck result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2052,8 +2218,8 @@ void cPtr_C_5F_machineCheckIdentical::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineCheckIdentical::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineCheckIdentical::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineCheckIdentical (mProperty_mMachineIndex_31_, mProperty_mMachineIndex_32_, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -2114,9 +2280,9 @@ GGS_C_5F_machineCheckIdentical GGS_C_5F_machineCheckIdentical::extractObject (co
 ComparisonResult GGS_C_5F_machineCheckIdentical_2E_weak::objectCompare (const GGS_C_5F_machineCheckIdentical_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -2138,8 +2304,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineCheckIdentical_2E_weak & GGS_C_5F_machineCheckIdentical_2E_weak::operator = (const GGS_C_5F_machineCheckIdentical & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -2158,7 +2324,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineCheckIdentical_2E_weak GGS_C_5F_machineCheckIdentical_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineCheckIdentical_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -2180,7 +2346,7 @@ GGS_C_5F_machineCheckIdentical GGS_C_5F_machineCheckIdentical_2E_weak::unwrapped
 GGS_C_5F_machineCheckIdentical GGS_C_5F_machineCheckIdentical_2E_weak::bang_C_5F_machineCheckIdentical_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineCheckIdentical result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2236,9 +2402,9 @@ GGS_C_5F_machineCheckIdentical_2E_weak GGS_C_5F_machineCheckIdentical_2E_weak::e
 ComparisonResult GGS_C_5F_machineComponent_2E_weak::objectCompare (const GGS_C_5F_machineComponent_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -2260,8 +2426,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineComponent_2E_weak & GGS_C_5F_machineComponent_2E_weak::operator = (const GGS_C_5F_machineComponent & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -2280,7 +2446,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineComponent_2E_weak GGS_C_5F_machineComponent_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineComponent_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -2302,7 +2468,7 @@ GGS_C_5F_machineComponent GGS_C_5F_machineComponent_2E_weak::unwrappedValue (voi
 GGS_C_5F_machineComponent GGS_C_5F_machineComponent_2E_weak::bang_C_5F_machineComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineComponent result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2358,9 +2524,9 @@ GGS_C_5F_machineComponent_2E_weak GGS_C_5F_machineComponent_2E_weak::extractObje
 ComparisonResult GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak::objectCompare (const GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -2382,8 +2548,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak & GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak::operator = (const GGS_C_5F_machineDefinedByAdditiveModalComp & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -2402,7 +2568,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -2424,7 +2590,7 @@ GGS_C_5F_machineDefinedByAdditiveModalComp GGS_C_5F_machineDefinedByAdditiveModa
 GGS_C_5F_machineDefinedByAdditiveModalComp GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak::bang_C_5F_machineDefinedByAdditiveModalComp_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineDefinedByAdditiveModalComp result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2480,9 +2646,9 @@ GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak GGS_C_5F_machineDefinedByAddi
 ComparisonResult GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak::objectCompare (const GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -2504,8 +2670,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak & GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak::operator = (const GGS_C_5F_machineDefinedBySubstractiveModalComp & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -2524,7 +2690,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -2546,7 +2712,7 @@ GGS_C_5F_machineDefinedBySubstractiveModalComp GGS_C_5F_machineDefinedBySubstrac
 GGS_C_5F_machineDefinedBySubstractiveModalComp GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak::bang_C_5F_machineDefinedBySubstractiveModalComp_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_machineDefinedBySubstractiveModalComp result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -2601,47 +2767,47 @@ GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak GGS_C_5F_machineDefinedBy
 //Class for element of '@L_5F_inputConfigurationForScenario' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_L_5F_inputConfigurationForScenario : public CollectionElement {
+class CollectionElementPtr_L_5F_inputConfigurationForScenario : public CollectionElementPtr {
   public: GGS_L_5F_inputConfigurationForScenario_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
-                                                                COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
+                                                                   COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_inputConfigurationForScenario::CollectionElement_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
-                                                                                                            COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_inputConfigurationForScenario::CollectionElementPtr_L_5F_inputConfigurationForScenario (const GGS_luint & in_mInputValue
+                                                                                                                  COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mInputValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_inputConfigurationForScenario::CollectionElement_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_inputConfigurationForScenario::CollectionElementPtr_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mInputValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_L_5F_inputConfigurationForScenario::isValid (void) const {
+bool CollectionElementPtr_L_5F_inputConfigurationForScenario::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_L_5F_inputConfigurationForScenario::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_L_5F_inputConfigurationForScenario (mObject.mProperty_mInputValue COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_L_5F_inputConfigurationForScenario::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_L_5F_inputConfigurationForScenario (mObject.mProperty_mInputValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -2655,13 +2821,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputConfigurationForScenario::GGS_L_5F_inputConfigurationForScenario (const capCollectionElementArray & inArray) :
+GGS_L_5F_inputConfigurationForScenario::GGS_L_5F_inputConfigurationForScenario (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_L_5F_inputConfigurationForScenario * p = (CollectionElement_L_5F_inputConfigurationForScenario *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_L_5F_inputConfigurationForScenario) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_L_5F_inputConfigurationForScenario * p = (CollectionElementPtr_L_5F_inputConfigurationForScenario *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_L_5F_inputConfigurationForScenario) ;
     const GGS_L_5F_inputConfigurationForScenario_2E_element element (p->mObject.mProperty_mInputValue) ;
     mArray.appendObject (element) ;
   }
@@ -2669,11 +2835,11 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputConfigurationForScenario::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_L_5F_inputConfigurationForScenario::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                         const GGS_luint & in_mInputValue
                                                                         COMMA_LOCATION_ARGS) {
-  CollectionElement_L_5F_inputConfigurationForScenario * p = nullptr ;
-  macroMyNew (p, CollectionElement_L_5F_inputConfigurationForScenario (in_mInputValue COMMA_THERE)) ;
+  CollectionElementPtr_L_5F_inputConfigurationForScenario * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_L_5F_inputConfigurationForScenario (in_mInputValue COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3131,47 +3297,47 @@ GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputConfigurationForScenario::e
 //Class for element of '@L_5F_inputScenario' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_L_5F_inputScenario : public CollectionElement {
+class CollectionElementPtr_L_5F_inputScenario : public CollectionElementPtr {
   public: GGS_L_5F_inputScenario_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
-                                                COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
+                                                   COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_inputScenario::CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
-                                                                            COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_inputScenario::CollectionElementPtr_L_5F_inputScenario (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
+                                                                                  COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mInputConfiguration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_inputScenario::CollectionElement_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_inputScenario::CollectionElementPtr_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mInputConfiguration) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_L_5F_inputScenario::isValid (void) const {
+bool CollectionElementPtr_L_5F_inputScenario::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_L_5F_inputScenario::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_L_5F_inputScenario (mObject.mProperty_mInputConfiguration COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_L_5F_inputScenario::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_L_5F_inputScenario (mObject.mProperty_mInputConfiguration COMMA_HERE)) ;
   return result ;
 }
 
@@ -3185,13 +3351,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_inputScenario::GGS_L_5F_inputScenario (const capCollectionElementArray & inArray) :
+GGS_L_5F_inputScenario::GGS_L_5F_inputScenario (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_L_5F_inputScenario * p = (CollectionElement_L_5F_inputScenario *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_L_5F_inputScenario) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_L_5F_inputScenario * p = (CollectionElementPtr_L_5F_inputScenario *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_L_5F_inputScenario) ;
     const GGS_L_5F_inputScenario_2E_element element (p->mObject.mProperty_mInputConfiguration) ;
     mArray.appendObject (element) ;
   }
@@ -3199,11 +3365,11 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_inputScenario::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_L_5F_inputScenario::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                         const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration
                                                         COMMA_LOCATION_ARGS) {
-  CollectionElement_L_5F_inputScenario * p = nullptr ;
-  macroMyNew (p, CollectionElement_L_5F_inputScenario (in_mInputConfiguration COMMA_THERE)) ;
+  CollectionElementPtr_L_5F_inputScenario * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_L_5F_inputScenario (in_mInputConfiguration COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -3661,49 +3827,49 @@ GGS_L_5F_inputScenario GGS_L_5F_inputScenario::extractObject (const GGS_object &
 //Class for element of '@L_5F_scenarioList' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_L_5F_scenarioList : public CollectionElement {
+class CollectionElementPtr_L_5F_scenarioList : public CollectionElementPtr {
   public: GGS_L_5F_scenarioList_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
-                                               const GGS_L_5F_inputScenario & in_mInputScenario
-                                               COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                  const GGS_L_5F_inputScenario & in_mInputScenario
+                                                  COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_scenarioList::CollectionElement_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
-                                                                          const GGS_L_5F_inputScenario & in_mInputScenario
-                                                                          COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_scenarioList::CollectionElementPtr_L_5F_scenarioList (const GGS_lstring & in_mScenarioTitle,
+                                                                                const GGS_L_5F_inputScenario & in_mInputScenario
+                                                                                COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mScenarioTitle, in_mInputScenario) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_scenarioList::CollectionElement_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_scenarioList::CollectionElementPtr_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mScenarioTitle, inElement.mProperty_mInputScenario) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_L_5F_scenarioList::isValid (void) const {
+bool CollectionElementPtr_L_5F_scenarioList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_L_5F_scenarioList::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_L_5F_scenarioList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_L_5F_scenarioList (mObject.mProperty_mScenarioTitle, mObject.mProperty_mInputScenario COMMA_HERE)) ;
   return result ;
 }
 
@@ -3717,13 +3883,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (const capCollectionElementArray & inArray) :
+GGS_L_5F_scenarioList::GGS_L_5F_scenarioList (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_L_5F_scenarioList * p = (CollectionElement_L_5F_scenarioList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_L_5F_scenarioList) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_L_5F_scenarioList * p = (CollectionElementPtr_L_5F_scenarioList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_L_5F_scenarioList) ;
     const GGS_L_5F_scenarioList_2E_element element (p->mObject.mProperty_mScenarioTitle, p->mObject.mProperty_mInputScenario) ;
     mArray.appendObject (element) ;
   }
@@ -3731,12 +3897,12 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_scenarioList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_L_5F_scenarioList::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                        const GGS_lstring & in_mScenarioTitle,
                                                        const GGS_L_5F_inputScenario & in_mInputScenario
                                                        COMMA_LOCATION_ARGS) {
-  CollectionElement_L_5F_scenarioList * p = nullptr ;
-  macroMyNew (p, CollectionElement_L_5F_scenarioList (in_mScenarioTitle, in_mInputScenario COMMA_THERE)) ;
+  CollectionElementPtr_L_5F_scenarioList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_L_5F_scenarioList (in_mScenarioTitle, in_mInputScenario COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -4498,8 +4664,8 @@ void cPtr_C_5F_scenarioComponent::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_scenarioComponent::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_scenarioComponent::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_scenarioComponent (mProperty_mMachineIndex, mProperty_mInputVariableCount, mProperty_mInputAndInternalVariableCount, mProperty_mVariablesMap, mProperty_mScenarioList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -4563,9 +4729,9 @@ GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent::extractObject (const GGS_
 ComparisonResult GGS_C_5F_scenarioComponent_2E_weak::objectCompare (const GGS_C_5F_scenarioComponent_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -4587,8 +4753,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_C_5F_scenarioComponent_2E_weak & GGS_C_5F_scenarioComponent_2E_weak::operator = (const GGS_C_5F_scenarioComponent & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -4607,7 +4773,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_C_5F_scenarioComponent_2E_weak GGS_C_5F_scenarioComponent_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_C_5F_scenarioComponent_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -4629,7 +4795,7 @@ GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent_2E_weak::unwrappedValue (v
 GGS_C_5F_scenarioComponent GGS_C_5F_scenarioComponent_2E_weak::bang_C_5F_scenarioComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_C_5F_scenarioComponent result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4756,8 +4922,8 @@ void cPtr_typeDisplayBDDstats::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_typeDisplayBDDstats::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_typeDisplayBDDstats::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_typeDisplayBDDstats (inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -4816,9 +4982,9 @@ GGS_typeDisplayBDDstats GGS_typeDisplayBDDstats::extractObject (const GGS_object
 ComparisonResult GGS_typeDisplayBDDstats_2E_weak::objectCompare (const GGS_typeDisplayBDDstats_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    cPtr_weakReference_proxy * myPtr = mProxyPtr ;
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
     const size_t myObjectPtr = size_t (myPtr) ;
-    cPtr_weakReference_proxy * operandPtr = inOperand.mProxyPtr ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
     const size_t operandObjectPtr = size_t (operandPtr) ;
     if (myObjectPtr < operandObjectPtr) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
@@ -4840,8 +5006,8 @@ GGS_AC_5F_job_2E_weak () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeDisplayBDDstats_2E_weak & GGS_typeDisplayBDDstats_2E_weak::operator = (const GGS_typeDisplayBDDstats & inSource) {
-  cPtr_weakReference_proxy * proxyPtr = nullptr ;
-  acStrongPtr_class * p = (acStrongPtr_class *) inSource.ptr () ;
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
     proxyPtr = p->getProxy () ;
   }
@@ -4860,7 +5026,7 @@ GGS_AC_5F_job_2E_weak (inSource) {
 
 GGS_typeDisplayBDDstats_2E_weak GGS_typeDisplayBDDstats_2E_weak::class_func_nil (LOCATION_ARGS) {
   GGS_typeDisplayBDDstats_2E_weak result ;
-  macroMyNew (result.mProxyPtr, cPtr_weakReference_proxy (THERE)) ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
@@ -4882,7 +5048,7 @@ GGS_typeDisplayBDDstats GGS_typeDisplayBDDstats_2E_weak::unwrappedValue (void) c
 GGS_typeDisplayBDDstats GGS_typeDisplayBDDstats_2E_weak::bang_typeDisplayBDDstats_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   GGS_typeDisplayBDDstats result ;
   if (mProxyPtr != nullptr) {
-    acStrongPtr_class * strongPtr = mProxyPtr->strongObject () ;
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
@@ -4937,47 +5103,47 @@ GGS_typeDisplayBDDstats_2E_weak GGS_typeDisplayBDDstats_2E_weak::extractObject (
 //Class for element of '@L_5F_jobList' list
 //--------------------------------------------------------------------------------------------------
 
-class CollectionElement_L_5F_jobList : public CollectionElement {
+class CollectionElementPtr_L_5F_jobList : public CollectionElementPtr {
   public: GGS_L_5F_jobList_2E_element mObject ;
 
 //--- Class functions
-  public: CollectionElement_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
-                                          COMMA_LOCATION_ARGS) ;
-  public: CollectionElement_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
+                                             COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public: virtual CollectionElement * copy (void) ;
+  public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_jobList::CollectionElement_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
-                                                                COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_jobList::CollectionElementPtr_L_5F_jobList (const GGS_AC_5F_job & in_mComponent
+                                                                      COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (in_mComponent) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement_L_5F_jobList::CollectionElement_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElement (THERE),
+CollectionElementPtr_L_5F_jobList::CollectionElementPtr_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
 mObject (inElement.mProperty_mComponent) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElement_L_5F_jobList::isValid (void) const {
+bool CollectionElementPtr_L_5F_jobList::isValid (void) const {
   return true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElement * CollectionElement_L_5F_jobList::copy (void) {
-  CollectionElement * result = nullptr ;
-  macroMyNew (result, CollectionElement_L_5F_jobList (mObject.mProperty_mComponent COMMA_HERE)) ;
+CollectionElementPtr * CollectionElementPtr_L_5F_jobList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_L_5F_jobList (mObject.mProperty_mComponent COMMA_HERE)) ;
   return result ;
 }
 
@@ -4991,13 +5157,13 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_L_5F_jobList::GGS_L_5F_jobList (const capCollectionElementArray & inArray) :
+GGS_L_5F_jobList::GGS_L_5F_jobList (const CollectionElementArray & inArray) :
 mArray () {
   mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
   for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const capCollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElement_L_5F_jobList * p = (CollectionElement_L_5F_jobList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElement_L_5F_jobList) ;
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_L_5F_jobList * p = (CollectionElementPtr_L_5F_jobList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_L_5F_jobList) ;
     const GGS_L_5F_jobList_2E_element element (p->mObject.mProperty_mComponent) ;
     mArray.appendObject (element) ;
   }
@@ -5005,11 +5171,11 @@ mArray () {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_L_5F_jobList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+void GGS_L_5F_jobList::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                   const GGS_AC_5F_job & in_mComponent
                                                   COMMA_LOCATION_ARGS) {
-  CollectionElement_L_5F_jobList * p = nullptr ;
-  macroMyNew (p, CollectionElement_L_5F_jobList (in_mComponent COMMA_THERE)) ;
+  CollectionElementPtr_L_5F_jobList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_L_5F_jobList (in_mComponent COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -9652,8 +9818,8 @@ void cPtr_C_5F_importBoolMachine::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_importBoolMachine::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_importBoolMachine::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_importBoolMachine (mProperty_mIndexOfImportedMachine, mProperty_mErrorLocation, mProperty_mTranslationVector, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -9851,8 +10017,8 @@ void cPtr_C_5F_machineCheck::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineCheck::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineCheck::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineCheck (mProperty_mMachineIndex, mProperty_mCheckMachineIsBoolean, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -10204,8 +10370,8 @@ void cPtr_C_5F_machineComponent::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineComponent::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineComponent::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineComponent (mProperty_mMachineName, mProperty_mMachineIndex, mProperty_mInputVariableCount, mProperty_mInputAndInternalVariableCount, mProperty_mVariablesMap, mProperty_mNameList, mProperty_mDefinition, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -10562,8 +10728,8 @@ void cPtr_C_5F_machineDefinedByAdditiveModalComp::description (String & ioString
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDefinedByAdditiveModalComp::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineDefinedByAdditiveModalComp::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineDefinedByAdditiveModalComp (mProperty_mMachineName, mProperty_mMachineIndex, mProperty_mInputVariableCount, mProperty_mInputAndInternalVariableCount, mProperty_mVariablesMap, mProperty_mModeMap, mProperty_mInclusionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
@@ -10920,8 +11086,8 @@ void cPtr_C_5F_machineDefinedBySubstractiveModalComp::description (String & ioSt
 
 //--------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_C_5F_machineDefinedBySubstractiveModalComp::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  acPtr_class * ptr = nullptr ;
+AbstractPtrClass * cPtr_C_5F_machineDefinedBySubstractiveModalComp::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
   macroMyNew (ptr, cPtr_C_5F_machineDefinedBySubstractiveModalComp (mProperty_mMachineName, mProperty_mMachineIndex, mProperty_mInputVariableCount, mProperty_mInputAndInternalVariableCount, mProperty_mVariablesMap, mProperty_mModeMap, mProperty_mExclusionList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
