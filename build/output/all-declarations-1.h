@@ -9,301 +9,53 @@
 #include "all-declarations-0.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_suppressTerminalStatesOperation_2E_weak weak reference class
+// Phase 1: @C_5F_scenarioComponent reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_C_5F_suppressTerminalStatesOperation_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
+class GGS_C_5F_scenarioComponent : public GGS_AC_5F_job {
 //--------------------------------- Default constructor
-  public: GGS_C_5F_suppressTerminalStatesOperation_2E_weak (void) ;
+  public: GGS_C_5F_scenarioComponent (void) ;
 
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_suppressTerminalStatesOperation_2E_weak (const class GGS_C_5F_suppressTerminalStatesOperation & inSource) ;
+//--------------------------------- Constructor from pointer
+  public: GGS_C_5F_scenarioComponent (const class cPtr_C_5F_scenarioComponent * inSourcePtr) ;
 
-  public: GGS_C_5F_suppressTerminalStatesOperation_2E_weak & operator = (const class GGS_C_5F_suppressTerminalStatesOperation & inSource) ;
+//--------------------------------- Property access
+  public: class GGS_uint readProperty_mMachineIndex (void) const ;
+  public: void setProperty_mMachineIndex (const GGS_uint & inValue) ;
 
-//--------------------------------- Constructor and assignment from optional reference
+  public: class GGS_uint readProperty_mInputVariableCount (void) const ;
+  public: void setProperty_mInputVariableCount (const GGS_uint & inValue) ;
 
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_suppressTerminalStatesOperation_2E_weak init_nil (void) {
-    GGS_C_5F_suppressTerminalStatesOperation_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
+  public: class GGS_uint readProperty_mInputAndInternalVariableCount (void) const ;
+  public: void setProperty_mInputAndInternalVariableCount (const GGS_uint & inValue) ;
 
-//--------------------------------- Bang operator
-  public: GGS_C_5F_suppressTerminalStatesOperation bang_C_5F_suppressTerminalStatesOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: class GGS_M_5F_variablesMap readProperty_mVariablesMap (void) const ;
+  public: void setProperty_mVariablesMap (const GGS_M_5F_variablesMap & inValue) ;
 
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_suppressTerminalStatesOperation unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
+  public: class GGS_L_5F_scenarioList readProperty_mScenarioList (void) const ;
+  public: void setProperty_mScenarioList (const GGS_L_5F_scenarioList & inValue) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_suppressTerminalStatesOperation_2E_weak extractObject (const GGS_object & inObject,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_suppressTerminalStatesOperation_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_suppressTerminalStatesOperation_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_suppressTerminalStatesOperation_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_suppressInitialStatesOperation_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_suppressInitialStatesOperation_2E_weak : public GGS_AC_5F_machineDefinition_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_suppressInitialStatesOperation_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_suppressInitialStatesOperation_2E_weak (const class GGS_C_5F_suppressInitialStatesOperation & inSource) ;
-
-  public: GGS_C_5F_suppressInitialStatesOperation_2E_weak & operator = (const class GGS_C_5F_suppressInitialStatesOperation & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_suppressInitialStatesOperation_2E_weak init_nil (void) {
-    GGS_C_5F_suppressInitialStatesOperation_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_suppressInitialStatesOperation bang_C_5F_suppressInitialStatesOperation_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_suppressInitialStatesOperation unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_suppressInitialStatesOperation_2E_weak extractObject (const GGS_object & inObject,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_suppressInitialStatesOperation_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_suppressInitialStatesOperation_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_suppressInitialStatesOperation_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @AC_5F_job_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_AC_5F_job_2E_weak : public AC_GALGAS_weak_reference {
-//--------------------------------- Default constructor
-  public: GGS_AC_5F_job_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_AC_5F_job_2E_weak (const class GGS_AC_5F_job & inSource) ;
-
-  public: GGS_AC_5F_job_2E_weak & operator = (const class GGS_AC_5F_job & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_AC_5F_job_2E_weak init_nil (void) {
-    GGS_AC_5F_job_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_AC_5F_job bang_AC_5F_job_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_AC_5F_job unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_AC_5F_job_2E_weak extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_AC_5F_job_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_AC_5F_job_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AC_5F_job_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineDisplayStates_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineDisplayStates_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineDisplayStates_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineDisplayStates_2E_weak (const class GGS_C_5F_machineDisplayStates & inSource) ;
-
-  public: GGS_C_5F_machineDisplayStates_2E_weak & operator = (const class GGS_C_5F_machineDisplayStates & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineDisplayStates_2E_weak init_nil (void) {
-    GGS_C_5F_machineDisplayStates_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineDisplayStates bang_C_5F_machineDisplayStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineDisplayStates unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineDisplayStates_2E_weak extractObject (const GGS_object & inObject,
+  public: static GGS_C_5F_scenarioComponent init_21__21__21__21__21_ (const class GGS_uint & inOperand0,
+                                                                      const class GGS_uint & inOperand1,
+                                                                      const class GGS_uint & inOperand2,
+                                                                      const class GGS_M_5F_variablesMap & inOperand3,
+                                                                      const class GGS_L_5F_scenarioList & inOperand4,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayStates_2E_weak class_func_nil (LOCATION_ARGS) ;
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_C_5F_scenarioComponent extractObject (const GGS_object & inObject,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineDisplayStates_2E_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_C_5F_scenarioComponent & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -322,869 +74,9 @@ class GGS_C_5F_machineDisplayStates_2E_weak : public GGS_AC_5F_job_2E_weak {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayStates_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineDisplayInitialStates_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineDisplayInitialStates_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineDisplayInitialStates_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineDisplayInitialStates_2E_weak (const class GGS_C_5F_machineDisplayInitialStates & inSource) ;
-
-  public: GGS_C_5F_machineDisplayInitialStates_2E_weak & operator = (const class GGS_C_5F_machineDisplayInitialStates & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineDisplayInitialStates_2E_weak init_nil (void) {
-    GGS_C_5F_machineDisplayInitialStates_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineDisplayInitialStates bang_C_5F_machineDisplayInitialStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineDisplayInitialStates unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineDisplayInitialStates_2E_weak extractObject (const GGS_object & inObject,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayInitialStates_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineDisplayInitialStates_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayInitialStates_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineDisplayTerminalStates_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineDisplayTerminalStates_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineDisplayTerminalStates_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineDisplayTerminalStates_2E_weak (const class GGS_C_5F_machineDisplayTerminalStates & inSource) ;
-
-  public: GGS_C_5F_machineDisplayTerminalStates_2E_weak & operator = (const class GGS_C_5F_machineDisplayTerminalStates & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineDisplayTerminalStates_2E_weak init_nil (void) {
-    GGS_C_5F_machineDisplayTerminalStates_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineDisplayTerminalStates bang_C_5F_machineDisplayTerminalStates_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineDisplayTerminalStates unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineDisplayTerminalStates_2E_weak extractObject (const GGS_object & inObject,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayTerminalStates_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineDisplayTerminalStates_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTerminalStates_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineDisplayTransitions_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineDisplayTransitions_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineDisplayTransitions_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineDisplayTransitions_2E_weak (const class GGS_C_5F_machineDisplayTransitions & inSource) ;
-
-  public: GGS_C_5F_machineDisplayTransitions_2E_weak & operator = (const class GGS_C_5F_machineDisplayTransitions & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineDisplayTransitions_2E_weak init_nil (void) {
-    GGS_C_5F_machineDisplayTransitions_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineDisplayTransitions bang_C_5F_machineDisplayTransitions_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineDisplayTransitions unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineDisplayTransitions_2E_weak extractObject (const GGS_object & inObject,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDisplayTransitions_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineDisplayTransitions_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineDisplayTransitions_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineCheck_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineCheck_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineCheck_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineCheck_2E_weak (const class GGS_C_5F_machineCheck & inSource) ;
-
-  public: GGS_C_5F_machineCheck_2E_weak & operator = (const class GGS_C_5F_machineCheck & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineCheck_2E_weak init_nil (void) {
-    GGS_C_5F_machineCheck_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineCheck bang_C_5F_machineCheck_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineCheck unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineCheck_2E_weak extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineCheck_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineCheck_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineCheck_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineCheckIdentical_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineCheckIdentical_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineCheckIdentical_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineCheckIdentical_2E_weak (const class GGS_C_5F_machineCheckIdentical & inSource) ;
-
-  public: GGS_C_5F_machineCheckIdentical_2E_weak & operator = (const class GGS_C_5F_machineCheckIdentical & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineCheckIdentical_2E_weak init_nil (void) {
-    GGS_C_5F_machineCheckIdentical_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineCheckIdentical bang_C_5F_machineCheckIdentical_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineCheckIdentical unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineCheckIdentical_2E_weak extractObject (const GGS_object & inObject,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineCheckIdentical_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineCheckIdentical_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineCheckIdentical_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineComponent_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineComponent_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineComponent_2E_weak (const class GGS_C_5F_machineComponent & inSource) ;
-
-  public: GGS_C_5F_machineComponent_2E_weak & operator = (const class GGS_C_5F_machineComponent & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineComponent_2E_weak init_nil (void) {
-    GGS_C_5F_machineComponent_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineComponent bang_C_5F_machineComponent_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineComponent unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineComponent_2E_weak extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineComponent_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineComponent_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineComponent_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineDefinedByAdditiveModalComp_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak (const class GGS_C_5F_machineDefinedByAdditiveModalComp & inSource) ;
-
-  public: GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak & operator = (const class GGS_C_5F_machineDefinedByAdditiveModalComp & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak init_nil (void) {
-    GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineDefinedByAdditiveModalComp bang_C_5F_machineDefinedByAdditiveModalComp_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineDefinedByAdditiveModalComp unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak extractObject (const GGS_object & inObject,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineDefinedByAdditiveModalComp_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedByAdditiveModalComp_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @C_5F_machineDefinedBySubstractiveModalComp_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak : public GGS_AC_5F_job_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak (const class GGS_C_5F_machineDefinedBySubstractiveModalComp & inSource) ;
-
-  public: GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak & operator = (const class GGS_C_5F_machineDefinedBySubstractiveModalComp & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak init_nil (void) {
-    GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_C_5F_machineDefinedBySubstractiveModalComp bang_C_5F_machineDefinedBySubstractiveModalComp_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_C_5F_machineDefinedBySubstractiveModalComp unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak extractObject (const GGS_object & inObject,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_machineDefinedBySubstractiveModalComp_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @L_5F_inputConfigurationForScenario_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_L_5F_inputConfigurationForScenario_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_luint mProperty_mInputValue ;
-  public: inline GGS_luint readProperty_mInputValue (void) const {
-    return mProperty_mInputValue ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_L_5F_inputConfigurationForScenario_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInputValue (const GGS_luint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInputValue = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_L_5F_inputConfigurationForScenario_2E_element (const GGS_luint & in_mInputValue) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_L_5F_inputConfigurationForScenario_2E_element (const GGS_L_5F_inputConfigurationForScenario_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_L_5F_inputConfigurationForScenario_2E_element & operator = (const GGS_L_5F_inputConfigurationForScenario_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_L_5F_inputConfigurationForScenario_2E_element init_21_ (const class GGS_luint & inOperand0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_L_5F_inputConfigurationForScenario_2E_element extractObject (const GGS_object & inObject,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_L_5F_inputConfigurationForScenario_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @L_5F_inputScenario_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_L_5F_inputScenario_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_L_5F_inputConfigurationForScenario mProperty_mInputConfiguration ;
-  public: inline GGS_L_5F_inputConfigurationForScenario readProperty_mInputConfiguration (void) const {
-    return mProperty_mInputConfiguration ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_L_5F_inputScenario_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInputConfiguration (const GGS_L_5F_inputConfigurationForScenario & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInputConfiguration = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_L_5F_inputScenario_2E_element (const GGS_L_5F_inputConfigurationForScenario & in_mInputConfiguration) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_L_5F_inputScenario_2E_element (const GGS_L_5F_inputScenario_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_L_5F_inputScenario_2E_element & operator = (const GGS_L_5F_inputScenario_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_L_5F_inputScenario_2E_element init_21_ (const class GGS_L_5F_inputConfigurationForScenario & inOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_L_5F_inputScenario_2E_element extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_L_5F_inputScenario_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @L_5F_scenarioList_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_L_5F_scenarioList_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_mScenarioTitle ;
-  public: inline GGS_lstring readProperty_mScenarioTitle (void) const {
-    return mProperty_mScenarioTitle ;
-  }
-
-  public: GGS_L_5F_inputScenario mProperty_mInputScenario ;
-  public: inline GGS_L_5F_inputScenario readProperty_mInputScenario (void) const {
-    return mProperty_mInputScenario ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_L_5F_scenarioList_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMScenarioTitle (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mScenarioTitle = inValue ;
-  }
-
-  public: inline void setter_setMInputScenario (const GGS_L_5F_inputScenario & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInputScenario = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_L_5F_scenarioList_2E_element (const GGS_lstring & in_mScenarioTitle,
-                                            const GGS_L_5F_inputScenario & in_mInputScenario) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_L_5F_scenarioList_2E_element (const GGS_L_5F_scenarioList_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_L_5F_scenarioList_2E_element & operator = (const GGS_L_5F_scenarioList_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_L_5F_scenarioList_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
-                                                                const class GGS_L_5F_inputScenario & inOperand1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_L_5F_scenarioList_2E_element extractObject (const GGS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_L_5F_scenarioList_2E_element ;
+#include "separateHeaderFor_C_5F_scenarioComponent.h"
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @C_5F_scenarioComponent_2E_weak weak reference class
@@ -1266,6 +158,56 @@ class GGS_C_5F_scenarioComponent_2E_weak : public GGS_AC_5F_job_2E_weak {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_C_5F_scenarioComponent_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @typeDisplayBDDstats reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_typeDisplayBDDstats : public GGS_AC_5F_job {
+//--------------------------------- Default constructor
+  public: GGS_typeDisplayBDDstats (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_typeDisplayBDDstats (const class cPtr_typeDisplayBDDstats * inSourcePtr) ;
+
+//--------------------------------- Property access
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_typeDisplayBDDstats init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_typeDisplayBDDstats extractObject (const GGS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_typeDisplayBDDstats & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats ;
+
+#include "separateHeaderFor_typeDisplayBDDstats.h"
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @typeDisplayBDDstats_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1345,6 +287,224 @@ class GGS_typeDisplayBDDstats_2E_weak : public GGS_AC_5F_job_2E_weak {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDisplayBDDstats_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @L_5F_jobList list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_L_5F_jobList final {
+  public: DownEnumerator_L_5F_jobList (const class GGS_L_5F_jobList & inList) ;
+
+  public: ~ DownEnumerator_L_5F_jobList (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_L_5F_jobList_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_L_5F_jobList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_L_5F_jobList (const DownEnumerator_L_5F_jobList &) = delete ;
+  private: DownEnumerator_L_5F_jobList & operator = (const DownEnumerator_L_5F_jobList &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_L_5F_jobList final {
+  public: UpEnumerator_L_5F_jobList (const class GGS_L_5F_jobList & inList)  ;
+
+  public: ~ UpEnumerator_L_5F_jobList (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_AC_5F_job current_mComponent (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_L_5F_jobList_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_L_5F_jobList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_L_5F_jobList (const UpEnumerator_L_5F_jobList &) = delete ;
+  private: UpEnumerator_L_5F_jobList & operator = (const UpEnumerator_L_5F_jobList &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @L_jobList list
+//--------------------------------------------------------------------------------------------------
+
+class GGS_L_5F_jobList : public AC_GALGAS_root {
+//--- Private property
+  private: GenericArray <GGS_L_5F_jobList_2E_element> mArray ;
+
+//--- Default constructor
+  public: GGS_L_5F_jobList (void) ;
+
+//--- Destructor
+  public: virtual ~ GGS_L_5F_jobList (void) = default ;
+
+//--- Copy
+  public: GGS_L_5F_jobList (const GGS_L_5F_jobList &) = default ;
+  public: GGS_L_5F_jobList & operator = (const GGS_L_5F_jobList &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : inline GenericArray <GGS_L_5F_jobList_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_L_5F_jobList subList (const int32_t inStart,
+                                     const int32_t inLength,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor for graph
+  public: GGS_L_5F_jobList (const CollectionElementArray & inSharedArray) ;
+
+//--- Element constructor
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                 const class GGS_AC_5F_job & in_mComponent
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_L_5F_jobList init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_L_5F_jobList extractObject (const GGS_object & inObject,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_L_5F_jobList class_func_listWithValue (const class GGS_AC_5F_job & inOperand0
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS_L_5F_jobList inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: void addAssignOperation (const class GGS_AC_5F_job & inOperand0
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_L_5F_jobList_2E_element & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_L_5F_jobList add_operation (const GGS_L_5F_jobList & inOperand,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_AC_5F_job constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_AC_5F_job constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_AC_5F_job & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_AC_5F_job & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_AC_5F_job & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMComponentAtIndex (class GGS_AC_5F_job constinArgument0,
+                                            class GGS_uint constinArgument1,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_AC_5F_job & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_AC_5F_job & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_AC_5F_job getter_mComponentAtIndex (const class GGS_uint & constinOperand0,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_range getter_range (LOCATION_ARGS) const ;
+
+  public: class GGS_L_5F_jobList getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_L_5F_jobList getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_L_5F_jobList getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_L_5F_jobList ;
+  friend class DownEnumerator_L_5F_jobList ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_L_5F_jobList ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @L_5F_jobList_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -1416,6 +576,268 @@ class GGS_L_5F_jobList_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_L_5F_jobList_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @M_5F_machinesMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_M_5F_machinesMap final {
+
+  public: DownEnumerator_M_5F_machinesMap (const class GGS_M_5F_machinesMap & inMap) ;
+
+  public: ~ DownEnumerator_M_5F_machinesMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
+
+  public: class GGS_uint current_mInputVariableCount (LOCATION_ARGS) const ;
+
+  public: class GGS_uint current_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+
+  public: class GGS_M_5F_variablesMap current_mVariablesMap (LOCATION_ARGS) const ;
+
+  public: class GGS_stringlist current_mNameList (LOCATION_ARGS) const ;
+
+  public: class GGS_M_5F_machinesMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_M_5F_machinesMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_M_5F_machinesMap (const DownEnumerator_M_5F_machinesMap &) = delete ;
+  private: DownEnumerator_M_5F_machinesMap & operator = (const DownEnumerator_M_5F_machinesMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_M_5F_machinesMap final {
+  public: UpEnumerator_M_5F_machinesMap (const class GGS_M_5F_machinesMap & inMap)  ;
+
+  public: ~ UpEnumerator_M_5F_machinesMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mInputVariableCount (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mInputAndInternalVariableCount (LOCATION_ARGS) const ;
+  public: class GGS_M_5F_variablesMap current_mVariablesMap (LOCATION_ARGS) const ;
+  public: class GGS_stringlist current_mNameList (LOCATION_ARGS) const ;
+  public: class GGS_M_5F_machinesMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_M_5F_machinesMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_M_5F_machinesMap (const UpEnumerator_M_5F_machinesMap &) = delete ;
+  private: UpEnumerator_M_5F_machinesMap & operator = (const UpEnumerator_M_5F_machinesMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_M_5F_machinesMap : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_M_5F_machinesMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_M_5F_machinesMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_M_5F_machinesMap (void) ;
+
+//--- Handle copy
+  public: GGS_M_5F_machinesMap (const GGS_M_5F_machinesMap & inSource) ;
+  public: GGS_M_5F_machinesMap & operator = (const GGS_M_5F_machinesMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_M_5F_machinesMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_M_5F_machinesMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_M_5F_machinesMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_M_5F_machinesMap init (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_M_5F_machinesMap extractObject (const GGS_object & inObject,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_M_5F_machinesMap class_func_mapWithMapToOverride (const class GGS_M_5F_machinesMap & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS_uint constinArgument1,
+                                 class GGS_uint constinArgument2,
+                                 class GGS_uint constinArgument3,
+                                 class GGS_M_5F_variablesMap constinArgument4,
+                                 class GGS_stringlist constinArgument5,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeKey (class GGS_lstring constinArgument0,
+                                 class GGS_uint & outArgument1,
+                                 class GGS_uint & outArgument2,
+                                 class GGS_uint & outArgument3,
+                                 class GGS_M_5F_variablesMap & outArgument4,
+                                 class GGS_stringlist & outArgument5,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMIndexForKey (class GGS_uint constinArgument0,
+                                       class GGS_string constinArgument1,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMInputAndInternalVariableCountForKey (class GGS_uint constinArgument0,
+                                                               class GGS_string constinArgument1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMInputVariableCountForKey (class GGS_uint constinArgument0,
+                                                    class GGS_string constinArgument1,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMNameListForKey (class GGS_stringlist constinArgument0,
+                                          class GGS_string constinArgument1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMVariablesMapForKey (class GGS_M_5F_variablesMap constinArgument0,
+                                              class GGS_string constinArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS_uint & outArgument1,
+                                 class GGS_uint & outArgument2,
+                                 class GGS_uint & outArgument3,
+                                 class GGS_M_5F_variablesMap & outArgument4,
+                                 class GGS_stringlist & outArgument5,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
+                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_mIndexForKey (const class GGS_string & constinOperand0,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_mInputAndInternalVariableCountForKey (const class GGS_string & constinOperand0,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_mInputVariableCountForKey (const class GGS_string & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringlist getter_mNameListForKey (const class GGS_string & constinOperand0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_M_5F_variablesMap getter_mVariablesMapForKey (const class GGS_string & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_M_5F_machinesMap getter_overriddenMap (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_M_5F_machinesMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_M_5F_machinesMap ;
+  friend class DownEnumerator_M_5F_machinesMap ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_M_5F_machinesMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @M_5F_machinesMap_2E_element struct
@@ -1621,6 +1043,656 @@ class GGS_M_5F_machinesMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_M_5F_machinesMap_2E_element_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @semanticContext struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_semanticContext : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_L_5F_jobList mProperty_componentsMap ;
+  public: inline GGS_L_5F_jobList readProperty_componentsMap (void) const {
+    return mProperty_componentsMap ;
+  }
+
+  public: GGS_M_5F_machinesMap mProperty_machinesMap ;
+  public: inline GGS_M_5F_machinesMap readProperty_machinesMap (void) const {
+    return mProperty_machinesMap ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_semanticContext (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setComponentsMap (const GGS_L_5F_jobList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_componentsMap = inValue ;
+  }
+
+  public: inline void setter_setMachinesMap (const GGS_M_5F_machinesMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_machinesMap = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_semanticContext (const GGS_L_5F_jobList & in_componentsMap,
+                               const GGS_M_5F_machinesMap & in_machinesMap) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_semanticContext (const GGS_semanticContext & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_semanticContext & operator = (const GGS_semanticContext & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_semanticContext init_21__21_ (const class GGS_L_5F_jobList & inOperand0,
+                                                   const class GGS_M_5F_machinesMap & inOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_semanticContext extractObject (const GGS_object & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticContext ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//LEXIQUE sara_5F_scanner
+//
+//--------------------------------------------------------------------------------------------------
+
+#include "Lexique.h"
+
+//--------------------------------------------------------------------------------------------------
+//                    E X T E R N    R O U T I N E S
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//                    E X T E R N    F U N C T I O N S
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//                       T O K E N    C L A S S
+//--------------------------------------------------------------------------------------------------
+
+class cTokenFor_sara_5F_scanner : public cToken {
+  public: String mLexicalAttribute_identifierString ;
+  public: uint32_t mLexicalAttribute_ulongValue ;
+
+  public: cTokenFor_sara_5F_scanner (void) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//                     S C A N N E R    C L A S S
+//--------------------------------------------------------------------------------------------------
+
+class Lexique_sara_5F_scanner : public Lexique {
+//--- Constructors
+  public: Lexique_sara_5F_scanner (Compiler * inCallerCompiler,
+                       const String & inSourceFileName
+                       COMMA_LOCATION_ARGS) ;
+
+  public: Lexique_sara_5F_scanner (Compiler * inCallerCompiler,
+                       const String & inSourceString,
+                       const String & inStringForError
+                       COMMA_LOCATION_ARGS) ;
+
+//--- Instrospection
+  public: static GGS_stringlist symbols (LOCATION_ARGS) ;
+
+//--- Declaring a protected virtual destructor enables the compiler to raise
+//    an error if a direct delete is performed; only the static method
+//    SharedObject::detachPointer may invoke delete.
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected: virtual ~ Lexique_sara_5F_scanner (void) { }
+  #endif
+
+
+
+//--- Terminal symbols enumeration
+  public: const static int32_t kToken_ = 0 ;
+  public: static const int32_t kToken_identifier = 1 ;
+  public: static const int32_t kToken_literal_5F_string = 2 ;
+  public: static const int32_t kToken_machineIdf = 3 ;
+  public: static const int32_t kToken_literal_5F_integer = 4 ;
+  public: static const int32_t kToken_comment = 5 ;
+  public: static const int32_t kToken_auto = 6 ;
+  public: static const int32_t kToken_state = 7 ;
+  public: static const int32_t kToken_first = 8 ;
+  public: static const int32_t kToken_last = 9 ;
+  public: static const int32_t kToken_goto = 10 ;
+  public: static const int32_t kToken_true = 11 ;
+  public: static const int32_t kToken_false = 12 ;
+  public: static const int32_t kToken_nofirst = 13 ;
+  public: static const int32_t kToken_nolast = 14 ;
+  public: static const int32_t kToken_modalcompadd = 15 ;
+  public: static const int32_t kToken_exclude = 16 ;
+  public: static const int32_t kToken_modalcompsub = 17 ;
+  public: static const int32_t kToken_include = 18 ;
+  public: static const int32_t kToken_to = 19 ;
+  public: static const int32_t kToken_scenario = 20 ;
+  public: static const int32_t kToken_trans = 21 ;
+  public: static const int32_t kToken_display = 22 ;
+  public: static const int32_t kToken_bdd = 23 ;
+  public: static const int32_t kToken_bool = 24 ;
+  public: static const int32_t kToken_map = 25 ;
+  public: static const int32_t kToken_check = 26 ;
+  public: static const int32_t kToken_checkbool = 27 ;
+  public: static const int32_t kToken_checkidentical = 28 ;
+  public: static const int32_t kToken__2C_ = 29 ;
+  public: static const int32_t kToken__3B_ = 30 ;
+  public: static const int32_t kToken__3A_ = 31 ;
+  public: static const int32_t kToken__7B_ = 32 ;
+  public: static const int32_t kToken__7D_ = 33 ;
+  public: static const int32_t kToken__2D__3E_ = 34 ;
+  public: static const int32_t kToken__26_ = 35 ;
+  public: static const int32_t kToken__7E_ = 36 ;
+  public: static const int32_t kToken__3F_ = 37 ;
+  public: static const int32_t kToken__21_ = 38 ;
+  public: static const int32_t kToken__7C_ = 39 ;
+  public: static const int32_t kToken__7C__7C_ = 40 ;
+  public: static const int32_t kToken__2B_ = 41 ;
+  public: static const int32_t kToken__28_ = 42 ;
+  public: static const int32_t kToken__29_ = 43 ;
+  public: static const int32_t kToken__3A__3D_ = 44 ;
+  public: static const int32_t kToken__5E_ = 45 ;
+  public: static const int32_t kToken__3D_ = 46 ;
+  public: static const int32_t kToken__2A_ = 47 ;
+  public: static const int32_t kToken__40_ = 48 ;
+  public: static const int32_t kToken__2A__2A_ = 49 ;
+
+//--- Key words table 'keyWordList'
+  public: static int32_t search_into_keyWordList (const String & inSearchedString) ;
+
+//--- Key words table 'delimitorsList'
+  public: static int32_t search_into_delimitorsList (const String & inSearchedString) ;
+  
+
+//--- Assign from attribute
+  public: GGS_lstring synthetizedAttribute_identifierString (void) const ;
+  public: GGS_luint synthetizedAttribute_ulongValue (void) const ;
+
+
+//--- Attribute access
+  public: String attributeValue_identifierString (void) const ;
+  public: uint32_t attributeValue_ulongValue (void) const ;
+
+
+//--- indexing keys
+
+//--- Parse lexical token
+  protected: void internalParseLexicalToken (cTokenFor_sara_5F_scanner & token) ;
+  protected: virtual bool parseLexicalToken (void) override ;
+
+//--- Get terminal message
+  protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
+
+//--- Get terminal count
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 49 ; }
+
+//--- Get Token String
+  public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
+
+//--- Enter Token
+  protected: void enterToken (cTokenFor_sara_5F_scanner & ioToken) ;
+
+//--- Style name for Latex
+  protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const override ;
+  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Parser class 'sara_parser' declaration
+//
+//--------------------------------------------------------------------------------------------------
+
+class cParser_sara_5F_parser {
+//--- Virtual destructor
+  public: virtual ~ cParser_sara_5F_parser (void) { }
+
+//--- Non terminal declarations
+  protected: virtual void nt_component_ (class GGS_semanticContext & ioArgument0,
+                                         class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_component_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_definition_5F_expression_ (const class GGS_semanticContext constinArgument0,
+                                                        class GGS_M_5F_variablesMap & ioArgument1,
+                                                        class GGS_AC_5F_machineDefinition & outArgument2,
+                                                        class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_definition_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_definition_5F_expression_5F_factor_ (const class GGS_semanticContext constinArgument0,
+                                                                  class GGS_M_5F_variablesMap & ioArgument1,
+                                                                  class GGS_AC_5F_machineDefinition & outArgument2,
+                                                                  class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_definition_5F_expression_5F_factor_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_definition_5F_expression_5F_term_ (const class GGS_semanticContext constinArgument0,
+                                                                class GGS_M_5F_variablesMap & ioArgument1,
+                                                                class GGS_AC_5F_machineDefinition & outArgument2,
+                                                                class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_definition_5F_expression_5F_term_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_explicit_5F_automaton_ (const class GGS_semanticContext constinArgument0,
+                                                     class GGS_M_5F_variablesMap & ioArgument1,
+                                                     class GGS_AC_5F_machineDefinition & outArgument2,
+                                                     class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_explicit_5F_automaton_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_io_5F_and_5F_expression_ (const class GGS_semanticContext constinArgument0,
+                                                       class GGS_M_5F_variablesMap & ioArgument1,
+                                                       class GGS_AC_5F_boolExpression & outArgument2,
+                                                       class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_io_5F_and_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_io_5F_bool_5F_expression_ (const class GGS_semanticContext constinArgument0,
+                                                        class GGS_M_5F_variablesMap & ioArgument1,
+                                                        class GGS_AC_5F_boolExpression & outArgument2,
+                                                        class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_io_5F_bool_5F_expression_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_io_5F_primary_ (const class GGS_semanticContext constinArgument0,
+                                             class GGS_M_5F_variablesMap & ioArgument1,
+                                             class GGS_AC_5F_boolExpression & outArgument2,
+                                             class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_io_5F_primary_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_modalcompadd_5F_definition_ (const class GGS_semanticContext constinArgument0,
+                                                          class GGS_M_5F_variablesMap & ioArgument1,
+                                                          class GGS_M_5F_modesMap & outArgument2,
+                                                          class GGS_ListForModes & outArgument3,
+                                                          class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_modalcompadd_5F_definition_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_modalcompsub_5F_definition_ (const class GGS_semanticContext constinArgument0,
+                                                          class GGS_M_5F_variablesMap & ioArgument1,
+                                                          class GGS_M_5F_modesMap & outArgument2,
+                                                          class GGS_ListForModes & outArgument3,
+                                                          class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_modalcompsub_5F_definition_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_start_5F_symbol_ (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+  protected: virtual void nt_start_5F_symbol_indexing (class Lexique_sara_5F_scanner * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected: void rule_sara_5F_parser_start_5F_symbol_i0_ (Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_start_5F_symbol_i0_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_start_5F_symbol_i0_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i1_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i1_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i1_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i2_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i2_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i2_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i3_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i3_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i3_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i4_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i4_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i4_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i5_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i5_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i5_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i6_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i6_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i6_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i7_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i7_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i7_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i8_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i8_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i8_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i9_ (GGS_semanticContext & ioArgument0,
+                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i9_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i9_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i10_ (GGS_semanticContext & ioArgument0,
+                                                      Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i10_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i10_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i11_ (GGS_semanticContext & ioArgument0,
+                                                      Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i11_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i11_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_component_i12_ (GGS_semanticContext & ioArgument0,
+                                                      Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_component_i12_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_component_i12_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_ (const GGS_semanticContext constinArgument0,
+                                                                     GGS_M_5F_variablesMap & ioArgument1,
+                                                                     GGS_AC_5F_boolExpression & outArgument2,
+                                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_bool_5F_expression_i13_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_ (const GGS_semanticContext constinArgument0,
+                                                                    GGS_M_5F_variablesMap & ioArgument1,
+                                                                    GGS_AC_5F_boolExpression & outArgument2,
+                                                                    Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_and_5F_expression_i14_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i15_ (const GGS_semanticContext constinArgument0,
+                                                          GGS_M_5F_variablesMap & ioArgument1,
+                                                          GGS_AC_5F_boolExpression & outArgument2,
+                                                          Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i15_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i15_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i16_ (const GGS_semanticContext constinArgument0,
+                                                          GGS_M_5F_variablesMap & ioArgument1,
+                                                          GGS_AC_5F_boolExpression & outArgument2,
+                                                          Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i16_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i16_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i17_ (const GGS_semanticContext constinArgument0,
+                                                          GGS_M_5F_variablesMap & ioArgument1,
+                                                          GGS_AC_5F_boolExpression & outArgument2,
+                                                          Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i17_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i17_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i18_ (const GGS_semanticContext constinArgument0,
+                                                          GGS_M_5F_variablesMap & ioArgument1,
+                                                          GGS_AC_5F_boolExpression & outArgument2,
+                                                          Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i18_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i18_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i19_ (const GGS_semanticContext constinArgument0,
+                                                          GGS_M_5F_variablesMap & ioArgument1,
+                                                          GGS_AC_5F_boolExpression & outArgument2,
+                                                          Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i19_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i19_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i20_ (const GGS_semanticContext constinArgument0,
+                                                          GGS_M_5F_variablesMap & ioArgument1,
+                                                          GGS_AC_5F_boolExpression & outArgument2,
+                                                          Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_io_5F_primary_i20_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_io_5F_primary_i20_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_i21_ (const GGS_semanticContext constinArgument0,
+                                                                     GGS_M_5F_variablesMap & ioArgument1,
+                                                                     GGS_AC_5F_machineDefinition & outArgument2,
+                                                                     Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_i21_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_i21_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_ (const GGS_semanticContext constinArgument0,
+                                                                             GGS_M_5F_variablesMap & ioArgument1,
+                                                                             GGS_AC_5F_machineDefinition & outArgument2,
+                                                                             Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_term_i22_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_ (const GGS_semanticContext constinArgument0,
+                                                                       GGS_M_5F_variablesMap & ioArgument1,
+                                                                       GGS_M_5F_modesMap & outArgument2,
+                                                                       GGS_ListForModes & outArgument3,
+                                                                       Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_modalcompadd_5F_definition_i23_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_ (const GGS_semanticContext constinArgument0,
+                                                                       GGS_M_5F_variablesMap & ioArgument1,
+                                                                       GGS_M_5F_modesMap & outArgument2,
+                                                                       GGS_ListForModes & outArgument3,
+                                                                       Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_modalcompsub_5F_definition_i24_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_ (const GGS_semanticContext constinArgument0,
+                                                                               GGS_M_5F_variablesMap & ioArgument1,
+                                                                               GGS_AC_5F_machineDefinition & outArgument2,
+                                                                               Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i25_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_ (const GGS_semanticContext constinArgument0,
+                                                                               GGS_M_5F_variablesMap & ioArgument1,
+                                                                               GGS_AC_5F_machineDefinition & outArgument2,
+                                                                               Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_definition_5F_expression_5F_factor_i26_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_ (const GGS_semanticContext constinArgument0,
+                                                                  GGS_M_5F_variablesMap & ioArgument1,
+                                                                  GGS_AC_5F_machineDefinition & outArgument2,
+                                                                  Lexique_sara_5F_scanner * inLexique) ;
+
+/*  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_parse (Lexique_sara_5F_scanner * inLexique) ; */
+
+  protected: void rule_sara_5F_parser_explicit_5F_automaton_i27_indexing (Lexique_sara_5F_scanner * inLexique) ;
+
+
+
+//--- Select methods
+  protected: virtual int32_t select_sara_5F_parser_0 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_1 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_2 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_3 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_4 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_5 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_6 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_7 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_8 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_9 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_10 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_11 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_12 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_13 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_14 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_15 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_16 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_17 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_18 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_19 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_20 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_21 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_22 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_23 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_24 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_25 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_26 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_27 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_28 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_29 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_30 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_31 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_32 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_33 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_34 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_35 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_36 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_37 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_38 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_39 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_40 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_41 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_42 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_43 (Lexique_sara_5F_scanner *) = 0 ;
+
+  protected: virtual int32_t select_sara_5F_parser_44 (Lexique_sara_5F_scanner *) = 0 ;
+
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'performComputations?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_performComputations_3F_ (const class GGS_L_5F_jobList constinArgument0,
+                                      class Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //  GRAMMAR sara_grammar
