@@ -9086,58 +9086,58 @@ GGS_M_5F_machinesMap_2E_element_3F_ GGS_M_5F_machinesMap_2E_element_3F_::extract
 //--------------------------------------------------------------------------------------------------
 
 static const int32_t gProductions_sara_grammar [] = {
-// At index 0 : <start_symbol>, in file 'sara_parser.ggs', line 11
+// At index 0 : <start_symbol>, in file 'sara_parser.galgas', line 11
   TOP_DOWN_NONTERMINAL (1) // <component>
 , TOP_DOWN_NONTERMINAL (11) // <select_sara_5F_parser_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 3 : <component>, in file 'sara_parser.ggs', line 25
+// At index 3 : <component>, in file 'sara_parser.galgas', line 25
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_state) // $state$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_display) // $display$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 8 : <component>, in file 'sara_parser.ggs', line 41
+// At index 8 : <component>, in file 'sara_parser.galgas', line 41
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_trans) // $trans$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_display) // $display$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 13 : <component>, in file 'sara_parser.ggs', line 57
+// At index 13 : <component>, in file 'sara_parser.galgas', line 57
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_first) // $first$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_state) // $state$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_display) // $display$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 19 : <component>, in file 'sara_parser.ggs', line 74
+// At index 19 : <component>, in file 'sara_parser.galgas', line 74
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_last) // $last$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_state) // $state$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_display) // $display$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 25 : <component>, in file 'sara_parser.ggs', line 91
+// At index 25 : <component>, in file 'sara_parser.galgas', line 91
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_check) // $check$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 29 : <component>, in file 'sara_parser.ggs', line 106
+// At index 29 : <component>, in file 'sara_parser.galgas', line 106
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_checkidentical) // $checkidentical$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 35 : <component>, in file 'sara_parser.ggs', line 125
+// At index 35 : <component>, in file 'sara_parser.galgas', line 125
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_checkbool) // $checkbool$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 39 : <component>, in file 'sara_parser.ggs', line 140
+// At index 39 : <component>, in file 'sara_parser.galgas', line 140
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_bdd) // $bdd$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 42 : <component>, in file 'sara_parser.ggs', line 150
+// At index 42 : <component>, in file 'sara_parser.galgas', line 150
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -9154,7 +9154,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 58 : <component>, in file 'sara_parser.ggs', line 212
+// At index 58 : <component>, in file 'sara_parser.galgas', line 212
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompadd) // $modalcompadd$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -9172,7 +9172,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (7) // <modalcompadd_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 75 : <component>, in file 'sara_parser.ggs', line 279
+// At index 75 : <component>, in file 'sara_parser.galgas', line 279
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompsub) // $modalcompsub$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -9190,7 +9190,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (8) // <modalcompsub_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 92 : <component>, in file 'sara_parser.ggs', line 344
+// At index 92 : <component>, in file 'sara_parser.galgas', line 344
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_scenario) // $scenario$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
@@ -9214,33 +9214,33 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (28) // <select_sara_5F_parser_17>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 115 : <io_bool_expression>, in file 'sara_parser.ggs', line 435
+// At index 115 : <io_bool_expression>, in file 'sara_parser.galgas', line 435
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 118 : <io_and_expression>, in file 'sara_parser.ggs', line 462
+// At index 118 : <io_and_expression>, in file 'sara_parser.galgas', line 462
 , TOP_DOWN_NONTERMINAL (4) // <io_primary>
 , TOP_DOWN_NONTERMINAL (32) // <select_sara_5F_parser_21>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 121 : <io_primary>, in file 'sara_parser.ggs', line 477
+// At index 121 : <io_primary>, in file 'sara_parser.galgas', line 477
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 125 : <io_primary>, in file 'sara_parser.ggs', line 488
+// At index 125 : <io_primary>, in file 'sara_parser.galgas', line 488
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 127 : <io_primary>, in file 'sara_parser.ggs', line 499
+// At index 127 : <io_primary>, in file 'sara_parser.galgas', line 499
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7E_) // $~$
 , TOP_DOWN_NONTERMINAL (4) // <io_primary>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 130 : <io_primary>, in file 'sara_parser.ggs', line 510
+// At index 130 : <io_primary>, in file 'sara_parser.galgas', line 510
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_false) // $false$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 132 : <io_primary>, in file 'sara_parser.ggs', line 520
+// At index 132 : <io_primary>, in file 'sara_parser.galgas', line 520
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_true) // $true$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 134 : <io_primary>, in file 'sara_parser.ggs', line 530
+// At index 134 : <io_primary>, in file 'sara_parser.galgas', line 530
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -9254,15 +9254,15 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (36) // <select_sara_5F_parser_25>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 147 : <definition_expression>, in file 'sara_parser.ggs', line 596
+// At index 147 : <definition_expression>, in file 'sara_parser.galgas', line 596
 , TOP_DOWN_NONTERMINAL (6) // <definition_expression_term>
 , TOP_DOWN_NONTERMINAL (37) // <select_sara_5F_parser_26>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 150 : <definition_expression_term>, in file 'sara_parser.ggs', line 612
+// At index 150 : <definition_expression_term>, in file 'sara_parser.galgas', line 612
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 153 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 640
+// At index 153 : <modalcompadd_definition>, in file 'sara_parser.galgas', line 640
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
@@ -9270,7 +9270,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (39) // <select_sara_5F_parser_28>
 , TOP_DOWN_NONTERMINAL (40) // <select_sara_5F_parser_29>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 160 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 674
+// At index 160 : <modalcompsub_definition>, in file 'sara_parser.galgas', line 674
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
@@ -9278,10 +9278,10 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (41) // <select_sara_5F_parser_30>
 , TOP_DOWN_NONTERMINAL (42) // <select_sara_5F_parser_31>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 167 : <definition_expression_factor>, in file 'sara_parser.ggs', line 708
+// At index 167 : <definition_expression_factor>, in file 'sara_parser.galgas', line 708
 , TOP_DOWN_NONTERMINAL (43) // <select_sara_5F_parser_32>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 169 : <definition_expression_factor>, in file 'sara_parser.ggs', line 807
+// At index 169 : <definition_expression_factor>, in file 'sara_parser.galgas', line 807
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_machineIdf) // $machineIdf$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
@@ -9295,7 +9295,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (49) // <select_sara_5F_parser_38>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 182 : <explicit_automaton>, in file 'sara_parser.ggs', line 870
+// At index 182 : <explicit_automaton>, in file 'sara_parser.galgas', line 870
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_auto) // $auto$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_state) // $state$
@@ -9317,123 +9317,123 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 202 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
+// At index 202 : <select_sara_5F_parser_0>, in file 'sara_parser.galgas', line 16
 , TOP_DOWN_END_PRODUCTION ()
-// At index 203 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
+// At index 203 : <select_sara_5F_parser_0>, in file 'sara_parser.galgas', line 16
 , TOP_DOWN_NONTERMINAL (1) // <component>
 , TOP_DOWN_NONTERMINAL (11) // <select_sara_5F_parser_0>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 206 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
+// At index 206 : <select_sara_5F_parser_1>, in file 'sara_parser.galgas', line 158
 , TOP_DOWN_END_PRODUCTION ()
-// At index 207 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
+// At index 207 : <select_sara_5F_parser_1>, in file 'sara_parser.galgas', line 158
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (12) // <select_sara_5F_parser_1>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 211 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
+// At index 211 : <select_sara_5F_parser_2>, in file 'sara_parser.galgas', line 169
 , TOP_DOWN_END_PRODUCTION ()
-// At index 212 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
+// At index 212 : <select_sara_5F_parser_2>, in file 'sara_parser.galgas', line 169
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (14) // <select_sara_5F_parser_3>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 215 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
+// At index 215 : <select_sara_5F_parser_3>, in file 'sara_parser.galgas', line 171
 , TOP_DOWN_END_PRODUCTION ()
-// At index 216 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
+// At index 216 : <select_sara_5F_parser_3>, in file 'sara_parser.galgas', line 171
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (14) // <select_sara_5F_parser_3>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 220 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
+// At index 220 : <select_sara_5F_parser_4>, in file 'sara_parser.galgas', line 183
 , TOP_DOWN_END_PRODUCTION ()
-// At index 221 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
+// At index 221 : <select_sara_5F_parser_4>, in file 'sara_parser.galgas', line 183
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (15) // <select_sara_5F_parser_4>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 225 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
+// At index 225 : <select_sara_5F_parser_5>, in file 'sara_parser.galgas', line 221
 , TOP_DOWN_END_PRODUCTION ()
-// At index 226 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
+// At index 226 : <select_sara_5F_parser_5>, in file 'sara_parser.galgas', line 221
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (16) // <select_sara_5F_parser_5>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 230 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
+// At index 230 : <select_sara_5F_parser_6>, in file 'sara_parser.galgas', line 232
 , TOP_DOWN_END_PRODUCTION ()
-// At index 231 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
+// At index 231 : <select_sara_5F_parser_6>, in file 'sara_parser.galgas', line 232
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (18) // <select_sara_5F_parser_7>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 234 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
+// At index 234 : <select_sara_5F_parser_7>, in file 'sara_parser.galgas', line 234
 , TOP_DOWN_END_PRODUCTION ()
-// At index 235 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
+// At index 235 : <select_sara_5F_parser_7>, in file 'sara_parser.galgas', line 234
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (18) // <select_sara_5F_parser_7>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 239 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
+// At index 239 : <select_sara_5F_parser_8>, in file 'sara_parser.galgas', line 246
 , TOP_DOWN_END_PRODUCTION ()
-// At index 240 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
+// At index 240 : <select_sara_5F_parser_8>, in file 'sara_parser.galgas', line 246
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (19) // <select_sara_5F_parser_8>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 244 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
+// At index 244 : <select_sara_5F_parser_9>, in file 'sara_parser.galgas', line 288
 , TOP_DOWN_END_PRODUCTION ()
-// At index 245 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
+// At index 245 : <select_sara_5F_parser_9>, in file 'sara_parser.galgas', line 288
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (20) // <select_sara_5F_parser_9>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 249 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
+// At index 249 : <select_sara_5F_parser_10>, in file 'sara_parser.galgas', line 299
 , TOP_DOWN_END_PRODUCTION ()
-// At index 250 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
+// At index 250 : <select_sara_5F_parser_10>, in file 'sara_parser.galgas', line 299
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (22) // <select_sara_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 253 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
+// At index 253 : <select_sara_5F_parser_11>, in file 'sara_parser.galgas', line 301
 , TOP_DOWN_END_PRODUCTION ()
-// At index 254 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
+// At index 254 : <select_sara_5F_parser_11>, in file 'sara_parser.galgas', line 301
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (22) // <select_sara_5F_parser_11>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 258 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
+// At index 258 : <select_sara_5F_parser_12>, in file 'sara_parser.galgas', line 313
 , TOP_DOWN_END_PRODUCTION ()
-// At index 259 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
+// At index 259 : <select_sara_5F_parser_12>, in file 'sara_parser.galgas', line 313
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (23) // <select_sara_5F_parser_12>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 263 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
+// At index 263 : <select_sara_5F_parser_13>, in file 'sara_parser.galgas', line 353
 , TOP_DOWN_END_PRODUCTION ()
-// At index 264 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
+// At index 264 : <select_sara_5F_parser_13>, in file 'sara_parser.galgas', line 353
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (24) // <select_sara_5F_parser_13>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 268 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
+// At index 268 : <select_sara_5F_parser_14>, in file 'sara_parser.galgas', line 368
 , TOP_DOWN_END_PRODUCTION ()
-// At index 269 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
+// At index 269 : <select_sara_5F_parser_14>, in file 'sara_parser.galgas', line 368
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (26) // <select_sara_5F_parser_15>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 272 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
+// At index 272 : <select_sara_5F_parser_15>, in file 'sara_parser.galgas', line 370
 , TOP_DOWN_END_PRODUCTION ()
-// At index 273 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
+// At index 273 : <select_sara_5F_parser_15>, in file 'sara_parser.galgas', line 370
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (26) // <select_sara_5F_parser_15>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 277 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
+// At index 277 : <select_sara_5F_parser_16>, in file 'sara_parser.galgas', line 386
 , TOP_DOWN_END_PRODUCTION ()
-// At index 278 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
+// At index 278 : <select_sara_5F_parser_16>, in file 'sara_parser.galgas', line 386
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (27) // <select_sara_5F_parser_16>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 282 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
+// At index 282 : <select_sara_5F_parser_17>, in file 'sara_parser.galgas', line 402
 , TOP_DOWN_END_PRODUCTION ()
-// At index 283 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
+// At index 283 : <select_sara_5F_parser_17>, in file 'sara_parser.galgas', line 402
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
@@ -9442,113 +9442,113 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (28) // <select_sara_5F_parser_17>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 291 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
+// At index 291 : <select_sara_5F_parser_18>, in file 'sara_parser.galgas', line 405
 , TOP_DOWN_END_PRODUCTION ()
-// At index 292 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
+// At index 292 : <select_sara_5F_parser_18>, in file 'sara_parser.galgas', line 405
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_NONTERMINAL (30) // <select_sara_5F_parser_19>
 , TOP_DOWN_NONTERMINAL (29) // <select_sara_5F_parser_18>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 297 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
+// At index 297 : <select_sara_5F_parser_19>, in file 'sara_parser.galgas', line 408
 , TOP_DOWN_END_PRODUCTION ()
-// At index 298 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
+// At index 298 : <select_sara_5F_parser_19>, in file 'sara_parser.galgas', line 408
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_literal_5F_integer) // $literal_integer$
 , TOP_DOWN_NONTERMINAL (30) // <select_sara_5F_parser_19>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 302 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+// At index 302 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
 , TOP_DOWN_END_PRODUCTION ()
-// At index 303 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+// At index 303 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7C_) // $|$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 307 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+// At index 307 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__5E_) // $^$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 311 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+// At index 311 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2D__3E_) // $->$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 315 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
+// At index 315 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3D_) // $=$
 , TOP_DOWN_NONTERMINAL (3) // <io_and_expression>
 , TOP_DOWN_NONTERMINAL (31) // <select_sara_5F_parser_20>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 319 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
+// At index 319 : <select_sara_5F_parser_21>, in file 'sara_parser.galgas', line 467
 , TOP_DOWN_END_PRODUCTION ()
-// At index 320 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
+// At index 320 : <select_sara_5F_parser_21>, in file 'sara_parser.galgas', line 467
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__26_) // $&$
 , TOP_DOWN_NONTERMINAL (4) // <io_primary>
 , TOP_DOWN_NONTERMINAL (32) // <select_sara_5F_parser_21>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 324 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
+// At index 324 : <select_sara_5F_parser_22>, in file 'sara_parser.galgas', line 539
 , TOP_DOWN_END_PRODUCTION ()
-// At index 325 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
+// At index 325 : <select_sara_5F_parser_22>, in file 'sara_parser.galgas', line 539
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (33) // <select_sara_5F_parser_22>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 329 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
+// At index 329 : <select_sara_5F_parser_23>, in file 'sara_parser.galgas', line 554
 , TOP_DOWN_END_PRODUCTION ()
-// At index 330 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
+// At index 330 : <select_sara_5F_parser_23>, in file 'sara_parser.galgas', line 554
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (35) // <select_sara_5F_parser_24>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 333 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
+// At index 333 : <select_sara_5F_parser_24>, in file 'sara_parser.galgas', line 556
 , TOP_DOWN_END_PRODUCTION ()
-// At index 334 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
+// At index 334 : <select_sara_5F_parser_24>, in file 'sara_parser.galgas', line 556
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (35) // <select_sara_5F_parser_24>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 338 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
+// At index 338 : <select_sara_5F_parser_25>, in file 'sara_parser.galgas', line 572
 , TOP_DOWN_END_PRODUCTION ()
-// At index 339 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
+// At index 339 : <select_sara_5F_parser_25>, in file 'sara_parser.galgas', line 572
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (36) // <select_sara_5F_parser_25>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 343 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
+// At index 343 : <select_sara_5F_parser_26>, in file 'sara_parser.galgas', line 601
 , TOP_DOWN_END_PRODUCTION ()
-// At index 344 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
+// At index 344 : <select_sara_5F_parser_26>, in file 'sara_parser.galgas', line 601
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2B_) // $+$
 , TOP_DOWN_NONTERMINAL (6) // <definition_expression_term>
 , TOP_DOWN_NONTERMINAL (37) // <select_sara_5F_parser_26>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 348 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+// At index 348 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
 , TOP_DOWN_END_PRODUCTION ()
-// At index 349 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+// At index 349 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2A_) // $*$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 353 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+// At index 353 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2A__2A_) // $**$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 357 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
+// At index 357 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7C__7C_) // $||$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_NONTERMINAL (38) // <select_sara_5F_parser_27>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 361 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
+// At index 361 : <select_sara_5F_parser_28>, in file 'sara_parser.galgas', line 647
 , TOP_DOWN_END_PRODUCTION ()
-// At index 362 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
+// At index 362 : <select_sara_5F_parser_28>, in file 'sara_parser.galgas', line 647
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (39) // <select_sara_5F_parser_28>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 368 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
+// At index 368 : <select_sara_5F_parser_29>, in file 'sara_parser.galgas', line 655
 , TOP_DOWN_END_PRODUCTION ()
-// At index 369 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
+// At index 369 : <select_sara_5F_parser_29>, in file 'sara_parser.galgas', line 655
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_include) // $include$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_to) // $to$
@@ -9556,18 +9556,18 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (40) // <select_sara_5F_parser_29>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 376 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
+// At index 376 : <select_sara_5F_parser_30>, in file 'sara_parser.galgas', line 681
 , TOP_DOWN_END_PRODUCTION ()
-// At index 377 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
+// At index 377 : <select_sara_5F_parser_30>, in file 'sara_parser.galgas', line 681
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (41) // <select_sara_5F_parser_30>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 383 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
+// At index 383 : <select_sara_5F_parser_31>, in file 'sara_parser.galgas', line 689
 , TOP_DOWN_END_PRODUCTION ()
-// At index 384 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
+// At index 384 : <select_sara_5F_parser_31>, in file 'sara_parser.galgas', line 689
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_exclude) // $exclude$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_to) // $to$
@@ -9575,15 +9575,15 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (42) // <select_sara_5F_parser_31>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 391 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 391 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_NONTERMINAL (10) // <explicit_automaton>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 393 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 393 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 397 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 397 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3F_) // $?$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (44) // <select_sara_5F_parser_33>
@@ -9591,7 +9591,7 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 404 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 404 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__21_) // $!$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (45) // <select_sara_5F_parser_34>
@@ -9599,45 +9599,45 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 411 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 411 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_bool) // $bool$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 416 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 416 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__40_) // $@$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 419 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 419 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7E_) // $~$
 , TOP_DOWN_NONTERMINAL (9) // <definition_expression_factor>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 422 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 422 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_nofirst) // $nofirst$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 427 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 427 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_nolast) // $nolast$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__28_) // $($
 , TOP_DOWN_NONTERMINAL (5) // <definition_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__29_) // $)$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 432 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 432 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompadd) // $modalcompadd$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (7) // <modalcompadd_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 437 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 437 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_modalcompsub) // $modalcompsub$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (8) // <modalcompsub_definition>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 442 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
+// At index 442 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_trans) // $trans$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7B_) // ${$
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
@@ -9645,79 +9645,79 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 449 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
+// At index 449 : <select_sara_5F_parser_33>, in file 'sara_parser.galgas', line 722
 , TOP_DOWN_END_PRODUCTION ()
-// At index 450 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
+// At index 450 : <select_sara_5F_parser_33>, in file 'sara_parser.galgas', line 722
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (44) // <select_sara_5F_parser_33>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 454 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
+// At index 454 : <select_sara_5F_parser_34>, in file 'sara_parser.galgas', line 737
 , TOP_DOWN_END_PRODUCTION ()
-// At index 455 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
+// At index 455 : <select_sara_5F_parser_34>, in file 'sara_parser.galgas', line 737
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (45) // <select_sara_5F_parser_34>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 459 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
+// At index 459 : <select_sara_5F_parser_35>, in file 'sara_parser.galgas', line 816
 , TOP_DOWN_END_PRODUCTION ()
-// At index 460 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
+// At index 460 : <select_sara_5F_parser_35>, in file 'sara_parser.galgas', line 816
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (46) // <select_sara_5F_parser_35>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 464 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
+// At index 464 : <select_sara_5F_parser_36>, in file 'sara_parser.galgas', line 831
 , TOP_DOWN_END_PRODUCTION ()
-// At index 465 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
+// At index 465 : <select_sara_5F_parser_36>, in file 'sara_parser.galgas', line 831
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (48) // <select_sara_5F_parser_37>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 468 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
+// At index 468 : <select_sara_5F_parser_37>, in file 'sara_parser.galgas', line 833
 , TOP_DOWN_END_PRODUCTION ()
-// At index 469 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
+// At index 469 : <select_sara_5F_parser_37>, in file 'sara_parser.galgas', line 833
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (48) // <select_sara_5F_parser_37>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 473 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
+// At index 473 : <select_sara_5F_parser_38>, in file 'sara_parser.galgas', line 849
 , TOP_DOWN_END_PRODUCTION ()
-// At index 474 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
+// At index 474 : <select_sara_5F_parser_38>, in file 'sara_parser.galgas', line 849
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (49) // <select_sara_5F_parser_38>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 478 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
+// At index 478 : <select_sara_5F_parser_39>, in file 'sara_parser.galgas', line 880
 , TOP_DOWN_END_PRODUCTION ()
-// At index 479 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
+// At index 479 : <select_sara_5F_parser_39>, in file 'sara_parser.galgas', line 880
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (50) // <select_sara_5F_parser_39>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 483 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
+// At index 483 : <select_sara_5F_parser_40>, in file 'sara_parser.galgas', line 890
 , TOP_DOWN_END_PRODUCTION ()
-// At index 484 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
+// At index 484 : <select_sara_5F_parser_40>, in file 'sara_parser.galgas', line 890
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (51) // <select_sara_5F_parser_40>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 488 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
+// At index 488 : <select_sara_5F_parser_41>, in file 'sara_parser.galgas', line 900
 , TOP_DOWN_END_PRODUCTION ()
-// At index 489 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
+// At index 489 : <select_sara_5F_parser_41>, in file 'sara_parser.galgas', line 900
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_last) // $last$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (53) // <select_sara_5F_parser_42>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_END_PRODUCTION ()
-// At index 494 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
+// At index 494 : <select_sara_5F_parser_42>, in file 'sara_parser.galgas', line 903
 , TOP_DOWN_END_PRODUCTION ()
-// At index 495 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
+// At index 495 : <select_sara_5F_parser_42>, in file 'sara_parser.galgas', line 903
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__2C_) // $,$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_NONTERMINAL (53) // <select_sara_5F_parser_42>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 499 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
+// At index 499 : <select_sara_5F_parser_43>, in file 'sara_parser.galgas', line 914
 , TOP_DOWN_END_PRODUCTION ()
-// At index 500 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
+// At index 500 : <select_sara_5F_parser_43>, in file 'sara_parser.galgas', line 914
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3A_) // $:$
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
@@ -9726,16 +9726,16 @@ static const int32_t gProductions_sara_grammar [] = {
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__7D_) // $}$
 , TOP_DOWN_NONTERMINAL (54) // <select_sara_5F_parser_43>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 508 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
+// At index 508 : <select_sara_5F_parser_44>, in file 'sara_parser.galgas', line 926
 , TOP_DOWN_END_PRODUCTION ()
-// At index 509 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
+// At index 509 : <select_sara_5F_parser_44>, in file 'sara_parser.galgas', line 926
 , TOP_DOWN_NONTERMINAL (2) // <io_bool_expression>
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_goto) // $goto$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken_identifier) // $identifier$
 , TOP_DOWN_TERMINAL (Lexique_sara_5F_scanner::kToken__3B_) // $;$
 , TOP_DOWN_NONTERMINAL (55) // <select_sara_5F_parser_44>
 , TOP_DOWN_END_PRODUCTION ()
-// At index 515 : <>, in file '.ggs', line 0
+// At index 515 : <>, in file '.galgas', line 0
 , TOP_DOWN_NONTERMINAL (0) // <start_symbol>
 , TOP_DOWN_END_PRODUCTION ()
 } ;
@@ -9890,140 +9890,140 @@ static const ProductionNameDescriptor gProductionNames_sara_grammar [134] = {
 //--------------------------------------------------------------------------------------------------
 
 static const int32_t gProductionIndexes_sara_grammar [134] = {
-0, // index 0 : <start_symbol>, in file 'sara_parser.ggs', line 11
-3, // index 1 : <component>, in file 'sara_parser.ggs', line 25
-8, // index 2 : <component>, in file 'sara_parser.ggs', line 41
-13, // index 3 : <component>, in file 'sara_parser.ggs', line 57
-19, // index 4 : <component>, in file 'sara_parser.ggs', line 74
-25, // index 5 : <component>, in file 'sara_parser.ggs', line 91
-29, // index 6 : <component>, in file 'sara_parser.ggs', line 106
-35, // index 7 : <component>, in file 'sara_parser.ggs', line 125
-39, // index 8 : <component>, in file 'sara_parser.ggs', line 140
-42, // index 9 : <component>, in file 'sara_parser.ggs', line 150
-58, // index 10 : <component>, in file 'sara_parser.ggs', line 212
-75, // index 11 : <component>, in file 'sara_parser.ggs', line 279
-92, // index 12 : <component>, in file 'sara_parser.ggs', line 344
-115, // index 13 : <io_bool_expression>, in file 'sara_parser.ggs', line 435
-118, // index 14 : <io_and_expression>, in file 'sara_parser.ggs', line 462
-121, // index 15 : <io_primary>, in file 'sara_parser.ggs', line 477
-125, // index 16 : <io_primary>, in file 'sara_parser.ggs', line 488
-127, // index 17 : <io_primary>, in file 'sara_parser.ggs', line 499
-130, // index 18 : <io_primary>, in file 'sara_parser.ggs', line 510
-132, // index 19 : <io_primary>, in file 'sara_parser.ggs', line 520
-134, // index 20 : <io_primary>, in file 'sara_parser.ggs', line 530
-147, // index 21 : <definition_expression>, in file 'sara_parser.ggs', line 596
-150, // index 22 : <definition_expression_term>, in file 'sara_parser.ggs', line 612
-153, // index 23 : <modalcompadd_definition>, in file 'sara_parser.ggs', line 640
-160, // index 24 : <modalcompsub_definition>, in file 'sara_parser.ggs', line 674
-167, // index 25 : <definition_expression_factor>, in file 'sara_parser.ggs', line 708
-169, // index 26 : <definition_expression_factor>, in file 'sara_parser.ggs', line 807
-182, // index 27 : <explicit_automaton>, in file 'sara_parser.ggs', line 870
-202, // index 28 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
-203, // index 29 : <select_sara_5F_parser_0>, in file 'sara_parser.ggs', line 16
-206, // index 30 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
-207, // index 31 : <select_sara_5F_parser_1>, in file 'sara_parser.ggs', line 158
-211, // index 32 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
-212, // index 33 : <select_sara_5F_parser_2>, in file 'sara_parser.ggs', line 169
-215, // index 34 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
-216, // index 35 : <select_sara_5F_parser_3>, in file 'sara_parser.ggs', line 171
-220, // index 36 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
-221, // index 37 : <select_sara_5F_parser_4>, in file 'sara_parser.ggs', line 183
-225, // index 38 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
-226, // index 39 : <select_sara_5F_parser_5>, in file 'sara_parser.ggs', line 221
-230, // index 40 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
-231, // index 41 : <select_sara_5F_parser_6>, in file 'sara_parser.ggs', line 232
-234, // index 42 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
-235, // index 43 : <select_sara_5F_parser_7>, in file 'sara_parser.ggs', line 234
-239, // index 44 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
-240, // index 45 : <select_sara_5F_parser_8>, in file 'sara_parser.ggs', line 246
-244, // index 46 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
-245, // index 47 : <select_sara_5F_parser_9>, in file 'sara_parser.ggs', line 288
-249, // index 48 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
-250, // index 49 : <select_sara_5F_parser_10>, in file 'sara_parser.ggs', line 299
-253, // index 50 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
-254, // index 51 : <select_sara_5F_parser_11>, in file 'sara_parser.ggs', line 301
-258, // index 52 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
-259, // index 53 : <select_sara_5F_parser_12>, in file 'sara_parser.ggs', line 313
-263, // index 54 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
-264, // index 55 : <select_sara_5F_parser_13>, in file 'sara_parser.ggs', line 353
-268, // index 56 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
-269, // index 57 : <select_sara_5F_parser_14>, in file 'sara_parser.ggs', line 368
-272, // index 58 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
-273, // index 59 : <select_sara_5F_parser_15>, in file 'sara_parser.ggs', line 370
-277, // index 60 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
-278, // index 61 : <select_sara_5F_parser_16>, in file 'sara_parser.ggs', line 386
-282, // index 62 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
-283, // index 63 : <select_sara_5F_parser_17>, in file 'sara_parser.ggs', line 402
-291, // index 64 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
-292, // index 65 : <select_sara_5F_parser_18>, in file 'sara_parser.ggs', line 405
-297, // index 66 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
-298, // index 67 : <select_sara_5F_parser_19>, in file 'sara_parser.ggs', line 408
-302, // index 68 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
-303, // index 69 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
-307, // index 70 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
-311, // index 71 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
-315, // index 72 : <select_sara_5F_parser_20>, in file 'sara_parser.ggs', line 440
-319, // index 73 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
-320, // index 74 : <select_sara_5F_parser_21>, in file 'sara_parser.ggs', line 467
-324, // index 75 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
-325, // index 76 : <select_sara_5F_parser_22>, in file 'sara_parser.ggs', line 539
-329, // index 77 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
-330, // index 78 : <select_sara_5F_parser_23>, in file 'sara_parser.ggs', line 554
-333, // index 79 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
-334, // index 80 : <select_sara_5F_parser_24>, in file 'sara_parser.ggs', line 556
-338, // index 81 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
-339, // index 82 : <select_sara_5F_parser_25>, in file 'sara_parser.ggs', line 572
-343, // index 83 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
-344, // index 84 : <select_sara_5F_parser_26>, in file 'sara_parser.ggs', line 601
-348, // index 85 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
-349, // index 86 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
-353, // index 87 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
-357, // index 88 : <select_sara_5F_parser_27>, in file 'sara_parser.ggs', line 617
-361, // index 89 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
-362, // index 90 : <select_sara_5F_parser_28>, in file 'sara_parser.ggs', line 647
-368, // index 91 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
-369, // index 92 : <select_sara_5F_parser_29>, in file 'sara_parser.ggs', line 655
-376, // index 93 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
-377, // index 94 : <select_sara_5F_parser_30>, in file 'sara_parser.ggs', line 681
-383, // index 95 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
-384, // index 96 : <select_sara_5F_parser_31>, in file 'sara_parser.ggs', line 689
-391, // index 97 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-393, // index 98 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-397, // index 99 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-404, // index 100 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-411, // index 101 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-416, // index 102 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-419, // index 103 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-422, // index 104 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-427, // index 105 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-432, // index 106 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-437, // index 107 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-442, // index 108 : <select_sara_5F_parser_32>, in file 'sara_parser.ggs', line 712
-449, // index 109 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
-450, // index 110 : <select_sara_5F_parser_33>, in file 'sara_parser.ggs', line 722
-454, // index 111 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
-455, // index 112 : <select_sara_5F_parser_34>, in file 'sara_parser.ggs', line 737
-459, // index 113 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
-460, // index 114 : <select_sara_5F_parser_35>, in file 'sara_parser.ggs', line 816
-464, // index 115 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
-465, // index 116 : <select_sara_5F_parser_36>, in file 'sara_parser.ggs', line 831
-468, // index 117 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
-469, // index 118 : <select_sara_5F_parser_37>, in file 'sara_parser.ggs', line 833
-473, // index 119 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
-474, // index 120 : <select_sara_5F_parser_38>, in file 'sara_parser.ggs', line 849
-478, // index 121 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
-479, // index 122 : <select_sara_5F_parser_39>, in file 'sara_parser.ggs', line 880
-483, // index 123 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
-484, // index 124 : <select_sara_5F_parser_40>, in file 'sara_parser.ggs', line 890
-488, // index 125 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
-489, // index 126 : <select_sara_5F_parser_41>, in file 'sara_parser.ggs', line 900
-494, // index 127 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
-495, // index 128 : <select_sara_5F_parser_42>, in file 'sara_parser.ggs', line 903
-499, // index 129 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
-500, // index 130 : <select_sara_5F_parser_43>, in file 'sara_parser.ggs', line 914
-508, // index 131 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
-509, // index 132 : <select_sara_5F_parser_44>, in file 'sara_parser.ggs', line 926
-515 // index 133 : <>, in file '.ggs', line 0
+0, // index 0 : <start_symbol>, in file 'sara_parser.galgas', line 11
+3, // index 1 : <component>, in file 'sara_parser.galgas', line 25
+8, // index 2 : <component>, in file 'sara_parser.galgas', line 41
+13, // index 3 : <component>, in file 'sara_parser.galgas', line 57
+19, // index 4 : <component>, in file 'sara_parser.galgas', line 74
+25, // index 5 : <component>, in file 'sara_parser.galgas', line 91
+29, // index 6 : <component>, in file 'sara_parser.galgas', line 106
+35, // index 7 : <component>, in file 'sara_parser.galgas', line 125
+39, // index 8 : <component>, in file 'sara_parser.galgas', line 140
+42, // index 9 : <component>, in file 'sara_parser.galgas', line 150
+58, // index 10 : <component>, in file 'sara_parser.galgas', line 212
+75, // index 11 : <component>, in file 'sara_parser.galgas', line 279
+92, // index 12 : <component>, in file 'sara_parser.galgas', line 344
+115, // index 13 : <io_bool_expression>, in file 'sara_parser.galgas', line 435
+118, // index 14 : <io_and_expression>, in file 'sara_parser.galgas', line 462
+121, // index 15 : <io_primary>, in file 'sara_parser.galgas', line 477
+125, // index 16 : <io_primary>, in file 'sara_parser.galgas', line 488
+127, // index 17 : <io_primary>, in file 'sara_parser.galgas', line 499
+130, // index 18 : <io_primary>, in file 'sara_parser.galgas', line 510
+132, // index 19 : <io_primary>, in file 'sara_parser.galgas', line 520
+134, // index 20 : <io_primary>, in file 'sara_parser.galgas', line 530
+147, // index 21 : <definition_expression>, in file 'sara_parser.galgas', line 596
+150, // index 22 : <definition_expression_term>, in file 'sara_parser.galgas', line 612
+153, // index 23 : <modalcompadd_definition>, in file 'sara_parser.galgas', line 640
+160, // index 24 : <modalcompsub_definition>, in file 'sara_parser.galgas', line 674
+167, // index 25 : <definition_expression_factor>, in file 'sara_parser.galgas', line 708
+169, // index 26 : <definition_expression_factor>, in file 'sara_parser.galgas', line 807
+182, // index 27 : <explicit_automaton>, in file 'sara_parser.galgas', line 870
+202, // index 28 : <select_sara_5F_parser_0>, in file 'sara_parser.galgas', line 16
+203, // index 29 : <select_sara_5F_parser_0>, in file 'sara_parser.galgas', line 16
+206, // index 30 : <select_sara_5F_parser_1>, in file 'sara_parser.galgas', line 158
+207, // index 31 : <select_sara_5F_parser_1>, in file 'sara_parser.galgas', line 158
+211, // index 32 : <select_sara_5F_parser_2>, in file 'sara_parser.galgas', line 169
+212, // index 33 : <select_sara_5F_parser_2>, in file 'sara_parser.galgas', line 169
+215, // index 34 : <select_sara_5F_parser_3>, in file 'sara_parser.galgas', line 171
+216, // index 35 : <select_sara_5F_parser_3>, in file 'sara_parser.galgas', line 171
+220, // index 36 : <select_sara_5F_parser_4>, in file 'sara_parser.galgas', line 183
+221, // index 37 : <select_sara_5F_parser_4>, in file 'sara_parser.galgas', line 183
+225, // index 38 : <select_sara_5F_parser_5>, in file 'sara_parser.galgas', line 221
+226, // index 39 : <select_sara_5F_parser_5>, in file 'sara_parser.galgas', line 221
+230, // index 40 : <select_sara_5F_parser_6>, in file 'sara_parser.galgas', line 232
+231, // index 41 : <select_sara_5F_parser_6>, in file 'sara_parser.galgas', line 232
+234, // index 42 : <select_sara_5F_parser_7>, in file 'sara_parser.galgas', line 234
+235, // index 43 : <select_sara_5F_parser_7>, in file 'sara_parser.galgas', line 234
+239, // index 44 : <select_sara_5F_parser_8>, in file 'sara_parser.galgas', line 246
+240, // index 45 : <select_sara_5F_parser_8>, in file 'sara_parser.galgas', line 246
+244, // index 46 : <select_sara_5F_parser_9>, in file 'sara_parser.galgas', line 288
+245, // index 47 : <select_sara_5F_parser_9>, in file 'sara_parser.galgas', line 288
+249, // index 48 : <select_sara_5F_parser_10>, in file 'sara_parser.galgas', line 299
+250, // index 49 : <select_sara_5F_parser_10>, in file 'sara_parser.galgas', line 299
+253, // index 50 : <select_sara_5F_parser_11>, in file 'sara_parser.galgas', line 301
+254, // index 51 : <select_sara_5F_parser_11>, in file 'sara_parser.galgas', line 301
+258, // index 52 : <select_sara_5F_parser_12>, in file 'sara_parser.galgas', line 313
+259, // index 53 : <select_sara_5F_parser_12>, in file 'sara_parser.galgas', line 313
+263, // index 54 : <select_sara_5F_parser_13>, in file 'sara_parser.galgas', line 353
+264, // index 55 : <select_sara_5F_parser_13>, in file 'sara_parser.galgas', line 353
+268, // index 56 : <select_sara_5F_parser_14>, in file 'sara_parser.galgas', line 368
+269, // index 57 : <select_sara_5F_parser_14>, in file 'sara_parser.galgas', line 368
+272, // index 58 : <select_sara_5F_parser_15>, in file 'sara_parser.galgas', line 370
+273, // index 59 : <select_sara_5F_parser_15>, in file 'sara_parser.galgas', line 370
+277, // index 60 : <select_sara_5F_parser_16>, in file 'sara_parser.galgas', line 386
+278, // index 61 : <select_sara_5F_parser_16>, in file 'sara_parser.galgas', line 386
+282, // index 62 : <select_sara_5F_parser_17>, in file 'sara_parser.galgas', line 402
+283, // index 63 : <select_sara_5F_parser_17>, in file 'sara_parser.galgas', line 402
+291, // index 64 : <select_sara_5F_parser_18>, in file 'sara_parser.galgas', line 405
+292, // index 65 : <select_sara_5F_parser_18>, in file 'sara_parser.galgas', line 405
+297, // index 66 : <select_sara_5F_parser_19>, in file 'sara_parser.galgas', line 408
+298, // index 67 : <select_sara_5F_parser_19>, in file 'sara_parser.galgas', line 408
+302, // index 68 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
+303, // index 69 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
+307, // index 70 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
+311, // index 71 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
+315, // index 72 : <select_sara_5F_parser_20>, in file 'sara_parser.galgas', line 440
+319, // index 73 : <select_sara_5F_parser_21>, in file 'sara_parser.galgas', line 467
+320, // index 74 : <select_sara_5F_parser_21>, in file 'sara_parser.galgas', line 467
+324, // index 75 : <select_sara_5F_parser_22>, in file 'sara_parser.galgas', line 539
+325, // index 76 : <select_sara_5F_parser_22>, in file 'sara_parser.galgas', line 539
+329, // index 77 : <select_sara_5F_parser_23>, in file 'sara_parser.galgas', line 554
+330, // index 78 : <select_sara_5F_parser_23>, in file 'sara_parser.galgas', line 554
+333, // index 79 : <select_sara_5F_parser_24>, in file 'sara_parser.galgas', line 556
+334, // index 80 : <select_sara_5F_parser_24>, in file 'sara_parser.galgas', line 556
+338, // index 81 : <select_sara_5F_parser_25>, in file 'sara_parser.galgas', line 572
+339, // index 82 : <select_sara_5F_parser_25>, in file 'sara_parser.galgas', line 572
+343, // index 83 : <select_sara_5F_parser_26>, in file 'sara_parser.galgas', line 601
+344, // index 84 : <select_sara_5F_parser_26>, in file 'sara_parser.galgas', line 601
+348, // index 85 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
+349, // index 86 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
+353, // index 87 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
+357, // index 88 : <select_sara_5F_parser_27>, in file 'sara_parser.galgas', line 617
+361, // index 89 : <select_sara_5F_parser_28>, in file 'sara_parser.galgas', line 647
+362, // index 90 : <select_sara_5F_parser_28>, in file 'sara_parser.galgas', line 647
+368, // index 91 : <select_sara_5F_parser_29>, in file 'sara_parser.galgas', line 655
+369, // index 92 : <select_sara_5F_parser_29>, in file 'sara_parser.galgas', line 655
+376, // index 93 : <select_sara_5F_parser_30>, in file 'sara_parser.galgas', line 681
+377, // index 94 : <select_sara_5F_parser_30>, in file 'sara_parser.galgas', line 681
+383, // index 95 : <select_sara_5F_parser_31>, in file 'sara_parser.galgas', line 689
+384, // index 96 : <select_sara_5F_parser_31>, in file 'sara_parser.galgas', line 689
+391, // index 97 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+393, // index 98 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+397, // index 99 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+404, // index 100 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+411, // index 101 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+416, // index 102 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+419, // index 103 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+422, // index 104 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+427, // index 105 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+432, // index 106 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+437, // index 107 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+442, // index 108 : <select_sara_5F_parser_32>, in file 'sara_parser.galgas', line 712
+449, // index 109 : <select_sara_5F_parser_33>, in file 'sara_parser.galgas', line 722
+450, // index 110 : <select_sara_5F_parser_33>, in file 'sara_parser.galgas', line 722
+454, // index 111 : <select_sara_5F_parser_34>, in file 'sara_parser.galgas', line 737
+455, // index 112 : <select_sara_5F_parser_34>, in file 'sara_parser.galgas', line 737
+459, // index 113 : <select_sara_5F_parser_35>, in file 'sara_parser.galgas', line 816
+460, // index 114 : <select_sara_5F_parser_35>, in file 'sara_parser.galgas', line 816
+464, // index 115 : <select_sara_5F_parser_36>, in file 'sara_parser.galgas', line 831
+465, // index 116 : <select_sara_5F_parser_36>, in file 'sara_parser.galgas', line 831
+468, // index 117 : <select_sara_5F_parser_37>, in file 'sara_parser.galgas', line 833
+469, // index 118 : <select_sara_5F_parser_37>, in file 'sara_parser.galgas', line 833
+473, // index 119 : <select_sara_5F_parser_38>, in file 'sara_parser.galgas', line 849
+474, // index 120 : <select_sara_5F_parser_38>, in file 'sara_parser.galgas', line 849
+478, // index 121 : <select_sara_5F_parser_39>, in file 'sara_parser.galgas', line 880
+479, // index 122 : <select_sara_5F_parser_39>, in file 'sara_parser.galgas', line 880
+483, // index 123 : <select_sara_5F_parser_40>, in file 'sara_parser.galgas', line 890
+484, // index 124 : <select_sara_5F_parser_40>, in file 'sara_parser.galgas', line 890
+488, // index 125 : <select_sara_5F_parser_41>, in file 'sara_parser.galgas', line 900
+489, // index 126 : <select_sara_5F_parser_41>, in file 'sara_parser.galgas', line 900
+494, // index 127 : <select_sara_5F_parser_42>, in file 'sara_parser.galgas', line 903
+495, // index 128 : <select_sara_5F_parser_42>, in file 'sara_parser.galgas', line 903
+499, // index 129 : <select_sara_5F_parser_43>, in file 'sara_parser.galgas', line 914
+500, // index 130 : <select_sara_5F_parser_43>, in file 'sara_parser.galgas', line 914
+508, // index 131 : <select_sara_5F_parser_44>, in file 'sara_parser.galgas', line 926
+509, // index 132 : <select_sara_5F_parser_44>, in file 'sara_parser.galgas', line 926
+515 // index 133 : <>, in file '.galgas', line 0
 } ;
 
 //--------------------------------------------------------------------------------------------------
