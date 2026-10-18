@@ -20,10 +20,10 @@ class CollectionElementPtr__32_lstringlist : public CollectionElementPtr {
                                                 COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr__32_lstringlist (const GGS__32_lstringlist_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -456,7 +456,7 @@ void GGS__32_lstringlist::setter_setMValue_30_AtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS__32_lstringlist::getter_mValue_30_AtIndex (const GGS_uint & inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -495,7 +495,7 @@ void GGS__32_lstringlist::setter_setMValue_31_AtIndex (GGS_lstring inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS__32_lstringlist::getter_mValue_31_AtIndex (const GGS_uint & inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -1612,10 +1612,10 @@ class CollectionElementPtr_L_5F_translationVector : public CollectionElementPtr 
                                                        COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_translationVector (const GGS_L_5F_translationVector_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -2023,7 +2023,7 @@ void GGS_L_5F_translationVector::setter_setMTargetSlotAtIndex (GGS_uint inOperan
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_L_5F_translationVector::getter_mTargetSlotAtIndex (const GGS_uint & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
@@ -5168,10 +5168,10 @@ class CollectionElementPtr_L_5F_transitionDefinition : public CollectionElementP
                                                           COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_transitionDefinition (const GGS_L_5F_transitionDefinition_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -5629,7 +5629,7 @@ void GGS_L_5F_transitionDefinition::setter_setMActionExpressionAtIndex (GGS_AC_5
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_AC_5F_boolExpression GGS_L_5F_transitionDefinition::getter_mActionExpressionAtIndex (const GGS_uint & inIndex,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
@@ -5668,7 +5668,7 @@ void GGS_L_5F_transitionDefinition::setter_setMEndOfExpressionAtIndex (GGS_locat
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_location GGS_L_5F_transitionDefinition::getter_mEndOfExpressionAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -5707,7 +5707,7 @@ void GGS_L_5F_transitionDefinition::setter_setMTargetStateIndexAtIndex (GGS_uint
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_L_5F_transitionDefinition::getter_mTargetStateIndexAtIndex (const GGS_uint & inIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -5853,10 +5853,10 @@ class CollectionElementPtr_L_5F_stateDefinition : public CollectionElementPtr {
                                                      COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_stateDefinition (const GGS_L_5F_stateDefinition_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -6339,7 +6339,7 @@ void GGS_L_5F_stateDefinition::setter_setMStateIndexAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_L_5F_stateDefinition::getter_mStateIndexAtIndex (const GGS_uint & inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
@@ -6378,7 +6378,7 @@ void GGS_L_5F_stateDefinition::setter_setMStateExpressionAtIndex (GGS_AC_5F_bool
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_AC_5F_boolExpression GGS_L_5F_stateDefinition::getter_mStateExpressionAtIndex (const GGS_uint & inIndex,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
@@ -6417,7 +6417,7 @@ void GGS_L_5F_stateDefinition::setter_setMEndOfStateExpressionAtIndex (GGS_locat
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_location GGS_L_5F_stateDefinition::getter_mEndOfStateExpressionAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -6456,7 +6456,7 @@ void GGS_L_5F_stateDefinition::setter_setMTransitionsListAtIndex (GGS_L_5F_trans
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_L_5F_transitionDefinition GGS_L_5F_stateDefinition::getter_mTransitionsListAtIndex (const GGS_uint & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
@@ -6612,10 +6612,10 @@ class CollectionElementPtr_L_5F_statesDefinitionList : public CollectionElementP
                                                           COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_statesDefinitionList (const GGS_L_5F_statesDefinitionList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -7048,7 +7048,7 @@ void GGS_L_5F_statesDefinitionList::setter_setMStateIndexAtIndex (GGS_uint inOpe
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_L_5F_statesDefinitionList::getter_mStateIndexAtIndex (const GGS_uint & inIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -7087,7 +7087,7 @@ void GGS_L_5F_statesDefinitionList::setter_setMStateLocationAtIndex (GGS_locatio
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_location GGS_L_5F_statesDefinitionList::getter_mStateLocationAtIndex (const GGS_uint & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
@@ -7987,10 +7987,10 @@ class CollectionElementPtr_ListForModes : public CollectionElementPtr {
                                              COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_ListForModes (const GGS_ListForModes_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -8423,7 +8423,7 @@ void GGS_ListForModes::setter_setMSourceModeAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_ListForModes::getter_mSourceModeAtIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -8462,7 +8462,7 @@ void GGS_ListForModes::setter_setMTargetModeAtIndex (GGS_uint inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_uint GGS_ListForModes::getter_mTargetModeAtIndex (const GGS_uint & inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
@@ -15957,10 +15957,10 @@ class CollectionElementPtr_L_5F_inputConfigurationForScenario : public Collectio
                                                                    COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_inputConfigurationForScenario (const GGS_L_5F_inputConfigurationForScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -16368,7 +16368,7 @@ void GGS_L_5F_inputConfigurationForScenario::setter_setMInputValueAtIndex (GGS_l
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_luint GGS_L_5F_inputConfigurationForScenario::getter_mInputValueAtIndex (const GGS_uint & inIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {
@@ -16487,10 +16487,10 @@ class CollectionElementPtr_L_5F_inputScenario : public CollectionElementPtr {
                                                    COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_inputScenario (const GGS_L_5F_inputScenario_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -16898,7 +16898,7 @@ void GGS_L_5F_inputScenario::setter_setMInputConfigurationAtIndex (GGS_L_5F_inpu
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_L_5F_inputConfigurationForScenario GGS_L_5F_inputScenario::getter_mInputConfigurationAtIndex (const GGS_uint & inIndex,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
@@ -17018,10 +17018,10 @@ class CollectionElementPtr_L_5F_scenarioList : public CollectionElementPtr {
                                                   COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_scenarioList (const GGS_L_5F_scenarioList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -17454,7 +17454,7 @@ void GGS_L_5F_scenarioList::setter_setMScenarioTitleAtIndex (GGS_lstring inOpera
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_lstring GGS_L_5F_scenarioList::getter_mScenarioTitleAtIndex (const GGS_uint & inIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
@@ -17493,7 +17493,7 @@ void GGS_L_5F_scenarioList::setter_setMInputScenarioAtIndex (GGS_L_5F_inputScena
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_L_5F_inputScenario GGS_L_5F_scenarioList::getter_mInputScenarioAtIndex (const GGS_uint & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {

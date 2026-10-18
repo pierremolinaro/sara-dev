@@ -688,10 +688,10 @@ class CollectionElementPtr_L_5F_jobList : public CollectionElementPtr {
                                              COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_L_5F_jobList (const GGS_L_5F_jobList_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
-//--- Virtual method that checks that all attributes are valid
+//--- Virtual proc that checks that all attributes are valid
   public: virtual bool isValid (void) const ;
 
-//--- Virtual method that returns a copy of current object
+//--- Virtual proc that returns a copy of current object
   public: virtual CollectionElementPtr * copy (void) ;
 } ;
 
@@ -1099,7 +1099,7 @@ void GGS_L_5F_jobList::setter_setMComponentAtIndex (GGS_AC_5F_job inOperand,
   }
 }
 //--------------------------------------------------------------------------------------------------
-  
+
 GGS_AC_5F_job GGS_L_5F_jobList::getter_mComponentAtIndex (const GGS_uint & inIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
