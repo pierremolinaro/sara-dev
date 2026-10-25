@@ -328,7 +328,7 @@ struct @semanticContext {
 //---------------------------------------------------------------------------*
 
 extern proc performComputations
-  ?let @L_jobList ioJobList
+  (?let @L_jobList ioJobList)
 
 //---------------------------------------------------------------------------*
 
