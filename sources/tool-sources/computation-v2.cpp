@@ -246,10 +246,10 @@ compute (Compiler * inCompiler,
   { GenericArray <String> variableNamesArray ((int32_t) variableCount, "" COMMA_HERE) ;
     swap (machine.mNamesArray, variableNamesArray) ;
   }
-  UpEnumerator_stringlist currentVar (mProperty_mNameList) ;
+  UpEnumerator__5B_string_5D_ currentVar (mProperty_mNameList) ;
   int32_t index = 0 ;
   while (currentVar.hasCurrentObject ()) {
-    machine.mNamesArray (index COMMA_HERE) = currentVar.current_mValue (HERE).stringValue () ;
+    machine.mNamesArray (index COMMA_HERE) = currentVar.current (HERE).stringValue () ;
     index ++ ;
     currentVar.gotoNextObject () ;
   }

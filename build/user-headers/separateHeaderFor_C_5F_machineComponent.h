@@ -19,7 +19,7 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
                                                                        const class GGS_uint & inOperand2,
                                                                        const class GGS_uint & inOperand3,
                                                                        const class GGS_M_5F_variablesMap & inOperand4,
-                                                                       const class GGS_stringlist & inOperand5,
+                                                                       const class GGS__5B_string_5D_ & inOperand5,
                                                                        const class GGS_AC_5F_machineDefinition & inOperand6,
                                                                        Compiler * inCompiler) ;
 
@@ -38,7 +38,7 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
   public: GGS_uint mProperty_mInputVariableCount ;
   public: GGS_uint mProperty_mInputAndInternalVariableCount ;
   public: GGS_M_5F_variablesMap mProperty_mVariablesMap ;
-  public: GGS_stringlist mProperty_mNameList ;
+  public: GGS__5B_string_5D_ mProperty_mNameList ;
   public: GGS_AC_5F_machineDefinition mProperty_mDefinition ;
 
 
@@ -51,7 +51,7 @@ class cPtr_C_5F_machineComponent : public cPtr_AC_5F_job {
                                       const GGS_uint & in_mInputVariableCount,
                                       const GGS_uint & in_mInputAndInternalVariableCount,
                                       const GGS_M_5F_variablesMap & in_mVariablesMap,
-                                      const GGS_stringlist & in_mNameList,
+                                      const GGS__5B_string_5D_ & in_mNameList,
                                       const GGS_AC_5F_machineDefinition & in_mDefinition,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;

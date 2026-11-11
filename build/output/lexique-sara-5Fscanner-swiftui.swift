@@ -14,6 +14,8 @@ struct SettingViewFor_sara_scanner : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @State private var mUnused = false
+
   @AppStorage("FontFor_sara_scanner")
   private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
 
@@ -118,7 +120,13 @@ struct SettingViewFor_sara_scanner : View {
         Text("1.7").tag(17)
         Text("2.0").tag(20)
       }.pickerStyle(.automatic)
-      ColorPicker ("Default Color", selection: self.$mDefaultColor)
+      LabeledContent ("Default Color") {
+        HStack {
+          ColorPicker ("", selection: self.$mDefaultColor).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mUnused).hidden () // Hidden, unused
+          Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
+        }
+      }
       LabeledContent ("Identifiers") {
         HStack {
           ColorPicker ("", selection: self.$mColorFor_identifier).labelsHidden ()

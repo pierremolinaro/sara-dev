@@ -6,7 +6,7 @@
 
 grammar sara_grammar "LL1" {
   syntax sara_parser
-   <start_symbol>
+   <start_symbol> ()
 }
 
 //---------------------------------------------------------------------------*

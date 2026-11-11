@@ -6,15 +6,15 @@
 
 map @M_variablesMap {
   public var @uint mIndex
-  insert insertKey error message"the '%K' variable has been already declared"
-  search searchKey error message"the '%K' variable is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' variable has been already declared"
+  #searchMethod searchKey #errorMessage "the '%K' variable is not declared"
 }
 
 map @M_stateMap {
   public var @uint mIndex
-  insert insertKey error message"the '%K' state has been already declared"
-  insert defineState error message"the '%K' state has been already defined"
-  search searchKey error message"the '%K' state is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' state has been already declared"
+  #insertSetter defineState #errorMessage "the '%K' state has been already defined"
+  #searchMethod searchKey #errorMessage "the '%K' state is not declared"
 }
 
 //---------------------------------------------------------------------------*
@@ -23,7 +23,7 @@ list @L_translationVector {
   public var @uint mTargetSlot
 }
 
-abstract class @AC_boolExpression %generatedInSeparateFile {
+abstract class @AC_boolExpression #generatedInSeparateFile {
 }
 
 class @C_importBoolMachine : @AC_boolExpression {
@@ -95,14 +95,14 @@ list @L_statesDefinitionList {
 
 //---------------------------------------------------------------------------*
 
-abstract class @AC_machineDefinition %generatedInSeparateFile {
+abstract class @AC_machineDefinition #generatedInSeparateFile {
 }
 
 map @M_modesMap {
   public var @uint mIndex
   public var @AC_machineDefinition mModeDefinition
-  insert insertKey error message"the '%K' mode has been already declared"
-  search searchKey error message"the '%K' mode is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' mode has been already declared"
+  #searchMethod searchKey #errorMessage "the '%K' mode is not declared"
 }
 
 list @ListForModes {
@@ -194,7 +194,7 @@ class @C_suppressInitialStatesOperation : @AC_machineDefinition {
 
 //---------------------------------------------------------------------------*
 
-abstract class @AC_job %generatedInSeparateFile {
+abstract class @AC_job #generatedInSeparateFile {
 }
  
 class @C_machineDisplayStates : @AC_job {
@@ -230,7 +230,7 @@ class @C_machineComponent : @AC_job {
   public var @uint mInputVariableCount
   public var @uint mInputAndInternalVariableCount
   public var @M_variablesMap mVariablesMap
-  public var @stringlist mNameList
+  public var [@string] mNameList
   public var @AC_machineDefinition mDefinition
 }
 
@@ -312,10 +312,10 @@ map @M_machinesMap {
   public var @uint mInputVariableCount
   public var @uint mInputAndInternalVariableCount
   public var @M_variablesMap mVariablesMap
-  public var @stringlist mNameList
-  insert insertKey error message"the '%K' machine has been already declared"
-  search searchKey error message"the '%K' machine is not defined"
-  remove removeKey error message"the '%K' machine is not defined"
+  public var [@string] mNameList
+  #insertSetter insertKey #errorMessage "the '%K' machine has been already declared"
+  #searchMethod searchKey #errorMessage "the '%K' machine is not defined"
+  #removeSetter removeKey #errorMessage "the '%K' machine is not defined"
 }
 
 //---------------------------------------------------------------------------*
@@ -328,7 +328,7 @@ struct @semanticContext {
 //---------------------------------------------------------------------------*
 
 extern proc performComputations
-  (?let @L_jobList ioJobList)
+  (let @L_jobList ioJobList)
 
 //---------------------------------------------------------------------------*
 
